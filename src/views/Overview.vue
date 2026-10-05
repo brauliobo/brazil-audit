@@ -80,7 +80,8 @@ const items = computed(() => results.data.rows.map((r) => ({
   value: r.votes,
   text: `${int(r.votes)} · ${pct(r.votes / r.total)}${r.official ? ` · ${t('overview.official', { n: int(r.official) })}` : ''}`,
 })))
-const gapText = (gap) => t(gap.residual ? (gap.skipped.length ? 'overview.gapLeftSkipped' : 'overview.gapLeft') : 'overview.gap',
+const documentedGap = computed(() => Object.keys(cfg.value.sources.differences).length > 0) // a gap the Sources panel documents
+const gapText = (gap) => t(documentedGap.value ? 'overview.gapSource' : gap.residual ? (gap.skipped.length ? 'overview.gapLeftSkipped' : 'overview.gapLeft') : 'overview.gap',
   { votes: signed(gap.votes), share: signedPct(gap.share), skipped: gap.skipped.length, missing: int(gap.missing) })
 const totals = computed(() => {
   const r = results.data
@@ -113,7 +114,7 @@ SourceBadge(:election="year")
       Notice(v-if="results.data.gap.residual")
         | {{ t('overview.included', { votes: int(results.data.gap.residual.votes), sections: int(results.data.gap.residual.sections) }) }}&nbsp;
         a(href="#cobertura") {{ t('overview.seeCoverage') }}
-      Notice(v-if="results.data.gap.votes" kind="warning") {{ gapText(results.data.gap) }}
+      Notice(v-if="results.data.gap.votes" :kind="documentedGap ? 'info' : 'warning'") {{ gapText(results.data.gap) }}
     p.muted {{ totals }}
     p.muted(v-if="results.data.rows.some((r) => r.cand === '-')") {{ t('overview.unlisted', { label: t('common.others') }) }}
   Panel(:title="t('overview.polarization')" :state="polarization" :election="year")

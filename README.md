@@ -59,8 +59,8 @@ cannot decode it from JS and Pages does not serve `.br`. `data/` is 383 MB, no f
 | `rdv` | state, city, zone, section, model, office, nominal, blank, nul, votes jsonb | section results per office; `votes` = {number: votes} (RDV kind 2); `model` is empty for 2018/2022 (the open data has no urn model) |
 | `tot` | state, city, office, sections, nominal, blank, nul | totals per municipality and office |
 | `res` | state, city, office, cand, votes | votes per candidate (municipality; deputies per UF, `city` NULL) |
-| `vt` | state, city, zone, section, model, n, first, last, med, p10, p90, maxgap, b smallint[] | voting times per section (president post, 90 ten-minute buckets of the local clock); 2026 only |
-| `vtc` | state, city, sections, n, tz, b int[] | city rollup of `vt` + estimated clock offset vs Brasília; 2026 only |
+| `vt` | state, city, zone, section, model, n, first, last, med, p10, p90, maxgap, b smallint[] | voting times per section (president post, 90 ten-minute buckets of the local clock); 2026 and 2022 (both rounds, from the machines' logs) |
+| `vtc` | state, city, sections, n, tz, b int[] | city rollup of `vt` + estimated clock offset vs Brasília; 2026 and 2022 |
 | `cov`, `miss` | state, own, stored, aggregated, missing / state, city, zone, section | coverage per UF and the sections without published files; 2026 only |
 | `residual`, `residual_skipped` | uf, city, city_code, zone, office, number, votes, sections_missing / uf, city, zone, office, reason, detail | official totals of sections without files (see below) and the cases left out; 2026 only |
 | `elected`, `seats` | uf, office, n, name, party, status, votes / uf, office, bloc, seats | elected senators and seats per party (2026: per party/federation as the TSE assigns them); first rounds only |
@@ -68,7 +68,7 @@ cannot decode it from JS and Pages does not serve `.br`. `data/` is 383 MB, no f
 | `mun_map` | state, city, ibge | municipality (TSE name) → IBGE code (no election) |
 
 Views: `sec` (rdv without the jsonb), `cs` (one row per section, office and candidate), `resx`/`totx` (res/tot plus the residual). What an
-election did not collect is absent, never invented: 2018 and 2022 have no `vt`/`vtc` (only the opening and closing of the urn), no residual and no coverage tables; runoffs only have president and governors.
+election did not collect is absent, never invented: 2018 has no `vt`/`vtc` (the TSE published no logs), 2018 and 2022 have no residual and no coverage tables; runoffs only have president and governors.
 Indexes on (election, turn, state ...) are created by the app.
 
 ### Sources and their priority
@@ -79,8 +79,11 @@ candidate: tables `rdv`, `res`, `tot` and everything derived), **3. TSE open dat
 and **4. official totals** (the residual of sections without files, and the check scripts). Each election states what it has in `sources` of
 `src/elections.js` (`logs`, `rdv`, `open`, `official`, `pending` for layers still being imported); `src/elections.js` throws when `sources` disagrees
 with `hasTimes`, `source.kind` or `hasResidual`, so the Sources panel of the overview and the badge under every view's title (which read that entry)
-cannot claim a source the data does not use. Today: 2026 = logs + RDV (+ official totals), 2022 (both rounds) = open data while its RDV and logs are
-imported (the panel says so), 2018 = open data only (the TSE published neither RDV nor logs).
+cannot claim a source the data does not use. Today: 2026 = logs + RDV (+ official totals), 2022 (both rounds) = the machines' logs + RDV (`rdv_machine`, `voting_times` of
+`brazil-audit-2022`; the open data of the same database is only the reference of the official totals, and `sources.differences` documents the small
+gaps against it: 58 foreign sections missing from the ZZ package and 13 sections with fewer ballots in round 1, 4 sections whose second urn has no RDV in
+round 2; office 11, the mayors of the supplementary elections, is never selected), 2018 = open data only (the TSE published neither RDV nor logs). The
+logs against the RDV (events = ballots per president section) are measured at build time (`--only=logmatch`) into `manifest.sources`.
 
 ### Maps and parliament
 
@@ -200,7 +203,7 @@ nice -n 10 node scripts/build-data.mjs --election=2026 --only=rdv,vt --states=ac
 ```
 
 `scripts/build-data.mjs` reads the local databases `brazil-audit-2026` (the 2026 collector) and `brazil-audit-2018` / `brazil-audit-2022`
-(the TSE open-data collector of branch `2018`: `rdv_votes`, `section_detail`, `candidates`, `elected`; both rounds) read-only through `psql`
+(the collector of branch `2018`: the open data in `rdv_votes`, `section_detail`, `candidates`, `elected`; for 2022 also the machines' own `rdv_machine` and `voting_times`; both rounds) read-only through `psql`
 and fetches candidate names and the section configs from the TSE (no CORS, hence build time). Everything is computed
 inside Postgres per state: results dumps, the voting-time buckets and gap statistics, and the rollups. `voting_times` is
 never scanned: it is probed once per section through its index (`state, city, zone, section, model, post` prefix).

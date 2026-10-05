@@ -65,6 +65,7 @@ const FAMILIES = {
   'sources.layer.': ['logs', 'rdv', 'open', 'official'].flatMap((l) => [`${l}.name`, `${l}.role`]),
   'sources.state.': ['used', 'pending', 'none', 'unused'],
   'sources.official.': ['residual', 'check'],
+  'sources.diff.': ['foreignMissing', 'fewerBallots', 'secondUrnNoRdv'],
   'sources.badge.': ['rdv', 'rdvOfficial', 'open', 'openPending', 'logs', 'officialFiles'],
   'sql.examples.': EXAMPLES.map((e) => e.id),
   'sql.tables.': TABLES,

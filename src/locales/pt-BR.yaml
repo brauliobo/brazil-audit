@@ -150,6 +150,7 @@ overview:
   gapLeft: "Diferença restante para o oficial: {votes} votos ({share})."
   gapLeftSkipped: "Diferença restante para o oficial: {votes} votos ({share}) · municípios cujo total oficial não pôde ser usado (não totalizado, desatualizado ou ausente): {skipped}."
   gap: "Diferença para o oficial: {votes} votos ({share}) · seções sem arquivo publicado: {missing}."
+  gapSource: "Diferença para o total oficial: {votes} votos ({share}), uma diferença documentada entre as fontes (veja Fontes dos dados), não um erro."
   official: "oficial {n}"
   unlisted: Números fora da lista de candidatos do TSE aparecem como "{label}" (o site do TSE os conta como inválidos).
   polarization: "Polarização: votos válidos dos dois mais votados"
@@ -575,6 +576,15 @@ sources:
   official:
     residual: votos de seções sem arquivo (residual, resx, totx)
     check: conferência com os arquivos oficiais (scripts verify-*)
+  differences: "Diferenças documentadas entre esta fonte e os totais oficiais (não são erros):"
+  diff:
+    foreignMissing_one: "{count} seção do exterior não está no pacote ZZ do RDV."
+    foreignMissing_other: "{count} seções do exterior não estão no pacote ZZ do RDV."
+    fewerBallots_one: "{count} seção tem menos cédulas no RDV do que no total oficial."
+    fewerBallots_other: "{count} seções têm menos cédulas no RDV do que no total oficial."
+    secondUrnNoRdv_one: "{count} seção em que uma segunda urna não tem RDV."
+    secondUrnNoRdv_other: "{count} seções em que uma segunda urna não tem RDV."
+  logsVsRdv: "Logs contra RDV (presidente): em {share} das {sections} seções o número de eventos do log é igual ao de cédulas do RDV ({equal}); {fewer} têm menos eventos (em geral urnas substituídas) e {more} têm mais."
   notePending: Hoje esta eleição usa os dados abertos do TSE; o RDV e os logs estão sendo importados e passarão a ser a origem dos números e dos horários.
   noteNone: "O TSE não publicou RDV nem logs desta eleição: os dados abertos são a única fonte."
   badge:

@@ -149,6 +149,7 @@ overview:
   gapLeft: "Remaining difference from the official result: {votes} votes ({share})."
   gapLeftSkipped: "Remaining difference from the official result: {votes} votes ({share}) · municipalities whose official total could not be used (not tallied, outdated or missing): {skipped}."
   gap: "Difference from the official result: {votes} votes ({share}) · sections without a published file: {missing}."
+  gapSource: "Difference from the official total: {votes} votes ({share}), a documented difference between sources (see Data sources), not an error."
   official: "official {n}"
   unlisted: Numbers outside the TSE candidate list appear as "{label}" (the TSE site counts them as invalid).
   polarization: "Polarization: valid votes of the top two"
@@ -574,6 +575,15 @@ sources:
   official:
     residual: votes of sections without files (residual, resx, totx)
     check: check against the official files (verify-* scripts)
+  differences: "Documented differences between this source and the official totals (not errors):"
+  diff:
+    foreignMissing_one: "{count} section abroad is missing from the ZZ package of the RDV."
+    foreignMissing_other: "{count} sections abroad are missing from the ZZ package of the RDV."
+    fewerBallots_one: "{count} section has fewer ballots in the RDV than in the official total."
+    fewerBallots_other: "{count} sections have fewer ballots in the RDV than in the official total."
+    secondUrnNoRdv_one: "{count} section where a second ballot box has no RDV."
+    secondUrnNoRdv_other: "{count} sections where a second ballot box has no RDV."
+  logsVsRdv: "Logs against RDV (president): in {share} of the {sections} sections the number of log events equals the RDV ballots ({equal}); {fewer} have fewer events (usually replaced ballot boxes) and {more} have more."
   notePending: Today this election uses the TSE open data; the RDV and the logs are being imported and will become the origin of the numbers and of the voting times.
   noteNone: "The TSE published neither RDV nor logs for this election: the open data is the only source."
   badge:
