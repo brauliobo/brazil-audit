@@ -15,7 +15,8 @@ const parse = (path, search) => {
   // links without an election (/time/sp) resolve to the latest one
   const [election, ...rest] = segments[0] in ELECTIONS ? segments : [DEFAULT_ELECTION, ...segments]
   const [view = 'overview', ...args] = rest
-  return { election, view, args, params: new URLSearchParams(search) }
+  const unknownElection = /^\d{4}(-\d)?$/.test(segments[0] ?? '') && !(segments[0] in ELECTIONS)
+  return { election, view, args, params: new URLSearchParams(search), notFound: unknownElection || ![...VIEWS_NAV, ...HIDDEN_VIEWS].includes(view) }
 }
 
 export const route = computed(() => parse(url.value.path, url.value.search))
@@ -35,8 +36,8 @@ const scrolls = new Map() // history entry key -> scrollY
 let key = 0
 
 const title = () => {
-  const { election, view } = route.value
-  return t('app.title', { view: viewName([...VIEWS_NAV, ...HIDDEN_VIEWS].includes(view) ? view : 'overview'), election: electionLabel(election), app: t('app.name') })
+  const { election, view, notFound } = route.value
+  return notFound ? `${t('errors.notFoundTitle')} · ${t('app.name')}` : t('app.title', { view: viewName(view), election: electionLabel(election), app: t('app.name') })
 }
 
 function arrive(restore, focusHeading = true) {
@@ -93,7 +94,7 @@ const legacy = (hash) => {
 
 export function startRouter() {
   sync() // the language detection may have removed ?lang from the address
-  const to = location.hash.startsWith('#/') ? legacy(location.hash) : canonical(route.value)
+  const to = location.hash.startsWith('#/') ? legacy(location.hash) : route.value.notFound ? here() : canonical(route.value)
   history.replaceState({ key }, '', to)
   sync()
   document.addEventListener('click', onClick)

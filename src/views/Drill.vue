@@ -1,7 +1,7 @@
 <script setup vapor>
 import { computed } from 'vue'
-import { route, href, setParam } from '../router'
-import { ELECTIONS, candJoin, collate, inElection } from '../model'
+import { route, href, go, setParam } from '../router'
+import { ELECTIONS, UFS, candJoin, collate, fold, inElection } from '../model'
 import { electionLabel, officeName, stateName, stateTitle } from '../labels'
 import { t } from '../i18n'
 import { ensure, ensureScope, ensureSmall, ensureState } from '../data'
@@ -85,7 +85,19 @@ async function sectionRows(y, a, q) {
   return { mode: 'section', offices: totals.map((t) => ({ ...t, rows: rows.filter((r) => r.office === t.office).slice(0, 10) })) }
 }
 
-const view = useAsync(() => [year.value, args.value, office.value, sort.value, page.value, residualOn.value], async ([y, a, o, s, p], q) => {
+// the city in the address may be written without accents or in lower case: resolve it to the stored name (and fix the address)
+async function resolve(y, a, q) {
+  if (!UFS.includes(a[0]) && a.length) throw new Error(t('errors.notFound'))
+  if (a.length < 2) return a
+  await ensureSmall(y, 'tot')
+  const [m] = objects(await q(`select city from tot where ${inElection(y)} and state = $1 and ${fold('city')} = ${fold('$2::text')} limit 1`, [a[0], a[1]]))
+  if (!m) throw new Error(t('errors.notFound'))
+  return [a[0], m.city, ...a.slice(2)]
+}
+
+const view = useAsync(() => [year.value, args.value, office.value, sort.value, page.value, residualOn.value], async ([y, shown, o, s, p], q) => {
+  const a = await resolve(y, shown, q)
+  if (a.some((x, i) => x !== shown[i])) { go(href(y, 'drill', a, Object.fromEntries(route.value.params)), { replace: true }); return null }
   await ensure('cands')
   if (rollupGrain(a, o)) await ensureSmall(y, 'tot', 'res', 'residual')
   else await (a.length === 4 ? ensureState : ensureScope)('rdv', y, a[0], o)

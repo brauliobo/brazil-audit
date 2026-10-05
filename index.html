@@ -6,6 +6,12 @@
   <title>Auditoria eleitoral</title>
   <!-- GitHub Pages 404.html sends unknown paths here as /?/path&query: restore the real URL before the app starts -->
   <script>(function (l) { if (l.search[1] === '/') { var d = l.search.slice(1).split('&').map(function (s) { return s.replace(/~and~/g, '&') }).join('?'); history.replaceState(null, null, l.pathname.slice(0, -1) + d + l.hash) } })(location)</script>
+  <!-- a page cached before a redeploy points to assets that no longer exist: reload once to get the current one -->
+  <script>
+    function recover(e) { if (!sessionStorage.getItem('recovered') && (!e.target || /^(SCRIPT|LINK)$/.test(e.target.tagName))) { sessionStorage.setItem('recovered', '1'); location.reload() } }
+    addEventListener('error', recover, true)
+    addEventListener('vite:preloadError', recover)
+  </script>
   <!-- the stored theme is applied before the first paint, so there is no flash of the wrong one -->
   <script>try { var theme = localStorage.getItem('theme'); if (theme === 'light' || theme === 'dark') document.documentElement.dataset.theme = theme } catch (e) {}</script>
   <meta name="color-scheme" content="light dark">

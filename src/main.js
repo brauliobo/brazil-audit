@@ -12,3 +12,4 @@ startRouter()
 const app = createVaporApp(App)
 app.config.errorHandler = (error) => { console.error(error); renderError.value = error }
 app.mount('#app')
+sessionStorage.removeItem('recovered')

@@ -57,5 +57,8 @@ export const candVotes = (key) => `select state,city,zone,section,model,nominal,
 /** Time-of-day buckets (vt.b / vtc.b): bucket 0 starts at 05:00 on the recorded local clock, 10 minutes each. */
 export const BUCKET = { start: 5 * 3600, step: 600 }
 
+/** Accent- and case-insensitive key of a name: `são paulo` and `SAO PAULO` fold to the same value. */
+export const fold = (col) => `upper(translate(${col}, 'ÁÀÂÃÄÉÈÊËÍÌÎÏÓÒÔÕÖÚÙÛÜÇÑáàâãäéèêëíìîïóòôõöúùûüçñ', 'AAAAAEEEEIIIIOOOOOUUUUCNAAAAAEEEEIIIIOOOOOUUUUCN'))` // i18n-ignore
+
 /** PGlite sorts in C.UTF-8 codepoint order (accented letters after Z): this key orders Portuguese names like pt-BR. */
 export const collate = (col) => `translate(${col}, 'ÁÀÂÃÄÉÈÊËÍÌÎÏÓÒÔÕÖÚÙÛÜÇÑ', 'AAAAAEEEEIIIIOOOOOUUUUCN')` // i18n-ignore

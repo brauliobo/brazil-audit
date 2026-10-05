@@ -20,15 +20,17 @@ import Sql from './views/Sql.vue'
 import Maps from './views/Maps.vue'
 import Parliament from './views/Parliament.vue'
 import Design from './views/Design.vue'
+import NotFound from './views/NotFound.vue'
 
 const REPO = 'https://github.com/brauliobo/brazil-audit'
 const views = { overview: Overview, maps: Maps, parliament: Parliament, drill: Drill, analysis: Analysis, time: Time, sql: Sql, design: Design }
-const current = computed(() => views[route.value.view] ?? Overview)
+const current = computed(() => (route.value.notFound ? NotFound : views[route.value.view]))
 const election = computed(() => route.value.election)
 const nav = computed(() => VIEWS_NAV.map((v) => ({ label: viewName(v), href: href(election.value, v), current: route.value.view === v })))
 </script>
 
 <template lang="pug">
+a.skip-link(href="#main") {{ t('app.skip') }}
 header.site-header
   a.brand(:href="href(DEFAULT_ELECTION, 'overview')" :aria-label="t('app.home')")
     Logo.brand__full
@@ -39,7 +41,7 @@ header.site-header
     LangSwitch
     ThemeSwitch
 EngineStatus
-main
+main#main(tabindex="-1")
   Notice(v-if="renderError" kind="danger") {{ t('errors.render', { message: renderError.message }) }}
   component(:is="current" :key="route.view + route.election")
 footer.site-footer
@@ -47,6 +49,8 @@ footer.site-footer
   a(href="https://pglite.dev") PGlite
   | &nbsp;· Vue 3.6 Vapor · {{ t('footer.data') }} ·&nbsp;
   a(:href="`${REPO}#dados-brutos`") {{ t('footer.raw') }}
+  | &nbsp;·&nbsp;
+  a(href="https://dadosabertos.tse.jus.br") {{ t('footer.license') }}: CC BY
   | &nbsp;·&nbsp;
   a(:href="href(election, 'design')") {{ t('footer.design') }}
   | &nbsp;·&nbsp;
