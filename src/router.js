@@ -2,7 +2,8 @@
 // every other state (office, metric, cand, scope, sort, page, q...) in the query string. Links are plain <a href>s built by
 // href(); one delegated click handler turns same-origin clicks into client navigation.
 import { computed, nextTick, ref, watchEffect } from 'vue'
-import { DEFAULT_ELECTION, ELECTIONS, HIDDEN_VIEWS, VIEWS_NAV } from './model'
+import { HIDDEN_VIEWS, VIEWS_NAV } from './model'
+import { parseRoute } from './routes'
 import { renderError } from './errors'
 import { t } from './i18n'
 import { electionLabel, viewName } from './labels'
@@ -10,14 +11,7 @@ import { electionLabel, viewName } from './labels'
 const BASE = import.meta.env.BASE_URL // '/brazil-audit/' on Pages, '/' in dev or on a custom domain
 const url = ref({ path: location.pathname, search: location.search })
 
-const parse = (path, search) => {
-  const segments = path.slice(BASE.length).split('/').filter(Boolean).map(decodeURIComponent)
-  // links without an election (/time/sp) resolve to the latest one
-  const [election, ...rest] = segments[0] in ELECTIONS ? segments : [DEFAULT_ELECTION, ...segments]
-  const [view = 'overview', ...args] = rest
-  const unknownElection = /^\d{4}(-\d)?$/.test(segments[0] ?? '') && !(segments[0] in ELECTIONS)
-  return { election, view, args, params: new URLSearchParams(search), notFound: unknownElection || ![...VIEWS_NAV, ...HIDDEN_VIEWS].includes(view) }
-}
+const parse = (path, search) => parseRoute(BASE, path, search)
 
 export const route = computed(() => parse(url.value.path, url.value.search))
 

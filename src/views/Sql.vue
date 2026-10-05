@@ -27,8 +27,8 @@ async function load(text) {
   const mentioned = [...text.matchAll(/\b[a-z_]+\b/g)].map((m) => m[0])
   const wanted = new Set(mentioned.flatMap((n) => VIEW_TABLES[n] ?? [n]))
   const turns = [...text.matchAll(/turn\s*=\s*(\d)/g)].map((m) => +m[1]) // `election = 2022 and turn = 2` names one round, `election = 2022` both
-  const named = Object.values(ELECTIONS).filter((e) => [...text.matchAll(/election\s*=\s*(\d{4})/g)].some((m) => +m[1] === e.year) && (!turns.length || turns.includes(e.turn))).map((e) => e.key)
-  await Promise.all([...wanted].flatMap((t) => (SMALL.includes(t) ? Object.keys(ELECTIONS).map((k) => ensureSmall(k, t))
+  const named = ELECTION_LIST.filter((e) => [...text.matchAll(/election\s*=\s*(\d{4})/g)].some((m) => +m[1] === e.year) && (!turns.length || turns.includes(e.turn))).map((e) => e.key)
+  await Promise.all([...wanted].flatMap((t) => (SMALL.includes(t) ? ELECTION_LIST.map((e) => ensureSmall(e.key, t))
     : SECTION.includes(t) ? (named.length ? named : [year.value]).map((k) => ensureDefault(t, k)) : ['cands', 'mun_map'].includes(t) ? [ensure(t)] : [])))
 }
 

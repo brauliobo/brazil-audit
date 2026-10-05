@@ -24,6 +24,7 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm ci
+      - run: npm run check:elections
       - run: npm run lint:tokens
       - run: npm run lint:i18n
       - run: npm run check:logo
