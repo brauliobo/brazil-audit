@@ -17,7 +17,7 @@ import { buildSeatsData } from './seats-data.mjs'
 const opt = Object.fromEntries(process.argv.slice(2).map((a) => a.replace(/^--/, '').split('=')))
 const list = (k, all) => (opt[k] ? opt[k].split(',') : all)
 const SELECTED = list('election', Object.keys(ELECTIONS)).map((k) => ELECTIONS[k])
-const ONLY = list('only', ['rdv', 'vt', 'results', 'cands', 'geo', 'elected', 'residual', 'raw', 'lineup'])
+const ONLY = list('only', ['rdv', 'vt', 'logmatch', 'results', 'cands', 'geo', 'elected', 'residual', 'raw', 'lineup'])
 const OUT = 'data'
 const T0 = 18000 // time-of-day buckets: 05:00 local clock, 10 minutes each, 90 buckets (05:00-20:00), edges clamped
 const STEP = 600
@@ -122,14 +122,18 @@ const sumOf = (...kinds) => kinds.map((k) => `(select coalesce(sum(value::int),0
 // one lazy part per office group: president/governor/senator together, each deputy office on its own (the bulk of the bytes)
 const OFFICE_PARTS = { main: [1, 3, 5], 6: [6], 7: [7], 8: [8] }
 
-// the open-data databases hold both rounds in one rdv_votes (a `turn` column) and have no urn model
+// Where each kind of source keeps the votes: 2026 `rdv_votes` (one round, urn model), 2018 open data `rdv_votes` (both rounds in a `turn`
+// column, no urn model), 2022 `rdv_machine` (the machines' own RDV: both rounds, urn model, TSE city code; also holds office 11, mayor of
+// the supplementary elections, which is never selected).
+const SOURCES = { rdv: { table: 'rdv_votes', turn: false, model: true }, machine: { table: 'rdv_machine', turn: true, model: true }, open: { table: 'rdv_votes', turn: true, model: false } }
+const src = (el) => SOURCES[el.source.kind]
 const isOpen = (el) => el.source.kind === 'open'
-const onTurn = (el, prefix = 'and') => (isOpen(el) ? ` ${prefix} turn = ${el.turn}` : '')
-const rdvSql = (el, s, offices) => `select ${el.year},${el.turn},state,city,zone,section,${isOpen(el) ? "''" : 'model'},office,${sumOf(2)},${sumOf(3)},${sumOf(4, 6, 7)},
-  coalesce(votes->'2','{}'::jsonb) from rdv_votes where state=${q(s)} and office in (${offices})${onTurn(el)} order by city,zone,section${isOpen(el) ? '' : ',model'},office`
+const onTurn = (el, prefix = 'and') => (src(el).turn ? ` ${prefix} turn = ${el.turn}` : '')
+const rdvSql = (el, s, offices) => `select ${el.year},${el.turn},state,city,zone,section,${src(el).model ? 'model' : "''"},office,${sumOf(2)},${sumOf(3)},${sumOf(4, 6, 7)},
+  coalesce(votes->'2','{}'::jsonb) from ${src(el).table} where state=${q(s)} and office in (${offices})${onTurn(el)} order by city,zone,section${src(el).model ? ',model' : ''},office`
 
-const statesOf = (el) => scalar(el.source.db, `select distinct state from rdv_votes${onTurn(el, 'where')} order by 1`)
-const citiesSql = (el) => `select distinct state,city from rdv_votes where office=1${onTurn(el)}`
+const statesOf = (el) => scalar(el.source.db, `select distinct state from ${src(el).table}${onTurn(el, 'where')} order by 1`)
+const citiesSql = (el) => `select distinct state,city from ${src(el).table} where office=1${onTurn(el)}`
 
 async function buildRdv(el) {
   const rdv = table('rdv')
@@ -144,24 +148,36 @@ async function buildRdv(el) {
   }
 }
 
+// the bucketing and statistics shared by both sources
+const VT_TAIL = (el, s, city) => `b as (select *,least(greatest((sc-${T0})/${STEP},0),${NB - 1}) bk from e)
+  select ${el.year},${el.turn},${q(s)},${q(city)},zone,section,model,count(*),min(sc),max(sc),round(percentile_cont(.5) within group (order by gap)),
+  round(percentile_cont(.1) within group (order by gap)),round(percentile_cont(.9) within group (order by gap)),max(gap),
+  '{'||concat_ws(',',${buckets})||'}' from b group by zone,section,model order by zone,section,model`
+
 // ---- vt: voting times (Presidente post only, one event per voter), computed in Postgres per state ---------------------------
 const buckets = Array.from({ length: NB }, (_, i) => `count(*) filter (where bk=${i})`).join(',')
 // One index probe per section (state,city,zone,section,model,post prefix): ~300x faster than scanning the city's range
 // and filtering post, because the index puts post after model. Sections come from rdv_votes (the scraped results).
-const vtSql = (el, s, city) => `with e as (select sec.zone,sec.section,sec.model,x.sc,x.sc-lag(x.sc) over (partition by sec.zone,sec.section,sec.model order by x.time) gap
+const vtSql = (el, s, city) => (el.source.kind === 'machine' ? vtMachineSql(el, s, city) : vtRdvSql(el, s, city))
+
+// 2022: voting_times has the TSE city code and the round, and its index is (state, city_code, zone, section, turn): the post is filtered after the probe
+const vtMachineSql = (el, s, city) => `with e as (select sec.zone,sec.section,sec.model,x.sc,x.sc-lag(x.sc) over (partition by sec.zone,sec.section order by x.time) gap
+  from (select zone,section,model,city_code from rdv_machine where state=${q(s)} and city=${q(city)} and office=1 and turn=${el.turn}) sec
+  cross join lateral (select time,(extract(epoch from time)::bigint % 86400)::int sc from voting_times v where v.state=${q(s)} and v.city_code=sec.city_code
+    and v.zone=sec.zone and v.section=sec.section and v.turn=${el.turn} and v.post='Presidente') x),
+  ${VT_TAIL(el, s, city)}`
+
+const vtRdvSql = (el, s, city) => `with e as (select sec.zone,sec.section,sec.model,x.sc,x.sc-lag(x.sc) over (partition by sec.zone,sec.section,sec.model order by x.time) gap
   from (select zone,section,model from rdv_votes where state=${q(s)} and city=${q(city)} and office=1) sec
   cross join lateral (select time,(extract(epoch from time)::bigint % 86400)::int sc from voting_times v where v.state=${q(s)} and v.city=${q(city)}
     and v.zone=sec.zone and v.section=sec.section and v.model=sec.model and v.post='Presidente') x),
-  b as (select *,least(greatest((sc-${T0})/${STEP},0),${NB - 1}) bk from e)
-  select ${el.year},${el.turn},${q(s)},${q(city)},zone,section,model,count(*),min(sc),max(sc),round(percentile_cont(.5) within group (order by gap)),
-  round(percentile_cont(.1) within group (order by gap)),round(percentile_cont(.9) within group (order by gap)),max(gap),
-  '{'||concat_ws(',',${buckets})||'}' from b group by zone,section,model order by zone,section,model`
+  ${VT_TAIL(el, s, city)}`
 
 async function buildVt(el) {
   const vt = table('vt')
   const t0 = Date.now()
   for (const s of list('states', await statesOf(el))) {
-    const cities = await scalar(el.source.db, `select distinct city from rdv_votes where state=${q(s)} and office=1 order by 1`)
+    const cities = await scalar(el.source.db, `select distinct city from ${src(el).table} where state=${q(s)} and office=1${onTurn(el)} order by 1`)
     const file = `${OUT}/vt/${el.key}-${s}.csv.gz`
     part(vt, el, s, file, await dump(el.source.db, cities.map((c) => vtSql(el, s, c)), file), `state = ${q(s)}`)
     log(`${s} done, ${((Date.now() - t0) / 60000).toFixed(1)} min since start`)
@@ -194,6 +210,36 @@ function buildRollups(el) {
     for (const [city, c] of cities) rows.push([state, city, c.sections, c.n, FIXED_TZ[`${state}/${city}`] ?? Math.min(est.get(city), mode), `{${c.b}}`])
   }
   smallTable('vtc', el, rows)
+}
+
+// How the logs compare with the RDV for the president, per section: the events of the vt part against the ballots (nominal + blank + null)
+// of the rdv part. Shipped in the manifest (`sources.<election>.logsVsRdv`) so the Sources panel states it from the data, not from a note.
+function buildLogMatch(el) {
+  const stats = { sections: 0, equal: 0, fewer: 0, more: 0 }
+  for (const uf of ufsInDump(el)) {
+    const ballots = new Map()
+    for (const file of rdvFiles(el, uf)) {
+      for (const line of gunzipSync(readFileSync(file)).toString().split('\n')) {
+        if (!line) continue
+        const f = parseCsvLine(line)
+        if (f[RDV.office] === '1') ballots.set(`${f[RDV.city]}|${f[RDV.zone]}|${f[RDV.section]}`, +f[RDV.nominal] + +f[RDV.blank] + +f[RDV.nul])
+      }
+    }
+    const events = new Map()
+    const vtPart = manifest.tables.vt.parts[`${el.key}/${uf}`]
+    for (const line of vtPart ? gunzipSync(readFileSync(`${OUT}/${vtPart.url}`)).toString().split('\n') : []) {
+      if (!line) continue
+      const f = parseCsvLine(line.slice(0, line.indexOf(',"{')).concat(',x')) // the bucket array is the last field
+      events.set(`${f[3]}|${f[4]}|${f[5]}`, +f[7])
+    }
+    for (const [key, n] of ballots) {
+      const e = events.get(key) ?? 0
+      stats.sections++
+      stats[e === n ? 'equal' : e < n ? 'fewer' : 'more']++
+    }
+  }
+  ;((manifest.sources ??= {})[el.key] ??= {}).logsVsRdv = stats
+  log(`logs vs rdv ${el.key}: ${JSON.stringify(stats)} (${((100 * stats.equal) / stats.sections).toFixed(1)}% equal)`)
 }
 
 // ---- results and coverage, derived from the rdv parts just written (never from the database), so rollups, section parts and the
@@ -275,21 +321,19 @@ async function rdvCandidates(el) {
   return rows
 }
 
-// 2018/2022: the collector's `candidates` table. It has no official totals file, so the national president totals are the sum of the
-// shipped section results (they equal the TSE numbers; the other offices have no total here).
+// 2018/2022: the collector's `candidates` table. The national president totals come from the open data of the same database
+// (the sum of its section results equals the official TSE totals), also for the 2022 elections whose numbers come from the machines'
+// RDV: those differ slightly from the official totals, a documented difference (see `sources.differences`).
 async function openCandidates(el) {
-  const nominal = new Map()
-  for (const line of gunzipSync(readFileSync(`${OUT}/res/${el.key}.csv.gz`)).toString().split('\n').filter(Boolean)) {
-    const [, , , , office, cand, votes] = parseCsvLine(line)
-    if (office === '1') nominal.set(cand, (nominal.get(cand) ?? 0) + +votes)
-  }
+  const sums = `select e.key, sum(e.value::int) from rdv_votes r, jsonb_each_text(r.votes->'2') e where r.office = 1 and r.turn = ${el.turn} group by 1`
+  const official = new Map((await text(el.source.db, [sums])).trim().split('\n').map(parseCsvLine))
   const sql = `select distinct on (state, office, number) lower(state), office, number, name, ballot_name, party from candidates where turn = ${el.turn} order by state, office, number, sq_candidato`
-  return (await text(el.source.db, [sql])).trim().split('\n').map(parseCsvLine).map(([uf, office, n, name, short, party]) => [el.year, el.turn, uf, office, n, name, short, party, uf === 'br' && office === '1' ? nominal.get(n) ?? 0 : ''])
+  return (await text(el.source.db, [sql])).trim().split('\n').map(parseCsvLine).map(([uf, office, n, name, short, party]) => [el.year, el.turn, uf, office, n, name, short, party, uf === 'br' && office === '1' ? official.get(n) ?? 0 : ''])
 }
 
 async function buildCands() {
   const rows = []
-  for (const el of SELECTED) rows.push(...(await (isOpen(el) ? openCandidates : rdvCandidates)(el)))
+  for (const el of SELECTED) rows.push(...(await (el.source.kind === 'rdv' ? rdvCandidates : openCandidates)(el)))
   // the other elections keep the rows already shipped (a partial run with --election=)
   const kept = manifest.tables.cands && existsSync(`${OUT}/cands.csv.gz`) ? gunzipSync(readFileSync(`${OUT}/cands.csv.gz`)).toString().split('\n').filter(Boolean).map(parseCsvLine).filter((r) => !SELECTED.some((e) => e.year === +r[0] && e.turn === +r[1])) : []
   const all = [...kept, ...rows.map((r) => r.map(String))]
@@ -369,7 +413,7 @@ async function buildElectedOpen(el) {
 }
 
 async function buildElected(el, mun) {
-  if (isOpen(el)) return buildElectedOpen(el)
+  if (el.source.kind !== 'rdv') return buildElectedOpen(el)
   const [elected, seats] = [[], []]
   const ufs = mun.abr.map((a) => a.cd).filter((u) => u !== 'zz')
   for (const uf of ufs) {
@@ -461,6 +505,7 @@ for (const el of SELECTED) {
   if (el.raw.tag && ONLY.includes('raw')) await buildRaw(el)
   if (ONLY.includes('rdv')) await buildRdv(el)
   if (el.hasTimes && ONLY.includes('vt')) { await buildVt(el); buildRollups(el) }
+  if (el.hasTimes && ONLY.includes('logmatch')) buildLogMatch(el)
   if (ONLY.includes('results')) await buildResults(el)
   if (el.hasSeats && ONLY.includes('lineup')) await buildSeatsData(el, { text, smallTable })
 }
