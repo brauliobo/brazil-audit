@@ -11,6 +11,7 @@
     "preview": "vite preview",
     "data": "node scripts/build-data.mjs",
     "lint:tokens": "node scripts/lint-tokens.mjs",
+    "check:responsive": "node scripts/check-responsive.mjs",
     "lint:i18n": "node scripts/lint-i18n.mjs && node scripts/check-i18n-detect.mjs",
     "brand": "node scripts/brand.mjs",
     "check:logo": "node scripts/check-logo.mjs"

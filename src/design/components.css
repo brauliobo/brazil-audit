@@ -121,8 +121,9 @@
 .site-header { display: flex; flex-wrap: wrap; gap: var(--space-2) var(--space-6); align-items: center; padding: var(--header-padding); background: var(--header-bg); border-bottom: var(--border-width-1) solid var(--header-border); }
 .brand { display: inline-flex; align-items: center; color: var(--text-primary); min-height: var(--tab-height); }
 .brand:hover { text-decoration: none; }
-.tabs { display: flex; flex-wrap: wrap; gap: var(--space-1); }
-.tabs a { display: inline-flex; align-items: center; min-height: var(--tab-height); padding: var(--tab-padding); border-radius: var(--tab-radius); color: var(--tab-fg); }
+.tabs { display: flex; flex-wrap: var(--header-tabs-wrap); gap: var(--space-1); overflow-x: var(--header-tabs-overflow); scrollbar-width: thin; }
+.site-header > .tabs { order: var(--header-tabs-order); flex-basis: var(--header-tabs-basis); }
+.tabs a { display: inline-flex; flex: none; white-space: nowrap; align-items: center; min-height: var(--tab-height); padding: var(--tab-padding); border-radius: var(--tab-radius); color: var(--tab-fg); }
 .tabs a[aria-current="page"] { background: var(--tab-active-bg); color: var(--tab-active-fg); }
 .tabs a:hover { text-decoration: none; background: var(--accent-subtle); }
 .tabs a[aria-current="page"]:hover { background: var(--tab-active-bg); }
@@ -156,8 +157,9 @@
 .btn:disabled { opacity: var(--button-disabled-opacity); cursor: default; }
 .btn--ghost { background: transparent; color: var(--button-ghost-fg); border-color: var(--button-ghost-border); }
 .btn--ghost:hover:not(:disabled) { background: var(--accent-subtle); }
-.field { display: inline-flex; align-items: center; gap: var(--field-gap); font-size: var(--field-label-size); color: var(--field-label-fg); }
+.field { display: inline-flex; align-items: center; max-width: 100%; gap: var(--field-gap); font-size: var(--field-label-size); color: var(--field-label-fg); }
 .field select, .field input:not([type="checkbox"]), textarea.control, .control { min-height: var(--field-height); padding: var(--field-padding); border: var(--border-width-1) solid var(--field-border); border-radius: var(--field-radius); background: var(--field-bg); color: var(--field-fg); font: inherit; font-size: var(--type-control-size); }
+.field select, .field input:not([type="checkbox"]) { min-width: 0; max-width: 100%; text-overflow: ellipsis; }
 textarea.control { width: 100%; font-family: var(--font-mono); font-size: var(--type-code-size); min-height: var(--size-skeleton); }
 .switch { display: inline-flex; align-items: center; gap: var(--space-2); min-height: var(--field-height); color: var(--text-primary); font-size: var(--type-caption-size); cursor: pointer; }
 .switch input { width: var(--size-icon); height: var(--size-icon); accent-color: var(--accent); }

@@ -57,6 +57,10 @@
   --brand-wordmark: var(--text-primary);
   --brand-full-display: block;
   --brand-mark-display: none;
+  --header-tabs-order: 0; /* narrow screens: tabs move to a second, scrolling row */
+  --header-tabs-basis: auto;
+  --header-tabs-wrap: wrap;
+  --header-tabs-overflow: visible;
 
   /* data visualization */
   --chart-bar: light-dark(var(--color-blue-500), var(--color-blue-400));
@@ -129,7 +133,8 @@
 
 /* breakpoints: one block set */
 @media (max-width: 40rem) {
-  :root { --space-page: var(--space-3); --space-panel: var(--space-3); --type-h1-size: var(--font-size-700); --bars-columns: 1fr; --brand-full-display: none; --brand-mark-display: block; }
+  :root { --space-page: var(--space-3); --space-panel: var(--space-3); --type-h1-size: var(--font-size-700); --bars-columns: 1fr; --brand-full-display: none; --brand-mark-display: block;
+    --header-tabs-order: 1; --header-tabs-basis: 100%; --header-tabs-wrap: nowrap; --header-tabs-overflow: auto; }
 }
 @media (pointer: coarse) {
   :root { --control-height: var(--size-hit-area); }
