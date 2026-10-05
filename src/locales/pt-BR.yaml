@@ -294,6 +294,7 @@ time:
   clockBrt: Brasília (UTC-3)
   clockLocal: local, como gravado
   seeResults: resultados da seção →
+  pending: "Os logs desta eleição estão sendo importados: os horários aparecem aqui quando estiverem prontos."
   unavailable: Esta eleição não tem o horário de cada voto (só a abertura e o fechamento da urna); escolha outra que tenha.
   curveTitle: "Votos a cada 10 minutos (um registro por eleitor, na votação para presidente)"
   summary: "{events} eventos em {sections} seções ({cities} municípios) · relógio {clock}"
@@ -400,6 +401,41 @@ raw:
   tseGone: O TSE não publica mais os arquivos desta eleição; só restam as cópias nos zips.
   release: "Release {tag} no GitHub"
   collector: "coletor (branch {branch})"
+
+sources:
+  title: Fontes dos dados
+  intro: "Ordem de prioridade: vale a fonte mais granular que existir. Os logs das urnas registram cada voto com o horário, mas só o cargo, nunca o candidato; os votos por candidato e partido vêm do RDV, e os logs servem para os horários e para conferir o número de cédulas por seção e cargo."
+  layer:
+    logs:
+      name: Logs das urnas
+      role: "Cada voto confirmado com o seu horário: a fonte mais granular e a única com horários. Traz só o cargo, nunca o candidato."
+    rdv:
+      name: RDV (registro digital do voto)
+      role: "O registro da própria urna dos votos por seção e candidato: a origem dos votos por candidato e partido, das tabelas, dos mapas e das análises."
+    open:
+      name: Dados abertos do TSE
+      role: "Boletim de urna (votacao_secao): usados só quando não existem RDV nem logs."
+    official:
+      name: Totais oficiais do TSE
+      role: "Servem de conferência dos números e, quando faltam arquivos de seções, de fonte dos votos dessas seções (o residual); o que cada eleição usa aparece abaixo."
+  state:
+    used: usada
+    pending: em importação
+    none: não existe para esta eleição
+    unused: "não usada: há fonte mais granular"
+  feeds: "Alimenta: {tables}."
+  official:
+    residual: votos de seções sem arquivo (residual, resx, totx)
+    check: conferência com os arquivos oficiais (scripts verify-*)
+  notePending: Hoje esta eleição usa os dados abertos do TSE; o RDV e os logs estão sendo importados e passarão a ser a origem dos números e dos horários.
+  noteNone: "O TSE não publicou RDV nem logs desta eleição: os dados abertos são a única fonte."
+  badge:
+    rdv: "Fonte: RDV das urnas"
+    rdvOfficial: "Fonte: RDV das urnas + totais oficiais"
+    open: "Fonte: dados abertos do TSE"
+    openPending: "Fonte: dados abertos do TSE (RDV e logs em importação)"
+    logs: "Fonte: logs das urnas"
+    officialFiles: "Fonte: arquivos oficiais do TSE"
 
 design:
   title: Sistema de design

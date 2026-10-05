@@ -12,6 +12,7 @@ import Panel from '../components/Panel.vue'
 import Field from '../components/Field.vue'
 import ColumnChart from '../components/ColumnChart.vue'
 import DataTable from '../components/DataTable.vue'
+import SourceBadge from '../components/SourceBadge.vue'
 
 const year = computed(() => route.value.election)
 const cfg = computed(() => ELECTIONS[year.value])
@@ -100,6 +101,7 @@ const clockNote = computed(() => (brt.value ? t('time.clockConverted', { min: su
 
 <template lang="pug">
 h1 {{ t('time.title', { place, election: electionLabel(year) }) }}
+SourceBadge(:election="year" view="times")
 .cluster(v-if="cfg.hasTimes")
   Field(:label="t('common.state')")
     select(:value="state ?? ''" @change="pickState")
@@ -114,7 +116,7 @@ h1 {{ t('time.title', { place, election: electionLabel(year) }) }}
       option(value="brt") {{ t('time.clockBrt') }}
       option(value="local") {{ t('time.clockLocal') }}
   a(v-if="isSection" :href="href(year, 'drill', args)") {{ t('time.seeResults') }}
-.muted(v-if="!cfg.hasTimes") {{ t('time.unavailable') }}
+.muted(v-if="!cfg.hasTimes") {{ t(cfg.sources.pending.includes('logs') ? 'time.pending' : 'time.unavailable') }}
 .grid-auto(v-else)
   Panel(:title="t('time.curveTitle')" :state="curve" :election="year" wide)
     ColumnChart(:label="t('time.curveTitle')" :values="curve.data.votes" :labels="curve.data.labels" :height="260" :tick="int" :fmt="(v) => t('common.votes', { count: v })")

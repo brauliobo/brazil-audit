@@ -14,6 +14,7 @@ import Panel from '../components/Panel.vue'
 import Field from '../components/Field.vue'
 import Breadcrumb from '../components/Breadcrumb.vue'
 import Chip from '../components/Chip.vue'
+import SourceBadge from '../components/SourceBadge.vue'
 import Legend from '../components/Legend.vue'
 import ResidualSwitch from '../components/ResidualSwitch.vue'
 import GeoMap from '../components/GeoMap.vue'
@@ -129,6 +130,7 @@ const metricName = computed(() => t(`maps.metric.${metric.value}`))
 
 <template lang="pug">
 h1 {{ t('maps.title', { election: electionLabel(year) }) }}
+SourceBadge(:election="year")
 .cluster
   ResidualSwitch(v-if="ELECTIONS[year].hasResidual")
   Field(:label="t('maps.scale')")

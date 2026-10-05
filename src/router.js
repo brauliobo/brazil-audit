@@ -42,7 +42,9 @@ const title = () => {
 
 function arrive(restore, focusHeading = true) {
   nextTick(() => requestAnimationFrame(() => {
-    scrollTo({ top: restore ?? 0, behavior: 'instant' })
+    const anchor = restore == null && location.hash ? document.querySelector(location.hash) : null
+    if (anchor) anchor.scrollIntoView({ behavior: 'instant' })
+    else scrollTo({ top: restore ?? 0, behavior: 'instant' })
     if (restore == null && focusHeading) { const h = document.querySelector('main h1'); if (h) { h.tabIndex = -1; h.focus({ preventScroll: true }) } } // i18n-ignore
   }))
 }

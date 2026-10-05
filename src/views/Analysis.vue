@@ -11,6 +11,7 @@ import { int, num, pct } from '../format'
 import Panel from '../components/Panel.vue'
 import Field from '../components/Field.vue'
 import Legend from '../components/Legend.vue'
+import SourceBadge from '../components/SourceBadge.vue'
 import BarList from '../components/BarList.vue'
 import ColumnChart from '../components/ColumnChart.vue'
 import DataTable from '../components/DataTable.vue'
@@ -92,6 +93,7 @@ const rateLabels = computed(() => rates.data.map((r) => r.state.toUpperCase()))
 
 <template lang="pug">
 h1 {{ t('analysis.title', { election: electionLabel(year) }) }}
+SourceBadge(:election="year")
 .cluster
   Field(:label="t('analysis.scope')")
     select(:value="state ?? ''" @change="pick('state', $event)")

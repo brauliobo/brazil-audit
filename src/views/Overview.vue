@@ -13,6 +13,8 @@ import Field from '../components/Field.vue'
 import Notice from '../components/Notice.vue'
 import BarList from '../components/BarList.vue'
 import Coverage from '../components/Coverage.vue'
+import SourceBadge from '../components/SourceBadge.vue'
+import SourcesPanel from '../components/SourcesPanel.vue'
 import DataTable from '../components/DataTable.vue'
 import ResidualSwitch from '../components/ResidualSwitch.vue'
 import Polarization from '../components/Polarization.vue'
@@ -96,9 +98,11 @@ const cols = computed(() => [
 
 <template lang="pug">
 h1 {{ t('overview.title', { election: electionLabel(year) }) }}
+SourceBadge(:election="year")
 .cluster(v-if="cfg.hasResidual")
   ResidualSwitch
 .grid-auto
+  SourcesPanel(:election="year")
   #cobertura.span-all
     Coverage(:year="year")
   Panel(:title="t('overview.national')" :state="results" :election="year" wide)

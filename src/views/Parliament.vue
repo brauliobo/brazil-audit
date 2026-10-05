@@ -12,6 +12,7 @@ import { int } from '../format'
 import Panel from '../components/Panel.vue'
 import Field from '../components/Field.vue'
 import Hemicycle from '../components/Hemicycle.vue'
+import SourceBadge from '../components/SourceBadge.vue'
 import DataTable from '../components/DataTable.vue'
 
 // Seats come from the official TSE files (tables seats and elected), never from a recomputed formula.
@@ -53,6 +54,7 @@ const note = computed(() => t(cfg.value.note, { year: ELECTIONS[year.value].year
 
 <template lang="pug">
 h1 {{ t('parliament.title', { year: ELECTIONS[year].year }) }}
+SourceBadge(v-if="ELECTIONS[year].hasSeats" :election="year" view="seats")
 p.muted(v-if="!ELECTIONS[year].hasSeats")
   | {{ t('parliament.unavailable') }}&nbsp;
   a(:href="href(SEATS_ELECTION, 'parliament')") {{ t('parliament.seeAvailable', { election: electionLabel(SEATS_ELECTION) }) }}

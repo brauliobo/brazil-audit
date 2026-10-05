@@ -293,6 +293,7 @@ time:
   clockBrt: Brasília (UTC-3)
   clockLocal: local, as recorded
   seeResults: section results →
+  pending: "The logs of this election are being imported: the times will appear here when they are ready."
   unavailable: This election has no time for each vote (only the opening and closing of the ballot box); pick one that does.
   curveTitle: "Votes every 10 minutes (one record per voter, in the vote for president)"
   summary: "{events} events in {sections} sections ({cities} municipalities) · clock {clock}"
@@ -399,6 +400,41 @@ raw:
   tseGone: The TSE no longer publishes the files of this election; only the copies in the zips remain.
   release: "Release {tag} on GitHub"
   collector: "collector (branch {branch})"
+
+sources:
+  title: Data sources
+  intro: "Priority order: the most granular source that exists wins. The ballot-box logs record every vote with its time, but only the office, never the candidate; the votes by candidate and party come from the RDV, and the logs serve the voting times and the cross-check of the number of ballots per section and office."
+  layer:
+    logs:
+      name: Ballot-box logs
+      role: "Every confirmed vote with its time: the most granular source and the only one with times. It carries only the office, never the candidate."
+    rdv:
+      name: RDV (digital vote record)
+      role: "The ballot box's own record of the votes per section and candidate: the origin of the votes by candidate and party, of the tables, maps and analyses."
+    open:
+      name: TSE open data
+      role: "Ballot-box bulletin (votacao_secao): used only when neither RDV nor logs exist."
+    official:
+      name: Official TSE totals
+      role: "They check the numbers and, when section files are missing, are the source of the votes of those sections (the residual); what each election uses is shown below."
+  state:
+    used: used
+    pending: being imported
+    none: does not exist for this election
+    unused: "not used: a more granular source exists"
+  feeds: "Feeds: {tables}."
+  official:
+    residual: votes of sections without files (residual, resx, totx)
+    check: check against the official files (verify-* scripts)
+  notePending: Today this election uses the TSE open data; the RDV and the logs are being imported and will become the origin of the numbers and of the voting times.
+  noteNone: "The TSE published neither RDV nor logs for this election: the open data is the only source."
+  badge:
+    rdv: "Source: ballot-box RDV"
+    rdvOfficial: "Source: ballot-box RDV + official totals"
+    open: "Source: TSE open data"
+    openPending: "Source: TSE open data (RDV and logs being imported)"
+    logs: "Source: ballot-box logs"
+    officialFiles: "Source: official TSE files"
 
 design:
   title: Design system

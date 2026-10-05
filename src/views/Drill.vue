@@ -18,6 +18,7 @@ import BarList from '../components/BarList.vue'
 import DataTable from '../components/DataTable.vue'
 import StateMap from '../components/StateMap.vue'
 import RawData from '../components/RawData.vue'
+import SourceBadge from '../components/SourceBadge.vue'
 import ResidualSwitch from '../components/ResidualSwitch.vue'
 
 const LEVELS = ['state', 'city', 'zone', 'section']
@@ -132,6 +133,7 @@ const sectionItems = (rows) => rows.map((r) => ({ label: nameOf(r), value: r.vot
 
 <template lang="pug">
 h1 {{ t('drill.title', { election: electionLabel(year) }) }}
+SourceBadge(:election="year")
 Breadcrumb(:items="crumbs" :label="t('drill.where')")
 Notice(v-if="view.error" kind="danger")
   strong {{ view.error.message }}

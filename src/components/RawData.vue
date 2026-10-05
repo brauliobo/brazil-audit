@@ -35,8 +35,13 @@ async function copy(row) {
   copied.value = row.kind
   setTimeout(() => (copied.value = null), 1500)
 }
-const code = computed(() => el.value.raw.code.map((path) => ({ path, url: fileUrl(el.value, path) })))
-const release = computed(() => (el.value.raw.tag ? releaseUrl({ tag: el.value.raw.tag }) : null))
+// release page, the collector's code, the coverage lists (election line only) and the branch
+const links = computed(() => [
+  ...(el.value.raw.tag ? [{ label: t('raw.release', { tag: el.value.raw.tag }), url: releaseUrl({ tag: el.value.raw.tag }) }] : []),
+  ...el.value.raw.code.map((path) => ({ label: path, url: fileUrl(el.value, path) })),
+  ...(props.level === 'election' ? (el.value.raw.coverage ?? []).map((path) => ({ label: path, url: fileUrl(el.value, path) })) : []),
+  { label: t('raw.collector', { branch: el.value.raw.branch }), url: branchUrl(el.value) },
+])
 </script>
 
 <template lang="pug">
@@ -56,21 +61,12 @@ Panel(v-if="level === 'section'" :title="t('raw.title')" :state="section" :elect
       a(:href="section.data.tseAux") {{ t('raw.tseAux') }}
     p.muted(v-else-if="el.raw.tag") {{ t('raw.tseGone') }}
   p.muted
-    a(v-if="release" :href="release") {{ t('raw.release', { tag: el.raw.tag }) }}
-    template(v-for="c in code" :key="c.path")
-      |  · 
-      a(:href="c.url") {{ c.path }}
-    |  · 
-    a(:href="branchUrl(el)") {{ t('raw.collector', { branch: el.raw.branch }) }}
+    template(v-for="(l, i) in links" :key="l.url")
+      template(v-if="i") {{ ' · ' }}
+      a(:href="l.url") {{ l.label }}
 p.muted(v-else)
   | {{ t('raw.line') }}&nbsp;
-  a(v-if="release" :href="release") {{ t('raw.release', { tag: el.raw.tag }) }}
-  template(v-for="c in code" :key="c.path")
-    |  · 
-    a(:href="c.url") {{ c.path }}
-  template(v-for="path in el.raw.coverage ?? []" :key="path")
-    |  · 
-    a(:href="fileUrl(el, path)") {{ path }}
-  |  · 
-  a(:href="branchUrl(el)") {{ t('raw.collector', { branch: el.raw.branch }) }}
+  template(v-for="(l, i) in links" :key="l.url")
+    template(v-if="i") {{ ' · ' }}
+    a(:href="l.url") {{ l.label }}
 </template>

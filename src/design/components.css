@@ -275,3 +275,11 @@ canvas.scatter { display: block; width: 100%; height: auto; }
 .rawfiles { display: grid; gap: var(--space-2); margin: var(--space-0) var(--space-0) var(--space-3); padding: var(--space-0); list-style: none; }
 .rawfiles li { display: flex; flex-wrap: wrap; gap: var(--space-2); align-items: center; }
 .rawfiles code { padding: var(--space-hair) var(--space-2); border-radius: var(--radius-control); background: var(--surface-sunken); overflow-wrap: anywhere; }
+.badge { display: inline-flex; align-items: center; padding: var(--chip-padding); border: var(--border-width-1) solid var(--border-default); border-radius: var(--radius-full); font-size: var(--type-caption-size); color: var(--text-secondary); }
+.badge--used { background: var(--status-success-bg); color: var(--text-success); }
+.badge--pending { background: var(--status-warning-bg); color: var(--text-warning); }
+.badge--source { color: var(--text-link); }
+.source-line { margin: var(--space-0) var(--space-0) var(--space-4); }
+.sources { display: grid; gap: var(--space-3); margin: var(--space-0) var(--space-0) var(--space-3); padding-inline-start: var(--space-5); }
+.sources p { margin: var(--space-1) var(--space-0) var(--space-0); }
+.sources__head { display: flex; flex-wrap: wrap; gap: var(--space-2); align-items: center; }

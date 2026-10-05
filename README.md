@@ -71,6 +71,17 @@ Views: `sec` (rdv without the jsonb), `cs` (one row per section, office and cand
 election did not collect is absent, never invented: 2018 and 2022 have no `vt`/`vtc` (only the opening and closing of the urn), no residual and no coverage tables; runoffs only have president and governors.
 Indexes on (election, turn, state ...) are created by the app.
 
+### Sources and their priority
+
+Four layers of evidence, in priority order: **1. the machines' logs** (every vote with its time, only the office, never the candidate: voting
+times, tables `vt`/`vtc`, and the ballot counts per section and office), **2. the RDV** (the machine's own record of the votes per section and
+candidate: tables `rdv`, `res`, `tot` and everything derived), **3. TSE open data** (`votacao_secao` bulletins, used only when 1 and 2 do not exist)
+and **4. official totals** (the residual of sections without files, and the check scripts). Each election states what it has in `sources` of
+`src/elections.js` (`logs`, `rdv`, `open`, `official`, `pending` for layers still being imported); `src/elections.js` throws when `sources` disagrees
+with `hasTimes`, `source.kind` or `hasResidual`, so the Sources panel of the overview and the badge under every view's title (which read that entry)
+cannot claim a source the data does not use. Today: 2026 = logs + RDV (+ official totals), 2022 (both rounds) = open data while its RDV and logs are
+imported (the panel says so), 2018 = open data only (the TSE published neither RDV nor logs).
+
 ### Maps and parliament
 
 - `data/geo/*.json` are IBGE meshes (`servicodados.ibge.gov.br/api/v3/malhas`, `qualidade=minima`) turned at build time into
