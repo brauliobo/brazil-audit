@@ -8,10 +8,12 @@ import Drill from './views/Drill.vue'
 import Analysis from './views/Analysis.vue'
 import Time from './views/Time.vue'
 import Sql from './views/Sql.vue'
+import Maps from './views/Maps.vue'
+import Parliament from './views/Parliament.vue'
 
 const REPO = 'https://github.com/brauliobo/brazil-audit'
-const views = { overview: Overview, drill: Drill, analysis: Analysis, time: Time, sql: Sql }
-const labels = { overview: 'Visão geral', drill: 'Detalhar', analysis: 'Análise', time: 'Horários', sql: 'SQL' }
+const views = { overview: Overview, maps: Maps, parliament: Parliament, drill: Drill, analysis: Analysis, time: Time, sql: Sql }
+const labels = { overview: 'Visão geral', maps: 'Mapas', parliament: 'Parlamento', drill: 'Detalhar', analysis: 'Análise', time: 'Horários', sql: 'SQL' }
 const current = computed(() => views[route.value.view] ?? Overview)
 const election = computed(() => route.value.election)
 </script>
@@ -20,7 +22,7 @@ const election = computed(() => route.value.election)
 header.top
   a.brand(:href="href(election, 'overview')") Auditoria eleitoral
   nav
-    a(v-for="(label, v) in labels" :key="v" :href="href(election, v)" :class="{ on: route.view === v }") {{ label }}
+    a(v-for="(label, v) in labels" :key="v" :href="href(v === 'parliament' ? '2026' : election, v)" :class="{ on: route.view === v }") {{ label }}
   .elections
     a(v-for="(e, y) in ELECTIONS" :key="y" :href="href(y, route.view, route.args)" :class="{ on: election === y }") {{ e.label }}
 EngineStatus

@@ -1,6 +1,6 @@
 <script setup vapor>
 import { computed } from 'vue'
-import { route, href, setParam } from '../router'
+import { route, href, go, setParam } from '../router'
 import { ELECTIONS, STATE_NAMES, OTHERS, candJoin } from '../model'
 import { ensure, ensureDefault } from '../data'
 import { useAsync } from '../use'
@@ -10,6 +10,9 @@ import Panel from '../components/Panel.vue'
 import BarList from '../components/BarList.vue'
 import Coverage from '../components/Coverage.vue'
 import DataTable from '../components/DataTable.vue'
+import Polarization from '../components/Polarization.vue'
+import TileMap from '../components/TileMap.vue'
+import { stateWinners } from '../results'
 
 const year = computed(() => route.value.election)
 const cfg = computed(() => ELECTIONS[year.value])
@@ -30,6 +33,15 @@ async function officialGap(rows, q) {
   const [c] = objects(await q('select sum(missing) missing from cov_2026'))
   return { votes: dumped - official, share: (dumped - official) / official, missing: c.missing }
 }
+
+// the two leaders of each election's presidential race, from the official totals (independent of the dump's coverage)
+const polarization = useAsync(() => [base.loading], async (_, q) => {
+  if (base.loading) return null
+  const rows = objects(await q(`select election, short_name name, party, official_votes::float8 / sum(official_votes) over (partition by election) share from cands
+    where office = 1 and uf = 'br' and official_votes is not null order by election desc, official_votes desc`))
+  return Object.entries(Object.groupBy(rows, (r) => r.election)).sort(([a], [b]) => b - a).map(([e, l]) => ({ election: `${e} · ${ELECTIONS[e].label.split('· ')[1]}`, a: l[0], b: l[1] }))
+})
+const winners = useAsync(() => [year.value, base.loading], async ([y], q) => (base.loading ? null : stateWinners(q, y)))
 
 const PARTY = `left join (select substr(n,1,2) num, max(party) party from cands where election=$2 and office>1 group by 1) p on p.num = substr(r.cand,1,2)`
 const results = useAsync(() => [year.value, office.value, base.loading], async ([y, o], q) => {
@@ -85,6 +97,14 @@ h1 {{ cfg.label }}
     p.muted {{ int(results.data.sections) }} seções · nominais {{ int(results.data.nominal) }}
       template(v-if="results.data.blank != null")  · brancos {{ int(results.data.blank) }} · nulos {{ int(results.data.nul) }}
     p.muted(v-if="year === '2026'") Números fora da lista de candidatos do TSE aparecem como "{{ OTHERS }}" (o site do TSE os conta como inválidos).
+  Panel(title="Polarização: votos válidos dos dois mais votados" :state="polarization" :election="year")
+    Polarization(:rows="polarization.data")
+    p.muted Área do círculo proporcional ao percentual dos votos nominais (válidos) segundo os totais oficiais do TSE. O 1º turno de 2026 (vários candidatos) e o 2º turno de 2022 (dois) não são diretamente comparáveis.
+  Panel(title="Vencedor por UF" :state="winners" :election="year")
+    TileMap(:rows="winners.data" @pick="go(href(year, 'drill', [$event]))")
+    p.muted
+      | Um quadrado por estado, colorido pelo candidato mais votado; cor mais forte = maior margem.&nbsp;
+      a(:href="href(year, 'maps')") Ver mapas
   Panel(title="Por UF" :state="states" :election="year" wide)
     DataTable(:columns="cols" :rows="states.data")
 </template>

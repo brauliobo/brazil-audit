@@ -1,17 +1,18 @@
 // Builds the shippable dump in data/ from the local read-only Postgres databases (via psql) and the TSE candidate files.
-//   nice -n 10 node scripts/build-data.mjs [--election=2022,2026] [--states=ac,ro] [--only=votes,rdv,vt,rollups,results,cands]  (rollups = city voting-time sums, rebuilt with vt)
+//   nice -n 10 node scripts/build-data.mjs [--election=2022,2026] [--states=ac,ro] [--only=votes,rdv,vt,rollups,results,cands,geo,elected]  (rollups = city voting-time sums, rebuilt with vt)
 // Output: data/manifest.json + gzip CSV parts partitioned by state (loaded into PGlite with COPY ... FROM '/dev/blob').
 // Parts of unselected states are kept, so single states can be refreshed.
 import { spawn } from 'node:child_process'
 import { createGzip, gunzipSync, gzipSync } from 'node:zlib'
 import { createWriteStream, existsSync, mkdirSync, readFileSync, unlinkSync, writeFileSync } from 'node:fs'
 import { pipeline } from 'node:stream/promises'
+import { buildGeometry, cached, tseMunicipalities } from './geo.mjs'
 import { Transform } from 'node:stream'
 
 const opt = Object.fromEntries(process.argv.slice(2).map((a) => a.replace(/^--/, '').split('=')))
 const list = (k, all) => (opt[k] ? opt[k].split(',') : all)
 const ELECTIONS = list('election', ['2022', '2026'])
-const ONLY = list('only', ['votes', 'rdv', 'vt', 'results', 'cands'])
+const ONLY = list('only', ['votes', 'rdv', 'vt', 'results', 'cands', 'geo', 'elected'])
 const DB = { 2022: 'brazil-audit', 2026: 'brazil-audit-2026' }
 const OUT = 'data'
 const T0 = 18000 // time-of-day buckets: 05:00 local clock, 10 minutes each, 90 buckets (05:00-20:00), edges clamped
@@ -267,12 +268,102 @@ async function buildCands() {
   log(`cands: ${rows.length} rows`)
 }
 
+// ---- maps and parliament -----------------------------------------------------------------------------------------------
+
+const csvOf = (rows) => rows.map((r) => r.map((v) => (v == null ? '' : /[,"\n]/.test(v) ? `"${String(v).replaceAll('"', '""')}"` : v)).join(',')).join('\n') + '\n'
+
+function smallTable(election, name, columns, ddl, rows) {
+  const body = csvOf(rows)
+  const gz = gzipSync(body, { level: 9 })
+  mkdirSync(`${OUT}/${election}`, { recursive: true })
+  writeFileSync(`${OUT}/${election}/${name}.csv.gz`, gz)
+  table(election, name, columns, ddl).parts.all = { url: `${election}/${name}.csv.gz`, bytes: gz.length, rows: rows.length, rawBytes: body.length }
+  log(`${name}: ${rows.length} rows, ${gz.length} bytes gz`)
+}
+
+// municipalities renamed between 2022 and 2026
+const RENAMED = { 'ba/CAMACÃ': 'CAMACAN', 'pa/SANTA ISABEL DO PARÁ': 'SANTA IZABEL DO PARÁ', 'pr/MUNHOZ DE MELO': 'MUNHOZ DE MELLO', 'go/BOM JESUS DE GOIÁS': 'BOM JESUS' }
+const plain = (s) => s.normalize('NFD').replace(/[̀-ͯ]/g, '').toUpperCase().replace(/[^A-Z0-9]/g, '')
+
+// TSE municipality codes are not IBGE codes: the TSE list carries both (`cd` and `cdi`), and we join by (UF, name).
+// Names that differ between elections (spelling, renamed municipalities) are matched without accents/punctuation.
+async function buildMunicipalities() {
+  const mun = await tseMunicipalities()
+  const rows = mun.abr.flatMap((a) => a.mu.map((m) => [a.cd, m.nm, m.cdi ?? null]))
+  const byName = new Map(rows.map(([s, c, i]) => [`${s}/${plain(c)}`, i]))
+  const known = new Set(rows.map(([s, c]) => `${s}/${c}`))
+  for (const [year, db, sql] of [[2026, DB[2026], 'select distinct state,city from rdv_votes where office=1'], [2022, DB[2022], 'select distinct state,city from votes']]) {
+    const pairs = (await text(db, [sql])).trim().split('\n').map((l) => l.replaceAll('"', '').split(/,(.*)/s).slice(0, 2))
+    const unmatched = []
+    for (const [s, c] of pairs) {
+      if (known.has(`${s}/${c}`)) continue
+      const ibge = byName.get(`${s}/${plain(RENAMED[`${s}/${c}`] ?? c)}`)
+      ibge ? rows.push([s, c, ibge]) : unmatched.push(`${s}/${c}`)
+      known.add(`${s}/${c}`)
+    }
+    log(`municipalities ${year}: ${pairs.length} in the results, ${unmatched.length} without IBGE code${unmatched.length ? `: ${unmatched.slice(0, 12).join('; ')}` : ''}`)
+  }
+  smallTable('2026', 'mun_map', 'state,city,ibge', 'create table mun_map (state text, city text, ibge text)', rows)
+  return mun
+}
+
+async function buildGeo(mun) {
+  const codeToUf = Object.fromEntries(mun.abr.filter((a) => a.cd !== 'zz').map((a) => [a.mu.find((m) => m.cdi).cdi.slice(0, 2), a.cd]))
+  const geo = await buildGeometry(codeToUf)
+  const write = (name, map) => {
+    mkdirSync(`${OUT}/geo`, { recursive: true })
+    const body = JSON.stringify(map)
+    writeFileSync(`${OUT}/geo/${name}.json`, body)
+    return { url: `geo/${name}.json`, bytes: body.length, items: map.items.length }
+  }
+  manifest.geo = { uf: write('uf', geo.uf), mun: write('mun', geo.mun), states: Object.fromEntries(Object.entries(geo.states).map(([uf, m]) => [uf, write(`mun-${uf}`, m)])), source: 'IBGE malhas v3 (qualidade minima/intermediaria)' }
+  log(`geometry: ${Object.values(manifest.geo.states).reduce((t, g) => t + g.bytes, 0) + manifest.geo.uf.bytes + manifest.geo.mun.bytes} bytes`)
+}
+
+// Elected seats come from the official TSE state files (never recomputed): senators carry `e: 's'` per candidate; for
+// deputies the files give the seats per party/federation (`vag`) and, once published, the elected candidates.
+const OFFICES = { 5: 'senador', 6: 'deputado federal', 7: 'deputado estadual', 8: 'deputado distrital' }
+const EXPECTED = { 5: 54, 6: 513, 8: 24 }
+
+async function stateFile(uf, office, fresh) {
+  const url = `https://resultados.tse.jus.br/oficial/ele2026/6259/dados/${uf}/${uf}-c${String(office).padStart(4, '0')}-e006259-u.jws`
+  const body = await cached(`tse-${uf}-${office}.jws`, url, { fresh })
+  return JSON.parse(Buffer.from(body.trim().split('.')[1], 'base64url').toString()).carg[0]
+}
+
+const candidatesOf = (carg) => carg.agr.flatMap((a) => a.par.flatMap((p) => (p.cand ?? []).map((c) => ({ ...c, party: p.sg, bloc: a.com }))))
+
+async function buildElected(mun) {
+  const [elected, seats] = [[], []]
+  const ufs = mun.abr.map((a) => a.cd).filter((u) => u !== 'zz')
+  for (const uf of ufs) {
+    for (const office of uf === 'df' ? [5, 6, 8] : [5, 6, 7]) {
+      const carg = await stateFile(uf, office, true)
+      const won = candidatesOf(carg).filter((c) => c.e === 's')
+      elected.push(...won.map((c) => [uf, office, c.n, c.nmu ?? c.nm, c.party, c.st, c.vap]))
+      if (office === 5) seats.push(...Object.entries(Object.groupBy(won, (c) => c.party)).map(([p, l]) => [uf, 5, p, l.length]))
+      else seats.push(...carg.agr.filter((a) => +a.vag > 0).map((a) => [uf, office, a.com, +a.vag]))
+    }
+  }
+  for (const office of Object.keys(OFFICES)) {
+    const total = seats.filter((r) => r[1] === +office).reduce((t, r) => t + r[3], 0)
+    log(`seats office ${office} (${OFFICES[office]}): ${total}${EXPECTED[office] && total !== EXPECTED[office] ? ` != expected ${EXPECTED[office]}` : ''}, elected candidates listed: ${elected.filter((r) => r[1] === +office).length}`)
+  }
+  smallTable('2026', 'elected_2026', 'uf,office,n,name,party,status,votes', 'create table elected_2026 (uf text, office int, n text, name text, party text, status text, votes bigint)', elected)
+  smallTable('2026', 'seats_2026', 'uf,office,bloc,seats', 'create table seats_2026 (uf text, office int, bloc text, seats int)', seats)
+}
+
 mkdirSync(OUT, { recursive: true })
 if (ELECTIONS.includes('2022') && ONLY.includes('votes')) await build2022()
 if (ELECTIONS.includes('2026') && (ONLY.includes('rdv') || ONLY.includes('vt'))) await build2026()
 if (ELECTIONS.includes('2026') && ONLY.includes('results')) { await buildResults(); await buildCoverage() }
 if (ELECTIONS.includes('2026') && (ONLY.includes('vt') || ONLY.includes('rollups'))) buildRollups()
 if (ONLY.includes('cands')) await buildCands()
+if (ELECTIONS.includes('2026') && ['geo', 'elected'].some((k) => ONLY.includes(k))) {
+  const mun = await buildMunicipalities()
+  if (ONLY.includes('geo')) await buildGeo(mun)
+  if (ONLY.includes('elected')) await buildElected(mun)
+}
 manifest.version = new Date().toISOString()
 writeFileSync(`${OUT}/manifest.json`, JSON.stringify(manifest, null, 1) + '\n')
 log('manifest written')

@@ -39,12 +39,29 @@ Pages does not serve `.br`. The whole `data/` is 137 MB (2022: 2.9 MB, 2026: 134
 | `vtc_2026` | per city rollup of `b` plus `tz`, the estimated clock offset vs Brasília | 1 file |
 | `tot_2026`, `res_2026` | rollups: per city/office totals; votes per candidate (per city for president/governor/senator, per UF for deputies) | 1 file each, 1.2 MB gz |
 | `cov_2026`, `miss_2026` | coverage per UF and the list of sections without results | 1 file each |
+| `mun_map` | (UF, municipality name) → IBGE code, from the TSE municipality list (`cd`/`cdi`), plus 2022 spellings; foreign cities have no code | 1 file |
+| `seats_2026` | seats per party/federation, UF and office, from the official TSE state files | 1 file |
+| `elected_2026` | elected candidates published by the TSE (uf, office, number, name, party, status, votes) | 1 file |
 | `cands` | candidate names/parties/official totals (TSE files) for 2022 and 2026 | 1 file |
 
 SQL views `sec_<year>`/`cs_<year>` (section grain) and `tot_<year>`/`res_<year>` (city grain, views over the sections for
 2022) give both elections the same shape (see `src/model.js`). The overview and the UF/município listings read only the
 small rollups; zones, sections, analysis and the pace table load the section parts of the UF (and, for deputies, of the
 office) on demand.
+
+### Maps and parliament
+
+- `data/geo/*.json` are IBGE meshes (`servicodados.ibge.gov.br/api/v3/malhas`, `qualidade=minima` for Brazil by state and by
+  municipality, `intermediaria` for the 27 state files) converted at build time into compact SVG paths in one shared
+  projection (`scripts/geo.mjs`): 3.0 MB in total, loaded lazily (states 20 KB, municipalities 670 KB, one state 18-290 KB).
+  Fernando de Noronha and the oceanic islands are clipped from the drawing. Downloads are cached in `.cache/` (git-ignored)
+  and throttled; the volatile TSE result files are refetched on every run.
+- TSE municipality codes are not IBGE codes: `mun_map` joins them by (UF, name) using the `cdi` field of the TSE list;
+  all 5,688 municipalities of 2026 and 5,709 of 2022 resolve (117 foreign cities have no polygon and are shown as "Exterior").
+- Seats are never recomputed: senators carry the elected status per candidate; for deputies the TSE files give the seats per
+  party/federation (`vag`: 513 federal, 1,035 state, 24 district), so the chambers are drawn by party or federation. The
+  elected deputies per candidate (`e = 's'`) are only partly published yet and are listed in `elected_2026` as they appear.
+  In 2026 only 54 of the 81 Senate seats are up.
 
 ### Coverage of 2026
 

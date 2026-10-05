@@ -9,6 +9,7 @@ import { int, pct } from '../format'
 import Panel from '../components/Panel.vue'
 import BarList from '../components/BarList.vue'
 import DataTable from '../components/DataTable.vue'
+import StateMap from '../components/StateMap.vue'
 
 const LEVELS = ['state', 'city', 'zone', 'section']
 const LEVEL_NAMES = ['UF', 'Município', 'Zona', 'Seção']
@@ -95,17 +96,19 @@ nav.crumbs
 .error(v-if="view.error")
   strong {{ view.error.message }}
 .skeleton(v-else-if="!view.data")
-.grid(v-else-if="view.data.mode === 'list'")
-  .controls(v-if="Object.keys(cfg.offices).length > 1")
-    label
-      | Cargo
-      select(:value="office" @change="setParam('office', $event.target.value)")
-        option(v-for="(name, id) in cfg.offices" :key="id" :value="id" :selected="Number(id) === office") {{ name }}
+.controls(v-if="args.length < 4 && Object.keys(cfg.offices).length > 1")
+  label
+    | Cargo
+    select(:value="office" @change="setParam('office', $event.target.value)")
+      option(v-for="(name, id) in cfg.offices" :key="id" :value="id" :selected="Number(id) === office") {{ name }}
+.grid(v-if="view.data && view.data.mode === 'list'")
   Panel(title="Resultado no recorte" :state="view" :election="year")
     BarList(:items="items")
+  Panel(v-if="args.length === 1 && args[0] !== 'zz'" :title="`Mapa de ${STATE_NAMES[args[0]]} por município`" :state="view" :election="year")
+    StateMap(:year="year" :uf="args[0]" :office="office")
   Panel(:title="LEVEL_PLURAL[args.length]" :state="view" :election="year" wide)
     DataTable(:columns="columns" :rows="view.data.rows" :sort="sort" :page="page" :size="25" :total="Number(view.data.total)" @sort="onSort" @page="setParam('page', $event)")
-.grid(v-else)
+.grid(v-else-if="view.data")
   Panel(v-for="o in view.data.offices" :key="o.office" :title="cfg.offices[o.office] ?? `Cargo ${o.office}`" :state="view" :election="year")
     BarList(:items="sectionItems(o.rows)")
     p.muted nominais {{ int(o.nominal) }}
