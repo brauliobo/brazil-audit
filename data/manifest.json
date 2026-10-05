@@ -3582,14 +3582,14 @@
   },
   "mun_map": {
    "name": "mun_map",
-   "columns": "state,city,ibge",
-   "ddl": "create table mun_map (state text, city text, ibge text)",
+   "columns": "state,city,ibge,tse",
+   "ddl": "create table mun_map (state text, city text, ibge text, tse text)",
    "parts": {
     "all": {
      "url": "mun_map.csv.gz",
-     "bytes": 51229,
-     "rows": 5809,
-     "rawBytes": 135396
+     "bytes": 70368,
+     "rows": 5812,
+     "rawBytes": 170338
     }
    }
   },
@@ -3841,5 +3841,17 @@
   },
   "source": "IBGE malhas v3 (qualidade minima/intermediaria)"
  },
- "version": "2026-10-05T15:31:20.927Z"
+ "version": "2026-10-05T15:48:12.317Z",
+ "raw": {
+  "2026": {
+   "url": "raw/2026.json",
+   "bytes": 9803,
+   "assets": 102
+  },
+  "2022-2": {
+   "url": "raw/2022-2.json",
+   "bytes": 10260,
+   "assets": 107
+  }
+ }
 }

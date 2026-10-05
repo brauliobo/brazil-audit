@@ -8,7 +8,7 @@ import { createGzip, gunzipSync, gzipSync } from 'node:zlib'
 import { createWriteStream, existsSync, mkdirSync, readFileSync, unlinkSync, writeFileSync } from 'node:fs'
 import { pipeline } from 'node:stream/promises'
 import { Transform } from 'node:stream'
-import { ELECTIONS } from '../src/elections.js'
+import { ELECTIONS, REPO } from '../src/elections.js'
 import { parseCsvLine } from './csv.mjs'
 import { EMPTY, RDV, dumpOf, officesOf, officialFile, residualOf } from './official.mjs'
 import { buildGeometry, cached, tseMunicipalities } from './geo.mjs'
@@ -16,7 +16,7 @@ import { buildGeometry, cached, tseMunicipalities } from './geo.mjs'
 const opt = Object.fromEntries(process.argv.slice(2).map((a) => a.replace(/^--/, '').split('=')))
 const list = (k, all) => (opt[k] ? opt[k].split(',') : all)
 const SELECTED = list('election', Object.keys(ELECTIONS)).map((k) => ELECTIONS[k])
-const ONLY = list('only', ['rdv', 'vt', 'results', 'cands', 'geo', 'elected', 'residual'])
+const ONLY = list('only', ['rdv', 'vt', 'results', 'cands', 'geo', 'elected', 'residual', 'raw'])
 const OUT = 'data'
 const T0 = 18000 // time-of-day buckets: 05:00 local clock, 10 minutes each, 90 buckets (05:00-20:00), edges clamped
 const STEP = 600
@@ -300,30 +300,30 @@ async function buildCands() {
 // ---- maps and parliament -----------------------------------------------------------------------------------------------------
 
 // municipalities renamed between elections
-const RENAMED = { 'ba/CAMACÃ': 'CAMACAN', 'pa/SANTA ISABEL DO PARÁ': 'SANTA IZABEL DO PARÁ', 'pr/MUNHOZ DE MELO': 'MUNHOZ DE MELLO', 'go/BOM JESUS DE GOIÁS': 'BOM JESUS' }
+const RENAMED = { 'ba/CAMACÃ': 'CAMACAN', 'pa/SANTA ISABEL DO PARÁ': 'SANTA IZABEL DO PARÁ', 'pr/MUNHOZ DE MELO': 'MUNHOZ DE MELLO', 'go/BOM JESUS DE GOIÁS': 'BOM JESUS', 'rn/ARÊS': 'AREZ', 'ba/QUINJINGUE': 'QUIJINGUE', 'to/FORTALEZA DO TABOCÃO': 'TABOCÃO' }
 const plain = (s) => s.normalize('NFD').replace(/[̀-ͯ]/g, '').toUpperCase().replace(/[^A-Z0-9]/g, '')
 
 // TSE municipality codes are not IBGE codes: the TSE list carries both (`cd` and `cdi`), and we join by (UF, name).
 // Names that differ between elections (spelling, renamed municipalities) are matched without accents/punctuation.
 async function buildMunicipalities() {
   const mun = await tseMunicipalities()
-  const rows = mun.abr.flatMap((a) => a.mu.map((m) => [a.cd, m.nm, m.cdi ?? null]))
-  const byName = new Map(rows.map(([s, c, i]) => [`${s}/${plain(c)}`, i]))
+  const rows = mun.abr.flatMap((a) => a.mu.map((m) => [a.cd, m.nm, m.cdi ?? null, m.cd]))
+  const byName = new Map(rows.map(([s, c, i, tse]) => [`${s}/${plain(c)}`, [i, tse]]))
   const known = new Set(rows.map(([s, c]) => `${s}/${c}`))
   for (const el of Object.values(ELECTIONS)) {
     const pairs = (await text(el.source.db, [citiesSql(el)])).trim().split('\n').map((l) => l.replaceAll('"', '').split(/,(.*)/s).slice(0, 2))
     const unmatched = []
     for (const [s, c] of pairs) {
       if (known.has(`${s}/${c}`)) continue
-      const ibge = byName.get(`${s}/${plain(RENAMED[`${s}/${c}`] ?? c)}`)
-      ibge ? rows.push([s, c, ibge]) : unmatched.push(`${s}/${c}`)
+      const [ibge, tse] = byName.get(`${s}/${plain(RENAMED[`${s}/${c}`] ?? c)}`) ?? []
+      ibge ? rows.push([s, c, ibge, tse]) : unmatched.push(`${s}/${c}`)
       known.add(`${s}/${c}`)
     }
     log(`municipalities ${el.year}: ${pairs.length} in the results, ${unmatched.length} without IBGE code${unmatched.length ? `: ${unmatched.slice(0, 12).join('; ')}` : ''}`)
   }
   const body = csvOf(rows)
   writeFileSync(`${OUT}/mun_map.csv.gz`, gzipSync(body, { level: 9 }))
-  manifest.tables.mun_map = { name: 'mun_map', columns: 'state,city,ibge', ddl: 'create table mun_map (state text, city text, ibge text)',
+  manifest.tables.mun_map = { name: 'mun_map', columns: 'state,city,ibge,tse', ddl: 'create table mun_map (state text, city text, ibge text, tse text)',
     parts: { all: { url: 'mun_map.csv.gz', bytes: readFileSync(`${OUT}/mun_map.csv.gz`).length, rows: rows.length, rawBytes: body.length } } }
   log(`mun_map: ${rows.length} rows`)
   return mun
@@ -432,8 +432,30 @@ async function buildResidual(el, mun) {
   smallTable('residual_skipped', el, skipped)
 }
 
+// ---- raw files: the per-section zips published as GitHub release assets ----------------------------------------------------------
+// The browser cannot read GitHub release URLs (no CORS), so the release's INDEX.json ({ year, repo, tag, assets: [{ name, kind, uf, first,
+// last, files, bytes }] }) is shipped with the dump, reduced to the section keys `files/<uf>-<city>-<zone>-<section>` (aux: `ballots/...`).
+// RAW_INDEX_DIR=/srv/release-staging reads <dir>/<indexDir>/INDEX.json instead of downloading the release asset. A missing index fails the build.
+async function buildRaw(el) {
+  const { tag, indexDir } = el.raw
+  const repo = REPO
+  const dir = process.env.RAW_INDEX_DIR
+  const url = `https://github.com/${repo}/releases/download/${tag}/INDEX.json`
+  const res = dir ? null : await fetch(url)
+  if (res && !res.ok) throw new Error(`${url}: HTTP ${res.status}`)
+  const index = JSON.parse(dir ? readFileSync(`${dir}/${indexDir}/INDEX.json`, 'utf8') : await res.text())
+  if (index.tag !== tag) throw new Error(`INDEX.json of ${el.key} is for ${index.tag}, expected ${tag}`)
+  const key = (name) => name.split('-').slice(0, 4).join('-')
+  const body = JSON.stringify({ repo: index.repo, tag, assets: index.assets.map((a) => [a.kind, a.name, key(a.first), key(a.last), a.files, a.bytes]) })
+  mkdirSync(`${OUT}/raw`, { recursive: true })
+  writeFileSync(`${OUT}/raw/${el.key}.json`, body)
+  ;(manifest.raw ??= {})[el.key] = { url: `raw/${el.key}.json`, bytes: body.length, assets: index.assets.length }
+  log(`raw/${el.key}: ${index.assets.length} assets of ${tag}, ${body.length} bytes`)
+}
+
 mkdirSync(OUT, { recursive: true })
 for (const el of SELECTED) {
+  if (el.raw.tag && ONLY.includes('raw')) await buildRaw(el)
   if (ONLY.includes('rdv')) await buildRdv(el)
   if (el.hasTimes && ONLY.includes('vt')) { await buildVt(el); buildRollups(el) }
   if (ONLY.includes('results')) await buildResults(el)
