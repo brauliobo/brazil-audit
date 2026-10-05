@@ -2,6 +2,8 @@
 import { computed } from 'vue'
 import { partyColor } from '../colors'
 import { pct } from '../format'
+import { t } from '../i18n'
+import { electionLabel } from '../labels'
 import { titleCase } from '../results'
 
 // Two circles per election, area proportional to the share of valid (nominal) votes: rows = [{ election, a, b }],
@@ -16,9 +18,9 @@ const circles = computed(() => props.rows.map((row, i) => ({
 </script>
 
 <template lang="pug">
-svg.polar(:viewBox="`0 0 ${rows.length * W} 190`" role="img" aria-label="Polarização: participação dos dois candidatos mais votados nos votos válidos, círculos com área proporcional")
+svg.polar(:viewBox="`0 0 ${rows.length * W} 190`" role="img" :aria-label="t('overview.polarizationLabel')")
   g(v-for="c in circles" :key="c.election" :transform="`translate(${c.x} 0)`")
-    text.polar__caption(:x="W / 2" y="14" text-anchor="middle") {{ c.election }}
+    text.polar__caption(:x="W / 2" y="14" text-anchor="middle") {{ electionLabel(c.election) }}
     g(v-for="(it, j) in c.items" :key="j")
       text.polar__name(:x="it.cx" y="34" text-anchor="middle") {{ it.label }}
       text.polar__party(:x="it.cx" y="48" text-anchor="middle") {{ it.party }}

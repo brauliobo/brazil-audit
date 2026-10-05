@@ -25,6 +25,7 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm run lint:tokens
+      - run: npm run lint:i18n
       - run: npm run check:logo
       # project pages are served from /<repo>/ ; set BASE_PATH to / for a user page or custom domain
       - run: npm run build

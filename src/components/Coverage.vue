@@ -1,6 +1,8 @@
 <script setup vapor>
 import { computed, ref } from 'vue'
-import { ELECTIONS, STATE_NAMES, inElection } from '../model'
+import { ELECTIONS, inElection } from '../model'
+import { officeName, stateTitle } from '../labels'
+import { t } from '../i18n'
 import { ensureSmall } from '../data'
 import { useAsync } from '../use'
 import { objects } from '../db'
@@ -14,7 +16,6 @@ import DataTable from './DataTable.vue'
 // Elections with coverage: own sections (TSE configs) vs sections with published results; the others: every section of the dump.
 const props = defineProps({ year: String })
 const cfg = computed(() => ELECTIONS[props.year])
-const OFFICES = computed(() => cfg.value.offices)
 const PAGE = 15
 const uf = ref('')
 const page = ref(0)
@@ -40,70 +41,69 @@ const lost = useAsync(() => [uf.value, page.value, coverage.data], async ([u, p]
 })
 
 // votes taken from the official municipality totals for sections without files, per UF (president), and the cities left out
-const REASONS = { not_totalized: 'total oficial ainda não totalizado', negative: 'total oficial menor que as seções que temos (arquivo desatualizado)', no_official_file: 'sem arquivo oficial do município' }
 const resid = useAsync(() => [covered.value, coverage.data], async (_, q) => {
   if (!covered.value || !coverage.data || !cfg.value.hasResidual) return null
   await ensureSmall(props.year, 'residual', 'residual_skipped')
   const perUf = objects(await q(`select uf state, count(distinct city) cities, sum(m) sections, sum(v) votes from (select uf, city, zone, max(sections_missing) m,
     sum(votes) filter (where number not in ('branco', 'nulo')) v from residual where office = 1 and ${inElection(props.year)} group by 1, 2, 3) t group by 1 order by 1`))
   const skipped = objects(await q(`select uf, city, zone, office, reason from residual_skipped where ${inElection(props.year)} order by uf, city, zone, office`))
-  return { perUf, skipped: skipped.map((r) => ({ ...r, reason: REASONS[r.reason] ?? r.reason })) }
+  return { perUf, skipped }
 })
-const residCols = [
-  { key: 'state', label: 'UF', fmt: (v) => `${v.toUpperCase()} · ${STATE_NAMES[v]}` },
-  { key: 'cities', label: 'Municípios', num: true, fmt: int },
-  { key: 'sections', label: 'Seções sem arquivo', num: true, fmt: int },
-  { key: 'votes', label: 'Votos (presidente)', num: true, fmt: int },
-]
-const skippedCols = [
-  { key: 'uf', label: 'UF', fmt: (v) => v.toUpperCase() },
-  { key: 'city', label: 'Município' },
-  { key: 'zone', label: 'Zona' },
-  { key: 'office', label: 'Cargo', fmt: (v) => OFFICES.value[v] },
-  { key: 'reason', label: 'Motivo' },
-]
-const stateCols = [
-  { key: 'state', label: 'UF', fmt: (v) => `${v.toUpperCase()} · ${STATE_NAMES[v]}` },
-  { key: 'own', label: 'Seções com arquivos próprios', num: true, fmt: int },
-  { key: 'stored', label: 'Com resultado no dump', num: true, fmt: int },
-  { key: 'missing', label: 'Sem resultado publicado', num: true, fmt: int },
-  { key: 'aggregated', label: 'Agregadas em outra seção', num: true, fmt: int },
-]
-const lostCols = [
-  { key: 'state', label: 'UF', fmt: (v) => v.toUpperCase() },
-  { key: 'city', label: 'Município' },
-  { key: 'zone', label: 'Zona' },
-  { key: 'section', label: 'Seção' },
-]
+const residCols = computed(() => [
+  { key: 'state', label: t('common.state'), fmt: stateTitle },
+  { key: 'cities', label: t('common.city'), num: true, fmt: int },
+  { key: 'sections', label: t('coverage.sectionsWithoutFile'), num: true, fmt: int },
+  { key: 'votes', label: t('coverage.votesPresident'), num: true, fmt: int },
+])
+const skippedCols = computed(() => [
+  { key: 'uf', label: t('common.state'), fmt: (v) => v.toUpperCase() },
+  { key: 'city', label: t('common.city') },
+  { key: 'zone', label: t('common.zone') },
+  { key: 'office', label: t('common.office'), fmt: officeName },
+  { key: 'reason', label: t('coverage.reason'), fmt: (v) => t(`coverage.reasons.${v}`) },
+])
+const stateCols = computed(() => [
+  { key: 'state', label: t('common.state'), fmt: stateTitle },
+  { key: 'own', label: t('coverage.ownFiles'), num: true, fmt: int },
+  { key: 'stored', label: t('coverage.stored'), num: true, fmt: int },
+  { key: 'missing', label: t('coverage.noResult'), num: true, fmt: int },
+  { key: 'aggregated', label: t('coverage.aggregatedCol'), num: true, fmt: int },
+])
+const lostCols = computed(() => [
+  { key: 'state', label: t('common.state'), fmt: (v) => v.toUpperCase() },
+  { key: 'city', label: t('common.city') },
+  { key: 'zone', label: t('common.zone') },
+  { key: 'section', label: t('common.section') },
+])
 const pickState = (e) => { uf.value = e.target.value; page.value = 0 }
 </script>
 
 <template lang="pug">
-Panel(title="Cobertura dos dados" :state="coverage" :election="year" wide)
+Panel(:title="t('coverage.title')" :state="coverage" :election="year" wide)
   template(v-if="covered")
     .cluster
-      Stat(:value="pct(coverage.data.stored / coverage.data.own, 2)" label="das seções com resultado neste dump")
-      Stat(:value="int(coverage.data.stored)" :label="`de ${int(coverage.data.own)} seções`")
-      Stat(:value="int(coverage.data.missing)" label="sem arquivos publicados pelo TSE")
-    p.muted {{ int(coverage.data.aggregated) }} seções agregadas não têm arquivos próprios: seus votos já estão contados na seção principal e não contam como faltantes. Sem o acréscimo dos votos dessas seções (veja abaixo), os totais cobrem só as seções com resultado (o TSE totalizou 100%).
+      Stat(:value="pct(coverage.data.stored / coverage.data.own, 2)" :label="t('coverage.withResult')")
+      Stat(:value="int(coverage.data.stored)" :label="t('coverage.ofSections', { n: int(coverage.data.own) })")
+      Stat(:value="int(coverage.data.missing)" :label="t('coverage.missing')")
+    p.muted {{ t('coverage.aggregated', { count: coverage.data.aggregated }) }}
     details
-      summary Por UF
+      summary {{ t('coverage.byState') }}
       DataTable(:columns="stateCols" :rows="coverage.data.rows")
     details(v-if="resid.data && resid.data.perUf.length")
-      summary Votos de seções sem arquivo, tomados do total oficial do município
-      p.muted Cada voto aqui vem do total oficial da zona ou do município (menos o que as seções com arquivo somam), não de arquivos de seção; por isso só entram nos totais nacionais, de UF e de município e na linha de cada zona.
+      summary {{ t('coverage.residualSummary') }}
+      p.muted {{ t('coverage.residualNote') }}
       DataTable(:columns="residCols" :rows="resid.data.perUf")
-      p.muted(v-if="resid.data.skipped.length") Municípios/cargos sem acréscimo ({{ resid.data.skipped.length }}):
+      p.muted(v-if="resid.data.skipped.length") {{ t('coverage.skippedCount', { n: resid.data.skipped.length }) }}
       DataTable(v-if="resid.data.skipped.length" :columns="skippedCols" :rows="resid.data.skipped")
     details
-      summary Seções sem resultado ({{ int(coverage.data.missing) }})
+      summary {{ t('coverage.lostSummary', { n: int(coverage.data.missing) }) }}
       .cluster
-        Field(label="UF")
+        Field(:label="t('common.state')")
           select(@change="pickState")
-            option(value="") todas
+            option(value="") {{ t('common.all') }}
             option(v-for="r in coverage.data.rows.filter((x) => x.missing)" :key="r.state" :value="r.state") {{ r.state.toUpperCase() }} ({{ r.missing }})
       DataTable(v-if="lost.data" :columns="lostCols" :rows="lost.data.rows" :page="page" :size="15" :total="Number(lost.data.total)" @page="page = $event")
   template(v-else)
-    Stat(:value="int(coverage.data.stored)" label="seções no dump")
-    Notice(v-if="coverage.data.noblank") Brancos e nulos não foram coletados nesta eleição: o dump só tem os votos nominais por candidato.
+    Stat(:value="int(coverage.data.stored)" :label="t('coverage.sectionsInDump')")
+    Notice(v-if="coverage.data.noblank") {{ t('coverage.noBlank') }}
 </template>

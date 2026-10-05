@@ -2,10 +2,12 @@
 import { computed, ref } from 'vue'
 import { route, href, setParam } from '../router'
 import { ELECTIONS } from '../model'
+import { electionLabel } from '../labels'
+import { t } from '../i18n'
 import { ensure, ensureDefault, ensureSmall } from '../data'
 import { query } from '../db'
 import { EXAMPLES, TABLES, draft, examplesFor, fill, initialSql } from '../sqlExamples'
-import { ms, int } from '../format'
+import { cell, ms } from '../format'
 import Panel from '../components/Panel.vue'
 import Field from '../components/Field.vue'
 import Button from '../components/Button.vue'
@@ -31,22 +33,25 @@ async function load(text) {
 
 const sql = ref(initialSql(year.value, route.value.params.get('q')))
 const out = ref(null)
-const error = ref(null)
+const failure = ref(null)
 const running = ref(false)
 const copied = ref(false)
 
 // statements written against the old per-year tables get a friendly pointer to the shared schema
 const OLD_TABLE = /relation "(\w*_20\d\d)" does not exist/
-const friendly = (e) => (OLD_TABLE.test(e.message) ? Object.assign(new Error(`A tabela ${e.message.match(OLD_TABLE)[1]} não existe mais: todas as eleições usam as mesmas tabelas (${TABLES.map((t) => t[0]).join(', ')}) com as colunas election e turn. Exemplo: where election = ${cfg.value.year} and turn = ${cfg.value.turn}. Veja o catálogo nos exemplos.`), { detail: e.detail }) : e)
+const message = computed(() => {
+  const old = failure.value.message.match(OLD_TABLE)?.[1]
+  return old ? t('errors.tableGone', { table: old, tables: TABLES.join(', '), year: cfg.value.year, turn: cfg.value.turn }) : failure.value.message
+})
 
 async function run() {
   running.value = true
-  error.value = null
+  failure.value = null
   try {
     await load(sql.value)
     out.value = await query(sql.value)
   } catch (e) {
-    error.value = friendly(e)
+    failure.value = e
     out.value = null
   } finally {
     running.value = false
@@ -61,32 +66,39 @@ async function share() {
   setTimeout(() => (copied.value = false), 1500)
 }
 const shown = computed(() => out.value.rows.slice(0, 500).map((r) => Object.fromEntries(out.value.columns.map((c, i) => [c, r[i]]))))
-const columns = computed(() => out.value.columns.map((c) => ({ key: c, label: c, num: typeof out.value.rows[0]?.[out.value.columns.indexOf(c)] === 'number' })))
+const columns = computed(() => out.value.columns.map((c) => ({ key: c, label: c, num: typeof out.value.rows[0]?.[out.value.columns.indexOf(c)] === 'number', fmt: (v) => (v == null ? '–' : typeof v === 'number' ? cell(v) : v) })))
 const pick = (e) => {
   const example = EXAMPLES.find((x) => x.id === e.target.value)
   draft.value = { example: example.id }
   sql.value = fill(example.sql, year.value)
   e.target.value = ''
 }
-const loadedElections = computed(() => Object.values(ELECTIONS).map((e) => `${e.year} (turno ${e.turn})`).join(', '))
+const loadedElections = computed(() => Object.keys(ELECTIONS).map(electionLabel).join(', '))
+const resultInfo = computed(() => [t('sql.rows', { count: out.value.rows.length }) + (out.value.rows.length > 500 ? ` ${t('sql.showing', { n: 500 })}` : ''), ms(out.value.ms)].join(' · '))
 if (route.value.params.get('q')) run()
 </script>
 
 <template lang="pug">
-h1 Console SQL
+h1 {{ t('sql.title') }}
 .cluster
-  Field(label="Exemplos")
+  Field(:label="t('sql.examplesLabel')")
     select(@change="pick")
-      option(value="") escolher…
-      option(v-for="e in examples" :key="e.id" :value="e.id") {{ e.title }}
-  Button(:disabled="running" @click="run") Executar
-  Button(variant="ghost" @click="share") {{ copied ? 'link copiado' : 'copiar link' }}
-p.muted Todas as eleições usam as mesmas tabelas ({{ TABLES.map((t) => t[0]).join(', ') }}); filtre por <code>election</code> e <code>turn</code>. Eleições: {{ loadedElections }}; a ativa é {{ cfg.year }} (turno {{ cfg.turn }}). Ao citar uma tabela, as UFs menores (e as tabelas pequenas de todas as eleições) são importadas sozinhas; para uma UF específica abra-a antes em Detalhar/Horários.
+      option(value="") {{ t('sql.choose') }}
+      option(v-for="e in examples" :key="e.id" :value="e.id") {{ t(`sql.examples.${e.id}`) }}
+  Button(:disabled="running" @click="run") {{ t('sql.run') }}
+  Button(variant="ghost" @click="share") {{ copied ? t('sql.copied') : t('sql.share') }}
+p.muted {{ t('sql.intro', { tables: TABLES.join(', '), elections: loadedElections, active: electionLabel(year) }) }}
 textarea.control(:value="sql" spellcheck="false" @input="edit" @keydown.ctrl.enter="run" @keydown.meta.enter="run")
-Notice(v-if="error" kind="danger")
-  strong {{ error.message }}
-  pre(v-if="error.detail") {{ error.detail }}
-Panel(v-if="out" title="Resultado")
-  p.muted {{ int(out.rows.length) }} linhas{{ out.rows.length > 500 ? ' (mostrando 500)' : '' }} · {{ ms(out.ms) }}
+Notice(v-if="failure" kind="danger")
+  strong {{ message }}
+  pre(v-if="failure.detail") {{ failure.detail }}
+details
+  summary {{ t('sql.tablesTitle') }}
+  ul
+    li(v-for="name in TABLES" :key="name")
+      code {{ name }}
+      |  · {{ t(`sql.tables.${name}`) }}
+Panel(v-if="out" :title="t('sql.result')")
+  p.muted {{ resultInfo }}
   DataTable(:columns="columns" :rows="shown")
 </template>

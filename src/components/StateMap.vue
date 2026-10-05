@@ -3,6 +3,8 @@ import { href, go } from '../router'
 import { loadGeo } from '../geo'
 import { ensureRollups, unitSql, unitsOf } from '../results'
 import { useAsync } from '../use'
+import { t } from '../i18n'
+import { stateName } from '../labels'
 import WinnerMap from './WinnerMap.vue'
 
 // Municipality map of one state coloured by the winner of `office` (the mini-map next to the drill-down table).
@@ -17,6 +19,6 @@ const open = (id) => go(href(props.year, 'drill', [props.uf, view.data.units.get
 
 <template lang="pug">
 .statemap(v-if="view.data")
-  WinnerMap(:units="view.data.units" :map="view.data.map" grain="mun" :office="office" :label="`Mapa dos municípios de ${uf.toUpperCase()}`" @pick="open")
-  p.muted Fonte: TSE, IBGE.
+  WinnerMap(:units="view.data.units" :map="view.data.map" grain="mun" :office="office" :label="t('maps.stateMapLabel', { state: stateName(uf) })" @pick="open")
+  p.muted {{ t('common.source') }}
 </template>

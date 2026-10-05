@@ -1,7 +1,9 @@
 <script setup vapor>
 import { computed } from 'vue'
 import { route, href, go, setParam } from '../router'
-import { ELECTIONS, STATE_NAMES, BUCKET, collate, inElection } from '../model'
+import { ELECTIONS, BUCKET, collate, inElection } from '../model'
+import { stateName, stateTitle } from '../labels'
+import { t } from '../i18n'
 import { ensureScope, ensureSmall, statesIn } from '../data'
 import { useAsync } from '../use'
 import { objects } from '../db'
@@ -54,14 +56,14 @@ const summary = useAsync(() => [year.value, args.value, base.loading], async ([y
 })
 
 const RANKS = {
-  fast: ['Votação mais rápida (menor p10 do intervalo entre votos)', 'p10 asc', 'n >= 60'],
-  regular: ['Ritmo regular demais ((p90 − p10) / mediana)', '(p90 - p10)::float8 / nullif(med, 0) asc', 'n >= 60 and med > 0'],
-  gap: ['Maior pausa entre dois votos', 'maxgap desc', 'n >= 30'],
-  diff: ['Eventos de voto × cédulas de presidente apuradas', 'abs(n - total) desc', 'total is not null'],
+  fast: ['p10 asc', 'n >= 60'],
+  regular: ['(p90 - p10)::float8 / nullif(med, 0) asc', 'n >= 60 and med > 0'],
+  gap: ['maxgap desc', 'n >= 30'],
+  diff: ['abs(n - total) desc', 'total is not null'],
 }
 const paced = useAsync(() => [year.value, state.value, city.value, rank.value, base.loading], async ([y, s, c, r], q) => {
   if (waiting()) return null
-  const [, order, where] = RANKS[r]
+  const [order, where] = RANKS[r]
   return rows(q, `with t as (select v.*, s.nominal + s.blank + s.nul total from vt v left join sec s
       on s.election = v.election and s.turn = v.turn and s.state = v.state and s.city = v.city and s.zone = v.zone and s.section = v.section and s.model = v.model and s.office = 1
       where ${inElection(y, 'v')} and ($1::text is null or v.state = $1) and ($2::text is null or v.city = $2))
@@ -73,51 +75,55 @@ const pickState = (e) => go2(e.target.value ? [e.target.value] : [])
 const pickCity = (e) => go2(e.target.value ? [state.value, e.target.value] : [state.value])
 const pick = (key) => (e) => setParam(key, e.target.value)
 const secLink = (r) => href(year.value, 'time', [r.state, r.city, r.zone, r.section], { clock: brt.value ? null : 'local' })
-const sec = (v) => (v == null ? '–' : `${int(v)} s`)
+const sec = (v) => (v == null ? '–' : t('units.seconds', { n: int(v) }))
 const cols = computed(() => [
-  { key: 'state', label: 'UF', fmt: (v) => v.toUpperCase() },
-  { key: 'city', label: 'Município' },
-  { key: 'zone', label: 'Zona' },
-  { key: 'section', label: 'Seção', href: secLink },
-  { key: 'n', label: 'Eventos', num: true, fmt: int },
-  { key: 'total', label: 'Cédulas', num: true, fmt: int },
-  { key: 'first', label: 'Primeiro', num: true, fmt: clock },
-  { key: 'last', label: 'Último', num: true, fmt: clock },
+  { key: 'state', label: t('common.state'), fmt: (v) => v.toUpperCase() },
+  { key: 'city', label: t('common.city') },
+  { key: 'zone', label: t('common.zone') },
+  { key: 'section', label: t('common.section'), href: secLink },
+  { key: 'n', label: t('time.events'), num: true, fmt: int },
+  { key: 'total', label: t('time.ballots'), num: true, fmt: int },
+  { key: 'first', label: t('time.first'), num: true, fmt: clock },
+  { key: 'last', label: t('time.last'), num: true, fmt: clock },
   { key: 'p10', label: 'p10', num: true, fmt: sec },
-  { key: 'med', label: 'Mediana', num: true, fmt: sec },
+  { key: 'med', label: t('time.median'), num: true, fmt: sec },
   { key: 'p90', label: 'p90', num: true, fmt: sec },
-  { key: 'maxgap', label: 'Maior pausa', num: true, fmt: sec },
+  { key: 'maxgap', label: t('time.maxGap'), num: true, fmt: sec },
 ])
-const title = computed(() => (isSection.value ? `Seção ${args.value[3]} · zona ${args.value[2]} · ${args.value[1]}/${args.value[0].toUpperCase()}` : city.value ? `${city.value}/${state.value.toUpperCase()}` : state.value ? STATE_NAMES[state.value] : 'Brasil'))
+const place = computed(() => {
+  if (isSection.value) return t('time.placeSection', { section: args.value[3], zone: args.value[2], city: args.value[1], state: args.value[0].toUpperCase() })
+  if (city.value) return t('time.placeCity', { city: city.value, state: state.value.toUpperCase() })
+  return state.value ? stateName(state.value) : t('common.brazil')
+})
+const clockNote = computed(() => (brt.value ? t('time.clockConverted', { min: summary.data.tz_min, max: summary.data.tz_max }) : t('time.clockRecorded')))
 </script>
 
 <template lang="pug">
-h1 Horários de votação · {{ title }}
+h1 {{ t('time.title', { place }) }}
 .cluster(v-if="cfg.hasTimes")
-  Field(label="UF")
+  Field(:label="t('common.state')")
     select(:value="state ?? ''" @change="pickState")
-      option(value="") Brasil
-      option(v-for="s in statesIn('vt', year)" :key="s" :value="s" :selected="s === state") {{ s.toUpperCase() }} · {{ STATE_NAMES[s] }}
-  Field(v-if="state && cities.data" label="Município")
+      option(value="") {{ t('common.brazil') }}
+      option(v-for="s in statesIn('vt', year)" :key="s" :value="s" :selected="s === state") {{ stateTitle(s) }}
+  Field(v-if="state && cities.data" :label="t('common.city')")
     select(:value="city ?? ''" @change="pickCity")
-      option(value="") todos
+      option(value="") {{ t('common.allCities') }}
       option(v-for="c in cities.data" :key="c.city" :value="c.city" :selected="c.city === city") {{ c.city }}
-  Field(label="Relógio")
+  Field(:label="t('time.clock')")
     select(:value="brt ? 'brt' : 'local'" @change="setParam('clock', $event.target.value === 'brt' ? null : 'local')")
-      option(value="brt") Brasília (UTC-3)
-      option(value="local") local, como gravado
-  a(v-if="isSection" :href="href(year, 'drill', args)") resultados da seção →
-.muted(v-if="!cfg.hasTimes") Esta eleição não tem horários de votação no dump; escolha uma que tenha.
+      option(value="brt") {{ t('time.clockBrt') }}
+      option(value="local") {{ t('time.clockLocal') }}
+  a(v-if="isSection" :href="href(year, 'drill', args)") {{ t('time.seeResults') }}
+.muted(v-if="!cfg.hasTimes") {{ t('time.unavailable') }}
 .grid-auto(v-else)
-  Panel(title="Votos a cada 10 minutos (post Presidente: um evento por eleitor)" :state="curve" :election="year" wide)
-    ColumnChart(:values="curve.data.votes" :labels="curve.data.labels" :height="260" :tick="int" :fmt="(v) => int(v) + ' votos'")
-    p.muted(v-if="summary.data") {{ int(curve.data.total) }} eventos em {{ int(summary.data.sections) }} seções ({{ int(summary.data.cities) }} municípios) ·
-      | relógio {{ brt ? 'convertido para Brasília com o fuso estimado por município (mín. ' + summary.data.tz_min + 'h, máx. ' + summary.data.tz_max + 'h)' : 'local como gravado pelo scraper' }}
-  Panel(title="Ritmo por seção" :state="paced" :election="year" wide)
+  Panel(:title="t('time.curveTitle')" :state="curve" :election="year" wide)
+    ColumnChart(:values="curve.data.votes" :labels="curve.data.labels" :height="260" :tick="int" :fmt="(v) => t('common.votes', { count: v })")
+    p.muted(v-if="summary.data") {{ t('time.summary', { events: int(curve.data.total), sections: int(summary.data.sections), cities: int(summary.data.cities), clock: clockNote }) }}
+  Panel(:title="t('time.pace')" :state="paced" :election="year" wide)
     .cluster
-      Field(label="Ordenar por")
+      Field(:label="t('time.sortBy')")
         select(:value="rank" @change="pick('rank')")
-          option(v-for="(r, k) in RANKS" :key="k" :value="k" :selected="k === rank") {{ r[0] }}
-    p.muted Estatísticas por seção a partir dos intervalos entre votos (a mediana de uma votação normal fica perto de 100 s). Só entram UFs carregadas: escolha uma UF.
+          option(v-for="k in Object.keys(RANKS)" :key="k" :value="k" :selected="k === rank") {{ t(`time.rank.${k}`) }}
+    p.muted {{ t('time.paceNote') }}
     DataTable(:columns="cols" :rows="paced.data")
 </template>

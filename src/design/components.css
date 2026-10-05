@@ -44,6 +44,14 @@
   --tab-height: var(--control-height);
   --tab-active-bg: var(--accent);
   --tab-active-fg: var(--accent-contrast);
+  --segmented-border: var(--field-border);
+  --segmented-bg: var(--field-bg);
+  --segmented-radius: var(--tab-radius);
+  --segmented-fg: var(--tab-fg);
+  --segmented-height: var(--tab-height);
+  --segmented-padding: var(--space-1) var(--space-2);
+  --segmented-active-bg: var(--tab-active-bg);
+  --segmented-active-fg: var(--tab-active-fg);
   --breadcrumb-sep-fg: var(--text-muted);
   --breadcrumb-size: var(--font-size-300);
 
@@ -118,7 +126,14 @@
 .tabs a[aria-current="page"] { background: var(--tab-active-bg); color: var(--tab-active-fg); }
 .tabs a:hover { text-decoration: none; background: var(--accent-subtle); }
 .tabs a[aria-current="page"]:hover { background: var(--tab-active-bg); }
-.tabs--end { margin-inline-start: auto; }
+.picker { display: inline-flex; flex-wrap: wrap; gap: var(--space-2); align-items: center; }
+.header-tools { display: flex; flex-wrap: wrap; gap: var(--space-2); align-items: center; margin-inline-start: auto; }
+/* segmented control: a row of mutually exclusive links (turn) or buttons (language, theme) */
+.segmented { display: inline-flex; gap: var(--space-hair); padding: var(--space-hair); border: var(--border-width-1) solid var(--segmented-border); border-radius: var(--segmented-radius); background: var(--segmented-bg); }
+.segmented > * { display: inline-flex; align-items: center; justify-content: center; min-height: calc(var(--segmented-height) - 2 * (var(--space-hair) + var(--border-width-1))); padding: var(--segmented-padding); border: 0; border-radius: var(--segmented-radius); background: transparent; color: var(--segmented-fg); font: inherit; font-size: var(--type-control-size); cursor: pointer; }
+.segmented > *:hover { background: var(--accent-subtle); text-decoration: none; }
+.segmented > [aria-pressed="true"], .segmented > [aria-current="page"] { background: var(--segmented-active-bg); color: var(--segmented-active-fg); }
+.segmented svg { width: var(--size-icon); height: var(--size-icon); fill: none; stroke: currentColor; stroke-linecap: round; stroke-linejoin: round; }
 .site-footer { text-align: center; padding: var(--space-8) var(--space-4); font-size: var(--type-caption-size); color: var(--text-muted); }
 .breadcrumb { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-1) var(--space-3); font-size: var(--breadcrumb-size); }
 .breadcrumb__sep { color: var(--breadcrumb-sep-fg); }

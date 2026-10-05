@@ -2,6 +2,7 @@
 // Part ids are `<election key>/<part>` for election tables (parts per UF, deputy offices apart) and `all` for cands and mun_map.
 import { reactive } from 'vue'
 import { load, many, one, query } from './db'
+import { t } from './i18n'
 import { INDEXES, VIEWS } from './model'
 
 const BASE = import.meta.env.BASE_URL
@@ -19,7 +20,7 @@ const stateOf = (id) => id.split('/')[1]?.split('.')[0]
 
 /** The app mounts only after this resolves, so views can read the manifest synchronously. */
 export const manifestReady = fetch(`${BASE}data/manifest.json`).then(async (res) => {
-  if (!res.ok) throw new Error(`manifest.json: HTTP ${res.status}`)
+  if (!res.ok) throw new Error(t('errors.http', { url: 'manifest.json', status: res.status }))
   store.manifest = await res.json()
 })
 

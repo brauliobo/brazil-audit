@@ -1,12 +1,14 @@
 <script setup vapor>
 import { computed } from 'vue'
 import { route, setParam } from '../router'
-import { ELECTIONS, STATE_NAMES, inElection } from '../model'
+import { ELECTIONS, inElection } from '../model'
+import { stateName, stateOptions } from '../labels'
+import { t } from '../i18n'
 import { blocColor } from '../colors'
 import { ensureSmall } from '../data'
 import { useAsync } from '../use'
 import { objects } from '../db'
-import { int, pct } from '../format'
+import { int } from '../format'
 import Panel from '../components/Panel.vue'
 import Field from '../components/Field.vue'
 import Hemicycle from '../components/Hemicycle.vue'
@@ -14,17 +16,17 @@ import DataTable from '../components/DataTable.vue'
 
 // Seats come from the official TSE files (tables seats and elected), never from a recomputed formula.
 const CHAMBERS = {
-  senate: { office: 5, title: 'Senado: 54 cadeiras em disputa', note: 'Em 2026 renovam-se 2 das 3 vagas de cada UF: o gráfico mostra as 54 vagas eleitas; as 27 cadeiras dos senadores eleitos em 2022 não estão nos dados.' },
-  chamber: { office: 6, title: 'Câmara dos Deputados: 513 cadeiras', note: 'Cadeiras por partido ou federação, como o TSE as atribui (os partidos de uma federação aparecem juntos).' },
-  state: { office: 7, title: 'Assembleia Legislativa', note: 'Cadeiras de deputado estadual por partido ou federação.' },
-  district: { office: 8, title: 'Câmara Legislativa do Distrito Federal: 24 cadeiras', note: 'Deputados distritais do DF.' },
+  senate: { office: 5, title: 'parliament.senateTitle', note: 'parliament.senateNote' },
+  chamber: { office: 6, title: 'parliament.chamberTitle', note: 'parliament.chamberNote' },
+  state: { office: 7, title: 'parliament.stateTitle', note: 'parliament.stateNote' },
+  district: { office: 8, title: 'parliament.districtTitle', note: 'parliament.districtNote' },
 }
 const year = computed(() => route.value.election)
 const chamber = computed(() => (route.value.params.get('chamber') in CHAMBERS ? route.value.params.get('chamber') : 'chamber'))
 const uf = computed(() => route.value.params.get('uf') ?? 'sp')
 const cfg = computed(() => CHAMBERS[chamber.value])
 const scoped = computed(() => chamber.value === 'state') // one state assembly at a time
-const ufs = Object.entries(STATE_NAMES).filter(([s]) => s !== 'zz' && s !== 'df')
+const ufs = computed(() => stateOptions(['df']))
 
 const seats = useAsync(() => [year.value, chamber.value, uf.value], async ([y, c, u], q) => {
   await ensureSmall(y, 'seats')
@@ -38,32 +40,34 @@ const elected = useAsync(() => [year.value, chamber.value], async ([y, c], q) =>
   await ensureSmall(y, 'elected')
   return objects(await q(`select uf, name, party, votes from elected where office = 5 and ${inElection(y)} order by uf, votes desc`))
 })
-const cols = [
-  { key: 'uf', label: 'UF', fmt: (v) => v.toUpperCase() },
-  { key: 'name', label: 'Senador eleito' },
-  { key: 'party', label: 'Partido' },
-  { key: 'votes', label: 'Votos', num: true, fmt: int },
-]
-const title = computed(() => (chamber.value === 'state' ? `Assembleia Legislativa · ${STATE_NAMES[uf.value]}` : cfg.value.title))
+const cols = computed(() => [
+  { key: 'uf', label: t('common.state'), fmt: (v) => v.toUpperCase() },
+  { key: 'name', label: t('parliament.electedName') },
+  { key: 'party', label: t('common.party') },
+  { key: 'votes', label: t('common.votes'), num: true, fmt: int },
+])
+const total = computed(() => seats.data?.total ?? 0)
+const title = computed(() => t(cfg.value.title, { n: int(total.value), state: stateName(uf.value) }))
+const note = computed(() => t(cfg.value.note, { year: ELECTIONS[year.value].year, n: int(total.value) }))
 </script>
 
 <template lang="pug">
-h1 Parlamento · {{ ELECTIONS[year].year }}
+h1 {{ t('parliament.title', { year: ELECTIONS[year].year }) }}
 .cluster
-  Field(label="Casa")
+  Field(:label="t('parliament.house')")
     select(@change="setParam('chamber', $event.target.value)")
-      option(value="senate" :selected="chamber === 'senate'") Senado
-      option(value="chamber" :selected="chamber === 'chamber'") Câmara dos Deputados
-      option(value="state" :selected="chamber === 'state'") Assembleia Legislativa (UF)
-      option(value="district" :selected="chamber === 'district'") Câmara Legislativa do DF
-  Field(v-if="scoped" label="UF")
+      option(value="senate" :selected="chamber === 'senate'") {{ t('parliament.senate') }}
+      option(value="chamber" :selected="chamber === 'chamber'") {{ t('parliament.chamber') }}
+      option(value="state" :selected="chamber === 'state'") {{ t('parliament.state') }}
+      option(value="district" :selected="chamber === 'district'") {{ t('parliament.district') }}
+  Field(v-if="scoped" :label="t('common.state')")
     select(@change="setParam('uf', $event.target.value)")
-      option(v-for="[s, name] in ufs" :key="s" :value="s" :selected="s === uf") {{ s.toUpperCase() }} · {{ name }}
+      option(v-for="[s, name] in ufs" :key="s" :value="s" :selected="s === uf") {{ name }}
 .grid-auto
   Panel(:title="title" :state="seats" :election="year" wide)
-    Hemicycle(:groups="seats.data.groups" :label="`${title}: ${seats.data.total} cadeiras por partido`")
-    p.muted {{ cfg.note }}
-    p.muted Fonte: TSE (arquivos oficiais de resultado por UF; cadeiras = vagas atribuídas a cada partido/federação). Cores fixas por partido: PT vermelho, PL violeta.
-  Panel(v-if="chamber === 'senate'" title="Senadores eleitos" :state="elected" :election="year" wide)
+    Hemicycle(:groups="seats.data.groups" :label="t('parliament.seatsBy', { title, count: seats.data.total })")
+    p.muted {{ note }}
+    p.muted {{ t('parliament.source') }}
+  Panel(v-if="chamber === 'senate'" :title="t('parliament.elected')" :state="elected" :election="year" wide)
     DataTable(:columns="cols" :rows="elected.data")
 </template>

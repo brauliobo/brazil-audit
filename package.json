@@ -11,6 +11,7 @@
     "preview": "vite preview",
     "data": "node scripts/build-data.mjs",
     "lint:tokens": "node scripts/lint-tokens.mjs",
+    "lint:i18n": "node scripts/lint-i18n.mjs && node scripts/check-i18n-detect.mjs",
     "brand": "node scripts/brand.mjs",
     "check:logo": "node scripts/check-logo.mjs"
   },
@@ -20,6 +21,7 @@
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "6.0.9",
+    "js-yaml": "^5.4.2",
     "pug": "3.0.4",
     "vite": "8.3.2"
   }

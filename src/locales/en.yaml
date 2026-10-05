@@ -1,0 +1,421 @@
+# English. Same keys and {placeholders} as pt-BR.yaml (npm run lint:i18n). Candidate, party and place names, and SQL, are data and never appear here.
+app:
+  name: Electoral audit
+  home: "Electoral audit: home"
+  description: "Section-level results, maps and analysis of Brazilian elections, right in your browser. Data from the TSE, Brazil's electoral court."
+  title: "{view} · {election} · {app}"
+
+nav:
+  label: Site sections
+  overview: Overview
+  maps: Maps
+  parliament: Parliament
+  drill: Drill down
+  analysis: Analysis
+  time: Voting time
+  sql: SQL
+  design: Design system
+
+election:
+  year: Year
+  round: Round
+  turn: "Round {turn}"
+  name: "{year} · round {turn}"
+
+theme:
+  label: Theme
+  light: Light
+  system: System
+  dark: Dark
+
+lang:
+  label: Language
+  pt-BR: Português (Brasil)
+  en: English
+
+footer:
+  engine: Postgres in the browser via
+  data: "data: TSE"
+  raw: raw data
+  design: design
+  code: code (MIT)
+
+common:
+  brazil: Brazil
+  others: Others / invalid
+  office: Office
+  state: State
+  city: Municipality
+  zone: Zone
+  section: Section
+  all: all
+  allCities: all
+  sections: Sections
+  sections_one: "{count} section"
+  sections_other: "{count} sections"
+  nominalVotes: Nominal votes
+  nominal: "nominal {n}"
+  blank: "blank {n}"
+  nul: "null {n}"
+  blanks: Blank
+  nulls: "Null"
+  votes: Votes
+  votes_one: "{count} vote"
+  votes_other: "{count} votes"
+  party: Party
+  source: "Source: TSE, IBGE."
+  prevPage: Previous page
+  nextPage: Next page
+  resultsTable: Results table
+  breadcrumb: Navigation
+  openInConsole: open in console
+  scatterLabel: "Scatter plot: {x} against {y}"
+
+units:
+  seconds: "{n} s"
+
+engine:
+  starting: Starting PGlite (downloads the WASM and runs initdb)…
+  ready_one: PGlite (PostgreSQL in WASM, in a worker) · {count} query
+  ready_other: PGlite (PostgreSQL in WASM, in a worker) · {count} queries
+  importing: "importing {part} {progress}"
+  clear: clear local data
+  clearHint: Deletes the tables imported into IndexedDB and the cache of the data files
+
+errors:
+  http: "{url}: HTTP {status}"
+  tableGone: "Table {table} no longer exists: every election uses the same tables ({tables}) with the columns election and turn. Example: where election = {year} and turn = {turn}. See the catalog in the examples."
+
+states:
+  ac: Acre
+  al: Alagoas
+  am: Amazonas
+  ap: Amapá
+  ba: Bahia
+  ce: Ceará
+  df: Federal District
+  es: Espírito Santo
+  go: Goiás
+  ma: Maranhão
+  mg: Minas Gerais
+  ms: Mato Grosso do Sul
+  mt: Mato Grosso
+  pa: Pará
+  pb: Paraíba
+  pe: Pernambuco
+  pi: Piauí
+  pr: Paraná
+  rj: Rio de Janeiro
+  rn: Rio Grande do Norte
+  ro: Rondônia
+  rr: Roraima
+  rs: Rio Grande do Sul
+  sc: Santa Catarina
+  se: Sergipe
+  sp: São Paulo
+  to: Tocantins
+  zz: Abroad
+
+offices:
+  1: President
+  3: Governor
+  5: Senator
+  6: Federal deputy
+  7: State deputy
+  8: District deputy
+
+residual:
+  label: Include votes from sections without files (official municipal total)
+  hint: Adds to the national, state and municipal totals the votes that the official total (of the zone or municipality) has beyond the sections with published files. There is no section-level detail, so sections and section-based analyses do not include them.
+
+overview:
+  national: National result
+  partyAggregate: Votes aggregated by party (first two digits of the number); governor and senator add up all states.
+  included: The totals include {votes} votes from {sections} sections that the TSE did not publish, taken from each municipality's official total (no section-level detail).
+  seeCoverage: see Data coverage
+  gapLeft: "Remaining difference from the official result: {votes} votes ({share})."
+  gapLeftSkipped: "Remaining difference from the official result: {votes} votes ({share}) · municipalities whose official total could not be used (not tallied, outdated or missing): {skipped}."
+  gap: "Difference from the official result: {votes} votes ({share}) · sections without a published file: {missing}."
+  official: "official {n}"
+  unlisted: Numbers outside the TSE candidate list appear as "{label}" (the TSE site counts them as invalid).
+  polarization: "Polarization: valid votes of the top two"
+  polarizationNote: Circle area is proportional to the share of nominal (valid) votes according to the official TSE totals. Elections with many candidates and runoffs (two) are not directly comparable.
+  polarizationLabel: "Polarization: share of the two leading candidates in the valid votes, circles with proportional area"
+  winnerByState: Winner by state
+  winnerMapLabel: Map of Brazil by state, coloured by the leading candidate
+  winnerNote: Colour of the leading candidate in each state; stronger = larger margin. Click a state to see its municipalities.
+  seeMaps: See maps
+  byState: By state
+
+maps:
+  title: "Maps · {election}"
+  scale: Scale
+  scaleUf: Brazil by state
+  scaleMun: Brazil by municipality
+  scaleState: One state by municipality
+  show: Show
+  metric:
+    winner: Who won
+    share: "% of one candidate"
+    margin: Winning margin
+    blank: Blank + null
+  candidate: Candidate
+  headline: "President: {headline}"
+  leads_one: "{name} wins {count} state"
+  leads_other: "{name} wins {count} states"
+  leadsDf_one: "{name} wins {count} state and the DF"
+  leadsDf_other: "{name} wins {count} states and the DF"
+  trails: "{name} {n}"
+  trailsDf: "{name} {n} and the DF"
+  panelUf: Brazil by state
+  panelMun: Brazil by municipality
+  panelState: "{state} by municipality"
+  mapNav: Map navigation
+  seeDetail: see detail →
+  mapLabel: "Map coloured by: {metric}"
+  strongerMargin: stronger colour = larger margin
+  shareOf: "% of {name}"
+  abroad: "Abroad: {name} {share}"
+  openStateTable: Open the table of a state
+  note: "Source: TSE, IBGE. Hover (or Tab through the states) to see the votes; click a state to open its municipalities (Esc goes back to Brazil) and a municipality for the detail. Fernando de Noronha is shown enlarged in the corner."
+  blankAndNull: "Blank and null: {rate}"
+  clickCities: Click to see the municipalities
+  winner: "Winner: {name}"
+  spreadTitle: Margin between the top two, by municipality
+  municipalities_one: "{count} municipality"
+  municipalities_other: "{count} municipalities"
+  spreadNote: "Municipalities by margin band in percentage points: negative values = {b} ahead, positive = {a} ahead."
+  sizeTitle: Municipality size × margin
+  sizeX: log10 of nominal votes
+  sizeY: margin
+  sizeNote: "Each dot is a municipality: small ones vary a lot, large ones stay near the centre."
+  stateMapLabel: "Map of the municipalities of {state}"
+  stateMapTitle: "Map of {state} by municipality"
+
+parliament:
+  title: "Parliament · {year}"
+  house: House
+  senate: Senate
+  chamber: Chamber of Deputies
+  state: State Legislative Assembly
+  district: Legislative Chamber of the DF
+  senateTitle: "Senate: {n} of 81 seats up for election"
+  senateNote: "In {year} part of the Senate is renewed ({n} elected seats): the chart shows the elected seats; the other seats, held by senators elected in earlier elections, are not in the data."
+  chamberTitle: "Chamber of Deputies: {n} seats"
+  chamberNote: Seats by party or federation, as the TSE assigns them (the parties of a federation appear together).
+  stateTitle: "Legislative Assembly · {state}"
+  stateNote: State deputy seats by party or federation.
+  districtTitle: "Legislative Chamber of the Federal District: {n} seats"
+  districtNote: District deputies of the DF.
+  seatsBy_one: "{title}: {count} seat by party"
+  seatsBy_other: "{title}: {count} seats by party"
+  seats_one: seat
+  seats_other: seats
+  source: "Source: TSE (official result files per state; seats = places assigned to each party/federation). Fixed colours per party: PT red, PL violet."
+  elected: Elected senators
+  electedName: Elected senator
+
+drill:
+  title: "Drill down · {election}"
+  where: Where am I
+  zoneCrumb: "Zone {zone}"
+  sectionCrumb: "Section {section}"
+  level:
+    state: State
+    city: Municipality
+    zone: Zone
+    section: Section
+  levels:
+    state: States
+    city: Municipalities
+    zone: Zones
+    section: Sections
+  result: Result in this selection
+  percent: "% {name}"
+  cityRow_one: "Sections without a published file ({count} section): official municipal total minus the sections with files"
+  cityRow_other: "Sections without a published file ({count} sections): official municipal total minus the sections with files"
+  zoneRow_one: "Sections without a published file ({count} section) in this zone: official zone total minus the sections with files"
+  zoneRow_other: "Sections without a published file ({count} sections) in this zone: official zone total minus the sections with files"
+  zoneRowEmpty_one: "Zone {zone}, with no section file at all: sections without a published file ({count} section) in this zone: official zone total minus the sections with files"
+  zoneRowEmpty_other: "Zone {zone}, with no section file at all: sections without a published file ({count} sections) in this zone: official zone total minus the sections with files"
+  officeFallback: "Office {id}"
+  voteTime: Voting time
+  seeTimes: see the times of this section →
+
+analysis:
+  title: "Analysis · {election}"
+  scope: Scope
+  loaded_one: "{count} state loaded"
+  loaded_other: "{count} states loaded"
+  candidate: Candidate (president)
+  histTitle: Distribution of the candidate's share by section
+  histNote: "sections per {step} percentage-point band of the total nominal votes"
+  outliersTitle: Atypical sections (z-score within the city)
+  outliersNote: Candidate's share in the section against the average of the sections of the same municipality (cities with 8+ sections, 30+ votes).
+  candidateShare: "% candidate"
+  zscore: z-score
+  scatterTitle: Votes in the section × candidate's share
+  scatterX: nominal votes
+  sample: "random sample of up to {n} sections"
+  citiesTitle: Municipalities with the highest share
+  citySections_one: "{share} · {count} section"
+  citySections_other: "{share} · {count} sections"
+  benfordTitle: First digit of the votes per section (Benford)
+  observed: observed
+  expected: "expected (Benford) · χ² = {chi2} (8 df; critical at 5% = {critical}) · n = {n}"
+  ratesTitle: Blank and null by state (president)
+  noBlank: This election only has nominal votes per candidate in the dump (no blank/null).
+  blanks: blank
+  nulls: "null"
+
+time:
+  title: "Voting time · {place}"
+  placeSection: "Section {section} · zone {zone} · {city}/{state}"
+  placeCity: "{city}/{state}"
+  clock: Clock
+  clockBrt: Brasília (UTC-3)
+  clockLocal: local, as recorded
+  seeResults: section results →
+  unavailable: This election has no voting times in the dump; pick one that does.
+  curveTitle: "Votes every 10 minutes (post President: one event per voter)"
+  summary: "{events} events in {sections} sections ({cities} municipalities) · clock {clock}"
+  clockConverted: "converted to Brasília time using the time zone estimated per municipality (min. {min}h, max. {max}h)"
+  clockRecorded: local as recorded by the scraper
+  pace: Pace per section
+  sortBy: Sort by
+  paceNote: "Per-section statistics from the intervals between votes (the median of a normal voting is close to 100 s). Only loaded states are included: pick a state."
+  rank:
+    fast: Fastest voting (lowest p10 of the interval between votes)
+    regular: Too regular a pace ((p90 − p10) / median)
+    gap: Longest pause between two votes
+    diff: Vote events × tallied presidential ballots
+  events: Events
+  ballots: Ballots
+  first: First
+  last: Last
+  median: Median
+  maxGap: Longest pause
+
+sql:
+  title: SQL console
+  examplesLabel: Examples
+  choose: choose…
+  run: Run
+  share: copy link
+  copied: link copied
+  intro: "Every election uses the same tables ({tables}); filter by the columns election and turn. Elections: {elections}; the active one is {active}. When you name a table, the smaller states (and the small tables of every election) are imported automatically; for a specific state open it first in Drill down/Voting time."
+  result: Result
+  tablesTitle: Tables and views
+  rows_one: "{count} row"
+  rows_other: "{count} rows"
+  showing: (showing {n})
+  examples:
+    uf: Leading candidate by state
+    ranking: Municipality ranking by the first place's votes
+    outliers: Sections with an atypical size in the municipality (z-score, AC)
+    names: Votes per candidate (president), with names
+    time: Votes per 10 minutes (local clock)
+    cross: "President: winner and % by state in each loaded election"
+    parts: Parts loaded in the browser
+    catalog: "Catalog: tables, columns and elections"
+  tables:
+    rdv: "section and office results (votes = jsonb {number: votes})"
+    sec: rdv view without the jsonb
+    cs: "view: one row per section, office and candidate"
+    tot: totals per municipality and office
+    res: votes per candidate (municipality; deputies per state)
+    resx: "view: res + votes of sections without files"
+    totx: "view: tot + votes of sections without files"
+    vt: voting times per section
+    vtc: times per municipality
+    cov: coverage per state
+    miss: sections without files
+    residual: votes of sections without files (official total)
+    elected: elected candidates
+    seats: seats per party/federation
+    cands: candidates (election, uf, office, n)
+    mun_map: municipality → IBGE code
+
+coverage:
+  title: Data coverage
+  withResult: of the sections with a result in this dump
+  ofSections: "of {n} sections"
+  missing: without files published by the TSE
+  aggregated_one: "{count} aggregated section has no files of its own: its votes are already counted in the main section and do not count as missing. Without adding the votes of these sections (see below), the totals only cover the sections with a result (the TSE tallied 100%)."
+  aggregated_other: "{count} aggregated sections have no files of their own: their votes are already counted in the main section and do not count as missing. Without adding the votes of these sections (see below), the totals only cover the sections with a result (the TSE tallied 100%)."
+  byState: By state
+  residualSummary: Votes of sections without files, taken from the official municipal total
+  residualNote: Each vote here comes from the official zone or municipal total (minus what the sections with files add up to), not from section files; that is why they only enter the national, state and municipal totals and the row of each zone.
+  skippedCount: "Municipalities/offices without addition ({n}):"
+  lostSummary: "Sections without a result ({n})"
+  sectionsWithoutFile: Sections without a file
+  votesPresident: Votes (president)
+  reason: Reason
+  reasons:
+    not_totalized: official total not yet tallied
+    negative: official total lower than the sections we have (outdated file)
+    no_official_file: no official file for the municipality
+    zone_files_disagree: the zone files do not add up to the municipal file (municipal total used)
+  ownFiles: Sections with their own files
+  stored: With a result in the dump
+  noResult: Without a published result
+  aggregatedCol: Aggregated into another section
+  sectionsInDump: sections in the dump
+  noBlank: "Blank and null ballots were not collected for this election: the dump only has the nominal votes per candidate."
+
+design:
+  title: Design system
+  intro: Primitives (raw values) → semantics (meaning, light/dark) → components. See src/design/README.md. This page documents every token and component in the active theme.
+  brand: Brand
+  brandRules: "Clear space around it: at least the height of the bars (about a fifth of the symbol). Minimum size: symbol 16 px, full logo 120 px wide (below that, symbol only). Do not recolour, stretch, rotate or add shadows; never with party colours (PT, PL)."
+  primitives: "Primitives: colours"
+  semantic: "Semantics: colours in the active theme"
+  typography: Typography
+  type:
+    display: Display 900
+    title800: Title 800
+    title700: Title 700
+    subtitle600: Subtitle 600
+    text500: Text 500
+    base400: Base 400
+    table300: Table 300
+    caption200: Caption 200
+    note100: Note 100
+  scales: "Spacing, radii, borders, shadows, motion"
+  radius: "radius {n}"
+  shadow: "shadow {n}"
+  border1: border 1
+  border2: border 2
+  motion: hover me (motion)
+  actions: "Components: actions and fields"
+  primary: Primary
+  ghost: Ghost
+  disabled: Disabled
+  select: Select
+  option: "Option {n}"
+  input: Input
+  inputValue: text
+  switchOn: Switch on
+  switchOff: Switch off
+  tabsLabel: Tabs example
+  tabCurrent: Current
+  tabOther: Other
+  feedback: "Components: notices, statistics, loading"
+  noteNeutral: Neutral note
+  info: Information
+  warning: Warning
+  danger: Error
+  success: Success
+  statShare: of the sections
+  statSections: sections in the dump
+  data: "Components: data"
+  candidateA: Candidate A
+  candidateB: Candidate B
+  name: Name
+  row: Row
+  rowNote: Row with note
+  tooltipTitle: Tooltip title
+  tooltipDetail: Detail line
+  mapHemicycle: "Components: map, hemicycle, polarization"
+  winnerColor: "winner colour, t = {t}"
+  hemicycleExample: Hemicycle example

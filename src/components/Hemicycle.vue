@@ -1,5 +1,6 @@
 <script setup vapor>
 import { computed, ref } from 'vue'
+import { t } from '../i18n'
 
 // Parliament chart: one equal-area dot per seat, laid out in concentric half-circle rows and filled group by group from
 // left to right. groups = [{ key, label, seats, color }]; hovering a dot or a legend entry highlights that group.
@@ -46,7 +47,7 @@ const group = computed(() => props.groups[active.value])
   svg.hemicycle__svg(:viewBox="`0 0 ${W} ${R + 24}`" role="img" :aria-label="label" @mousemove="hover" @mouseleave="active = null")
     g(v-html="markup")
     text.hemicycle__total(:x="W / 2" :y="R - 14" text-anchor="middle") {{ group ? group.seats : total }}
-    text.hemicycle__sub(:x="W / 2" :y="R + 8" text-anchor="middle") {{ group ? group.label : 'cadeiras' }}
+    text.hemicycle__sub(:x="W / 2" :y="R + 8" text-anchor="middle") {{ group ? group.label : t('parliament.seats', { count: total }) }}
   ul.seats
     li(v-for="(g, i) in groups" :key="g.key" tabindex="0" :class="{ seats__off: active != null && active !== i }" @mouseenter="active = i" @mouseleave="active = null" @focus="active = i" @blur="active = null")
       i.legend__swatch(:style="{ background: g.color }")

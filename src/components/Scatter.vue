@@ -1,6 +1,8 @@
 <script setup vapor>
 import { useTemplateRef, watchEffect } from 'vue'
 import { theme, token } from '../design/tokens'
+import { int, num } from '../format'
+import { t } from '../i18n'
 
 // Canvas scatter for thousands of points: points = [[x, y], …]. Colours and fonts are read from the design tokens (canvas cannot
 // use CSS variables) and the chart redraws when the theme changes.
@@ -28,11 +30,11 @@ watchEffect(() => {
   ctx.globalAlpha = 1
   ctx.fillStyle = token('--chart-axis-text')
   ctx.font = `${token('--viz-font-sm', 'fontSize')} ${token('--font-sans', 'fontFamily')}`
-  ctx.fillText(`${x0.toLocaleString('pt-BR')}`, M.l, h - M.b / 2)
+  ctx.fillText(int(x0), M.l, h - M.b / 2)
   ctx.textAlign = 'right'
-  ctx.fillText(`${x1.toLocaleString('pt-BR')}  ${props.xLabel}`, w - M.r, h - M.b / 2)
-  ctx.fillText(y0.toFixed(2), M.l - 6, h - M.b)
-  ctx.fillText(y1.toFixed(2), M.l - 6, M.t + 8)
+  ctx.fillText(`${int(x1)}  ${props.xLabel}`, w - M.r, h - M.b / 2)
+  ctx.fillText(num(y0), M.l - 6, h - M.b)
+  ctx.fillText(num(y1), M.l - 6, M.t + 8)
   ctx.save()
   ctx.translate(12, h / 2)
   ctx.rotate(-Math.PI / 2)
@@ -43,5 +45,5 @@ watchEffect(() => {
 </script>
 
 <template lang="pug">
-canvas.scatter(ref="cv" width="640" height="320" role="img" :aria-label="`Dispersão: ${xLabel} contra ${yLabel}`")
+canvas.scatter(ref="cv" width="640" height="320" role="img" :aria-label="t('common.scatterLabel', { x: xLabel, y: yLabel })")
 </template>

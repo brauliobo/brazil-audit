@@ -5,7 +5,9 @@ import { route } from './router'
 import { objects } from './db'
 import { partyColor } from './colors'
 import { int, pct } from './format'
-import { ELECTIONS, STATE_NAMES, candJoin, inElection } from './model'
+import { t } from './i18n'
+import { stateTitle } from './labels'
+import { ELECTIONS, candJoin, inElection } from './model'
 
 /**
  * Elections with residual votes: add the official totals of sections without published files (table residual) to every rollup
@@ -31,14 +33,17 @@ export async function stateWinners(q, year) {
 
 export const titleCase = (s) => s.toLowerCase().replace(/(^|\s)\S/g, (m) => m.toUpperCase())
 
-/** "Flavio Bolsonaro vence em 14 estados e no DF; Lula da Silva em 12": first-round winner per state by nominal votes. */
+/** "Flavio Bolsonaro vence em 14 estados e no DF; Lula da Silva em 12": winner per state by nominal votes. */
 export function winnersHeadline(rows) {
   const first = rows.filter((r) => r.rn === 1 && r.state !== 'zz')
   const tally = Object.entries(Object.groupBy(first, (r) => r.name ?? r.cand)).map(([name, l]) => ({ name, states: l.filter((r) => r.state !== 'df').length, df: l.some((r) => r.state === 'df') }))
   tally.sort((a, b) => b.states + b.df - (a.states + a.df))
-  const count = (t) => (t === tally[0] ? `vence em ${t.states} ${t.states === 1 ? 'estado' : 'estados'}` : `em ${t.states}`)
-  const part = (t) => `${titleCase(t.name)} ${count(t)}${t.df ? ' e no DF' : ''}`
-  return tally.length ? tally.map(part).join('; ') : ''
+  const part = (l) => {
+    const name = titleCase(l.name)
+    if (l !== tally[0]) return t(l.df ? 'maps.trailsDf' : 'maps.trails', { name, n: l.states })
+    return t(l.df ? 'maps.leadsDf' : 'maps.leads', { name, count: l.states })
+  }
+  return tally.map(part).join('; ')
 }
 
 // ---- units (states or municipalities) with their leading candidates, shared by the maps and the state mini-map ----------
@@ -63,18 +68,18 @@ export function unitsOf(result) {
   return units
 }
 
-export const candName = (r) => (r.cname ? titleCase(r.cname) : 'Outros / inválidos')
+export const candName = (r) => (r.cname ? titleCase(r.cname) : t('common.others'))
 export const top = (u, n) => u.list.find((r) => r.rn === n)
 export const margin = (u) => (u.list.length > 1 ? (top(u, 1).votes - (top(u, 2)?.votes ?? 0)) / u.valid : 1)
 export const quantile = (values, p) => values.toSorted((a, b) => a - b)[Math.floor((values.length - 1) * p)] ?? 1
 
-export const unitPlace = (u, grain) => (grain === 'uf' ? `${u.id.toUpperCase()} · ${STATE_NAMES[u.id]}` : `${titleCase(u.name)} (${u.state.toUpperCase()})`)
+export const unitPlace = (u, grain) => (grain === 'uf' ? stateTitle(u.id) : `${titleCase(u.name)} (${u.state.toUpperCase()})`)
 
 /** Tooltip text of a unit: place, its top candidates and the winner (+ optional extra lines). */
 export const unitTip = (u, grain, extra = []) => [
   unitPlace(u, grain),
   ...u.list.filter((r) => r.rn <= 3).map((r) => `${candName(r)}: ${int(r.votes)} (${pct(r.votes / u.valid, 1)})`),
-  `Vencedor: ${candName(top(u, 1))}`, ...extra,
+  t('maps.winner', { name: candName(top(u, 1)) }), ...extra,
 ].join('\n')
 
 /** Winner colour per unit, stronger with the margin of victory (saturating at the 90th percentile). */

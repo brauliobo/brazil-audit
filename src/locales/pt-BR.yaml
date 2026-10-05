@@ -1,0 +1,422 @@
+# Source language. en.yaml must have exactly the same keys and {placeholders} (npm run lint:i18n).
+# Plurals: `key_one` / `key_other` with {count}. Candidate, party and place names, and SQL, are data and never appear here.
+app:
+  name: Auditoria eleitoral
+  home: "Auditoria eleitoral: início"
+  description: Resultados por seção, mapas e análises das eleições brasileiras, direto no navegador. Dados do TSE.
+  title: "{view} · {election} · {app}"
+
+nav:
+  label: Seções do site
+  overview: Visão geral
+  maps: Mapas
+  parliament: Parlamento
+  drill: Detalhar
+  analysis: Análise
+  time: Horários
+  sql: SQL
+  design: Sistema de design
+
+election:
+  year: Ano
+  round: Turno
+  turn: "{turn}º turno"
+  name: "{year} · {turn}º turno"
+
+theme:
+  label: Tema
+  light: Claro
+  system: Sistema
+  dark: Escuro
+
+lang:
+  label: Idioma
+  pt-BR: Português (Brasil)
+  en: English
+
+footer:
+  engine: Postgres no navegador via
+  data: "dados: TSE"
+  raw: dados brutos
+  design: design
+  code: código (MIT)
+
+common:
+  brazil: Brasil
+  others: Outros / inválidos
+  office: Cargo
+  state: UF
+  city: Município
+  zone: Zona
+  section: Seção
+  all: todas
+  allCities: todos
+  sections: Seções
+  sections_one: "{count} seção"
+  sections_other: "{count} seções"
+  nominalVotes: Votos nominais
+  nominal: "nominais {n}"
+  blank: "brancos {n}"
+  nul: "nulos {n}"
+  blanks: Brancos
+  nulls: Nulos
+  votes: Votos
+  votes_one: "{count} voto"
+  votes_other: "{count} votos"
+  party: Partido
+  source: "Fonte: TSE, IBGE."
+  prevPage: Página anterior
+  nextPage: Próxima página
+  resultsTable: Tabela de resultados
+  breadcrumb: Navegação
+  openInConsole: abrir no console
+  scatterLabel: "Dispersão: {x} contra {y}"
+
+units:
+  seconds: "{n} s"
+
+engine:
+  starting: Iniciando o PGlite (baixa o WASM e roda o initdb)…
+  ready_one: PGlite (PostgreSQL em WASM, num worker) · {count} consulta
+  ready_other: PGlite (PostgreSQL em WASM, num worker) · {count} consultas
+  importing: "importando {part} {progress}"
+  clear: limpar dados locais
+  clearHint: Apaga as tabelas importadas no IndexedDB e o cache dos arquivos de dados
+
+errors:
+  http: "{url}: HTTP {status}"
+  tableGone: "A tabela {table} não existe mais: todas as eleições usam as mesmas tabelas ({tables}) com as colunas election e turn. Exemplo: where election = {year} and turn = {turn}. Veja o catálogo nos exemplos."
+
+states:
+  ac: Acre
+  al: Alagoas
+  am: Amazonas
+  ap: Amapá
+  ba: Bahia
+  ce: Ceará
+  df: Distrito Federal
+  es: Espírito Santo
+  go: Goiás
+  ma: Maranhão
+  mg: Minas Gerais
+  ms: Mato Grosso do Sul
+  mt: Mato Grosso
+  pa: Pará
+  pb: Paraíba
+  pe: Pernambuco
+  pi: Piauí
+  pr: Paraná
+  rj: Rio de Janeiro
+  rn: Rio Grande do Norte
+  ro: Rondônia
+  rr: Roraima
+  rs: Rio Grande do Sul
+  sc: Santa Catarina
+  se: Sergipe
+  sp: São Paulo
+  to: Tocantins
+  zz: Exterior
+
+offices:
+  1: Presidente
+  3: Governador
+  5: Senador
+  6: Deputado federal
+  7: Deputado estadual
+  8: Deputado distrital
+
+residual:
+  label: Incluir votos de seções sem arquivo (total oficial do município)
+  hint: Soma aos totais nacionais, de UF e de município os votos que o total oficial (da zona ou do município) tem a mais que as seções com arquivo publicado. Não há detalhe por seção, então seções e as análises por seção não os incluem.
+
+overview:
+  national: Resultado nacional
+  partyAggregate: Votos agregados por partido (dois primeiros dígitos do número); governador e senador somam todas as UFs.
+  included: Os totais incluem {votes} votos de {sections} seções que o TSE não publicou, tomados do total oficial de cada município (sem detalhe por seção).
+  seeCoverage: ver Cobertura dos dados
+  gapLeft: "Diferença restante para o oficial: {votes} votos ({share})."
+  gapLeftSkipped: "Diferença restante para o oficial: {votes} votos ({share}) · municípios cujo total oficial não pôde ser usado (não totalizado, desatualizado ou ausente): {skipped}."
+  gap: "Diferença para o oficial: {votes} votos ({share}) · seções sem arquivo publicado: {missing}."
+  official: "oficial {n}"
+  unlisted: Números fora da lista de candidatos do TSE aparecem como "{label}" (o site do TSE os conta como inválidos).
+  polarization: "Polarização: votos válidos dos dois mais votados"
+  polarizationNote: Área do círculo proporcional ao percentual dos votos nominais (válidos) segundo os totais oficiais do TSE. Eleições com muitos candidatos e segundos turnos (dois) não são diretamente comparáveis.
+  polarizationLabel: "Polarização: participação dos dois candidatos mais votados nos votos válidos, círculos com área proporcional"
+  winnerByState: Vencedor por UF
+  winnerMapLabel: Mapa do Brasil por UF, colorido pelo candidato mais votado
+  winnerNote: Cor do candidato mais votado em cada UF; mais forte = maior margem. Clique numa UF para ver seus municípios.
+  seeMaps: Ver mapas
+  byState: Por UF
+
+maps:
+  title: "Mapas · {election}"
+  scale: Escala
+  scaleUf: Brasil por UF
+  scaleMun: Brasil por município
+  scaleState: Uma UF por município
+  show: Mostrar
+  metric:
+    winner: Quem venceu
+    share: "% de um candidato"
+    margin: Margem da vitória
+    blank: Brancos + nulos
+  candidate: Candidato
+  headline: "Presidente: {headline}"
+  leads_one: "{name} vence em {count} estado"
+  leads_other: "{name} vence em {count} estados"
+  leadsDf_one: "{name} vence em {count} estado e no DF"
+  leadsDf_other: "{name} vence em {count} estados e no DF"
+  trails: "{name} em {n}"
+  trailsDf: "{name} em {n} e no DF"
+  panelUf: Brasil por UF
+  panelMun: Brasil por município
+  panelState: "{state} por município"
+  mapNav: Navegação do mapa
+  seeDetail: ver detalhamento →
+  mapLabel: "Mapa colorido por: {metric}"
+  strongerMargin: cor mais forte = maior margem
+  shareOf: "% de {name}"
+  abroad: "Exterior: {name} {share}"
+  openStateTable: Abrir a tabela de uma UF
+  note: "Fonte: TSE, IBGE. Passe o mouse (ou use Tab nas UFs) para ver os votos; clique numa UF para abrir os municípios dela (Esc volta ao Brasil) e num município para o detalhamento. Fernando de Noronha aparece ampliado no canto."
+  blankAndNull: "Brancos e nulos: {rate}"
+  clickCities: Clique para ver os municípios
+  winner: "Vencedor: {name}"
+  spreadTitle: Margem entre os dois mais votados, por município
+  municipalities_one: "{count} município"
+  municipalities_other: "{count} municípios"
+  spreadNote: "Municípios por faixa de margem em pontos percentuais: valores negativos = {b} na frente, positivos = {a} na frente."
+  sizeTitle: Tamanho do município × margem
+  sizeX: log10 dos votos nominais
+  sizeY: margem
+  sizeNote: "Cada ponto é um município: os pequenos variam muito, os grandes ficam perto do centro."
+  stateMapLabel: "Mapa dos municípios de {state}"
+  stateMapTitle: "Mapa de {state} por município"
+
+parliament:
+  title: "Parlamento · {year}"
+  house: Casa
+  senate: Senado
+  chamber: Câmara dos Deputados
+  state: Assembleia Legislativa (UF)
+  district: Câmara Legislativa do DF
+  senateTitle: "Senado: {n} de 81 cadeiras em disputa"
+  senateNote: "Em {year} renova-se uma parte do Senado ({n} vagas eleitas): o gráfico mostra as vagas eleitas; as demais cadeiras, de senadores eleitos em eleições anteriores, não estão nos dados."
+  chamberTitle: "Câmara dos Deputados: {n} cadeiras"
+  chamberNote: Cadeiras por partido ou federação, como o TSE as atribui (os partidos de uma federação aparecem juntos).
+  stateTitle: "Assembleia Legislativa · {state}"
+  stateNote: Cadeiras de deputado estadual por partido ou federação.
+  districtTitle: "Câmara Legislativa do Distrito Federal: {n} cadeiras"
+  districtNote: Deputados distritais do DF.
+  seatsBy_one: "{title}: {count} cadeira por partido"
+  seatsBy_other: "{title}: {count} cadeiras por partido"
+  seats_one: cadeira
+  seats_other: cadeiras
+  source: "Fonte: TSE (arquivos oficiais de resultado por UF; cadeiras = vagas atribuídas a cada partido/federação). Cores fixas por partido: PT vermelho, PL violeta."
+  elected: Senadores eleitos
+  electedName: Senador eleito
+
+drill:
+  title: "Detalhar · {election}"
+  where: Onde estou
+  zoneCrumb: "Zona {zone}"
+  sectionCrumb: "Seção {section}"
+  level:
+    state: UF
+    city: Município
+    zone: Zona
+    section: Seção
+  levels:
+    state: UFs
+    city: Municípios
+    zone: Zonas
+    section: Seções
+  result: Resultado no recorte
+  percent: "% {name}"
+  cityRow_one: "Seções sem arquivo publicado ({count} seção): total oficial do município menos as seções com arquivo"
+  cityRow_other: "Seções sem arquivo publicado ({count} seções): total oficial do município menos as seções com arquivo"
+  zoneRow_one: "Seções sem arquivo publicado ({count} seção) nesta zona: total oficial da zona menos as seções com arquivo"
+  zoneRow_other: "Seções sem arquivo publicado ({count} seções) nesta zona: total oficial da zona menos as seções com arquivo"
+  zoneRowEmpty_one: "Zona {zone}, sem nenhuma seção com arquivo: seções sem arquivo publicado ({count} seção) nesta zona: total oficial da zona menos as seções com arquivo"
+  zoneRowEmpty_other: "Zona {zone}, sem nenhuma seção com arquivo: seções sem arquivo publicado ({count} seções) nesta zona: total oficial da zona menos as seções com arquivo"
+  officeFallback: "Cargo {id}"
+  voteTime: Horário de votação
+  seeTimes: ver horários desta seção →
+
+analysis:
+  title: "Análise · {election}"
+  scope: Escopo
+  loaded_one: "{count} UF carregada"
+  loaded_other: "{count} UFs carregadas"
+  candidate: Candidato (presidente)
+  histTitle: Distribuição do percentual do candidato por seção
+  histNote: "seções por faixa de {step} pontos percentuais do total de votos nominais"
+  outliersTitle: Seções atípicas (z-score na cidade)
+  outliersNote: Percentual do candidato na seção contra a média das seções do mesmo município (cidades com 8+ seções, 30+ votos).
+  candidateShare: "% candidato"
+  zscore: z-score
+  scatterTitle: Votos na seção × percentual do candidato
+  scatterX: votos nominais
+  sample: "amostra aleatória de até {n} seções"
+  citiesTitle: Municípios com maior percentual
+  citySections_one: "{share} · {count} seção"
+  citySections_other: "{share} · {count} seções"
+  benfordTitle: Primeiro dígito dos votos por seção (Benford)
+  observed: observado
+  expected: "esperado (Benford) · χ² = {chi2} (8 gl; crítico a 5% = {critical}) · n = {n}"
+  ratesTitle: Brancos e nulos por UF (presidente)
+  noBlank: Esta eleição só tem votos nominais por candidato no dump (sem brancos/nulos).
+  blanks: brancos
+  nulls: nulos
+
+time:
+  title: "Horários de votação · {place}"
+  placeSection: "Seção {section} · zona {zone} · {city}/{state}"
+  placeCity: "{city}/{state}"
+  clock: Relógio
+  clockBrt: Brasília (UTC-3)
+  clockLocal: local, como gravado
+  seeResults: resultados da seção →
+  unavailable: Esta eleição não tem horários de votação no dump; escolha uma que tenha.
+  curveTitle: "Votos a cada 10 minutos (post Presidente: um evento por eleitor)"
+  summary: "{events} eventos em {sections} seções ({cities} municípios) · relógio {clock}"
+  clockConverted: "convertido para Brasília com o fuso estimado por município (mín. {min}h, máx. {max}h)"
+  clockRecorded: local como gravado pelo scraper
+  pace: Ritmo por seção
+  sortBy: Ordenar por
+  paceNote: "Estatísticas por seção a partir dos intervalos entre votos (a mediana de uma votação normal fica perto de 100 s). Só entram UFs carregadas: escolha uma UF."
+  rank:
+    fast: Votação mais rápida (menor p10 do intervalo entre votos)
+    regular: Ritmo regular demais ((p90 − p10) / mediana)
+    gap: Maior pausa entre dois votos
+    diff: Eventos de voto × cédulas de presidente apuradas
+  events: Eventos
+  ballots: Cédulas
+  first: Primeiro
+  last: Último
+  median: Mediana
+  maxGap: Maior pausa
+
+sql:
+  title: Console SQL
+  examplesLabel: Exemplos
+  choose: escolher…
+  run: Executar
+  share: copiar link
+  copied: link copiado
+  intro: "Todas as eleições usam as mesmas tabelas ({tables}); filtre pelas colunas election e turn. Eleições: {elections}; a ativa é {active}. Ao citar uma tabela, as UFs menores (e as tabelas pequenas de todas as eleições) são importadas sozinhas; para uma UF específica abra-a antes em Detalhar/Horários."
+  result: Resultado
+  tablesTitle: Tabelas e views
+  rows_one: "{count} linha"
+  rows_other: "{count} linhas"
+  showing: (mostrando {n})
+  examples:
+    uf: Candidato mais votado por UF
+    ranking: Ranking de municípios por votos do primeiro colocado
+    outliers: Seções com tamanho atípico no município (z-score, AC)
+    names: Votos por candidato (presidente), com nomes
+    time: Votos por 10 minutos (relógio local)
+    cross: "Presidente: vencedor e % por UF em cada eleição carregada"
+    parts: Partes carregadas no navegador
+    catalog: "Catálogo: tabelas, colunas e eleições"
+  tables:
+    rdv: "resultados por seção e cargo (votes = jsonb {número: votos})"
+    sec: view de rdv sem o jsonb
+    cs: "view: uma linha por seção, cargo e candidato"
+    tot: totais por município e cargo
+    res: votos por candidato (município; deputados por UF)
+    resx: "view: res + votos de seções sem arquivo"
+    totx: "view: tot + votos de seções sem arquivo"
+    vt: horários de votação por seção
+    vtc: horários por município
+    cov: cobertura por UF
+    miss: seções sem arquivos
+    residual: votos de seções sem arquivo (total oficial)
+    elected: eleitos
+    seats: cadeiras por partido/federação
+    cands: candidatos (election, uf, office, n)
+    mun_map: município → código IBGE
+
+coverage:
+  title: Cobertura dos dados
+  withResult: das seções com resultado neste dump
+  ofSections: "de {n} seções"
+  missing: sem arquivos publicados pelo TSE
+  aggregated_one: "{count} seção agregada não tem arquivos próprios: seus votos já estão contados na seção principal e não contam como faltantes. Sem o acréscimo dos votos dessas seções (veja abaixo), os totais cobrem só as seções com resultado (o TSE totalizou 100%)."
+  aggregated_other: "{count} seções agregadas não têm arquivos próprios: seus votos já estão contados na seção principal e não contam como faltantes. Sem o acréscimo dos votos dessas seções (veja abaixo), os totais cobrem só as seções com resultado (o TSE totalizou 100%)."
+  byState: Por UF
+  residualSummary: Votos de seções sem arquivo, tomados do total oficial do município
+  residualNote: Cada voto aqui vem do total oficial da zona ou do município (menos o que as seções com arquivo somam), não de arquivos de seção; por isso só entram nos totais nacionais, de UF e de município e na linha de cada zona.
+  skippedCount: "Municípios/cargos sem acréscimo ({n}):"
+  lostSummary: "Seções sem resultado ({n})"
+  sectionsWithoutFile: Seções sem arquivo
+  votesPresident: Votos (presidente)
+  reason: Motivo
+  reasons:
+    not_totalized: total oficial ainda não totalizado
+    negative: total oficial menor que as seções que temos (arquivo desatualizado)
+    no_official_file: sem arquivo oficial do município
+    zone_files_disagree: os arquivos das zonas não fecham com o do município (usado o total do município)
+  ownFiles: Seções com arquivos próprios
+  stored: Com resultado no dump
+  noResult: Sem resultado publicado
+  aggregatedCol: Agregadas em outra seção
+  sectionsInDump: seções no dump
+  noBlank: "Brancos e nulos não foram coletados nesta eleição: o dump só tem os votos nominais por candidato."
+
+design:
+  title: Sistema de design
+  intro: Primitivos (valores crus) → semânticos (significado, claro/escuro) → componentes. Veja src/design/README.md. Esta página documenta cada token e componente no tema ativo.
+  brand: Marca
+  brandRules: "Espaço livre em volta: pelo menos a altura das barras (cerca de um quinto do símbolo). Tamanho mínimo: símbolo 16 px, logo completo 120 px de largura (abaixo disso, só o símbolo). Não recolorir, esticar, girar nem usar sombras; nunca com as cores de partido (PT, PL)."
+  primitives: "Primitivos: cores"
+  semantic: "Semânticos: cores no tema ativo"
+  typography: Tipografia
+  type:
+    display: Display 900
+    title800: Título 800
+    title700: Título 700
+    subtitle600: Subtítulo 600
+    text500: Texto 500
+    base400: Base 400
+    table300: Tabela 300
+    caption200: Legenda 200
+    note100: Nota 100
+  scales: "Espaçamento, raios, bordas, sombras, movimento"
+  radius: "raio {n}"
+  shadow: "sombra {n}"
+  border1: borda 1
+  border2: borda 2
+  motion: passe o mouse (movimento)
+  actions: "Componentes: ações e campos"
+  primary: Primário
+  ghost: Fantasma
+  disabled: Desabilitado
+  select: Select
+  option: "Opção {n}"
+  input: Input
+  inputValue: texto
+  switchOn: Interruptor ligado
+  switchOff: Interruptor desligado
+  tabsLabel: Exemplo de abas
+  tabCurrent: Atual
+  tabOther: Outra
+  feedback: "Componentes: avisos, estatísticas, carregamento"
+  noteNeutral: Nota neutra
+  info: Informação
+  warning: Aviso
+  danger: Erro
+  success: Sucesso
+  statShare: das seções
+  statSections: seções no dump
+  data: "Componentes: dados"
+  candidateA: Candidato A
+  candidateB: Candidato B
+  name: Nome
+  row: Linha
+  rowNote: Linha com nota
+  tooltipTitle: Título do tooltip
+  tooltipDetail: Linha de detalhe
+  mapHemicycle: "Componentes: mapa, hemiciclo, polarização"
+  winnerColor: "cor do vencedor, t = {t}"
+  hemicycleExample: Exemplo de hemiciclo

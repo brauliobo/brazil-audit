@@ -3,6 +3,7 @@ import { computed } from 'vue'
 import { partyColor } from '../colors'
 import { preloadState } from '../geo'
 import { pct } from '../format'
+import { t } from '../i18n'
 import { titleCase, unitTip, winnerFills, winnerLegend } from '../results'
 import GeoMap from './GeoMap.vue'
 import Legend from './Legend.vue'
@@ -15,9 +16,9 @@ const isUf = computed(() => props.grain === 'uf')
 const fills = computed(() => winnerFills(props.units))
 const legend = computed(() => [
   ...winnerLegend(props.units, props.office, 5).map((l) => ({ color: partyColor(l.party), label: `${l.label} · ${l.n}` })),
-  ...(props.abroad ? [{ color: partyColor(props.abroad.party), label: `Exterior: ${titleCase(props.abroad.name ?? props.abroad.cand)} ${pct(props.abroad.votes / props.abroad.valid, 1)}` }] : []),
+  ...(props.abroad ? [{ color: partyColor(props.abroad.party), label: t('maps.abroad', { name: titleCase(props.abroad.name ?? props.abroad.cand), share: pct(props.abroad.votes / props.abroad.valid, 1) }) }] : []),
 ])
-const tip = (id) => unitTip(props.units.get(id), props.grain, isUf.value ? ['Clique para ver os municípios'] : [])
+const tip = (id) => unitTip(props.units.get(id), props.grain, isUf.value ? [t('maps.clickCities')] : [])
 </script>
 
 <template lang="pug">

@@ -1,11 +1,13 @@
 <script setup vapor>
 import { computed } from 'vue'
 import { route, href, go, setParam } from '../router'
-import { ELECTIONS, STATE_NAMES, OTHERS, candJoin, inElection } from '../model'
+import { ELECTIONS, candJoin, inElection } from '../model'
+import { electionLabel, officeName, stateTitle } from '../labels'
+import { t } from '../i18n'
 import { ensureSmall } from '../data'
 import { useAsync } from '../use'
 import { objects } from '../db'
-import { int, num, pct } from '../format'
+import { int, pct, signed, signedPct } from '../format'
 import Panel from '../components/Panel.vue'
 import Field from '../components/Field.vue'
 import Notice from '../components/Notice.vue'
@@ -43,7 +45,7 @@ const polarization = useAsync(() => [base.loading], async (_, q) => {
   if (base.loading) return null
   const rows = objects(await q(`select election, short_name name, party, official_votes::float8 / sum(official_votes) over (partition by election) share from cands
     where office = 1 and uf = 'br' and official_votes is not null order by election desc, official_votes desc`))
-  return Object.entries(Object.groupBy(rows, (r) => r.election)).sort(([a], [b]) => b - a).map(([e, l]) => ({ election: `${e} · ${ELECTIONS[e].label.split('· ')[1]}`, a: l[0], b: l[1] }))
+  return Object.entries(Object.groupBy(rows, (r) => r.election)).sort(([a], [b]) => b - a).map(([e, l]) => ({ election: e, a: l[0], b: l[1] }))
 })
 const ufmap = useAsync(() => [year.value, base.loading, residualOn.value], async ([y], q) => {
   if (base.loading) return null
@@ -56,9 +58,9 @@ const results = useAsync(() => [year.value, office.value, base.loading, residual
   if (base.loading) return null
   const { res, tot } = rollup(y)
   const sql = o === 1
-    ? `select coalesce(c.n, '-') cand, coalesce(max(c.short_name), '${OTHERS}') name, max(c.party) party, sum(r.votes) votes, max(c.official_votes) official, sum(sum(r.votes)) over () total
+    ? `select coalesce(c.n, '-') cand, max(c.short_name) name, max(c.party) party, sum(r.votes) votes, max(c.official_votes) official, sum(sum(r.votes)) over () total
        from ${res} r ${candJoin(y, 'r')} where r.office = $1 and ${inElection(y, 'r')} group by 1 order by votes desc limit 20`
-    : `select substr(r.cand,1,2) cand, coalesce(max(p.party), '${OTHERS}') name, max(p.party) party, sum(r.votes) votes, null official, sum(sum(r.votes)) over () total
+    : `select substr(r.cand,1,2) cand, max(p.party) name, max(p.party) party, sum(r.votes) votes, null official, sum(sum(r.votes)) over () total
        from ${res} r ${PARTY} where r.office = $1 and ${inElection(y, 'r')} group by 1 order by votes desc limit 20`
   const rows = objects(await q(sql, o === 1 ? [o] : [o, cfg.value.year]))
   const gap = o === 1 ? await officialGap(rows, q, y) : null
@@ -72,52 +74,54 @@ const states = useAsync(() => [year.value, office.value, base.loading, residualO
 })
 
 const items = computed(() => results.data.rows.map((r) => ({
-  label: `${r.name} ${r.party && r.party !== r.name ? `(${r.party})` : ''} ${r.cand === '-' ? '' : `· ${r.cand}`}`,
+  label: `${r.name ?? t('common.others')} ${r.party && r.party !== r.name ? `(${r.party})` : ''} ${r.cand === '-' ? '' : `· ${r.cand}`}`,
   value: r.votes,
-  text: `${int(r.votes)} · ${pct(r.votes / r.total)}${r.official ? ` · oficial ${int(r.official)}` : ''}`,
+  text: `${int(r.votes)} · ${pct(r.votes / r.total)}${r.official ? ` · ${t('overview.official', { n: int(r.official) })}` : ''}`,
 })))
-const signed = (n, d = 0) => `${n < 0 ? '−' : '+'}${num(Math.abs(n), d)}`
+const gapText = (gap) => t(gap.residual ? (gap.skipped.length ? 'overview.gapLeftSkipped' : 'overview.gapLeft') : 'overview.gap',
+  { votes: signed(gap.votes), share: signedPct(gap.share), skipped: gap.skipped.length, missing: int(gap.missing) })
+const totals = computed(() => {
+  const r = results.data
+  return [t('common.sections', { count: r.sections }), t('common.nominal', { n: int(r.nominal) }), ...(r.blank == null ? [] : [t('common.blank', { n: int(r.blank) }), t('common.nul', { n: int(r.nul) })])].join(' · ')
+})
 const rate = (v, r) => (v == null ? '–' : pct(v / (r.nominal + r.blank + r.nul)))
 const cols = computed(() => [
-  { key: 'state', label: 'UF', href: (r) => href(year.value, 'drill', [r.state], { office: office.value }), fmt: (v) => `${v.toUpperCase()} · ${STATE_NAMES[v]}` },
-  { key: 'sections', label: 'Seções', num: true, fmt: int },
-  { key: 'nominal', label: 'Votos nominais', num: true, fmt: int },
-  { key: 'blank', label: 'Brancos', num: true, fmt: rate },
-  { key: 'nul', label: 'Nulos', num: true, fmt: rate },
+  { key: 'state', label: t('common.state'), href: (r) => href(year.value, 'drill', [r.state], { office: office.value }), fmt: stateTitle },
+  { key: 'sections', label: t('common.sections'), num: true, fmt: int },
+  { key: 'nominal', label: t('common.nominalVotes'), num: true, fmt: int },
+  { key: 'blank', label: t('common.blanks'), num: true, fmt: rate },
+  { key: 'nul', label: t('common.nulls'), num: true, fmt: rate },
 ])
 </script>
 
 <template lang="pug">
-h1 {{ cfg.label }}
+h1 {{ electionLabel(year) }}
 .cluster(v-if="cfg.hasResidual")
   ResidualSwitch
 .grid-auto
   #cobertura.span-all
     Coverage(:year="year")
-  Panel(title="Resultado nacional" :state="results" :election="year" wide)
-    Field(v-if="Object.keys(cfg.offices).length > 1" label="Cargo")
+  Panel(:title="t('overview.national')" :state="results" :election="year" wide)
+    Field(v-if="cfg.offices.length > 1" :label="t('common.office')")
       select(:value="office" @change="setParam('office', $event.target.value)")
-        option(v-for="(name, id) in cfg.offices" :key="id" :value="id" :selected="Number(id) === office") {{ name }}
-    p.muted(v-if="office !== 1") Votos agregados por partido (dois primeiros dígitos do número); governador e senador somam todas as UFs.
+        option(v-for="id in cfg.offices" :key="id" :value="id" :selected="id === office") {{ officeName(id) }}
+    p.muted(v-if="office !== 1") {{ t('overview.partyAggregate') }}
     BarList(:items="items")
     template(v-if="results.data.gap")
       Notice(v-if="results.data.gap.residual")
-        | Os totais incluem {{ int(results.data.gap.residual.votes) }} votos de {{ int(results.data.gap.residual.sections) }} seções que o TSE não publicou, tomados do total oficial de cada município (sem detalhe por seção).&nbsp;
-        a(href="#cobertura") ver Cobertura dos dados
-      Notice(v-if="results.data.gap.votes" kind="warning")
-        template(v-if="results.data.gap.residual") Diferença restante para o oficial: {{ signed(results.data.gap.votes) }} votos ({{ signed(results.data.gap.share * 100, 2) }}%){{ results.data.gap.skipped.length ? ` · municípios cujo total oficial não pôde ser usado (não totalizado, desatualizado ou ausente): ${results.data.gap.skipped.length}` : '' }}.
-        template(v-else) Diferença para o oficial: {{ signed(results.data.gap.votes) }} votos ({{ signed(results.data.gap.share * 100, 2) }}%) · seções sem arquivo publicado: {{ int(results.data.gap.missing) }}.
-    p.muted {{ int(results.data.sections) }} seções · nominais {{ int(results.data.nominal) }}
-      template(v-if="results.data.blank != null")  · brancos {{ int(results.data.blank) }} · nulos {{ int(results.data.nul) }}
-    p.muted(v-if="results.data.rows.some((r) => r.cand === '-')") Números fora da lista de candidatos do TSE aparecem como "{{ OTHERS }}" (o site do TSE os conta como inválidos).
-  Panel(title="Polarização: votos válidos dos dois mais votados" :state="polarization" :election="year")
+        | {{ t('overview.included', { votes: int(results.data.gap.residual.votes), sections: int(results.data.gap.residual.sections) }) }}&nbsp;
+        a(href="#cobertura") {{ t('overview.seeCoverage') }}
+      Notice(v-if="results.data.gap.votes" kind="warning") {{ gapText(results.data.gap) }}
+    p.muted {{ totals }}
+    p.muted(v-if="results.data.rows.some((r) => r.cand === '-')") {{ t('overview.unlisted', { label: t('common.others') }) }}
+  Panel(:title="t('overview.polarization')" :state="polarization" :election="year")
     Polarization(:rows="polarization.data")
-    p.muted Área do círculo proporcional ao percentual dos votos nominais (válidos) segundo os totais oficiais do TSE. O 1º turno de 2026 (vários candidatos) e o 2º turno de 2022 (dois) não são diretamente comparáveis.
-  Panel(title="Vencedor por UF" :state="ufmap" :election="year")
-    WinnerMap(:units="ufmap.data.units" :map="ufmap.data.map" grain="uf" :abroad="ufmap.data.abroad" label="Mapa do Brasil por UF, colorido pelo candidato mais votado" @pick="go(href(year, 'maps', [], { scope: 'state', uf: $event }))")
+    p.muted {{ t('overview.polarizationNote') }}
+  Panel(:title="t('overview.winnerByState')" :state="ufmap" :election="year")
+    WinnerMap(:units="ufmap.data.units" :map="ufmap.data.map" grain="uf" :abroad="ufmap.data.abroad" :label="t('overview.winnerMapLabel')" @pick="go(href(year, 'maps', [], { scope: 'state', uf: $event }))")
     p.muted
-      | Cor do candidato mais votado em cada UF; mais forte = maior margem. Clique numa UF para ver seus municípios.&nbsp;
-      a(:href="href(year, 'maps')") Ver mapas
-  Panel(title="Por UF" :state="states" :election="year" wide)
+      | {{ t('overview.winnerNote') }}&nbsp;
+      a(:href="href(year, 'maps')") {{ t('overview.seeMaps') }}
+  Panel(:title="t('overview.byState')" :state="states" :election="year" wide)
     DataTable(:columns="cols" :rows="states.data")
 </template>

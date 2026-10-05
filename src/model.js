@@ -16,17 +16,17 @@ export const inElection = (key, alias = '') => {
   return `${a}election = ${e.year} and ${a}turn = ${e.turn}`
 }
 
-export const VIEW_LABELS = { overview: 'Visão geral', maps: 'Mapas', parliament: 'Parlamento', drill: 'Detalhar', analysis: 'Análise', time: 'Horários', sql: 'SQL' }
+/** Views of the main navigation (their labels are nav.<id> in the locale files). */
+export const VIEWS_NAV = ['overview', 'maps', 'parliament', 'drill', 'analysis', 'time', 'sql']
 
 /** Routes outside the main navigation (linked from the footer). */
-export const HIDDEN_VIEWS = { design: 'Sistema de design' }
+export const HIDDEN_VIEWS = ['design']
 
-export const STATE_NAMES = {
-  ac: 'Acre', al: 'Alagoas', am: 'Amazonas', ap: 'Amapá', ba: 'Bahia', ce: 'Ceará', df: 'Distrito Federal', es: 'Espírito Santo',
-  go: 'Goiás', ma: 'Maranhão', mg: 'Minas Gerais', ms: 'Mato Grosso do Sul', mt: 'Mato Grosso', pa: 'Pará', pb: 'Paraíba',
-  pe: 'Pernambuco', pi: 'Piauí', pr: 'Paraná', rj: 'Rio de Janeiro', rn: 'Rio Grande do Norte', ro: 'Rondônia', rr: 'Roraima',
-  rs: 'Rio Grande do Sul', sc: 'Santa Catarina', se: 'Sergipe', sp: 'São Paulo', to: 'Tocantins', zz: 'Exterior',
-}
+/** Federative units plus `zz` (votes abroad); their names are states.<uf> in the locale files. */
+export const UFS = ['ac', 'al', 'am', 'ap', 'ba', 'ce', 'df', 'es', 'go', 'ma', 'mg', 'ms', 'mt', 'pa', 'pb', 'pe', 'pi', 'pr', 'rj', 'rn', 'ro', 'rr', 'rs', 'sc', 'se', 'sp', 'to', 'zz']
+
+/** Theme choices of the switcher, in display order. */
+export const THEMES = ['light', 'system', 'dark']
 
 export const INDEXES = [
   'create index if not exists cands_ix on cands (election, office, uf, n)',
@@ -47,8 +47,6 @@ export const VIEWS = [
       coalesce(sum(votes) filter (where number = 'nulo'), 0) from residual group by election, turn, uf, city, office`,
 ]
 
-export const OTHERS = 'Outros / inválidos'
-
 /** Joins a cs/res alias to its candidate name: presidential candidates are national, all others per state. */
 export const candJoin = (key, alias = 'cs') =>
   `left join cands c on c.election=${ELECTIONS[key].year} and c.office=${alias}.office and c.n=${alias}.cand and c.uf=(case when ${alias}.office=1 then 'br' else ${alias}.state end)`
@@ -60,4 +58,4 @@ export const candVotes = (key) => `select state,city,zone,section,model,nominal,
 export const BUCKET = { start: 5 * 3600, step: 600 }
 
 /** PGlite sorts in C.UTF-8 codepoint order (accented letters after Z): this key orders Portuguese names like pt-BR. */
-export const collate = (col) => `translate(${col}, 'ÁÀÂÃÄÉÈÊËÍÌÎÏÓÒÔÕÖÚÙÛÜÇÑ', 'AAAAAEEEEIIIIOOOOOUUUUCN')`
+export const collate = (col) => `translate(${col}, 'ÁÀÂÃÄÉÈÊËÍÌÎÏÓÒÔÕÖÚÙÛÜÇÑ', 'AAAAAEEEEIIIIOOOOOUUUUCN')` // i18n-ignore

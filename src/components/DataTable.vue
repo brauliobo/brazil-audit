@@ -1,5 +1,6 @@
 <script setup vapor>
 import { computed } from 'vue'
+import { t } from '../i18n'
 import Button from './Button.vue'
 
 // columns: [{ key, label, num?, fmt?(value,row), href?(row), sortable? }]; rows with `residual` are marked notes.
@@ -11,7 +12,7 @@ const arrow = (c) => (props.sort?.key === c.key ? (props.sort.dir === 'asc' ? '�
 </script>
 
 <template lang="pug">
-.table-wrap(tabindex="0" role="region" aria-label="Tabela de resultados")
+.table-wrap(tabindex="0" role="region" :aria-label="t('common.resultsTable')")
   table.table
     thead
       tr
@@ -22,7 +23,7 @@ const arrow = (c) => (props.sort?.key === c.key ? (props.sort.dir === 'asc' ? '�
           a(v-if="c.href && c.href(r)" :href="c.href(r)") {{ show(c, r) }}
           template(v-else) {{ show(c, r) }}
 .pager(v-if="pages > 1")
-  Button(variant="ghost" :disabled="page === 0" @click="emit('page', page - 1)") ‹
+  Button(variant="ghost" :disabled="page === 0" :label="t('common.prevPage')" @click="emit('page', page - 1)") ‹
   span {{ page + 1 }} / {{ pages }}
-  Button(variant="ghost" :disabled="page + 1 >= pages" @click="emit('page', page + 1)") ›
+  Button(variant="ghost" :disabled="page + 1 >= pages" :label="t('common.nextPage')" @click="emit('page', page + 1)") ›
 </template>

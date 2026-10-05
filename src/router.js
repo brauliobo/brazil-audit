@@ -1,8 +1,10 @@
 // History API router under the Vite base: <base>/<election>/<view>/<arg>/<arg>?<query>. Identity lives in the path,
 // every other state (office, metric, cand, scope, sort, page, q...) in the query string. Links are plain <a href>s built by
 // href(); one delegated click handler turns same-origin clicks into client navigation.
-import { computed, nextTick, ref } from 'vue'
-import { DEFAULT_ELECTION, ELECTIONS, HIDDEN_VIEWS, VIEW_LABELS } from './model'
+import { computed, nextTick, ref, watchEffect } from 'vue'
+import { DEFAULT_ELECTION, ELECTIONS, HIDDEN_VIEWS, VIEWS_NAV } from './model'
+import { t } from './i18n'
+import { electionLabel, viewName } from './labels'
 
 const BASE = import.meta.env.BASE_URL // '/brazil-audit/' on Pages, '/' in dev or on a custom domain
 const url = ref({ path: location.pathname, search: location.search })
@@ -31,12 +33,15 @@ history.scrollRestoration = 'manual'
 const scrolls = new Map() // history entry key -> scrollY
 let key = 0
 
-function arrive(restore) {
+const title = () => {
   const { election, view } = route.value
-  document.title = `${VIEW_LABELS[view] ?? HIDDEN_VIEWS[view] ?? view} · ${ELECTIONS[election].label} · Auditoria eleitoral`
+  return t('app.title', { view: viewName([...VIEWS_NAV, ...HIDDEN_VIEWS].includes(view) ? view : 'overview'), election: electionLabel(election), app: t('app.name') })
+}
+
+function arrive(restore) {
   nextTick(() => requestAnimationFrame(() => {
     scrollTo({ top: restore ?? 0, behavior: 'instant' })
-    if (restore == null) { const h = document.querySelector('main h1'); if (h) { h.tabIndex = -1; h.focus({ preventScroll: true }) } }
+    if (restore == null) { const h = document.querySelector('main h1'); if (h) { h.tabIndex = -1; h.focus({ preventScroll: true }) } } // i18n-ignore
   }))
 }
 
@@ -85,11 +90,13 @@ const legacy = (hash) => {
 }
 
 export function startRouter() {
+  sync() // the language detection may have removed ?lang from the address
   const to = location.hash.startsWith('#/') ? legacy(location.hash) : canonical(route.value)
   history.replaceState({ key }, '', to)
   sync()
   document.addEventListener('click', onClick)
   addEventListener('popstate', onPop)
   addEventListener('scroll', () => scrolls.set(history.state?.key ?? 0, scrollY), { passive: true })
+  watchEffect(() => (document.title = title()))
   arrive(0)
 }

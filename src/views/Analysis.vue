@@ -1,7 +1,9 @@
 <script setup vapor>
 import { computed } from 'vue'
 import { route, href, setParam } from '../router'
-import { ELECTIONS, STATE_NAMES, candVotes, inElection } from '../model'
+import { ELECTIONS, candVotes, inElection } from '../model'
+import { electionLabel, stateTitle } from '../labels'
+import { t } from '../i18n'
 import { ensure, ensureScope, loadedParts, statesIn } from '../data'
 import { useAsync } from '../use'
 import { objects } from '../db'
@@ -15,6 +17,7 @@ import DataTable from '../components/DataTable.vue'
 import Scatter from '../components/Scatter.vue'
 
 const BINS = 40
+const SAMPLE = 4000
 const year = computed(() => route.value.election)
 const cfg = computed(() => ELECTIONS[year.value])
 const state = computed(() => route.value.params.get('state') || null)
@@ -46,7 +49,7 @@ const outliers = run(([y, s, c], q) => rows(q, `with v as (${candVotes(y)}),
   select state, city, zone, section, nominal, share, z from z where n >= 8 and z is not null order by abs(z) desc limit 20`, [c, s]))
 
 const scatter = run(async ([y, s, c], q) => (await q(`with v as (${candVotes(y)}) select nominal, votes::float8 / nominal from v
-  where nominal > 0 and ($2::text is null or state = $2) order by random() limit 4000`, [c, s])).rows)
+  where nominal > 0 and ($2::text is null or state = $2) order by random() limit ${SAMPLE}`, [c, s])).rows)
 
 const cities = run(([y, s, c], q) => rows(q, `with v as (${candVotes(y)}) select state, city, sum(votes) votes, sum(nominal) nominal, count(*) sections,
   sum(votes)::float8 / sum(nominal) share from v where ($2::text is null or state = $2) group by state, city
@@ -69,55 +72,55 @@ const rates = useAsync(() => [year.value, state.value, base.loading, loaded.valu
     sum(nul)::float8 / nullif(sum(nominal + blank + nul), 0) null_rate from sec where office = 1 and ${inElection(y)} and ($1::text is null or state = $1) group by state order by state`, [s])
 })
 
-const benfordLegend = computed(() => [{ color: 'var(--chart-bar)', label: 'observado' }, { color: 'var(--chart-highlight)', label: `esperado (Benford) · χ² = ${num(benford.data.chi2)} (8 gl; crítico a 5% = 15,51) · n = ${int(benford.data.total)}` }])
+const benfordLegend = computed(() => [{ color: 'var(--chart-bar)', label: t('analysis.observed') }, { color: 'var(--chart-highlight)', label: t('analysis.expected', { chi2: num(benford.data.chi2), critical: num(15.51), n: int(benford.data.total) }) }])
 const pick = (key) => (e) => setParam(key, e.target.value)
 const stateOptions = computed(() => statesIn('rdv', year.value))
 const section = (r) => href(year.value, 'drill', [r.state, r.city, r.zone, r.section])
-const histLabels = Array.from({ length: BINS }, (_, i) => `${(i * 100) / BINS}%`)
-const cols = [
-  { key: 'state', label: 'UF', fmt: (v) => v.toUpperCase() },
-  { key: 'city', label: 'Município' },
-  { key: 'zone', label: 'Zona' },
-  { key: 'section', label: 'Seção', href: section },
-  { key: 'nominal', label: 'Votos nominais', num: true, fmt: int },
-  { key: 'share', label: '% candidato', num: true, fmt: (v) => pct(v) },
-  { key: 'z', label: 'z-score', num: true, fmt: (v) => num(v) },
-]
-const cityItems = computed(() => cities.data.map((r) => ({ label: `${r.city} (${r.state.toUpperCase()})`, value: r.share, text: `${pct(r.share)} · ${int(r.sections)} seções`, href: href(year.value, 'drill', [r.state, r.city]) })))
+const histLabels = computed(() => Array.from({ length: BINS }, (_, i) => pct(i / BINS, 1)))
+const cols = computed(() => [
+  { key: 'state', label: t('common.state'), fmt: (v) => v.toUpperCase() },
+  { key: 'city', label: t('common.city') },
+  { key: 'zone', label: t('common.zone') },
+  { key: 'section', label: t('common.section'), href: section },
+  { key: 'nominal', label: t('common.nominalVotes'), num: true, fmt: int },
+  { key: 'share', label: t('analysis.candidateShare'), num: true, fmt: (v) => pct(v) },
+  { key: 'z', label: t('analysis.zscore'), num: true, fmt: (v) => num(v) },
+])
+const cityItems = computed(() => cities.data.map((r) => ({ label: `${r.city} (${r.state.toUpperCase()})`, value: r.share, text: t('analysis.citySections', { share: pct(r.share), count: r.sections }), href: href(year.value, 'drill', [r.state, r.city]) })))
 const rateLabels = computed(() => rates.data.map((r) => r.state.toUpperCase()))
 </script>
 
 <template lang="pug">
-h1 Análise · {{ cfg.label }}
+h1 {{ t('analysis.title', { election: electionLabel(year) }) }}
 .cluster
-  Field(label="Escopo")
+  Field(:label="t('analysis.scope')")
     select(:value="state ?? ''" @change="pick('state')")
-      option(value="") {{ loaded }} UF(s) carregada(s)
-      option(v-for="s in stateOptions" :key="s" :value="s" :selected="s === state") {{ s.toUpperCase() }} · {{ STATE_NAMES[s] }}
-  Field(v-if="candidates.data" label="Candidato (presidente)")
+      option(value="") {{ t('analysis.loaded', { count: loaded }) }}
+      option(v-for="s in stateOptions" :key="s" :value="s" :selected="s === state") {{ stateTitle(s) }}
+  Field(v-if="candidates.data" :label="t('analysis.candidate')")
     select(:value="cand" @change="pick('cand')")
       option(v-for="c in candidates.data" :key="c.cand" :value="c.cand" :selected="c.cand === cand") {{ c.name }} ({{ c.cand }})
 .grid-auto
-  Panel(title="Distribuição do percentual do candidato por seção" :state="hist" :election="year" wide)
-    ColumnChart(:values="hist.data" :labels="histLabels" :tick="int" :fmt="(v) => int(v) + ' seções'")
-    p.muted seções por faixa de 2,5 pontos percentuais do total de votos nominais
-  Panel(title="Seções atípicas (z-score na cidade)" :state="outliers" :election="year" wide)
-    p.muted Percentual do candidato na seção contra a média das seções do mesmo município (cidades com 8+ seções, 30+ votos).
+  Panel(:title="t('analysis.histTitle')" :state="hist" :election="year" wide)
+    ColumnChart(:values="hist.data" :labels="histLabels" :tick="int" :fmt="(v) => t('common.sections', { count: v })")
+    p.muted {{ t('analysis.histNote', { step: num(100 / BINS, 1) }) }}
+  Panel(:title="t('analysis.outliersTitle')" :state="outliers" :election="year" wide)
+    p.muted {{ t('analysis.outliersNote') }}
     DataTable(:columns="cols" :rows="outliers.data")
-  Panel(title="Votos na seção × percentual do candidato" :state="scatter" :election="year")
-    Scatter(:points="scatter.data" x-label="votos nominais" y-label="% candidato")
-    p.muted amostra aleatória de até 4.000 seções
-  Panel(title="Municípios com maior percentual" :state="cities" :election="year")
+  Panel(:title="t('analysis.scatterTitle')" :state="scatter" :election="year")
+    Scatter(:points="scatter.data" :x-label="t('analysis.scatterX')" :y-label="t('analysis.candidateShare')")
+    p.muted {{ t('analysis.sample', { n: int(SAMPLE) }) }}
+  Panel(:title="t('analysis.citiesTitle')" :state="cities" :election="year")
     BarList(:items="cityItems")
-  Panel(title="Primeiro dígito dos votos por seção (Benford)" :state="benford" :election="year")
+  Panel(:title="t('analysis.benfordTitle')" :state="benford" :election="year")
     ColumnChart(:values="benford.data.observed" :labels="['1','2','3','4','5','6','7','8','9']" :line="benford.data.expected" :fmt="(v) => pct(v, 1)")
     Legend(:items="benfordLegend")
-  Panel(title="Brancos e nulos por UF (presidente)" :state="rates" :election="year" wide)
+  Panel(:title="t('analysis.ratesTitle')" :state="rates" :election="year" wide)
     template(v-if="!cfg.hasBlank")
-      p.muted O dump de 2022 só tem votos nominais por candidato (sem brancos/nulos).
+      p.muted {{ t('analysis.noBlank') }}
     template(v-else-if="rates.data")
       ColumnChart(:values="rates.data.map((r) => r.blank_rate)" :labels="rateLabels" :fmt="(v) => pct(v, 1)")
-      p.muted brancos
+      p.muted {{ t('analysis.blanks') }}
       ColumnChart(:values="rates.data.map((r) => r.null_rate)" :labels="rateLabels" :fmt="(v) => pct(v, 1)")
-      p.muted nulos
+      p.muted {{ t('analysis.nulls') }}
 </template>

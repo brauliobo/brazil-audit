@@ -4,13 +4,13 @@ import { reactive } from 'vue'
 import { PGliteWorker } from '@electric-sql/pglite/worker'
 import { cachedFetch, gunzip } from './fetching'
 
-export const engine = reactive({ text: 'Iniciando o PGlite (baixa o WASM e roda o initdb)…', ready: false, error: null, queries: 0, persisted: false })
+export const engine = reactive({ ready: false, error: null, queries: 0, persisted: false })
 
 const DATA_DIR = 'idb://auditoria' // IndexedDB: the imported data survives reloads
 const NUMERIC_OIDS = new Set([20, 21, 23, 700, 701, 1700]) // int8 int2 int4 float4 float8 numeric
 
 const db = PGliteWorker.create(new Worker(new URL('./pglite.worker.js', import.meta.url), { type: 'module' }), { dataDir: DATA_DIR })
-export const ready = db.then(() => Object.assign(engine, { ready: true, text: 'Pronto' }), (e) => { engine.error = String(e.message ?? e) })
+export const ready = db.then(() => Object.assign(engine, { ready: true }), (e) => { engine.error = String(e.message ?? e) })
 
 export class SqlError extends Error {
   constructor({ message, detail, hint, position }, sql) { super(message); Object.assign(this, { detail, hint, position, sql }) }

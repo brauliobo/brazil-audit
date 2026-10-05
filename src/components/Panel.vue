@@ -1,6 +1,7 @@
 <script setup vapor>
 import { href } from '../router'
 import { ms } from '../format'
+import { t } from '../i18n'
 import Skeleton from './Skeleton.vue'
 import Notice from './Notice.vue'
 
@@ -23,5 +24,5 @@ section.panel(:class="{ 'span-all': wide }")
     summary SQL
     div(v-for="(q, i) in state.sqls" :key="i")
       pre {{ q.sql }}
-      a(:href="href(election, 'sql', [], { q: q.sql })") abrir no console
+      a(:href="href(election, 'sql', [], { q: q.sql })") {{ t('common.openInConsole') }}
 </template>

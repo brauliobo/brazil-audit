@@ -1,10 +1,12 @@
 <script setup vapor>
 import { computed, onMounted, onUnmounted } from 'vue'
 import { route, href, go, setParam } from '../router'
-import { ELECTIONS, STATE_NAMES, inElection } from '../model'
+import { ELECTIONS, inElection } from '../model'
+import { electionLabel, officeName, stateName, stateOptions, stateTitle } from '../labels'
+import { t } from '../i18n'
 import { partyColor } from '../colors'
 import { loadGeo, preloadState } from '../geo'
-import { candName, ensureRollups, residualOn, rollup, margin, quantile, stateWinners, titleCase, unitSql, unitTip, unitsOf, winnerFills, winnerLegend, winnersHeadline } from '../results'
+import { candName, ensureRollups, residualOn, rollup, margin, quantile, stateWinners, titleCase, top, unitSql, unitTip, unitsOf, winnerFills, winnerLegend, winnersHeadline } from '../results'
 import { useAsync } from '../use'
 import { objects } from '../db'
 import { int, pct } from '../format'
@@ -24,7 +26,7 @@ const scope = computed(() => params.value.get('scope') ?? 'uf') // uf | mun | st
 const uf = computed(() => params.value.get('uf') ?? 'sp')
 const office = computed(() => Number(params.value.get('office') ?? 1))
 const metric = computed(() => params.value.get('metric') ?? 'winner')
-const offices = computed(() => Object.entries(ELECTIONS[year.value].offices).filter(([id]) => [1, 3, 5].includes(+id)))
+const offices = computed(() => ELECTIONS[year.value].offices.filter((id) => [1, 3, 5].includes(id)))
 const pick = (key) => (e) => setParam(key, e.target.value)
 
 const base = useAsync(() => [year.value], async ([y]) => { await ensureRollups(y); return true })
@@ -73,7 +75,7 @@ const style = computed(() => {
 
 const tip = (id) => {
   const u = data.data.units.get(id)
-  const extra = [...(u.rate != null ? [`Brancos e nulos: ${pct(u.rate, 1)}`] : []), ...(scope.value === 'uf' ? ['Clique para ver os municípios'] : [])]
+  const extra = [...(u.rate != null ? [t('maps.blankAndNull', { rate: pct(u.rate, 1) })] : []), ...(scope.value === 'uf' ? [t('maps.clickCities')] : [])]
   return unitTip(u, grain.value, extra)
 }
 // the UF map opens a state's cities in place (keeping metric, office and candidate); a municipality opens its drill-down
@@ -94,7 +96,7 @@ const abroad = computed(() => data.data.winners.find((r) => r.state === 'zz' && 
 const gradient = computed(() => `linear-gradient(90deg, color-mix(in oklab, ${style.value.color} 15%, var(--map-blend-base)), ${style.value.color})`)
 const legendItems = computed(() => [
   ...(metric.value === 'winner' ? legend.value.map((l) => ({ color: partyColor(l.party), label: `${l.label} · ${l.n}` })) : []),
-  ...(abroad.value ? [{ color: partyColor(abroad.value.party), label: `Exterior: ${titleCase(abroad.value.name ?? abroad.value.cand)} ${pct(abroad.value.votes / abroad.value.valid, 1)}` }] : []),
+  ...(abroad.value ? [{ color: partyColor(abroad.value.party), label: t('maps.abroad', { name: titleCase(abroad.value.name ?? abroad.value.cand), share: pct(abroad.value.votes / abroad.value.valid, 1) }) }] : []),
 ])
 
 // how divided is the country? signed margin between the two national leaders in every municipality (president)
@@ -111,57 +113,59 @@ const spread = useAsync(() => [year.value, base.loading, residualOn.value], asyn
   return { counts, points: rows.map((r) => [Math.log10(r.valid), r.margin]), a: titleCase(rows[0].na), b: titleCase(rows[0].nb) }
 })
 const binLabels = Array.from({ length: BINS }, (_, i) => `${Math.round(-100 + (i * 200) / BINS)}`)
-const ufs = Object.entries(STATE_NAMES).filter(([s]) => s !== 'zz')
+const ufs = computed(() => stateOptions())
+const panelTitle = computed(() => (scope.value === 'state' ? t('maps.panelState', { state: stateName(uf.value) }) : t(scope.value === 'uf' ? 'maps.panelUf' : 'maps.panelMun')))
+const metricName = computed(() => t(`maps.metric.${metric.value}`))
 </script>
 
 <template lang="pug">
-h1 Mapas · {{ ELECTIONS[year].label }}
+h1 {{ t('maps.title', { election: electionLabel(year) }) }}
 .cluster
   ResidualSwitch(v-if="ELECTIONS[year].hasResidual")
-  Field(label="Escala")
+  Field(:label="t('maps.scale')")
     select(@change="pick('scope')")
-      option(value="uf" :selected="scope === 'uf'") Brasil por UF
-      option(value="mun" :selected="scope === 'mun'") Brasil por município
-      option(value="state" :selected="scope === 'state'") Uma UF por município
-  Field(v-if="scope === 'state'" label="UF")
+      option(value="uf" :selected="scope === 'uf'") {{ t('maps.scaleUf') }}
+      option(value="mun" :selected="scope === 'mun'") {{ t('maps.scaleMun') }}
+      option(value="state" :selected="scope === 'state'") {{ t('maps.scaleState') }}
+  Field(v-if="scope === 'state'" :label="t('common.state')")
     select(@change="pick('uf')")
-      option(v-for="[s, name] in ufs" :key="s" :value="s" :selected="s === uf") {{ s.toUpperCase() }} · {{ name }}
-  Field(v-if="offices.length > 1" label="Cargo")
+      option(v-for="[s, title] in ufs" :key="s" :value="s" :selected="s === uf") {{ title }}
+  Field(v-if="offices.length > 1" :label="t('common.office')")
     select(@change="pick('office')")
-      option(v-for="[id, name] in offices" :key="id" :value="id" :selected="Number(id) === office") {{ name }}
-  Field(label="Mostrar")
+      option(v-for="id in offices" :key="id" :value="id" :selected="id === office") {{ officeName(id) }}
+  Field(:label="t('maps.show')")
     select(@change="pick('metric')")
-      option(value="winner" :selected="metric === 'winner'") Quem venceu
-      option(value="share" :selected="metric === 'share'") % de um candidato
-      option(value="margin" :selected="metric === 'margin'") Margem da vitória
-      option(value="blank" :selected="metric === 'blank'" :disabled="!ELECTIONS[year].hasBlank") Brancos + nulos
-  Field(v-if="metric === 'share' && data.data" label="Candidato")
+      option(value="winner" :selected="metric === 'winner'") {{ t('maps.metric.winner') }}
+      option(value="share" :selected="metric === 'share'") {{ t('maps.metric.share') }}
+      option(value="margin" :selected="metric === 'margin'") {{ t('maps.metric.margin') }}
+      option(value="blank" :selected="metric === 'blank'" :disabled="!ELECTIONS[year].hasBlank") {{ t('maps.metric.blank') }}
+  Field(v-if="metric === 'share' && data.data" :label="t('maps.candidate')")
     select(@change="pick('cand')")
       option(v-for="l in leaders" :key="l.cand" :value="l.cand" :selected="l.cand === shareCand") {{ candName(l) }}
-p.headline(v-if="headline") Presidente: {{ headline }}
+p.headline(v-if="headline") {{ t('maps.headline', { headline }) }}
 .grid-auto
-  Panel(:title="scope === 'uf' ? 'Brasil por UF' : scope === 'mun' ? 'Brasil por município' : `${STATE_NAMES[uf]} por município`" :state="data" :election="year" wide)
-    Breadcrumb(v-if="scope === 'state'" :items="[{ label: 'Brasil', href: here({ scope: 'uf', uf: null }) }, { label: `${uf.toUpperCase()} · ${STATE_NAMES[uf]}` }]" label="Navegação do mapa")
+  Panel(:title="panelTitle" :state="data" :election="year" wide)
+    Breadcrumb(v-if="scope === 'state'" :items="[{ label: t('common.brazil'), href: here({ scope: 'uf', uf: null }) }, { label: stateTitle(uf) }]" :label="t('maps.mapNav')")
       template(#end)
-        a(:href="href(year, 'drill', [uf], { office })") ver detalhamento →
+        a(:href="href(year, 'drill', [uf], { office })") {{ t('maps.seeDetail') }}
     .mapwrap(:class="{ 'mapwrap--busy': data.loading }")
-      GeoMap(:map="data.data.map" :overlay="data.data.overlay" :fills="style.fills" :tip="tip" :keyboard="scope === 'uf'" :label="`Mapa colorido por ${metric}`" @pick="open" @hover="scope === 'uf' && preloadState($event)")
+      GeoMap(:map="data.data.map" :overlay="data.data.overlay" :fills="style.fills" :tip="tip" :keyboard="scope === 'uf'" :label="t('maps.mapLabel', { metric: metricName })" @pick="open" @hover="scope === 'uf' && preloadState($event)")
     Legend(:items="legendItems")
-      span.muted(v-if="metric === 'winner'") cor mais forte = maior margem
+      span.muted(v-if="metric === 'winner'") {{ t('maps.strongerMargin') }}
       template(v-else)
         span.muted {{ pct(style.range[0], 0) }}
         i.legend__ramp(:style="{ background: gradient }")
         span.muted {{ pct(style.range[1], 0) }}
-        span.muted(v-if="metric === 'share'") % de {{ candName(leaders.find((l) => l.cand === shareCand)) }}
+        span.muted(v-if="metric === 'share'") {{ t('maps.shareOf', { name: candName(leaders.find((l) => l.cand === shareCand)) }) }}
     details.statelinks(v-if="scope === 'uf'")
-      summary Abrir a tabela de uma UF
+      summary {{ t('maps.openStateTable') }}
       .chips
         Chip(v-for="[s] in ufs" :key="s" :href="href(year, 'drill', [s], { office })") {{ s.toUpperCase() }}
-    p.muted Fonte: TSE, IBGE. Passe o mouse (ou use Tab nas UFs) para ver os votos; clique numa UF para abrir os municípios dela (Esc volta ao Brasil) e num município para o detalhamento. Fernando de Noronha aparece ampliado no canto.
-  Panel(title="Margem entre os dois mais votados, por município" :state="spread" :election="year")
-    ColumnChart(:values="spread.data.counts" :labels="binLabels" :tick="int" :fmt="(v) => int(v) + ' municípios'")
-    p.muted Municípios por faixa de margem em pontos percentuais: valores negativos = {{ spread.data.b }} na frente, positivos = {{ spread.data.a }} na frente.
-  Panel(title="Tamanho do município × margem" :state="spread" :election="year")
-    Scatter(:points="spread.data.points" x-label="log10 dos votos nominais" y-label="margem")
-    p.muted Cada ponto é um município: os pequenos variam muito, os grandes ficam perto do centro.
+    p.muted {{ t('maps.note') }}
+  Panel(:title="t('maps.spreadTitle')" :state="spread" :election="year")
+    ColumnChart(:values="spread.data.counts" :labels="binLabels" :tick="int" :fmt="(v) => t('maps.municipalities', { count: v })")
+    p.muted {{ t('maps.spreadNote', { a: spread.data.a, b: spread.data.b }) }}
+  Panel(:title="t('maps.sizeTitle')" :state="spread" :election="year")
+    Scatter(:points="spread.data.points" :x-label="t('maps.sizeX')" :y-label="t('maps.sizeY')")
+    p.muted {{ t('maps.sizeNote') }}
 </template>
