@@ -1,0 +1,12 @@
+#!/usr/bin/env ruby
+# Prints how many sections with files of their own are still missing their info file in the cache (0 = all downloaded)
+require 'active_support/all'
+%w[config http cache state ballot].each{ |f| require_relative "../lib/#{f}" }
+
+pending = STATES.sum do |state|
+  state = state.downcase
+  Hashie::Mash.new(JSON.parse State.get(state, fetch: false).data).abr.first.mu.sum do |city|
+    city.zon.sum{ |zone| zone.sec.count{ |s| State.own?(s) && !Ballot.info_cached?(state, city.cd, zone.cd, s.ns) } }
+  end
+end
+puts pending

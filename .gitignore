@@ -1,0 +1,11 @@
+# raw downloads and run state; each election keeps its own, never committed
+/2026
+/2024
+/tmp
+logd.dat
+
+# 2022 data lives in the 2022 branch only
+/ballots
+/states
+/files
+/dump.sql

@@ -1,0 +1,21 @@
+#!/bin/bash
+# Scrapes the 2026 election over and over until every section with files of its own is cached and stored.
+# Each pass reloads the missing files of every section and stores the votes not stored yet (see lib/stored.rb).
+#
+# Env: PROXIES  file with one `host port user pass` per line (required, requests rotate through them)
+#      THREADS  threads per level (default 8)
+#      DB_NAME  database (default brazil-audit-2026)
+set -e
+cd "$(dirname "$0")/.."
+: "${PROXIES:?set PROXIES to a file with one 'host port user pass' per line}"
+export PROXIES YEAR=2026 THREADS=${THREADS:-8}
+STATES_COUNT=28 # 26 states, DF and the foreign vote (zz)
+
+mkdir -p tmp
+while :; do
+  mv -f tmp/scrape-2026.log tmp/scrape-2026.prev.log 2>/dev/null || true
+  ruby script.rb >> tmp/scrape-2026.log 2>&1 || true
+  [ "$(ls 2026/states | wc -l)" = "$STATES_COUNT" ] && [ "$(ruby bin/pending)" = 0 ] && break
+  sleep 20
+done
+echo "done: $(ls 2026/ballots | wc -l) sections" >> tmp/scrape-2026.log
