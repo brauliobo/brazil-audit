@@ -89,6 +89,11 @@ const open = (id) => {
 const toBrazil = () => { go(here({ scope: 'uf', uf: null })); focusPanel() }
 // the municipality maps have thousands of shapes: keyboard users pick a place from this list instead
 const places = computed(() => [...data.data.units.values()].map((u) => ({ id: u.id, label: unitPlace(u, 'mun') })).sort((a, b) => a.label.localeCompare(b.label)))
+// a municipality without a polygon in the IBGE mesh (e.g. created after it) is still in the data: say so instead of hiding it
+const noShape = computed(() => {
+  const shapes = new Set(data.data.map.items.map(([id]) => String(id)))
+  return [...data.data.units.values()].filter((u) => !shapes.has(String(u.id))).map((u) => unitPlace(u, 'mun'))
+})
 const find = (e) => { const place = places.value.find((p) => p.label === e.target.value); if (place) open(place.id) }
 const onKey = (e) => e.key === 'Escape' && scope.value === 'state' && toBrazil()
 onMounted(() => addEventListener('keydown', onKey))
@@ -170,6 +175,7 @@ p.headline(v-if="headline") {{ t('maps.headline', { office: officeName(office), 
       .chips
         Chip(v-for="[s] in ufs" :key="s" :href="href(year, 'drill', [s], { office })") {{ s.toUpperCase() }}
     p.muted {{ t('maps.note') }}
+    p.muted(v-if="data.data.grain === 'mun' && noShape.length") {{ t('maps.noShape', { names: noShape.join(', ') }) }}
   Panel(:title="t('maps.spreadTitle')" :state="spread" :election="year")
     ColumnChart(:label="t('maps.spreadTitle')" :values="spread.data.counts" :labels="binLabels" :tick="int" :fmt="(v) => t('maps.municipalities', { count: v })")
     p.muted {{ t('maps.spreadNote', { a: spread.data.a, b: spread.data.b }) }}

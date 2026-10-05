@@ -4,6 +4,7 @@ app:
   home: "Electoral audit: home"
   description: "Section-level results, maps and analysis of Brazilian elections, right in your browser. Data from the TSE, Brazil's electoral court."
   title: "{view} · {election} · {app}"
+  skip: Skip to content
 
 nav:
   label: Site sections
@@ -36,6 +37,7 @@ lang:
 footer:
   engine: Postgres in the browser via
   data: "data: TSE"
+  license: data licence
   raw: raw data
   design: design
   code: code (MIT)
@@ -80,10 +82,15 @@ engine:
   ready_other: PGlite (PostgreSQL in WASM, in a worker) · {count} queries
   importing: "importing {part} {progress}"
   clear: clear local data
+  clearing: clearing…
+  clearConfirm: Delete the data imported in this browser? It will be downloaded again when needed.
   clearHint: Deletes the tables imported into IndexedDB and the cache of the data files
 
 errors:
   http: "{url}: HTTP {status}"
+  notFound: We could not find this page or place. Check the address.
+  notFoundTitle: Not found
+  backHome: Back to the overview
   readOnly: "The console is read-only: statements that change data or tables are refused. Use select."
   render: "Something went wrong while rendering this page: {message}"
   tableGone: "Table {table} no longer exists: every election uses the same tables ({tables}) with the columns election and turn. Example: where election = {year} and turn = {turn}. See the catalog in the examples."
@@ -131,6 +138,7 @@ residual:
   hint: Adds to the national, state and municipal totals the votes that the official total (of the zone or municipality) has beyond the sections with published files. There is no section-level detail, so sections and section-based analyses do not include them.
 
 overview:
+  title: "Overview · {election}"
   national: National result
   partyAggregate: Votes aggregated by party (first two digits of the number); governor and senator add up all states.
   included: The totals include {votes} votes from {sections} sections that the TSE did not publish, taken from each municipality's official total (no section-level detail).
@@ -182,6 +190,7 @@ maps:
   abroad: "Abroad: {name} {share}"
   openStateTable: Open the table of a state
   note: "Source: TSE, IBGE. Hover (or Tab through the states) to see the votes; click a state to open its municipalities (Esc goes back to Brazil) and a municipality for the detail. Fernando de Noronha is shown enlarged in the corner."
+  noShape: "No polygon in the map (they only appear in the search list and in the drill-down): {names}."
   blankAndNull: "Blank and null: {rate}"
   clickCities: Click to see the municipalities
   winner: "Winner: {name}"
@@ -268,6 +277,7 @@ analysis:
   citySections_other: "{share} · {count} sections"
   benfordTitle: First digit of the votes per section (Benford)
   observed: observed
+  benfordNote: With thousands of sections the χ² test almost always rejects Benford, and small sections (few votes) naturally deviate from it; look at the size of the deviation in the chart, not only at the χ².
   expected: "expected (Benford) · χ² = {chi2} (8 df; critical at 5% = {critical}) · n = {n}"
   ratesTitle: Blank and null by state (president)
   noBlank: This election only has nominal votes per candidate in the dump (no blank/null).
@@ -275,7 +285,7 @@ analysis:
   nulls: "null"
 
 time:
-  title: "Voting time · {place}"
+  title: "Voting time · {place} · {election}"
   placeSection: "Section {section} · zone {zone} · {city}/{state}"
   placeCity: "{city}/{state}"
   clock: Clock
@@ -283,10 +293,10 @@ time:
   clockLocal: local, as recorded
   seeResults: section results →
   unavailable: This election has no voting times in the dump; pick one that does.
-  curveTitle: "Votes every 10 minutes (post President: one event per voter)"
+  curveTitle: "Votes every 10 minutes (one record per voter, in the vote for president)"
   summary: "{events} events in {sections} sections ({cities} municipalities) · clock {clock}"
   clockConverted: "converted to Brasília time using the time zone estimated per municipality (min. {min}h, max. {max}h)"
-  clockRecorded: local as recorded by the scraper
+  clockRecorded: local ballot-box clock, as recorded
   pace: Pace per section
   sortBy: Sort by
   paceNote: "Per-section statistics from the intervals between votes (the median of a normal voting is close to 100 s). Only loaded states are included: pick a state."
@@ -352,7 +362,9 @@ coverage:
   byState: By state
   residualSummary: Votes of sections without files, taken from the official municipal total
   residualNote: Each vote here comes from the official zone or municipal total (minus what the sections with files add up to), not from section files; that is why they only enter the national, state and municipal totals and the row of each zone.
-  skippedCount: "Municipalities/offices without addition ({n}):"
+  skippedCount: "Municipalities and offices without addition, all offices ({n}; the Overview counts only the president's, {president}):"
+  unmatchedNote_one: "{count} section without a file received no addition: the official total of its municipality or post (abroad) already matches the sections we have, so it had no votes."
+  unmatchedNote_other: "{count} sections without a file received no addition: the official total of their municipality or post (abroad) already matches the sections we have, so they had no votes."
   lostSummary: "Sections without a result ({n})"
   sectionsWithoutFile: Sections without a file
   votesPresident: Votes (president)

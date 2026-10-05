@@ -2,7 +2,7 @@
 import { computed } from 'vue'
 import { route, href, go, setParam } from '../router'
 import { ELECTIONS, BUCKET, collate, inElection } from '../model'
-import { stateName, stateTitle } from '../labels'
+import { electionLabel, stateName, stateTitle } from '../labels'
 import { t } from '../i18n'
 import { ensureScope, ensureSmall, statesIn } from '../data'
 import { useAsync } from '../use'
@@ -99,7 +99,7 @@ const clockNote = computed(() => (brt.value ? t('time.clockConverted', { min: su
 </script>
 
 <template lang="pug">
-h1 {{ t('time.title', { place }) }}
+h1 {{ t('time.title', { place, election: electionLabel(year) }) }}
 .cluster(v-if="cfg.hasTimes")
   Field(:label="t('common.state')")
     select(:value="state ?? ''" @change="pickState")

@@ -4,7 +4,7 @@ import { route, href, setParam } from '../router'
 import { ELECTIONS, candVotes, inElection } from '../model'
 import { electionLabel, stateTitle } from '../labels'
 import { t } from '../i18n'
-import { ensure, ensureScope, loadedParts, statesIn } from '../data'
+import { ensure, ensureScope, loadedParts, loadedStates, statesIn } from '../data'
 import { useAsync } from '../use'
 import { objects } from '../db'
 import { int, num, pct } from '../format'
@@ -95,7 +95,7 @@ h1 {{ t('analysis.title', { election: electionLabel(year) }) }}
 .cluster
   Field(:label="t('analysis.scope')")
     select(:value="state ?? ''" @change="pick('state', $event)")
-      option(value="") {{ t('analysis.loaded', { count: loaded }) }}
+      option(value="") {{ t('analysis.loaded', { count: loadedStates('rdv', year) }) }}
       option(v-for="s in stateOptions" :key="s" :value="s" :selected="s === state") {{ stateTitle(s) }}
   Field(v-if="candidates.data" :label="t('analysis.candidate')")
     select(:value="cand" @change="pick('cand', $event)")
@@ -115,6 +115,7 @@ h1 {{ t('analysis.title', { election: electionLabel(year) }) }}
   Panel(:title="t('analysis.benfordTitle')" :state="benford" :election="year")
     ColumnChart(:label="t('analysis.benfordTitle')" :values="benford.data.observed" :labels="['1','2','3','4','5','6','7','8','9']" :line="benford.data.expected" :fmt="(v) => pct(v, 1)")
     Legend(:items="benfordLegend")
+    p.muted {{ t('analysis.benfordNote') }}
   Panel(:title="t('analysis.ratesTitle')" :state="rates" :election="year" wide)
     template(v-if="!cfg.hasBlank")
       p.muted {{ t('analysis.noBlank') }}

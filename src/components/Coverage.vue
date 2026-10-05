@@ -47,7 +47,7 @@ const resid = useAsync(() => [covered.value, coverage.data], async (_, q) => {
   const perUf = objects(await q(`select uf state, count(distinct city) cities, sum(m) sections, sum(v) votes from (select uf, city, zone, max(sections_missing) m,
     sum(votes) filter (where number not in ('branco', 'nulo')) v from residual where office = 1 and ${inElection(props.year)} group by 1, 2, 3) t group by 1 order by 1`))
   const skipped = objects(await q(`select uf, city, zone, office, reason from residual_skipped where ${inElection(props.year)} order by uf, city, zone, office`))
-  return { perUf, skipped }
+  return { perUf, skipped, added: perUf.reduce((n, r) => n + r.sections, 0) }
 })
 const residCols = computed(() => [
   { key: 'state', label: t('common.state'), fmt: stateTitle },
@@ -93,7 +93,8 @@ Panel(:title="t('coverage.title')" :state="coverage" :election="year" wide)
       summary {{ t('coverage.residualSummary') }}
       p.muted {{ t('coverage.residualNote') }}
       DataTable(:columns="residCols" :rows="resid.data.perUf")
-      p.muted(v-if="resid.data.skipped.length") {{ t('coverage.skippedCount', { n: resid.data.skipped.length }) }}
+      p.muted(v-if="coverage.data.missing > resid.data.added") {{ t('coverage.unmatchedNote', { count: coverage.data.missing - resid.data.added }) }}
+      p.muted(v-if="resid.data.skipped.length") {{ t('coverage.skippedCount', { n: resid.data.skipped.length, president: resid.data.skipped.filter((r) => r.office === 1).length }) }}
       DataTable(v-if="resid.data.skipped.length" :columns="skippedCols" :rows="resid.data.skipped")
     details
       summary {{ t('coverage.lostSummary', { n: int(coverage.data.missing) }) }}

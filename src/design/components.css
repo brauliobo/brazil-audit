@@ -119,6 +119,9 @@
 
 /* ---- site chrome ---- */
 .site-header { display: flex; flex-wrap: wrap; gap: var(--space-2) var(--space-6); align-items: center; padding: var(--header-padding); background: var(--header-bg); border-bottom: var(--border-width-1) solid var(--header-border); }
+.skip-link { position: absolute; inset-block-start: var(--space-2); inset-inline-start: var(--space-2); padding: var(--space-2) var(--space-3); border-radius: var(--radius-control); background: var(--surface-inverse); color: var(--text-inverse); transform: translateY(-200%); }
+.skip-link:focus { transform: none; z-index: var(--z-tooltip); }
+main:focus { outline: none; }
 .brand { display: inline-flex; align-items: center; color: var(--text-primary); min-height: var(--tab-height); }
 .brand:hover { text-decoration: none; }
 .tabs { display: flex; flex-wrap: var(--header-tabs-wrap); gap: var(--space-1); overflow-x: var(--header-tabs-overflow); scrollbar-width: thin; }

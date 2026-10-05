@@ -5,6 +5,7 @@ app:
   home: "Auditoria eleitoral: início"
   description: Resultados por seção, mapas e análises das eleições brasileiras, direto no navegador. Dados do TSE.
   title: "{view} · {election} · {app}"
+  skip: Pular para o conteúdo
 
 nav:
   label: Seções do site
@@ -37,6 +38,7 @@ lang:
 footer:
   engine: Postgres no navegador via
   data: "dados: TSE"
+  license: licença dos dados
   raw: dados brutos
   design: design
   code: código (MIT)
@@ -81,10 +83,15 @@ engine:
   ready_other: PGlite (PostgreSQL em WASM, num worker) · {count} consultas
   importing: "importando {part} {progress}"
   clear: limpar dados locais
+  clearing: limpando…
+  clearConfirm: Apagar os dados importados neste navegador? Eles serão baixados de novo quando necessário.
   clearHint: Apaga as tabelas importadas no IndexedDB e o cache dos arquivos de dados
 
 errors:
   http: "{url}: HTTP {status}"
+  notFound: Não encontramos esta página ou este local. Confira o endereço.
+  notFoundTitle: Não encontrado
+  backHome: Voltar à visão geral
   readOnly: "O console é somente leitura: comandos que alteram dados ou tabelas são recusados. Use select."
   render: "Algo deu errado ao montar esta página: {message}"
   tableGone: "A tabela {table} não existe mais: todas as eleições usam as mesmas tabelas ({tables}) com as colunas election e turn. Exemplo: where election = {year} and turn = {turn}. Veja o catálogo nos exemplos."
@@ -132,6 +139,7 @@ residual:
   hint: Soma aos totais nacionais, de UF e de município os votos que o total oficial (da zona ou do município) tem a mais que as seções com arquivo publicado. Não há detalhe por seção, então seções e as análises por seção não os incluem.
 
 overview:
+  title: "Visão geral · {election}"
   national: Resultado nacional
   partyAggregate: Votos agregados por partido (dois primeiros dígitos do número); governador e senador somam todas as UFs.
   included: Os totais incluem {votes} votos de {sections} seções que o TSE não publicou, tomados do total oficial de cada município (sem detalhe por seção).
@@ -183,6 +191,7 @@ maps:
   abroad: "Exterior: {name} {share}"
   openStateTable: Abrir a tabela de uma UF
   note: "Fonte: TSE, IBGE. Passe o mouse (ou use Tab nas UFs) para ver os votos; clique numa UF para abrir os municípios dela (Esc volta ao Brasil) e num município para o detalhamento. Fernando de Noronha aparece ampliado no canto."
+  noShape: "Sem polígono no mapa (só aparecem na lista de busca e no detalhamento): {names}."
   blankAndNull: "Brancos e nulos: {rate}"
   clickCities: Clique para ver os municípios
   winner: "Vencedor: {name}"
@@ -269,6 +278,7 @@ analysis:
   citySections_other: "{share} · {count} seções"
   benfordTitle: Primeiro dígito dos votos por seção (Benford)
   observed: observado
+  benfordNote: Com milhares de seções o teste χ² quase sempre rejeita Benford, e seções pequenas (poucos votos) desviam dele naturalmente; olhe o tamanho do desvio no gráfico, não só o χ².
   expected: "esperado (Benford) · χ² = {chi2} (8 gl; crítico a 5% = {critical}) · n = {n}"
   ratesTitle: Brancos e nulos por UF (presidente)
   noBlank: Esta eleição só tem votos nominais por candidato no dump (sem brancos/nulos).
@@ -276,7 +286,7 @@ analysis:
   nulls: nulos
 
 time:
-  title: "Horários de votação · {place}"
+  title: "Horários de votação · {place} · {election}"
   placeSection: "Seção {section} · zona {zone} · {city}/{state}"
   placeCity: "{city}/{state}"
   clock: Relógio
@@ -284,10 +294,10 @@ time:
   clockLocal: local, como gravado
   seeResults: resultados da seção →
   unavailable: Esta eleição não tem horários de votação no dump; escolha uma que tenha.
-  curveTitle: "Votos a cada 10 minutos (post Presidente: um evento por eleitor)"
+  curveTitle: "Votos a cada 10 minutos (um registro por eleitor, na votação para presidente)"
   summary: "{events} eventos em {sections} seções ({cities} municípios) · relógio {clock}"
   clockConverted: "convertido para Brasília com o fuso estimado por município (mín. {min}h, máx. {max}h)"
-  clockRecorded: local como gravado pelo scraper
+  clockRecorded: relógio local da urna, como gravado
   pace: Ritmo por seção
   sortBy: Ordenar por
   paceNote: "Estatísticas por seção a partir dos intervalos entre votos (a mediana de uma votação normal fica perto de 100 s). Só entram UFs carregadas: escolha uma UF."
@@ -353,7 +363,9 @@ coverage:
   byState: Por UF
   residualSummary: Votos de seções sem arquivo, tomados do total oficial do município
   residualNote: Cada voto aqui vem do total oficial da zona ou do município (menos o que as seções com arquivo somam), não de arquivos de seção; por isso só entram nos totais nacionais, de UF e de município e na linha de cada zona.
-  skippedCount: "Municípios/cargos sem acréscimo ({n}):"
+  skippedCount: "Municípios e cargos sem acréscimo, todos os cargos ({n}; a Visão geral conta só os do presidente, {president}):"
+  unmatchedNote_one: "{count} seção sem arquivo não recebeu acréscimo: o total oficial do seu município ou posto (exterior) já fecha com as seções que temos, ou seja, ela não teve votos."
+  unmatchedNote_other: "{count} seções sem arquivo não receberam acréscimo: o total oficial do seu município ou posto (exterior) já fecha com as seções que temos, ou seja, elas não tiveram votos."
   lostSummary: "Seções sem resultado ({n})"
   sectionsWithoutFile: Seções sem arquivo
   votesPresident: Votos (presidente)

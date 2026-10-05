@@ -95,7 +95,7 @@ const cols = computed(() => [
 </script>
 
 <template lang="pug">
-h1 {{ electionLabel(year) }}
+h1 {{ t('overview.title', { election: electionLabel(year) }) }}
 .cluster(v-if="cfg.hasResidual")
   ResidualSwitch
 .grid-auto

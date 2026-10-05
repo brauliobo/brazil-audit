@@ -1,4 +1,4 @@
-import { defineConfig } from 'vite'
+import { defineConfig, loadEnv } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import { load as loadYaml } from 'js-yaml'
 import { cpSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs'
@@ -40,6 +40,10 @@ const pages = () => ({
       writeFileSync(`dist/${route}/index.html`, index)
     }
     writeFileSync('dist/404.html', fallbackPage)
+    const site = loadEnv('production', '.', 'VITE_').VITE_SITE_URL
+    const urls = staticRoutes().filter((r) => !HIDDEN_VIEWS.some((v) => r.endsWith(`/${v}`))).map((r) => `  <url><loc>${site}/${r}</loc></url>`)
+    writeFileSync('dist/sitemap.xml', `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.join('\n')}\n</urlset>\n`)
+    writeFileSync('dist/robots.txt', `User-agent: *\nAllow: /\nSitemap: ${site}/sitemap.xml\n`)
   },
 })
 

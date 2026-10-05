@@ -17,6 +17,7 @@ export const parts = (table, election) => Object.keys(tables()[table].parts).fil
 export const isLoaded = (table, id) => `${table}/${id}` in store.loaded
 export const loadedParts = (table, election) => parts(table, election).filter((id) => isLoaded(table, id))
 const stateOf = (id) => id.split('/')[1]?.split('.')[0]
+export const loadedStates = (table, election) => new Set(loadedParts(table, election).map(stateOf)).size
 
 /** The app mounts only after this resolves, so views can read the manifest synchronously. */
 export const manifestReady = fetch(`${BASE}data/manifest.json`).then(async (res) => {
