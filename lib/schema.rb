@@ -9,7 +9,7 @@ module Schema
       Integer :nominal_votes; Integer :blank_votes; Integer :null_votes; Integer :legend_votes; Integer :annulled_votes
       Integer :place_code; String :place; String :address; Time :received_at; Time :first_totalized_at
     end
-    section(:section_urn, %i[turn urn]) do
+    section(:section_urn, %i[turn]) do
       smallint :turn; bigint :votes
       String :urn; String :urn_type; String :flashcard; String :load_1; String :load_2; Time :loaded_at
       String :aggregated; Integer :place_code; Time :opened_at; Time :closed_at; Integer :biometric_voters

@@ -1,6 +1,6 @@
 module Targets
-  # BWEB (boletim de urna): one row per votable of a section. A section that used more than one urn (a replacement, or
-  # one voter moved to another urn) has a row per urn, with the votes recorded in it and its own opening and closing.
+  # BWEB (boletim de urna): one row per votable of a section; the urn, its load and the opening and closing of the voting
+  # are the same in all of them, so a section with two different values would break the unique index.
   # The votes of all the offices are summed to be checked against the ones of votacao_secao; cd_tipo_votavel is
   # 1 nominal, 2 blank, 3 null, 4 legend and 5 annulled and counted apart (97), anything else is unclassified.
   module SectionUrn
