@@ -1,7 +1,7 @@
 <script setup vapor>
 import { computed, onMounted, onUnmounted } from 'vue'
 import { route, href, go, setParam } from '../router'
-import { ELECTIONS, STATE_NAMES } from '../model'
+import { ELECTIONS, STATE_NAMES, inElection } from '../model'
 import { partyColor } from '../colors'
 import { loadGeo, preloadState } from '../geo'
 import { candName, ensureRollups, residualOn, rollup, margin, quantile, stateWinners, titleCase, unitSql, unitTip, unitsOf, winnerFills, winnerLegend, winnersHeadline } from '../results'
@@ -30,9 +30,9 @@ const pick = (key) => (e) => setParam(key, e.target.value)
 const base = useAsync(() => [year.value], async ([y]) => { await ensureRollups(y); return true })
 
 const rateSql = (y, grain) => (grain === 'uf'
-  ? `select state id, sum(blank) blank, sum(nul) nul, sum(nominal) nominal from ${rollup(y).tot} where office = $1 and state <> 'zz' group by 1`
+  ? `select state id, sum(blank) blank, sum(nul) nul, sum(nominal) nominal from ${rollup(y).tot} where office = $1 and ${inElection(y)} and state <> 'zz' group by 1`
   : `select m.ibge id, sum(t.blank) blank, sum(t.nul) nul, sum(t.nominal) nominal from ${rollup(y).tot} t join mun_map m on m.state = t.state and m.city = t.city
-     where t.office = $1 and ($2::text = '' or t.state = $2) group by 1`)
+     where t.office = $1 and ${inElection(y, 't')} and ($2::text = '' or t.state = $2) group by 1`)
 
 const grain = computed(() => (scope.value === 'uf' ? 'uf' : 'mun'))
 const geoKind = computed(() => ({ uf: 'uf', mun: 'mun', state: uf.value })[scope.value])
@@ -41,7 +41,7 @@ const data = useAsync(() => [year.value, grain.value, scope.value === 'state' ? 
   if (base.loading) return null
   const args = g === 'uf' ? [o, cand] : [o, s, cand]
   const [rows, rates, map, overlay, winners] = await Promise.all([
-    q(unitSql(y, g), args), y === '2026' ? q(rateSql(y, g), g === 'uf' ? [o] : [o, s]) : null, loadGeo(geoKind.value), scope.value === 'mun' ? loadGeo('uf') : null, stateWinners(q, y),
+    q(unitSql(y, g), args), ELECTIONS[y].hasBlank ? q(rateSql(y, g), g === 'uf' ? [o] : [o, s]) : null, loadGeo(geoKind.value), scope.value === 'mun' ? loadGeo('uf') : null, stateWinners(q, y),
   ])
   const units = unitsOf(rows)
   for (const r of rates ? objects(rates) : []) Object.assign(units.get(r.id) ?? {}, { rate: (r.blank + r.nul) / (r.nominal + r.blank + r.nul) })
@@ -101,11 +101,11 @@ const legendItems = computed(() => [
 const BINS = 20
 const spread = useAsync(() => [year.value, base.loading, residualOn.value], async ([y], q) => {
   if (base.loading) return null
-  const rows = objects(await q(`with t as (select cand, sum(votes) v from ${rollup(y).res} where office = 1 and state <> 'zz' group by 1 order by 2 desc limit 2),
+  const rows = objects(await q(`with t as (select cand, sum(votes) v from ${rollup(y).res} where office = 1 and ${inElection(y)} and state <> 'zz' group by 1 order by 2 desc limit 2),
     a as (select cand from t order by v desc limit 1), b as (select cand from t order by v limit 1)
     select sum(r.votes) valid, (sum(r.votes) filter (where r.cand = (select cand from a)) - sum(r.votes) filter (where r.cand = (select cand from b)))::float8 / sum(r.votes) margin,
-      (select short_name from cands where election = ${y} and office = 1 and uf = 'br' and n = (select cand from a)) na, (select short_name from cands where election = ${y} and office = 1 and uf = 'br' and n = (select cand from b)) nb
-    from ${rollup(y).res} r join mun_map m on m.state = r.state and m.city = r.city where r.office = 1 and r.state <> 'zz' group by m.ibge having sum(r.votes) > 0`))
+      (select short_name from cands where election = ${ELECTIONS[y].year} and office = 1 and uf = 'br' and n = (select cand from a)) na, (select short_name from cands where election = ${ELECTIONS[y].year} and office = 1 and uf = 'br' and n = (select cand from b)) nb
+    from ${rollup(y).res} r join mun_map m on m.state = r.state and m.city = r.city where r.office = 1 and ${inElection(y, 'r')} and r.state <> 'zz' group by m.ibge having sum(r.votes) > 0`))
   const counts = Array(BINS).fill(0)
   for (const r of rows) counts[Math.min(Math.floor(((r.margin + 1) / 2) * BINS), BINS - 1)]++
   return { counts, points: rows.map((r) => [Math.log10(r.valid), r.margin]), a: titleCase(rows[0].na), b: titleCase(rows[0].nb) }
@@ -117,7 +117,7 @@ const ufs = Object.entries(STATE_NAMES).filter(([s]) => s !== 'zz')
 <template lang="pug">
 h1 Mapas · {{ ELECTIONS[year].label }}
 .cluster
-  ResidualSwitch(v-if="year === '2026'")
+  ResidualSwitch(v-if="ELECTIONS[year].hasResidual")
   Field(label="Escala")
     select(@change="pick('scope')")
       option(value="uf" :selected="scope === 'uf'") Brasil por UF
@@ -134,7 +134,7 @@ h1 Mapas · {{ ELECTIONS[year].label }}
       option(value="winner" :selected="metric === 'winner'") Quem venceu
       option(value="share" :selected="metric === 'share'") % de um candidato
       option(value="margin" :selected="metric === 'margin'") Margem da vitória
-      option(value="blank" :selected="metric === 'blank'" :disabled="year === '2022'") Brancos + nulos
+      option(value="blank" :selected="metric === 'blank'" :disabled="!ELECTIONS[year].hasBlank") Brancos + nulos
   Field(v-if="metric === 'share' && data.data" label="Candidato")
     select(@change="pick('cand')")
       option(v-for="l in leaders" :key="l.cand" :value="l.cand" :selected="l.cand === shareCand") {{ candName(l) }}

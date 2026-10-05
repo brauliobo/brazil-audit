@@ -1,52 +1,52 @@
 <script setup vapor>
 import { computed, ref } from 'vue'
-import { ELECTIONS, STATE_NAMES } from '../model'
-import { ensure, ensureDefault, loadedParts, parts } from '../data'
+import { ELECTIONS, STATE_NAMES, inElection } from '../model'
+import { ensureSmall } from '../data'
 import { useAsync } from '../use'
 import { objects } from '../db'
 import { int, pct } from '../format'
 import Panel from './Panel.vue'
 import Field from './Field.vue'
 import Stat from './Stat.vue'
+import Notice from './Notice.vue'
 import DataTable from './DataTable.vue'
 
-const OFFICES = ELECTIONS[2026].offices
-
-// 2026: own sections (TSE configs) vs sections with published results; 2022: every section of the dump.
+// Elections with coverage: own sections (TSE configs) vs sections with published results; the others: every section of the dump.
 const props = defineProps({ year: String })
+const cfg = computed(() => ELECTIONS[props.year])
+const OFFICES = computed(() => cfg.value.offices)
 const PAGE = 15
 const uf = ref('')
 const page = ref(0)
-const is26 = computed(() => props.year === '2026')
+const covered = computed(() => cfg.value.hasCoverage)
 
-const coverage = useAsync(() => [props.year, loadedParts('votes_2022').length], async ([y], q) => {
-  if (y === '2022') {
-    await ensureDefault('votes_2022')
-    const [r] = objects(await q('select sum(sections) stored from tot_2022'))
-    return { rows: [], stored: r.stored, parts: loadedParts('votes_2022').length, total: parts('votes_2022').length }
+const coverage = useAsync(() => [props.year], async ([y], q) => {
+  await ensureSmall(y, 'tot', 'cov')
+  if (!covered.value) {
+    const [r] = objects(await q(`select sum(sections) stored, sum(blank) is null noblank from tot where office = 1 and ${inElection(y)}`))
+    return { rows: [], stored: r.stored, noblank: r.noblank }
   }
-  await ensure('cov_2026')
-  const rows = objects(await q('select state, own, stored, aggregated, missing from cov_2026 order by state'))
+  const rows = objects(await q(`select state, own, stored, aggregated, missing from cov where ${inElection(y)} order by state`))
   const sum = (k) => rows.reduce((t, r) => t + r[k], 0)
   return { rows, own: sum('own'), stored: sum('stored'), aggregated: sum('aggregated'), missing: sum('missing') }
 })
 
 const lost = useAsync(() => [uf.value, page.value, coverage.data], async ([u, p], q) => {
-  if (!is26.value || !coverage.data) return null
-  await ensure('miss_2026')
-  const rows = objects(await q(`select state, city, zone, section, count(*) over () total from miss_2026 where $1::text = '' or state = $1
+  if (!covered.value || !coverage.data) return null
+  await ensureSmall(props.year, 'miss')
+  const rows = objects(await q(`select state, city, zone, section, count(*) over () total from miss where ${inElection(props.year)} and ($1::text = '' or state = $1)
     order by state, city, zone, section limit ${PAGE} offset ${p * PAGE}`, [u]))
   return { rows, total: rows[0]?.total ?? 0 }
 })
 
 // votes taken from the official municipality totals for sections without files, per UF (president), and the cities left out
 const REASONS = { not_totalized: 'total oficial ainda não totalizado', negative: 'total oficial menor que as seções que temos (arquivo desatualizado)', no_official_file: 'sem arquivo oficial do município' }
-const resid = useAsync(() => [is26.value, coverage.data], async (_, q) => {
-  if (!is26.value || !coverage.data) return null
-  await Promise.all(['residual_2026', 'residual_skipped_2026'].map((t) => ensure(t)))
+const resid = useAsync(() => [covered.value, coverage.data], async (_, q) => {
+  if (!covered.value || !coverage.data || !cfg.value.hasResidual) return null
+  await ensureSmall(props.year, 'residual', 'residual_skipped')
   const perUf = objects(await q(`select uf state, count(distinct city) cities, sum(m) sections, sum(v) votes from (select uf, city, zone, max(sections_missing) m,
-    sum(votes) filter (where number not in ('branco', 'nulo')) v from residual_2026 where office = 1 group by 1, 2, 3) t group by 1 order by 1`))
-  const skipped = objects(await q(`select uf, city, zone, office, reason from residual_skipped_2026 order by uf, city, zone, office`))
+    sum(votes) filter (where number not in ('branco', 'nulo')) v from residual where office = 1 and ${inElection(props.year)} group by 1, 2, 3) t group by 1 order by 1`))
+  const skipped = objects(await q(`select uf, city, zone, office, reason from residual_skipped where ${inElection(props.year)} order by uf, city, zone, office`))
   return { perUf, skipped: skipped.map((r) => ({ ...r, reason: REASONS[r.reason] ?? r.reason })) }
 })
 const residCols = [
@@ -59,7 +59,7 @@ const skippedCols = [
   { key: 'uf', label: 'UF', fmt: (v) => v.toUpperCase() },
   { key: 'city', label: 'Município' },
   { key: 'zone', label: 'Zona' },
-  { key: 'office', label: 'Cargo', fmt: (v) => OFFICES[v] },
+  { key: 'office', label: 'Cargo', fmt: (v) => OFFICES.value[v] },
   { key: 'reason', label: 'Motivo' },
 ]
 const stateCols = [
@@ -80,7 +80,7 @@ const pickState = (e) => { uf.value = e.target.value; page.value = 0 }
 
 <template lang="pug">
 Panel(title="Cobertura dos dados" :state="coverage" :election="year" wide)
-  template(v-if="is26")
+  template(v-if="covered")
     .cluster
       Stat(:value="pct(coverage.data.stored / coverage.data.own, 2)" label="das seções com resultado neste dump")
       Stat(:value="int(coverage.data.stored)" :label="`de ${int(coverage.data.own)} seções`")
@@ -104,7 +104,6 @@ Panel(title="Cobertura dos dados" :state="coverage" :election="year" wide)
             option(v-for="r in coverage.data.rows.filter((x) => x.missing)" :key="r.state" :value="r.state") {{ r.state.toUpperCase() }} ({{ r.missing }})
       DataTable(v-if="lost.data" :columns="lostCols" :rows="lost.data.rows" :page="page" :size="15" :total="Number(lost.data.total)" @page="page = $event")
   template(v-else)
-    p
-      b {{ int(coverage.data.stored) }}
-      |  de 472.027 seções do dump carregadas no navegador ({{ coverage.data.parts }}/{{ coverage.data.total }} UFs). O dump de 2022 tem só os votos nominais de Lula e Bolsonaro.
+    Stat(:value="int(coverage.data.stored)" label="seções no dump")
+    Notice(v-if="coverage.data.noblank") Brancos e nulos não foram coletados nesta eleição: o dump só tem os votos nominais por candidato.
 </template>

@@ -1,17 +1,20 @@
-// Election metadata and the SQL views that give every election the same shape:
-//   sec_<y>(state,city,zone,section,model,office,nominal,blank,nul)        one row per section and office
-//   cs_<y> (state,city,zone,section,model,office,cand,votes,nominal)       one row per section, office and candidate
-export const ELECTIONS = {
-  2022: { label: '2022 · 2º turno', offices: { 1: 'Presidente' }, time: false },
-  2026: {
-    label: '2026 · 1º turno',
-    offices: { 1: 'Presidente', 3: 'Governador', 5: 'Senador', 6: 'Deputado federal', 7: 'Deputado estadual', 8: 'Deputado distrital' },
-    time: true,
-  },
-}
+// Election metadata (src/elections.js) and the shared schema's helpers: every election lives in the same tables, told apart by the
+// `election` and `turn` columns; the views below give the section-level and rollup shapes once for all of them:
+//   sec (election,turn,state,city,zone,section,model,office,nominal,blank,nul)        one row per section and office
+//   cs  (election,turn,state,city,zone,section,model,office,cand,votes,nominal)       one row per section, office and candidate
+//   resx / totx  res / tot plus the official totals of sections without published files (residual)
+import { ELECTIONS } from './elections.js'
 
-/** The latest election is the default everywhere. */
-export const DEFAULT_ELECTION = Object.keys(ELECTIONS).at(-1)
+export { DEFAULT_ELECTION, ELECTIONS } from './elections.js'
+
+/** The election whose parliament the Parlamento tab opens when the current one has no seats data. */
+export const SEATS_ELECTION = Object.values(ELECTIONS).findLast((e) => e.hasSeats).key
+
+/** `election = 2026 and turn = 1` for an election key, optionally on a table alias. */
+export const inElection = (key, alias = '') => {
+  const [e, a] = [ELECTIONS[key], alias ? `${alias}.` : '']
+  return `${a}election = ${e.year} and ${a}turn = ${e.turn}`
+}
 
 export const VIEW_LABELS = { overview: 'Visão geral', maps: 'Mapas', parliament: 'Parlamento', drill: 'Detalhar', analysis: 'Análise', time: 'Horários', sql: 'SQL' }
 
@@ -25,38 +28,35 @@ export const STATE_NAMES = {
   rs: 'Rio Grande do Sul', sc: 'Santa Catarina', se: 'Sergipe', sp: 'São Paulo', to: 'Tocantins', zz: 'Exterior',
 }
 
+export const INDEXES = [
+  'create index if not exists cands_ix on cands (election, office, uf, n)',
+  'create index if not exists rdv_ix on rdv (election, turn, state, city)',
+  'create index if not exists res_ix on res (election, turn, state, office)',
+  'create index if not exists tot_ix on tot (election, turn, state, office)',
+  'create index if not exists vt_ix on vt (election, turn, state, city)',
+]
+
 export const VIEWS = [
-  `create or replace view sec_2022 as select state,city,zone,section,model,1 office,votes_13+votes_22 nominal,null::int blank,null::int nul from votes_2022`,
-  `create or replace view cs_2022 as
-    select state,city,zone,section,model,1 office,'13' cand,votes_13 votes,votes_13+votes_22 nominal from votes_2022
-    union all select state,city,zone,section,model,1,'22',votes_22,votes_13+votes_22 from votes_2022`,
-  // city and candidate rollups with the shape of the 2026 tot_2026 / res_2026 tables
-  `create or replace view tot_2022 as select state,city,1 office,count(*) sections,sum(votes_13+votes_22) nominal,null::bigint blank,null::bigint nul from votes_2022 group by 1,2`,
-  `create or replace view res_2022 as select state,city,1 office,'13' cand,sum(votes_13) votes from votes_2022 group by 1,2
-    union all select state,city,1,'22',sum(votes_22) from votes_2022 group by 1,2`,
-  // rollups plus the official municipality totals of sections without published files (see residual_2026)
-  `create or replace view resx_2026 as select state, city, office, cand, votes from res_2026
-    union all select uf, city, office, number, votes from residual_2026 where number not in ('branco', 'nulo')`,
-  `create or replace view totx_2026 as select state, city, office, sections, nominal, blank, nul from tot_2026
-    union all select uf, city, office, 0, sum(votes) filter (where number not in ('branco', 'nulo')), coalesce(sum(votes) filter (where number = 'branco'), 0),
-      coalesce(sum(votes) filter (where number = 'nulo'), 0) from residual_2026 group by uf, city, office`,
-  `create or replace view sec_2026 as select state,city,zone,section,model,office,nominal,blank,nul from rdv_2026`,
-  `create or replace view cs_2026 as
-    select r.state,r.city,r.zone,r.section,r.model,r.office,e.key cand,e.value::int votes,r.nominal from rdv_2026 r, jsonb_each_text(r.votes) e`,
+  'create or replace view sec as select election, turn, state, city, zone, section, model, office, nominal, blank, nul from rdv',
+  `create or replace view cs as select r.election, r.turn, r.state, r.city, r.zone, r.section, r.model, r.office, e.key cand, e.value::int votes, r.nominal
+    from rdv r, jsonb_each_text(r.votes) e`,
+  `create or replace view resx as select election, turn, state, city, office, cand, votes from res
+    union all select election, turn, uf, city, office, number, votes from residual where number not in ('branco', 'nulo')`,
+  `create or replace view totx as select election, turn, state, city, office, sections, nominal, blank, nul from tot
+    union all select election, turn, uf, city, office, 0, sum(votes) filter (where number not in ('branco', 'nulo')), coalesce(sum(votes) filter (where number = 'branco'), 0),
+      coalesce(sum(votes) filter (where number = 'nulo'), 0) from residual group by election, turn, uf, city, office`,
 ]
 
 export const OTHERS = 'Outros / inválidos'
 
-/** Joins a cs_<y> alias to its candidate name: presidential candidates are national, all others per state. */
-export const candJoin = (year, alias = 'cs') =>
-  `left join cands c on c.election=${year} and c.office=${alias}.office and c.n=${alias}.cand and c.uf=(case when ${alias}.office=1 then 'br' else ${alias}.state end)`
+/** Joins a cs/res alias to its candidate name: presidential candidates are national, all others per state. */
+export const candJoin = (key, alias = 'cs') =>
+  `left join cands c on c.election=${ELECTIONS[key].year} and c.office=${alias}.office and c.n=${alias}.cand and c.uf=(case when ${alias}.office=1 then 'br' else ${alias}.state end)`
 
 /** Per-section presidential votes of candidate `$1` (zero when absent) with the section's nominal total. */
-export const candVotes = (year) => year === '2022'
-  ? `select state,city,zone,section,model,nominal,votes from cs_2022 where cand = $1`
-  : `select state,city,zone,section,model,nominal,coalesce((votes->>$1)::int, 0) votes from rdv_2026 where office = 1`
+export const candVotes = (key) => `select state,city,zone,section,model,nominal,coalesce((votes->>$1)::int, 0) votes from rdv where office = 1 and ${inElection(key)}`
 
-/** Time-of-day buckets (vt_2026.b / vtc_2026.b): bucket 0 starts at 05:00 on the recorded local clock, 10 minutes each. */
+/** Time-of-day buckets (vt.b / vtc.b): bucket 0 starts at 05:00 on the recorded local clock, 10 minutes each. */
 export const BUCKET = { start: 5 * 3600, step: 600 }
 
 /** PGlite sorts in C.UTF-8 codepoint order (accented letters after Z): this key orders Portuguese names like pt-BR. */

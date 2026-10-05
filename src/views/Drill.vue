@@ -1,8 +1,8 @@
 <script setup vapor>
 import { computed } from 'vue'
 import { route, href, setParam } from '../router'
-import { ELECTIONS, STATE_NAMES, OTHERS, candJoin, collate } from '../model'
-import { ensure, ensureScope, ensureState } from '../data'
+import { ELECTIONS, STATE_NAMES, OTHERS, candJoin, collate, inElection } from '../model'
+import { ensure, ensureScope, ensureSmall, ensureState } from '../data'
 import { residualOn, rollup } from '../results'
 import { useAsync } from '../use'
 import { objects } from '../db'
@@ -32,28 +32,28 @@ const nameOf = (r) => (r.name ?? r.cand) + (r.party && r.party !== r.name ? ` ($
 // $1 = office, $2.. = the path so far
 const scope = (a) => a.map((_, i) => ` and ${LEVELS[i]} = $${i + 2}`).join('')
 
-// UF and (except 2026 deputies) municipality listings read the small rollups; deeper levels read the section parts
-const rollupGrain = (y, a, o) => a.length === 0 || (a.length === 1 && !(y === '2026' && o >= 6))
+// UF and (except deputies, whose rollup is per UF) municipality listings read the small rollups; deeper levels read the section parts
+const rollupGrain = (a, o) => a.length === 0 || (a.length === 1 && o < 6)
 
 async function listRows(y, a, o, s, p, q) {
   const params = [o, ...a]
   const k = a.length
-  const roll = rollupGrain(y, a, o)
-  const [tot, res, count] = roll ? [rollup(y).tot, rollup(y).res, 'sum(sections)'] : [`sec_${y}`, `cs_${y}`, 'count(*)']
+  const roll = rollupGrain(a, o)
+  const [tot, res, count] = roll ? [rollup(y).tot, rollup(y).res, 'sum(sections)'] : ['sec', 'cs', 'count(*)']
   const top = objects(await q(`select coalesce(c.n, '-') cand, coalesce(max(c.short_name), '${OTHERS}') name, max(c.party) party, sum(cs.votes) votes, sum(sum(cs.votes)) over () total
-    from ${res} cs ${candJoin(y)} where cs.office = $1 ${scope(a)} group by 1 order by votes desc limit 10`, params))
+    from ${res} cs ${candJoin(y)} where cs.office = $1 and ${inElection(y, 'cs')} ${scope(a)} group by 1 order by votes desc limit 10`, params))
   const cands = o === 1 || k > 0 ? top.filter((c) => c.cand !== '-').slice(0, 2) : []
   const child = LEVELS[k]
   const pick = (c, i) => `sum(votes) filter (where cand = $${k + 2 + i}) c${i}`
   const [a0, a1] = cands.map((c) => c.cand)
   const order = s.key === 'unit' ? collate('unit') : s.key
-  const rows = objects(await q(`with s as (select ${child} unit, ${count} sections, sum(nominal) nominal, sum(blank) blank, sum(nul) nul from ${tot} where office = $1 ${scope(a)} group by 1),
-    c as (select ${child} unit, ${cands.map(pick).join(',') || '0 c0'} from ${res} where office = $1 ${scope(a)} ${cands.length ? `and cand in ($${k + 2}${cands.length > 1 ? `, $${k + 3}` : ''})` : ''} group by 1)
+  const rows = objects(await q(`with s as (select ${child} unit, ${count} sections, sum(nominal) nominal, sum(blank) blank, sum(nul) nul from ${tot} where office = $1 and ${inElection(y)} ${scope(a)} group by 1),
+    c as (select ${child} unit, ${cands.map(pick).join(',') || '0 c0'} from ${res} where office = $1 and ${inElection(y)} ${scope(a)} ${cands.length ? `and cand in ($${k + 2}${cands.length > 1 ? `, $${k + 3}` : ''})` : ''} group by 1)
     select s.*, c.c0, ${cands.length > 1 ? 'c.c1' : '0 c1'}, count(*) over () total from s left join c using (unit)
     order by ${order} ${s.dir === 'desc' ? 'desc' : 'asc'}, unit limit ${PAGE} offset ${p * PAGE}`, [...params, ...[a0, a1].filter(Boolean)]))
   const total = rows[0]?.total ?? 0
   const lastPage = (p + 1) * PAGE >= total
-  const shown = !roll && y === '2026' && k === 2 && residualOn.value ? await withResidual(rows, a, o, cands, lastPage, y, q) : rows
+  const shown = !roll && ELECTIONS[y].hasResidual && k === 2 && residualOn.value ? await withResidual(rows, a, o, cands, lastPage, y, q) : rows
   return { mode: 'list', cands, rows: shown, total, top }
 }
 
@@ -63,9 +63,9 @@ async function listRows(y, a, o, s, p, q) {
 async function withResidual(rows, a, o, cands, lastPage, y, q) {
   const picks = cands.map((_, i) => `, sum(votes) filter (where number = $${4 + i}) c${i}`).join('')
   const found = objects(await q(`select zone, max(sections_missing) sections, sum(votes) filter (where number not in ('branco', 'nulo')) nominal, coalesce(sum(votes) filter (where number = 'branco'), 0) blank,
-    coalesce(sum(votes) filter (where number = 'nulo'), 0) nul${picks} from residual_2026 where uf = $1 and city = $2 and office = $3 group by zone order by zone`, [a[0], a[1], o, ...cands.map((c) => c.cand)]))
+    coalesce(sum(votes) filter (where number = 'nulo'), 0) nul${picks} from residual where uf = $1 and city = $2 and office = $3 and ${inElection(y)} group by zone order by zone`, [a[0], a[1], o, ...cands.map((c) => c.cand)]))
   if (!found.length) return rows
-  const inDump = new Set(objects(await q(`select distinct zone from sec_${y} where state = $1 and city = $2`, [a[0], a[1]])).map((r) => r.zone))
+  const inDump = new Set(objects(await q(`select distinct zone from sec where state = $1 and city = $2 and ${inElection(y)}`, [a[0], a[1]])).map((r) => r.zone))
   const note = (r) => ({ residual: true, ...r, c0: r.c0 ?? 0, c1: r.c1 ?? 0, unit: !r.zone ? `Seções sem arquivo publicado (${r.sections} seções): total oficial do município menos as seções com arquivo`
     : `${inDump.has(r.zone) ? 'Seções' : `Zona ${r.zone}, sem nenhuma seção com arquivo: seções`} sem arquivo publicado (${r.sections} seções) nesta zona: total oficial da zona menos as seções com arquivo` })
   const after = rows.flatMap((row) => [row, ...found.filter((r) => r.zone === row.unit).map(note)])
@@ -74,16 +74,15 @@ async function withResidual(rows, a, o, cands, lastPage, y, q) {
 
 async function sectionRows(y, a, q) {
   const rows = objects(await q(`select cs.office, coalesce(c.n, '-') cand, coalesce(max(c.short_name), '${OTHERS}') name, max(c.party) party, sum(cs.votes) votes, max(cs.nominal) nominal
-    from cs_${y} cs ${candJoin(y)} where cs.state = $1 and cs.city = $2 and cs.zone = $3 and cs.section = $4 group by 1, 2 order by cs.office, votes desc`, a))
-  const totals = objects(await q(`select office, nominal, blank, nul from sec_${y} where state = $1 and city = $2 and zone = $3 and section = $4 order by office`, a))
+    from cs cs ${candJoin(y)} where ${inElection(y, 'cs')} and cs.state = $1 and cs.city = $2 and cs.zone = $3 and cs.section = $4 group by 1, 2 order by cs.office, votes desc`, a))
+  const totals = objects(await q(`select office, nominal, blank, nul from sec where ${inElection(y)} and state = $1 and city = $2 and zone = $3 and section = $4 order by office`, a))
   return { mode: 'section', offices: totals.map((t) => ({ ...t, rows: rows.filter((r) => r.office === t.office).slice(0, 10) })) }
 }
 
 const view = useAsync(() => [year.value, args.value, office.value, sort.value, page.value, residualOn.value], async ([y, a, o, s, p], q) => {
   await ensure('cands')
-  if (y === '2022') await ensureScope('votes_2022', a[0])
-  else if (rollupGrain(y, a, o)) await Promise.all(['tot_2026', 'res_2026', 'residual_2026'].map((t) => ensure(t)))
-  else await (a.length === 4 ? ensureState : ensureScope)('rdv_2026', a[0], o)
+  if (rollupGrain(a, o)) await ensureSmall(y, 'tot', 'res', 'residual')
+  else await (a.length === 4 ? ensureState : ensureScope)('rdv', y, a[0], o)
   return a.length === 4 ? sectionRows(y, a, q) : listRows(y, a, o, s, p, q)
 })
 
@@ -118,7 +117,7 @@ Notice(v-if="view.error" kind="danger")
   strong {{ view.error.message }}
 Skeleton(v-else-if="!view.data")
 .cluster(v-if="args.length < 4")
-  ResidualSwitch(v-if="year === '2026' && args.length < 3")
+  ResidualSwitch(v-if="cfg.hasResidual && args.length < 3")
   Field(v-if="Object.keys(cfg.offices).length > 1" label="Cargo")
     select(:value="office" @change="setParam('office', $event.target.value)")
       option(v-for="(name, id) in cfg.offices" :key="id" :value="id" :selected="Number(id) === office") {{ name }}
@@ -134,6 +133,6 @@ Skeleton(v-else-if="!view.data")
     BarList(:items="sectionItems(o.rows)")
     p.muted nominais {{ int(o.nominal) }}
       template(v-if="o.blank != null")  · brancos {{ int(o.blank) }} · nulos {{ int(o.nul) }}
-  Panel(v-if="cfg.time" title="Horário de votação" :state="view" :election="year")
+  Panel(v-if="cfg.hasTimes" title="Horário de votação" :state="view" :election="year")
     a(:href="href(year, 'time', args)") ver horários desta seção →
 </template>

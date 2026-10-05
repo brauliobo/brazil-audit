@@ -1,30 +1,30 @@
-// Shared result queries for the map, tile-grid and polarization panels (all read the small tot_/res_ rollups).
+// Shared result queries for the map, polarization and overview panels (all read the small tot/res rollups).
 import { computed } from 'vue'
-import { ensure, ensureDefault } from './data'
+import { ensure, ensureSmall } from './data'
 import { route } from './router'
 import { objects } from './db'
 import { partyColor } from './colors'
 import { int, pct } from './format'
-import { STATE_NAMES, candJoin } from './model'
+import { ELECTIONS, STATE_NAMES, candJoin, inElection } from './model'
 
 /**
- * 2026 only: add the official municipality totals of sections without published files (residual_2026) to every rollup
+ * Elections with residual votes: add the official totals of sections without published files (table residual) to every rollup
  * (national, UF and city level; never to zones, sections or any section-based analysis). `?residual=0` turns it off.
  */
-export const residualOn = computed(() => route.value.election === '2026' && route.value.params.get('residual') !== '0')
+export const residualOn = computed(() => ELECTIONS[route.value.election].hasResidual && route.value.params.get('residual') !== '0')
 
 /** Names of the result and total rollups to query for an election (with or without the residual). */
-export const rollup = (year) => (year === '2026' && residualOn.value ? { res: 'resx_2026', tot: 'totx_2026' } : { res: `res_${year}`, tot: `tot_${year}` })
+export const rollup = (key) => (ELECTIONS[key].hasResidual && residualOn.value ? { res: 'resx', tot: 'totx' } : { res: 'res', tot: 'tot' })
 
 /** Loads everything the rollup-based visualizations need for an election. */
-export async function ensureRollups(year) {
+export async function ensureRollups(key) {
   await Promise.all([ensure('cands'), ensure('mun_map')])
-  await (year === '2022' ? ensureDefault('votes_2022') : Promise.all(['res_2026', 'tot_2026', 'residual_2026'].map((t) => ensure(t))))
+  await ensureSmall(key, 'res', 'tot', 'residual')
 }
 
 /** Leading two candidates per state for the president, with the state's valid (nominal) votes. */
 export async function stateWinners(q, year) {
-  return objects(await q(`with v as (select r.state, r.cand, 1 office, sum(r.votes) votes from ${rollup(year).res} r where r.office = 1 group by 1, 2),
+  return objects(await q(`with v as (select r.state, r.cand, 1 office, sum(r.votes) votes from ${rollup(year).res} r where r.office = 1 and ${inElection(year, 'r')} group by 1, 2),
     rk as (select *, row_number() over (partition by state order by votes desc, cand) rn, sum(votes) over (partition by state) valid from v)
     select rk.state, rk.cand, rk.votes, rk.valid, rk.rn, c.short_name name, c.party from rk ${candJoin(year, 'rk')} where rn <= 2 order by state, rn`))
 }
@@ -48,7 +48,7 @@ export function unitSql(y, grain) {
   const [id, name, join, where] = grain === 'uf'
     ? ['r.state', 'r.state', '', `r.state <> 'zz'`]
     : ['m.ibge', 'r.city', 'join mun_map m on m.state = r.state and m.city = r.city', `m.ibge is not null and ($2::text = '' or r.state = $2)`]
-  return `with v as (select ${id} id, max(${name}) name, r.state, r.office, r.cand, sum(r.votes) votes from ${rollup(y).res} r ${join} where r.office = $1 and ${where} group by ${id}, r.state, r.office, r.cand),
+  return `with v as (select ${id} id, max(${name}) name, r.state, r.office, r.cand, sum(r.votes) votes from ${rollup(y).res} r ${join} where r.office = $1 and ${inElection(y, 'r')} and ${where} group by ${id}, r.state, r.office, r.cand),
     rk as (select *, row_number() over (partition by id order by votes desc, cand) rn, sum(votes) over (partition by id) valid from v)
     select rk.id, rk.name, rk.state, rk.cand, rk.votes, rk.rn, rk.valid, c.short_name cname, c.party from rk ${candJoin(y, 'rk')} where rk.rn <= 3 or rk.cand = $${grain === 'uf' ? 2 : 3}`
 }

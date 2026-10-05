@@ -1,7 +1,7 @@
 <script setup vapor>
 import { computed } from 'vue'
 import { route, href } from './router'
-import { DEFAULT_ELECTION, ELECTIONS, VIEW_LABELS } from './model'
+import { DEFAULT_ELECTION, ELECTIONS, SEATS_ELECTION, VIEW_LABELS } from './model'
 import EngineStatus from './components/EngineStatus.vue'
 import Logo from './components/Logo.vue'
 import Tabs from './components/Tabs.vue'
@@ -18,7 +18,7 @@ const REPO = 'https://github.com/brauliobo/brazil-audit'
 const views = { overview: Overview, maps: Maps, parliament: Parliament, drill: Drill, analysis: Analysis, time: Time, sql: Sql, design: Design }
 const current = computed(() => views[route.value.view] ?? Overview)
 const election = computed(() => route.value.election)
-const nav = computed(() => Object.entries(VIEW_LABELS).map(([v, label]) => ({ label, href: href(v === 'parliament' ? '2026' : election.value, v), current: route.value.view === v })))
+const nav = computed(() => Object.entries(VIEW_LABELS).map(([v, label]) => ({ label, href: href(v === 'parliament' && !ELECTIONS[election.value].hasSeats ? SEATS_ELECTION : election.value, v), current: route.value.view === v })))
 const elections = computed(() => Object.entries(ELECTIONS).map(([y, e]) => ({ label: e.label, href: href(y, route.value.view, route.value.args), current: election.value === y })))
 </script>
 

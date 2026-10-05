@@ -1,8 +1,8 @@
 <script setup vapor>
 import { computed } from 'vue'
 import { route, href, setParam } from '../router'
-import { ELECTIONS, STATE_NAMES, candVotes } from '../model'
-import { ensure, ensureScope, loadedParts, parts } from '../data'
+import { ELECTIONS, STATE_NAMES, candVotes, inElection } from '../model'
+import { ensure, ensureScope, loadedParts, statesIn } from '../data'
 import { useAsync } from '../use'
 import { objects } from '../db'
 import { int, num, pct } from '../format'
@@ -17,17 +17,16 @@ import Scatter from '../components/Scatter.vue'
 const BINS = 40
 const year = computed(() => route.value.election)
 const cfg = computed(() => ELECTIONS[year.value])
-const table = computed(() => (year.value === '2022' ? 'votes_2022' : 'rdv_2026'))
 const state = computed(() => route.value.params.get('state') || null)
-const loaded = computed(() => loadedParts(table.value).length)
+const loaded = computed(() => loadedParts('rdv', year.value).length)
 
 // every panel waits for the data of the scope (selected UF, or the default set) and re-runs when more parts arrive
-const base = useAsync(() => [table.value, state.value], async ([t, s]) => { await ensure('cands'); await ensureScope(t, s); return true })
+const base = useAsync(() => [year.value, state.value], async ([y, s]) => { await ensure('cands'); await ensureScope('rdv', y, s); return true })
 const candidates = useAsync(() => [year.value, state.value, base.loading, loaded.value], async ([y, s], q) => {
   if (base.loading) return null
-  return objects(await q(`select cs.cand, coalesce(c.short_name, cs.cand) name, sum(cs.votes) votes from cs_${y} cs
-    join cands c on c.election = ${y} and c.office = 1 and c.n = cs.cand and c.uf = 'br'
-    where cs.office = 1 and ($1::text is null or cs.state = $1) group by cs.cand, c.short_name order by votes desc limit 8`, [s]))
+  return objects(await q(`select cs.cand, coalesce(c.short_name, cs.cand) name, sum(cs.votes) votes from cs cs
+    join cands c on c.election = ${cfg.value.year} and c.office = 1 and c.n = cs.cand and c.uf = 'br'
+    where cs.office = 1 and ${inElection(y, 'cs')} and ($1::text is null or cs.state = $1) group by cs.cand, c.short_name order by votes desc limit 8`, [s]))
 })
 const cand = computed(() => route.value.params.get('cand') ?? candidates.data?.[0]?.cand ?? null)
 const run = (fn) => useAsync(() => [year.value, state.value, cand.value, base.loading, loaded.value], async (d, q) => (base.loading || !cand.value ? null : fn(d, q)))
@@ -65,14 +64,14 @@ const benford = run(async ([y, s, c], q) => {
 
 const rates = useAsync(() => [year.value, state.value, base.loading, loaded.value], async ([y, s], q) => {
   if (base.loading) return null
-  if (y === '2022') return []
+  if (!cfg.value.hasBlank) return []
   return rows(q, `select state, count(*) sections, sum(blank)::float8 / nullif(sum(nominal + blank + nul), 0) blank_rate,
-    sum(nul)::float8 / nullif(sum(nominal + blank + nul), 0) null_rate from sec_${y} where office = 1 and ($1::text is null or state = $1) group by state order by state`, [s])
+    sum(nul)::float8 / nullif(sum(nominal + blank + nul), 0) null_rate from sec where office = 1 and ${inElection(y)} and ($1::text is null or state = $1) group by state order by state`, [s])
 })
 
 const benfordLegend = computed(() => [{ color: 'var(--chart-bar)', label: 'observado' }, { color: 'var(--chart-highlight)', label: `esperado (Benford) · χ² = ${num(benford.data.chi2)} (8 gl; crítico a 5% = 15,51) · n = ${int(benford.data.total)}` }])
 const pick = (key) => (e) => setParam(key, e.target.value)
-const stateOptions = computed(() => parts(table.value))
+const stateOptions = computed(() => statesIn('rdv', year.value))
 const section = (r) => href(year.value, 'drill', [r.state, r.city, r.zone, r.section])
 const histLabels = Array.from({ length: BINS }, (_, i) => `${(i * 100) / BINS}%`)
 const cols = [
@@ -114,7 +113,7 @@ h1 Análise · {{ cfg.label }}
     ColumnChart(:values="benford.data.observed" :labels="['1','2','3','4','5','6','7','8','9']" :line="benford.data.expected" :fmt="(v) => pct(v, 1)")
     Legend(:items="benfordLegend")
   Panel(title="Brancos e nulos por UF (presidente)" :state="rates" :election="year" wide)
-    template(v-if="year === '2022'")
+    template(v-if="!cfg.hasBlank")
       p.muted O dump de 2022 só tem votos nominais por candidato (sem brancos/nulos).
     template(v-else-if="rates.data")
       ColumnChart(:values="rates.data.map((r) => r.blank_rate)" :labels="rateLabels" :fmt="(v) => pct(v, 1)")
