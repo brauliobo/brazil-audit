@@ -1,23 +1,50 @@
-# Tables are created on the first run; all of them are keyed by the section (BASE_FIELDS)
+# Tables are created on the first run. The ones of a section are keyed by it (state, city_code, zone, section) plus
+# the turn and whatever else makes the row unique; states are lowercase, zones and sections zero padded to 4 digits.
 module Schema
   def self.setup
-    create(:votes){ Integer :votes_13; Integer :votes_22 } if LEGACY
-    create(:rdv_votes, %i[office]){ Integer :office; column :votes, :jsonb } unless LEGACY # { kind => { number => votes } }
-    create(:voting_times, %i[post time]){ String :post; Time :time }
-    [VOTES_TABLE, :voting_times].each{ |table| store_in_main table }
+    section(:rdv_votes, %i[turn office]){ smallint :turn; smallint :office; jsonb :votes } # { kind => { number => votes } }
+    section(:section_detail, %i[turn office]) do
+      smallint :turn; smallint :office
+      Integer :eligible; Integer :turnout; Integer :abstention
+      Integer :nominal_votes; Integer :blank_votes; Integer :null_votes; Integer :legend_votes; Integer :annulled_votes
+      Integer :place_code; String :place; String :address; Time :received_at; Time :first_totalized_at
+    end
+    section(:section_urn, %i[turn]) do
+      smallint :turn
+      String :urn; String :urn_type; String :flashcard; String :load_1; String :load_2; Time :loaded_at
+      String :aggregated; Integer :place_code; Time :opened_at; Time :closed_at; Integer :biometric_voters
+    end
+    section(:urn_match, %i[turn]) do
+      smallint :turn
+      String :expected_urn; String :urn; Time :expected_loaded_at; Time :loaded_at; String :origin; String :origin_desc; String :divergence
+    end
+    create(:candidates, %i[sq_candidato]) do
+      bigint :sq_candidato; String :state; smallint :office; String :office_name; String :number; String :name; String :ballot_name
+      Integer :party_number; String :party; String :party_name; bigint :coalition_id; String :coalition; String :coalition_parties
+      smallint :status_code; String :status; smallint :outcome_code; String :outcome
+      String :gender; String :race; String :education; String :occupation
+    end
+    create(:elected, %i[sq_candidato turn]) do
+      bigint :sq_candidato; smallint :turn; String :state; smallint :office; String :number; String :name
+      Integer :party_number; String :party; String :coalition; String :status; smallint :outcome_code; String :outcome
+      bigint :votes; bigint :valid_votes
+    end
+    create(:imports, %i[name]){ String :name; Integer :rows; Integer :loaded; bigint :votes; Integer :unclassified; Time :at }
   end
 
-  def self.create name, unique = [], &columns
-    return if name.in? DB.tables
-
-    DB.create_table name do
+  def self.section name, unique, &columns
+    create name, %i[state city_code zone section] + unique do
       BASE_FIELDS.each{ |f| String f }
       instance_eval(&columns)
-      index BASE_FIELDS + unique, unique: true
     end
   end
 
-  def self.store_in_main table
-    BASE_FIELDS.each{ |f| DB.execute "alter table #{table} alter column #{f} set storage main" }
+  def self.create name, unique, &columns
+    return if name.in? DB.tables
+
+    DB.create_table name do
+      instance_eval(&columns)
+      index unique, unique: true
+    end
   end
 end
