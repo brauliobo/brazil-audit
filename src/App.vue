@@ -3,6 +3,7 @@ import { computed } from 'vue'
 import { route, href } from './router'
 import { ELECTIONS, VIEW_LABELS } from './model'
 import EngineStatus from './components/EngineStatus.vue'
+import Logo from './components/Logo.vue'
 import Overview from './views/Overview.vue'
 import Drill from './views/Drill.vue'
 import Analysis from './views/Analysis.vue'
@@ -19,7 +20,8 @@ const election = computed(() => route.value.election)
 
 <template lang="pug">
 header.top
-  a.brand(:href="href(election, 'overview')") Auditoria eleitoral
+  a.brand(:href="href(election, 'overview')")
+    Logo
   nav
     a(v-for="(label, v) in VIEW_LABELS" :key="v" :href="href(v === 'parliament' ? '2026' : election, v)" :class="{ on: route.view === v }") {{ label }}
   .elections
