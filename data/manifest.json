@@ -1337,11 +1337,50 @@
      "name": "miss_2026",
      "columns": "state,city,zone,section",
      "ddl": "create table miss_2026 (state text, city text, zone text, section text)"
+    },
+    "mun_map": {
+     "parts": {
+      "all": {
+       "url": "2026/mun_map.csv.gz",
+       "bytes": 50739,
+       "rows": 5763,
+       "rawBytes": 134080
+      }
+     },
+     "name": "mun_map",
+     "columns": "state,city,ibge",
+     "ddl": "create table mun_map (state text, city text, ibge text)"
+    },
+    "elected_2026": {
+     "parts": {
+      "all": {
+       "url": "2026/elected_2026.csv.gz",
+       "bytes": 20091,
+       "rows": 1215,
+       "rawBytes": 61214
+      }
+     },
+     "name": "elected_2026",
+     "columns": "uf,office,n,name,party,status,votes",
+     "ddl": "create table elected_2026 (uf text, office int, n text, name text, party text, status text, votes bigint)"
+    },
+    "seats_2026": {
+     "parts": {
+      "all": {
+       "url": "2026/seats_2026.csv.gz",
+       "bytes": 1805,
+       "rows": 479,
+       "rawBytes": 7336
+      }
+     },
+     "name": "seats_2026",
+     "columns": "uf,office,bloc,seats",
+     "ddl": "create table seats_2026 (uf text, office int, bloc text, seats int)"
     }
    }
   }
  },
- "version": "2026-10-05T09:44:17.867Z",
+ "version": "2026-10-05T11:18:31.550Z",
  "cands": {
   "name": "cands",
   "columns": "election,uf,office,n,name,short_name,party,official_votes",
@@ -1349,5 +1388,155 @@
   "rows": 18854,
   "bytes": 436345,
   "ddl": "create table cands (election int, uf text, office int, n text, name text, short_name text, party text, official_votes int)"
+ },
+ "geo": {
+  "uf": {
+   "url": "geo/uf.json",
+   "bytes": 20476,
+   "items": 27
+  },
+  "mun": {
+   "url": "geo/mun.json",
+   "bytes": 670622,
+   "items": 5569
+  },
+  "states": {
+   "ro": {
+    "url": "geo/mun-ro.json",
+    "bytes": 43742,
+    "items": 52
+   },
+   "ac": {
+    "url": "geo/mun-ac.json",
+    "bytes": 20077,
+    "items": 22
+   },
+   "am": {
+    "url": "geo/mun-am.json",
+    "bytes": 126844,
+    "items": 62
+   },
+   "rr": {
+    "url": "geo/mun-rr.json",
+    "bytes": 27164,
+    "items": 15
+   },
+   "pa": {
+    "url": "geo/mun-pa.json",
+    "bytes": 145343,
+    "items": 144
+   },
+   "ap": {
+    "url": "geo/mun-ap.json",
+    "bytes": 25438,
+    "items": 16
+   },
+   "to": {
+    "url": "geo/mun-to.json",
+    "bytes": 87224,
+    "items": 139
+   },
+   "ma": {
+    "url": "geo/mun-ma.json",
+    "bytes": 89975,
+    "items": 217
+   },
+   "pi": {
+    "url": "geo/mun-pi.json",
+    "bytes": 58270,
+    "items": 224
+   },
+   "ce": {
+    "url": "geo/mun-ce.json",
+    "bytes": 62645,
+    "items": 184
+   },
+   "rn": {
+    "url": "geo/mun-rn.json",
+    "bytes": 27154,
+    "items": 167
+   },
+   "pb": {
+    "url": "geo/mun-pb.json",
+    "bytes": 43582,
+    "items": 223
+   },
+   "pe": {
+    "url": "geo/mun-pe.json",
+    "bytes": 43855,
+    "items": 184
+   },
+   "al": {
+    "url": "geo/mun-al.json",
+    "bytes": 18375,
+    "items": 102
+   },
+   "se": {
+    "url": "geo/mun-se.json",
+    "bytes": 18095,
+    "items": 75
+   },
+   "ba": {
+    "url": "geo/mun-ba.json",
+    "bytes": 163182,
+    "items": 417
+   },
+   "mg": {
+    "url": "geo/mun-mg.json",
+    "bytes": 335152,
+    "items": 853
+   },
+   "es": {
+    "url": "geo/mun-es.json",
+    "bytes": 32477,
+    "items": 78
+   },
+   "rj": {
+    "url": "geo/mun-rj.json",
+    "bytes": 29664,
+    "items": 92
+   },
+   "sp": {
+    "url": "geo/mun-sp.json",
+    "bytes": 186383,
+    "items": 645
+   },
+   "pr": {
+    "url": "geo/mun-pr.json",
+    "bytes": 135042,
+    "items": 399
+   },
+   "sc": {
+    "url": "geo/mun-sc.json",
+    "bytes": 84210,
+    "items": 295
+   },
+   "rs": {
+    "url": "geo/mun-rs.json",
+    "bytes": 163108,
+    "items": 497
+   },
+   "ms": {
+    "url": "geo/mun-ms.json",
+    "bytes": 69208,
+    "items": 79
+   },
+   "mt": {
+    "url": "geo/mun-mt.json",
+    "bytes": 156552,
+    "items": 141
+   },
+   "go": {
+    "url": "geo/mun-go.json",
+    "bytes": 135753,
+    "items": 246
+   },
+   "df": {
+    "url": "geo/mun-df.json",
+    "bytes": 655,
+    "items": 1
+   }
+  },
+  "source": "IBGE malhas v3 (qualidade minima/intermediaria)"
  }
 }
