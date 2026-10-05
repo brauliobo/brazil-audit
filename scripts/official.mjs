@@ -7,6 +7,8 @@ import { cached } from './geo.mjs'
 
 export const OFFICIAL = { 1: ['6257', 'c0001'], 3: ['6259', 'c0003'], 5: ['6259', 'c0005'], 6: ['6259', 'c0006'], 7: ['6259', 'c0007'], 8: ['6259', 'c0008'] }
 export const officesOf = (uf) => (uf === 'zz' ? [1] : uf === 'df' ? [1, 3, 5, 6, 8] : [1, 3, 5, 6, 7])
+/** Column positions in an rdv part line (election, turn, state, city, zone, section, model, office, nominal, blank, nul, votes). */
+export const RDV = { city: 3, zone: 4, section: 5, office: 7, nominal: 8, blank: 9, nul: 10, votes: 11 }
 export const EMPTY = { cands: new Map(), blank: 0, nul: 0 }
 
 /** The official result file of a municipality (zone null) or of one zone of it; cached 12 h, throttled by cached(). */
@@ -22,17 +24,17 @@ export function dumpOf(files, cities) {
   const take = (map, key, f) => {
     const entry = map.get(key) ?? { cands: new Map(), blank: 0, nul: 0 }
     map.set(key, entry)
-    entry.blank += +f[7]
-    entry.nul += +f[8]
-    for (const [n, v] of Object.entries(JSON.parse(f[9]))) entry.cands.set(n, (entry.cands.get(n) ?? 0) + v)
+    entry.blank += +f[RDV.blank]
+    entry.nul += +f[RDV.nul]
+    for (const [n, v] of Object.entries(JSON.parse(f[RDV.votes]))) entry.cands.set(n, (entry.cands.get(n) ?? 0) + v)
   }
   for (const file of files) {
     for (const line of gunzipSync(readFileSync(file)).toString().split('\n')) {
-      const city = /^[^,]*,("(?:[^"]|"")*"|[^,]*),/.exec(line)?.[1].replace(/^"|"$/g, '').replaceAll('""', '"')
+      const city = /^(?:[^,]*,){3}("(?:[^"]|"")*"|[^,]*),/.exec(line)?.[1].replace(/^"|"$/g, '').replaceAll('""', '"')
       if (!cities.has(city)) continue
       const f = parseCsvLine(line)
-      take(zones, `${city}|${f[2]}|${f[5]}`, f)
-      take(byCity, `${city}|${f[5]}`, f)
+      take(zones, `${city}|${f[RDV.zone]}|${f[RDV.office]}`, f)
+      take(byCity, `${city}|${f[RDV.office]}`, f)
     }
   }
   return { zones, cities: byCity }

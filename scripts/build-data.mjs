@@ -1,21 +1,22 @@
-// Builds the shippable dump in data/ from the local read-only Postgres databases (via psql) and the TSE candidate files.
-//   nice -n 10 node scripts/build-data.mjs [--election=2022,2026] [--states=ac,ro] [--only=votes,rdv,vt,rollups,results,cands,geo,elected,residual]  (rollups = city voting-time sums, rebuilt with vt)
-// Output: data/manifest.json + gzip CSV parts partitioned by state (loaded into PGlite with COPY ... FROM '/dev/blob').
-// Parts of unselected states are kept, so single states can be refreshed.
+// Builds the shippable dump in data/ from the local read-only Postgres databases (via psql) and the TSE/IBGE downloads.
+//   nice -n 10 node scripts/build-data.mjs [--election=2022,2026] [--states=ac,ro] [--only=rdv,vt,results,cands,geo,elected,residual]
+// ONE schema for every election (tables with `election` and `turn` columns, see SCHEMA); the elections are configured in
+// src/elections.js. Output: data/manifest.json + gzip CSV parts per table, election and UF (loaded into PGlite with
+// COPY ... FROM '/dev/blob'): data/<table>/<year>[-<uf>].csv.gz. Parts of unselected elections/UFs are kept.
 import { spawn } from 'node:child_process'
 import { createGzip, gunzipSync, gzipSync } from 'node:zlib'
 import { createWriteStream, existsSync, mkdirSync, readFileSync, unlinkSync, writeFileSync } from 'node:fs'
 import { pipeline } from 'node:stream/promises'
-import { parseCsvLine } from './csv.mjs'
-import { EMPTY, dumpOf, officesOf, officialFile, residualOf } from './official.mjs'
-import { buildGeometry, cached, tseMunicipalities } from './geo.mjs'
 import { Transform } from 'node:stream'
+import { ELECTIONS } from '../src/elections.js'
+import { parseCsvLine } from './csv.mjs'
+import { EMPTY, RDV, dumpOf, officesOf, officialFile, residualOf } from './official.mjs'
+import { buildGeometry, cached, tseMunicipalities } from './geo.mjs'
 
 const opt = Object.fromEntries(process.argv.slice(2).map((a) => a.replace(/^--/, '').split('=')))
 const list = (k, all) => (opt[k] ? opt[k].split(',') : all)
-const ELECTIONS = list('election', ['2022', '2026'])
-const ONLY = list('only', ['votes', 'rdv', 'vt', 'results', 'cands', 'geo', 'elected', 'residual'])
-const DB = { 2022: 'brazil-audit', 2026: 'brazil-audit-2026' }
+const SELECTED = list('election', Object.keys(ELECTIONS)).map((k) => ELECTIONS[k])
+const ONLY = list('only', ['rdv', 'vt', 'results', 'cands', 'geo', 'elected', 'residual'])
 const OUT = 'data'
 const T0 = 18000 // time-of-day buckets: 05:00 local clock, 10 minutes each, 90 buckets (05:00-20:00), edges clamped
 const STEP = 600
@@ -24,9 +25,25 @@ const NB = 90
 // Fernando de Noronha runs on UTC-2 but its polls still open at 08:00 BRT (09:00 on its clock): the estimate below would be capped to 0
 const FIXED_TZ = { 'pe/FERNANDO DE NORONHA': 1 }
 
+// The shared schema. Every table starts with `election int, turn int` (cands has its own election column, mun_map has none).
+const SCHEMA = {
+  rdv: 'state text, city text, zone text, section text, model text, office int, nominal int, blank int, nul int, votes jsonb',
+  vt: 'state text, city text, zone text, section text, model text, n int, first int, last int, med int, p10 int, p90 int, maxgap int, b smallint[]',
+  vtc: 'state text, city text, sections int, n int, tz int, b int[]',
+  tot: 'state text, city text, office int, sections int, nominal bigint, blank bigint, nul bigint',
+  res: 'state text, city text, office int, cand text, votes bigint',
+  cov: 'state text, own int, stored int, aggregated int, missing int',
+  miss: 'state text, city text, zone text, section text',
+  residual: 'uf text, city text, city_code text, zone text, office int, number text, votes bigint, sections_missing int',
+  residual_skipped: 'uf text, city text, zone text, office int, reason text, detail text',
+  elected: 'uf text, office int, n text, name text, party text, status text, votes bigint',
+  seats: 'uf text, office int, bloc text, seats int',
+}
+
 const q = (s) => `'${s.replaceAll("'", "''")}'`
 const log = (...a) => console.log(new Date().toISOString().slice(11, 19), ...a)
-const manifest = existsSync(`${OUT}/manifest.json`) ? JSON.parse(readFileSync(`${OUT}/manifest.json`, 'utf8')) : { elections: {} }
+const loaded = existsSync(`${OUT}/manifest.json`) ? JSON.parse(readFileSync(`${OUT}/manifest.json`, 'utf8')) : {}
+const manifest = loaded.tables ? loaded : { tables: {} }
 
 function psql(db, script) {
   const env = { ...process.env, PGOPTIONS: '-c statement_timeout=900000 -c client_min_messages=error' }
@@ -38,14 +55,6 @@ function psql(db, script) {
   return { out: p.stdout, done }
 }
 
-const scalar = async (db, sql) => {
-  const { out, done } = psql(db, `\\copy (${sql}) to stdout csv\n`)
-  const chunks = []
-  for await (const c of out) chunks.push(c)
-  await done
-  return Buffer.concat(chunks).toString().trim().split('\n').filter(Boolean).map((l) => l.replace(/^"|"$/g, ''))
-}
-
 const copy = (queries) => queries.map((x) => `\\copy (${x.replace(/\s+/g, ' ')}) to stdout csv\n`).join('')
 
 async function text(db, queries) {
@@ -55,6 +64,8 @@ async function text(db, queries) {
   await done
   return Buffer.concat(chunks).toString()
 }
+
+const scalar = async (db, sql) => (await text(db, [sql])).trim().split('\n').filter(Boolean).map((l) => l.replace(/^"|"$/g, ''))
 
 // streams the queries' CSV through gzip into `file` (never held in memory, SP deputies are ~0.5 GB raw)
 async function dump(db, queries, file) {
@@ -72,141 +83,103 @@ async function dump(db, queries, file) {
   return stats
 }
 
-function part(tableDef, key, file, stats, extra = {}) {
-  if (!stats.rows) { unlinkSync(file); delete tableDef.parts[key]; return }
+/** The manifest entry of a shared table (columns and DDL come from SCHEMA). */
+function table(name) {
+  const cols = SCHEMA[name].split(',').map((c) => c.trim().split(' ')[0]).join(',')
+  return (manifest.tables[name] ??= { name, columns: `election,turn,${cols}`, ddl: `create table ${name} (election int, turn int, ${SCHEMA[name]})`, parts: {} })
+}
+
+/** Registers a part file: key `<year>/<part>`, `where` = the rows the part owns (the loader deletes them before a re-import). */
+function part(tableDef, el, key, file, stats, where, extra = {}) {
+  const id = `${el.key}/${key}`
+  if (!stats.rows) { unlinkSync(file); delete tableDef.parts[id]; return }
   const bytes = readFileSync(file).length
   if (bytes > 50e6) console.warn(`WARNING ${file} is ${bytes} bytes, above the 50 MB part target`)
-  tableDef.parts[key] = { url: file.replace(`${OUT}/`, ''), bytes, ...stats, ...extra }
-  log(`${tableDef.name}/${key}: ${stats.rows} rows, raw ${stats.rawBytes}, gz ${bytes}`)
+  tableDef.parts[id] = { url: file.replace(`${OUT}/`, ''), bytes, ...stats, where: `election = ${el.year} and turn = ${el.turn}${where ? ` and ${where}` : ''}`, ...extra }
+  log(`${tableDef.name}/${id}: ${stats.rows} rows, raw ${stats.rawBytes}, gz ${bytes}`)
 }
 
-const table = (election, name, columns, ddl, extra = {}) => {
-  const e = (manifest.elections[election] ??= { tables: {} })
-  const t = (e.tables[name] ??= { parts: {} })
-  Object.assign(t, { name, columns, ddl, ...extra })
-  return t
+const csvOf = (rows) => (rows.length ? rows.map((r) => r.map((v) => (v == null ? '' : /[,"\n]/.test(v) ? `"${String(v).replaceAll('"', '""')}"` : v)).join(',')).join('\n') + '\n' : '')
+
+/** A small table of one election in a single part (rows without the election/turn columns). */
+function smallTable(name, el, rows) {
+  const body = csvOf(rows.map((r) => [el.year, el.turn, ...r]))
+  const file = `${OUT}/${name}/${el.key}.csv.gz`
+  mkdirSync(`${OUT}/${name}`, { recursive: true })
+  writeFileSync(file, gzipSync(body, { level: 9 }))
+  const t = table(name)
+  t.parts[`${el.key}/all`] = { url: `${name}/${el.key}.csv.gz`, bytes: readFileSync(file).length, rows: rows.length, rawBytes: body.length, where: `election = ${el.year} and turn = ${el.turn}` }
+  log(`${name}/${el.key}: ${rows.length} rows, ${t.parts[`${el.key}/all`].bytes} bytes gz`)
 }
 
-async function build2022() {
-  const t = table('2022', 'votes_2022', 'state,city,zone,section,model,votes_13,votes_22',
-    'create table votes_2022 (state text, city text, zone text, section text, model text, votes_13 int, votes_22 int)')
-  for (const s of list('states', await scalar(DB[2022], 'select distinct state from votes order by 1'))) {
-    const file = `2022/votes/${s}.csv.gz`
-    const sql = `select state,city,zone,section,model,votes_13,votes_22 from votes where state=${q(s)} order by city,zone,section,model`
-    part(t, s, `${OUT}/${file}`, await dump(DB[2022], [sql], `${OUT}/${file}`))
-  }
-}
-
-// section totals per kind (2 nominal, 3 blank; null = 4 invalid number + 6 null + 7 second senate vote, as the official null total counts them)
+// ---- rdv: section results per office, in the shape of the 2026 collector for every election ----------------------------------
+// votes = {candidate number: votes} of RDV kind 2 only. null ballots = kinds 4 (invalid number) + 6 + 7 (second senate vote), as the
+// official null total counts them. The legacy 2022 table only ever stored the two runoff candidates: blank/null stay NULL (never invented).
 const sumOf = (...kinds) => kinds.map((k) => `(select coalesce(sum(value::int),0) from jsonb_each_text(votes->'${k}'))`).join('+')
 // one lazy part per office group: president/governor/senator together, each deputy office on its own (the bulk of the bytes)
 const OFFICE_PARTS = { main: [1, 3, 5], 6: [6], 7: [7], 8: [8] }
-const rdvSql = (s, offices) => `select state,city,zone,section,model,office,${sumOf(2)},${sumOf(3)},${sumOf(4, 6, 7)},
-  coalesce(votes->'2','{}'::jsonb) from rdv_votes where state=${q(s)} and office in (${offices}) order by city,zone,section,model,office`
 
+const rdvSql = (el, s, offices) => el.source.kind === 'legacy'
+  ? `select ${el.year},${el.turn},state,city,zone,section,model,1,votes_13+votes_22,null,null,jsonb_build_object('13',votes_13,'22',votes_22)
+     from votes where state=${q(s)} order by city,zone,section,model`
+  : `select ${el.year},${el.turn},state,city,zone,section,model,office,${sumOf(2)},${sumOf(3)},${sumOf(4, 6, 7)},
+     coalesce(votes->'2','{}'::jsonb) from rdv_votes where state=${q(s)} and office in (${offices}) order by city,zone,section,model,office`
+
+const statesOf = (el) => scalar(el.source.db, `select distinct state from ${el.source.kind === 'legacy' ? 'votes' : 'rdv_votes'} order by 1`)
+const citiesSql = (el) => `select distinct state,city from ${el.source.kind === 'legacy' ? 'votes' : 'rdv_votes where office=1'}`
+
+async function buildRdv(el) {
+  const rdv = table('rdv')
+  for (const s of list('states', await statesOf(el))) {
+    for (const [group, offices] of Object.entries(el.source.kind === 'legacy' ? { main: [1] } : OFFICE_PARTS)) {
+      const key = group === 'main' ? s : `${s}.${group}`
+      const file = `${OUT}/rdv/${el.key}-${key}.csv.gz`
+      part(rdv, el, key, file, await dump(el.source.db, [rdvSql(el, s, offices)], file), `state = ${q(s)} and office in (${offices})`, { offices })
+    }
+  }
+}
+
+// ---- vt: voting times (Presidente post only, one event per voter), computed in Postgres per state ---------------------------
 const buckets = Array.from({ length: NB }, (_, i) => `count(*) filter (where bk=${i})`).join(',')
 // One index probe per section (state,city,zone,section,model,post prefix): ~300x faster than scanning the city's range
 // and filtering post, because the index puts post after model. Sections come from rdv_votes (the scraped results).
-const vtSql = (s, city) => `with e as (select sec.zone,sec.section,sec.model,x.sc,x.sc-lag(x.sc) over (partition by sec.zone,sec.section,sec.model order by x.time) gap
+const vtSql = (el, s, city) => `with e as (select sec.zone,sec.section,sec.model,x.sc,x.sc-lag(x.sc) over (partition by sec.zone,sec.section,sec.model order by x.time) gap
   from (select zone,section,model from rdv_votes where state=${q(s)} and city=${q(city)} and office=1) sec
   cross join lateral (select time,(extract(epoch from time)::bigint % 86400)::int sc from voting_times v where v.state=${q(s)} and v.city=${q(city)}
     and v.zone=sec.zone and v.section=sec.section and v.model=sec.model and v.post='Presidente') x),
   b as (select *,least(greatest((sc-${T0})/${STEP},0),${NB - 1}) bk from e)
-  select ${q(s)},${q(city)},zone,section,model,count(*),min(sc),max(sc),round(percentile_cont(.5) within group (order by gap)),
+  select ${el.year},${el.turn},${q(s)},${q(city)},zone,section,model,count(*),min(sc),max(sc),round(percentile_cont(.5) within group (order by gap)),
   round(percentile_cont(.1) within group (order by gap)),round(percentile_cont(.9) within group (order by gap)),max(gap),
   '{'||concat_ws(',',${buckets})||'}' from b group by zone,section,model order by zone,section,model`
 
-const allStates2026 = () => scalar(DB[2026], 'select distinct state from rdv_votes order by 1')
-const states2026 = async () => list('states', await allStates2026())
-const elapsed = (t0) => `${((Date.now() - t0) / 60000).toFixed(1)} min`
-
-async function build2026() {
-  const rdv = table('2026', 'rdv_2026', 'state,city,zone,section,model,office,nominal,blank,nul,votes',
-    'create table rdv_2026 (state text, city text, zone text, section text, model text, office int, nominal int, blank int, nul int, votes jsonb)')
-  const vt = table('2026', 'vt_2026', 'state,city,zone,section,model,n,first,last,med,p10,p90,maxgap,b',
-    'create table vt_2026 (state text, city text, zone text, section text, model text, n int, first int, last int, med int, p10 int, p90 int, maxgap int, b smallint[])',
-    { time: { t0: T0, step: STEP, buckets: NB, clock: 'local clock as recorded by the scraper' } })
+async function buildVt(el) {
+  const vt = table('vt')
   const t0 = Date.now()
-  for (const s of await states2026()) {
-    if (ONLY.includes('rdv')) {
-      for (const [group, offices] of Object.entries(OFFICE_PARTS)) {
-        const key = group === 'main' ? s : `${s}.${group}`
-        const file = `${OUT}/2026/rdv/${key}.csv.gz`
-        part(rdv, key, file, await dump(DB[2026], [rdvSql(s, offices)], file), { where: `state = ${q(s)} and office in (${offices})`, offices })
-      }
-    }
-    if (ONLY.includes('vt')) {
-      const cities = await scalar(DB[2026], `select distinct city from rdv_votes where state=${q(s)} and office=1 order by 1`)
-      const file = `${OUT}/2026/vt/${s}.csv.gz`
-      part(vt, s, file, await dump(DB[2026], cities.map((c) => vtSql(s, c)), file))
-    }
-    log(`${s} done, ${elapsed(t0)} since start`)
+  for (const s of list('states', await statesOf(el))) {
+    const cities = await scalar(el.source.db, `select distinct city from rdv_votes where state=${q(s)} and office=1 order by 1`)
+    const file = `${OUT}/vt/${el.key}-${s}.csv.gz`
+    part(vt, el, s, file, await dump(el.source.db, cities.map((c) => vtSql(el, s, c)), file), `state = ${q(s)}`)
+    log(`${s} done, ${((Date.now() - t0) / 60000).toFixed(1)} min since start`)
   }
 }
 
-// Result rollups and coverage, derived from the rdv parts just written (never from the database), so rollups, section parts and
-// the residual always describe the same snapshot. tot_2026: per city/office totals; res_2026: votes per candidate (per city for
-// president/governor/senator, per UF for deputies: per-city lists would be ~1M rows); coverage: own sections (TSE state configs;
-// sections with nsp != ns are aggregated into another section and have no files of their own) against the sections in the parts.
-const TSE_CFG = 'https://resultados.tse.jus.br/oficial/ele2026/arquivo-urna/3220/config'
-const rdvFiles = (uf) => Object.entries(manifest.elections['2026'].tables.rdv_2026.parts).filter(([k]) => k === uf || k.startsWith(`${uf}.`)).map(([, p]) => `${OUT}/${p.url}`)
-const ufsInDump = () => [...new Set(Object.keys(manifest.elections['2026'].tables.rdv_2026.parts).map((k) => k.split('.')[0]))].sort()
-
-function scanRdv(uf) {
-  const [tot, res, stored] = [new Map(), new Map(), new Set()]
-  for (const file of rdvFiles(uf)) {
-    for (const line of gunzipSync(readFileSync(file)).toString().split('\n')) {
-      if (!line) continue
-      const [, city, zone, section, , office, nominal, blank, nul, votes] = parseCsvLine(line)
-      if (office === '1') stored.add(`${city}\t${zone}\t${section}`)
-      const t = tot.get(`${city}\t${office}`) ?? [0, 0, 0, 0]
-      tot.set(`${city}\t${office}`, [t[0] + 1, t[1] + +nominal, t[2] + +blank, t[3] + +nul])
-      for (const [cand, v] of Object.entries(JSON.parse(votes))) {
-        const key = `${+office <= 5 ? city : ''}\t${office}\t${cand}`
-        res.set(key, (res.get(key) ?? 0) + v)
-      }
-    }
-  }
-  return { tot, res, stored }
-}
-
-async function buildResultsAndCoverage() {
-  const [tot, res, cov, missing] = [[], [], [], []]
-  for (const uf of ufsInDump()) {
-    const { tot: t, res: r, stored } = scanRdv(uf)
-    tot.push(...[...t].map(([k, v]) => [uf, ...k.split('\t'), ...v]))
-    res.push(...[...r].map(([k, v]) => { const [city, office, cand] = k.split('\t'); return [uf, city || null, office, cand, v] }))
-    const cfg = await (await fetch(`${TSE_CFG}/${uf}/${uf}-p003220-cs.json`)).json()
-    const own = new Set()
-    let aggregated = 0
-    for (const [city, zone, c] of cfg.abr.flatMap((a) => a.mu.flatMap((m) => m.zon.flatMap((z) => z.sec.map((c) => [m.nm, z.cd, c]))))) (c.nsp && c.nsp !== c.ns ? aggregated++ : own.add(`${city}\t${zone}\t${c.ns}`))
-    const lost = [...own].filter((k) => !stored.has(k)).sort()
-    cov.push([uf, own.size, stored.size, aggregated, lost.length])
-    missing.push(...lost.map((k) => [uf, ...k.split('\t')]))
-    log(`coverage ${uf}: own ${own.size}, stored ${stored.size}, aggregated ${aggregated}, missing ${lost.length}`)
-  }
-  smallTable('2026', 'tot_2026', 'state,city,office,sections,nominal,blank,nul', 'create table tot_2026 (state text, city text, office int, sections int, nominal bigint, blank bigint, nul bigint)', tot)
-  smallTable('2026', 'res_2026', 'state,city,office,cand,votes', 'create table res_2026 (state text, city text, office int, cand text, votes bigint)', res)
-  smallTable('2026', 'cov_2026', 'state,own,stored,aggregated,missing', 'create table cov_2026 (state text, own int, stored int, aggregated int, missing int)', cov)
-  smallTable('2026', 'miss_2026', 'state,city,zone,section', 'create table miss_2026 (state text, city text, zone text, section text)', missing)
-}
-
-// City rollups of the section buckets (so state/country charts never scan the section tables), always rebuilt from the
-// vt parts on disk. `tz` = estimated hours of the recorded local clock vs Brasilia time, from the city's earliest first vote
-// (polls open 08:00 BRT; tolerant of late openings), which also covers cities off their state's usual offset.
-function buildRollups() {
+// City rollups of the section buckets (so state/country charts never scan the section table), always rebuilt from the vt parts on
+// disk. `tz` = estimated hours of the recorded local clock vs Brasilia time, from the city's earliest first vote (polls open 08:00 BRT;
+// tolerant of late openings), which also covers cities off their state's usual offset.
+function buildRollups(el) {
   const rows = []
-  for (const [state, p] of Object.entries(manifest.elections['2026'].tables.vt_2026.parts)) {
+  for (const [id, p] of Object.entries(manifest.tables.vt.parts).filter(([id]) => id.startsWith(`${el.key}/`))) {
+    const state = id.split('/')[1]
     const cities = new Map()
     for (const line of gunzipSync(readFileSync(`${OUT}/${p.url}`)).toString().trim().split('\n')) {
       const [head, b] = line.split(',"{')
       if (head.includes('"')) throw new Error(`quoted field, rollup parser needs a CSV reader: ${head}`)
-      const [, city, , , , n, first] = head.split(',')
-      const c = cities.get(city) ?? { sections: 0, n: 0, first: Infinity, b: Array(NB).fill(0) }
-      cities.set(city, c)
+      const f = head.split(',')
+      const c = cities.get(f[3]) ?? { sections: 0, n: 0, first: Infinity, b: Array(NB).fill(0) }
+      cities.set(f[3], c)
       c.sections++
-      c.n += +n
-      c.first = Math.min(c.first, +first)
+      c.n += +f[7]
+      c.first = Math.min(c.first, +f[8])
       b.slice(0, -2).split(',').forEach((v, i) => (c.b[i] += +v))
     }
     // a late-opening section can only push the estimate up, so cap it at the state's most common value
@@ -215,14 +188,64 @@ function buildRollups() {
     const mode = [...new Set(all)].sort((a, b) => all.filter((x) => x === b).length - all.filter((x) => x === a).length)[0]
     for (const [city, c] of cities) rows.push([state, city, c.sections, c.n, FIXED_TZ[`${state}/${city}`] ?? Math.min(est.get(city), mode), `{${c.b}}`])
   }
-  const csv = rows.map((r) => r.map((v) => (/[,"]/.test(v) ? `"${v}"` : v)).join(',')).join('\n') + '\n'
-  const gz = gzipSync(csv, { level: 9 })
-  writeFileSync(`${OUT}/2026/vtc.csv.gz`, gz)
-  const t = table('2026', 'vtc_2026', 'state,city,sections,n,tz,b', 'create table vtc_2026 (state text, city text, sections int, n int, tz int, b int[])')
-  t.parts.all = { url: '2026/vtc.csv.gz', bytes: gz.length, rows: rows.length, rawBytes: csv.length }
-  log(`vtc_2026: ${rows.length} cities, ${gz.length} bytes gz`)
+  smallTable('vtc', el, rows)
 }
 
+// ---- results and coverage, derived from the rdv parts just written (never from the database), so rollups, section parts and the
+// residual always describe the same snapshot. tot: per city/office totals; res: votes per candidate (per city for president/governor/
+// senator, per UF for deputies: per-city lists would be ~1M rows); coverage: own sections (TSE state configs; sections with nsp != ns
+// are aggregated into another section and have no files of their own) against the sections in the parts.
+const TSE_CFG = 'https://resultados.tse.jus.br/oficial/ele2026/arquivo-urna/3220/config'
+const rdvFiles = (el, uf) => Object.entries(manifest.tables.rdv.parts).filter(([id]) => id.startsWith(`${el.key}/`) && (id.split('/')[1] === uf || id.split('/')[1].startsWith(`${uf}.`))).map(([, p]) => `${OUT}/${p.url}`)
+const ufsInDump = (el) => [...new Set(Object.keys(manifest.tables.rdv.parts).filter((id) => id.startsWith(`${el.key}/`)).map((id) => id.split('/')[1].split('.')[0]))].sort()
+
+function scanRdv(el, uf) {
+  const [tot, res, stored] = [new Map(), new Map(), new Set()]
+  for (const file of rdvFiles(el, uf)) {
+    for (const line of gunzipSync(readFileSync(file)).toString().split('\n')) {
+      if (!line) continue
+      const f = parseCsvLine(line)
+      const [city, office] = [f[RDV.city], f[RDV.office]]
+      if (office === '1') stored.add(`${city}\t${f[RDV.zone]}\t${f[RDV.section]}`)
+      // blank/null ballots are NULL when the election never stored them (an empty field), never counted as 0
+      const t = tot.get(`${city}\t${office}`) ?? [0, 0, f[RDV.blank] === '' ? null : 0, f[RDV.nul] === '' ? null : 0]
+      tot.set(`${city}\t${office}`, [t[0] + 1, t[1] + +f[RDV.nominal], t[2] == null ? null : t[2] + +f[RDV.blank], t[3] == null ? null : t[3] + +f[RDV.nul]])
+      for (const [cand, v] of Object.entries(JSON.parse(f[RDV.votes]))) {
+        const key = `${+office <= 5 ? city : ''}\t${office}\t${cand}`
+        res.set(key, (res.get(key) ?? 0) + v)
+      }
+    }
+  }
+  return { tot, res, stored }
+}
+
+async function ownSections(uf) {
+  const cfg = await (await fetch(`${TSE_CFG}/${uf}/${uf}-p003220-cs.json`)).json()
+  const own = new Set()
+  let aggregated = 0
+  for (const [city, zone, c] of cfg.abr.flatMap((a) => a.mu.flatMap((m) => m.zon.flatMap((z) => z.sec.map((c) => [m.nm, z.cd, c]))))) (c.nsp && c.nsp !== c.ns ? aggregated++ : own.add(`${city}\t${zone}\t${c.ns}`))
+  return { own, aggregated }
+}
+
+async function buildResults(el) {
+  const [tot, res, cov, missing] = [[], [], [], []]
+  for (const uf of ufsInDump(el)) {
+    const { tot: t, res: r, stored } = scanRdv(el, uf)
+    tot.push(...[...t].map(([k, v]) => [uf, ...k.split('\t'), ...v]))
+    res.push(...[...r].map(([k, v]) => { const [city, office, cand] = k.split('\t'); return [uf, city || null, office, cand, v] }))
+    if (!el.hasCoverage) continue
+    const { own, aggregated } = await ownSections(uf)
+    const lost = [...own].filter((k) => !stored.has(k)).sort()
+    cov.push([uf, own.size, stored.size, aggregated, lost.length])
+    missing.push(...lost.map((k) => [uf, ...k.split('\t')]))
+    log(`coverage ${uf}: own ${own.size}, stored ${stored.size}, aggregated ${aggregated}, missing ${lost.length}`)
+  }
+  smallTable('tot', el, tot)
+  smallTable('res', el, res)
+  if (el.hasCoverage) { smallTable('cov', el, cov); smallTable('miss', el, missing) }
+}
+
+// ---- candidates (names, parties, official totals) -------------------------------------------------------------------------------
 const payload = async (url) => {
   const res = await fetch(url)
   if (!res.ok) throw new Error(`${url}: HTTP ${res.status}`)
@@ -236,7 +259,7 @@ async function candidates(election, uf, office, url) {
 
 async function buildCands() {
   const TSE = 'https://resultados.tse.jus.br/oficial/ele2026'
-  const ufs = (await scalar(DB[2022], 'select distinct state from votes order by 1')).filter((u) => u !== 'zz')
+  const ufs = (await statesOf(ELECTIONS[2022])).filter((u) => u !== 'zz')
   const rows = [
     ...(await candidates(2026, 'br', 1, `${TSE}/6257/dados/br/br-c0001-e006257-u.jws`)),
     // 2022 runoff, official totals
@@ -248,32 +271,16 @@ async function buildCands() {
       rows.push(...(await candidates(2026, uf, office, `${TSE}/6259/dados/${uf}/${uf}-c${String(office).padStart(4, '0')}-e006259-u.jws`)))
     }
   }
-  const csv = rows.map((r) => r.map((v) => `"${String(v).replaceAll('"', '""')}"`).join(',')).join('\n') + '\n'
-  const gz = createGzip({ level: 9 })
-  mkdirSync(OUT, { recursive: true })
-  const out = createWriteStream(`${OUT}/cands.csv.gz`)
-  gz.pipe(out)
-  gz.end(csv)
-  await new Promise((r) => out.on('close', r))
-  manifest.cands = { name: 'cands', columns: 'election,uf,office,n,name,short_name,party,official_votes', url: 'cands.csv.gz', rows: rows.length, bytes: readFileSync(`${OUT}/cands.csv.gz`).length,
-    ddl: 'create table cands (election int, uf text, office int, n text, name text, short_name text, party text, official_votes int)' }
+  const body = csvOf(rows.map((r) => r.map((v) => String(v))))
+  writeFileSync(`${OUT}/cands.csv.gz`, gzipSync(body, { level: 9 }))
+  manifest.tables.cands = { name: 'cands', columns: 'election,uf,office,n,name,short_name,party,official_votes', ddl: 'create table cands (election int, uf text, office int, n text, name text, short_name text, party text, official_votes int)',
+    parts: { all: { url: 'cands.csv.gz', bytes: readFileSync(`${OUT}/cands.csv.gz`).length, rows: rows.length, rawBytes: body.length } } }
   log(`cands: ${rows.length} rows`)
 }
 
-// ---- maps and parliament -----------------------------------------------------------------------------------------------
+// ---- maps and parliament -----------------------------------------------------------------------------------------------------
 
-const csvOf = (rows) => rows.length ? rows.map((r) => r.map((v) => (v == null ? '' : /[,"\n]/.test(v) ? `"${String(v).replaceAll('"', '""')}"` : v)).join(',')).join('\n') + '\n' : ''
-
-function smallTable(election, name, columns, ddl, rows) {
-  const body = csvOf(rows)
-  const gz = gzipSync(body, { level: 9 })
-  mkdirSync(`${OUT}/${election}`, { recursive: true })
-  writeFileSync(`${OUT}/${election}/${name}.csv.gz`, gz)
-  table(election, name, columns, ddl).parts.all = { url: `${election}/${name}.csv.gz`, bytes: gz.length, rows: rows.length, rawBytes: body.length }
-  log(`${name}: ${rows.length} rows, ${gz.length} bytes gz`)
-}
-
-// municipalities renamed between 2022 and 2026
+// municipalities renamed between elections
 const RENAMED = { 'ba/CAMACÃ': 'CAMACAN', 'pa/SANTA ISABEL DO PARÁ': 'SANTA IZABEL DO PARÁ', 'pr/MUNHOZ DE MELO': 'MUNHOZ DE MELLO', 'go/BOM JESUS DE GOIÁS': 'BOM JESUS' }
 const plain = (s) => s.normalize('NFD').replace(/[̀-ͯ]/g, '').toUpperCase().replace(/[^A-Z0-9]/g, '')
 
@@ -284,8 +291,8 @@ async function buildMunicipalities() {
   const rows = mun.abr.flatMap((a) => a.mu.map((m) => [a.cd, m.nm, m.cdi ?? null]))
   const byName = new Map(rows.map(([s, c, i]) => [`${s}/${plain(c)}`, i]))
   const known = new Set(rows.map(([s, c]) => `${s}/${c}`))
-  for (const [year, db, sql] of [[2026, DB[2026], 'select distinct state,city from rdv_votes where office=1'], [2022, DB[2022], 'select distinct state,city from votes']]) {
-    const pairs = (await text(db, [sql])).trim().split('\n').map((l) => l.replaceAll('"', '').split(/,(.*)/s).slice(0, 2))
+  for (const el of Object.values(ELECTIONS)) {
+    const pairs = (await text(el.source.db, [citiesSql(el)])).trim().split('\n').map((l) => l.replaceAll('"', '').split(/,(.*)/s).slice(0, 2))
     const unmatched = []
     for (const [s, c] of pairs) {
       if (known.has(`${s}/${c}`)) continue
@@ -293,9 +300,13 @@ async function buildMunicipalities() {
       ibge ? rows.push([s, c, ibge]) : unmatched.push(`${s}/${c}`)
       known.add(`${s}/${c}`)
     }
-    log(`municipalities ${year}: ${pairs.length} in the results, ${unmatched.length} without IBGE code${unmatched.length ? `: ${unmatched.slice(0, 12).join('; ')}` : ''}`)
+    log(`municipalities ${el.year}: ${pairs.length} in the results, ${unmatched.length} without IBGE code${unmatched.length ? `: ${unmatched.slice(0, 12).join('; ')}` : ''}`)
   }
-  smallTable('2026', 'mun_map', 'state,city,ibge', 'create table mun_map (state text, city text, ibge text)', rows)
+  const body = csvOf(rows)
+  writeFileSync(`${OUT}/mun_map.csv.gz`, gzipSync(body, { level: 9 }))
+  manifest.tables.mun_map = { name: 'mun_map', columns: 'state,city,ibge', ddl: 'create table mun_map (state text, city text, ibge text)',
+    parts: { all: { url: 'mun_map.csv.gz', bytes: readFileSync(`${OUT}/mun_map.csv.gz`).length, rows: rows.length, rawBytes: body.length } } }
+  log(`mun_map: ${rows.length} rows`)
   return mun
 }
 
@@ -325,7 +336,7 @@ async function stateFile(uf, office, fresh) {
 
 const candidatesOf = (carg) => carg.agr.flatMap((a) => a.par.flatMap((p) => (p.cand ?? []).map((c) => ({ ...c, party: p.sg, bloc: a.com }))))
 
-async function buildElected(mun) {
+async function buildElected(el, mun) {
   const [elected, seats] = [[], []]
   const ufs = mun.abr.map((a) => a.cd).filter((u) => u !== 'zz')
   for (const uf of ufs) {
@@ -341,8 +352,8 @@ async function buildElected(mun) {
     const total = seats.filter((r) => r[1] === +office).reduce((t, r) => t + r[3], 0)
     log(`seats office ${office} (${OFFICES[office]}): ${total}${EXPECTED[office] && total !== EXPECTED[office] ? ` != expected ${EXPECTED[office]}` : ''}, elected candidates listed: ${elected.filter((r) => r[1] === +office).length}`)
   }
-  smallTable('2026', 'elected_2026', 'uf,office,n,name,party,status,votes', 'create table elected_2026 (uf text, office int, n text, name text, party text, status text, votes bigint)', elected)
-  smallTable('2026', 'seats_2026', 'uf,office,bloc,seats', 'create table seats_2026 (uf text, office int, bloc text, seats int)', seats)
+  smallTable('elected', el, elected)
+  smallTable('seats', el, seats)
 }
 
 // ---- residual: official zone/municipality totals minus what the dump has ------------------------------------------------------
@@ -350,20 +361,19 @@ async function buildElected(mun) {
 // with missing sections the residual is official zone total minus what the shipped parts hold, per candidate (and blank/null); the city
 // residual used by the rollups is the sum of its zones. Nothing is invented: if any zone file of a city/office is missing, not fully
 // totalized or would give a negative residual, the city-level residual is used for that city/office instead (and the zone is listed in
-// residual_skipped_2026 with the reason); if that fails too, no residual is stored for it.
-async function buildResidual(mun) {
+// residual_skipped with the reason); if that fails too, no residual is stored for it.
+async function buildResidual(el, mun) {
   const codes = new Map(mun.abr.flatMap((a) => a.mu.map((m) => [`${a.cd}/${m.nm}`, m.cd])))
   const missing = new Map() // "uf/city" -> Map(zone -> missing sections)
-  for (const l of gunzipSync(readFileSync(`${OUT}/2026/miss_2026.csv.gz`)).toString().trim().split('\n')) {
-    const [uf, city, zone] = parseCsvLine(l)
+  for (const l of gunzipSync(readFileSync(`${OUT}/miss/${el.key}.csv.gz`)).toString().trim().split('\n')) {
+    const [, , uf, city, zone] = parseCsvLine(l)
     const zones = missing.get(`${uf}/${city}`) ?? new Map()
     missing.set(`${uf}/${city}`, zones.set(zone, (zones.get(zone) ?? 0) + 1))
   }
-  const partsOf = (uf) => Object.entries(manifest.elections['2026'].tables.rdv_2026.parts).filter(([k]) => k === uf || k.startsWith(`${uf}.`)).map(([, p]) => `${OUT}/${p.url}`)
   const [rows, skipped, fallbacks] = [[], [], []]
   for (const uf of [...new Set([...missing.keys()].map((k) => k.split('/')[0]))].sort()) {
     const cities = [...missing].filter(([k]) => k.startsWith(`${uf}/`)).map(([k, zones]) => [k.slice(uf.length + 1), zones])
-    const dump = dumpOf(partsOf(uf), new Set(cities.map(([c]) => c)))
+    const dump = dumpOf(rdvFiles(el, uf), new Set(cities.map(([c]) => c)))
     for (const [city, zones] of cities) {
       const code = codes.get(`${uf}/${city}`)
       for (const office of officesOf(uf)) {
@@ -388,21 +398,24 @@ async function buildResidual(mun) {
     log(`residual ${uf}: ${cities.length} cities, ${rows.filter((r) => r[0] === uf).length} rows, ${skipped.filter((r) => r[0] === uf).length} skipped zone/office pairs`)
   }
   log(`residual: ${fallbacks.length} city/office pairs fell back to city level${fallbacks.length ? `: ${[...new Set(fallbacks.map((f) => f.split('/').slice(0, 2).join('/')))].join(', ')}` : ''}`)
-  smallTable('2026', 'residual_2026', 'uf,city,city_code,zone,office,number,votes,sections_missing', 'create table residual_2026 (uf text, city text, city_code text, zone text, office int, number text, votes bigint, sections_missing int)', rows)
-  smallTable('2026', 'residual_skipped_2026', 'uf,city,zone,office,reason,detail', 'create table residual_skipped_2026 (uf text, city text, zone text, office int, reason text, detail text)', skipped)
+  smallTable('residual', el, rows)
+  smallTable('residual_skipped', el, skipped)
 }
 
 mkdirSync(OUT, { recursive: true })
-if (ELECTIONS.includes('2022') && ONLY.includes('votes')) await build2022()
-if (ELECTIONS.includes('2026') && (ONLY.includes('rdv') || ONLY.includes('vt'))) await build2026()
-if (ELECTIONS.includes('2026') && ONLY.includes('results')) await buildResultsAndCoverage()
-if (ELECTIONS.includes('2026') && (ONLY.includes('vt') || ONLY.includes('rollups'))) buildRollups()
+for (const el of SELECTED) {
+  if (ONLY.includes('rdv')) await buildRdv(el)
+  if (el.hasTimes && ONLY.includes('vt')) { await buildVt(el); buildRollups(el) }
+  if (ONLY.includes('results')) await buildResults(el)
+}
 if (ONLY.includes('cands')) await buildCands()
-if (ELECTIONS.includes('2026') && ['geo', 'elected', 'residual'].some((k) => ONLY.includes(k))) {
+if (['geo', 'elected', 'residual'].some((k) => ONLY.includes(k)) || !manifest.tables.mun_map) {
   const mun = await buildMunicipalities()
   if (ONLY.includes('geo')) await buildGeo(mun)
-  if (ONLY.includes('elected')) await buildElected(mun)
-  if (ONLY.includes('residual')) await buildResidual(mun)
+  for (const el of SELECTED) {
+    if (el.hasSeats && ONLY.includes('elected')) await buildElected(el, mun)
+    if (el.hasResidual && ONLY.includes('residual')) await buildResidual(el, mun)
+  }
 }
 manifest.version = new Date().toISOString()
 writeFileSync(`${OUT}/manifest.json`, JSON.stringify(manifest, null, 1) + '\n')

@@ -6,18 +6,18 @@ import { parseCsvLine } from './csv.mjs'
 import { cached, tseMunicipalities } from './geo.mjs'
 import { OFFICIAL, dumpOf, officesOf, officialFile } from './official.mjs'
 
-const rows = (name) => gunzipSync(readFileSync(`data/2026/${name}.csv.gz`)).toString().trim().split('\n').map(parseCsvLine)
-const UFS = [...new Set(rows('tot_2026').map((r) => r[0]))].sort()
+const rows = (name) => gunzipSync(readFileSync(`data/${name}/2026.csv.gz`)).toString().trim().split('\n').map(parseCsvLine)
+const UFS = [...new Set(rows('tot').map((r) => r[2]))].sort()
 
 // ours[uf][office] = Map(number -> votes, plus 'branco', 'nulo+invalidos')
 const ours = {}
 const add = (uf, office, key, v) => { const m = ((ours[uf] ??= {})[office] ??= new Map()); m.set(key, (m.get(key) ?? 0) + +v) }
-for (const [uf, , office, cand, votes] of rows('res_2026')) add(uf, office, cand, votes)
-for (const [uf, , , , office, number, votes] of rows('residual_2026')) {
+for (const [, , uf, , office, cand, votes] of rows('res')) add(uf, office, cand, votes)
+for (const [, , uf, , , , office, number, votes] of rows('residual')) {
   add(uf, office, number, votes)
   if (number !== 'branco' && number !== 'nulo') add(uf, office, 'nominal', votes)
 }
-for (const [uf, , office, , nominal, blank, nul] of rows('tot_2026')) { add(uf, office, 'branco', blank); add(uf, office, 'nulo', nul); add(uf, office, 'nominal', nominal) }
+for (const [, , uf, , office, , nominal, blank, nul] of rows('tot')) { add(uf, office, 'branco', blank); add(uf, office, 'nulo', nul); add(uf, office, 'nominal', nominal) }
 
 const official = async (uf, office) => {
   const [event, cargo] = OFFICIAL[office]
@@ -52,12 +52,12 @@ console.log(`null ballots differing from the official total (not a residual issu
 // zone level: for every zone with a zone-level residual, dump + residual per candidate and blank must equal the official zone file
 const mun = await tseMunicipalities()
 const codes = new Map(mun.abr.flatMap((a) => a.mu.map((m) => [`${a.cd}/${m.nm}`, m.cd])))
-const residualRows = rows('residual_2026').filter((r) => r[3])
+const residualRows = rows('residual').filter((r) => r[5]).map((r) => r.slice(2))
 const zones = [...new Set(residualRows.map((r) => `${r[0]}|${r[1]}|${r[3]}`))]
 let zoneOk = 0, zoneChecks = 0
 const zoneBad = []
 for (const uf of [...new Set(zones.map((z) => z.split('|')[0]))]) {
-  const parts = ['', '.6', '.7', '.8'].map((x) => `data/2026/rdv/${uf}${x}.csv.gz`).filter((f) => existsSync(f))
+  const parts = ['', '.6', '.7', '.8'].map((x) => `data/rdv/2026-${uf}${x}.csv.gz`).filter((f) => existsSync(f))
   const dump = dumpOf(parts, new Set(zones.filter((z) => z.startsWith(`${uf}|`)).map((z) => z.split('|')[1])))
   for (const key of zones.filter((z) => z.startsWith(`${uf}|`))) {
     const [, city, zone] = key.split('|')

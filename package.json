@@ -11,7 +11,8 @@
     "preview": "vite preview",
     "data": "node scripts/build-data.mjs",
     "lint:tokens": "node scripts/lint-tokens.mjs",
-    "brand": "node scripts/brand.mjs"
+    "brand": "node scripts/brand.mjs",
+    "check:logo": "node scripts/check-logo.mjs"
   },
   "dependencies": {
     "@electric-sql/pglite": "0.5.8",
