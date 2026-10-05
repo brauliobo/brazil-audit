@@ -3,12 +3,12 @@
 module Importer
   # the zips of the other files (eleitorado, coligações, partido, ...) are kept raw, nothing is imported from them
   TARGETS = {
-    /^votacao_secao_/            => Targets::Votes,
-    /^detalhe_votacao_secao_/    => Targets::SectionDetail,
-    /^consulta_cand_2018/        => Targets::Candidates,
-    /^votacao_candidato_munzona/ => Targets::Elected,
-    /^BWEB_/                     => Targets::SectionUrn,
-    /^CEFT_/                     => Targets::UrnMatch
+    /^votacao_secao_/              => Targets::Votes,
+    /^detalhe_votacao_secao_/      => Targets::SectionDetail,
+    /^consulta_cand_#{YEAR}\.zip/   => Targets::Candidates,
+    /^votacao_candidato_munzona/   => Targets::Elected,
+    /^bweb_/i                      => Targets::SectionUrn,
+    /^CEFT_/                       => Targets::UrnMatch
   }
 
   UNITS = ENV['STATES']&.upcase&.split || Sources::UFS + %w[BR ZZ]

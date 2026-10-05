@@ -4,10 +4,9 @@ module Sql
   SECTION    = "lower(sg_uf), nm_municipio, lpad(cd_municipio, 5, '0'), lpad(nr_zona, 4, '0'), lpad(nr_secao, 4, '0')"
   SECTION_BY = 'sg_uf, nm_municipio, cd_municipio, nr_zona, nr_secao'
 
-  # the 2018 files also have other elections: the Mato Grosso supplementary senator of November 2020, whose turn and office
-  # are the ones of the general election, and local plebiscites of 7 October, in the urn files. Only the general election
-  # is imported: federal (295 and 296 for the 1st and 2nd round) and state (297 and 298).
-  GENERAL = "cd_eleicao IN ('295', '296', '297', '298')"
+  # the files also have other elections, as the Mato Grosso supplementary senator of November 2020 in the 2018 ones (with the
+  # turn and office of the general election) and local plebiscites in the urn files: only the general election is imported
+  GENERAL = "cd_eleicao IN (#{ELECTIONS.map{ |code| "'#{code}'" }.join ', '})"
 
   # what each target logs in `imports` besides the rows read: votes to check, unclassified rows and the ones skipped
   # because they are not of the general election
