@@ -5,6 +5,7 @@
 //   offices   office ids on the ballot (1 president, 3 governor, 5 senator, 6 federal, 7 state, 8 district deputy); names are in the locale files
 //   hasBlank  blank and null ballots were collected (NULL columns otherwise); hasTimes  voting times (tables vt, vtc); hasResidual  official totals of sections without files (tables residual*);
 //   hasSeats  elected / seats tables; hasCoverage  own-sections coverage (tables cov, miss)
+//   seatRule  the proportional rule of its deputy offices (an id of src/seats/rules.js); the Cadeiras view recomputes the seats with it
 //   sources   the layers of evidence, in priority order (1 logs > 2 rdv > 3 open > 4 official), as they stand for this election:
 //             logs  the machines' logs (every vote with its time; only the office, never the candidate): feed the voting times, tables vt/vtc, and the ballot counts
 //             rdv   the machine's own record of the votes per section and candidate: feeds rdv, res, tot and everything derived
@@ -21,21 +22,21 @@ export const REPO = 'brauliobo/brazil-audit'
 const FULL = [1, 3, 5, 6, 7, 8]
 const RUNOFF = [1, 3] // the second round only elects president and governors
 
-const open = (year, turn) => ({
+const open = (year, turn, seatRule) => ({
   key: turn === 1 ? `${year}` : `${year}-${turn}`, year, turn, offices: turn === 1 ? FULL : RUNOFF,
-  hasBlank: true, hasTimes: false, hasResidual: false, hasSeats: turn === 1, hasCoverage: false,
+  hasBlank: true, hasTimes: false, hasResidual: false, hasSeats: turn === 1, hasCoverage: false, seatRule,
   sources: { logs: false, rdv: false, open: true, official: ['check'], pending: year === 2022 ? ['logs', 'rdv'] : [] }, // 2018: the TSE published neither RDV nor logs
   raw: { branch: '2018', code: [] },
   source: { kind: 'open', db: `brazil-audit-${year}` },
 })
 
 const elections = [
-  open(2018, 1), open(2018, 2), open(2022, 1),
+  open(2018, 1, 'coalitions2018'), open(2018, 2), open(2022, 1, 'stf2024'),
   // the runoff of 2022 also has its RDV, logs and aux files (release data-2022)
   { ...open(2022, 2), raw: { tag: 'data-2022', indexDir: 'meta-2022', branch: '2022', code: ['script.rb'] } },
   {
     key: '2026', year: 2026, turn: 1, offices: FULL,
-    hasBlank: true, hasTimes: true, hasResidual: true, hasSeats: true, hasCoverage: true,
+    hasBlank: true, hasTimes: true, hasResidual: true, hasSeats: true, hasCoverage: true, seatRule: 'stf2024',
     sources: { logs: true, rdv: true, open: false, official: ['residual', 'check'], pending: [] },
     raw: {
       tag: 'data-2026', indexDir: 'meta-2026', branch: '2026', code: ['lib/rdv.rb', 'lib/voting_log.rb'], coverage: ['coverage/missing-2026.tsv', 'coverage/summary-2026.tsv'],

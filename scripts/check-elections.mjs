@@ -6,6 +6,7 @@ import { readdirSync, readFileSync } from 'node:fs'
 import { join } from 'node:path'
 import { DEFAULT_ELECTION, ELECTIONS, ELECTION_LIST, SEATS_ELECTION } from '../src/model.js'
 import { parseRoute } from '../src/routes.js'
+import { RULES } from '../src/seats/rules.js'
 
 const chronological = [...ELECTION_LIST].sort((a, b) => a.year - b.year || a.turn - b.turn)
 assert.deepEqual(ELECTION_LIST.map((e) => e.key), chronological.map((e) => e.key), 'ELECTION_LIST must be chronological')
@@ -17,8 +18,12 @@ const latest = chronological.at(-1).key
 assert.equal(DEFAULT_ELECTION, latest, 'DEFAULT_ELECTION must be the latest election')
 assert.equal(SEATS_ELECTION, chronological.findLast((e) => e.hasSeats).key, 'SEATS_ELECTION must be the latest election with seats')
 
+// every deputy election names a rule that exists, and /seats opens the latest election with seats data
+for (const e of ELECTION_LIST.filter((x) => x.seatRule)) assert.ok(e.hasSeats && RULES[e.seatRule], `seatRule of ${e.key}`)
+assert.equal(ELECTIONS[SEATS_ELECTION].seatRule && SEATS_ELECTION, latest, 'the latest election must have seat rules (the seats view opens it)')
+
 const BASE = '/brazil-audit/'
-for (const path of ['', 'overview', 'maps', 'time/sp', 'drill/sp/SÃO%20PAULO']) {
+for (const path of ['', 'overview', 'maps', 'seats', 'time/sp', 'drill/sp/SÃO%20PAULO']) {
   const r = parseRoute(BASE, `${BASE}${path}`, '')
   assert.equal(r.election, latest, `/${path} must open the latest election`)
   assert.equal(r.notFound, false, `/${path} must not be not-found`)
