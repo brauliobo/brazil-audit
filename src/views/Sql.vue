@@ -21,7 +21,7 @@ const examples = computed(() => examplesFor(year.value))
 // Parts are loaded automatically for the tables a statement mentions (directly or through the views): the small tables of every
 // election, the default parts of rdv/vt for the elections the statement names (`election = 2022`), else the active one.
 const SMALL = ['tot', 'res', 'cov', 'miss', 'residual', 'residual_skipped', 'vtc', 'elected', 'seats']
-const SECTION = ['rdv', 'vt']
+const SECTION = ['rdv', 'vt', 'benford_hist', 'benford_base', 'benford_stat']
 const VIEW_TABLES = { sec: ['rdv'], cs: ['rdv'], resx: ['res', 'residual'], totx: ['tot', 'residual'] }
 async function load(text) {
   const mentioned = [...text.matchAll(/\b[a-z_]+\b/g)].map((m) => m[0])

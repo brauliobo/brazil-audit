@@ -10,11 +10,11 @@ import { objects } from '../db'
 import { int, num, pct } from '../format'
 import Panel from '../components/Panel.vue'
 import Field from '../components/Field.vue'
-import Legend from '../components/Legend.vue'
 import SourceBadge from '../components/SourceBadge.vue'
 import BarList from '../components/BarList.vue'
 import ColumnChart from '../components/ColumnChart.vue'
 import DataTable from '../components/DataTable.vue'
+import Notice from '../components/Notice.vue'
 import Scatter from '../components/Scatter.vue'
 
 const BINS = 40
@@ -56,16 +56,6 @@ const cities = run(([y, s, c], q) => rows(q, `with v as (${candVotes(y)}) select
   sum(votes)::float8 / sum(nominal) share from v where ($2::text is null or state = $2) group by state, city
   having count(*) >= 10 and sum(nominal) > 0 order by share desc limit 15`, [c, s]))
 
-const benford = run(async ([y, s, c], q) => {
-  const found = await rows(q, `with v as (${candVotes(y)}) select substr(votes::text, 1, 1)::int d, count(*) n from v
-    where votes > 0 and ($2::text is null or state = $2) group by 1 order by 1`, [c, s])
-  const total = found.reduce((t, r) => t + r.n, 0)
-  const observed = Array.from({ length: 9 }, (_, i) => (found.find((r) => r.d === i + 1)?.n ?? 0) / total)
-  const expected = Array.from({ length: 9 }, (_, i) => Math.log10(1 + 1 / (i + 1)))
-  const chi2 = observed.reduce((t, o, i) => t + (total * (o - expected[i]) ** 2) / expected[i], 0)
-  return { observed, expected, total, chi2 }
-})
-
 const rates = useAsync(() => [year.value, state.value, base.loading, loaded.value], async ([y, s], q) => {
   if (base.loading) return null
   if (!cfg.value.hasBlank) return []
@@ -73,7 +63,6 @@ const rates = useAsync(() => [year.value, state.value, base.loading, loaded.valu
     sum(nul)::float8 / nullif(sum(nominal + blank + nul), 0) null_rate from sec where office = 1 and ${inElection(y)} and ($1::text is null or state = $1) group by state order by state`, [s])
 })
 
-const benfordLegend = computed(() => [{ color: 'var(--chart-bar)', label: t('analysis.observed') }, { color: 'var(--chart-highlight)', label: t('analysis.expected', { chi2: num(benford.data.chi2), critical: num(15.51), n: int(benford.data.total) }) }])
 const pick = (key, e) => setParam(key, e.target.value)
 const stateOptions = computed(() => statesIn('rdv', year.value))
 const section = (r) => href(year.value, 'drill', [r.state, r.city, r.zone, r.section])
@@ -114,10 +103,9 @@ SourceBadge(:election="year")
     p.muted {{ t('analysis.sample', { n: int(SAMPLE) }) }}
   Panel(:title="t('analysis.citiesTitle')" :state="cities" :election="year")
     BarList(:items="cityItems")
-  Panel(:title="t('analysis.benfordTitle')" :state="benford" :election="year")
-    ColumnChart(:label="t('analysis.benfordTitle')" :values="benford.data.observed" :labels="['1','2','3','4','5','6','7','8','9']" :line="benford.data.expected" :fmt="(v) => pct(v, 1)")
-    Legend(:items="benfordLegend")
-    p.muted {{ t('analysis.benfordNote') }}
+  Panel(:title="t('analysis.benfordTitle')" :election="year")
+    Notice(kind="info") {{ t('benford.teaser.body') }}
+    a(:href="href(year, 'benford', [], { cand })") {{ t('benford.teaser.link') }}
   Panel(:title="t('analysis.ratesTitle')" :state="rates" :election="year" wide)
     template(v-if="!cfg.hasBlank")
       p.muted {{ t('analysis.noBlank') }}

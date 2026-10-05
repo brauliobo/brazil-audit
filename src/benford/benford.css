@@ -1,0 +1,69 @@
+/*
+ * Benford view. Built only on the design tokens (src/design): shared classes (.panel, .field, .table, .legend, .notice, .chart, .map...)
+ * do most of the work; what is left is the --benford-* tokens below (defined from semantic tokens only, ready to move into
+ * components.css) and the rules of the pieces no shared component covers. No colour, font or size literals, no breakpoints:
+ * layouts are intrinsic (auto-fit grids, wrapping flex), so nothing here needs a media query.
+ */
+:root {
+  --benford-band: color-mix(in oklab, var(--chart-highlight) 22%, transparent);
+  --benford-law: var(--chart-overlay);
+  --benford-envelope: var(--text-primary);
+  --benford-up: var(--chart-highlight);
+  --benford-down: var(--accent);
+  --benford-heat-max: 45%;
+  --benford-card-min: calc(var(--size-label-column) * 2);
+  --benford-measure: calc(var(--size-chart-max) * 1.25);
+}
+
+.bf-lede { max-width: var(--benford-measure); margin: var(--space-0) var(--space-0) var(--space-3); }
+
+/* controls: the shared .field and ButtonGroup, plus the minimum N input */
+.bf-controls .field { max-width: 100%; min-width: 0; }
+.bf-controls .field select { min-width: 0; max-width: 100%; }
+.bf-controls .bf-minn { width: var(--size-label-column); }
+
+/* chart and measures */
+.bf-main { display: grid; grid-template-columns: repeat(auto-fit, minmax(var(--layout-column-min), 1fr)); gap: var(--space-4) var(--space-6); align-items: start; }
+.bf-chart { min-width: 0; }
+.bf .bf-band { fill: var(--benford-band); }
+.bf .bf-dot { fill: var(--benford-law); }
+.bf .chart__overlay { stroke: var(--benford-law); }
+.bf .bf-digit { outline: none; }
+.bf .bf-digit:hover .chart__bar, .bf .bf-digit:focus-visible .chart__bar { stroke: var(--text-primary); stroke-width: var(--viz-stroke-medium); }
+.bf .bf-env line { stroke: var(--benford-envelope); stroke-width: var(--viz-stroke-medium); }
+.bf .bf-env .bf-env__mean { stroke-width: var(--chart-line-width); }
+.bf .bf-flag { fill: var(--text-primary); font-size: var(--viz-font-sm); }
+.bf-hover { min-height: var(--space-6); margin: var(--space-1) var(--space-0) var(--space-0); font-size: var(--type-caption-size); color: var(--text-muted); }
+.bf-key { display: inline-block; flex: none; }
+.bf-key--law { width: var(--space-4); border-top: var(--border-width-2) solid var(--benford-law); }
+.bf-key--env { width: var(--space-2); height: var(--space-4); background: linear-gradient(var(--benford-envelope), var(--benford-envelope)) center / var(--border-width-1) 100% no-repeat, linear-gradient(var(--benford-envelope), var(--benford-envelope)) top / 100% var(--border-width-1) no-repeat, linear-gradient(var(--benford-envelope), var(--benford-envelope)) bottom / 100% var(--border-width-1) no-repeat; }
+.bf-key--glyph { color: var(--text-primary); }
+
+.bf-stats dl { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, auto); gap: var(--space-1) var(--space-4); margin: var(--space-0) var(--space-0) var(--space-3); font-size: var(--font-size-300); }
+.bf-stats dt { color: var(--text-muted); overflow-wrap: anywhere; }
+.bf-stats dd { margin: var(--space-0); text-align: end; font-variant-numeric: var(--type-numeric); overflow-wrap: anywhere; }
+.bf-verdict p { margin: var(--space-1) var(--space-0) var(--space-0); }
+
+/* tables */
+.bf-table .table-wrap { max-height: calc(var(--size-skeleton) * 3); overflow: auto; margin-bottom: var(--space-3); }
+.bf-table caption, .bf-heat caption { padding: var(--space-1) var(--space-0); text-align: start; font-size: var(--type-caption-size); color: var(--text-muted); }
+.bf-heat td { min-width: calc(var(--space-6) * 2); text-align: center; }
+.bf-heat td.pos { background: color-mix(in oklab, var(--benford-up) calc(var(--k) * var(--benford-heat-max)), var(--surface-raised)); }
+.bf-heat td.neg { background: color-mix(in oklab, var(--benford-down) calc(var(--k) * var(--benford-heat-max)), var(--surface-raised)); }
+.bf-heat tr.small { opacity: var(--opacity-stale); }
+.bf-swatch--up { background: color-mix(in oklab, var(--benford-up) 35%, var(--surface-raised)); }
+.bf-swatch--down { background: color-mix(in oklab, var(--benford-down) 35%, var(--surface-raised)); }
+
+/* small multiples */
+.bf-multiples { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(var(--benford-card-min), 100%), 1fr)); gap: var(--space-3); margin: var(--space-0); padding: var(--space-0); list-style: none; }
+.bf-multiples li { min-width: 0; padding: var(--space-2); border: var(--border-width-1) solid var(--border-default); border-radius: var(--radius-panel); }
+.bf-multiples li > a { display: flex; align-items: center; min-height: var(--control-height); margin-bottom: var(--space-1); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+/* map legend ramps */
+.bf-ramp--diverging { background: linear-gradient(90deg, var(--benford-down), var(--map-blend-base), var(--benford-up)); }
+.bf-ramp--mad { background: linear-gradient(90deg, var(--map-blend-base), var(--chart-bar)); }
+
+/* explainer */
+.bf-explainer section { max-width: var(--benford-measure); }
+.bf-explainer h3 { margin: var(--space-4) var(--space-0) var(--space-1); font-size: var(--type-h2-size); font-weight: var(--font-weight-semibold); }
+.bf-explainer p, .bf-explainer li { margin: var(--space-1) var(--space-0); }

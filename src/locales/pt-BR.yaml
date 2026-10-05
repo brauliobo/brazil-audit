@@ -15,6 +15,7 @@ nav:
   seats: Cadeiras
   drill: Detalhar
   analysis: Análise
+  benford: Benford
   time: Horários
   sql: SQL
   design: Sistema de design
@@ -426,9 +427,6 @@ analysis:
   citySections_one: "{share} · {count} seção"
   citySections_other: "{share} · {count} seções"
   benfordTitle: Primeiro dígito dos votos por seção (Benford)
-  observed: observado
-  benfordNote: Com milhares de seções o teste χ² quase sempre rejeita Benford, e seções pequenas (poucos votos) desviam dele naturalmente; olhe o tamanho do desvio no gráfico, não só o χ².
-  expected: "esperado (Benford) · χ² = {chi2} (8 gl; crítico a 5% = {critical}) · n = {n}"
   ratesTitle: Brancos e nulos por UF (presidente)
   noBlank: Esta eleição só tem votos nominais por candidato no dump (sem brancos/nulos).
   blanks: brancos
@@ -644,3 +642,216 @@ design:
   mapHemicycle: "Componentes: mapa, hemiciclo, polarização"
   winnerColor: "cor do vencedor, t = {t}"
   hemicycleExample: Exemplo de hemiciclo
+
+benford:
+  page:
+    title: "Lei de Benford · {election}"
+    lede: "Triagem estatística dos dígitos das contagens de votos. Aqui um desvio é um desvio estatístico, não uma acusação: cada gráfico compara o observado com a Lei de Benford e com o que o tamanho das seções, sozinho, já produz."
+    caution: "Contagens por seção têm tamanho limitado, então desviam da Lei de Benford mesmo sem manipulação. Leia sempre o observado junto da linha de base simulada."
+    explainerLink: "Como ler esta página"
+    noData: "Não há dados de dígitos para esta combinação (cargo, candidato, unidade e local). Escolha outro recorte: o conjunto publicado se limita aos candidatos com votos suficientes."
+  controls:
+    label: "Controles da análise"
+    cand: "Candidato ou total"
+    unit: "Unidade"
+    place: "Local"
+    digits: "Dígito"
+    minn: "N mínimo"
+    wholeUf: "toda a UF"
+    heat: "Medida do mapa de calor"
+    grain: "Mapa por"
+    mapMetric: "Cor do mapa"
+  units:
+    section:
+      label: "Seção"
+      hint: "contagem de votos de cada seção eleitoral"
+    city:
+      label: "Município"
+      hint: "votos totais de cada município"
+    uf:
+      label: "UF"
+      hint: "votos totais de cada UF (poucas unidades: só para ilustrar)"
+  positions:
+    d1:
+      label: "1º dígito"
+    d2:
+      label: "2º dígito"
+    d12:
+      label: "2 primeiros dígitos"
+    d_last:
+      label: "Último dígito"
+  cand:
+    nominal: "Total de votos nominais"
+    branco: "Votos em branco"
+    nulo: "Votos nulos"
+    party: "Partido {party} ({n})"
+    partyNumber: "Partido {n}"
+    person: "{name} ({n})"
+    group:
+      totals: "Totais da seção"
+      candidates: "Candidatos"
+      parties: "Blocos de partido"
+  chart:
+    title: "{cand} · {unit} · {place} · {pos}"
+    alt: "Gráfico de barras com a proporção observada de cada dígito, a curva esperada pela Lei de Benford e o envelope da linha de base simulada. Os mesmos números estão na tabela abaixo."
+    observed: "Observado"
+    law: "Esperado (Benford)"
+    band: "Faixa de 95% sob Benford (só acaso amostral)"
+    envelope: "Linha de base simulada: média e envelope 2,5%–97,5%"
+    above: "Observado acima do envelope"
+    below: "Observado abaixo do envelope"
+    barTip: "dígito {d}: {obs} observado, {law} esperado, {base} na linha de base ({lo} a {hi})"
+    barTipNoBase: "dígito {d}: {obs} observado, {law} esperado"
+  stats:
+    n: "N"
+    nHint: "valores que têm o dígito (zeros e, no 2º dígito, contagens de 1 dígito ficam de fora)"
+    mad: "MAD"
+    madHint: "média do desvio absoluto entre a proporção observada e a esperada"
+    madClassNone: "sem escala publicada"
+    classes:
+      close: "conformidade próxima"
+      acceptable: "conformidade aceitável"
+      marginal: "conformidade marginal"
+      nonconformity: "não conformidade"
+    classHint: "distância à Lei de Benford; não mede manipulação"
+    noise: "MAD esperado só pelo acaso"
+    noiseHint: "o que uma amostra perfeita desse tamanho já mostra"
+    chi2: "χ²"
+    df: "gl"
+    p: "valor-p"
+    pTiny: "< 0,0001"
+    baselineMad: "MAD da linha de base"
+    baselineHint: "média e intervalo de 2,5% a 97,5% das réplicas"
+    delta: "Diferença para a média da linha de base"
+    excess: "Diferença relativa"
+    excessHint: "MAD observado em relação à média da linha de base; não cresce com o N"
+    index: "Índice de desvio ajustado"
+    indexHint: "0 = média da linha de base; ±1 = limite do envelope; fora de ±1 = fora do envelope"
+    digitsOutside: "Dígitos fora do envelope"
+    none: "–"
+  verdict:
+    title: "Leitura"
+    small: "Amostra pequena: N = {n}, abaixo do mínimo de {min}. Com tão poucos valores o MAD e o χ² são dominados pelo acaso e não há leitura estatística confiável."
+    smallWhy: "O N mínimo é o menor N em que o dígito mais raro é esperado pelo menos 5 vezes (regra usual de validade do χ²)."
+    nobase: "Sem linha de base simulada para este recorte. A comparação é só com a Lei de Benford, e isso sozinho não diz nada sobre manipulação."
+    inside: "Dentro do envelope simulado: o MAD observado ({mad}) está entre {lo} e {hi}, o que o tamanho das seções já produz sem manipulação."
+    above: "Desvio estatístico acima do envelope simulado: o MAD observado ({mad}) supera o limite de {hi}. Isso não é prova de nada: heterogeneidade entre seções, geografia e comparecimento ampliam o envelope de forma legítima."
+    below: "Abaixo do envelope simulado: o MAD observado ({mad}) é menor que o piso de {lo}, ou seja, mais próximo da Lei de Benford do que o sorteio prevê. É o efeito esperado quando as seções são mais heterogêneas que o modelo (o percentual do candidato varia entre bairros e urnas); não indica problema."
+    caveat: "A linha de base sorteia cada seção com o tamanho real e o percentual do município, só com acaso binomial. Qualquer outra fonte de variação, legítima ou não, aparece como desvio."
+  table:
+    title: "Contagens por dígito"
+    digit: "Dígito"
+    count: "Contagem"
+    observed: "Observado"
+    law: "Benford"
+    base: "Linha de base"
+    lo: "2,5%"
+    hi: "97,5%"
+    z: "z"
+    flag: "Posição"
+    copy: "copiar tabela"
+    copied: "tabela copiada"
+    caption: "Contagens por dígito e comparação com a Lei de Benford e a linha de base simulada"
+    zHint: "z com correção de continuidade; |z| > 1,96 está fora da faixa de 95% sob Benford"
+  flags:
+    above: "acima"
+    below: "abaixo"
+    inside: "dentro"
+    none: "–"
+  multiples:
+    title: "Candidatos do cargo no mesmo recorte"
+    note: "O mesmo recorte (unidade, local e dígito) para cada candidato e total do cargo. Cada quadro leva à análise completa."
+    n: "N = {n}"
+    empty: "Nenhum candidato com dados neste recorte."
+  heatmap:
+    title: "UF × dígito"
+    note: "Desvio de cada dígito em cada UF para o candidato escolhido (seções). Cada célula traz o número; a cor só reforça o sinal."
+    z: "z contra a Lei de Benford"
+    rel: "desvio relativo contra a Lei de Benford"
+    relHint: "proporção observada dividida pela esperada, menos 1"
+    adj: "z contra a linha de base simulada"
+    zHint: "z do dígito em relação ao esperado por Benford (correção de continuidade)"
+    adjHint: "diferença entre a proporção observada e a média da linha de base, em desvios-padrão das réplicas"
+    above: "positivo: dígito mais frequente que o esperado"
+    below: "negativo: dígito menos frequente que o esperado"
+    empty: "Sem UFs com dados para este candidato."
+    small: "amostra pequena"
+    smallHint: "linhas esmaecidas têm N abaixo do mínimo"
+  map:
+    title: "Mapa do desvio ajustado pela linha de base"
+    grain:
+      uf: "UFs"
+      mun: "municípios"
+    grainMunHint: "carrega os dados de todas as UFs"
+    metrics:
+      excess: "Diferença relativa do MAD para a linha de base"
+      index: "Índice ajustado (distância em larguras do envelope)"
+      mad: "MAD contra a Lei de Benford"
+    legendDiverging: "abaixo da linha de base ← 0 → acima (cor plena em ±{scale})"
+    legendMad: "MAD"
+    tip: "{place}\nN = {n}\nMAD = {mad}\nLinha de base: {base} ({lo} a {hi})\nDiferença relativa: {excess}\nÍndice ajustado: {index}"
+    tipNoBase: "{place}\nN = {n}\nMAD = {mad}"
+    tipSmall: "{place}\nN = {n} (amostra pequena, abaixo de {min})"
+    none: "sem dados ou N abaixo do mínimo"
+    label: "Mapa colorido pelo desvio dos dígitos"
+    noMap: "Não há mapa de municípios para este local."
+    notice: "Só aparecem municípios com seções suficientes para uma leitura (o recorte publicado) e N de pelo menos {min}."
+    hidden_one: "{count} local sem leitura (N abaixo do mínimo); municípios com poucas seções não fazem parte do recorte"
+    hidden_other: "{count} locais sem leitura (N abaixo do mínimo); municípios com poucas seções não fazem parte do recorte"
+  ranking:
+    title: "Ranking por desvio ajustado"
+    n: "Amostra (N)"
+    mad: "MAD"
+    base: "MAD da linha de base"
+    index: "Índice ajustado"
+    excess: "Diferença relativa"
+    flag: "Posição"
+    open: "abrir"
+    detail: "detalhar"
+    note: "Ordenado do maior índice para o menor. Estar acima do envelope é um desvio estatístico, nunca uma conclusão sobre os votos."
+    empty: "Nenhum local com N suficiente."
+    shown: "mostrando {shown} de {total}"
+  explainer:
+    title: "Como ler esta página"
+    law:
+      title: "O que diz a Lei de Benford"
+      p1: "Em muitos conjuntos de números que se espalham por várias ordens de grandeza, o primeiro dígito 1 aparece em cerca de 30% dos casos, o 2 em 18% e o 9 em apenas 4,6%: P(d) = log10(1 + 1/d). O segundo dígito é bem mais uniforme (0 em 12%, 9 em 8,5%) e os dois primeiros dígitos seguem log10(1 + 1/dd), de 10 a 99. O último dígito, em dados sem arredondamento, deve ser uniforme (10% cada)."
+    heuristic:
+      title: "Por que é uma heurística, e não uma prova"
+      p1: "A lei não é uma regra da natureza: vale quando os valores se espalham de forma suave por várias ordens de grandeza. Serve para triagem, isto é, para decidir onde olhar com mais cuidado, nunca para concluir o que aconteceu. Deckert, Myagkov e Ordeshook (Political Analysis, 2011) testaram a lei em simulações e em eleições reais e concluem que conformidade e desvios não seguem nenhum padrão."
+    sections:
+      title: "Por que contagens por seção não obedecem à lei"
+      p1: "Uma seção tem no máximo algumas centenas de eleitores. Numa seção de 300 eleitores, um candidato com 40% dos votos terá algo perto de 120, quase sempre entre 100 e 140. Como o tamanho da seção é limitado e o percentual do candidato fica perto da média, as contagens se concentram numa faixa estreita: o primeiro dígito passa a refletir onde essa faixa cai (em seções de 200 eleitores esse candidato fica nos 80, em seções de 300 nos 120), e não uma lei sobre números. A premissa de várias ordens de grandeza não se cumpre, e isso acontece sem manipulação alguma."
+    second:
+      title: "O que o 2º dígito e a linha de base acrescentam"
+      p1: "O segundo dígito é bem menos sensível a esse efeito e é o teste recomendado na literatura de forense eleitoral (Mebane, 2006, propôs o teste do 2º dígito para contagens de seções). Mesmo assim, contagens de seção não o seguem exatamente."
+      p2: "Por isso cada recorte traz uma linha de base: para cada seção sorteamos uma contagem binomial com o tamanho real da seção (nominais, brancos e nulos) e o percentual do candidato no município; para municípios, o percentual da UF; para UFs, o do país. São 200 réplicas com semente fixa, e guardamos a média e o envelope de 2,5% a 97,5% de cada dígito. O gráfico mostra o observado, a Lei de Benford e esse envelope, e só marcamos desvios do observado fora do envelope simulado."
+    flag:
+      title: "O que um desvio sinalizado pode e não pode significar"
+      p1: "Ainda assim, estar fora do envelope não prova nada. A linha de base só tem o acaso binomial: heterogeneidade entre bairros e urnas, geografia, comparecimento, transferência de eleitores entre seções, arredondamentos e erros de digitação alargam o envelope de forma legítima. Um desvio sinalizado pode indicar que o processo real difere do modelo simples; não identifica a causa, não mede intenção e não localiza responsabilidades. A ausência de desvio também não prova que tudo está correto."
+      p2: "Num recorte com centenas de milhares de seções o envelope fica muito estreito e quase todo observado cai fora dele, em geral abaixo (mais próximo de Benford, porque as seções reais são mais heterogêneas que o modelo). Por isso olhe o tamanho da diferença (MAD e índice ajustado), não só se está dentro ou fora."
+    read:
+      title: "Como ler MAD, χ² e N"
+      p1: "MAD é a média do desvio absoluto entre a proporção observada de cada dígito e a esperada. Nigrini (2012) propõe faixas empíricas: 1º dígito, até 0,006 conformidade próxima, até 0,012 aceitável, até 0,015 marginal e acima disso não conformidade; 2º dígito, 0,008, 0,010 e 0,012; dois primeiros dígitos, 0,0012, 0,0018 e 0,0022. As faixas medem distância à lei, não manipulação, e não existem para o último dígito."
+      p2: "O χ² de Pearson compara contagens e, com N de centenas de milhares, rejeita a Lei de Benford sempre (valor-p praticamente zero), mesmo para desvios minúsculos. Por isso a leitura se apoia no tamanho do desvio (MAD, z de cada dígito com correção de continuidade e faixa de 95%) e no envelope simulado."
+      p3: "N é a quantidade de valores que têm o dígito. Abaixo do N mínimo mostramos apenas \"amostra pequena\": é o menor N em que o dígito mais raro é esperado pelo menos 5 vezes (1º dígito: {minD1}; 2º: {minD2}; dois primeiros: {minD12}; último: {minLast}). Além disso o MAD tem um piso de ruído: com N pequeno nem uma amostra perfeita alcança a faixa de conformidade próxima, e o MAD esperado só pelo acaso aparece nas medidas."
+    included:
+      title: "O que está incluído"
+      sections: "Seções: contagens de cada seção (unidade principal); municípios e UFs como unidades secundárias (votos totais de cada município ou UF; municípios e UFs excluem o exterior)."
+      president: "Presidente: candidatos com pelo menos {nationalShare} dos votos nominais no país, com o mesmo critério nas UFs; os com {munNationalShare} ou mais, e o total nominal, também em municípios com {munSections} seções ou mais."
+      local: "Governador e senador: candidatos com pelo menos {localShare} dos votos nominais da UF; os com {bigShare} ou mais também têm as unidades município e UF, e os com {munLocalShare} ou mais, municípios com {munSectionsOther} seções ou mais."
+      deputies: "Deputados: totais por UF e blocos de partido (os dois primeiros dígitos do número) com pelo menos {localShare} dos votos nominais."
+      totals: "Totais da seção: nominais, brancos e nulos."
+      digits: "Dois primeiros dígitos: presidente e totais nominais (país e UFs), e só onde N chega a {minD12}. Municípios aparecem só quando têm seções suficientes."
+    sources:
+      title: "Referências conferidas"
+      deckert: "Deckert, J.; Myagkov, M.; Ordeshook, P. C. Benford's Law and the Detection of Election Fraud. Political Analysis 19(3), 2011, p. 245-268."
+      mebane: "Mebane, W. R. Election Forensics: Vote Counts and Benford's Law (2006), teste do segundo dígito."
+      nigrini: "Nigrini, M. J. Benford's Law: Applications for Forensic Accounting, Auditing, and Fraud Detection. Wiley, 2012 (faixas do MAD)."
+  sql:
+    title: "Reproduzir os números"
+    shipped: "A partir das tabelas deste painel (benford_hist, benford_base, benford_stat):"
+    raw: "A partir das seções (importe antes as UFs em Detalhar; a contagem dos dígitos é a mesma):"
+  teaser:
+    body: "A análise completa (1º e 2º dígitos, linha de base simulada, mapas e ranking) está na visão Benford. Contagens por seção têm tamanho limitado e desviam da Lei de Benford mesmo sem manipulação; um desvio é só estatístico."
+    link: "abrir a análise de Benford"

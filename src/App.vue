@@ -16,6 +16,7 @@ import ThemeSwitch from './components/ThemeSwitch.vue'
 import Overview from './views/Overview.vue'
 import Drill from './views/Drill.vue'
 import Analysis from './views/Analysis.vue'
+import Benford from './views/Benford.vue'
 import Time from './views/Time.vue'
 import Sql from './views/Sql.vue'
 import Maps from './views/Maps.vue'
@@ -25,7 +26,7 @@ import Design from './views/Design.vue'
 import NotFound from './views/NotFound.vue'
 
 const REPO = 'https://github.com/brauliobo/brazil-audit'
-const views = { overview: Overview, maps: Maps, parliament: Parliament, seats: Seats, drill: Drill, analysis: Analysis, time: Time, sql: Sql, design: Design }
+const views = { overview: Overview, maps: Maps, parliament: Parliament, seats: Seats, drill: Drill, analysis: Analysis, benford: Benford, time: Time, sql: Sql, design: Design }
 const current = computed(() => (route.value.notFound ? NotFound : views[route.value.view]))
 const election = computed(() => route.value.election)
 const nav = computed(() => VIEWS_NAV.map((v) => ({ label: viewName(v), href: href(election.value, v), current: route.value.view === v })))

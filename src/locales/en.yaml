@@ -14,6 +14,7 @@ nav:
   seats: Seats
   drill: Drill down
   analysis: Analysis
+  benford: Benford
   time: Voting time
   sql: SQL
   design: Design system
@@ -425,9 +426,6 @@ analysis:
   citySections_one: "{share} · {count} section"
   citySections_other: "{share} · {count} sections"
   benfordTitle: First digit of the votes per section (Benford)
-  observed: observed
-  benfordNote: With thousands of sections the χ² test almost always rejects Benford, and small sections (few votes) naturally deviate from it; look at the size of the deviation in the chart, not only at the χ².
-  expected: "expected (Benford) · χ² = {chi2} (8 df; critical at 5% = {critical}) · n = {n}"
   ratesTitle: Blank and null by state (president)
   noBlank: This election only has nominal votes per candidate in the dump (no blank/null).
   blanks: blank
@@ -643,3 +641,216 @@ design:
   mapHemicycle: "Components: map, hemicycle, polarization"
   winnerColor: "winner colour, t = {t}"
   hemicycleExample: Hemicycle example
+
+benford:
+  page:
+    title: "Benford's law · {election}"
+    lede: "A statistical screen of the digits of the vote counts. Here a deviation is a statistical deviation, not an accusation: every chart compares what was observed with Benford's law and with what the size of the polling stations alone already produces."
+    caution: "Counts per polling station have a bounded size, so they deviate from Benford's law even with no manipulation. Always read the observed values next to the simulated baseline."
+    explainerLink: "How to read this page"
+    noData: "There is no digit data for this combination (office, candidate, unit and place). Pick another cut: the published set is limited to candidates with enough votes."
+  controls:
+    label: "Analysis controls"
+    cand: "Candidate or total"
+    unit: "Unit"
+    place: "Place"
+    digits: "Digit"
+    minn: "Minimum N"
+    wholeUf: "whole state"
+    heat: "Heatmap measure"
+    grain: "Map by"
+    mapMetric: "Map colour"
+  units:
+    section:
+      label: "Polling station"
+      hint: "vote count of each polling station"
+    city:
+      label: "Municipality"
+      hint: "total votes of each municipality"
+    uf:
+      label: "State"
+      hint: "total votes of each state (very few units: for illustration only)"
+  positions:
+    d1:
+      label: "1st digit"
+    d2:
+      label: "2nd digit"
+    d12:
+      label: "First two digits"
+    d_last:
+      label: "Last digit"
+  cand:
+    nominal: "Total nominal votes"
+    branco: "Blank votes"
+    nulo: "Null votes"
+    party: "Party {party} ({n})"
+    partyNumber: "Party {n}"
+    person: "{name} ({n})"
+    group:
+      totals: "Station totals"
+      candidates: "Candidates"
+      parties: "Party blocs"
+  chart:
+    title: "{cand} · {unit} · {place} · {pos}"
+    alt: "Bar chart with the observed proportion of each digit, the curve expected by Benford's law and the envelope of the simulated baseline. The same numbers are in the table below."
+    observed: "Observed"
+    law: "Expected (Benford)"
+    band: "95% band under Benford (sampling chance only)"
+    envelope: "Simulated baseline: mean and 2.5%–97.5% envelope"
+    above: "Observed above the envelope"
+    below: "Observed below the envelope"
+    barTip: "digit {d}: {obs} observed, {law} expected, {base} in the baseline ({lo} to {hi})"
+    barTipNoBase: "digit {d}: {obs} observed, {law} expected"
+  stats:
+    n: "N"
+    nHint: "values that have the digit (zeros and, for the 2nd digit, one-digit counts are left out)"
+    mad: "MAD"
+    madHint: "mean absolute deviation between the observed and the expected proportion"
+    madClassNone: "no published scale"
+    classes:
+      close: "close conformity"
+      acceptable: "acceptable conformity"
+      marginal: "marginal conformity"
+      nonconformity: "nonconformity"
+    classHint: "distance to Benford's law; it does not measure manipulation"
+    noise: "MAD expected by chance alone"
+    noiseHint: "what a perfect sample of this size already shows"
+    chi2: "χ²"
+    df: "df"
+    p: "p-value"
+    pTiny: "< 0.0001"
+    baselineMad: "Baseline MAD"
+    baselineHint: "mean and 2.5% to 97.5% interval of the replicates"
+    delta: "Difference from the baseline mean"
+    excess: "Relative difference"
+    excessHint: "observed MAD relative to the baseline mean; it does not grow with N"
+    index: "Adjusted deviation index"
+    indexHint: "0 = baseline mean; ±1 = envelope limit; beyond ±1 = outside the envelope"
+    digitsOutside: "Digits outside the envelope"
+    none: "–"
+  verdict:
+    title: "Reading"
+    small: "Small sample: N = {n}, below the minimum of {min}. With so few values the MAD and the χ² are dominated by chance and there is no reliable statistical reading."
+    smallWhy: "The minimum N is the smallest N at which the rarest digit is expected at least 5 times (the usual validity rule of the χ²)."
+    nobase: "No simulated baseline for this cut. The comparison is with Benford's law only, and that alone says nothing about manipulation."
+    inside: "Inside the simulated envelope: the observed MAD ({mad}) is between {lo} and {hi}, which the size of the polling stations already produces without manipulation."
+    above: "Statistical deviation above the simulated envelope: the observed MAD ({mad}) exceeds the limit of {hi}. That is not proof of anything: heterogeneity between stations, geography and turnout legitimately widen the envelope."
+    below: "Below the simulated envelope: the observed MAD ({mad}) is under the floor of {lo}, that is, closer to Benford's law than the draw predicts. This is the expected effect when stations are more heterogeneous than the model (a candidate's share varies between neighbourhoods and ballot boxes); it does not indicate a problem."
+    caveat: "The baseline draws every station with its real size and its municipality's share, with binomial chance only. Any other source of variation, legitimate or not, shows up as a deviation."
+  table:
+    title: "Counts per digit"
+    digit: "Digit"
+    count: "Count"
+    observed: "Observed"
+    law: "Benford"
+    base: "Baseline"
+    lo: "2.5%"
+    hi: "97.5%"
+    z: "z"
+    flag: "Position"
+    copy: "copy table"
+    copied: "table copied"
+    caption: "Counts per digit and comparison with Benford's law and the simulated baseline"
+    zHint: "z with continuity correction; |z| > 1.96 is outside the 95% band under Benford"
+  flags:
+    above: "above"
+    below: "below"
+    inside: "inside"
+    none: "–"
+  multiples:
+    title: "Candidates of the office in the same cut"
+    note: "The same cut (unit, place and digit) for every candidate and total of the office. Each card leads to the full analysis."
+    n: "N = {n}"
+    empty: "No candidate has data in this cut."
+  heatmap:
+    title: "State × digit"
+    note: "Deviation of each digit in each state for the chosen candidate (polling stations). Every cell carries the number; colour only reinforces the sign."
+    z: "z against Benford's law"
+    rel: "relative deviation against Benford's law"
+    relHint: "observed proportion divided by the expected one, minus 1"
+    adj: "z against the simulated baseline"
+    zHint: "z of the digit against what Benford expects (continuity correction)"
+    adjHint: "difference between the observed proportion and the baseline mean, in standard deviations of the replicates"
+    above: "positive: digit more frequent than expected"
+    below: "negative: digit less frequent than expected"
+    empty: "No states with data for this candidate."
+    small: "small sample"
+    smallHint: "faded rows have N below the minimum"
+  map:
+    title: "Map of the baseline-adjusted deviation"
+    grain:
+      uf: "states"
+      mun: "municipalities"
+    grainMunHint: "loads the data of every state"
+    metrics:
+      excess: "Relative difference of the MAD from the baseline"
+      index: "Adjusted index (distance in envelope widths)"
+      mad: "MAD against Benford's law"
+    legendDiverging: "below the baseline ← 0 → above (full colour at ±{scale})"
+    legendMad: "MAD"
+    tip: "{place}\nN = {n}\nMAD = {mad}\nBaseline: {base} ({lo} to {hi})\nRelative difference: {excess}\nAdjusted index: {index}"
+    tipNoBase: "{place}\nN = {n}\nMAD = {mad}"
+    tipSmall: "{place}\nN = {n} (small sample, below {min})"
+    none: "no data or N below the minimum"
+    label: "Map coloured by the deviation of the digits"
+    noMap: "There is no municipality map for this place."
+    notice: "Only municipalities with enough polling stations for a reading (the published set) and an N of at least {min} appear."
+    hidden_one: "{count} place without a reading (N below the minimum); municipalities with few stations are not part of the published set"
+    hidden_other: "{count} places without a reading (N below the minimum); municipalities with few stations are not part of the published set"
+  ranking:
+    title: "Ranking by adjusted deviation"
+    n: "Sample (N)"
+    mad: "MAD"
+    base: "Baseline MAD"
+    index: "Adjusted index"
+    excess: "Relative difference"
+    flag: "Position"
+    open: "open"
+    detail: "drill down"
+    note: "Sorted from the highest index to the lowest. Being above the envelope is a statistical deviation, never a conclusion about the votes."
+    empty: "No place with enough N."
+    shown: "showing {shown} of {total}"
+  explainer:
+    title: "How to read this page"
+    law:
+      title: "What Benford's law says"
+      p1: "In many sets of numbers that spread over several orders of magnitude, the first digit 1 appears in about 30% of the cases, the 2 in 18% and the 9 in only 4.6%: P(d) = log10(1 + 1/d). The second digit is much more uniform (0 in 12%, 9 in 8.5%) and the first two digits follow log10(1 + 1/dd), from 10 to 99. The last digit, in data without rounding, should be uniform (10% each)."
+    heuristic:
+      title: "Why it is a heuristic, not a proof"
+      p1: "The law is not a rule of nature: it holds when values spread smoothly over several orders of magnitude. It serves as a screen, that is, to decide where to look more carefully, never to conclude what happened. Deckert, Myagkov and Ordeshook (Political Analysis, 2011) tested the law in simulations and in real elections and conclude that conformity and deviations follow no pattern."
+    sections:
+      title: "Why polling-station counts do not obey the law"
+      p1: "A polling station has at most a few hundred voters. In a station of 300 voters, a candidate with 40% of the votes gets something close to 120, almost always between 100 and 140. Because the station size is bounded and the candidate's share stays near the mean, counts concentrate in a narrow range: the first digit comes to reflect where that range falls (in stations of 200 voters this candidate lands on 80, in stations of 300 on 120), not a law about numbers. The premise of several orders of magnitude does not hold, and this happens with no manipulation at all."
+    second:
+      title: "What the 2nd digit and the baseline add"
+      p1: "The second digit is much less sensitive to this effect and is the test recommended in the election-forensics literature (Mebane, 2006, proposed the 2nd-digit test for polling-station counts). Even so, station counts do not follow it exactly."
+      p2: "That is why every cut comes with a baseline: for each station we draw a binomial count with the real size of the station (nominal, blank and null votes) and the candidate's share in the municipality; for municipalities, the state share; for states, the national share. There are 200 replicates with a fixed seed, and we keep the mean and the 2.5% to 97.5% envelope of each digit. The chart shows the observed values, Benford's law and that envelope, and we only flag deviations of the observed values outside the simulated envelope."
+    flag:
+      title: "What a flagged deviation can and cannot mean"
+      p1: "Even so, being outside the envelope proves nothing. The baseline has only binomial chance: heterogeneity between neighbourhoods and ballot boxes, geography, turnout, voters transferred between stations, rounding and typing errors legitimately widen the envelope. A flagged deviation may indicate that the real process differs from the simple model; it does not identify the cause, does not measure intent and does not assign responsibility. The absence of a deviation does not prove that everything is correct either."
+      p2: "In a cut with hundreds of thousands of stations the envelope becomes very narrow and almost every observed value falls outside it, usually below (closer to Benford, because real stations are more heterogeneous than the model). So look at the size of the difference (MAD and adjusted index), not only at whether it is inside or outside."
+    read:
+      title: "How to read MAD, χ² and N"
+      p1: "MAD is the mean absolute deviation between the observed proportion of each digit and the expected one. Nigrini (2012) proposes empirical bands: 1st digit, up to 0.006 close conformity, up to 0.012 acceptable, up to 0.015 marginal and above that nonconformity; 2nd digit, 0.008, 0.010 and 0.012; first two digits, 0.0012, 0.0018 and 0.0022. The bands measure distance to the law, not manipulation, and do not exist for the last digit."
+      p2: "Pearson's χ² compares counts and, with N in the hundreds of thousands, always rejects Benford's law (p-value practically zero), even for tiny deviations. So the reading rests on the size of the deviation (MAD, the z of each digit with continuity correction and the 95% band) and on the simulated envelope."
+      p3: "N is the number of values that have the digit. Below the minimum N we only show \"small sample\": it is the smallest N at which the rarest digit is expected at least 5 times (1st digit: {minD1}; 2nd: {minD2}; first two: {minD12}; last: {minLast}). The MAD also has a noise floor: with a small N not even a perfect sample reaches the close-conformity band, and the MAD expected by chance alone is shown among the measures."
+    included:
+      title: "What is included"
+      sections: "Polling stations: the counts of each station (main unit); municipalities and states as secondary units (total votes of each municipality or state; municipalities and states leave out the votes abroad)."
+      president: "President: candidates with at least {nationalShare} of the nominal votes nationwide, with the same rule in the states; those with {munNationalShare} or more, and the nominal total, also in municipalities with {munSections} stations or more."
+      local: "Governor and senator: candidates with at least {localShare} of the state's nominal votes; those with {bigShare} or more also get the municipality and state units, and those with {munLocalShare} or more, municipalities with {munSectionsOther} stations or more."
+      deputies: "Deputies: totals per state and party blocs (the first two digits of the number) with at least {localShare} of the nominal votes."
+      totals: "Station totals: nominal, blank and null votes."
+      digits: "First two digits: president and nominal totals (nationwide and per state), and only where N reaches {minD12}. Municipalities appear only when they have enough stations."
+    sources:
+      title: "References checked"
+      deckert: "Deckert, J.; Myagkov, M.; Ordeshook, P. C. Benford's Law and the Detection of Election Fraud. Political Analysis 19(3), 2011, p. 245-268."
+      mebane: "Mebane, W. R. Election Forensics: Vote Counts and Benford's Law (2006), the second-digit test."
+      nigrini: "Nigrini, M. J. Benford's Law: Applications for Forensic Accounting, Auditing, and Fraud Detection. Wiley, 2012 (MAD bands)."
+  sql:
+    title: "Reproduce the numbers"
+    shipped: "From the tables of this panel (benford_hist, benford_base, benford_stat):"
+    raw: "From the polling stations (import the states first in Drill down; the digit counts are the same):"
+  teaser:
+    body: "The full analysis (1st and 2nd digit, simulated baseline, maps and ranking) is in the Benford view. Counts per polling station have a bounded size and deviate from Benford's law even with no manipulation; a deviation is only statistical."
+    link: "open the Benford analysis"

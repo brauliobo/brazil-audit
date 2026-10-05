@@ -11,7 +11,7 @@ const session = arg('session', 'app')
 const widths = arg('widths', '320,375,768,1280').split(',').map(Number)
 const ALL = [
   '2026/overview', '2026/maps', '2026/maps?scope=state&uf=sp', '2026/parliament?chamber=chamber', '2026/seats', '2026/seats?office=6&uf=sp', '2022/seats?office=7&uf=ac', '2018/seats?office=8', '2026/drill/sp', '2026/drill/sp/SÃO%20PAULO',
-  '2026/analysis?state=rr', '2026/time/ac', '2026/sql', '2026/design', '2022/overview',
+  '2026/analysis?state=rr', '2026/benford', '2018/benford?office=3&place=sp&digits=2', '2022-2/benford?unit=city', '2026/time/ac', '2026/sql', '2026/design', '2022/overview',
 ]
 const ROUTES = arg('routes') ? ALL.filter((r) => r.includes(arg('routes'))) : ALL
 

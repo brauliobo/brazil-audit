@@ -20,7 +20,7 @@ export const inElection = (key, alias = '') => {
 }
 
 /** Views of the main navigation (their labels are nav.<id> in the locale files). */
-export const VIEWS_NAV = ['overview', 'maps', 'parliament', 'seats', 'drill', 'analysis', 'time', 'sql']
+export const VIEWS_NAV = ['overview', 'maps', 'parliament', 'seats', 'drill', 'analysis', 'benford', 'time', 'sql']
 
 /** Routes outside the main navigation (linked from the footer). */
 export const HIDDEN_VIEWS = ['design']
