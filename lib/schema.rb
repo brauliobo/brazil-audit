@@ -33,21 +33,33 @@ module Schema
       bigint :votes; bigint :valid_votes
     end
     create(:imports, %i[name]){ String :name; Integer :rows; Integer :loaded; bigint :votes; Integer :unclassified; Integer :skipped; Time :at }
+    machine if MACHINE
   end
 
-  def self.section name, unique, &columns
-    create name, %i[state city_code zone section] + unique do
+  # the voting machine files (RDV and logs), as in the 2026 collector with a turn: the votes by section and office, and a voting
+  # time for each confirmed vote (more than one in the same second are kept). `machine_sections` says what each section had.
+  def self.machine
+    section(:rdv_machine, %i[turn office]){ String :model; smallint :turn; smallint :office; jsonb :votes }
+    section(:voting_times, %i[turn], unique: false){ String :model; smallint :turn; String :post; Time :time }
+    section(:machine_sections, %i[turn]) do
+      smallint :turn; String :model; Integer :rdvs; Integer :logs; Integer :ballots; Integer :events; Integer :other_days; Integer :garbled
+      Time :first_vote; Time :last_vote
+    end
+  end
+
+  def self.section name, key, unique: true, &columns
+    create name, %i[state city_code zone section] + key, unique: do
       BASE_FIELDS.each{ |f| String f }
       instance_eval(&columns)
     end
   end
 
-  def self.create name, unique, &columns
+  def self.create name, key, unique: true, &columns
     return if name.in? DB.tables
 
     DB.create_table name do
       instance_eval(&columns)
-      index unique, unique: true
+      index key, unique:
     end
   end
 end

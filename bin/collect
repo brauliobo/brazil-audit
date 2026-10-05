@@ -4,7 +4,8 @@
 #
 # Env: YEAR     the election, 2018 (default) or 2022
 #      WORKERS  parallel downloads and imports (1 to 3)
-#      PHASE    `fetch` or `import` to run only one step
+#      PHASE    `fetch`, `import`, and for 2022 `rdvlog` (RDV and logs of the 1st round from the CDN) and `machine` (import of the RDV
+#               and logs of both rounds), to run only one step
 #      STATES   import only these units, e.g. "AC BR ZZ" (default: the 27 states, BR the president and ZZ the foreign vote)
 #      DB_NAME  database (default brazil-audit-<year>); it must exist, the tables are created on the first run
 set -e
