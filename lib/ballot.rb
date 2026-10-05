@@ -7,8 +7,13 @@ module Ballot
     Cache.get INFO_URL, { state:, city:, zone:, section: }, prefix: 'ballots', **opts
   end
 
-  def self.info_cached? state, city, zone, section
-    File.exist? Cache.path('ballots', { state:, city:, zone:, section: })
+  def self.hashes info
+    Hashie::Mash.new(JSON.parse info.data).hashes
+  end
+
+  # the info file of a section that was only received lists the files that existed then
+  def self.final? info
+    JSON.parse(info.data)['st'] == 'Totalizada'
   end
 
   def self.file state, city, zone, section, hash, file, **opts

@@ -10,10 +10,10 @@ module Cache
     "#{DATA_DIR}/#{prefix}/#{params.values.join '-'}"
   end
 
-  # with `fetch: false` it only reads the cache and returns nil when the file is not there
-  def self.get template, params, prefix:, fetch: true
+  # with `fetch: false` it only reads the cache and returns nil when the file is not there; `refresh: true` downloads it again
+  def self.get template, params, prefix:, fetch: true, refresh: false
     file = path prefix, params
-    data = File.exist?(file) ? File.read(file) : (download template % params, file if fetch)
+    data = File.exist?(file) && !refresh ? File.read(file) : (download template % params, file if fetch)
     Hashie::Mash.new data: data, file: file if data
   end
 

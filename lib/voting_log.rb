@@ -3,12 +3,15 @@ require 'zip'
 
 # Reads the log of a section: sets its voting machine model and returns its voting times
 module VotingLog
+  # anchored on whole lines: a few logs have garbled bytes and glued lines, which a looser match turns into bad timestamps
+  EVENT = %r{^(\d\d)/(\d\d)/(\d{4}) (\d\d:\d\d:\d\d)\tINFO\t\d+\tVOTA\tVoto confirmado para \[([^\]]+)\]}
+
   def self.rows log, params
     logdat = read log.file
     params.model = logdat.match(/Modelo de Urna: (UE\d\d\d\d)/)&.captures&.first
 
-    logdat.scan(/(.+ .+)\tINFO.+Voto confirmado para \[(.+)\]/).map do |time, post|
-      params.merge post:, time: time.sub(%r{(\d+)/(\d+)/(\d+)}, '\3-\2-\1') # ISO, so it doesn't depend on DateStyle
+    logdat.scan(EVENT).map do |day, month, year, time, post|
+      params.merge post:, time: "#{year}-#{month}-#{day} #{time}" # ISO, so it doesn't depend on DateStyle
     end
   end
 

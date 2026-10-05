@@ -2,12 +2,19 @@
 module Section
   def self.handle state, city, zone, section
     puts "#{state}/#{city.nm}/#{zone}/#{section}"
-    info = Ballot.info(state, city.cd, zone, section, fetch: FETCH) or return
-    Hashie::Mash.new(JSON.parse info.data).hashes.peach do |hash|
-      id    = [state, city.cd, zone, section, hash[:hash]]
+    key  = [state, city.cd, zone, section]
+    info = Ballot.info(*key, fetch: FETCH) or return
+    info = Ballot.info(*key, refresh: true) if FETCH && stale?(info, key)
+    Ballot.hashes(info).each do |hash|
+      id    = [*key, hash[:hash]]
       files = fetch id, hash
       store files, id, city.nm if STORE && files.none?(&:nil?) && !Stored.done?(*id)
     end
+  end
+
+  # an info file cached before the section was totalized can list other files, so it is reloaded until the votes are stored
+  def self.stale? info, key
+    !Ballot.final?(info) && Ballot.hashes(info).any?{ |hash| !Stored.done?(*key, hash[:hash]) }
   end
 
   # with PHASE=store only the cached files are read, and the missing ones come back as nil
