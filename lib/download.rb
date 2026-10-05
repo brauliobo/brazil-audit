@@ -10,12 +10,12 @@ module Download
   def self.run url
     name = Sources.name url
     path = "#{RAW_DIR}/#{name}"
-    done = Manifest.rows[name]
+    done = Manifest::RAW.rows[name]
     return done if done && File.size?(path) == done[1].to_i
 
     curl url, '--continue-at', '-', '--output', "#{path}.part"
     File.rename "#{path}.part", path
-    Manifest.add(row url, path).tap{ puts "#{name} #{File.size path}" }
+    Manifest::RAW.add(row url, path).tap{ puts "#{name} #{File.size path}" }
   end
 
   def self.row url, path
