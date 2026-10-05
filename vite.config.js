@@ -1,22 +1,40 @@
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
-import { cpSync } from 'node:fs'
+import { cpSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs'
+import { ELECTIONS, VIEW_LABELS } from './src/model.js'
+
+const base = process.env.BASE_PATH ?? '/brazil-audit/'
+const keep = base.split('/').filter(Boolean).length // path segments that belong to the base (1 for /brazil-audit/)
+
+// Pages serves files as they are, with no rewrites. Known routes get their own index.html copy (HTTP 200); every other
+// path gets 404.html, which sends the visitor to the base index with the path in the query (spa-github-pages) where
+// index.html restores the real URL before the app mounts.
+const fallbackPage = `<!doctype html><meta charset="utf-8"><title>Auditoria eleitoral</title>
+<script>var l = location; l.replace(l.protocol + '//' + l.host + l.pathname.split('/').slice(0, ${keep + 1}).join('/') + '/?/' +
+  l.pathname.slice(1).split('/').slice(${keep}).join('/').replace(/&/g, '~and~') + (l.search ? '&' + l.search.slice(1).replace(/&/g, '~and~') : '') + l.hash)</script>
+`
+
+const staticRoutes = () => Object.keys(ELECTIONS).flatMap((e) => ['', ...Object.keys(VIEW_LABELS)].map((v) => `${e}/${v}`))
 
 // `data/` (the shippable dump) lives at the repo root; dev serves it as-is, the build copies it into dist.
-// 404.html is the GitHub Pages fallback (routing is hash based, so it only needs to boot the same app).
-const copyData = () => ({
-  name: 'copy-data',
+const pages = () => ({
+  name: 'pages',
   apply: 'build',
   closeBundle() {
     cpSync('data', 'dist/data', { recursive: true })
-    cpSync('dist/index.html', 'dist/404.html')
-  }
+    const index = readFileSync('dist/index.html', 'utf8')
+    for (const route of staticRoutes()) {
+      mkdirSync(`dist/${route}`, { recursive: true })
+      writeFileSync(`dist/${route}/index.html`, index)
+    }
+    writeFileSync('dist/404.html', fallbackPage)
+  },
 })
 
 export default defineConfig({
-  base: process.env.BASE_PATH ?? '/brazil-audit/',
-  plugins: [vue({ features: { vapor: true } }), copyData()],
+  base,
+  plugins: [vue({ features: { vapor: true } }), pages()],
   worker: { format: 'es' },
   optimizeDeps: { exclude: ['@electric-sql/pglite'] },
-  build: { target: 'es2022', chunkSizeWarningLimit: 600 }
+  build: { target: 'es2022', chunkSizeWarningLimit: 600 },
 })

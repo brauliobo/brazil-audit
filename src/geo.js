@@ -14,3 +14,6 @@ export const loadGeo = (kind) => {
   const { geo } = store.manifest
   return fetchMap(kind === 'uf' || kind === 'mun' ? geo[kind] : geo.states[kind])
 }
+
+/** Warms the cache of a state's municipality geometry (hover/focus on a state): a no-op after the first call. */
+export const preloadState = (uf) => uf !== 'zz' && loadGeo(uf)

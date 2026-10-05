@@ -108,14 +108,25 @@ ul.seats li.off { opacity: .4; }
 ul.seats .name { flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 ul.seats b { font-variant-numeric: tabular-nums; }
 
-svg.tiles { width: 100%; max-width: 380px; height: auto; display: block; margin: 0 auto; }
-svg.tiles g.tile { cursor: pointer; }
-svg.tiles g.tile:focus-visible rect, svg.tiles g.tile:hover rect { stroke: var(--fg); stroke-width: 2; }
-svg.tiles g.tile { outline: none; }
-svg.tiles text { fill: var(--fg); font-size: 12px; font-weight: 700; paint-order: stroke; stroke: var(--card); stroke-width: 3px; pointer-events: none; }
 svg.polar { width: 100%; max-width: 520px; height: auto; display: block; margin: 0 auto; }
 svg.polar text { fill: var(--fg); }
 svg.polar text.cap { font-size: 12px; font-weight: 700; fill: var(--muted); }
 svg.polar text.who { font-size: 11px; font-weight: 600; }
 svg.polar text.who.dim { fill: var(--muted); font-weight: 400; }
 svg.polar text.pct { font-size: 15px; font-weight: 700; fill: #fff; paint-order: stroke; stroke: #0007; stroke-width: 2px; }
+
+.map-label { fill: var(--muted); font-size: 22px; pointer-events: none; }
+.mapwrap { transition: opacity .15s; }
+.mapwrap.busy { opacity: .55; cursor: progress; }
+.crumbbar { display: flex; flex-wrap: wrap; gap: .4rem 1rem; align-items: center; margin-bottom: .6rem; font-size: 14px; }
+.crumbbar .sep { color: var(--muted); }
+.crumbbar .detail { margin-left: auto; }
+.chips { display: flex; flex-wrap: wrap; gap: .3rem; margin-top: .4rem; }
+.chips a { padding: .1rem .5rem; border: 1px solid var(--line); border-radius: 99px; font-size: 12.5px; }
+
+@media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+
+tr.note td { background: var(--bg); font-style: italic; white-space: normal; }
+label.switch { display: inline-flex; align-items: center; gap: .5rem; cursor: pointer; color: var(--fg); }
+
+p.note { color: var(--fg); }

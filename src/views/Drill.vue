@@ -3,6 +3,7 @@ import { computed } from 'vue'
 import { route, href, setParam } from '../router'
 import { ELECTIONS, STATE_NAMES, OTHERS, candJoin, collate } from '../model'
 import { ensure, ensureScope, ensureState } from '../data'
+import { residualOn, rollup } from '../results'
 import { useAsync } from '../use'
 import { objects } from '../db'
 import { int, pct } from '../format'
@@ -10,6 +11,7 @@ import Panel from '../components/Panel.vue'
 import BarList from '../components/BarList.vue'
 import DataTable from '../components/DataTable.vue'
 import StateMap from '../components/StateMap.vue'
+import ResidualSwitch from '../components/ResidualSwitch.vue'
 
 const LEVELS = ['state', 'city', 'zone', 'section']
 const LEVEL_NAMES = ['UF', 'Município', 'Zona', 'Seção']
@@ -33,7 +35,7 @@ async function listRows(y, a, o, s, p, q) {
   const params = [o, ...a]
   const k = a.length
   const roll = rollupGrain(y, a, o)
-  const [tot, res, count] = roll ? [`tot_${y}`, `res_${y}`, 'sum(sections)'] : [`sec_${y}`, `cs_${y}`, 'count(*)']
+  const [tot, res, count] = roll ? [rollup(y).tot, rollup(y).res, 'sum(sections)'] : [`sec_${y}`, `cs_${y}`, 'count(*)']
   const top = objects(await q(`select coalesce(c.n, '-') cand, coalesce(max(c.short_name), '${OTHERS}') name, max(c.party) party, sum(cs.votes) votes, sum(sum(cs.votes)) over () total
     from ${res} cs ${candJoin(y)} where cs.office = $1 ${scope(a)} group by 1 order by votes desc limit 10`, params))
   const cands = o === 1 || k > 0 ? top.filter((c) => c.cand !== '-').slice(0, 2) : []
@@ -45,7 +47,25 @@ async function listRows(y, a, o, s, p, q) {
     c as (select ${child} unit, ${cands.map(pick).join(',') || '0 c0'} from ${res} where office = $1 ${scope(a)} ${cands.length ? `and cand in ($${k + 2}${cands.length > 1 ? `, $${k + 3}` : ''})` : ''} group by 1)
     select s.*, c.c0, ${cands.length > 1 ? 'c.c1' : '0 c1'}, count(*) over () total from s left join c using (unit)
     order by ${order} ${s.dir === 'desc' ? 'desc' : 'asc'}, unit limit ${PAGE} offset ${p * PAGE}`, [...params, ...[a0, a1].filter(Boolean)]))
-  return { mode: 'list', cands, rows, total: rows[0]?.total ?? 0, top }
+  const total = rows[0]?.total ?? 0
+  const lastPage = (p + 1) * PAGE >= total
+  const shown = !roll && y === '2026' && k === 2 && residualOn.value ? await withResidual(rows, a, o, cands, lastPage, y, q) : rows
+  return { mode: 'list', cands, rows: shown, total, top }
+}
+
+// The zones of a city add up to the official totals only with the residual rows (official zone total minus the sections with files):
+// one marked row after each zone that has missing sections, and, on the last page, zones without any section file and the
+// city-level row used when a zone file could not be used.
+async function withResidual(rows, a, o, cands, lastPage, y, q) {
+  const picks = cands.map((_, i) => `, sum(votes) filter (where number = $${4 + i}) c${i}`).join('')
+  const found = objects(await q(`select zone, max(sections_missing) sections, sum(votes) filter (where number not in ('branco', 'nulo')) nominal, coalesce(sum(votes) filter (where number = 'branco'), 0) blank,
+    coalesce(sum(votes) filter (where number = 'nulo'), 0) nul${picks} from residual_2026 where uf = $1 and city = $2 and office = $3 group by zone order by zone`, [a[0], a[1], o, ...cands.map((c) => c.cand)]))
+  if (!found.length) return rows
+  const inDump = new Set(objects(await q(`select distinct zone from sec_${y} where state = $1 and city = $2`, [a[0], a[1]])).map((r) => r.zone))
+  const note = (r) => ({ residual: true, ...r, c0: r.c0 ?? 0, c1: r.c1 ?? 0, unit: !r.zone ? `Seções sem arquivo publicado (${r.sections} seções): total oficial do município menos as seções com arquivo`
+    : `${inDump.has(r.zone) ? 'Seções' : `Zona ${r.zone}, sem nenhuma seção com arquivo: seções`} sem arquivo publicado (${r.sections} seções) nesta zona: total oficial da zona menos as seções com arquivo` })
+  const after = rows.flatMap((row) => [row, ...found.filter((r) => r.zone === row.unit).map(note)])
+  return lastPage ? [...after, ...found.filter((r) => !r.zone || !inDump.has(r.zone)).map(note)] : after
 }
 
 async function sectionRows(y, a, q) {
@@ -55,10 +75,10 @@ async function sectionRows(y, a, q) {
   return { mode: 'section', offices: totals.map((t) => ({ ...t, rows: rows.filter((r) => r.office === t.office).slice(0, 10) })) }
 }
 
-const view = useAsync(() => [year.value, args.value, office.value, sort.value, page.value], async ([y, a, o, s, p], q) => {
+const view = useAsync(() => [year.value, args.value, office.value, sort.value, page.value, residualOn.value], async ([y, a, o, s, p], q) => {
   await ensure('cands')
   if (y === '2022') await ensureScope('votes_2022', a[0])
-  else if (rollupGrain(y, a, o)) await Promise.all([ensure('tot_2026'), ensure('res_2026')])
+  else if (rollupGrain(y, a, o)) await Promise.all(['tot_2026', 'res_2026', 'residual_2026'].map((t) => ensure(t)))
   else await (a.length === 4 ? ensureState : ensureScope)('rdv_2026', a[0], o)
   return a.length === 4 ? sectionRows(y, a, q) : listRows(y, a, o, s, p, q)
 })
@@ -70,7 +90,7 @@ const crumbs = computed(() => [{ t: 'Brasil', h: href(year.value, 'drill') }, ..
 
 const unitCol = computed(() => ({
   key: 'unit', label: LEVEL_NAMES[args.value.length], sortable: true,
-  href: (r) => href(year.value, 'drill', [...args.value, r.unit], { office: office.value }),
+  href: (r) => !r.residual && href(year.value, 'drill', [...args.value, r.unit], { office: office.value }),
   fmt: (v) => (args.value.length === 0 ? `${v.toUpperCase()} · ${STATE_NAMES[v]}` : v),
 }))
 const columns = computed(() => [
@@ -96,8 +116,9 @@ nav.crumbs
 .error(v-if="view.error")
   strong {{ view.error.message }}
 .skeleton(v-else-if="!view.data")
-.controls(v-if="args.length < 4 && Object.keys(cfg.offices).length > 1")
-  label
+.controls(v-if="args.length < 4")
+  ResidualSwitch(v-if="year === '2026' && args.length < 3")
+  label(v-if="Object.keys(cfg.offices).length > 1")
     | Cargo
     select(:value="office" @change="setParam('office', $event.target.value)")
       option(v-for="(name, id) in cfg.offices" :key="id" :value="id" :selected="Number(id) === office") {{ name }}

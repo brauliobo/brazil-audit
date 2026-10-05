@@ -16,9 +16,9 @@ const arrow = (c) => (props.sort?.key === c.key ? (props.sort.dir === 'asc' ? 'â
       tr
         th(v-for="c in columns" :key="c.key" :class="{ num: c.num, sortable: c.sortable }" @click="c.sortable && emit('sort', c.key)") {{ c.label }} {{ arrow(c) }}
     tbody
-      tr(v-for="(r, i) in rows" :key="i")
+      tr(v-for="(r, i) in rows" :key="i" :class="{ note: r.residual }")
         td(v-for="c in columns" :key="c.key" :class="{ num: c.num }")
-          a(v-if="c.href" :href="c.href(r)") {{ show(c, r) }}
+          a(v-if="c.href && c.href(r)" :href="c.href(r)") {{ show(c, r) }}
           template(v-else) {{ show(c, r) }}
   .pager(v-if="pages > 1")
     button(:disabled="page === 0" @click="emit('page', page - 1)") â€¹

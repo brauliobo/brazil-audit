@@ -1,17 +1,30 @@
 // Shared result queries for the map, tile-grid and polarization panels (all read the small tot_/res_ rollups).
+import { computed } from 'vue'
 import { ensure, ensureDefault } from './data'
+import { route } from './router'
 import { objects } from './db'
-import { candJoin } from './model'
+import { partyColor } from './colors'
+import { int, pct } from './format'
+import { STATE_NAMES, candJoin } from './model'
+
+/**
+ * 2026 only: add the official municipality totals of sections without published files (residual_2026) to every rollup
+ * (national, UF and city level; never to zones, sections or any section-based analysis). `?residual=0` turns it off.
+ */
+export const residualOn = computed(() => route.value.election === '2026' && route.value.params.get('residual') !== '0')
+
+/** Names of the result and total rollups to query for an election (with or without the residual). */
+export const rollup = (year) => (year === '2026' && residualOn.value ? { res: 'resx_2026', tot: 'totx_2026' } : { res: `res_${year}`, tot: `tot_${year}` })
 
 /** Loads everything the rollup-based visualizations need for an election. */
 export async function ensureRollups(year) {
   await Promise.all([ensure('cands'), ensure('mun_map')])
-  await (year === '2022' ? ensureDefault('votes_2022') : Promise.all([ensure('res_2026'), ensure('tot_2026')]))
+  await (year === '2022' ? ensureDefault('votes_2022') : Promise.all(['res_2026', 'tot_2026', 'residual_2026'].map((t) => ensure(t))))
 }
 
 /** Leading two candidates per state for the president, with the state's valid (nominal) votes. */
 export async function stateWinners(q, year) {
-  return objects(await q(`with v as (select r.state, r.cand, 1 office, sum(r.votes) votes from res_${year} r where r.office = 1 group by 1, 2),
+  return objects(await q(`with v as (select r.state, r.cand, 1 office, sum(r.votes) votes from ${rollup(year).res} r where r.office = 1 group by 1, 2),
     rk as (select *, row_number() over (partition by state order by votes desc, cand) rn, sum(votes) over (partition by state) valid from v)
     select rk.state, rk.cand, rk.votes, rk.valid, rk.rn, c.short_name name, c.party from rk ${candJoin(year, 'rk')} where rn <= 2 order by state, rn`))
 }
@@ -35,7 +48,7 @@ export function unitSql(y, grain) {
   const [id, name, join, where] = grain === 'uf'
     ? ['r.state', 'r.state', '', `r.state <> 'zz'`]
     : ['m.ibge', 'r.city', 'join mun_map m on m.state = r.state and m.city = r.city', `m.ibge is not null and ($2::text = '' or r.state = $2)`]
-  return `with v as (select ${id} id, max(${name}) name, r.state, r.office, r.cand, sum(r.votes) votes from res_${y} r ${join} where r.office = $1 and ${where} group by ${id}, r.state, r.office, r.cand),
+  return `with v as (select ${id} id, max(${name}) name, r.state, r.office, r.cand, sum(r.votes) votes from ${rollup(y).res} r ${join} where r.office = $1 and ${where} group by ${id}, r.state, r.office, r.cand),
     rk as (select *, row_number() over (partition by id order by votes desc, cand) rn, sum(votes) over (partition by id) valid from v)
     select rk.id, rk.name, rk.state, rk.cand, rk.votes, rk.rn, rk.valid, c.short_name cname, c.party from rk ${candJoin(y, 'rk')} where rk.rn <= 3 or rk.cand = $${grain === 'uf' ? 2 : 3}`
 }
@@ -54,3 +67,24 @@ export const candName = (r) => (r.cname ? titleCase(r.cname) : 'Outros / inváli
 export const top = (u, n) => u.list.find((r) => r.rn === n)
 export const margin = (u) => (u.list.length > 1 ? (top(u, 1).votes - (top(u, 2)?.votes ?? 0)) / u.valid : 1)
 export const quantile = (values, p) => values.toSorted((a, b) => a - b)[Math.floor((values.length - 1) * p)] ?? 1
+
+export const unitPlace = (u, grain) => (grain === 'uf' ? `${u.id.toUpperCase()} · ${STATE_NAMES[u.id]}` : `${titleCase(u.name)} (${u.state.toUpperCase()})`)
+
+/** Tooltip text of a unit: place, its top candidates and the winner (+ optional extra lines). */
+export const unitTip = (u, grain, extra = []) => [
+  unitPlace(u, grain),
+  ...u.list.filter((r) => r.rn <= 3).map((r) => `${candName(r)}: ${int(r.votes)} (${pct(r.votes / u.valid, 1)})`),
+  `Vencedor: ${candName(top(u, 1))}`, ...extra,
+].join('\n')
+
+/** Winner colour per unit, stronger with the margin of victory (saturating at the 90th percentile). */
+export function winnerFills(units) {
+  const hi = quantile([...units.values()].map(margin), 0.9) || 1
+  return Object.fromEntries([...units].map(([id, u]) => [id, [partyColor(top(u, 1).party), 0.4 + 0.6 * Math.min(margin(u) / hi, 1)]]))
+}
+
+/** The parties (or candidates for the president) that win most units, for the legend. */
+export function winnerLegend(units, office, size = 8) {
+  const tally = Object.groupBy([...units.values()], (u) => top(u, 1).party ?? '–')
+  return Object.entries(tally).map(([party, l]) => ({ party, n: l.length, label: office === 1 ? candName(top(l[0], 1)) : party })).sort((a, b) => b.n - a.n).slice(0, size)
+}

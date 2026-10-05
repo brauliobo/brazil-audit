@@ -9,7 +9,7 @@ import DataTable from '../components/DataTable.vue'
 
 const year = computed(() => route.value.election)
 // parts auto-loaded (the default set) for the tables a statement mentions, directly or through the sec_/cs_ views
-const NEEDS = [[/votes_2022|(cs|sec)_2022/, 'votes_2022'], [/rdv_2026|(cs|sec)_2026/, 'rdv_2026'], [/vt_2026/, 'vt_2026'], [/vtc_2026/, 'vtc_2026'], [/tot_2026/, 'tot_2026'], [/res_2026/, 'res_2026'], [/cov_2026/, 'cov_2026'], [/miss_2026/, 'miss_2026'], [/cands/, 'cands']]
+const NEEDS = [[/votes_2022|(cs|sec)_2022/, 'votes_2022'], [/rdv_2026|(cs|sec)_2026/, 'rdv_2026'], [/vt_2026/, 'vt_2026'], [/vtc_2026/, 'vtc_2026'], [/tot_2026/, 'tot_2026'], [/res_2026|resx_2026/, 'res_2026'], [/residual_2026|resx_2026|totx_2026/, 'residual_2026'], [/cov_2026/, 'cov_2026'], [/miss_2026/, 'miss_2026'], [/cands/, 'cands']]
 const EXAMPLES = computed(() => [
   ['Totais por UF', `select state, sum(votes_13) lula, sum(votes_22) bolsonaro from votes_2022 group by state order by 1`],
   ['Ranking de municípios (2022)', `select state, city, sum(votes_13)::float8 / sum(votes_13 + votes_22) share_13, count(*) sections\nfrom votes_2022 group by state, city having count(*) > 100 order by share_13 desc limit 20`],
@@ -38,7 +38,7 @@ async function run() {
     running.value = false
   }
 }
-const shareUrl = computed(() => `${location.origin}${location.pathname}${href(year.value, 'sql', [], { q: sql.value })}`)
+const shareUrl = computed(() => `${location.origin}${href(year.value, 'sql', [], { q: sql.value })}`)
 async function share() {
   setParam('q', sql.value)
   await navigator.clipboard.writeText(shareUrl.value)

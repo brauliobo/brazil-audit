@@ -13,6 +13,8 @@ export const ELECTIONS = {
 /** The latest election is the default everywhere. */
 export const DEFAULT_ELECTION = Object.keys(ELECTIONS).at(-1)
 
+export const VIEW_LABELS = { overview: 'Visão geral', maps: 'Mapas', parliament: 'Parlamento', drill: 'Detalhar', analysis: 'Análise', time: 'Horários', sql: 'SQL' }
+
 export const STATE_NAMES = {
   ac: 'Acre', al: 'Alagoas', am: 'Amazonas', ap: 'Amapá', ba: 'Bahia', ce: 'Ceará', df: 'Distrito Federal', es: 'Espírito Santo',
   go: 'Goiás', ma: 'Maranhão', mg: 'Minas Gerais', ms: 'Mato Grosso do Sul', mt: 'Mato Grosso', pa: 'Pará', pb: 'Paraíba',
@@ -29,6 +31,12 @@ export const VIEWS = [
   `create or replace view tot_2022 as select state,city,1 office,count(*) sections,sum(votes_13+votes_22) nominal,null::bigint blank,null::bigint nul from votes_2022 group by 1,2`,
   `create or replace view res_2022 as select state,city,1 office,'13' cand,sum(votes_13) votes from votes_2022 group by 1,2
     union all select state,city,1,'22',sum(votes_22) from votes_2022 group by 1,2`,
+  // rollups plus the official municipality totals of sections without published files (see residual_2026)
+  `create or replace view resx_2026 as select state, city, office, cand, votes from res_2026
+    union all select uf, city, office, number, votes from residual_2026 where number not in ('branco', 'nulo')`,
+  `create or replace view totx_2026 as select state, city, office, sections, nominal, blank, nul from tot_2026
+    union all select uf, city, office, 0, sum(votes) filter (where number not in ('branco', 'nulo')), coalesce(sum(votes) filter (where number = 'branco'), 0),
+      coalesce(sum(votes) filter (where number = 'nulo'), 0) from residual_2026 group by uf, city, office`,
   `create or replace view sec_2026 as select state,city,zone,section,model,office,nominal,blank,nul from rdv_2026`,
   `create or replace view cs_2026 as
     select r.state,r.city,r.zone,r.section,r.model,r.office,e.key cand,e.value::int votes,r.nominal from rdv_2026 r, jsonb_each_text(r.votes) e`,

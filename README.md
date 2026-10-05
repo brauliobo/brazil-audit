@@ -19,10 +19,27 @@ npm run preview
 ```
 
 - `BASE_PATH` is the URL prefix: `/<repo>/` for a project page (the workflow sets it from the repository name), `/` for a
-  user page or custom domain. Routing is hash based (`#/2026/time/ba`), and `404.html` is a copy of `index.html`.
+  user page or custom domain. See "Routes" below.
 - `.github/workflows/pages.yml` runs `npm ci`, `npm run build` and deploys `dist` with the official Pages actions. Enable
   Pages with source "GitHub Actions" in the repository settings. Nothing is downloaded at build time.
 - Pages limits: 1 GB site, 100 MB per file. Largest file is the 9.6 MB `pglite.wasm`; the data parts are 13 KB - 4.4 MB.
+
+## Routes
+
+Real paths with the History API under the base: `/<election>/<view>/<args…>?<state>`, e.g. `/brazil-audit/2026/maps?scope=state&uf=sp`,
+`/2026/drill/sp/SAO%20PAULO/0372`, `/2026/sql?q=…`. The first segment is the election (omitted = the latest), the view is
+`overview | maps | parliament | drill | analysis | time | sql`; the rest of the state (office, metric, candidate, scope, sort,
+page, query) is in the query string. `src/router.js` is the whole router: `href()` builds the paths (base included) so every
+link is a plain `<a href>`, one delegated click handler navigates in place (modified clicks, `target`, `download`, other
+origins and in-page `#anchors` keep their native behaviour), back/forward restore the scroll position, the document title
+follows the route and focus moves to the page heading. Old `#/…` links are converted to the new URL on load.
+
+GitHub Pages has no rewrites, so the static fallback is: the build copies `index.html` into `/<election>/` and
+`/<election>/<view>/` (HTTP 200); any other path (a drill-down with place names, a time chart for a UF) gets `404.html`, which
+redirects to the base index with the path in the query (the spa-github-pages technique) and an inline script in `index.html`
+restores the real URL with `history.replaceState` before the app mounts. Caveat: those deep links are answered by Pages with HTTP 404
+although the app loads fine (browsers do not care, crawlers and link checkers see the status). `node scripts/serve-pages.mjs [port] [base]`
+serves `dist/` with exactly these semantics (no rewrites, 301 for directories, 404.html with status 404) to test the build.
 
 ## Data (`data/`)
 
@@ -51,10 +68,13 @@ office) on demand.
 
 ### Maps and parliament
 
-- `data/geo/*.json` are IBGE meshes (`servicodados.ibge.gov.br/api/v3/malhas`, `qualidade=minima` for Brazil by state and by
-  municipality, `intermediaria` for the 27 state files) converted at build time into compact SVG paths in one shared
-  projection (`scripts/geo.mjs`): 3.0 MB in total, loaded lazily (states 20 KB, municipalities 670 KB, one state 18-290 KB).
-  Fernando de Noronha and the oceanic islands are clipped from the drawing. Downloads are cached in `.cache/` (git-ignored)
+- `data/geo/*.json` are IBGE meshes (`servicodados.ibge.gov.br/api/v3/malhas`, `qualidade=minima`) turned at build time into
+  compact SVG paths in one shared projection (`scripts/geo.mjs`) and deliberately approximate: Douglas-Peucker on the shared
+  border arcs (0.03 degrees nationally, 0.004 per state; small arcs relative to their size) on a 1100/1400-unit integer grid.
+  Sizes: Brazil by UF 13 KB, Brazil by municipality 403 KB (121 KB gzip, was 671 KB / 174 KB), the 27 state files 732 KB in total
+  (280 KB gzip, was 2.3 MB), e.g. SP 23 KB over the wire. Everything is lazy: the UF map on its own, a state's municipalities
+  when it is hovered/opened, the national municipality map only when chosen. Fernando de Noronha (outline from the single
+  municipality mesh) is drawn magnified in the bottom-right corner of the national maps. Downloads are cached in `.cache/` (git-ignored)
   and throttled; the volatile TSE result files are refetched on every run.
 - TSE municipality codes are not IBGE codes: `mun_map` joins them by (UF, name) using the `cdi` field of the TSE list;
   all 5,688 municipalities of 2026 and 5,709 of 2022 resolve (117 foreign cities have no polygon and are shown as "Exterior").
@@ -62,6 +82,31 @@ office) on demand.
   party/federation (`vag`: 513 federal, 1,035 state, 24 district), so the chambers are drawn by party or federation. The
   elected deputies per candidate (`e = 's'`) are only partly published yet and are listed in `elected_2026` as they appear.
   In 2026 only 54 of the 81 Senate seats are up.
+
+### Votes of sections without files (`residual_2026`)
+
+Sections whose files the TSE never published are missing from the dump, but the official result files count them. Step `residual`
+of `scripts/build-data.mjs` (shared helpers in `scripts/official.mjs`) takes, for every zone that has missing sections, the official
+zone file (`.../dados/<uf>/<uf><city code>-z<zone>-c000N-e00…-u.json`) and stores official minus what the shipped parts hold, per
+(UF, municipality, zone, office, candidate number, `branco`, `nulo`); the municipality figure used by the national/UF/city totals is
+the sum of its zones. Files are cached 12 h and fetched at ~4 requests/s. Nothing is invented: the zone residuals are used only if
+they add up exactly to the residual computed from the official city file (zone and city files are published at different
+moments); otherwise that city/office uses the city-level residual (`zone` empty) and the disagreement is listed in
+`residual_skipped_2026`; a city/office whose official files are not fully totalized, unreadable or give a negative residual gets none.
+Results, totals and coverage are derived from the shipped rdv parts (never from the database), so rollups, sections and residual
+always describe the same snapshot.
+
+The app has a switch "Incluir votos de seções sem arquivo" (on by default for 2026, `?residual=0` turns it off) that adds the
+residual to the national, UF and city totals (Overview, Mapas, the UF/city drill-down); zones, sections and every section-based
+analysis never include it. The zone list of a city shows, after each zone with missing sections, a marked row with that zone's
+residual (so each zone adds up to the official zone file) and, at the end, zones with no section file at all and any city-level
+fallback row. `node scripts/verify-official.mjs` compares the shipped totals with the official UF, national and zone files: every
+candidate and the blank votes match in 137 of 137 UF/office pairs and 140 of 140 zone/office pairs.
+
+Null ballots are counted as RDV kinds 4 (invalid number), 6 and 7 (the second senate vote). They then equal the official null total
+in all but three UF/office pairs (pb/6 304, se/6 435, sp/6 803 votes of 117,898/65,428/1,128,132 etc.): the official total adds
+"technical nulls" (`vnt`) that the RDV does not carry as such; the numbers the TSE lists as invalid but the RDV has as nominal
+(votes for numbers without candidate, shown as "Outros / inválidos") explain most of it, the remainder is not identifiable per section.
 
 ### Coverage of 2026
 

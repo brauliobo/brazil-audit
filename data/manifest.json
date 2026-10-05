@@ -213,9 +213,9 @@
      "parts": {
       "ac": {
        "url": "2026/rdv/ac.csv.gz",
-       "bytes": 119755,
+       "bytes": 119886,
        "rows": 6810,
-       "rawBytes": 800105,
+       "rawBytes": 800226,
        "where": "state = 'ac' and office in (1,3,5)",
        "offices": [
         1,
@@ -225,9 +225,9 @@
       },
       "al": {
        "url": "2026/rdv/al.csv.gz",
-       "bytes": 340691,
+       "bytes": 341169,
        "rows": 21303,
-       "rawBytes": 2214662,
+       "rawBytes": 2214698,
        "where": "state = 'al' and office in (1,3,5)",
        "offices": [
         1,
@@ -237,9 +237,9 @@
       },
       "am": {
        "url": "2026/rdv/am.csv.gz",
-       "bytes": 437248,
+       "bytes": 437615,
        "rows": 24471,
-       "rawBytes": 2918376,
+       "rawBytes": 2918489,
        "where": "state = 'am' and office in (1,3,5)",
        "offices": [
         1,
@@ -249,9 +249,9 @@
       },
       "ap": {
        "url": "2026/rdv/ap.csv.gz",
-       "bytes": 93854,
+       "bytes": 93974,
        "rows": 5742,
-       "rawBytes": 612364,
+       "rawBytes": 612473,
        "where": "state = 'ap' and office in (1,3,5)",
        "offices": [
         1,
@@ -261,9 +261,9 @@
       },
       "ba": {
        "url": "2026/rdv/ba.csv.gz",
-       "bytes": 1695352,
+       "bytes": 1696988,
        "rows": 106383,
-       "rawBytes": 11125509,
+       "rawBytes": 11127905,
        "where": "state = 'ba' and office in (1,3,5)",
        "offices": [
         1,
@@ -273,9 +273,9 @@
       },
       "ce": {
        "url": "2026/rdv/ce.csv.gz",
-       "bytes": 1088419,
+       "bytes": 1089027,
        "rows": 71295,
-       "rawBytes": 7103158,
+       "rawBytes": 7103323,
        "where": "state = 'ce' and office in (1,3,5)",
        "offices": [
         1,
@@ -285,9 +285,9 @@
       },
       "df": {
        "url": "2026/rdv/df.csv.gz",
-       "bytes": 386513,
+       "bytes": 386869,
        "rows": 20907,
-       "rawBytes": 2733096,
+       "rawBytes": 2733303,
        "where": "state = 'df' and office in (1,3,5)",
        "offices": [
         1,
@@ -297,9 +297,9 @@
       },
       "es": {
        "url": "2026/rdv/es.csv.gz",
-       "bytes": 546841,
+       "bytes": 547290,
        "rows": 29532,
-       "rawBytes": 3739969,
+       "rawBytes": 3740124,
        "where": "state = 'es' and office in (1,3,5)",
        "offices": [
         1,
@@ -309,9 +309,9 @@
       },
       "go": {
        "url": "2026/rdv/go.csv.gz",
-       "bytes": 875997,
+       "bytes": 876252,
        "rows": 47058,
-       "rawBytes": 5952464,
+       "rawBytes": 5952549,
        "where": "state = 'go' and office in (1,3,5)",
        "offices": [
         1,
@@ -321,9 +321,9 @@
       },
       "ma": {
        "url": "2026/rdv/ma.csv.gz",
-       "bytes": 985551,
+       "bytes": 986275,
        "rows": 54276,
-       "rawBytes": 6571042,
+       "rawBytes": 6571444,
        "where": "state = 'ma' and office in (1,3,5)",
        "offices": [
         1,
@@ -333,9 +333,9 @@
       },
       "mg": {
        "url": "2026/rdv/mg.csv.gz",
-       "bytes": 3143407,
-       "rows": 155349,
-       "rawBytes": 21284986,
+       "bytes": 3145021,
+       "rows": 155352,
+       "rawBytes": 21285942,
        "where": "state = 'mg' and office in (1,3,5)",
        "offices": [
         1,
@@ -345,9 +345,9 @@
       },
       "ms": {
        "url": "2026/rdv/ms.csv.gz",
-       "bytes": 366184,
+       "bytes": 366623,
        "rows": 21318,
-       "rawBytes": 2528700,
+       "rawBytes": 2528791,
        "where": "state = 'ms' and office in (1,3,5)",
        "offices": [
         1,
@@ -357,9 +357,9 @@
       },
       "mt": {
        "url": "2026/rdv/mt.csv.gz",
-       "bytes": 442424,
+       "bytes": 442939,
        "rows": 24861,
-       "rawBytes": 2984464,
+       "rawBytes": 2984583,
        "where": "state = 'mt' and office in (1,3,5)",
        "offices": [
         1,
@@ -369,9 +369,9 @@
       },
       "pa": {
        "url": "2026/rdv/pa.csv.gz",
-       "bytes": 1052903,
+       "bytes": 1054725,
        "rows": 62481,
-       "rawBytes": 7044492,
+       "rawBytes": 7045294,
        "where": "state = 'pa' and office in (1,3,5)",
        "offices": [
         1,
@@ -381,9 +381,9 @@
       },
       "pb": {
        "url": "2026/rdv/pb.csv.gz",
-       "bytes": 548058,
+       "bytes": 548332,
        "rows": 32136,
-       "rawBytes": 3604282,
+       "rawBytes": 3604436,
        "where": "state = 'pb' and office in (1,3,5)",
        "offices": [
         1,
@@ -393,9 +393,9 @@
       },
       "pe": {
        "url": "2026/rdv/pe.csv.gz",
-       "bytes": 1100353,
+       "bytes": 1101033,
        "rows": 64254,
-       "rawBytes": 7306650,
+       "rawBytes": 7307262,
        "where": "state = 'pe' and office in (1,3,5)",
        "offices": [
         1,
@@ -405,9 +405,9 @@
       },
       "pi": {
        "url": "2026/rdv/pi.csv.gz",
-       "bytes": 536245,
+       "bytes": 536677,
        "rows": 30675,
-       "rawBytes": 3593004,
+       "rawBytes": 3593120,
        "where": "state = 'pi' and office in (1,3,5)",
        "offices": [
         1,
@@ -417,9 +417,9 @@
       },
       "pr": {
        "url": "2026/rdv/pr.csv.gz",
-       "bytes": 1430464,
+       "bytes": 1431956,
        "rows": 81426,
-       "rawBytes": 9623689,
+       "rawBytes": 9624070,
        "where": "state = 'pr' and office in (1,3,5)",
        "offices": [
         1,
@@ -429,9 +429,9 @@
       },
       "rj": {
        "url": "2026/rdv/rj.csv.gz",
-       "bytes": 2194382,
-       "rows": 112791,
-       "rawBytes": 15840915,
+       "bytes": 2200783,
+       "rows": 113025,
+       "rawBytes": 15875969,
        "where": "state = 'rj' and office in (1,3,5)",
        "offices": [
         1,
@@ -441,9 +441,9 @@
       },
       "rn": {
        "url": "2026/rdv/rn.csv.gz",
-       "bytes": 435377,
+       "bytes": 435727,
        "rows": 24345,
-       "rawBytes": 2843160,
+       "rawBytes": 2843229,
        "where": "state = 'rn' and office in (1,3,5)",
        "offices": [
         1,
@@ -453,9 +453,9 @@
       },
       "ro": {
        "url": "2026/rdv/ro.csv.gz",
-       "bytes": 245540,
+       "bytes": 246006,
        "rows": 14094,
-       "rawBytes": 1764085,
+       "rawBytes": 1764635,
        "where": "state = 'ro' and office in (1,3,5)",
        "offices": [
         1,
@@ -465,9 +465,9 @@
       },
       "rr": {
        "url": "2026/rdv/rr.csv.gz",
-       "bytes": 79572,
+       "bytes": 79652,
        "rows": 4557,
-       "rawBytes": 555047,
+       "rawBytes": 555226,
        "where": "state = 'rr' and office in (1,3,5)",
        "offices": [
         1,
@@ -477,9 +477,9 @@
       },
       "rs": {
        "url": "2026/rdv/rs.csv.gz",
-       "bytes": 1491398,
+       "bytes": 1493444,
        "rows": 82638,
-       "rawBytes": 9901843,
+       "rawBytes": 9903064,
        "where": "state = 'rs' and office in (1,3,5)",
        "offices": [
         1,
@@ -489,9 +489,9 @@
       },
       "sc": {
        "url": "2026/rdv/sc.csv.gz",
-       "bytes": 981710,
+       "bytes": 982791,
        "rows": 51978,
-       "rawBytes": 6651662,
+       "rawBytes": 6652071,
        "where": "state = 'sc' and office in (1,3,5)",
        "offices": [
         1,
@@ -501,9 +501,9 @@
       },
       "se": {
        "url": "2026/rdv/se.csv.gz",
-       "bytes": 333438,
+       "bytes": 333723,
        "rows": 17769,
-       "rawBytes": 2234750,
+       "rawBytes": 2234798,
        "where": "state = 'se' and office in (1,3,5)",
        "offices": [
         1,
@@ -513,9 +513,9 @@
       },
       "sp": {
        "url": "2026/rdv/sp.csv.gz",
-       "bytes": 5394315,
-       "rows": 305010,
-       "rawBytes": 37404211,
+       "bytes": 5433664,
+       "rows": 307044,
+       "rawBytes": 37655583,
        "where": "state = 'sp' and office in (1,3,5)",
        "offices": [
         1,
@@ -525,9 +525,9 @@
       },
       "to": {
        "url": "2026/rdv/to.csv.gz",
-       "bytes": 251294,
+       "bytes": 251524,
        "rows": 13152,
-       "rawBytes": 1696014,
+       "rawBytes": 1696045,
        "where": "state = 'to' and office in (1,3,5)",
        "offices": [
         1,
@@ -749,9 +749,9 @@
       },
       "mg.6": {
        "url": "2026/rdv/mg.6.csv.gz",
-       "bytes": 3566865,
-       "rows": 51783,
-       "rawBytes": 27473075,
+       "bytes": 3566975,
+       "rows": 51784,
+       "rawBytes": 27473851,
        "where": "state = 'mg' and office in (6)",
        "offices": [
         6
@@ -759,9 +759,9 @@
       },
       "mg.7": {
        "url": "2026/rdv/mg.7.csv.gz",
-       "bytes": 4198446,
-       "rows": 51783,
-       "rawBytes": 33159838,
+       "bytes": 4198550,
+       "rows": 51784,
+       "rawBytes": 33160866,
        "where": "state = 'mg' and office in (7)",
        "offices": [
         7
@@ -909,9 +909,9 @@
       },
       "rj.6": {
        "url": "2026/rdv/rj.6.csv.gz",
-       "bytes": 4625678,
-       "rows": 37597,
-       "rawBytes": 38412365,
+       "bytes": 4633863,
+       "rows": 37675,
+       "rawBytes": 38478686,
        "where": "state = 'rj' and office in (6)",
        "offices": [
         6
@@ -919,9 +919,9 @@
       },
       "rj.7": {
        "url": "2026/rdv/rj.7.csv.gz",
-       "bytes": 4812630,
-       "rows": 37597,
-       "rawBytes": 39307576,
+       "bytes": 4820184,
+       "rows": 37675,
+       "rawBytes": 39371290,
        "where": "state = 'rj' and office in (7)",
        "offices": [
         7
@@ -1049,9 +1049,9 @@
       },
       "sp.6": {
        "url": "2026/rdv/sp.6.csv.gz",
-       "bytes": 11312421,
-       "rows": 101670,
-       "rawBytes": 91554617,
+       "bytes": 11390461,
+       "rows": 102342,
+       "rawBytes": 92198485,
        "where": "state = 'sp' and office in (6)",
        "offices": [
         6
@@ -1059,9 +1059,9 @@
       },
       "sp.7": {
        "url": "2026/rdv/sp.7.csv.gz",
-       "bytes": 12388778,
-       "rows": 101670,
-       "rawBytes": 100553573,
+       "bytes": 12470433,
+       "rows": 102347,
+       "rawBytes": 101222245,
        "where": "state = 'sp' and office in (7)",
        "offices": [
         7
@@ -1156,9 +1156,9 @@
       },
       "mg": {
        "url": "2026/vt/mg.csv.gz",
-       "bytes": 2511800,
-       "rows": 51783,
-       "rawBytes": 12817359
+       "bytes": 2511845,
+       "rows": 51784,
+       "rawBytes": 12817602
       },
       "ms": {
        "url": "2026/vt/ms.csv.gz",
@@ -1204,9 +1204,9 @@
       },
       "rj": {
        "url": "2026/vt/rj.csv.gz",
-       "bytes": 1790166,
-       "rows": 37596,
-       "rawBytes": 9344506
+       "bytes": 1793578,
+       "rows": 37669,
+       "rawBytes": 9363248
       },
       "rn": {
        "url": "2026/vt/rn.csv.gz",
@@ -1246,9 +1246,9 @@
       },
       "sp": {
        "url": "2026/vt/sp.csv.gz",
-       "bytes": 4891452,
-       "rows": 101665,
-       "rawBytes": 25047410
+       "bytes": 4921789,
+       "rows": 102306,
+       "rawBytes": 25204353
       },
       "to": {
        "url": "2026/vt/to.csv.gz",
@@ -1277,9 +1277,9 @@
      "parts": {
       "all": {
        "url": "2026/vtc.csv.gz",
-       "bytes": 559852,
+       "bytes": 559854,
        "rows": 5688,
-       "rawBytes": 1742342
+       "rawBytes": 1742348
       }
      },
      "name": "vtc_2026",
@@ -1290,9 +1290,9 @@
      "parts": {
       "all": {
        "url": "2026/tot_2026.csv.gz",
-       "bytes": 324467,
+       "bytes": 339361,
        "rows": 27972,
-       "rawBytes": 955855
+       "rawBytes": 956353
       }
      },
      "name": "tot_2026",
@@ -1303,9 +1303,9 @@
      "parts": {
       "all": {
        "url": "2026/res_2026.csv.gz",
-       "bytes": 862925,
+       "bytes": 892377,
        "rows": 176007,
-       "rawBytes": 4146241
+       "rawBytes": 4146262
       }
      },
      "name": "res_2026",
@@ -1316,9 +1316,9 @@
      "parts": {
       "all": {
        "url": "2026/cov_2026.csv.gz",
-       "bytes": 305,
+       "bytes": 302,
        "rows": 28,
-       "rawBytes": 576
+       "rawBytes": 575
       }
      },
      "name": "cov_2026",
@@ -1329,9 +1329,9 @@
      "parts": {
       "all": {
        "url": "2026/miss_2026.csv.gz",
-       "bytes": 7439,
-       "rows": 2434,
-       "rawBytes": 55608
+       "bytes": 5231,
+       "rows": 1677,
+       "rawBytes": 37608
       }
      },
      "name": "miss_2026",
@@ -1376,11 +1376,37 @@
      "name": "seats_2026",
      "columns": "uf,office,bloc,seats",
      "ddl": "create table seats_2026 (uf text, office int, bloc text, seats int)"
+    },
+    "residual_2026": {
+     "parts": {
+      "all": {
+       "url": "2026/residual_2026.csv.gz",
+       "bytes": 54215,
+       "rows": 13038,
+       "rawBytes": 480776
+      }
+     },
+     "name": "residual_2026",
+     "columns": "uf,city,city_code,zone,office,number,votes,sections_missing",
+     "ddl": "create table residual_2026 (uf text, city text, city_code text, zone text, office int, number text, votes bigint, sections_missing int)"
+    },
+    "residual_skipped_2026": {
+     "parts": {
+      "all": {
+       "url": "2026/residual_skipped_2026.csv.gz",
+       "bytes": 181,
+       "rows": 4,
+       "rawBytes": 391
+      }
+     },
+     "name": "residual_skipped_2026",
+     "columns": "uf,city,zone,office,reason,detail",
+     "ddl": "create table residual_skipped_2026 (uf text, city text, zone text, office int, reason text, detail text)"
     }
    }
   }
  },
- "version": "2026-10-05T11:18:31.550Z",
+ "version": "2026-10-05T12:29:29.137Z",
  "cands": {
   "name": "cands",
   "columns": "election,uf,office,n,name,short_name,party,official_votes",
@@ -1392,148 +1418,148 @@
  "geo": {
   "uf": {
    "url": "geo/uf.json",
-   "bytes": 20476,
+   "bytes": 14231,
    "items": 27
   },
   "mun": {
    "url": "geo/mun.json",
-   "bytes": 670622,
-   "items": 5569
+   "bytes": 402988,
+   "items": 5570
   },
   "states": {
    "ro": {
     "url": "geo/mun-ro.json",
-    "bytes": 43742,
+    "bytes": 12766,
     "items": 52
    },
    "ac": {
     "url": "geo/mun-ac.json",
-    "bytes": 20077,
+    "bytes": 6545,
     "items": 22
    },
    "am": {
     "url": "geo/mun-am.json",
-    "bytes": 126844,
+    "bytes": 34283,
     "items": 62
    },
    "rr": {
     "url": "geo/mun-rr.json",
-    "bytes": 27164,
+    "bytes": 7554,
     "items": 15
    },
    "pa": {
     "url": "geo/mun-pa.json",
-    "bytes": 145343,
+    "bytes": 39392,
     "items": 144
    },
    "ap": {
     "url": "geo/mun-ap.json",
-    "bytes": 25438,
+    "bytes": 7549,
     "items": 16
    },
    "to": {
     "url": "geo/mun-to.json",
-    "bytes": 87224,
+    "bytes": 26876,
     "items": 139
    },
    "ma": {
     "url": "geo/mun-ma.json",
-    "bytes": 89975,
+    "bytes": 30801,
     "items": 217
    },
    "pi": {
     "url": "geo/mun-pi.json",
-    "bytes": 58270,
+    "bytes": 27814,
     "items": 224
    },
    "ce": {
     "url": "geo/mun-ce.json",
-    "bytes": 62645,
+    "bytes": 23801,
     "items": 184
    },
    "rn": {
     "url": "geo/mun-rn.json",
-    "bytes": 27154,
+    "bytes": 14137,
     "items": 167
    },
    "pb": {
     "url": "geo/mun-pb.json",
-    "bytes": 43582,
+    "bytes": 19310,
     "items": 223
    },
    "pe": {
     "url": "geo/mun-pe.json",
-    "bytes": 43855,
+    "bytes": 17829,
     "items": 184
    },
    "al": {
     "url": "geo/mun-al.json",
-    "bytes": 18375,
+    "bytes": 8810,
     "items": 102
    },
    "se": {
     "url": "geo/mun-se.json",
-    "bytes": 18095,
+    "bytes": 7314,
     "items": 75
    },
    "ba": {
     "url": "geo/mun-ba.json",
-    "bytes": 163182,
+    "bytes": 53617,
     "items": 417
    },
    "mg": {
     "url": "geo/mun-mg.json",
-    "bytes": 335152,
+    "bytes": 93674,
     "items": 853
    },
    "es": {
     "url": "geo/mun-es.json",
-    "bytes": 32477,
+    "bytes": 10324,
     "items": 78
    },
    "rj": {
     "url": "geo/mun-rj.json",
-    "bytes": 29664,
+    "bytes": 10508,
     "items": 92
    },
    "sp": {
     "url": "geo/mun-sp.json",
-    "bytes": 186383,
+    "bytes": 59330,
     "items": 645
    },
    "pr": {
     "url": "geo/mun-pr.json",
-    "bytes": 135042,
+    "bytes": 42311,
     "items": 399
    },
    "sc": {
     "url": "geo/mun-sc.json",
-    "bytes": 84210,
+    "bytes": 28228,
     "items": 295
    },
    "rs": {
     "url": "geo/mun-rs.json",
-    "bytes": 163108,
+    "bytes": 50781,
     "items": 497
    },
    "ms": {
     "url": "geo/mun-ms.json",
-    "bytes": 69208,
+    "bytes": 19400,
     "items": 79
    },
    "mt": {
     "url": "geo/mun-mt.json",
-    "bytes": 156552,
+    "bytes": 39826,
     "items": 141
    },
    "go": {
     "url": "geo/mun-go.json",
-    "bytes": 135753,
+    "bytes": 38842,
     "items": 246
    },
    "df": {
     "url": "geo/mun-df.json",
-    "bytes": 655,
+    "bytes": 215,
     "items": 1
    }
   },
