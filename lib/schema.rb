@@ -9,18 +9,21 @@ module Schema
       Integer :nominal_votes; Integer :blank_votes; Integer :null_votes; Integer :legend_votes; Integer :annulled_votes
       Integer :place_code; String :place; String :address; Time :received_at; Time :first_totalized_at
     end
-    section(:section_urn, %i[turn]) do
-      smallint :turn
+    section(:section_urn, %i[turn urn]) do
+      smallint :turn; bigint :votes
       String :urn; String :urn_type; String :flashcard; String :load_1; String :load_2; Time :loaded_at
       String :aggregated; Integer :place_code; Time :opened_at; Time :closed_at; Integer :biometric_voters
     end
     section(:urn_match, %i[turn]) do
       smallint :turn
-      String :expected_urn; String :urn; Time :expected_loaded_at; Time :loaded_at; String :origin; String :origin_desc; String :divergence
+      String :expected_urn; String :urn; Time :expected_loaded_at; Time :loaded_at
+      String :origin; String :origin_desc; String :divergence
     end
     create(:candidates, %i[sq_candidato turn]) do
-      bigint :sq_candidato; smallint :turn; String :state; smallint :office; String :office_name; String :number; String :name; String :ballot_name
-      Integer :party_number; String :party; String :party_name; bigint :coalition_id; String :coalition; String :coalition_parties
+      bigint :sq_candidato; smallint :turn; String :state; smallint :office; String :office_name
+      String :number; String :name; String :ballot_name
+      Integer :party_number; String :party; String :party_name
+      bigint :coalition_id; String :coalition; String :coalition_parties
       smallint :status_code; String :status; smallint :outcome_code; String :outcome
       String :gender; String :race; String :education; String :occupation
     end
@@ -29,7 +32,7 @@ module Schema
       Integer :party_number; String :party; String :coalition; String :status; smallint :outcome_code; String :outcome
       bigint :votes; bigint :valid_votes
     end
-    create(:imports, %i[name]){ String :name; Integer :rows; Integer :loaded; bigint :votes; Integer :unclassified; Time :at }
+    create(:imports, %i[name]){ String :name; Integer :rows; Integer :loaded; bigint :votes; Integer :unclassified; Integer :skipped; Time :at }
   end
 
   def self.section name, unique, &columns
