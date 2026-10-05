@@ -9,7 +9,9 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "data": "node scripts/build-data.mjs"
+    "data": "node scripts/build-data.mjs",
+    "lint:tokens": "node scripts/lint-tokens.mjs",
+    "brand": "node scripts/brand.mjs"
   },
   "dependencies": {
     "@electric-sql/pglite": "0.5.8",

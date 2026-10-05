@@ -1,0 +1,160 @@
+/*
+ * PRIMITIVES: raw values with no meaning. The only file in src/ allowed to contain colour, font-family, px/rem or shadow
+ * literals; components never use these directly, they go through semantic.css (`--color-*`, `--font-*`, `--space-*` ...
+ * are read there). Naming: --<group>-<scale step>.
+ */
+:root {
+  /* colour scales (OKLCH). slate = neutral, blue/amber = brand, red/violet = candidate identity, the rest = status and data */
+  --color-slate-50: oklch(0.984 0.003 248);
+  --color-slate-100: oklch(0.968 0.007 248);
+  --color-slate-200: oklch(0.929 0.013 256);
+  --color-slate-300: oklch(0.869 0.022 252);
+  --color-slate-400: oklch(0.704 0.04 257);
+  --color-slate-500: oklch(0.554 0.046 257);
+  --color-slate-600: oklch(0.446 0.043 257);
+  --color-slate-700: oklch(0.372 0.044 257);
+  --color-slate-800: oklch(0.279 0.041 260);
+  --color-slate-900: oklch(0.208 0.042 265);
+  --color-slate-950: oklch(0.129 0.042 264);
+  --color-white: oklch(1 0 0);
+  --color-black: oklch(0 0 0);
+
+  --color-blue-100: oklch(0.932 0.032 255.6);
+  --color-blue-300: oklch(0.809 0.105 251.8);
+  --color-blue-400: oklch(0.707 0.165 254.6);
+  --color-blue-500: oklch(0.623 0.214 259.8);
+  --color-blue-600: oklch(0.546 0.245 262.9);
+  --color-blue-700: oklch(0.488 0.243 264.4);
+  --color-blue-800: oklch(0.424 0.199 265.6);
+  --color-amber-300: oklch(0.879 0.169 91.6);
+  --color-amber-400: oklch(0.828 0.189 84.4);
+  --color-amber-600: oklch(0.666 0.179 58.3);
+  --color-amber-700: oklch(0.555 0.163 48.4);
+
+  --color-red-100: oklch(0.94 0.04 20);
+  --color-red-300: oklch(0.76 0.14 21);
+  --color-red-400: oklch(0.67 0.19 21);
+  --color-red-500: oklch(0.57 0.215 25);
+  --color-red-700: oklch(0.45 0.17 27);
+  --color-violet-100: oklch(0.94 0.04 285);
+  --color-violet-400: oklch(0.68 0.16 285);
+  --color-violet-500: oklch(0.5 0.22 283);
+  --color-green-400: oklch(0.72 0.17 150);
+  --color-green-700: oklch(0.5 0.13 150);
+  --color-orange-400: oklch(0.74 0.16 50);
+  --color-orange-700: oklch(0.5 0.15 45);
+
+  /* categorical hues for parties/series: mid lightness, valid on light and dark surfaces */
+  --color-cat-1: oklch(0.72 0.16 75);
+  --color-cat-2: oklch(0.62 0.11 185);
+  --color-cat-3: oklch(0.58 0.15 255);
+  --color-cat-4: oklch(0.68 0.12 225);
+  --color-cat-5: oklch(0.6 0.15 145);
+  --color-cat-6: oklch(0.66 0.17 50);
+  --color-cat-7: oklch(0.5 0.17 5);
+  --color-cat-8: oklch(0.62 0.12 160);
+  --color-cat-9: oklch(0.7 0.16 125);
+  --color-cat-10: oklch(0.6 0.2 345);
+  --color-cat-11: oklch(0.72 0.15 100);
+  --color-cat-12: oklch(0.52 0.08 35);
+  --color-cat-13: oklch(0.66 0.14 305);
+  --color-cat-14: oklch(0.6 0.12 200);
+  --color-cat-15: oklch(0.7 0.14 25);
+  --color-cat-16: oklch(0.55 0.1 120);
+  --color-cat-n1: oklch(0.65 0.02 250);
+  --color-cat-n2: oklch(0.55 0.02 250);
+  --color-cat-n3: oklch(0.75 0.02 250);
+
+  /* typography */
+  --font-family-sans: system-ui, -apple-system, 'Segoe UI', Roboto, 'Noto Sans', sans-serif;
+  --font-family-mono: ui-monospace, Menlo, Consolas, monospace;
+  --font-size-100: 0.75rem;
+  --font-size-200: 0.8125rem;
+  --font-size-300: 0.875rem;
+  --font-size-400: 0.9375rem;
+  --font-size-500: 1rem;
+  --font-size-600: 1.125rem;
+  --font-size-700: 1.25rem;
+  --font-size-800: 1.5rem;
+  --font-size-900: 2rem;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --line-height-tight: 1.2;
+  --line-height-snug: 1.35;
+  --line-height-normal: 1.45;
+  --letter-spacing-normal: 0;
+  --letter-spacing-wide: 0.02em;
+
+  /* sizes of marks drawn inside scaled SVGs (user units, not CSS pixels) */
+  --viz-font-xs: 11px;
+  --viz-font-sm: 12px;
+  --viz-font-md: 15px;
+  --viz-font-lg: 22px;
+  --viz-font-hero: 54px;
+  --viz-stroke-hairline: 0.5;
+  --viz-stroke-thin: 0.8;
+  --viz-stroke-medium: 1.5;
+  --viz-stroke-thick: 2;
+  --viz-canvas-dot: 3;
+
+  /* spacing, 4px base */
+  --space-0: 0;
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-hair: 0.125rem;
+
+  /* shape */
+  --radius-1: 0.25rem;
+  --radius-2: 0.375rem;
+  --radius-3: 0.625rem;
+  --radius-4: 0.75rem;
+  --radius-full: 999px;
+  --border-width-1: 1px;
+  --border-width-2: 2px;
+  --shadow-1: 0 1px 2px oklch(0 0 0 / 0.12);
+  --shadow-2: 0 2px 8px oklch(0 0 0 / 0.2);
+  --shadow-3: 0 8px 24px oklch(0 0 0 / 0.25);
+
+  /* layers, motion, sizes */
+  --z-base: 0;
+  --z-sticky: 10;
+  --z-tooltip: 50;
+  --duration-fast: 120ms;
+  --duration-base: 200ms;
+  --duration-slow: 1200ms;
+  --easing-standard: ease;
+  --easing-linear: linear;
+  --size-icon: 1rem;
+  --size-swatch: 0.75rem;
+  --size-control: 2.25rem;
+  --size-hit-area: 2.75rem;
+  --size-page: 74rem;
+  --size-chart-max: 40rem;
+  --size-polar-max: 32.5rem;
+  --size-tooltip-max: 17.5rem;
+  --size-ramp: 10rem;
+  --size-progress: 10rem;
+  --size-skeleton: 7.5rem;
+  --size-column-min: 26rem;
+  --size-seat-column: 14.5rem;
+  --size-track: 0.75rem;
+  --size-swatch-card: 6rem;
+  --size-map-max-height: 78vh;
+  --size-label-column: 7.5rem;
+
+  /* breakpoints (documented here, used only in semantic.css): small < 40rem, medium < 64rem */
+  --breakpoint-small: 40rem;
+  --breakpoint-medium: 64rem;
+  --opacity-disabled: 0.4;
+  --opacity-stale: 0.5;
+  --opacity-busy: 0.55;
+}

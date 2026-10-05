@@ -7,6 +7,8 @@ import { useAsync } from '../use'
 import { objects } from '../db'
 import { int, num, pct } from '../format'
 import Panel from '../components/Panel.vue'
+import Field from '../components/Field.vue'
+import Notice from '../components/Notice.vue'
 import BarList from '../components/BarList.vue'
 import Coverage from '../components/Coverage.vue'
 import DataTable from '../components/DataTable.vue'
@@ -87,23 +89,22 @@ const cols = computed(() => [
 
 <template lang="pug">
 h1 {{ cfg.label }}
-.controls(v-if="year === '2026'")
+.cluster(v-if="year === '2026'")
   ResidualSwitch
-.grid
-  #cobertura.full
+.grid-auto
+  #cobertura.span-all
     Coverage(:year="year")
   Panel(title="Resultado nacional" :state="results" :election="year" wide)
-    label(v-if="Object.keys(cfg.offices).length > 1")
-      | Cargo
+    Field(v-if="Object.keys(cfg.offices).length > 1" label="Cargo")
       select(:value="office" @change="setParam('office', $event.target.value)")
         option(v-for="(name, id) in cfg.offices" :key="id" :value="id" :selected="Number(id) === office") {{ name }}
     p.muted(v-if="office !== 1") Votos agregados por partido (dois primeiros dígitos do número); governador e senador somam todas as UFs.
     BarList(:items="items")
     template(v-if="results.data.gap")
-      p.note(v-if="results.data.gap.residual")
+      Notice(v-if="results.data.gap.residual")
         | Os totais incluem {{ int(results.data.gap.residual.votes) }} votos de {{ int(results.data.gap.residual.sections) }} seções que o TSE não publicou, tomados do total oficial de cada município (sem detalhe por seção).&nbsp;
         a(href="#cobertura") ver Cobertura dos dados
-      p.warn(v-if="results.data.gap.votes")
+      Notice(v-if="results.data.gap.votes" kind="warning")
         template(v-if="results.data.gap.residual") Diferença restante para o oficial: {{ signed(results.data.gap.votes) }} votos ({{ signed(results.data.gap.share * 100, 2) }}%){{ results.data.gap.skipped.length ? ` · municípios cujo total oficial não pôde ser usado (não totalizado, desatualizado ou ausente): ${results.data.gap.skipped.length}` : '' }}.
         template(v-else) Diferença para o oficial: {{ signed(results.data.gap.votes) }} votos ({{ signed(results.data.gap.share * 100, 2) }}%) · seções sem arquivo publicado: {{ int(results.data.gap.missing) }}.
     p.muted {{ int(results.data.sections) }} seções · nominais {{ int(results.data.nominal) }}

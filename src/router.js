@@ -2,7 +2,7 @@
 // every other state (office, metric, cand, scope, sort, page, q...) in the query string. Links are plain <a href>s built by
 // href(); one delegated click handler turns same-origin clicks into client navigation.
 import { computed, nextTick, ref } from 'vue'
-import { DEFAULT_ELECTION, ELECTIONS, VIEW_LABELS } from './model'
+import { DEFAULT_ELECTION, ELECTIONS, HIDDEN_VIEWS, VIEW_LABELS } from './model'
 
 const BASE = import.meta.env.BASE_URL // '/brazil-audit/' on Pages, '/' in dev or on a custom domain
 const url = ref({ path: location.pathname, search: location.search })
@@ -33,7 +33,7 @@ let key = 0
 
 function arrive(restore) {
   const { election, view } = route.value
-  document.title = `${VIEW_LABELS[view] ?? view} · ${ELECTIONS[election].label} · Auditoria eleitoral`
+  document.title = `${VIEW_LABELS[view] ?? HIDDEN_VIEWS[view] ?? view} · ${ELECTIONS[election].label} · Auditoria eleitoral`
   nextTick(() => requestAnimationFrame(() => {
     scrollTo({ top: restore ?? 0, behavior: 'instant' })
     if (restore == null) { const h = document.querySelector('main h1'); if (h) { h.tabIndex = -1; h.focus({ preventScroll: true }) } }

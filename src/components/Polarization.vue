@@ -18,10 +18,10 @@ const circles = computed(() => props.rows.map((row, i) => ({
 <template lang="pug">
 svg.polar(:viewBox="`0 0 ${rows.length * W} 190`" role="img" aria-label="Polarização: participação dos dois candidatos mais votados nos votos válidos, círculos com área proporcional")
   g(v-for="c in circles" :key="c.election" :transform="`translate(${c.x} 0)`")
-    text.cap(:x="W / 2" y="14" text-anchor="middle") {{ c.election }}
+    text.polar__caption(:x="W / 2" y="14" text-anchor="middle") {{ c.election }}
     g(v-for="(it, j) in c.items" :key="j")
-      text.who(:x="it.cx" y="34" text-anchor="middle") {{ it.label }}
-      text.who.dim(:x="it.cx" y="48" text-anchor="middle") {{ it.party }}
-      circle(:cx="it.cx" :cy="125" :r="it.r" :fill="it.color")
-      text.pct(:x="it.cx" :y="130" text-anchor="middle") {{ pct(it.share, 1) }}
+      text.polar__name(:x="it.cx" y="34" text-anchor="middle") {{ it.label }}
+      text.polar__party(:x="it.cx" y="48" text-anchor="middle") {{ it.party }}
+      circle(:cx="it.cx" :cy="125" :r="it.r" :style="{ fill: it.color }")
+      text.polar__value(:x="it.cx" :y="130" text-anchor="middle") {{ pct(it.share, 1) }}
 </template>

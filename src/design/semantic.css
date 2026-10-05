@@ -1,0 +1,142 @@
+/*
+ * SEMANTIC TOKENS: meaning, theme aware. The only layer that switches between light and dark: light-dark() follows
+ * prefers-color-scheme by default and the `data-theme="light|dark"` attribute on <html> overrides it (theme switcher on /design).
+ * Also the only place for breakpoints, reduced motion and forced-colors. Naming: --<group>-<role>.
+ */
+:root {
+  color-scheme: light dark;
+
+  /* surfaces */
+  --surface-page: light-dark(var(--color-slate-100), var(--color-slate-900));
+  --surface-raised: light-dark(var(--color-white), var(--color-slate-800));
+  --surface-sunken: light-dark(var(--color-slate-50), var(--color-slate-950));
+  --surface-overlay: var(--surface-raised);
+  --surface-inverse: light-dark(var(--color-slate-900), var(--color-slate-100));
+
+  /* text */
+  --text-primary: light-dark(var(--color-slate-900), var(--color-slate-200));
+  --text-secondary: light-dark(var(--color-slate-700), var(--color-slate-300));
+  --text-muted: light-dark(var(--color-slate-600), var(--color-slate-400));
+  --text-inverse: light-dark(var(--color-white), var(--color-slate-950));
+  --text-link: light-dark(var(--color-blue-700), var(--color-blue-300));
+  --text-danger: light-dark(var(--color-red-700), var(--color-red-300));
+  --text-warning: light-dark(var(--color-orange-700), var(--color-orange-400));
+  --text-success: light-dark(var(--color-green-700), var(--color-green-400));
+
+  /* borders and focus */
+  --border-default: light-dark(var(--color-slate-200), var(--color-slate-700));
+  --border-strong: light-dark(var(--color-slate-500), var(--color-slate-400));
+  --border-focus: light-dark(var(--color-blue-600), var(--color-blue-300));
+  --focus-ring: var(--border-width-2) solid var(--border-focus);
+
+  /* accent / primary action */
+  --accent: light-dark(var(--color-blue-700), var(--color-blue-400));
+  --accent-hover: light-dark(var(--color-blue-800), var(--color-blue-300));
+  --accent-contrast: var(--text-inverse);
+  --accent-subtle: light-dark(var(--color-blue-100), var(--color-slate-700));
+
+  /* status */
+  --status-success: var(--text-success);
+  --status-warning: var(--text-warning);
+  --status-danger: var(--text-danger);
+  --status-info: var(--text-link);
+  --status-success-bg: color-mix(in oklab, var(--status-success) 12%, var(--surface-raised));
+  --status-warning-bg: color-mix(in oklab, var(--status-warning) 12%, var(--surface-raised));
+  --status-danger-bg: color-mix(in oklab, var(--status-danger) 12%, var(--surface-raised));
+  --status-info-bg: color-mix(in oklab, var(--status-info) 12%, var(--surface-raised));
+
+  /* candidate identity (never reused for anything else) */
+  --candidate-pt: light-dark(var(--color-red-500), var(--color-red-400));
+  --candidate-pl: light-dark(var(--color-violet-500), var(--color-violet-400));
+  --candidate-other: light-dark(var(--color-slate-500), var(--color-slate-400));
+
+  /* brand (logo) */
+  --brand-blue: var(--color-blue-700);
+  --brand-amber: var(--color-amber-400);
+  --brand-lens: var(--color-white);
+  --brand-wordmark: var(--text-primary);
+  --brand-full-display: block;
+  --brand-mark-display: none;
+
+  /* data visualization */
+  --chart-bar: light-dark(var(--color-blue-500), var(--color-blue-400));
+  --chart-highlight: light-dark(var(--color-orange-700), var(--color-orange-400));
+  --chart-grid: var(--border-default);
+  --chart-axis-text: var(--text-muted);
+  --chart-overlay: var(--chart-highlight);
+  --seq-margin: var(--accent);
+  --seq-blank: var(--chart-highlight);
+  --map-missing: light-dark(var(--color-slate-200), var(--color-slate-700));
+  --map-blend-base: var(--surface-raised);
+  --map-stroke: var(--surface-raised);
+  --map-border: color-mix(in oklab, var(--text-primary) 55%, transparent);
+  --map-hover-stroke: var(--text-primary);
+  --map-label: var(--text-muted);
+  --viz-label-on-fill: var(--color-white);
+  --viz-label-halo: color-mix(in oklab, var(--color-black) 45%, transparent);
+  --seat-dim-opacity: 0.2;
+  --cat-1: var(--color-cat-1); --cat-2: var(--color-cat-2); --cat-3: var(--color-cat-3); --cat-4: var(--color-cat-4);
+  --cat-5: var(--color-cat-5); --cat-6: var(--color-cat-6); --cat-7: var(--color-cat-7); --cat-8: var(--color-cat-8);
+  --cat-9: var(--color-cat-9); --cat-10: var(--color-cat-10); --cat-11: var(--color-cat-11); --cat-12: var(--color-cat-12);
+  --cat-13: var(--color-cat-13); --cat-14: var(--color-cat-14); --cat-15: var(--color-cat-15); --cat-16: var(--color-cat-16);
+  --cat-n1: var(--color-cat-n1); --cat-n2: var(--color-cat-n2); --cat-n3: var(--color-cat-n3);
+
+  /* semantic spacing */
+  --space-inline: var(--space-2);
+  --space-stack: var(--space-3);
+  --space-cluster: var(--space-2) var(--space-4);
+  --space-control-x: var(--space-2);
+  --space-control-y: var(--space-1);
+  --space-panel: var(--space-3) var(--space-4);
+  --space-page: var(--space-4);
+  --space-section: var(--space-4);
+
+  /* semantic typography */
+  --font-sans: var(--font-family-sans);
+  --font-mono: var(--font-family-mono);
+  --type-body-size: var(--font-size-400);
+  --type-body-line: var(--line-height-normal);
+  --type-h1-size: var(--font-size-800);
+  --type-h1-weight: var(--font-weight-bold);
+  --type-h1-line: var(--line-height-tight);
+  --type-h2-size: var(--font-size-500);
+  --type-h2-weight: var(--font-weight-semibold);
+  --type-headline-size: var(--font-size-600);
+  --type-caption-size: var(--font-size-200);
+  --type-small-size: var(--font-size-100);
+  --type-control-size: var(--font-size-400);
+  --type-code-size: var(--font-size-200);
+  --type-numeric: tabular-nums;
+
+  /* semantic shape and elevation */
+  --radius-control: var(--radius-2);
+  --radius-panel: var(--radius-3);
+  --radius-small: var(--radius-1);
+  --radius-pill: var(--radius-full);
+  --elevation-tooltip: var(--shadow-2);
+
+  /* layout and sizes */
+  --layout-column-min: min(var(--size-column-min), 100%);
+  --control-height: var(--size-control);
+  --motion-fast: var(--duration-fast);
+  --motion-base: var(--duration-base);
+  --motion-loop: var(--duration-slow);
+}
+
+/* any element can force a theme (the root via the switcher on /design, previews inside it) */
+[data-theme="light"] { color-scheme: light; }
+[data-theme="dark"] { color-scheme: dark; }
+
+/* breakpoints: one block set */
+@media (max-width: 40rem) {
+  :root { --space-page: var(--space-3); --space-panel: var(--space-3); --type-h1-size: var(--font-size-700); --bars-columns: 1fr; --brand-full-display: none; --brand-mark-display: block; }
+}
+@media (pointer: coarse) {
+  :root { --control-height: var(--size-hit-area); }
+}
+@media (prefers-reduced-motion: reduce) {
+  :root { --motion-fast: 0.01ms; --motion-base: 0.01ms; --motion-loop: 0.01ms; }
+}
+@media (forced-colors: active) {
+  :root { --border-default: CanvasText; --border-strong: CanvasText; --border-focus: Highlight; --map-missing: Canvas; --map-border: CanvasText; --map-stroke: Canvas; }
+}

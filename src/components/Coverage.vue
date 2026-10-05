@@ -6,6 +6,8 @@ import { useAsync } from '../use'
 import { objects } from '../db'
 import { int, pct } from '../format'
 import Panel from './Panel.vue'
+import Field from './Field.vue'
+import Stat from './Stat.vue'
 import DataTable from './DataTable.vue'
 
 const OFFICES = ELECTIONS[2026].offices
@@ -79,24 +81,24 @@ const pickState = (e) => { uf.value = e.target.value; page.value = 0 }
 <template lang="pug">
 Panel(title="Cobertura dos dados" :state="coverage" :election="year" wide)
   template(v-if="is26")
-    p
-      b {{ int(coverage.data.stored) }}
-      |  de {{ int(coverage.data.own) }} seções ({{ pct(coverage.data.stored / coverage.data.own, 2) }}) têm resultado neste dump; {{ int(coverage.data.missing) }} não tiveram os arquivos publicados pelo TSE.
-    p.muted {{ int(coverage.data.aggregated) }} seções agregadas não têm arquivos próprios: seus votos já estão contados na seção principal e não contam como faltantes. Os totais abaixo cobrem as seções com resultado (o TSE totalizou 100%).
+    .cluster
+      Stat(:value="pct(coverage.data.stored / coverage.data.own, 2)" label="das seções com resultado neste dump")
+      Stat(:value="int(coverage.data.stored)" :label="`de ${int(coverage.data.own)} seções`")
+      Stat(:value="int(coverage.data.missing)" label="sem arquivos publicados pelo TSE")
+    p.muted {{ int(coverage.data.aggregated) }} seções agregadas não têm arquivos próprios: seus votos já estão contados na seção principal e não contam como faltantes. Sem o acréscimo dos votos dessas seções (veja abaixo), os totais cobrem só as seções com resultado (o TSE totalizou 100%).
     details
       summary Por UF
       DataTable(:columns="stateCols" :rows="coverage.data.rows")
     details(v-if="resid.data && resid.data.perUf.length")
       summary Votos de seções sem arquivo, tomados do total oficial do município
-      p.muted Cada voto aqui vem do total oficial do município (menos o que as seções com arquivo somam), não de arquivos de seção; por isso só entram nos totais nacionais, de UF e de município.
+      p.muted Cada voto aqui vem do total oficial da zona ou do município (menos o que as seções com arquivo somam), não de arquivos de seção; por isso só entram nos totais nacionais, de UF e de município e na linha de cada zona.
       DataTable(:columns="residCols" :rows="resid.data.perUf")
       p.muted(v-if="resid.data.skipped.length") Municípios/cargos sem acréscimo ({{ resid.data.skipped.length }}):
       DataTable(v-if="resid.data.skipped.length" :columns="skippedCols" :rows="resid.data.skipped")
     details
       summary Seções sem resultado ({{ int(coverage.data.missing) }})
-      .controls
-        label
-          | UF
+      .cluster
+        Field(label="UF")
           select(@change="pickState")
             option(value="") todas
             option(v-for="r in coverage.data.rows.filter((x) => x.missing)" :key="r.state" :value="r.state") {{ r.state.toUpperCase() }} ({{ r.missing }})

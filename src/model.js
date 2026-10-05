@@ -15,6 +15,9 @@ export const DEFAULT_ELECTION = Object.keys(ELECTIONS).at(-1)
 
 export const VIEW_LABELS = { overview: 'Visão geral', maps: 'Mapas', parliament: 'Parlamento', drill: 'Detalhar', analysis: 'Análise', time: 'Horários', sql: 'SQL' }
 
+/** Routes outside the main navigation (linked from the footer). */
+export const HIDDEN_VIEWS = { design: 'Sistema de design' }
+
 export const STATE_NAMES = {
   ac: 'Acre', al: 'Alagoas', am: 'Amazonas', ap: 'Amapá', ba: 'Bahia', ce: 'Ceará', df: 'Distrito Federal', es: 'Espírito Santo',
   go: 'Goiás', ma: 'Maranhão', mg: 'Minas Gerais', ms: 'Mato Grosso do Sul', mt: 'Mato Grosso', pa: 'Pará', pb: 'Paraíba',

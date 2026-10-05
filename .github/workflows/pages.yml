@@ -24,6 +24,7 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm ci
+      - run: npm run lint:tokens
       # project pages are served from /<repo>/ ; set BASE_PATH to / for a user page or custom domain
       - run: npm run build
         env:

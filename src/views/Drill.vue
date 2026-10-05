@@ -8,6 +8,10 @@ import { useAsync } from '../use'
 import { objects } from '../db'
 import { int, pct } from '../format'
 import Panel from '../components/Panel.vue'
+import Field from '../components/Field.vue'
+import Notice from '../components/Notice.vue'
+import Skeleton from '../components/Skeleton.vue'
+import Breadcrumb from '../components/Breadcrumb.vue'
 import BarList from '../components/BarList.vue'
 import DataTable from '../components/DataTable.vue'
 import StateMap from '../components/StateMap.vue'
@@ -83,9 +87,9 @@ const view = useAsync(() => [year.value, args.value, office.value, sort.value, p
   return a.length === 4 ? sectionRows(y, a, q) : listRows(y, a, o, s, p, q)
 })
 
-const crumbs = computed(() => [{ t: 'Brasil', h: href(year.value, 'drill') }, ...args.value.map((a, i) => ({
-  t: i === 0 ? `${a.toUpperCase()} · ${STATE_NAMES[a]}` : i === 2 ? `Zona ${a}` : i === 3 ? `Seção ${a}` : a,
-  h: href(year.value, 'drill', args.value.slice(0, i + 1)),
+const crumbs = computed(() => [{ label: 'Brasil', href: href(year.value, 'drill') }, ...args.value.map((a, i) => ({
+  label: i === 0 ? `${a.toUpperCase()} · ${STATE_NAMES[a]}` : i === 2 ? `Zona ${a}` : i === 3 ? `Seção ${a}` : a,
+  href: href(year.value, 'drill', args.value.slice(0, i + 1)),
 }))])
 
 const unitCol = computed(() => ({
@@ -109,27 +113,23 @@ const sectionItems = (rows) => rows.map((r) => ({ label: nameOf(r), value: r.vot
 
 <template lang="pug">
 h1 Detalhar · {{ cfg.label }}
-nav.crumbs
-  template(v-for="(c, i) in crumbs" :key="i")
-    span.sep(v-if="i") /
-    a(:href="c.h") {{ c.t }}
-.error(v-if="view.error")
+Breadcrumb(:items="crumbs" label="Onde estou")
+Notice(v-if="view.error" kind="danger")
   strong {{ view.error.message }}
-.skeleton(v-else-if="!view.data")
-.controls(v-if="args.length < 4")
+Skeleton(v-else-if="!view.data")
+.cluster(v-if="args.length < 4")
   ResidualSwitch(v-if="year === '2026' && args.length < 3")
-  label(v-if="Object.keys(cfg.offices).length > 1")
-    | Cargo
+  Field(v-if="Object.keys(cfg.offices).length > 1" label="Cargo")
     select(:value="office" @change="setParam('office', $event.target.value)")
       option(v-for="(name, id) in cfg.offices" :key="id" :value="id" :selected="Number(id) === office") {{ name }}
-.grid(v-if="view.data && view.data.mode === 'list'")
+.grid-auto(v-if="view.data && view.data.mode === 'list'")
   Panel(title="Resultado no recorte" :state="view" :election="year")
     BarList(:items="items")
   Panel(v-if="args.length === 1 && args[0] !== 'zz'" :title="`Mapa de ${STATE_NAMES[args[0]]} por município`" :state="view" :election="year")
     StateMap(:year="year" :uf="args[0]" :office="office")
   Panel(:title="LEVEL_PLURAL[args.length]" :state="view" :election="year" wide)
     DataTable(:columns="columns" :rows="view.data.rows" :sort="sort" :page="page" :size="25" :total="Number(view.data.total)" @sort="onSort" @page="setParam('page', $event)")
-.grid(v-else-if="view.data")
+.grid-auto(v-else-if="view.data")
   Panel(v-for="o in view.data.offices" :key="o.office" :title="cfg.offices[o.office] ?? `Cargo ${o.office}`" :state="view" :election="year")
     BarList(:items="sectionItems(o.rows)")
     p.muted nominais {{ int(o.nominal) }}

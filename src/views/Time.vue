@@ -7,6 +7,7 @@ import { useAsync } from '../use'
 import { objects } from '../db'
 import { clock, int, num } from '../format'
 import Panel from '../components/Panel.vue'
+import Field from '../components/Field.vue'
 import ColumnChart from '../components/ColumnChart.vue'
 import DataTable from '../components/DataTable.vue'
 
@@ -91,33 +92,29 @@ const title = computed(() => (isSection.value ? `Seção ${args.value[3]} · zon
 
 <template lang="pug">
 h1 Horários de votação · {{ title }}
-.controls(v-if="year === '2026'")
-  label
-    | UF
+.cluster(v-if="year === '2026'")
+  Field(label="UF")
     select(:value="state ?? ''" @change="pickState")
       option(value="") Brasil
       option(v-for="s in parts('vt_2026')" :key="s" :value="s" :selected="s === state") {{ s.toUpperCase() }} · {{ STATE_NAMES[s] }}
-  label(v-if="state && cities.data")
-    | Município
+  Field(v-if="state && cities.data" label="Município")
     select(:value="city ?? ''" @change="pickCity")
       option(value="") todos
       option(v-for="c in cities.data" :key="c.city" :value="c.city" :selected="c.city === city") {{ c.city }}
-  label
-    | Relógio
+  Field(label="Relógio")
     select(:value="brt ? 'brt' : 'local'" @change="setParam('clock', $event.target.value === 'brt' ? null : 'local')")
       option(value="brt") Brasília (UTC-3)
       option(value="local") local, como gravado
   a(v-if="isSection" :href="href(year, 'drill', args)") resultados da seção →
 .muted(v-if="year !== '2026'") O dump de 2022 não tem horários de votação; escolha 2026.
-.grid(v-else)
+.grid-auto(v-else)
   Panel(title="Votos a cada 10 minutos (post Presidente: um evento por eleitor)" :state="curve" :election="year" wide)
     ColumnChart(:values="curve.data.votes" :labels="curve.data.labels" :height="260" :tick="int" :fmt="(v) => int(v) + ' votos'")
     p.muted(v-if="summary.data") {{ int(curve.data.total) }} eventos em {{ int(summary.data.sections) }} seções ({{ int(summary.data.cities) }} municípios) ·
       | relógio {{ brt ? 'convertido para Brasília com o fuso estimado por município (mín. ' + summary.data.tz_min + 'h, máx. ' + summary.data.tz_max + 'h)' : 'local como gravado pelo scraper' }}
   Panel(title="Ritmo por seção" :state="paced" :election="year" wide)
-    .controls
-      label
-        | Ordenar por
+    .cluster
+      Field(label="Ordenar por")
         select(:value="rank" @change="pick('rank')")
           option(v-for="(r, k) in RANKS" :key="k" :value="k" :selected="k === rank") {{ r[0] }}
     p.muted Estatísticas por seção a partir dos intervalos entre votos (a mediana de uma votação normal fica perto de 100 s). Só entram UFs carregadas: escolha uma UF.

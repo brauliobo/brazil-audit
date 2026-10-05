@@ -5,6 +5,9 @@ import { ensureDefault } from '../data'
 import { query } from '../db'
 import { ms, int } from '../format'
 import Panel from '../components/Panel.vue'
+import Field from '../components/Field.vue'
+import Button from '../components/Button.vue'
+import Notice from '../components/Notice.vue'
 import DataTable from '../components/DataTable.vue'
 
 const year = computed(() => route.value.election)
@@ -53,17 +56,16 @@ if (route.value.params.get('q')) run()
 
 <template lang="pug">
 h1 Console SQL
-.controls
-  label
-    | Exemplos
+.cluster
+  Field(label="Exemplos")
     select(@change="pick")
       option(value="") escolher…
       option(v-for="(e, i) in EXAMPLES" :key="i" :value="i") {{ e[0] }}
-  button(:disabled="running" @click="run") Executar
-  button.ghost(@click="share") {{ copied ? 'link copiado' : 'copiar link' }}
+  Button(:disabled="running" @click="run") Executar
+  Button(variant="ghost" @click="share") {{ copied ? 'link copiado' : 'copiar link' }}
   small.muted Tabelas: votes_2022, rdv_2026, vt_2026, vtc_2026, cands e views sec_/cs_ · cita uma tabela e as UFs menores são importadas sozinhas; para uma UF específica abra-a antes em Detalhar/Horários
-textarea(v-model="sql" spellcheck="false" @keydown.ctrl.enter="run" @keydown.meta.enter="run")
-.error(v-if="error")
+textarea.control(v-model="sql" spellcheck="false" @keydown.ctrl.enter="run" @keydown.meta.enter="run")
+Notice(v-if="error" kind="danger")
   strong {{ error.message }}
   pre(v-if="error.detail") {{ error.detail }}
 Panel(v-if="out" title="Resultado")

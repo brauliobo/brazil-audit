@@ -8,6 +8,7 @@ import { useAsync } from '../use'
 import { objects } from '../db'
 import { int, pct } from '../format'
 import Panel from '../components/Panel.vue'
+import Field from '../components/Field.vue'
 import Hemicycle from '../components/Hemicycle.vue'
 import DataTable from '../components/DataTable.vue'
 
@@ -47,19 +48,17 @@ const title = computed(() => (chamber.value === 'state' ? `Assembleia Legislativ
 
 <template lang="pug">
 h1 Parlamento · 2026
-.controls
-  label
-    | Casa
+.cluster
+  Field(label="Casa")
     select(@change="setParam('chamber', $event.target.value)")
       option(value="senate" :selected="chamber === 'senate'") Senado
       option(value="chamber" :selected="chamber === 'chamber'") Câmara dos Deputados
       option(value="state" :selected="chamber === 'state'") Assembleia Legislativa (UF)
       option(value="district" :selected="chamber === 'district'") Câmara Legislativa do DF
-  label(v-if="scoped")
-    | UF
+  Field(v-if="scoped" label="UF")
     select(@change="setParam('uf', $event.target.value)")
       option(v-for="[s, name] in ufs" :key="s" :value="s" :selected="s === uf") {{ s.toUpperCase() }} · {{ name }}
-.grid
+.grid-auto
   Panel(:title="title" :state="seats" election="2026" wide)
     Hemicycle(:groups="seats.data.groups" :label="`${title}: ${seats.data.total} cadeiras por partido`")
     p.muted {{ cfg.note }}

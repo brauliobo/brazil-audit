@@ -7,6 +7,8 @@ import { useAsync } from '../use'
 import { objects } from '../db'
 import { int, num, pct } from '../format'
 import Panel from '../components/Panel.vue'
+import Field from '../components/Field.vue'
+import Legend from '../components/Legend.vue'
 import BarList from '../components/BarList.vue'
 import ColumnChart from '../components/ColumnChart.vue'
 import DataTable from '../components/DataTable.vue'
@@ -68,6 +70,7 @@ const rates = useAsync(() => [year.value, state.value, base.loading, loaded.valu
     sum(nul)::float8 / nullif(sum(nominal + blank + nul), 0) null_rate from sec_${y} where office = 1 and ($1::text is null or state = $1) group by state order by state`, [s])
 })
 
+const benfordLegend = computed(() => [{ color: 'var(--chart-bar)', label: 'observado' }, { color: 'var(--chart-highlight)', label: `esperado (Benford) · χ² = ${num(benford.data.chi2)} (8 gl; crítico a 5% = 15,51) · n = ${int(benford.data.total)}` }])
 const pick = (key) => (e) => setParam(key, e.target.value)
 const stateOptions = computed(() => parts(table.value))
 const section = (r) => href(year.value, 'drill', [r.state, r.city, r.zone, r.section])
@@ -87,17 +90,15 @@ const rateLabels = computed(() => rates.data.map((r) => r.state.toUpperCase()))
 
 <template lang="pug">
 h1 Análise · {{ cfg.label }}
-.controls
-  label
-    | Escopo
+.cluster
+  Field(label="Escopo")
     select(:value="state ?? ''" @change="pick('state')")
       option(value="") {{ loaded }} UF(s) carregada(s)
       option(v-for="s in stateOptions" :key="s" :value="s" :selected="s === state") {{ s.toUpperCase() }} · {{ STATE_NAMES[s] }}
-  label(v-if="candidates.data")
-    | Candidato (presidente)
+  Field(v-if="candidates.data" label="Candidato (presidente)")
     select(:value="cand" @change="pick('cand')")
       option(v-for="c in candidates.data" :key="c.cand" :value="c.cand" :selected="c.cand === cand") {{ c.name }} ({{ c.cand }})
-.grid
+.grid-auto
   Panel(title="Distribuição do percentual do candidato por seção" :state="hist" :election="year" wide)
     ColumnChart(:values="hist.data" :labels="histLabels" :tick="int" :fmt="(v) => int(v) + ' seções'")
     p.muted seções por faixa de 2,5 pontos percentuais do total de votos nominais
@@ -111,11 +112,7 @@ h1 Análise · {{ cfg.label }}
     BarList(:items="cityItems")
   Panel(title="Primeiro dígito dos votos por seção (Benford)" :state="benford" :election="year")
     ColumnChart(:values="benford.data.observed" :labels="['1','2','3','4','5','6','7','8','9']" :line="benford.data.expected" :fmt="(v) => pct(v, 1)")
-    p.legend
-      i
-      | observado
-      i.l
-      | esperado (Benford) · χ² = {{ num(benford.data.chi2) }} (8 gl; crítico a 5% = 15,51) · n = {{ int(benford.data.total) }}
+    Legend(:items="benfordLegend")
   Panel(title="Brancos e nulos por UF (presidente)" :state="rates" :election="year" wide)
     template(v-if="year === '2022'")
       p.muted O dump de 2022 só tem votos nominais por candidato (sem brancos/nulos).

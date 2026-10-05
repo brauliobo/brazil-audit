@@ -8,10 +8,10 @@ const top = computed(() => Math.max(...props.items.map((i) => i.value), 1e-9))
 
 <template lang="pug">
 .bars
-  .row(v-for="(it, i) in items" :key="i")
-    a.label(v-if="it.href" :href="it.href") {{ it.label }}
-    span.label(v-else) {{ it.label }}
-    .track
-      .fill(:style="{ width: (100 * it.value / top) + '%' }")
-    span.val {{ it.text ?? it.value }}
+  .bars__row(v-for="(it, i) in items" :key="i")
+    a.bars__label(v-if="it.href" :href="it.href") {{ it.label }}
+    span.bars__label(v-else) {{ it.label }}
+    .bars__track
+      .bars__fill(:style="{ width: (100 * it.value / top) + '%' }")
+    span.bars__value {{ it.text ?? it.value }}
 </template>

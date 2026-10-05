@@ -26,11 +26,11 @@ const xlabels = computed(() => {
 
 <template lang="pug">
 svg.chart(:viewBox="`0 0 ${W} ${height}`" role="img")
-  g.grid(v-for="t in ticks" :key="t.y")
+  g.chart__grid(v-for="t in ticks" :key="t.y")
     line(:x1="L" :x2="W - 8" :y1="t.y" :y2="t.y")
     text(:x="L - 6" :y="t.y + 4" text-anchor="end") {{ t.t }}
-  rect.bar(v-for="(b, i) in bars" :key="i" :x="b.x" :y="b.y" :width="b.w" :height="b.h")
+  rect.chart__bar(v-for="(b, i) in bars" :key="i" :x="b.x" :y="b.y" :width="b.w" :height="b.h")
     title {{ b.t }}
-  polyline.overlay(v-if="line" :points="dots")
-  text.xl(v-for="l in xlabels" :key="l.x" :x="l.x" :y="height - 6" text-anchor="middle") {{ l.t }}
+  polyline.chart__overlay(v-if="line" :points="dots")
+  text(v-for="l in xlabels" :key="l.x" :x="l.x" :y="height - 6" text-anchor="middle") {{ l.t }}
 </template>

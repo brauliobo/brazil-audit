@@ -9,6 +9,10 @@ import { useAsync } from '../use'
 import { objects } from '../db'
 import { int, pct } from '../format'
 import Panel from '../components/Panel.vue'
+import Field from '../components/Field.vue'
+import Breadcrumb from '../components/Breadcrumb.vue'
+import Chip from '../components/Chip.vue'
+import Legend from '../components/Legend.vue'
 import ResidualSwitch from '../components/ResidualSwitch.vue'
 import GeoMap from '../components/GeoMap.vue'
 import ColumnChart from '../components/ColumnChart.vue'
@@ -54,7 +58,7 @@ const leaders = computed(() => {
 })
 const shareCand = computed(() => params.value.get('cand') || leaders.value[0]?.cand)
 const shareOf = (u) => (u.list.find((r) => r.cand === shareCand.value)?.votes ?? 0) / u.valid
-const sequential = { margin: '#3b6de0', blank: '#e07a1f' }
+const sequential = { margin: 'var(--seq-margin)', blank: 'var(--seq-blank)' }
 
 const style = computed(() => {
   const us = [...data.data.units.values()]
@@ -87,7 +91,11 @@ onUnmounted(() => removeEventListener('keydown', onKey))
 const legend = computed(() => winnerLegend(data.data.units, office.value))
 const headline = computed(() => (year.value && data.data ? winnersHeadline(data.data.winners) : ''))
 const abroad = computed(() => data.data.winners.find((r) => r.state === 'zz' && r.rn === 1))
-const gradient = computed(() => `linear-gradient(90deg, color-mix(in srgb, ${style.value.color ?? '#888'} 15%, transparent), ${style.value.color ?? '#888'})`)
+const gradient = computed(() => `linear-gradient(90deg, color-mix(in oklab, ${style.value.color} 15%, var(--map-blend-base)), ${style.value.color})`)
+const legendItems = computed(() => [
+  ...(metric.value === 'winner' ? legend.value.map((l) => ({ color: partyColor(l.party), label: `${l.label} · ${l.n}` })) : []),
+  ...(abroad.value ? [{ color: partyColor(abroad.value.party), label: `Exterior: ${titleCase(abroad.value.name ?? abroad.value.cand)} ${pct(abroad.value.votes / abroad.value.valid, 1)}` }] : []),
+])
 
 // how divided is the country? signed margin between the two national leaders in every municipality (president)
 const BINS = 20
@@ -108,61 +116,47 @@ const ufs = Object.entries(STATE_NAMES).filter(([s]) => s !== 'zz')
 
 <template lang="pug">
 h1 Mapas · {{ ELECTIONS[year].label }}
-.controls
+.cluster
   ResidualSwitch(v-if="year === '2026'")
-  label
-    | Escala
+  Field(label="Escala")
     select(@change="pick('scope')")
       option(value="uf" :selected="scope === 'uf'") Brasil por UF
       option(value="mun" :selected="scope === 'mun'") Brasil por município
       option(value="state" :selected="scope === 'state'") Uma UF por município
-  label(v-if="scope === 'state'")
-    | UF
+  Field(v-if="scope === 'state'" label="UF")
     select(@change="pick('uf')")
       option(v-for="[s, name] in ufs" :key="s" :value="s" :selected="s === uf") {{ s.toUpperCase() }} · {{ name }}
-  label(v-if="offices.length > 1")
-    | Cargo
+  Field(v-if="offices.length > 1" label="Cargo")
     select(@change="pick('office')")
       option(v-for="[id, name] in offices" :key="id" :value="id" :selected="Number(id) === office") {{ name }}
-  label
-    | Mostrar
+  Field(label="Mostrar")
     select(@change="pick('metric')")
       option(value="winner" :selected="metric === 'winner'") Quem venceu
       option(value="share" :selected="metric === 'share'") % de um candidato
       option(value="margin" :selected="metric === 'margin'") Margem da vitória
       option(value="blank" :selected="metric === 'blank'" :disabled="year === '2022'") Brancos + nulos
-  label(v-if="metric === 'share' && data.data")
-    | Candidato
+  Field(v-if="metric === 'share' && data.data" label="Candidato")
     select(@change="pick('cand')")
       option(v-for="l in leaders" :key="l.cand" :value="l.cand" :selected="l.cand === shareCand") {{ candName(l) }}
 p.headline(v-if="headline") Presidente: {{ headline }}
-.grid
+.grid-auto
   Panel(:title="scope === 'uf' ? 'Brasil por UF' : scope === 'mun' ? 'Brasil por município' : `${STATE_NAMES[uf]} por município`" :state="data" :election="year" wide)
-    nav.crumbbar(v-if="scope === 'state'" aria-label="Navegação do mapa")
-      a(:href="here({ scope: 'uf', uf: null })") Brasil
-      span.sep ›
-      b {{ uf.toUpperCase() }} · {{ STATE_NAMES[uf] }}
-      a.detail(:href="href(year, 'drill', [uf], { office })") ver detalhamento →
-    .mapwrap(:class="{ busy: data.loading }")
+    Breadcrumb(v-if="scope === 'state'" :items="[{ label: 'Brasil', href: here({ scope: 'uf', uf: null }) }, { label: `${uf.toUpperCase()} · ${STATE_NAMES[uf]}` }]" label="Navegação do mapa")
+      template(#end)
+        a(:href="href(year, 'drill', [uf], { office })") ver detalhamento →
+    .mapwrap(:class="{ 'mapwrap--busy': data.loading }")
       GeoMap(:map="data.data.map" :overlay="data.data.overlay" :fills="style.fills" :tip="tip" :keyboard="scope === 'uf'" :label="`Mapa colorido por ${metric}`" @pick="open" @hover="scope === 'uf' && preloadState($event)")
-    .legend-row
-      template(v-if="metric === 'winner'")
-        span.key(v-for="l in legend" :key="l.party")
-          i.sw(:style="{ background: partyColor(l.party) }")
-          | {{ l.label }} · {{ l.n }}
-        span.muted cor mais forte = maior margem
+    Legend(:items="legendItems")
+      span.muted(v-if="metric === 'winner'") cor mais forte = maior margem
       template(v-else)
         span.muted {{ pct(style.range[0], 0) }}
-        i.ramp(:style="{ background: gradient }")
+        i.legend__ramp(:style="{ background: gradient }")
         span.muted {{ pct(style.range[1], 0) }}
         span.muted(v-if="metric === 'share'") % de {{ candName(leaders.find((l) => l.cand === shareCand)) }}
-      span.key(v-if="abroad")
-        i.sw(:style="{ background: partyColor(abroad.party) }")
-        | Exterior: {{ titleCase(abroad.name ?? abroad.cand) }} {{ pct(abroad.votes / abroad.valid, 1) }}
     details.statelinks(v-if="scope === 'uf'")
       summary Abrir a tabela de uma UF
       .chips
-        a(v-for="[s] in ufs" :key="s" :href="href(year, 'drill', [s], { office })") {{ s.toUpperCase() }}
+        Chip(v-for="[s] in ufs" :key="s" :href="href(year, 'drill', [s], { office })") {{ s.toUpperCase() }}
     p.muted Fonte: TSE, IBGE. Passe o mouse (ou use Tab nas UFs) para ver os votos; clique numa UF para abrir os municípios dela (Esc volta ao Brasil) e num município para o detalhamento. Fernando de Noronha aparece ampliado no canto.
   Panel(title="Margem entre os dois mais votados, por município" :state="spread" :election="year")
     ColumnChart(:values="spread.data.counts" :labels="binLabels" :tick="int" :fmt="(v) => int(v) + ' municípios'")

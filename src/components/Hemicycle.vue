@@ -33,7 +33,8 @@ const geometry = computed(() => {
 
 const markup = computed(() => {
   const { radius, dots } = geometry.value
-  return dots.map((d) => `<circle data-g="${d.g}" cx="${d.x.toFixed(1)}" cy="${d.y.toFixed(1)}" r="${radius.toFixed(1)}" fill="${props.groups[d.g].color}"${active.value != null && active.value !== d.g ? ' opacity=".2"' : ''}/>`).join('')
+  const dim = (g) => (active.value != null && active.value !== g ? ';opacity:var(--hemicycle-seat-dim)' : '')
+  return dots.map((d) => `<circle data-g="${d.g}" cx="${d.x.toFixed(1)}" cy="${d.y.toFixed(1)}" r="${radius.toFixed(1)}" style="fill:${props.groups[d.g].color}${dim(d.g)}"/>`).join('')
 })
 const total = computed(() => props.groups.reduce((t, g) => t + g.seats, 0))
 const hover = (e) => (active.value = e.target.dataset?.g == null ? null : +e.target.dataset.g)
@@ -42,13 +43,13 @@ const group = computed(() => props.groups[active.value])
 
 <template lang="pug">
 .hemicycle
-  svg.hemi(:viewBox="`0 0 ${W} ${R + 24}`" role="img" :aria-label="label" @mousemove="hover" @mouseleave="active = null")
+  svg.hemicycle__svg(:viewBox="`0 0 ${W} ${R + 24}`" role="img" :aria-label="label" @mousemove="hover" @mouseleave="active = null")
     g(v-html="markup")
-    text.total(:x="W / 2" :y="R - 14" text-anchor="middle") {{ group ? group.seats : total }}
-    text.sub(:x="W / 2" :y="R + 8" text-anchor="middle") {{ group ? group.label : 'cadeiras' }}
+    text.hemicycle__total(:x="W / 2" :y="R - 14" text-anchor="middle") {{ group ? group.seats : total }}
+    text.hemicycle__sub(:x="W / 2" :y="R + 8" text-anchor="middle") {{ group ? group.label : 'cadeiras' }}
   ul.seats
-    li(v-for="(g, i) in groups" :key="g.key" tabindex="0" :class="{ off: active != null && active !== i }" @mouseenter="active = i" @mouseleave="active = null" @focus="active = i" @blur="active = null")
-      i.sw(:style="{ background: g.color }")
-      span.name {{ g.label }}
+    li(v-for="(g, i) in groups" :key="g.key" tabindex="0" :class="{ seats__off: active != null && active !== i }" @mouseenter="active = i" @mouseleave="active = null" @focus="active = i" @blur="active = null")
+      i.legend__swatch(:style="{ background: g.color }")
+      span.seats__name {{ g.label }}
       b {{ g.seats }}
 </template>
