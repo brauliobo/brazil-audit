@@ -3600,23 +3600,23 @@
    "parts": {
     "2026/all": {
      "url": "elected/2026.csv.gz",
-     "bytes": 20572,
-     "rows": 1215,
-     "rawBytes": 69719,
+     "bytes": 27141,
+     "rows": 1626,
+     "rawBytes": 93326,
      "where": "election = 2026 and turn = 1"
     },
     "2018/all": {
      "url": "elected/2018.csv.gz",
-     "bytes": 1183,
-     "rows": 53,
-     "rawBytes": 2614,
+     "bytes": 27813,
+     "rows": 1625,
+     "rawBytes": 92832,
      "where": "election = 2018 and turn = 1"
     },
     "2022/all": {
      "url": "elected/2022.csv.gz",
-     "bytes": 617,
-     "rows": 27,
-     "rawBytes": 1292,
+     "bytes": 27145,
+     "rows": 1599,
+     "rawBytes": 92986,
      "where": "election = 2022 and turn = 1"
     }
    }
@@ -3628,7 +3628,7 @@
    "parts": {
     "2026/all": {
      "url": "seats/2026.csv.gz",
-     "bytes": 1908,
+     "bytes": 1907,
      "rows": 479,
      "rawBytes": 10689,
      "where": "election = 2026 and turn = 1"
@@ -3687,6 +3687,62 @@
      "bytes": 1462731,
      "rows": 76683,
      "rawBytes": 5083421
+    }
+   }
+  },
+  "lineup": {
+   "name": "lineup",
+   "columns": "election,turn,uf,office,party,sigla,bloc,name,valid,legend,residual,official",
+   "ddl": "create table lineup (election int, turn int, uf text, office int, party text, sigla text, bloc text, name text, valid boolean, legend bigint, residual bigint, official bigint)",
+   "parts": {
+    "2018/all": {
+     "url": "lineup/2018.csv.gz",
+     "bytes": 26751,
+     "rows": 1700,
+     "rawBytes": 147043,
+     "where": "election = 2018 and turn = 1"
+    },
+    "2022/all": {
+     "url": "lineup/2022.csv.gz",
+     "bytes": 14728,
+     "rows": 1357,
+     "rawBytes": 95397,
+     "where": "election = 2022 and turn = 1"
+    },
+    "2026/all": {
+     "url": "lineup/2026.csv.gz",
+     "bytes": 12941,
+     "rows": 1149,
+     "rawBytes": 84035,
+     "where": "election = 2026 and turn = 1"
+    }
+   }
+  },
+  "annulled": {
+   "name": "annulled",
+   "columns": "election,turn,uf,office,n",
+   "ddl": "create table annulled (election int, turn int, uf text, office int, n text)",
+   "parts": {
+    "2018/all": {
+     "url": "annulled/2018.csv.gz",
+     "bytes": 8783,
+     "rows": 2777,
+     "rawBytes": 49095,
+     "where": "election = 2018 and turn = 1"
+    },
+    "2022/all": {
+     "url": "annulled/2022.csv.gz",
+     "bytes": 9113,
+     "rows": 2990,
+     "rawBytes": 52732,
+     "where": "election = 2022 and turn = 1"
+    },
+    "2026/all": {
+     "url": "annulled/2026.csv.gz",
+     "bytes": 2413,
+     "rows": 679,
+     "rawBytes": 11884,
+     "where": "election = 2026 and turn = 1"
     }
    }
   }
@@ -3841,7 +3897,7 @@
   },
   "source": "IBGE malhas v3 (qualidade minima/intermediaria)"
  },
- "version": "2026-10-05T15:48:12.317Z",
+ "version": "2026-10-05T17:06:07.937Z",
  "raw": {
   "2026": {
    "url": "raw/2026.json",

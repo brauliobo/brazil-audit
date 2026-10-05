@@ -12,11 +12,12 @@ import { ELECTIONS, REPO } from '../src/elections.js'
 import { parseCsvLine } from './csv.mjs'
 import { EMPTY, RDV, dumpOf, officesOf, officialFile, residualOf } from './official.mjs'
 import { buildGeometry, cached, tseMunicipalities } from './geo.mjs'
+import { buildSeatsData } from './seats-data.mjs'
 
 const opt = Object.fromEntries(process.argv.slice(2).map((a) => a.replace(/^--/, '').split('=')))
 const list = (k, all) => (opt[k] ? opt[k].split(',') : all)
 const SELECTED = list('election', Object.keys(ELECTIONS)).map((k) => ELECTIONS[k])
-const ONLY = list('only', ['rdv', 'vt', 'results', 'cands', 'geo', 'elected', 'residual', 'raw'])
+const ONLY = list('only', ['rdv', 'vt', 'results', 'cands', 'geo', 'elected', 'residual', 'raw', 'lineup'])
 const OUT = 'data'
 const T0 = 18000 // time-of-day buckets: 05:00 local clock, 10 minutes each, 90 buckets (05:00-20:00), edges clamped
 const STEP = 600
@@ -38,6 +39,8 @@ const SCHEMA = {
   residual_skipped: 'uf text, city text, zone text, office int, reason text, detail text',
   elected: 'uf text, office int, n text, name text, party text, status text, votes bigint',
   seats: 'uf text, office int, bloc text, seats int',
+  lineup: 'uf text, office int, party text, sigla text, bloc text, name text, valid boolean, legend bigint, residual bigint, official bigint',
+  annulled: 'uf text, office int, n text',
 }
 
 const q = (s) => `'${s.replaceAll("'", "''")}'`
@@ -355,10 +358,10 @@ async function stateFile(uf, office, fresh) {
 
 const candidatesOf = (carg) => carg.agr.flatMap((a) => a.par.flatMap((p) => (p.cand ?? []).map((c) => ({ ...c, party: p.sg, bloc: a.com }))))
 
-// 2018/2022: the collector's `elected` table; seats count the elected candidates per party (no federation blocs)
+// 2018/2022: the collector's `elected` table (senators and deputies); seats count the elected candidates per party (no federation blocs)
 async function buildElectedOpen(el) {
   const won = `from elected e left join candidates c on c.sq_candidato = e.sq_candidato and c.turn = e.turn where e.turn = ${el.turn} and e.outcome like 'ELEITO%'`
-  const elected = (await text(el.source.db, [`select lower(e.state), e.office, e.number, coalesce(c.ballot_name, e.name), e.party, e.outcome, e.votes ${won} and e.office = 5 order by 1, e.votes desc`])).trim().split('\n').map(parseCsvLine)
+  const elected = (await text(el.source.db, [`select lower(e.state), e.office, e.number, coalesce(c.ballot_name, e.name), e.party, e.outcome, e.votes ${won} and e.office in (5, 6, 7, 8) order by 1, 2, e.votes desc`])).trim().split('\n').map(parseCsvLine)
   const seats = (await text(el.source.db, [`select lower(e.state), e.office, e.party, count(*) ${won} and e.office in (5, 6, 7, 8) group by 1, 2, 3 order by 1, 2, 4 desc`])).trim().split('\n').map(parseCsvLine)
   for (const office of [5, 6, 7, 8]) log(`seats ${el.key} office ${office}: ${seats.filter((r) => +r[1] === office).reduce((t, r) => t + +r[3], 0)}`)
   smallTable('elected', el, elected)
@@ -459,6 +462,7 @@ for (const el of SELECTED) {
   if (ONLY.includes('rdv')) await buildRdv(el)
   if (el.hasTimes && ONLY.includes('vt')) { await buildVt(el); buildRollups(el) }
   if (ONLY.includes('results')) await buildResults(el)
+  if (el.hasSeats && ONLY.includes('lineup')) await buildSeatsData(el, { text, smallTable })
 }
 if (ONLY.includes('cands')) await buildCands()
 if (['geo', 'elected', 'residual'].some((k) => ONLY.includes(k)) || !manifest.tables.mun_map) {
