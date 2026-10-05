@@ -1,0 +1,1353 @@
+{
+ "elections": {
+  "2022": {
+   "tables": {
+    "votes_2022": {
+     "parts": {
+      "ac": {
+       "url": "2022/votes/ac.csv.gz",
+       "bytes": 13113,
+       "rows": 2124,
+       "rawBytes": 87465,
+       "brotliBytes": 12617
+      },
+      "al": {
+       "url": "2022/votes/al.csv.gz",
+       "bytes": 41829,
+       "rows": 6626,
+       "rawBytes": 275510,
+       "brotliBytes": 39573
+      },
+      "am": {
+       "url": "2022/votes/am.csv.gz",
+       "bytes": 44755,
+       "rows": 7453,
+       "rawBytes": 287326,
+       "brotliBytes": 42341
+      },
+      "ap": {
+       "url": "2022/votes/ap.csv.gz",
+       "bytes": 10695,
+       "rows": 1740,
+       "rawBytes": 67484,
+       "brotliBytes": 10283
+      },
+      "ba": {
+       "url": "2022/votes/ba.csv.gz",
+       "bytes": 213348,
+       "rows": 34424,
+       "rawBytes": 1411937,
+       "brotliBytes": 200161
+      },
+      "ce": {
+       "url": "2022/votes/ce.csv.gz",
+       "bytes": 136356,
+       "rows": 22796,
+       "rawBytes": 898654,
+       "brotliBytes": 129525
+      },
+      "df": {
+       "url": "2022/votes/df.csv.gz",
+       "bytes": 38513,
+       "rows": 6748,
+       "rawBytes": 267401,
+       "brotliBytes": 35329
+      },
+      "es": {
+       "url": "2022/votes/es.csv.gz",
+       "bytes": 56692,
+       "rows": 9239,
+       "rawBytes": 377537,
+       "brotliBytes": 53738
+      },
+      "go": {
+       "url": "2022/votes/go.csv.gz",
+       "bytes": 90742,
+       "rows": 14620,
+       "rawBytes": 611795,
+       "brotliBytes": 85713
+      },
+      "ma": {
+       "url": "2022/votes/ma.csv.gz",
+       "bytes": 103839,
+       "rows": 16423,
+       "rawBytes": 696264,
+       "brotliBytes": 99001
+      },
+      "mg": {
+       "url": "2022/votes/mg.csv.gz",
+       "bytes": 314188,
+       "rows": 49981,
+       "rawBytes": 2099749,
+       "brotliBytes": 292445
+      },
+      "ms": {
+       "url": "2022/votes/ms.csv.gz",
+       "bytes": 41839,
+       "rows": 6912,
+       "rawBytes": 283874,
+       "brotliBytes": 39767
+      },
+      "mt": {
+       "url": "2022/votes/mt.csv.gz",
+       "bytes": 49304,
+       "rows": 7652,
+       "rawBytes": 321390,
+       "brotliBytes": 46878
+      },
+      "pa": {
+       "url": "2022/votes/pa.csv.gz",
+       "bytes": 114551,
+       "rows": 18235,
+       "rawBytes": 740382,
+       "brotliBytes": 108192
+      },
+      "pb": {
+       "url": "2022/votes/pb.csv.gz",
+       "bytes": 59641,
+       "rows": 9602,
+       "rawBytes": 394604,
+       "brotliBytes": 56264
+      },
+      "pe": {
+       "url": "2022/votes/pe.csv.gz",
+       "bytes": 124031,
+       "rows": 20572,
+       "rawBytes": 842560,
+       "brotliBytes": 116546
+      },
+      "pi": {
+       "url": "2022/votes/pi.csv.gz",
+       "bytes": 57341,
+       "rows": 8963,
+       "rawBytes": 376650,
+       "brotliBytes": 54938
+      },
+      "pr": {
+       "url": "2022/votes/pr.csv.gz",
+       "bytes": 160420,
+       "rows": 25721,
+       "rawBytes": 1060563,
+       "brotliBytes": 149462
+      },
+      "rj": {
+       "url": "2022/votes/rj.csv.gz",
+       "bytes": 204899,
+       "rows": 34068,
+       "rawBytes": 1484211,
+       "brotliBytes": 190773
+      },
+      "rn": {
+       "url": "2022/votes/rn.csv.gz",
+       "bytes": 48657,
+       "rows": 7674,
+       "rawBytes": 311099,
+       "brotliBytes": 46302
+      },
+      "ro": {
+       "url": "2022/votes/ro.csv.gz",
+       "bytes": 25709,
+       "rows": 4198,
+       "rawBytes": 177009,
+       "brotliBytes": 24232
+      },
+      "rr": {
+       "url": "2022/votes/rr.csv.gz",
+       "bytes": 7767,
+       "rows": 1268,
+       "rawBytes": 49604,
+       "brotliBytes": 7351
+      },
+      "rs": {
+       "url": "2022/votes/rs.csv.gz",
+       "bytes": 174531,
+       "rows": 27201,
+       "rawBytes": 1131730,
+       "brotliBytes": 164110
+      },
+      "sc": {
+       "url": "2022/votes/sc.csv.gz",
+       "bytes": 101620,
+       "rows": 16242,
+       "rawBytes": 660257,
+       "brotliBytes": 96504
+      },
+      "se": {
+       "url": "2022/votes/se.csv.gz",
+       "bytes": 34261,
+       "rows": 5498,
+       "rawBytes": 230621,
+       "brotliBytes": 32344
+      },
+      "sp": {
+       "url": "2022/votes/sp.csv.gz",
+       "bytes": 600005,
+       "rows": 101073,
+       "rawBytes": 4161465,
+       "brotliBytes": 559869
+      },
+      "to": {
+       "url": "2022/votes/to.csv.gz",
+       "bytes": 26244,
+       "rows": 3957,
+       "rawBytes": 167089,
+       "brotliBytes": 25173
+      },
+      "zz": {
+       "url": "2022/votes/zz.csv.gz",
+       "bytes": 8138,
+       "rows": 1017,
+       "rawBytes": 38159,
+       "brotliBytes": 7887
+      }
+     },
+     "name": "votes_2022",
+     "columns": "state,city,zone,section,model,votes_13,votes_22",
+     "ddl": "create table votes_2022 (state text, city text, zone text, section text, model text, votes_13 int, votes_22 int)"
+    }
+   }
+  },
+  "2026": {
+   "tables": {
+    "rdv_2026": {
+     "parts": {
+      "ac": {
+       "url": "2026/rdv/ac.csv.gz",
+       "bytes": 119755,
+       "rows": 6810,
+       "rawBytes": 800105,
+       "where": "state = 'ac' and office in (1,3,5)",
+       "offices": [
+        1,
+        3,
+        5
+       ]
+      },
+      "al": {
+       "url": "2026/rdv/al.csv.gz",
+       "bytes": 340691,
+       "rows": 21303,
+       "rawBytes": 2214662,
+       "where": "state = 'al' and office in (1,3,5)",
+       "offices": [
+        1,
+        3,
+        5
+       ]
+      },
+      "am": {
+       "url": "2026/rdv/am.csv.gz",
+       "bytes": 437248,
+       "rows": 24471,
+       "rawBytes": 2918376,
+       "where": "state = 'am' and office in (1,3,5)",
+       "offices": [
+        1,
+        3,
+        5
+       ]
+      },
+      "ap": {
+       "url": "2026/rdv/ap.csv.gz",
+       "bytes": 93854,
+       "rows": 5742,
+       "rawBytes": 612364,
+       "where": "state = 'ap' and office in (1,3,5)",
+       "offices": [
+        1,
+        3,
+        5
+       ]
+      },
+      "ba": {
+       "url": "2026/rdv/ba.csv.gz",
+       "bytes": 1695352,
+       "rows": 106383,
+       "rawBytes": 11125509,
+       "where": "state = 'ba' and office in (1,3,5)",
+       "offices": [
+        1,
+        3,
+        5
+       ]
+      },
+      "ce": {
+       "url": "2026/rdv/ce.csv.gz",
+       "bytes": 1088419,
+       "rows": 71295,
+       "rawBytes": 7103158,
+       "where": "state = 'ce' and office in (1,3,5)",
+       "offices": [
+        1,
+        3,
+        5
+       ]
+      },
+      "df": {
+       "url": "2026/rdv/df.csv.gz",
+       "bytes": 386513,
+       "rows": 20907,
+       "rawBytes": 2733096,
+       "where": "state = 'df' and office in (1,3,5)",
+       "offices": [
+        1,
+        3,
+        5
+       ]
+      },
+      "es": {
+       "url": "2026/rdv/es.csv.gz",
+       "bytes": 546841,
+       "rows": 29532,
+       "rawBytes": 3739969,
+       "where": "state = 'es' and office in (1,3,5)",
+       "offices": [
+        1,
+        3,
+        5
+       ]
+      },
+      "go": {
+       "url": "2026/rdv/go.csv.gz",
+       "bytes": 875997,
+       "rows": 47058,
+       "rawBytes": 5952464,
+       "where": "state = 'go' and office in (1,3,5)",
+       "offices": [
+        1,
+        3,
+        5
+       ]
+      },
+      "ma": {
+       "url": "2026/rdv/ma.csv.gz",
+       "bytes": 985551,
+       "rows": 54276,
+       "rawBytes": 6571042,
+       "where": "state = 'ma' and office in (1,3,5)",
+       "offices": [
+        1,
+        3,
+        5
+       ]
+      },
+      "mg": {
+       "url": "2026/rdv/mg.csv.gz",
+       "bytes": 3143407,
+       "rows": 155349,
+       "rawBytes": 21284986,
+       "where": "state = 'mg' and office in (1,3,5)",
+       "offices": [
+        1,
+        3,
+        5
+       ]
+      },
+      "ms": {
+       "url": "2026/rdv/ms.csv.gz",
+       "bytes": 366184,
+       "rows": 21318,
+       "rawBytes": 2528700,
+       "where": "state = 'ms' and office in (1,3,5)",
+       "offices": [
+        1,
+        3,
+        5
+       ]
+      },
+      "mt": {
+       "url": "2026/rdv/mt.csv.gz",
+       "bytes": 442424,
+       "rows": 24861,
+       "rawBytes": 2984464,
+       "where": "state = 'mt' and office in (1,3,5)",
+       "offices": [
+        1,
+        3,
+        5
+       ]
+      },
+      "pa": {
+       "url": "2026/rdv/pa.csv.gz",
+       "bytes": 1052903,
+       "rows": 62481,
+       "rawBytes": 7044492,
+       "where": "state = 'pa' and office in (1,3,5)",
+       "offices": [
+        1,
+        3,
+        5
+       ]
+      },
+      "pb": {
+       "url": "2026/rdv/pb.csv.gz",
+       "bytes": 548058,
+       "rows": 32136,
+       "rawBytes": 3604282,
+       "where": "state = 'pb' and office in (1,3,5)",
+       "offices": [
+        1,
+        3,
+        5
+       ]
+      },
+      "pe": {
+       "url": "2026/rdv/pe.csv.gz",
+       "bytes": 1100353,
+       "rows": 64254,
+       "rawBytes": 7306650,
+       "where": "state = 'pe' and office in (1,3,5)",
+       "offices": [
+        1,
+        3,
+        5
+       ]
+      },
+      "pi": {
+       "url": "2026/rdv/pi.csv.gz",
+       "bytes": 536245,
+       "rows": 30675,
+       "rawBytes": 3593004,
+       "where": "state = 'pi' and office in (1,3,5)",
+       "offices": [
+        1,
+        3,
+        5
+       ]
+      },
+      "pr": {
+       "url": "2026/rdv/pr.csv.gz",
+       "bytes": 1430464,
+       "rows": 81426,
+       "rawBytes": 9623689,
+       "where": "state = 'pr' and office in (1,3,5)",
+       "offices": [
+        1,
+        3,
+        5
+       ]
+      },
+      "rj": {
+       "url": "2026/rdv/rj.csv.gz",
+       "bytes": 2194382,
+       "rows": 112791,
+       "rawBytes": 15840915,
+       "where": "state = 'rj' and office in (1,3,5)",
+       "offices": [
+        1,
+        3,
+        5
+       ]
+      },
+      "rn": {
+       "url": "2026/rdv/rn.csv.gz",
+       "bytes": 435377,
+       "rows": 24345,
+       "rawBytes": 2843160,
+       "where": "state = 'rn' and office in (1,3,5)",
+       "offices": [
+        1,
+        3,
+        5
+       ]
+      },
+      "ro": {
+       "url": "2026/rdv/ro.csv.gz",
+       "bytes": 245540,
+       "rows": 14094,
+       "rawBytes": 1764085,
+       "where": "state = 'ro' and office in (1,3,5)",
+       "offices": [
+        1,
+        3,
+        5
+       ]
+      },
+      "rr": {
+       "url": "2026/rdv/rr.csv.gz",
+       "bytes": 79572,
+       "rows": 4557,
+       "rawBytes": 555047,
+       "where": "state = 'rr' and office in (1,3,5)",
+       "offices": [
+        1,
+        3,
+        5
+       ]
+      },
+      "rs": {
+       "url": "2026/rdv/rs.csv.gz",
+       "bytes": 1491398,
+       "rows": 82638,
+       "rawBytes": 9901843,
+       "where": "state = 'rs' and office in (1,3,5)",
+       "offices": [
+        1,
+        3,
+        5
+       ]
+      },
+      "sc": {
+       "url": "2026/rdv/sc.csv.gz",
+       "bytes": 981710,
+       "rows": 51978,
+       "rawBytes": 6651662,
+       "where": "state = 'sc' and office in (1,3,5)",
+       "offices": [
+        1,
+        3,
+        5
+       ]
+      },
+      "se": {
+       "url": "2026/rdv/se.csv.gz",
+       "bytes": 333438,
+       "rows": 17769,
+       "rawBytes": 2234750,
+       "where": "state = 'se' and office in (1,3,5)",
+       "offices": [
+        1,
+        3,
+        5
+       ]
+      },
+      "sp": {
+       "url": "2026/rdv/sp.csv.gz",
+       "bytes": 5394315,
+       "rows": 305010,
+       "rawBytes": 37404211,
+       "where": "state = 'sp' and office in (1,3,5)",
+       "offices": [
+        1,
+        3,
+        5
+       ]
+      },
+      "to": {
+       "url": "2026/rdv/to.csv.gz",
+       "bytes": 251294,
+       "rows": 13152,
+       "rawBytes": 1696014,
+       "where": "state = 'to' and office in (1,3,5)",
+       "offices": [
+        1,
+        3,
+        5
+       ]
+      },
+      "zz": {
+       "url": "2026/rdv/zz.csv.gz",
+       "bytes": 24403,
+       "rows": 1277,
+       "rawBytes": 162290,
+       "where": "state = 'zz' and office in (1,3,5)",
+       "offices": [
+        1,
+        3,
+        5
+       ]
+      },
+      "ac.6": {
+       "url": "2026/rdv/ac.6.csv.gz",
+       "bytes": 114394,
+       "rows": 2270,
+       "rawBytes": 998470,
+       "where": "state = 'ac' and office in (6)",
+       "offices": [
+        6
+       ]
+      },
+      "ac.7": {
+       "url": "2026/rdv/ac.7.csv.gz",
+       "bytes": 181568,
+       "rows": 2270,
+       "rawBytes": 1605878,
+       "where": "state = 'ac' and office in (7)",
+       "offices": [
+        7
+       ]
+      },
+      "al.6": {
+       "url": "2026/rdv/al.6.csv.gz",
+       "bytes": 355354,
+       "rows": 7101,
+       "rawBytes": 3032976,
+       "where": "state = 'al' and office in (6)",
+       "offices": [
+        6
+       ]
+      },
+      "al.7": {
+       "url": "2026/rdv/al.7.csv.gz",
+       "bytes": 423416,
+       "rows": 7101,
+       "rawBytes": 3874233,
+       "where": "state = 'al' and office in (7)",
+       "offices": [
+        7
+       ]
+      },
+      "am.6": {
+       "url": "2026/rdv/am.6.csv.gz",
+       "bytes": 507769,
+       "rows": 8157,
+       "rawBytes": 4370316,
+       "where": "state = 'am' and office in (6)",
+       "offices": [
+        6
+       ]
+      },
+      "am.7": {
+       "url": "2026/rdv/am.7.csv.gz",
+       "bytes": 784561,
+       "rows": 8157,
+       "rawBytes": 6847140,
+       "where": "state = 'am' and office in (7)",
+       "offices": [
+        7
+       ]
+      },
+      "ap.6": {
+       "url": "2026/rdv/ap.6.csv.gz",
+       "bytes": 119712,
+       "rows": 1914,
+       "rawBytes": 1072430,
+       "where": "state = 'ap' and office in (6)",
+       "offices": [
+        6
+       ]
+      },
+      "ap.7": {
+       "url": "2026/rdv/ap.7.csv.gz",
+       "bytes": 201419,
+       "rows": 1914,
+       "rawBytes": 1871332,
+       "where": "state = 'ap' and office in (7)",
+       "offices": [
+        7
+       ]
+      },
+      "ba.6": {
+       "url": "2026/rdv/ba.6.csv.gz",
+       "bytes": 2714997,
+       "rows": 35461,
+       "rawBytes": 21441641,
+       "where": "state = 'ba' and office in (6)",
+       "offices": [
+        6
+       ]
+      },
+      "ba.7": {
+       "url": "2026/rdv/ba.7.csv.gz",
+       "bytes": 2768576,
+       "rows": 35461,
+       "rawBytes": 22295799,
+       "where": "state = 'ba' and office in (7)",
+       "offices": [
+        7
+       ]
+      },
+      "ce.6": {
+       "url": "2026/rdv/ce.6.csv.gz",
+       "bytes": 1583930,
+       "rows": 23765,
+       "rawBytes": 13028388,
+       "where": "state = 'ce' and office in (6)",
+       "offices": [
+        6
+       ]
+      },
+      "ce.7": {
+       "url": "2026/rdv/ce.7.csv.gz",
+       "bytes": 1830686,
+       "rows": 23765,
+       "rawBytes": 15409848,
+       "where": "state = 'ce' and office in (7)",
+       "offices": [
+        7
+       ]
+      },
+      "df.6": {
+       "url": "2026/rdv/df.6.csv.gz",
+       "bytes": 533522,
+       "rows": 6969,
+       "rawBytes": 4834128,
+       "where": "state = 'df' and office in (6)",
+       "offices": [
+        6
+       ]
+      },
+      "df.8": {
+       "url": "2026/rdv/df.8.csv.gz",
+       "bytes": 932330,
+       "rows": 6969,
+       "rawBytes": 8059278,
+       "where": "state = 'df' and office in (8)",
+       "offices": [
+        8
+       ]
+      },
+      "es.6": {
+       "url": "2026/rdv/es.6.csv.gz",
+       "bytes": 510136,
+       "rows": 9844,
+       "rawBytes": 4415413,
+       "where": "state = 'es' and office in (6)",
+       "offices": [
+        6
+       ]
+      },
+      "es.7": {
+       "url": "2026/rdv/es.7.csv.gz",
+       "bytes": 874725,
+       "rows": 9844,
+       "rawBytes": 7356686,
+       "where": "state = 'es' and office in (7)",
+       "offices": [
+        7
+       ]
+      },
+      "go.6": {
+       "url": "2026/rdv/go.6.csv.gz",
+       "bytes": 1117935,
+       "rows": 15686,
+       "rawBytes": 9456387,
+       "where": "state = 'go' and office in (6)",
+       "offices": [
+        6
+       ]
+      },
+      "go.7": {
+       "url": "2026/rdv/go.7.csv.gz",
+       "bytes": 1471940,
+       "rows": 15686,
+       "rawBytes": 12291907,
+       "where": "state = 'go' and office in (7)",
+       "offices": [
+        7
+       ]
+      },
+      "ma.6": {
+       "url": "2026/rdv/ma.6.csv.gz",
+       "bytes": 1132669,
+       "rows": 18092,
+       "rawBytes": 9057107,
+       "where": "state = 'ma' and office in (6)",
+       "offices": [
+        6
+       ]
+      },
+      "ma.7": {
+       "url": "2026/rdv/ma.7.csv.gz",
+       "bytes": 1138785,
+       "rows": 18092,
+       "rawBytes": 9474478,
+       "where": "state = 'ma' and office in (7)",
+       "offices": [
+        7
+       ]
+      },
+      "mg.6": {
+       "url": "2026/rdv/mg.6.csv.gz",
+       "bytes": 3566865,
+       "rows": 51783,
+       "rawBytes": 27473075,
+       "where": "state = 'mg' and office in (6)",
+       "offices": [
+        6
+       ]
+      },
+      "mg.7": {
+       "url": "2026/rdv/mg.7.csv.gz",
+       "bytes": 4198446,
+       "rows": 51783,
+       "rawBytes": 33159838,
+       "where": "state = 'mg' and office in (7)",
+       "offices": [
+        7
+       ]
+      },
+      "ms.6": {
+       "url": "2026/rdv/ms.6.csv.gz",
+       "bytes": 337851,
+       "rows": 7106,
+       "rawBytes": 2900080,
+       "where": "state = 'ms' and office in (6)",
+       "offices": [
+        6
+       ]
+      },
+      "ms.7": {
+       "url": "2026/rdv/ms.7.csv.gz",
+       "bytes": 501449,
+       "rows": 7106,
+       "rawBytes": 4511118,
+       "where": "state = 'ms' and office in (7)",
+       "offices": [
+        7
+       ]
+      },
+      "mt.6": {
+       "url": "2026/rdv/mt.6.csv.gz",
+       "bytes": 443609,
+       "rows": 8287,
+       "rawBytes": 3722352,
+       "where": "state = 'mt' and office in (6)",
+       "offices": [
+        6
+       ]
+      },
+      "mt.7": {
+       "url": "2026/rdv/mt.7.csv.gz",
+       "bytes": 575728,
+       "rows": 8287,
+       "rawBytes": 4951033,
+       "where": "state = 'mt' and office in (7)",
+       "offices": [
+        7
+       ]
+      },
+      "pa.6": {
+       "url": "2026/rdv/pa.6.csv.gz",
+       "bytes": 1317203,
+       "rows": 20827,
+       "rawBytes": 10799167,
+       "where": "state = 'pa' and office in (6)",
+       "offices": [
+        6
+       ]
+      },
+      "pa.7": {
+       "url": "2026/rdv/pa.7.csv.gz",
+       "bytes": 1601745,
+       "rows": 20827,
+       "rawBytes": 13540289,
+       "where": "state = 'pa' and office in (7)",
+       "offices": [
+        7
+       ]
+      },
+      "pb.6": {
+       "url": "2026/rdv/pb.6.csv.gz",
+       "bytes": 571564,
+       "rows": 10712,
+       "rawBytes": 4740541,
+       "where": "state = 'pb' and office in (6)",
+       "offices": [
+        6
+       ]
+      },
+      "pb.7": {
+       "url": "2026/rdv/pb.7.csv.gz",
+       "bytes": 658119,
+       "rows": 10712,
+       "rawBytes": 5728103,
+       "where": "state = 'pb' and office in (7)",
+       "offices": [
+        7
+       ]
+      },
+      "pe.6": {
+       "url": "2026/rdv/pe.6.csv.gz",
+       "bytes": 1650215,
+       "rows": 21418,
+       "rawBytes": 13518621,
+       "where": "state = 'pe' and office in (6)",
+       "offices": [
+        6
+       ]
+      },
+      "pe.7": {
+       "url": "2026/rdv/pe.7.csv.gz",
+       "bytes": 1837697,
+       "rows": 21418,
+       "rawBytes": 15526004,
+       "where": "state = 'pe' and office in (7)",
+       "offices": [
+        7
+       ]
+      },
+      "pi.6": {
+       "url": "2026/rdv/pi.6.csv.gz",
+       "bytes": 470160,
+       "rows": 10225,
+       "rawBytes": 3820916,
+       "where": "state = 'pi' and office in (6)",
+       "offices": [
+        6
+       ]
+      },
+      "pi.7": {
+       "url": "2026/rdv/pi.7.csv.gz",
+       "bytes": 555423,
+       "rows": 10225,
+       "rawBytes": 4742122,
+       "where": "state = 'pi' and office in (7)",
+       "offices": [
+        7
+       ]
+      },
+      "pr.6": {
+       "url": "2026/rdv/pr.6.csv.gz",
+       "bytes": 2169720,
+       "rows": 27142,
+       "rawBytes": 17686031,
+       "where": "state = 'pr' and office in (6)",
+       "offices": [
+        6
+       ]
+      },
+      "pr.7": {
+       "url": "2026/rdv/pr.7.csv.gz",
+       "bytes": 2480311,
+       "rows": 27142,
+       "rawBytes": 20367335,
+       "where": "state = 'pr' and office in (7)",
+       "offices": [
+        7
+       ]
+      },
+      "rj.6": {
+       "url": "2026/rdv/rj.6.csv.gz",
+       "bytes": 4625678,
+       "rows": 37597,
+       "rawBytes": 38412365,
+       "where": "state = 'rj' and office in (6)",
+       "offices": [
+        6
+       ]
+      },
+      "rj.7": {
+       "url": "2026/rdv/rj.7.csv.gz",
+       "bytes": 4812630,
+       "rows": 37597,
+       "rawBytes": 39307576,
+       "where": "state = 'rj' and office in (7)",
+       "offices": [
+        7
+       ]
+      },
+      "rn.6": {
+       "url": "2026/rdv/rn.6.csv.gz",
+       "bytes": 331296,
+       "rows": 8115,
+       "rawBytes": 2711696,
+       "where": "state = 'rn' and office in (6)",
+       "offices": [
+        6
+       ]
+      },
+      "rn.7": {
+       "url": "2026/rdv/rn.7.csv.gz",
+       "bytes": 489183,
+       "rows": 8115,
+       "rawBytes": 4304490,
+       "where": "state = 'rn' and office in (7)",
+       "offices": [
+        7
+       ]
+      },
+      "ro.6": {
+       "url": "2026/rdv/ro.6.csv.gz",
+       "bytes": 263053,
+       "rows": 4698,
+       "rawBytes": 2337935,
+       "where": "state = 'ro' and office in (6)",
+       "offices": [
+        6
+       ]
+      },
+      "ro.7": {
+       "url": "2026/rdv/ro.7.csv.gz",
+       "bytes": 339858,
+       "rows": 4698,
+       "rawBytes": 3038312,
+       "where": "state = 'ro' and office in (7)",
+       "offices": [
+        7
+       ]
+      },
+      "rr.6": {
+       "url": "2026/rdv/rr.6.csv.gz",
+       "bytes": 88413,
+       "rows": 1519,
+       "rawBytes": 782626,
+       "where": "state = 'rr' and office in (6)",
+       "offices": [
+        6
+       ]
+      },
+      "rr.7": {
+       "url": "2026/rdv/rr.7.csv.gz",
+       "bytes": 138366,
+       "rows": 1519,
+       "rawBytes": 1246615,
+       "where": "state = 'rr' and office in (7)",
+       "offices": [
+        7
+       ]
+      },
+      "rs.6": {
+       "url": "2026/rdv/rs.6.csv.gz",
+       "bytes": 2180730,
+       "rows": 27546,
+       "rawBytes": 17408482,
+       "where": "state = 'rs' and office in (6)",
+       "offices": [
+        6
+       ]
+      },
+      "rs.7": {
+       "url": "2026/rdv/rs.7.csv.gz",
+       "bytes": 2575672,
+       "rows": 27546,
+       "rawBytes": 20768985,
+       "where": "state = 'rs' and office in (7)",
+       "offices": [
+        7
+       ]
+      },
+      "sc.6": {
+       "url": "2026/rdv/sc.6.csv.gz",
+       "bytes": 1169838,
+       "rows": 17326,
+       "rawBytes": 9629517,
+       "where": "state = 'sc' and office in (6)",
+       "offices": [
+        6
+       ]
+      },
+      "sc.7": {
+       "url": "2026/rdv/sc.7.csv.gz",
+       "bytes": 1416655,
+       "rows": 17326,
+       "rawBytes": 11551660,
+       "where": "state = 'sc' and office in (7)",
+       "offices": [
+        7
+       ]
+      },
+      "se.6": {
+       "url": "2026/rdv/se.6.csv.gz",
+       "bytes": 316302,
+       "rows": 5923,
+       "rawBytes": 2665929,
+       "where": "state = 'se' and office in (6)",
+       "offices": [
+        6
+       ]
+      },
+      "se.7": {
+       "url": "2026/rdv/se.7.csv.gz",
+       "bytes": 426774,
+       "rows": 5923,
+       "rawBytes": 3760303,
+       "where": "state = 'se' and office in (7)",
+       "offices": [
+        7
+       ]
+      },
+      "sp.6": {
+       "url": "2026/rdv/sp.6.csv.gz",
+       "bytes": 11312421,
+       "rows": 101670,
+       "rawBytes": 91554617,
+       "where": "state = 'sp' and office in (6)",
+       "offices": [
+        6
+       ]
+      },
+      "sp.7": {
+       "url": "2026/rdv/sp.7.csv.gz",
+       "bytes": 12388778,
+       "rows": 101670,
+       "rawBytes": 100553573,
+       "where": "state = 'sp' and office in (7)",
+       "offices": [
+        7
+       ]
+      },
+      "to.6": {
+       "url": "2026/rdv/to.6.csv.gz",
+       "bytes": 175709,
+       "rows": 4384,
+       "rawBytes": 1455147,
+       "where": "state = 'to' and office in (6)",
+       "offices": [
+        6
+       ]
+      },
+      "to.7": {
+       "url": "2026/rdv/to.7.csv.gz",
+       "bytes": 285471,
+       "rows": 4384,
+       "rawBytes": 2427112,
+       "where": "state = 'to' and office in (7)",
+       "offices": [
+        7
+       ]
+      }
+     },
+     "name": "rdv_2026",
+     "columns": "state,city,zone,section,model,office,nominal,blank,nul,votes",
+     "ddl": "create table rdv_2026 (state text, city text, zone text, section text, model text, office int, nominal int, blank int, nul int, votes jsonb)"
+    },
+    "vt_2026": {
+     "parts": {
+      "ac": {
+       "url": "2026/vt/ac.csv.gz",
+       "bytes": 108770,
+       "rows": 2270,
+       "rawBytes": 562209
+      },
+      "al": {
+       "url": "2026/vt/al.csv.gz",
+       "bytes": 353600,
+       "rows": 7099,
+       "rawBytes": 1753876
+      },
+      "am": {
+       "url": "2026/vt/am.csv.gz",
+       "bytes": 394676,
+       "rows": 8157,
+       "rawBytes": 1989551
+      },
+      "ap": {
+       "url": "2026/vt/ap.csv.gz",
+       "bytes": 93700,
+       "rows": 1914,
+       "rawBytes": 467940
+      },
+      "ba": {
+       "url": "2026/vt/ba.csv.gz",
+       "bytes": 1743564,
+       "rows": 35457,
+       "rawBytes": 8753565
+      },
+      "ce": {
+       "url": "2026/vt/ce.csv.gz",
+       "bytes": 1158054,
+       "rows": 23764,
+       "rawBytes": 5826441
+      },
+      "df": {
+       "url": "2026/vt/df.csv.gz",
+       "bytes": 333316,
+       "rows": 6969,
+       "rawBytes": 1704645
+      },
+      "es": {
+       "url": "2026/vt/es.csv.gz",
+       "bytes": 471386,
+       "rows": 9840,
+       "rawBytes": 2425130
+      },
+      "go": {
+       "url": "2026/vt/go.csv.gz",
+       "bytes": 756247,
+       "rows": 15686,
+       "rawBytes": 3876762
+      },
+      "ma": {
+       "url": "2026/vt/ma.csv.gz",
+       "bytes": 879824,
+       "rows": 18092,
+       "rawBytes": 4495954
+      },
+      "mg": {
+       "url": "2026/vt/mg.csv.gz",
+       "bytes": 2511800,
+       "rows": 51783,
+       "rawBytes": 12817359
+      },
+      "ms": {
+       "url": "2026/vt/ms.csv.gz",
+       "bytes": 346910,
+       "rows": 7105,
+       "rawBytes": 1756663
+      },
+      "mt": {
+       "url": "2026/vt/mt.csv.gz",
+       "bytes": 406085,
+       "rows": 8287,
+       "rawBytes": 2052259
+      },
+      "pa": {
+       "url": "2026/vt/pa.csv.gz",
+       "bytes": 1001770,
+       "rows": 20827,
+       "rawBytes": 5130219
+      },
+      "pb": {
+       "url": "2026/vt/pb.csv.gz",
+       "bytes": 522434,
+       "rows": 10712,
+       "rawBytes": 2642225
+      },
+      "pe": {
+       "url": "2026/vt/pe.csv.gz",
+       "bytes": 1050626,
+       "rows": 21418,
+       "rawBytes": 5274914
+      },
+      "pi": {
+       "url": "2026/vt/pi.csv.gz",
+       "bytes": 498960,
+       "rows": 10225,
+       "rawBytes": 2538724
+      },
+      "pr": {
+       "url": "2026/vt/pr.csv.gz",
+       "bytes": 1315483,
+       "rows": 27139,
+       "rawBytes": 6692626
+      },
+      "rj": {
+       "url": "2026/vt/rj.csv.gz",
+       "bytes": 1790166,
+       "rows": 37596,
+       "rawBytes": 9344506
+      },
+      "rn": {
+       "url": "2026/vt/rn.csv.gz",
+       "bytes": 399804,
+       "rows": 8113,
+       "rawBytes": 1995481
+      },
+      "ro": {
+       "url": "2026/vt/ro.csv.gz",
+       "bytes": 227595,
+       "rows": 4697,
+       "rawBytes": 1166845
+      },
+      "rr": {
+       "url": "2026/vt/rr.csv.gz",
+       "bytes": 74319,
+       "rows": 1519,
+       "rawBytes": 372534
+      },
+      "rs": {
+       "url": "2026/vt/rs.csv.gz",
+       "bytes": 1345170,
+       "rows": 27546,
+       "rawBytes": 6804816
+      },
+      "sc": {
+       "url": "2026/vt/sc.csv.gz",
+       "bytes": 835014,
+       "rows": 17326,
+       "rawBytes": 4262727
+      },
+      "se": {
+       "url": "2026/vt/se.csv.gz",
+       "bytes": 288491,
+       "rows": 5921,
+       "rawBytes": 1467009
+      },
+      "sp": {
+       "url": "2026/vt/sp.csv.gz",
+       "bytes": 4891452,
+       "rows": 101665,
+       "rawBytes": 25047410
+      },
+      "to": {
+       "url": "2026/vt/to.csv.gz",
+       "bytes": 213229,
+       "rows": 4384,
+       "rawBytes": 1088507
+      },
+      "zz": {
+       "url": "2026/vt/zz.csv.gz",
+       "bytes": 70291,
+       "rows": 1277,
+       "rawBytes": 314685
+      }
+     },
+     "name": "vt_2026",
+     "columns": "state,city,zone,section,model,n,first,last,med,p10,p90,maxgap,b",
+     "ddl": "create table vt_2026 (state text, city text, zone text, section text, model text, n int, first int, last int, med int, p10 int, p90 int, maxgap int, b smallint[])",
+     "time": {
+      "t0": 18000,
+      "step": 600,
+      "buckets": 90,
+      "clock": "local clock as recorded by the scraper"
+     }
+    },
+    "vtc_2026": {
+     "parts": {
+      "all": {
+       "url": "2026/vtc.csv.gz",
+       "bytes": 559852,
+       "rows": 5688,
+       "rawBytes": 1742342
+      }
+     },
+     "name": "vtc_2026",
+     "columns": "state,city,sections,n,tz,b",
+     "ddl": "create table vtc_2026 (state text, city text, sections int, n int, tz int, b int[])"
+    },
+    "tot_2026": {
+     "parts": {
+      "all": {
+       "url": "2026/tot_2026.csv.gz",
+       "bytes": 324467,
+       "rows": 27972,
+       "rawBytes": 955855
+      }
+     },
+     "name": "tot_2026",
+     "columns": "state,city,office,sections,nominal,blank,nul",
+     "ddl": "create table tot_2026 (state text, city text, office int, sections int, nominal bigint, blank bigint, nul bigint)"
+    },
+    "res_2026": {
+     "parts": {
+      "all": {
+       "url": "2026/res_2026.csv.gz",
+       "bytes": 862925,
+       "rows": 176007,
+       "rawBytes": 4146241
+      }
+     },
+     "name": "res_2026",
+     "columns": "state,city,office,cand,votes",
+     "ddl": "create table res_2026 (state text, city text, office int, cand text, votes bigint)"
+    },
+    "cov_2026": {
+     "parts": {
+      "all": {
+       "url": "2026/cov_2026.csv.gz",
+       "bytes": 305,
+       "rows": 28,
+       "rawBytes": 576
+      }
+     },
+     "name": "cov_2026",
+     "columns": "state,own,stored,aggregated,missing",
+     "ddl": "create table cov_2026 (state text, own int, stored int, aggregated int, missing int)"
+    },
+    "miss_2026": {
+     "parts": {
+      "all": {
+       "url": "2026/miss_2026.csv.gz",
+       "bytes": 7439,
+       "rows": 2434,
+       "rawBytes": 55608
+      }
+     },
+     "name": "miss_2026",
+     "columns": "state,city,zone,section",
+     "ddl": "create table miss_2026 (state text, city text, zone text, section text)"
+    }
+   }
+  }
+ },
+ "version": "2026-10-05T09:44:17.867Z",
+ "cands": {
+  "name": "cands",
+  "columns": "election,uf,office,n,name,short_name,party,official_votes",
+  "url": "cands.csv.gz",
+  "rows": 18854,
+  "bytes": 436345,
+  "ddl": "create table cands (election int, uf text, office int, n text, name text, short_name text, party text, official_votes int)"
+ }
+}

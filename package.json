@@ -1,0 +1,23 @@
+{
+  "name": "brazil-audit",
+  "version": "0.1.0",
+  "private": true,
+  "license": "MIT",
+  "type": "module",
+  "description": "Static analytics app for a Brazilian election audit, running Postgres (PGlite, WASM) in the browser",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "data": "node scripts/build-data.mjs"
+  },
+  "dependencies": {
+    "@electric-sql/pglite": "0.5.8",
+    "vue": "3.6.0-rc.10"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "6.0.9",
+    "pug": "3.0.4",
+    "vite": "8.3.2"
+  }
+}
