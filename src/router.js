@@ -1,12 +1,16 @@
 // Hash routing: #/<election>/<view>/<arg>/<arg>…?<query>
 import { computed, ref } from 'vue'
+import { DEFAULT_ELECTION, ELECTIONS } from './model'
 
 const hash = ref(location.hash)
 addEventListener('hashchange', () => (hash.value = location.hash))
 
 export const route = computed(() => {
   const [path, qs = ''] = hash.value.replace(/^#\/?/, '').split('?')
-  const [election = '2022', view = 'overview', ...args] = path.split('/').filter(Boolean).map(decodeURIComponent)
+  const segments = path.split('/').filter(Boolean).map(decodeURIComponent)
+  // links without an election (#/, #/time/sp) resolve to the latest one
+  const [election, ...rest] = segments[0] in ELECTIONS ? segments : [DEFAULT_ELECTION, ...segments]
+  const [view = 'overview', ...args] = rest
   return { election, view, args, params: new URLSearchParams(qs) }
 })
 

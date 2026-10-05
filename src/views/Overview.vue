@@ -5,7 +5,7 @@ import { ELECTIONS, STATE_NAMES, OTHERS, candJoin } from '../model'
 import { ensure, ensureDefault } from '../data'
 import { useAsync } from '../use'
 import { objects } from '../db'
-import { int, pct } from '../format'
+import { int, num, pct } from '../format'
 import Panel from '../components/Panel.vue'
 import BarList from '../components/BarList.vue'
 import Coverage from '../components/Coverage.vue'
@@ -21,6 +21,16 @@ const base = useAsync(() => [year.value], async ([y]) => {
   return true
 })
 
+// difference between the dump and the official candidate totals, with the sections that have no published files (coverage)
+async function officialGap(rows, q) {
+  const official = rows.reduce((t, r) => t + (r.official ?? 0), 0)
+  const dumped = rows.filter((r) => r.official).reduce((t, r) => t + r.votes, 0)
+  if (!official || official === dumped) return null
+  await ensure('cov_2026')
+  const [c] = objects(await q('select sum(missing) missing from cov_2026'))
+  return { votes: dumped - official, share: (dumped - official) / official, missing: c.missing }
+}
+
 const PARTY = `left join (select substr(n,1,2) num, max(party) party from cands where election=$2 and office>1 group by 1) p on p.num = substr(r.cand,1,2)`
 const results = useAsync(() => [year.value, office.value, base.loading], async ([y, o], q) => {
   if (base.loading) return null
@@ -30,8 +40,9 @@ const results = useAsync(() => [year.value, office.value, base.loading], async (
     : `select substr(r.cand,1,2) cand, coalesce(max(p.party), '${OTHERS}') name, max(p.party) party, sum(r.votes) votes, null official, sum(sum(r.votes)) over () total
        from res_${y} r ${PARTY} where r.office = $1 group by 1 order by votes desc limit 20`
   const rows = objects(await q(sql, o === 1 ? [o] : [o, y]))
+  const gap = o === 1 ? await officialGap(rows, q) : null
   const [t] = objects(await q(`select sum(sections) sections, sum(nominal) nominal, sum(blank) blank, sum(nul) nul from tot_${y} where office = $1`, [o]))
-  return { rows, ...t }
+  return { rows, gap, ...t }
 })
 
 const states = useAsync(() => [year.value, office.value, base.loading], async ([y, o], q) => {
@@ -44,6 +55,8 @@ const items = computed(() => results.data.rows.map((r) => ({
   value: r.votes,
   text: `${int(r.votes)} · ${pct(r.votes / r.total)}${r.official ? ` · oficial ${int(r.official)}` : ''}`,
 })))
+const signed = (n, d = 0) => `${n < 0 ? '−' : '+'}${num(Math.abs(n), d)}`
+const showCoverage = () => document.getElementById('cobertura').scrollIntoView({ behavior: 'smooth' })
 const rate = (v, r) => (v == null ? '–' : pct(v / (r.nominal + r.blank + r.nul)))
 const cols = computed(() => [
   { key: 'state', label: 'UF', href: (r) => href(year.value, 'drill', [r.state], { office: office.value }), fmt: (v) => `${v.toUpperCase()} · ${STATE_NAMES[v]}` },
@@ -57,7 +70,8 @@ const cols = computed(() => [
 <template lang="pug">
 h1 {{ cfg.label }}
 .grid
-  Coverage(:year="year")
+  #cobertura.full
+    Coverage(:year="year")
   Panel(title="Resultado nacional" :state="results" :election="year" wide)
     label(v-if="Object.keys(cfg.offices).length > 1")
       | Cargo
@@ -65,6 +79,9 @@ h1 {{ cfg.label }}
         option(v-for="(name, id) in cfg.offices" :key="id" :value="id" :selected="Number(id) === office") {{ name }}
     p.muted(v-if="office !== 1") Votos agregados por partido (dois primeiros dígitos do número); governador e senador somam todas as UFs.
     BarList(:items="items")
+    p.warn(v-if="results.data.gap")
+      | Diferença para o oficial: {{ signed(results.data.gap.votes) }} votos ({{ signed(results.data.gap.share * 100, 2) }}%) · seções sem arquivo publicado: {{ int(results.data.gap.missing) }} ·&nbsp;
+      a(href="#/" @click.prevent="showCoverage") ver Cobertura dos dados
     p.muted {{ int(results.data.sections) }} seções · nominais {{ int(results.data.nominal) }}
       template(v-if="results.data.blank != null")  · brancos {{ int(results.data.blank) }} · nulos {{ int(results.data.nul) }}
     p.muted(v-if="year === '2026'") Números fora da lista de candidatos do TSE aparecem como "{{ OTHERS }}" (o site do TSE os conta como inválidos).

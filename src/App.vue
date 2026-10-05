@@ -13,7 +13,7 @@ const REPO = 'https://github.com/brauliobo/brazil-audit'
 const views = { overview: Overview, drill: Drill, analysis: Analysis, time: Time, sql: Sql }
 const labels = { overview: 'Visão geral', drill: 'Detalhar', analysis: 'Análise', time: 'Horários', sql: 'SQL' }
 const current = computed(() => views[route.value.view] ?? Overview)
-const election = computed(() => (route.value.election in ELECTIONS ? route.value.election : '2022'))
+const election = computed(() => route.value.election)
 </script>
 
 <template lang="pug">
