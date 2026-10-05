@@ -193,4 +193,4 @@ unzip 2026-rdv-sp-01.zip                  # or a single file: unzip 2026-rdv-sp-
 ## Licenses
 
 The application code is MIT licensed (`LICENSE`, Copyright (c) 2026 brauliobo). PGlite is Apache-2.0 (PostgreSQL itself
-is under the PostgreSQL License). The election data are TSE public data.
+is under the PostgreSQL License). The election data are TSE open data (https://dadosabertos.tse.jus.br, licence Creative Commons Attribution, CC BY); the municipal geometry is IBGE's.
