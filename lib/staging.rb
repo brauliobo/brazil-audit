@@ -5,8 +5,10 @@ module Staging
   # The TSE does not escape the quotes inside a field (ALICE SANT"ANA, PROF. JOSE "ZE"): COPY would take them as the end of
   # the field and merge the rows that follow, without an error. So the quotes around the fields are taken out on the way in
   # and COPY gets no quote character at all, just the lines split by ';' (a ';' inside a field breaks the column count).
+  # The null is "#NULO#", and "#NULO" in the candidates of 2022 (twice, for two in a row).
+  NULO    = %q(s/(^|;)#NULO(;|\r?$)/\1#NULO#\2/g)
   UNQUOTE = %q(s/^"//; s/"(\r?)$/\1/; s/";/;/g; s/;"/;/g)
-  PIPE    = %(unzip -p "$1" "$2" | LC_ALL=C sed -E '#{UNQUOTE}')
+  PIPE    = %(unzip -p "$1" "$2" | LC_ALL=C sed -E '#{UNQUOTE}; #{NULO}; #{NULO}')
   OPTIONS = "DELIMITER ';', QUOTE E'\\x01', HEADER, ENCODING 'LATIN1', NULL '#NULO#'"
 
   # returns the table and the lines of the file (the header included), to check them against its rows
@@ -18,9 +20,10 @@ module Staging
     [table, lines]
   end
 
+  # the BU files of 2018 spell flashcard wrong (and "SG_ UF" with a space)
   def self.columns zip, entry
     header = IO.popen(['unzip', '-p', zip, entry], &:gets)
-    header.encode('UTF-8', 'ISO-8859-1').delete('"').strip.split(';').map{ |c| c.downcase.delete(' ') }
+    header.encode('UTF-8', 'ISO-8859-1').delete('"').strip.split(';').map{ |c| c.downcase.delete(' ').sub('flascard', 'flashcard') }
   end
 
   def self.chunks zip, entry, &seen
