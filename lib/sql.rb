@@ -13,6 +13,7 @@ module Sql
   NO_VOTES = 'NULL::bigint AS votes, NULL::int AS unclassified'
   SKIPPED  = "count(*) FILTER (WHERE NOT #{GENERAL}) AS skipped"
 
-  # the TSE writes day/month/year, in the local time of the section
-  def self.time(col) = "to_timestamp(#{col}, 'DD/MM/YYYY HH24:MI:SS')::timestamp"
+  # the TSE writes day/month/year, in the local time of the section, and nothing (not #NULO#) for the sections of 2022 that
+  # have no opening or closing
+  def self.time(col) = "to_timestamp(nullif(#{col}, ''), 'DD/MM/YYYY HH24:MI:SS')::timestamp"
 end
