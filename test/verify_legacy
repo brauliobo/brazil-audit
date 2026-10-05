@@ -1,0 +1,31 @@
+#!/bin/bash
+# The runoff of the president in the RDV of brazil-audit-2022 (rdv_machine, imported from the raw files of the portal collector)
+# against the `votes` table of the legacy database `brazil-audit` (read only), section by section: test/verify_legacy [database]
+set -e
+DB=${1:-brazil-audit-2022}
+LEGACY=$(mktemp)
+trap 'rm -f "$LEGACY"' EXIT
+psql -q -d brazil-audit -c "\copy (select state, city, zone, section, votes_13, votes_22 from votes) to '$LEGACY' csv" 2> /dev/null
+
+psql -d "$DB" <<SQL
+\pset pager off
+create temp table legacy (state text, city text, zone text, section text, v13 int, v22 int);
+\copy legacy from '$LEGACY' csv
+create temp table fresh as
+select state, city, zone, section, coalesce((votes -> '2' ->> '13')::int, 0) n13, coalesce((votes -> '2' ->> '22')::int, 0) n22
+from rdv_machine where turn = 2 and office = 1;
+\echo '== runoff of the president: legacy votes (votes_13, votes_22) vs rdv_machine kind 2 numbers 13 and 22, turn 2 office 1'
+select (select count(*) from legacy) legacy_sections, (select count(*) from fresh) rdv_sections,
+       count(*) filter (where l.zone is not null and f.zone is not null) compared,
+       count(*) filter (where f.zone is null) only_legacy, count(*) filter (where l.zone is null) only_rdv,
+       count(*) filter (where l.zone is not null and f.zone is not null and l.v13 = f.n13 and l.v22 = f.n22) identical,
+       count(*) filter (where l.zone is not null and f.zone is not null and (l.v13 <> f.n13 or l.v22 <> f.n22)) different,
+       (select sum(v13) from legacy) legacy_13, (select sum(n13) from fresh) rdv_13, (select sum(v22) from legacy) legacy_22, (select sum(n22) from fresh) rdv_22
+from legacy l full join fresh f using (state, zone, section);
+\echo '-- sections only in one side, and the differences'
+select 'only in rdv_machine' side, f.state, f.city, f.zone, f.section, f.n13, f.n22 from fresh f left join legacy l using (state, zone, section) where l.zone is null
+union all select 'only in legacy', l.state, l.city, l.zone, l.section, l.v13, l.v22 from legacy l left join fresh f using (state, zone, section) where f.zone is null
+union all select 'different', l.state, l.city, l.zone, l.section, f.n13 - l.v13, f.n22 - l.v22 from legacy l join fresh f using (state, zone, section) where l.v13 <> f.n13 or l.v22 <> f.n22;
+\echo '-- the legacy voting_times table'
+SQL
+psql -d brazil-audit -c "select count(*) legacy_voting_times_rows from voting_times" 2> /dev/null
