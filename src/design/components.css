@@ -190,7 +190,7 @@ textarea.control { width: 100%; font-family: var(--font-mono); font-size: var(--
 .table th, .table td { padding: var(--table-cell-padding); border-bottom: var(--border-width-1) solid var(--table-row-border); text-align: start; white-space: nowrap; }
 .table th { color: var(--table-header-fg); font-weight: var(--font-weight-semibold); }
 .table .num { text-align: end; font-variant-numeric: var(--table-numeric); }
-.table th.sortable { cursor: pointer; user-select: none; }
+.th-sort { padding: 0; border: 0; background: none; color: inherit; font: inherit; cursor: pointer; user-select: none; }
 .table tr.note td { background: var(--table-note-bg); font-style: italic; white-space: normal; }
 .pager { display: flex; gap: var(--space-3); align-items: center; justify-content: center; margin-top: var(--space-3); }
 

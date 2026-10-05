@@ -3,12 +3,15 @@ import { computed } from 'vue'
 import { t } from '../i18n'
 import Button from './Button.vue'
 
-// columns: [{ key, label, num?, fmt?(value,row), href?(row), sortable? }]; rows with `residual` are marked notes.
+// columns: [{ key, label, num?, fmt?(value,row), href?(row), sortable?, sort? }] (`sort` names the column in the sort state, default key);
+// rows with `residual` are marked notes.
 const props = defineProps({ columns: Array, rows: Array, sort: Object, page: { type: Number, default: 0 }, size: Number, total: Number })
 const emit = defineEmits(['sort', 'page'])
 const pages = computed(() => (props.size ? Math.ceil(props.total / props.size) : 1))
 const show = (c, r) => (c.fmt ? c.fmt(r[c.key], r) : r[c.key] ?? '–')
-const arrow = (c) => (props.sort?.key === c.key ? (props.sort.dir === 'asc' ? '▲' : '▼') : '')
+const sorted = (c) => props.sort?.key === (c.sort ?? c.key)
+const arrow = (c) => (sorted(c) ? (props.sort.dir === 'asc' ? '▲' : '▼') : '')
+const ariaSort = (c) => (!c.sortable ? null : sorted(c) ? (props.sort.dir === 'asc' ? 'ascending' : 'descending') : 'none')
 </script>
 
 <template lang="pug">
@@ -16,7 +19,9 @@ const arrow = (c) => (props.sort?.key === c.key ? (props.sort.dir === 'asc' ? '�
   table.table
     thead
       tr
-        th(v-for="c in columns" :key="c.key" :class="{ num: c.num, sortable: c.sortable }" :aria-sort="sort && sort.key === c.key ? (sort.dir === 'asc' ? 'ascending' : 'descending') : null" @click="c.sortable && emit('sort', c.key)") {{ c.label }} {{ arrow(c) }}
+        th(v-for="c in columns" :key="c.key" :class="{ num: c.num }" :aria-sort="ariaSort(c)")
+          button.th-sort(v-if="c.sortable" type="button" @click="emit('sort', c.sort ?? c.key)") {{ c.label }} {{ arrow(c) }}
+          template(v-else) {{ c.label }}
     tbody
       tr(v-for="(r, i) in rows" :key="i" :class="{ note: r.residual }")
         td(v-for="c in columns" :key="c.key" :class="{ num: c.num }")

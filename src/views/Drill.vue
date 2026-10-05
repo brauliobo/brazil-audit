@@ -20,13 +20,14 @@ import StateMap from '../components/StateMap.vue'
 import ResidualSwitch from '../components/ResidualSwitch.vue'
 
 const LEVELS = ['state', 'city', 'zone', 'section']
+const SORTS = { sections: 'sections', nominal: 'nominal', first: 'c0', second: 'c1' } // ?sort= names -> result columns; anything else sorts by the unit
 const PAGE = 25
 const year = computed(() => route.value.election)
 const cfg = computed(() => ELECTIONS[year.value])
 const args = computed(() => route.value.args)
 const office = computed(() => Number(route.value.params.get('office') ?? 1))
 const sort = computed(() => ({ key: route.value.params.get('sort') ?? 'unit', dir: route.value.params.get('dir') ?? 'asc' }))
-const page = computed(() => Number(route.value.params.get('page') ?? 0))
+const page = computed(() => Number(route.value.params.get('page') ?? 1) - 1) // ?page= counts from 1
 const nameOf = (r) => (r.name ?? t('common.others')) + (r.party && r.party !== r.name ? ` (${r.party})` : '')
 
 // $1 = office, $2.. = the path so far
@@ -35,18 +36,23 @@ const scope = (a) => a.map((_, i) => ` and ${LEVELS[i]} = $${i + 2}`).join('')
 // UF and (except deputies, whose rollup is per UF) municipality listings read the small rollups; deeper levels read the section parts
 const rollupGrain = (a, o) => a.length === 0 || (a.length === 1 && o < 6)
 
+// with the residual on, a city or a zone also counts the official votes of its sections without files (table residual)
+const withOfficial = (y, k, res) => (ELECTIONS[y].hasResidual && residualOn.value && (k === 2 || k === 3)
+  ? `(select election, turn, state, city, zone, office, cand, votes from ${res} union all select election, turn, uf, city, zone, office, number, votes from residual where number not in ('branco', 'nulo'))`
+  : res)
+
 async function listRows(y, a, o, s, p, q) {
   const params = [o, ...a]
   const k = a.length
   const roll = rollupGrain(a, o)
   const [tot, res, count] = roll ? [rollup(y).tot, rollup(y).res, 'sum(sections)'] : ['sec', 'cs', 'count(*)']
   const top = objects(await q(`select coalesce(c.n, '-') cand, max(c.short_name) name, max(c.party) party, sum(cs.votes) votes, sum(sum(cs.votes)) over () total
-    from ${res} cs ${candJoin(y)} where cs.office = $1 and ${inElection(y, 'cs')} ${scope(a)} group by 1 order by votes desc limit 10`, params))
+    from ${withOfficial(y, k, res)} cs ${candJoin(y)} where cs.office = $1 and ${inElection(y, 'cs')} ${scope(a)} group by 1 order by votes desc limit 10`, params))
   const cands = o === 1 || k > 0 ? top.filter((c) => c.cand !== '-').slice(0, 2) : []
   const child = LEVELS[k]
   const pick = (c, i) => `sum(votes) filter (where cand = $${k + 2 + i}) c${i}`
   const [a0, a1] = cands.map((c) => c.cand)
-  const order = s.key === 'unit' ? collate('unit') : s.key
+  const order = SORTS[s.key] ?? collate('unit')
   const rows = objects(await q(`with s as (select ${child} unit, ${count} sections, sum(nominal) nominal, sum(blank) blank, sum(nul) nul from ${tot} where office = $1 and ${inElection(y)} ${scope(a)} group by 1),
     c as (select ${child} unit, ${cands.map(pick).join(',') || '0 c0'} from ${res} where office = $1 and ${inElection(y)} ${scope(a)} ${cands.length ? `and cand in ($${k + 2}${cands.length > 1 ? `, $${k + 3}` : ''})` : ''} group by 1)
     select s.*, c.c0, ${cands.length > 1 ? 'c.c1' : '0 c1'}, count(*) over () total from s left join c using (unit)
@@ -98,10 +104,10 @@ const unitCol = computed(() => ({
 }))
 const columns = computed(() => [
   unitCol.value,
-  { key: 'sections', label: t('common.sections'), num: true, sortable: true, fmt: int },
+  ...(args.value.length < 3 ? [{ key: 'sections', label: t('common.sections'), num: true, sortable: true, fmt: int }] : []),
   { key: 'nominal', label: t('common.nominalVotes'), num: true, sortable: true, fmt: int },
   ...view.data.cands.flatMap((c, i) => [
-    { key: `c${i}`, label: c.name, num: true, sortable: true, fmt: int },
+    { key: `c${i}`, sort: ['first', 'second'][i], label: c.name, num: true, sortable: true, fmt: int },
     { key: `p${i}`, label: t('drill.percent', { name: c.name }), num: true, fmt: (_, r) => pct(r[`c${i}`] / r.nominal) },
   ]),
 ])
@@ -128,7 +134,7 @@ Skeleton(v-else-if="!view.data")
   Panel(v-if="args.length === 1 && args[0] !== 'zz'" :title="t('maps.stateMapTitle', { state: stateName(args[0]) })" :state="view" :election="year")
     StateMap(:year="year" :uf="args[0]" :office="office")
   Panel(:title="t(`drill.levels.${LEVELS[args.length]}`)" :state="view" :election="year" wide)
-    DataTable(:columns="columns" :rows="view.data.rows" :sort="sort" :page="page" :size="25" :total="Number(view.data.total)" @sort="onSort" @page="setParam('page', $event)")
+    DataTable(:columns="columns" :rows="view.data.rows" :sort="sort" :page="page" :size="25" :total="Number(view.data.total)" @sort="onSort" @page="setParam('page', $event ? $event + 1 : null)")
 .grid-auto(v-else-if="view.data")
   Panel(v-for="o in view.data.offices" :key="o.office" :title="cfg.offices.includes(o.office) ? officeName(o.office) : t('drill.officeFallback', { id: o.office })" :state="view" :election="year")
     BarList(:items="sectionItems(o.rows)")
