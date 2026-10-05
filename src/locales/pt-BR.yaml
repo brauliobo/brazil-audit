@@ -12,6 +12,7 @@ nav:
   overview: Visão geral
   maps: Mapas
   parliament: Parlamento
+  seats: Cadeiras
   drill: Detalhar
   analysis: Análise
   time: Horários
@@ -233,6 +234,152 @@ parliament:
   elected: Senadores eleitos
   electedName: Senador eleito
 
+seats:
+  title: "Cadeiras de deputado · {election}"
+  unavailable: Esta eleição não tem cargos de deputado no site.
+  noData: Não há dados de cadeiras para esta UF e cargo nesta eleição.
+  seeAvailable: Ver {election}
+  intro: "Recalcula as cadeiras de deputado federal, estadual e distrital a partir dos votos do banco, passo a passo: quociente eleitoral (também chamado de coeficiente eleitoral ou coeficiente de votação), quociente partidário e distribuição das sobras. Usa os votos que estiverem carregados, então também projeta o resultado de uma apuração parcial."
+  rule: Regra
+  summary: "Resumo · {place} · {office}"
+  whatIfNote: "Hipótese: a regra «{rule}» aplicada aos mesmos votos. O resultado oficial desta eleição segue «{own}»."
+  projection: "Projeção: o cálculo tem {share} dos votos válidos oficiais. O resultado pode mudar com os votos que faltam; a diferença da última cadeira está no passo 3."
+  missing_one: Falta o arquivo de {count} seção; os votos dela entram pelos totais oficiais (chave de votos residuais).
+  missing_other: Faltam os arquivos de {count} seções; os votos delas entram pelos totais oficiais (chave de votos residuais).
+  complete: "Apuração completa: o cálculo usa todos os votos válidos oficiais."
+  hemicycle_one: "{place}: {count} cadeira calculada"
+  hemicycle_other: "{place}: {count} cadeiras calculadas"
+  step1: 1 · Quociente eleitoral
+  step2: 2 · Quociente partidário
+  step3: 3 · Sobras pela maior média
+  step4: 4 · Candidatos eleitos
+  stat:
+    seats: cadeiras
+    valid: votos válidos
+    quotient: quociente eleitoral
+    agreeing: UFs iguais ao oficial
+    counted: dos votos válidos oficiais
+    sections: seções com resultado
+  national:
+    option: Brasil (Câmara dos Deputados)
+    title: "Câmara dos Deputados: soma das UFs"
+    seats: Cadeiras
+    quotient: Quociente eleitoral
+    official: Resultado oficial
+    same: igual
+    differs_one: "{count} cadeira difere"
+    differs_other: "{count} cadeiras diferem"
+    counted: Votos válidos oficiais contados
+    behind: Votos que faltaram para a última cadeira
+    label_one: "Câmara dos Deputados: {count} cadeira"
+    label_other: "Câmara dos Deputados: {count} cadeiras"
+    note: "Cada UF é uma circunscrição com o seu próprio quociente eleitoral; o gráfico soma as cadeiras. A última coluna mostra quão apertada foi a última cadeira de cada UF (votos que faltaram à próxima lista): quanto menor, mais um resultado parcial ainda pode mudar."
+  q:
+    alias: O quociente eleitoral (art. 106 do Código Eleitoral), também conhecido como coeficiente eleitoral ou coeficiente de votação, é o número de votos válidos que vale uma cadeira.
+    nominal: Votos nominais válidos
+    legend: Votos de legenda válidos
+    valid: Votos válidos
+    seats: Cadeiras (vagas)
+    quotient: Quociente eleitoral = votos válidos ÷ vagas
+    candidateMin: "Mínimo do candidato para vaga do quociente partidário ({share}% do quociente)"
+    partyMin: "Mínimo da lista para as sobras ({share}% do quociente)"
+    rounding:
+      exact: A divisão é exata.
+      up: A fração da divisão passa de meio e arredonda-se para cima (art. 106).
+      down: A fração da divisão é de até meio e é desprezada (art. 106).
+    excluded: "Não entram: votos em branco, nulos e votos de candidaturas sem registro válido ({n} votos nominais anulados nesta UF e cargo)."
+  blocs:
+    list: Lista
+    nominal: Nominais
+    legend: Legenda
+    votes: Votos válidos
+    share: "% do quociente"
+    qp: Quociente partidário
+    filled: Vagas pelo quociente
+    released: Vagas liberadas
+    releasedNote_one: "{count} vaga do quociente partidário não teve candidato com o mínimo individual e foi para as sobras (art. 108, parágrafo único)."
+    releasedNote_other: "{count} vagas do quociente partidário não tiveram candidato com o mínimo individual e foram para as sobras (art. 108, parágrafo único)."
+    sqlSame: "Conferido em SQL: o mesmo quociente eleitoral e os mesmos quocientes partidários (consulta em SQL, abaixo)."
+    sqlDiffers: A conferência em SQL deu números diferentes dos do cálculo; veja a consulta em SQL, abaixo.
+  rounds:
+    noQuotient: Nenhuma lista alcançou o quociente eleitoral. Pela regra aplicada, as vagas vão para os candidatos mais votados (art. 111 do Código Eleitoral).
+    none: Todas as vagas foram preenchidas pelo quociente partidário, não há sobras.
+    phaseRule: "Fase {phase}: lista com pelo menos {party}% do quociente eleitoral e candidato com pelo menos {candidate}% (0% = sem mínimo)."
+    round: Sobra
+    phase: Fase
+    winner: Lista que leva a vaga
+    candidate: Candidato
+    average: Média
+    next: Próxima maior média
+    held: Vagas já obtidas
+    status: Situação
+    takes: leva a vaga
+    waits: aguarda
+    averages: Médias em cada sobra
+    title: "Sobra {round} (fase {phase})"
+    lastSeat: "A última vaga foi para {winner}; {runnerUp} ficou sem ela por {votes} votos."
+  reason:
+    party: abaixo do mínimo da lista
+    candidate: sem candidato com o mínimo
+    none: sem candidatos restantes
+  how:
+    qp: Quociente partidário
+    avg: "Sobra {round} (fase {phase})"
+    top: Mais votados (art. 111)
+  elected:
+    candidate: Candidato
+    share: "% do quociente"
+    how: Como foi eleito
+    official: No resultado oficial
+    listed: sim
+    unlisted: não
+    behind: Votos a menos que o último eleito da lista
+    nextTitle: Primeiros não eleitos (suplentes)
+    nextNote: O primeiro suplente de cada lista que elegeu candidatos, e a diferença para o último eleito da lista (art. 112 do Código Eleitoral).
+  compare:
+    title: Comparação com o resultado oficial
+    none: Não há lista oficial de eleitos para esta UF e cargo.
+    same_one: A cadeira calculada é a do resultado oficial.
+    same_other: "As {count} cadeiras calculadas são as mesmas do resultado oficial."
+    differs_one: "{count} cadeira difere do resultado oficial ({agree} iguais)."
+    differs_other: "{count} cadeiras diferem do resultado oficial ({agree} iguais)."
+    calculated: Só no cálculo
+    officialSide: Só no oficial
+    side: Onde
+    cause:
+      rule: "O resultado oficial segue a regra «{rule}»: escolha-a na caixa Regra para obter a mesma lista."
+      partial: "A contagem é parcial: faltam votos, então o cálculo é uma projeção."
+      data: Os votos do banco não explicam a diferença. Candidaturas indeferidas, anulações e recontagens feitas depois da eleição podem não estar nos dados.
+    votes: "Votos válidos: calculados {calculated}, oficiais {official} (diferença {gap}; {share} dos oficiais)."
+  rules:
+    title: Regras e fontes
+    intro: A regra de cada eleição é um dado de configuração, não código. O cálculo é sempre o mesmo e só mudam os mínimos e as etapas das sobras.
+    own: Regra desta eleição
+    applied: Aplicada agora, como hipótese
+    ownShort: regra da eleição
+    whatIf: hipótese
+  ruleShort:
+    coalitions2018: Coligações 2018
+    federations2022: Lei 14.211/2021
+    stf2024: STF (ADI 7228)
+  ruleName:
+    coalitions2018: "2018: coligações (Lei 13.488/2017)"
+    federations2022: "Lei 14.211/2021: 80% e 20% nas duas etapas das sobras"
+    stf2024: "STF (ADIs 7228, 7263 e 7325): sobras abertas a todos na última etapa"
+  ruleText:
+    coalitions2018: Coligações proporcionais eram permitidas e contam como uma lista. O candidato precisa de 10% do quociente eleitoral para ocupar vaga do quociente partidário. As sobras vão pela maior média entre todos os partidos e coligações, mesmo os que não alcançaram o quociente (Lei 13.488/2017), primeiro entre listas com candidato de pelo menos 10% do quociente e depois sem mínimo. Se nenhuma lista alcança o quociente, vencem os mais votados.
+    federations2022: Coligações proporcionais foram vedadas e as federações contam como um partido. Candidato com 10% do quociente para vaga do quociente partidário. Sobras, primeira etapa, só entre listas com 80% do quociente e candidatos com 20%; segunda etapa, só entre listas com 80%, sem mínimo para o candidato. É a regra com que o TSE proclamou o resultado de 2022; a decisão do STF a alterou depois (veja a regra seguinte).
+    stf2024: Mesma primeira etapa (80% e 20%). Em 28/02/2024 o STF decidiu que a etapa final das sobras é aberta a todos os partidos e federações, sem mínimo, e derrubou o art. 111 (se ninguém alcança o quociente, tudo vai pela maior média). Em 13/03/2025 os embargos fizeram a decisão valer desde 2022 e o TSE refez a totalização dos deputados federais (AP, DF, RO e TO mudaram). É a regra da Res. TSE 23.677 com as redações de 2024 e 2026, e a que vale para 2026.
+  sources:
+    ce: Código Eleitoral (Lei 4.737/1965), arts. 106 a 112, texto compilado
+    law13488: Lei 13.488/2017 (sobras para todos os partidos e coligações)
+    res23554: Res. TSE 23.554/2017 (eleições de 2018), arts. 7 a 12
+    law14211: Lei 14.211/2021 (fim das coligações proporcionais, 80% e 20% nas sobras)
+    res23677: Res. TSE 23.677/2021 compilada, arts. 8 a 14 e 20 a 24 (redações de 2024 e 2026)
+    stf2024: "STF, 28/02/2024: sobras eleitorais (ADIs 7228, 7263 e 7325)"
+    stf2025: "STF, 13/03/2025: a decisão vale desde as eleições de 2022"
+    res23748: "Res. TSE 23.748/2026 (art. 12-A: sobras em duas etapas)"
+
 drill:
   title: "Detalhar · {election}"
   where: Onde estou
@@ -353,6 +500,8 @@ sql:
     residual: votos de seções sem arquivo (total oficial)
     elected: eleitos
     seats: cadeiras por partido/federação
+    lineup: "candidatos e listas por partido/federação, com votos de legenda e votos oficiais"
+    annulled: candidatos cujos votos o resultado oficial não conta
     cands: candidatos (election, uf, office, n)
     mun_map: município → código IBGE
 

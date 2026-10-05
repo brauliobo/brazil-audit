@@ -11,6 +11,7 @@ nav:
   overview: Overview
   maps: Maps
   parliament: Parliament
+  seats: Seats
   drill: Drill down
   analysis: Analysis
   time: Voting time
@@ -232,6 +233,152 @@ parliament:
   elected: Elected senators
   electedName: Elected senator
 
+seats:
+  title: "Deputy seats · {election}"
+  unavailable: This election has no deputy offices on the site.
+  noData: There is no seat data for this UF and office in this election.
+  seeAvailable: See {election}
+  intro: "Recomputes the federal, state and district deputy seats from the votes in the database, step by step: the electoral quotient (quociente eleitoral, also called coeficiente eleitoral or coeficiente de votação), the party quotient (quociente partidário) and the distribution of the leftover seats (sobras). It uses whatever votes are loaded, so it also projects the result of a partial count."
+  rule: Rule
+  summary: "Summary · {place} · {office}"
+  whatIfNote: "What-if: the rule «{rule}» applied to the same votes. The official result of this election follows «{own}»."
+  projection: "Projection: the calculation has {share} of the official valid votes. The result may change with the votes still missing; the margin of the last seat is in step 3."
+  missing_one: The file of {count} section is missing; its votes come in through the official totals (residual votes switch).
+  missing_other: The files of {count} sections are missing; their votes come in through the official totals (residual votes switch).
+  complete: "Complete count: the calculation uses all the official valid votes."
+  hemicycle_one: "{place}: {count} calculated seat"
+  hemicycle_other: "{place}: {count} calculated seats"
+  step1: 1 · Electoral quotient
+  step2: 2 · Party quotient
+  step3: 3 · Leftover seats by highest average
+  step4: 4 · Elected candidates
+  stat:
+    seats: seats
+    valid: valid votes
+    quotient: electoral quotient
+    agreeing: UFs equal to the official result
+    counted: of the official valid votes
+    sections: sections with a result
+  national:
+    option: Brazil (Chamber of Deputies)
+    title: "Chamber of Deputies: the sum of the UFs"
+    seats: Seats
+    quotient: Electoral quotient
+    official: Official result
+    same: equal
+    differs_one: "{count} seat differs"
+    differs_other: "{count} seats differ"
+    counted: Official valid votes counted
+    behind: Votes the next list lacked for the last seat
+    label_one: "Chamber of Deputies: {count} seat"
+    label_other: "Chamber of Deputies: {count} seats"
+    note: "Each UF is a constituency with its own electoral quotient; the chart adds up the seats. The last column shows how close the last seat of each UF was (votes the next list lacked): the smaller it is, the more a partial count can still change it."
+  q:
+    alias: The electoral quotient (art. 106 of the Electoral Code), also known as coeficiente eleitoral or coeficiente de votação, is the number of valid votes that is worth one seat.
+    nominal: Valid nominal votes
+    legend: Valid legend votes
+    valid: Valid votes
+    seats: Seats (vagas)
+    quotient: Electoral quotient = valid votes ÷ seats
+    candidateMin: "Candidate minimum for a seat won by party quotient ({share}% of the quotient)"
+    partyMin: "List minimum for the leftover seats ({share}% of the quotient)"
+    rounding:
+      exact: The division is exact.
+      up: The fraction of the division is above one half and rounds up (art. 106).
+      down: The fraction of the division is up to one half and is dropped (art. 106).
+    excluded: "Not counted: blank and null votes and votes of candidacies without a valid registration ({n} annulled nominal votes in this UF and office)."
+  blocs:
+    list: List
+    nominal: Nominal
+    legend: Legend
+    votes: Valid votes
+    share: "% of the quotient"
+    qp: Party quotient
+    filled: Seats by quotient
+    released: Released seats
+    releasedNote_one: "{count} seat of the party quotient had no candidate with the individual minimum and went to the leftover seats (art. 108, sole paragraph)."
+    releasedNote_other: "{count} seats of the party quotient had no candidate with the individual minimum and went to the leftover seats (art. 108, sole paragraph)."
+    sqlSame: "Checked in SQL: the same electoral quotient and the same party quotients (SQL query below)."
+    sqlDiffers: The SQL check gave different numbers from the calculation; see the SQL query below.
+  rounds:
+    noQuotient: No list reached the electoral quotient. Under the rule applied, the seats go to the most voted candidates (art. 111 of the Electoral Code).
+    none: All the seats were filled by party quotient, there are no leftover seats.
+    phaseRule: "Phase {phase}: list with at least {party}% of the electoral quotient and a candidate with at least {candidate}% (0% = no minimum)."
+    round: Leftover
+    phase: Phase
+    winner: List taking the seat
+    candidate: Candidate
+    average: Average
+    next: Next highest average
+    held: Seats already held
+    status: Status
+    takes: takes the seat
+    waits: waits
+    averages: Averages in each round
+    title: "Leftover {round} (phase {phase})"
+    lastSeat: "The last seat went to {winner}; {runnerUp} missed it by {votes} votes."
+  reason:
+    party: below the list minimum
+    candidate: no candidate with the minimum
+    none: no candidates left
+  how:
+    qp: Party quotient
+    avg: "Leftover {round} (phase {phase})"
+    top: Most voted (art. 111)
+  elected:
+    candidate: Candidate
+    share: "% of the quotient"
+    how: How elected
+    official: In the official result
+    listed: yes
+    unlisted: no
+    behind: Votes behind the last elected of the list
+    nextTitle: First not elected (alternates)
+    nextNote: The first alternate (suplente) of each list that elected candidates, and the gap to the last elected of the list (art. 112 of the Electoral Code).
+  compare:
+    title: Comparison with the official result
+    none: There is no official list of elected candidates for this UF and office.
+    same_one: The calculated seat is the one of the official result.
+    same_other: "The {count} calculated seats are the same as the official result."
+    differs_one: "{count} seat differs from the official result ({agree} equal)."
+    differs_other: "{count} seats differ from the official result ({agree} equal)."
+    calculated: Only calculated
+    officialSide: Only official
+    side: Where
+    cause:
+      rule: "The official result follows the rule «{rule}»: pick it in the Rule box to get the same list."
+      partial: "The count is partial: votes are missing, so the calculation is a projection."
+      data: The votes in the database do not explain the difference. Rejected candidacies, annulments and recounts made after the election may not be in the data.
+    votes: "Valid votes: calculated {calculated}, official {official} (difference {gap}; {share} of the official)."
+  rules:
+    title: Rules and sources
+    intro: The rule of each election is configuration data, not code. The calculation is always the same; only the minimums and the stages of the leftover seats change.
+    own: Rule of this election
+    applied: Applied now, as a what-if
+    ownShort: election rule
+    whatIf: what-if
+  ruleShort:
+    coalitions2018: 2018 coalitions
+    federations2022: Law 14,211/2021
+    stf2024: STF (ADI 7228)
+  ruleName:
+    coalitions2018: "2018: coalitions (Law 13,488/2017)"
+    federations2022: "Law 14,211/2021: 80% and 20% in both stages of the leftover seats"
+    stf2024: "STF (ADIs 7228, 7263 and 7325): leftover seats open to all in the last stage"
+  ruleText:
+    coalitions2018: Proportional coalitions were allowed and count as one list. A candidate needs 10% of the electoral quotient to take a seat won by party quotient. The leftover seats go by highest average among all parties and coalitions, even those that did not reach the quotient (Law 13,488/2017), first among lists with a candidate of at least 10% of the quotient and then with no minimum. If no list reaches the quotient, the most voted candidates win.
+    federations2022: Proportional coalitions were banned and federations count as one party. A candidate needs 10% of the quotient for a seat won by party quotient. Leftover seats, first stage, only among lists with 80% of the quotient and candidates with 20%; second stage, only among lists with 80%, with no minimum for the candidate. It is the rule with which the TSE proclaimed the 2022 result; the STF decision changed it later (see the next rule).
+    stf2024: Same first stage (80% and 20%). On 2024-02-28 the STF decided that the last stage of the leftover seats is open to every party and federation, with no minimum, and struck down art. 111 (if no list reaches the quotient, everything goes by highest average). On 2025-03-13 the appeals made the decision apply from 2022 and the TSE redid the totalization of the federal deputies (AP, DF, RO and TO changed). It is the rule of TSE Resolution 23,677 as worded in 2024 and 2026, and the one in force for 2026.
+  sources:
+    ce: Electoral Code (Law 4,737/1965), arts. 106 to 112, consolidated text
+    law13488: Law 13,488/2017 (leftover seats open to all parties and coalitions)
+    res23554: TSE Resolution 23,554/2017 (2018 elections), arts. 7 to 12
+    law14211: Law 14,211/2021 (end of proportional coalitions, 80% and 20% in the leftover seats)
+    res23677: TSE Resolution 23,677/2021 consolidated, arts. 8 to 14 and 20 to 24 (2024 and 2026 wording)
+    stf2024: "STF, 2024-02-28: electoral leftover seats (ADIs 7228, 7263 and 7325)"
+    stf2025: "STF, 2025-03-13: the decision applies since the 2022 elections"
+    res23748: "TSE Resolution 23,748/2026 (art. 12-A: leftover seats in two stages)"
+
 drill:
   title: "Drill down · {election}"
   where: Where am I
@@ -352,6 +499,8 @@ sql:
     residual: votes of sections without files (official total)
     elected: elected candidates
     seats: seats per party/federation
+    lineup: "party lists per UF and office: bloc, legend votes and official votes"
+    annulled: candidates whose votes the official result does not count
     cands: candidates (election, uf, office, n)
     mun_map: municipality → IBGE code
 

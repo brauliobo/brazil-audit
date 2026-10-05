@@ -1,0 +1,6 @@
+/* SEATS (/seats): the step-by-step calculation. Only semantic and component tokens, like components.css. */
+.calc { margin: var(--space-2) var(--space-0); }
+.calc > div { display: flex; flex-wrap: wrap; justify-content: space-between; gap: var(--space-hair) var(--space-4); padding: var(--space-1) var(--space-0); border-bottom: var(--border-width-1) solid var(--table-row-border); }
+.calc dt { color: var(--text-muted); }
+.calc dd { margin: var(--space-0); font-weight: var(--font-weight-semibold); font-variant-numeric: var(--table-numeric); }
+.panel h3 { margin: var(--space-4) var(--space-0) var(--space-1); font-size: var(--type-body-size); font-weight: var(--font-weight-semibold); }

@@ -14,6 +14,7 @@ import { load as loadYaml } from 'js-yaml'
 import { ELECTIONS, HIDDEN_VIEWS, THEMES, UFS, VIEWS_NAV } from '../src/model.js'
 import { EXAMPLES, TABLES } from '../src/sqlExamples.js'
 import { LOCALES } from '../src/i18n.js'
+import { RULES } from '../src/seats/rules.js'
 
 const SRC = 'src'
 const errors = []
@@ -67,6 +68,13 @@ const FAMILIES = {
   'sources.badge.': ['rdv', 'rdvOfficial', 'open', 'openPending', 'logs', 'officialFiles'],
   'sql.examples.': EXAMPLES.map((e) => e.id),
   'sql.tables.': TABLES,
+  'seats.ruleName.': Object.keys(RULES),
+  'seats.ruleShort.': Object.keys(RULES),
+  'seats.ruleText.': Object.keys(RULES),
+  'seats.sources.': [...new Set(Object.values(RULES).flatMap((r) => r.sources.map((s) => s.id)))],
+  'seats.reason.': ['party', 'candidate', 'none'],
+  'seats.q.rounding.': ['exact', 'up', 'down'],
+  'seats.compare.cause.': ['rule', 'partial', 'data'],
   'design.type.': ['display', 'title800', 'title700', 'subtitle600', 'text500', 'base400', 'table300', 'caption200', 'note100'],
 }
 for (const [prefix, members] of Object.entries(FAMILIES)) for (const m of members) if (!defined.has(`${prefix}${m}`)) fail('families', `missing key ${prefix}${m}`)

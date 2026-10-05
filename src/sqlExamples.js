@@ -32,4 +32,4 @@ export function initialSql(key, q) {
 }
 
 /** Tables and views of the shared schema, listed under the editor (descriptions: sql.tables.<name>). */
-export const TABLES = ['rdv', 'sec', 'cs', 'tot', 'res', 'resx', 'totx', 'vt', 'vtc', 'cov', 'miss', 'residual', 'elected', 'seats', 'cands', 'mun_map']
+export const TABLES = ['rdv', 'sec', 'cs', 'tot', 'res', 'resx', 'totx', 'vt', 'vtc', 'cov', 'miss', 'residual', 'elected', 'seats', 'lineup', 'annulled', 'cands', 'mun_map']
