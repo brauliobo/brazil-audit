@@ -4,6 +4,7 @@
 #
 # Env: WORKERS  parallel downloads and imports (1 to 3)
 #      PHASE    `fetch` or `import` to run only one step
+#      STATES   import only these units, e.g. "AC BR ZZ" (default: the 27 states, BR the president and ZZ the foreign vote)
 #      DB_NAME  database (default brazil-audit-2018); it must exist, the tables are created on the first run
 set -e
 cd "$(dirname "$0")/.."
