@@ -1,0 +1,25 @@
+#!/bin/bash
+# The checks of an import, printed from the data of the database (test/verify.sql): test/verify [year] [database]
+# The zone totals come from detalhe_votacao_munzona, read from the raw zip with the same unquoting as the import.
+set -e
+cd "$(dirname "$0")/.."
+YEAR=${1:-2018}
+DB=${2:-brazil-audit-$YEAR}
+ZIP=$YEAR/raw/detalhe_votacao_munzona_$YEAR.zip
+MZ=$(mktemp)
+trap 'rm -f "$MZ"' EXIT
+
+CODES=$(ruby -e "ENV['YEAR']='$YEAR'; require './lib/config'; puts ELECTIONS.join(' ')")
+first=1
+for entry in $(unzip -Z1 "$ZIP" | grep -E '_[A-Z]{2}\.csv$'); do
+  unzip -p "$ZIP" "$entry" | LC_ALL=C sed -E 's/^"//; s/"(\r?)$/\1/; s/";/;/g; s/;"/;/g' | { [ $first = 1 ] && cat || tail -n +2; }
+  first=0
+done | iconv -f latin1 -t utf8 | tr -d '\r' | awk -F';' -v codes="$CODES" '
+  BEGIN { n = split(codes, c, " "); for (i = 1; i <= n; i++) ok[c[i]] = 1 }
+  NR == 1 { for (i = 1; i <= NF; i++) h[$i] = i; next }
+  ok[$h["CD_ELEICAO"]] {
+    printf "%s,%05d,%04d,%d,%d,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s\n", $h["SG_UF"], $h["CD_MUNICIPIO"], $h["NR_ZONA"], $h["NR_TURNO"], $h["CD_CARGO"],
+      $h["QT_APTOS"], $h["QT_SECOES_PRINCIPAIS"], $h["QT_SECOES_AGREGADAS"], $h["QT_SECOES_NAO_INSTALADAS"], $h["QT_TOTAL_SECOES"],
+      $h["QT_COMPARECIMENTO"], $h["QT_ABSTENCOES"], $h["QT_VOTOS_BRANCOS"], $h["QT_TOTAL_VOTOS_NULOS"], $h["QT_TOTAL_VOTOS_VALIDOS"]
+  }' > "$MZ"
+psql -d "$DB" -f test/verify.sql < "$MZ"
