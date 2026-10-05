@@ -4,7 +4,7 @@ module Manifest
   PATH   = "#{RAW_DIR}/MANIFEST.tsv"
   HEADER = %w[name bytes sha256 url last_modified]
   LOCK   = Mutex.new
-  ROWS   = File.exist?(PATH) ? File.readlines(PATH, chomp: true).drop(1).to_h{ |line| [line[/^[^\t]+/], line.split("\t")] } : {}
+  ROWS   = File.exist?(PATH) ? File.readlines(PATH, chomp: true).drop(1).map{ |line| line.split "\t" }.to_h{ |r| [r.first, r] } : {}
 
   def self.rows = ROWS
 

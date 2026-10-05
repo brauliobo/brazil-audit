@@ -13,7 +13,8 @@ module Staging
   def self.options(columns) = "DELIMITER ';', HEADER, ENCODING 'LATIN1', NULL '#NULO#', FORCE_NULL (#{columns.join ', '})"
 
   def self.columns zip, entry
-    IO.popen(['unzip', '-p', zip, entry], &:gets).encode('UTF-8', 'ISO-8859-1').delete('"').strip.split(';').map{ |c| c.downcase.delete(' ') }
+    header = IO.popen(['unzip', '-p', zip, entry], &:gets)
+    header.encode('UTF-8', 'ISO-8859-1').delete('"').strip.split(';').map{ |c| c.downcase.delete(' ') }
   end
 
   def self.chunks zip, entry
