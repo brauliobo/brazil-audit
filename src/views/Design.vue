@@ -156,7 +156,7 @@ p.muted {{ t('design.intro') }}
     .geomap
       Tooltip(:text="tipText" :x="8" :y="8" :show="true")
       .specimen__tooltip-space
-    ColumnChart(:values="columns" :labels="columnLabels" :tick="String")
+    ColumnChart(:label="t('design.data')" :values="columns" :labels="columnLabels" :tick="String")
   Panel(:title="t('design.mapHemicycle')")
     .swatches
       figure.swatch(v-for="step in WINNER_STEPS" :key="step")

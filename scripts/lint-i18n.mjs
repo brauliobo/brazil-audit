@@ -73,7 +73,7 @@ const WORD = new RegExp(`[${LETTERS}]{2,}`, 'g')
 const ALLOWED_WORDS = new Set(['PGlite', 'Vue', 'Vapor', 'Enter', 'Escape', 'ms', 'px', 'KB', 'MB'])
 const isWord = (w) => !ALLOWED_WORDS.has(w) && !/^[A-Z]{2,5}$/.test(w) // acronyms (SQL, TSE, PT, UF...) are not translated
 const PROSE = new RegExp(`^[${LETTERS}][${LETTERS}0-9,.'’()%·:–?!-]*( [${LETTERS}0-9][${LETTERS}0-9,.'’()%·:–?!-]*)+$`)
-const SQL = /\b(select|from|where|join|group by|order by|create|insert|truncate|delete|analyze|union|window|having|drop|cascade|limit|asc|desc|is not null)\b|\w\(/
+const SQL = /\b(select|from|where|join|group by|order by|create|insert|truncate|delete|analyze|union|window|having|drop|cascade|limit|asc|desc|is not null|transaction)\b|\w\(/
 const KEYLIKE = /^[a-z][A-Za-z0-9]*(\.[A-Za-z0-9_-]+)+$/
 
 function checkLiteral(value, where, inKeyCall = false) {

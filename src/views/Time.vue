@@ -117,7 +117,7 @@ h1 {{ t('time.title', { place }) }}
 .muted(v-if="!cfg.hasTimes") {{ t('time.unavailable') }}
 .grid-auto(v-else)
   Panel(:title="t('time.curveTitle')" :state="curve" :election="year" wide)
-    ColumnChart(:values="curve.data.votes" :labels="curve.data.labels" :height="260" :tick="int" :fmt="(v) => t('common.votes', { count: v })")
+    ColumnChart(:label="t('time.curveTitle')" :values="curve.data.votes" :labels="curve.data.labels" :height="260" :tick="int" :fmt="(v) => t('common.votes', { count: v })")
     p.muted(v-if="summary.data") {{ t('time.summary', { events: int(curve.data.total), sections: int(summary.data.sections), cities: int(summary.data.cities), clock: clockNote }) }}
   Panel(:title="t('time.pace')" :state="paced" :election="year" wide)
     .cluster

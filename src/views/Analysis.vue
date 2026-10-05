@@ -102,7 +102,7 @@ h1 {{ t('analysis.title', { election: electionLabel(year) }) }}
       option(v-for="c in candidates.data" :key="c.cand" :value="c.cand" :selected="c.cand === cand") {{ c.name }} ({{ c.cand }})
 .grid-auto
   Panel(:title="t('analysis.histTitle')" :state="hist" :election="year" wide)
-    ColumnChart(:values="hist.data" :labels="histLabels" :tick="int" :fmt="(v) => t('common.sections', { count: v })")
+    ColumnChart(:label="t('analysis.histTitle')" :values="hist.data" :labels="histLabels" :tick="int" :fmt="(v) => t('common.sections', { count: v })")
     p.muted {{ t('analysis.histNote', { step: num(100 / BINS, 1) }) }}
   Panel(:title="t('analysis.outliersTitle')" :state="outliers" :election="year" wide)
     p.muted {{ t('analysis.outliersNote') }}
@@ -113,14 +113,14 @@ h1 {{ t('analysis.title', { election: electionLabel(year) }) }}
   Panel(:title="t('analysis.citiesTitle')" :state="cities" :election="year")
     BarList(:items="cityItems")
   Panel(:title="t('analysis.benfordTitle')" :state="benford" :election="year")
-    ColumnChart(:values="benford.data.observed" :labels="['1','2','3','4','5','6','7','8','9']" :line="benford.data.expected" :fmt="(v) => pct(v, 1)")
+    ColumnChart(:label="t('analysis.benfordTitle')" :values="benford.data.observed" :labels="['1','2','3','4','5','6','7','8','9']" :line="benford.data.expected" :fmt="(v) => pct(v, 1)")
     Legend(:items="benfordLegend")
   Panel(:title="t('analysis.ratesTitle')" :state="rates" :election="year" wide)
     template(v-if="!cfg.hasBlank")
       p.muted {{ t('analysis.noBlank') }}
     template(v-else-if="rates.data")
-      ColumnChart(:values="rates.data.map((r) => r.blank_rate)" :labels="rateLabels" :fmt="(v) => pct(v, 1)")
+      ColumnChart(:label="`${t('analysis.ratesTitle')}: ${t('analysis.blanks')}`" :values="rates.data.map((r) => r.blank_rate)" :labels="rateLabels" :fmt="(v) => pct(v, 1)")
       p.muted {{ t('analysis.blanks') }}
-      ColumnChart(:values="rates.data.map((r) => r.null_rate)" :labels="rateLabels" :fmt="(v) => pct(v, 1)")
+      ColumnChart(:label="`${t('analysis.ratesTitle')}: ${t('analysis.nulls')}`" :values="rates.data.map((r) => r.null_rate)" :labels="rateLabels" :fmt="(v) => pct(v, 1)")
       p.muted {{ t('analysis.nulls') }}
 </template>

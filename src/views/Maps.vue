@@ -1,12 +1,12 @@
 <script setup vapor>
-import { computed, onMounted, onUnmounted } from 'vue'
+import { computed, nextTick, onMounted, onUnmounted } from 'vue'
 import { route, href, go, setParam } from '../router'
 import { ELECTIONS, inElection } from '../model'
 import { electionLabel, officeName, stateName, stateOptions, stateTitle } from '../labels'
 import { t } from '../i18n'
 import { partyColor } from '../colors'
 import { loadGeo, preloadState } from '../geo'
-import { candName, ensureRollups, residualOn, rollup, margin, quantile, stateWinners, titleCase, top, unitSql, unitTip, unitsOf, winnerFills, winnerLegend, winnersHeadline } from '../results'
+import { candName, ensureRollups, residualOn, rollup, margin, quantile, stateWinners, titleCase, top, unitPlace, unitSql, unitTip, unitsOf, winnerFills, winnerLegend, winnersHeadline } from '../results'
 import { useAsync } from '../use'
 import { objects } from '../db'
 import { int, pct } from '../format'
@@ -80,12 +80,16 @@ const tip = (id) => {
 }
 // the UF map opens a state's cities in place (keeping metric, office and candidate); a municipality opens its drill-down
 const here = (changes) => href(year.value, 'maps', [], { ...Object.fromEntries(params.value), ...changes })
+const focusPanel = () => nextTick(() => requestAnimationFrame(() => document.querySelector('.panel h2')?.focus({ preventScroll: true })))
 const open = (id) => {
-  if (data.data.grain === 'uf') return go(here({ scope: 'state', uf: id }))
+  if (data.data.grain === 'uf') { go(here({ scope: 'state', uf: id })); return focusPanel() }
   const u = data.data.units.get(id)
   go(href(year.value, 'drill', [u.state, u.name], { office: office.value }))
 }
-const toBrazil = () => go(here({ scope: 'uf', uf: null }))
+const toBrazil = () => { go(here({ scope: 'uf', uf: null })); focusPanel() }
+// the municipality maps have thousands of shapes: keyboard users pick a place from this list instead
+const places = computed(() => [...data.data.units.values()].map((u) => ({ id: u.id, label: unitPlace(u, 'mun') })).sort((a, b) => a.label.localeCompare(b.label)))
+const find = (e) => { const place = places.value.find((p) => p.label === e.target.value); if (place) open(place.id) }
 const onKey = (e) => e.key === 'Escape' && scope.value === 'state' && toBrazil()
 onMounted(() => addEventListener('keydown', onKey))
 onUnmounted(() => removeEventListener('keydown', onKey))
@@ -139,6 +143,10 @@ h1 {{ t('maps.title', { election: electionLabel(year) }) }}
       option(value="share" :selected="metric === 'share'") {{ t('maps.metric.share') }}
       option(value="margin" :selected="metric === 'margin'") {{ t('maps.metric.margin') }}
       option(value="blank" :selected="metric === 'blank'" :disabled="!ELECTIONS[year].hasBlank") {{ t('maps.metric.blank') }}
+  Field(v-if="data.data && data.data.grain === 'mun'" :label="t('maps.findCity')")
+    input(list="map-places" :placeholder="t('maps.findCityHint')" @change="find($event)")
+    datalist#map-places
+      option(v-for="p in places" :key="p.id" :value="p.label")
   Field(v-if="metric === 'share' && data.data" :label="t('maps.candidate')")
     select(@change="pick('cand', $event)")
       option(v-for="l in leaders" :key="l.cand" :value="l.cand" :selected="l.cand === shareCand") {{ candName(l) }}
@@ -163,7 +171,7 @@ p.headline(v-if="headline") {{ t('maps.headline', { office: officeName(office), 
         Chip(v-for="[s] in ufs" :key="s" :href="href(year, 'drill', [s], { office })") {{ s.toUpperCase() }}
     p.muted {{ t('maps.note') }}
   Panel(:title="t('maps.spreadTitle')" :state="spread" :election="year")
-    ColumnChart(:values="spread.data.counts" :labels="binLabels" :tick="int" :fmt="(v) => t('maps.municipalities', { count: v })")
+    ColumnChart(:label="t('maps.spreadTitle')" :values="spread.data.counts" :labels="binLabels" :tick="int" :fmt="(v) => t('maps.municipalities', { count: v })")
     p.muted {{ t('maps.spreadNote', { a: spread.data.a, b: spread.data.b }) }}
   Panel(:title="t('maps.sizeTitle')" :state="spread" :election="year")
     Scatter(:points="spread.data.points" :x-label="t('maps.sizeX')" :y-label="t('maps.sizeY')")

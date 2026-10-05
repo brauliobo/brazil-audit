@@ -12,7 +12,7 @@ defineProps({ title: String, state: Object, election: String, wide: Boolean })
 <template lang="pug">
 section.panel(:class="{ 'span-all': wide }")
   header.panel__header
-    h2 {{ title }}
+    h2(tabindex="-1") {{ title }}
     span.panel__badge(v-if="state && state.sqls.length" :class="{ 'panel__badge--stale': state.loading }") {{ state.loading ? '…' : ms(state.ms) }}
   Notice(v-if="state && state.error" kind="danger")
     strong {{ state.error.message }}

@@ -163,6 +163,8 @@ maps:
     margin: Margem da vitória
     blank: Brancos + nulos
   candidate: Candidato
+  findCity: Ir para o município
+  findCityHint: digite o nome
   headline: "{office}: {headline}"
   leads_one: "{name} vence em {count} estado"
   leads_other: "{name} vence em {count} estados"

@@ -162,6 +162,8 @@ maps:
     margin: Winning margin
     blank: Blank + null
   candidate: Candidate
+  findCity: Go to municipality
+  findCityHint: type the name
   headline: "{office}: {headline}"
   leads_one: "{name} wins {count} state"
   leads_other: "{name} wins {count} states"

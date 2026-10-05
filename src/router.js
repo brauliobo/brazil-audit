@@ -39,19 +39,20 @@ const title = () => {
   return t('app.title', { view: viewName([...VIEWS_NAV, ...HIDDEN_VIEWS].includes(view) ? view : 'overview'), election: electionLabel(election), app: t('app.name') })
 }
 
-function arrive(restore) {
+function arrive(restore, focusHeading = true) {
   nextTick(() => requestAnimationFrame(() => {
     scrollTo({ top: restore ?? 0, behavior: 'instant' })
-    if (restore == null) { const h = document.querySelector('main h1'); if (h) { h.tabIndex = -1; h.focus({ preventScroll: true }) } } // i18n-ignore
+    if (restore == null && focusHeading) { const h = document.querySelector('main h1'); if (h) { h.tabIndex = -1; h.focus({ preventScroll: true }) } } // i18n-ignore
   }))
 }
 
 /** Client navigation to a path built with href(). */
 export function go(to, { replace = false } = {}) {
   scrolls.set(history.state?.key ?? 0, scrollY)
+  const { view, election } = route.value
   history[replace ? 'replaceState' : 'pushState']({ key: replace ? (history.state?.key ?? 0) : ++key }, '', to)
   sync()
-  arrive()
+  arrive(undefined, route.value.view !== view || route.value.election !== election) // staying in the view (a map drill) leaves the focus to the view
 }
 
 /** Replaces one query parameter of the current route without adding a history entry. */
