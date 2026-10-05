@@ -13,7 +13,7 @@ module Targets
       INSERT INTO section_urn (state, city, city_code, zone, section, turn, urn, urn_type, flashcard, load_1, load_2, loaded_at,
                                aggregated, place_code, opened_at, closed_at, biometric_voters)
       SELECT #{Sql::SECTION}, nr_turno::smallint, nr_urna_efetivada, ds_tipo_urna, cd_flascard_urna_efetivada, cd_carga_1_urna_efetivada,
-             cd_carga_2_urna_efetivada, #{Sql.time 'dt_carga_urna_efetivada'}, #{Sql.null 'ds_agregadas'}, nr_local_votacao::int,
+             cd_carga_2_urna_efetivada, #{Sql.time 'dt_carga_urna_efetivada'}, ds_agregadas, nr_local_votacao::int,
              #{Sql.time 'dt_abertura'}, #{Sql.time 'dt_encerramento'}, qt_eleitores_biometria_nh::int
       FROM #{stg} GROUP BY #{Sql::SECTION_BY}, nr_turno, #{COLUMNS.join ', '}
     SQL

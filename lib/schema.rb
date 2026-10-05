@@ -18,8 +18,8 @@ module Schema
       smallint :turn
       String :expected_urn; String :urn; Time :expected_loaded_at; Time :loaded_at; String :origin; String :origin_desc; String :divergence
     end
-    create(:candidates, %i[sq_candidato]) do
-      bigint :sq_candidato; String :state; smallint :office; String :office_name; String :number; String :name; String :ballot_name
+    create(:candidates, %i[sq_candidato turn]) do
+      bigint :sq_candidato; smallint :turn; String :state; smallint :office; String :office_name; String :number; String :name; String :ballot_name
       Integer :party_number; String :party; String :party_name; bigint :coalition_id; String :coalition; String :coalition_parties
       smallint :status_code; String :status; smallint :outcome_code; String :outcome
       String :gender; String :race; String :education; String :occupation
