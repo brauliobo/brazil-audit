@@ -1,0 +1,10 @@
+#!/bin/bash
+# Collects the 2018 election: downloads the TSE open data zips into 2018/raw (with MANIFEST.tsv) and imports them
+# into the database, WORKERS at a time (default and maximum 3), at low CPU and disk priority. Run it again to resume.
+#
+# Env: WORKERS  parallel downloads and imports (1 to 3)
+#      PHASE    `fetch` or `import` to run only one step
+#      DB_NAME  database (default brazil-audit-2018); it must exist, the tables are created on the first run
+set -e
+cd "$(dirname "$0")/.."
+exec nice -n 10 ionice -c3 ruby script.rb "$@"

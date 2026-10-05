@@ -1,6 +1,6 @@
 require 'active_support/all'
+require 'fileutils'
 
-%w[config peach http cache state ballot results rdv db schema stored votes voting_log section scraper].each{ |f| require_relative "lib/#{f}" }
+%w[config peach sources download manifest fetch].each{ |f| require_relative "lib/#{f}" }
 
-Schema.setup
-Scraper.run
+Fetch.run if PHASES.include? 'fetch'

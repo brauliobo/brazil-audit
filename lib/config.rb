@@ -1,29 +1,15 @@
-# 2022 (president, 2nd round) lives at the repo root and in the `brazil-audit` database, with its own votes table;
-# other years get their own dir and database, and store the votes of every office
-YEAR        = ENV['YEAR'] || '2026'
-LEGACY      = YEAR == '2022'
-CDP         = { '2022' => 407, '2024' => 452, '2026' => 3220 }.fetch YEAR
-# election code of the official results (president file, which every city has); the site reads the same files
-RESULTS     = { '2026' => 6257 }[YEAR]
+# 2018 has no voting-machine files (RDV, logs, BU of the urns are not published): everything comes from the TSE open
+# data CSVs (CC BY), downloaded once into RAW_DIR and imported with COPY
+YEAR     = '2018'
+DATA_DIR = YEAR
+RAW_DIR  = "#{DATA_DIR}/raw"
+DB_NAME  = ENV['DB_NAME'] || "brazil-audit-#{YEAR}"
 
-DATA_DIR    = LEGACY ? '.' : YEAR
-DB_NAME     = ENV['DB_NAME'] || (LEGACY ? 'brazil-audit' : "brazil-audit-#{YEAR}")
-VOTES_TABLE = LEGACY ? :votes : :rdv_votes
+# never more than 3 downloads nor 3 imports at once, however high WORKERS is
+WORKERS  = (ENV['WORKERS'] || 3).to_i.clamp(1, 3)
 
-SITE        = 'https://resultados.tse.jus.br/oficial'
-BASE_URL    = "#{SITE}/ele#{YEAR}/arquivo-urna/#{CDP}"
-PLEITO      = 'p%06d' % CDP
+# fetch the raw zips and then import them, unless PHASE picks only one
+PHASES   = ENV['PHASE'] ? [ENV['PHASE']] : %w[fetch import]
 
-BASE_FIELDS = %i[state city zone section model]
-
-# every section reloads its missing files (fetch) and then updates its votes (store), unless PHASE picks only one
-PHASES      = ENV['PHASE'] ? [ENV['PHASE']] : %w[fetch store]
-FETCH       = PHASES.include? 'fetch'
-STORE       = PHASES.include? 'store'
-STATES      = ENV['STATES']&.split || %w[
-  AC AL AM AP BA CE DF ES GO MA
-  MG MS MT PA PB PE PI
-  PR RJ RN RO RR RS
-  SC SE SP TO
-  ZZ
-].reverse
+# key of a section; every table is keyed by it (plus the turn and whatever else makes the row unique)
+BASE_FIELDS = %i[state city city_code zone section]
