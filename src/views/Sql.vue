@@ -5,7 +5,7 @@ import { ELECTIONS } from '../model'
 import { electionLabel } from '../labels'
 import { t } from '../i18n'
 import { ensure, ensureDefault, ensureSmall } from '../data'
-import { query } from '../db'
+import { consoleQuery } from '../db'
 import { EXAMPLES, TABLES, draft, examplesFor, fill, initialSql } from '../sqlExamples'
 import { cell, ms } from '../format'
 import Panel from '../components/Panel.vue'
@@ -41,7 +41,8 @@ const copied = ref(false)
 const OLD_TABLE = /relation "(\w*_20\d\d)" does not exist/
 const message = computed(() => {
   const old = failure.value.message.match(OLD_TABLE)?.[1]
-  return old ? t('errors.tableGone', { table: old, tables: TABLES.join(', '), year: cfg.value.year, turn: cfg.value.turn }) : failure.value.message
+  if (old) return t('errors.tableGone', { table: old, tables: TABLES.join(', '), year: cfg.value.year, turn: cfg.value.turn })
+  return /read-only transaction/.test(failure.value.message) ? t('errors.readOnly') : failure.value.message
 })
 
 async function run() {
@@ -49,7 +50,7 @@ async function run() {
   failure.value = null
   try {
     await load(sql.value)
-    out.value = await query(sql.value)
+    out.value = await consoleQuery(sql.value)
   } catch (e) {
     failure.value = e
     out.value = null

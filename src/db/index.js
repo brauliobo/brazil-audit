@@ -31,11 +31,20 @@ const exclusive = (fn) => {
   return result
 }
 
-const run = (sql, params, options) => exclusive(async () => {
+// the SQL console never writes: its statement runs in a read-only transaction that is rolled back
+const readOnlyQuery = (database, sql, options) => database.transaction(async (tx) => {
+  await tx.exec('set transaction read only')
+  const result = await tx.query(sql, [], options)
+  await tx.rollback()
+  return result
+})
+
+const run = (sql, params, { readOnly, ...options } = {}) => exclusive(async () => {
   await ready
   const t0 = performance.now()
   try {
-    const r = await (await db).query(sql, params, { rowMode: 'array', ...options })
+    const [database, queryOptions] = [await db, { rowMode: 'array', ...options }]
+    const r = await (readOnly ? readOnlyQuery(database, sql, queryOptions) : database.query(sql, params, queryOptions))
     engine.queries++
     return { columns: r.fields.map((f) => f.name), rows: r.rows.map((row) => row.map((v, i) => cell(v, r.fields[i].dataTypeID))), ms: performance.now() - t0 }
   } catch (e) {
@@ -45,6 +54,9 @@ const run = (sql, params, options) => exclusive(async () => {
 
 /** @returns {Promise<{columns: string[], rows: any[][], ms: number}>} `params` are bound server-side as $1, $2, … */
 export const query = (sql, params = []) => run(sql, params)
+
+/** A statement typed by the user: same result as query(), but anything that would change data is refused. */
+export const consoleQuery = (sql) => run(sql, [], { readOnly: true })
 
 export const objects = ({ columns, rows }) => rows.map((r) => Object.fromEntries(columns.map((c, i) => [c, r[i]])))
 export const many = async (sql, params) => objects(await query(sql, params))
