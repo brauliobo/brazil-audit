@@ -6,6 +6,7 @@
 # Env: PROXIES  file with one `host port user pass` per line (required, requests rotate through them)
 #      THREADS  threads per level (default 8)
 #      STALL    passes without progress before stopping (default 3)
+#      PUBLISH  0 to skip bin/publish-2026 (release upload and coverage push) when the loop ends
 #      DB_NAME  database (default brazil-audit-2026)
 set -e
 cd "$(dirname "$0")/.."
@@ -31,3 +32,4 @@ while :; do
   sleep 20
 done
 echo "done: $(ls 2026/ballots | wc -l) sections, $(ls "$STORED" | wc -l) stored" >> tmp/scrape-2026.log
+[ "${PUBLISH:-1}" = 0 ] || bin/publish-2026 >> tmp/publish-2026.log 2>&1

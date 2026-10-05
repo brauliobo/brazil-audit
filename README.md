@@ -57,13 +57,24 @@ repository. Each asset is an independent zip, below 1.8 GiB, of one state and on
 | `data-2022` | the same names with `2022` (president, 2nd round) |
 
 Entries keep their cache path (`ballots/…`, `files/…`, `states/…`), so unzipping inside the data dir restores it. Each
-release also has `MANIFEST.tsv` (files and bytes per asset) and `SHA256SUMS`.
+release also has `MANIFEST.tsv` (files and bytes per asset), `SHA256SUMS` and `INDEX.json` (the first and last entry of
+every zip, to find the zip that holds a section without opening them).
 
 ```
 gh release download data-2026 -R brauliobo/brazil-audit -p '2026-rdv-sp-*' -p SHA256SUMS
 sha256sum -c SHA256SUMS --ignore-missing
 unzip 2026-rdv-sp-01.zip                        # or a single file: unzip 2026-rdv-sp-01.zip files/<name>
 ```
+
+### Publishing updates
+
+`bin/publish-2026` sends what the collection recovered since the last time: `bin/pack-release` rebuilds only the zips
+whose files changed (a new file goes to the part that holds its neighbours, a part that outgrows the limit is split, the
+cut points are kept next to the zips), `bin/publish-release` uploads those and the three meta files and checks that the
+release holds exactly the local files, and `bin/coverage` rewrites `coverage/missing-2026.tsv` (every section with files
+of its own that is not stored, with the reason: `no-info` or `no-files`) and `coverage/summary-2026.tsv` (counts per
+state), which are committed and pushed to this branch, so its history shows which sections were recovered. With nothing
+new it uploads and commits nothing. `bin/run-2026` runs it when the loop ends.
 
 The analysis app and its data dump are in the `main` branch (https://brauliobo.github.io/brazil-audit/), the original
 2022 script in the `2022` branch.

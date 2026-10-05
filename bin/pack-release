@@ -1,0 +1,166 @@
+#!/usr/bin/env python3
+"""Packs the raw TSE files of one election into the independent zips of its GitHub release (a release asset must stay
+under 2 GiB), rebuilding only the zips whose files changed so an update uploads little.
+
+  bin/pack-release <year> [--dry]
+
+  <year>-aux-<uf>-NN.zip    info files and the state config
+  <year>-rdv-<uf>-NN.zip    votes
+  <year>-logs-<uf>-NN.zip   logs
+
+Entries keep their cache path (ballots/..., files/..., states/...), so unzipping in the data dir restores it. A file
+goes to the part whose upper bound (the last entry it held when the part was cut) is the first one not below its path,
+so new files land in the part that already holds their neighbours and the other parts stay byte for byte the same; a
+part that outgrows the limit is split in two. The cut points live in <release dir>/state-<year>.json, and the first run
+adopts the zips already there. Writes <release dir>/meta-<year>/{INDEX.json,MANIFEST.tsv,SHA256SUMS} and the names of the
+rebuilt zips in changed-<year>.txt. Env: RELEASE_DIR (default /srv/release-staging), REPO (default brauliobo/brazil-audit).
+"""
+import bisect
+import hashlib
+import json
+import os
+import re
+import sys
+import zipfile
+from concurrent.futures import ProcessPoolExecutor
+
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+OUT = os.environ.get('RELEASE_DIR', '/srv/release-staging')
+REPO = os.environ.get('REPO', 'brauliobo/brazil-audit')
+MIB = 1 << 20
+TARGET, MAX = 1800 * MIB, 1900 * MIB
+ENTRY = 400  # zip headers per entry, roughly
+NAME = re.compile(r'(\d{4})-(aux|rdv|logs)-([a-z]{2})-(\d+)\.zip')
+
+
+def base(year):
+    return f'{ROOT}/{year}' if year != '2022' else ROOT
+
+
+def kind(directory, name):
+    return 'aux' if directory != 'files' else 'rdv' if 'rdv' in name else 'logs'
+
+
+def scan(year):
+    found = {}
+    for directory in ('ballots', 'states', 'files'):
+        with os.scandir(f'{base(year)}/{directory}') as entries:
+            for e in entries:
+                if e.is_file() and not e.name.endswith('.part'):
+                    found.setdefault((kind(directory, e.name), e.name.split('-')[0]), []).append((f'{directory}/{e.name}', e.stat().st_size))
+    return {key: sorted(files) for key, files in found.items()}
+
+
+def signature(files):
+    return hashlib.sha1('\n'.join(f'{p}\t{s}' for p, s in files).encode()).hexdigest()
+
+
+def adopt(year):
+    """Cut points and signatures of the zips already in the release dir."""
+    parts = {}
+    for f in sorted(os.listdir(OUT)):
+        m = NAME.fullmatch(f)
+        if m and m[1] == year:
+            with zipfile.ZipFile(f'{OUT}/{f}') as z:
+                entries = [(i.filename, i.file_size) for i in z.infolist()]
+            parts.setdefault(f'{m[2]}-{m[3]}', []).append({'name': f, 'bound': entries[-1][0], 'sig': signature(entries)})
+    for group in parts.values():
+        group.sort(key=lambda p: p['bound'])
+        group[-1]['bound'] = None
+    return parts
+
+
+def chunks(files):
+    pieces, current, size = [], [], 0
+    for path, s in files:
+        if current and size + s + ENTRY > TARGET:
+            pieces.append(current)
+            current, size = [], 0
+        current.append((path, s))
+        size += s + ENTRY
+    return pieces + [current]
+
+
+def plan(year, found, parts):
+    jobs = []
+    for (k, uf), files in sorted(found.items()):
+        group = parts.get(f'{k}-{uf}') or [{'name': f'{year}-{k}-{uf}-01.zip', 'bound': None, 'sig': None}]
+        bounds = [p['bound'] for p in group[:-1]]
+        buckets = [[] for _ in group]
+        for f in files:
+            buckets[bisect.bisect_left(bounds, f[0])].append(f)
+        number = max(int(NAME.fullmatch(p['name'])[4]) for p in group)
+        cut = []
+        for part, bucket in zip(group, buckets):
+            if not bucket:
+                continue
+            pieces = chunks(bucket) if sum(s + ENTRY for _, s in bucket) > MAX else [bucket]
+            for i, piece in enumerate(pieces):
+                name = part['name'] if i == 0 else f'{year}-{k}-{uf}-{(number := number + 1):02d}.zip'
+                cut.append({'name': name, 'bound': part['bound'] if i == len(pieces) - 1 else piece[-1][0],
+                            'sig': part['sig'] if i == 0 else None, 'files': piece})
+        cut[-1]['bound'] = None
+        parts[f'{k}-{uf}'] = [{x: p[x] for x in ('name', 'bound', 'sig')} for p in cut]
+        jobs += [dict(p, kind=k, uf=uf, now=signature(p['files'])) for p in cut]
+    return jobs
+
+
+def build(job):
+    target = f'{OUT}/{job["name"]}'
+    with zipfile.ZipFile(f'{target}.tmp', 'w', zipfile.ZIP_STORED) as z:
+        for path, _ in job['files']:
+            z.write(f'{job["base"]}/{path}', path)
+    os.rename(f'{target}.tmp', target)
+    return job['name'], sha256(target)
+
+
+def sha256(path):
+    h = hashlib.sha256()
+    with open(path, 'rb') as f:
+        for chunk in iter(lambda: f.read(MIB), b''):
+            h.update(chunk)
+    return h.hexdigest()
+
+
+def known_sums():
+    path = f'{OUT}/SHA256SUMS'
+    return {n: d for d, n in (l.split('  ') for l in open(path).read().splitlines())} if os.path.exists(path) else {}
+
+
+def write_meta(year, jobs, sums):
+    os.makedirs(f'{OUT}/meta-{year}', exist_ok=True)
+    assets = [{'name': j['name'], 'kind': j['kind'], 'uf': j['uf'], 'first': j['files'][0][0], 'last': j['files'][-1][0],
+               'files': len(j['files']), 'bytes': sum(s for _, s in j['files'])} for j in sorted(jobs, key=lambda j: j['name'])]
+    with open(f'{OUT}/meta-{year}/INDEX.json', 'w') as f:
+        json.dump({'year': year, 'repo': REPO, 'tag': f'data-{year}', 'assets': assets}, f, indent=1)
+    with open(f'{OUT}/meta-{year}/MANIFEST.tsv', 'w') as f:
+        f.write('archive\tfiles\tbytes\n')
+        f.writelines(f'{a["name"]}\t{a["files"]}\t{os.path.getsize(f"{OUT}/{a["name"]}")}\n' for a in assets)
+    with open(f'{OUT}/meta-{year}/SHA256SUMS', 'w') as f:
+        f.writelines(f'{sums[a["name"]]}  {a["name"]}\n' for a in assets)
+
+
+if __name__ == '__main__':
+    year = sys.argv[1]
+    state_file = f'{OUT}/state-{year}.json'
+    state = json.load(open(state_file)) if os.path.exists(state_file) else {'parts': adopt(year), 'sha': known_sums()}
+    old = {p['name']: p['sig'] for group in state['parts'].values() for p in group}
+    jobs = plan(year, scan(year), state['parts'])
+    for j in jobs:
+        j['base'] = base(year)
+    todo = [j for j in jobs if old.get(j['name']) != j['now'] or not os.path.exists(f'{OUT}/{j["name"]}')]
+    print(f'{year}: {len(jobs)} archives, {len(todo)} to rebuild, {sum(len(j["files"]) for j in todo)} files', flush=True)
+    for j in todo:
+        print(f'  {j["name"]} ({len(j["files"])} files, was {"new" if j["name"] not in old else "changed"})')
+    if '--dry' in sys.argv:
+        sys.exit()
+    with ProcessPoolExecutor(3) as pool:
+        for name, sha in pool.map(build, todo):
+            state['sha'][name] = sha
+    for group in state['parts'].values():
+        for p in group:
+            p['sig'] = next(j['now'] for j in jobs if j['name'] == p['name'])
+    json.dump(state, open(state_file, 'w'), indent=1)
+    write_meta(year, jobs, {j['name']: state['sha'].get(j['name']) or sha256(f'{OUT}/{j["name"]}') for j in jobs})
+    open(f'{OUT}/changed-{year}.txt', 'w').write(''.join(f'{j["name"]}\n' for j in todo))
+    print('done', flush=True)

@@ -1,0 +1,13 @@
+#!/bin/bash
+# Publishes the current state of the 2026 collection: the raw data (only what changed) to the data-2026 release and the
+# coverage lists (what is still missing) to the 2026 branch on GitHub. Safe to run any time; with nothing new it uploads
+# nothing and commits nothing.
+set -euo pipefail
+cd "$(dirname "$0")/.."
+
+bin/publish-release 2026
+YEAR=2026 ruby bin/coverage
+git add coverage
+summary=$(tail -n +2 coverage/summary-2026.tsv | awk -F'\t' '{own += $2; missing += $4} END {printf "%d of %d sections missing", missing, own}')
+git diff --cached --quiet || git commit -q -m "coverage: sections missing from the 2026 collection" -m "$summary"
+git -c credential.helper= -c 'credential.helper=!gh auth git-credential' push https://github.com/brauliobo/brazil-audit.git HEAD:refs/heads/2026

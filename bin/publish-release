@@ -1,0 +1,31 @@
+#!/bin/bash
+# Packs what changed in the raw data of one election and uploads only that to its GitHub release (tag data-<year>),
+# then checks that the release holds exactly the local files, same sizes.
+#
+#   bin/publish-release <year>        (RELEASE_DIR, REPO: see bin/pack-release)
+set -euo pipefail
+year=${1:?usage: bin/publish-release <year>}
+cd "$(dirname "$0")/.."
+REPO=${REPO:-brauliobo/brazil-audit}
+DIR=${RELEASE_DIR:-/srv/release-staging}
+
+nice -n 15 ionice -c3 python3 bin/pack-release "$year"
+
+# retried: an asset that fails to upload is simply sent again
+upload() {
+  for i in 1 2 3 4 5; do
+    gh release upload "data-$year" "$@" --clobber -R "$REPO" && return 0
+    sleep $((i * 10))
+  done
+  echo "upload failed: $*" >&2
+  return 1
+}
+export -f upload
+export year REPO
+
+sed "s|^|$DIR/|" "$DIR/changed-$year.txt" | xargs -r -P 3 -I{} bash -c 'upload "$0"' {}
+upload "$DIR/meta-$year/INDEX.json" "$DIR/meta-$year/MANIFEST.tsv" "$DIR/meta-$year/SHA256SUMS"
+
+gh release view "data-$year" -R "$REPO" --json assets --jq '.assets[] | "\(.name) \(.size)"' | sort > "$DIR/remote-$year.txt"
+(cd "$DIR" && for f in "$year"-*.zip meta-"$year"/*; do echo "$(basename "$f") $(stat -c %s "$f")"; done) | sort > "$DIR/local-$year.txt"
+diff "$DIR/local-$year.txt" "$DIR/remote-$year.txt" && echo "$year: the release matches the local files"

@@ -1,0 +1,32 @@
+#!/usr/bin/env ruby
+# Writes coverage/missing-<year>.tsv (the sections with files of their own that are not stored yet, and why) and
+# coverage/summary-<year>.tsv (the counts per state). No timestamps: rerunning without news changes nothing.
+require 'active_support/all'
+%w[config http cache state stored].each{ |f| require_relative "../lib/#{f}" }
+
+cached = Dir.children("#{DATA_DIR}/ballots").to_set
+missing, summary = [], []
+
+STATES.sort.each do |state|
+  state = state.downcase
+  own = rows = 0
+  Hashie::Mash.new(JSON.parse State.get(state, fetch: false).data).abr.first.mu.each do |city|
+    city.zon.each do |zone|
+      zone.sec.select{ |s| State.own?(s) }.each do |s|
+        own += 1
+        next if Stored.section?(state, city.cd, zone.cd, s.ns)
+
+        no_info = !cached.include?([state, city.cd, zone.cd, s.ns].join('-'))
+        missing << [state, city.cd, city.nm, zone.cd, s.ns, no_info ? 'no-info' : 'no-files']
+      end
+    end
+  end
+  state_rows = missing.select{ |r| r[0] == state }
+  summary << [state, own, own - state_rows.size, state_rows.size, state_rows.count{ |r| r[5] == 'no-info' }, state_rows.count{ |r| r[5] == 'no-files' }]
+end
+
+FileUtils.mkdir_p 'coverage'
+write = ->(name, header, data){ File.write "coverage/#{name}-#{YEAR}.tsv", ([header] + data).map{ |r| r.join("\t") }.join("\n") << "\n" }
+write.('missing', %w[state city_code city zone section reason], missing)
+write.('summary', %w[state own_sections stored missing no_info no_files], summary)
+puts "#{YEAR}: #{missing.size} of #{summary.sum{ |r| r[1] }} sections missing (#{missing.count{ |r| r[5] == 'no-info' }} without info file, #{missing.count{ |r| r[5] == 'no-files' }} without vote files)"
