@@ -149,7 +149,7 @@ gh release download data-2018 -R brauliobo/brazil-audit -D 2018/raw
 | | 2018 | 2022 | 2026 |
 |---|---|---|---|
 | Source | TSE open data CSVs (CDN) | RDV of the TSE portal | RDV, logs and info of the TSE portal |
-| Voting times | no (only opening and closing of each section) | yes | yes |
+| Voting times | no (only opening and closing of each section) | logs collected (in the `data-2022` release), never imported | yes, table `voting_times` |
 | Offices | all, both rounds | president, 2nd round | all |
 | Tables | `rdv_votes`, `section_detail`, `section_urn`, `urn_match`, `candidates`, `elected` | `votes` | `rdv_votes`, `voting_times` |
 | Fetching | 3 downloads of zips, resumable | per-section files through proxies | per-section files through proxies |
