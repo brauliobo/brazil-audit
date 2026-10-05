@@ -59,6 +59,7 @@ const FAMILIES = {
   'drill.levels.': ['state', 'city', 'zone', 'section'],
   'time.rank.': ['fast', 'regular', 'gap', 'diff'],
   'coverage.reasons.': ['not_totalized', 'negative', 'no_official_file', 'zone_files_disagree'],
+  'raw.kind.': ['rdv', 'logs', 'aux'],
   'sql.examples.': EXAMPLES.map((e) => e.id),
   'sql.tables.': TABLES,
   'design.type.': ['display', 'title800', 'title700', 'subtitle600', 'text500', 'base400', 'table300', 'caption200', 'note100'],

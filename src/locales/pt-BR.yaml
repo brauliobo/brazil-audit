@@ -382,6 +382,24 @@ coverage:
   sectionsInDump: seções no dump
   noBlank: "Brancos e nulos não foram coletados nesta eleição: o dump só tem os votos nominais por candidato."
 
+raw:
+  title: Dados brutos desta seção
+  line: "Dados brutos desta eleição:"
+  kind:
+    rdv: Resultado da urna (RDV)
+    logs: Log da urna
+    aux: Arquivo de apuração (aux.json)
+  none: Sem arquivos publicados pelo TSE para esta seção.
+  noPerSection: Os arquivos por seção desta eleição não estão publicados aqui; os números vêm dos dados abertos do TSE, por UF.
+  zipNote: "Os arquivos ficam dentro de zips, assets de uma release do GitHub (sem link por arquivo): baixe o zip indicado e extraia o arquivo da seção com o comando."
+  copy: copiar comando
+  copied: copiado
+  copyLabel: "Copiar o comando para {file}"
+  tseAux: aux.json no site do TSE
+  tseGone: O TSE não publica mais os arquivos desta eleição; só restam as cópias nos zips.
+  release: "Release {tag} no GitHub"
+  collector: "coletor (branch {branch})"
+
 design:
   title: Sistema de design
   intro: Primitivos (valores crus) → semânticos (significado, claro/escuro) → componentes. Veja src/design/README.md. Esta página documenta cada token e componente no tema ativo.

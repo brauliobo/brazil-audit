@@ -381,6 +381,24 @@ coverage:
   sectionsInDump: sections in the dump
   noBlank: "Blank and null ballots were not collected for this election: the dump only has the nominal votes per candidate."
 
+raw:
+  title: Raw data of this section
+  line: "Raw data of this election:"
+  kind:
+    rdv: Ballot-box result (RDV)
+    logs: Ballot-box log
+    aux: Tally file (aux.json)
+  none: No files published by the TSE for this section.
+  noPerSection: The per-section files of this election are not published here; the numbers come from the TSE open data, per state.
+  zipNote: "The files are inside zips, assets of a GitHub release (no link per file): download the zip shown and extract the section's file with the command."
+  copy: copy command
+  copied: copied
+  copyLabel: "Copy the command for {file}"
+  tseAux: aux.json on the TSE site
+  tseGone: The TSE no longer publishes the files of this election; only the copies in the zips remain.
+  release: "Release {tag} on GitHub"
+  collector: "collector (branch {branch})"
+
 design:
   title: Design system
   intro: Primitives (raw values) → semantics (meaning, light/dark) → components. See src/design/README.md. This page documents every token and component in the active theme.

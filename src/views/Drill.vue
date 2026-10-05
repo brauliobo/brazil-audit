@@ -17,6 +17,7 @@ import Breadcrumb from '../components/Breadcrumb.vue'
 import BarList from '../components/BarList.vue'
 import DataTable from '../components/DataTable.vue'
 import StateMap from '../components/StateMap.vue'
+import RawData from '../components/RawData.vue'
 import ResidualSwitch from '../components/ResidualSwitch.vue'
 
 const LEVELS = ['state', 'city', 'zone', 'section']
@@ -147,10 +148,12 @@ Skeleton(v-else-if="!view.data")
     StateMap(:year="year" :uf="args[0]" :office="office")
   Panel(:title="t(`drill.levels.${LEVELS[args.length]}`)" :state="view" :election="year" wide)
     DataTable(:columns="columns" :rows="view.data.rows" :sort="sort" :page="page" :size="25" :total="Number(view.data.total)" @sort="onSort" @page="setParam('page', $event ? $event + 1 : null)")
+  RawData(v-if="args.length >= 2" :election="year" :level="LEVELS[args.length - 1]")
 .grid-auto(v-else-if="view.data")
   Panel(v-for="o in view.data.offices" :key="o.office" :title="cfg.offices.includes(o.office) ? officeName(o.office) : t('drill.officeFallback', { id: o.office })" :state="view" :election="year")
     BarList(:items="sectionItems(o.rows)")
     p.muted {{ officeTotals(o) }}
   Panel(v-if="cfg.hasTimes" :title="t('drill.voteTime')" :state="view" :election="year")
     a(:href="href(year, 'time', args)") {{ t('drill.seeTimes') }}
+  RawData(:election="year" level="section" :uf="args[0]" :city="args[1]" :zone="args[2]" :section="args[3]")
 </template>

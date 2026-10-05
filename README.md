@@ -186,7 +186,17 @@ of file, below 1.8 GiB (a big state has several), named `<year>-<kind>-<uf>-NN.z
 | `logs` | per section voting logs (the source of the voting times) |
 
 Entries keep their cache path (`ballots/…`, `files/…`, `states/…`), so unzipping inside a data dir restores it. Each
-release also has `MANIFEST.tsv` (files and bytes per asset) and `SHA256SUMS`.
+release also has `MANIFEST.tsv` (files and bytes per asset), `SHA256SUMS` and `INDEX.json` (`{year, repo, tag, assets: [{name, kind, uf, first, last, files, bytes}]}`:
+the first and last entry key of each asset, so the zip that holds a section is found by comparing strings).
+
+The app shows these links for a section ("Dados brutos desta seção": the rdv, logs and aux zips holding the section's files, the `unzip -p`
+command that extracts them, the release page, the live TSE `aux.json` address for 2026, and the collector's code in its branch) and a lighter
+line at city, zone and election level. A browser cannot read GitHub release URLs (no CORS), so `scripts/build-data.mjs --only=raw` ships
+the compacted index under `data/raw/<election>.json` (downloaded from the release, or from `RAW_INDEX_DIR=/srv/release-staging` with
+`meta-<year>/INDEX.json`; a missing index fails the build) and the TSE city code is a column of `mun_map`. `node scripts/check-raw.mjs
+--election=2026` resolves 500 random sections of the dump and, when the zips are on disk, checks that the files are inside the zip it points to.
+The 2022 runoff uses the release `data-2022` (RDV and logs of the first version of the site); 2018 and the 2022 first round come from the TSE
+open data (per-state CSV files) collected by branch `2018`, and have no per-section files, only the collector link.
 
 ```sh
 gh release download data-2026 -R brauliobo/brazil-audit -p '2026-rdv-sp-*' -p SHA256SUMS

@@ -267,3 +267,6 @@ canvas.scatter { display: block; width: 100%; height: auto; }
 .specimen__box--motion { transition: transform var(--motion-base) var(--easing-standard); }
 .specimen__box--motion:hover { transform: translateY(calc(var(--space-1) * -1)); }
 .specimen__tooltip-space { height: var(--space-12); }
+.rawfiles { display: grid; gap: var(--space-2); margin: var(--space-0) var(--space-0) var(--space-3); padding: var(--space-0); list-style: none; }
+.rawfiles li { display: flex; flex-wrap: wrap; gap: var(--space-2); align-items: center; }
+.rawfiles code { padding: var(--space-hair) var(--space-2); border-radius: var(--radius-control); background: var(--surface-sunken); overflow-wrap: anywhere; }

@@ -12,6 +12,7 @@ import Field from './Field.vue'
 import Stat from './Stat.vue'
 import Notice from './Notice.vue'
 import DataTable from './DataTable.vue'
+import RawData from './RawData.vue'
 
 // Elections with coverage: own sections (TSE configs) vs sections with published results; the others: every section of the dump.
 const props = defineProps({ year: String })
@@ -107,4 +108,5 @@ Panel(:title="t('coverage.title')" :state="coverage" :election="year" wide)
   template(v-else)
     Stat(:value="int(coverage.data.stored)" :label="t('coverage.sectionsInDump')")
     Notice(v-if="coverage.data.noblank") {{ t('coverage.noBlank') }}
+  RawData(:election="year")
 </template>
