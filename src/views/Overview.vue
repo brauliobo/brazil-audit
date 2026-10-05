@@ -1,7 +1,7 @@
 <script setup vapor>
 import { computed } from 'vue'
 import { route, href, go, setParam } from '../router'
-import { ELECTIONS, candJoin, inElection } from '../model'
+import { ELECTIONS, candJoin, electionKey, inElection } from '../model'
 import { electionLabel, officeName, stateTitle } from '../labels'
 import { t } from '../i18n'
 import { ensureSmall } from '../data'
@@ -43,9 +43,9 @@ async function officialGap(rows, q, y) {
 // the two leaders of each election's presidential race, from the official totals (independent of the dump's coverage)
 const polarization = useAsync(() => [base.loading], async (_, q) => {
   if (base.loading) return null
-  const rows = objects(await q(`select election, short_name name, party, official_votes::float8 / sum(official_votes) over (partition by election) share from cands
-    where office = 1 and uf = 'br' and official_votes is not null order by election desc, official_votes desc`))
-  return Object.entries(Object.groupBy(rows, (r) => r.election)).sort(([a], [b]) => b - a).map(([e, l]) => ({ election: e, a: l[0], b: l[1] }))
+  const rows = objects(await q(`select election, turn, short_name name, party, official_votes::float8 / sum(official_votes) over (partition by election, turn) share from cands
+    where office = 1 and uf = 'br' and official_votes is not null order by election, turn, official_votes desc`))
+  return Object.values(Object.groupBy(rows, (r) => `${r.election}/${r.turn}`)).map((l) => ({ election: electionKey(l[0].election, l[0].turn), a: l[0], b: l[1] }))
 })
 const ufmap = useAsync(() => [year.value, base.loading, residualOn.value], async ([y], q) => {
   if (base.loading) return null
@@ -53,7 +53,7 @@ const ufmap = useAsync(() => [year.value, base.loading, residualOn.value], async
   return { units: unitsOf(rows), map, abroad: winners.find((r) => r.state === 'zz' && r.rn === 1) }
 })
 
-const PARTY = `left join (select substr(n,1,2) num, max(party) party from cands where election=$2 and office>1 group by 1) p on p.num = substr(r.cand,1,2)`
+const PARTY = `left join (select substr(n,1,2) num, max(party) party from cands where election=$2 and turn=$3 and office>1 group by 1) p on p.num = substr(r.cand,1,2)`
 const results = useAsync(() => [year.value, office.value, base.loading, residualOn.value], async ([y, o], q) => {
   if (base.loading) return null
   const { res, tot } = rollup(y)
@@ -62,7 +62,7 @@ const results = useAsync(() => [year.value, office.value, base.loading, residual
        from ${res} r ${candJoin(y, 'r')} where r.office = $1 and ${inElection(y, 'r')} group by 1 order by votes desc limit 20`
     : `select substr(r.cand,1,2) cand, max(p.party) name, max(p.party) party, sum(r.votes) votes, null official, sum(sum(r.votes)) over () total
        from ${res} r ${PARTY} where r.office = $1 and ${inElection(y, 'r')} group by 1 order by votes desc limit 20`
-  const rows = objects(await q(sql, o === 1 ? [o] : [o, cfg.value.year]))
+  const rows = objects(await q(sql, o === 1 ? [o] : [o, cfg.value.year, cfg.value.turn]))
   const gap = o === 1 ? await officialGap(rows, q, y) : null
   const [t] = objects(await q(`select sum(sections) sections, sum(nominal) nominal, sum(blank) blank, sum(nul) nul from ${tot} where office = $1 and ${inElection(y)}`, [o]))
   return { rows, gap, ...t }

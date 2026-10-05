@@ -10,6 +10,9 @@ export { DEFAULT_ELECTION, ELECTIONS } from './elections.js'
 /** The election whose parliament the Parlamento tab opens when the current one has no seats data. */
 export const SEATS_ELECTION = Object.values(ELECTIONS).findLast((e) => e.hasSeats).key
 
+/** The key of the election of a year and turn (as stored in the `election` and `turn` columns), if it is configured. */
+export const electionKey = (year, turn) => Object.values(ELECTIONS).find((e) => e.year === year && e.turn === turn)?.key
+
 /** `election = 2026 and turn = 1` for an election key, optionally on a table alias. */
 export const inElection = (key, alias = '') => {
   const [e, a] = [ELECTIONS[key], alias ? `${alias}.` : '']
@@ -49,7 +52,7 @@ export const VIEWS = [
 
 /** Joins a cs/res alias to its candidate name: presidential candidates are national, all others per state. */
 export const candJoin = (key, alias = 'cs') =>
-  `left join cands c on c.election=${ELECTIONS[key].year} and c.office=${alias}.office and c.n=${alias}.cand and c.uf=(case when ${alias}.office=1 then 'br' else ${alias}.state end)`
+  `left join cands c on c.election=${ELECTIONS[key].year} and c.turn=${ELECTIONS[key].turn} and c.office=${alias}.office and c.n=${alias}.cand and c.uf=(case when ${alias}.office=1 then 'br' else ${alias}.state end)`
 
 /** Per-section presidential votes of candidate `$1` (zero when absent) with the section's nominal total. */
 export const candVotes = (key) => `select state,city,zone,section,model,nominal,coalesce((votes->>$1)::int, 0) votes from rdv where office = 1 and ${inElection(key)}`

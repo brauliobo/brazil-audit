@@ -292,7 +292,7 @@ time:
   clockBrt: Brasília (UTC-3)
   clockLocal: local, as recorded
   seeResults: section results →
-  unavailable: This election has no voting times in the dump; pick one that does.
+  unavailable: This election has no time for each vote (only the opening and closing of the ballot box); pick one that does.
   curveTitle: "Votes every 10 minutes (one record per voter, in the vote for president)"
   summary: "{events} events in {sections} sections ({cities} municipalities) · clock {clock}"
   clockConverted: "converted to Brasília time using the time zone estimated per municipality (min. {min}h, max. {max}h)"

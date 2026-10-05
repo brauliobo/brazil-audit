@@ -12,7 +12,7 @@ const tooltip = ref({ text: '', x: 0, y: 0, show: false })
 watch(() => props.map, () => (tooltip.value.show = false)) // a tooltip from the previous map must not linger
 
 const attr = (id) => (props.fills[id] ? ` style="--c:${props.fills[id][0]};--t:${props.fills[id][1].toFixed(2)}"` : '')
-const focusable = (id) => (props.keyboard ? ` tabindex="0" role="button" aria-label="${props.tip(id).split('\n')[0].replaceAll('"', '&quot;')}"` : '')
+const focusable = (id) => (props.keyboard && props.fills[id] ? ` tabindex="0" role="button" aria-label="${props.tip(id).split('\n')[0].replaceAll('"', '&quot;')}"` : '')
 const paths = computed(() => props.map.items.map(([id, d]) => `<path data-id="${id}" d="${d}"${attr(id)}${focusable(id)}/>`).join(''))
 const borders = computed(() => (props.overlay ? props.overlay.items.map(([, d]) => `<path d="${d}"/>`).join('') : ''))
 

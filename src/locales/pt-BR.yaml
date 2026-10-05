@@ -293,7 +293,7 @@ time:
   clockBrt: Brasília (UTC-3)
   clockLocal: local, como gravado
   seeResults: resultados da seção →
-  unavailable: Esta eleição não tem horários de votação no dump; escolha uma que tenha.
+  unavailable: Esta eleição não tem o horário de cada voto (só a abertura e o fechamento da urna); escolha outra que tenha.
   curveTitle: "Votos a cada 10 minutos (um registro por eleitor, na votação para presidente)"
   summary: "{events} eventos em {sections} seções ({cities} municípios) · relógio {clock}"
   clockConverted: "convertido para Brasília com o fuso estimado por município (mín. {min}h, máx. {max}h)"

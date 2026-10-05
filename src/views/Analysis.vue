@@ -28,7 +28,7 @@ const base = useAsync(() => [year.value, state.value], async ([y, s]) => { await
 const candidates = useAsync(() => [year.value, state.value, base.loading, loaded.value], async ([y, s], q) => {
   if (base.loading) return null
   return objects(await q(`select cs.cand, coalesce(c.short_name, cs.cand) name, sum(cs.votes) votes from cs cs
-    join cands c on c.election = ${cfg.value.year} and c.office = 1 and c.n = cs.cand and c.uf = 'br'
+    join cands c on c.election = ${cfg.value.year} and c.turn = ${cfg.value.turn} and c.office = 1 and c.n = cs.cand and c.uf = 'br'
     where cs.office = 1 and ${inElection(y, 'cs')} and ($1::text is null or cs.state = $1) group by cs.cand, c.short_name order by votes desc limit 8`, [s]))
 })
 const cand = computed(() => route.value.params.get('cand') ?? candidates.data?.[0]?.cand ?? null)

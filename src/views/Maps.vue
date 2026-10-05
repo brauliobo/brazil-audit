@@ -115,7 +115,7 @@ const spread = useAsync(() => [year.value, base.loading, residualOn.value], asyn
   const rows = objects(await q(`with t as (select cand, sum(votes) v from ${rollup(y).res} where office = 1 and ${inElection(y)} and state <> 'zz' group by 1 order by 2 desc limit 2),
     a as (select cand from t order by v desc limit 1), b as (select cand from t order by v limit 1)
     select sum(r.votes) valid, (sum(r.votes) filter (where r.cand = (select cand from a)) - sum(r.votes) filter (where r.cand = (select cand from b)))::float8 / sum(r.votes) margin,
-      (select short_name from cands where election = ${ELECTIONS[y].year} and office = 1 and uf = 'br' and n = (select cand from a)) na, (select short_name from cands where election = ${ELECTIONS[y].year} and office = 1 and uf = 'br' and n = (select cand from b)) nb
+      (select short_name from cands where election = ${ELECTIONS[y].year} and turn = ${ELECTIONS[y].turn} and office = 1 and uf = 'br' and n = (select cand from a)) na, (select short_name from cands where election = ${ELECTIONS[y].year} and turn = ${ELECTIONS[y].turn} and office = 1 and uf = 'br' and n = (select cand from b)) nb
     from ${rollup(y).res} r join mun_map m on m.state = r.state and m.city = r.city where r.office = 1 and ${inElection(y, 'r')} and r.state <> 'zz' group by m.ibge having sum(r.votes) > 0`))
   const counts = Array(BINS).fill(0)
   for (const r of rows) counts[Math.min(Math.floor(((r.margin + 1) / 2) * BINS), BINS - 1)]++
