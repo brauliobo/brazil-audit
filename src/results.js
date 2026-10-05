@@ -24,22 +24,22 @@ export async function ensureRollups(key) {
   await ensureSmall(key, 'res', 'tot', 'residual')
 }
 
-/** Leading two candidates per state for the president, with the state's valid (nominal) votes. */
-export async function stateWinners(q, year) {
-  return objects(await q(`with v as (select r.state, r.cand, 1 office, sum(r.votes) votes from ${rollup(year).res} r where r.office = 1 and ${inElection(year, 'r')} group by 1, 2),
+/** Leading two candidates per state for an office, with the state's valid (nominal) votes. */
+export async function stateWinners(q, year, office = 1) {
+  return objects(await q(`with v as (select r.state, r.cand, r.office, sum(r.votes) votes from ${rollup(year).res} r where r.office = $1 and ${inElection(year, 'r')} group by 1, 2, 3),
     rk as (select *, row_number() over (partition by state order by votes desc, cand) rn, sum(votes) over (partition by state) valid from v)
-    select rk.state, rk.cand, rk.votes, rk.valid, rk.rn, c.short_name name, c.party from rk ${candJoin(year, 'rk')} where rn <= 2 order by state, rn`))
+    select rk.state, rk.cand, rk.votes, rk.valid, rk.rn, c.short_name name, c.party from rk ${candJoin(year, 'rk')} where rn <= 2 order by state, rn`, [office]))
 }
 
 export const titleCase = (s) => s.toLowerCase().replace(/(^|\s)\S/g, (m) => m.toUpperCase())
 
-/** "Flavio Bolsonaro vence em 14 estados e no DF; Lula da Silva em 12": winner per state by nominal votes. */
-export function winnersHeadline(rows) {
+/** "Flavio Bolsonaro vence em 14 estados e no DF; Lula da Silva em 12": winner per state by nominal votes (parties, for the offices that differ by state). */
+export function winnersHeadline(rows, office) {
   const first = rows.filter((r) => r.rn === 1 && r.state !== 'zz')
-  const tally = Object.entries(Object.groupBy(first, (r) => r.name ?? r.cand)).map(([name, l]) => ({ name, states: l.filter((r) => r.state !== 'df').length, df: l.some((r) => r.state === 'df') }))
+  const tally = Object.entries(Object.groupBy(first, (r) => (office === 1 ? r.name ?? r.cand : r.party ?? r.cand))).map(([name, l]) => ({ name, states: l.filter((r) => r.state !== 'df').length, df: l.some((r) => r.state === 'df') }))
   tally.sort((a, b) => b.states + b.df - (a.states + a.df))
   const part = (l) => {
-    const name = titleCase(l.name)
+    const name = office === 1 ? titleCase(l.name) : l.name
     if (l !== tally[0]) return t(l.df ? 'maps.trailsDf' : 'maps.trails', { name, n: l.states })
     return t(l.df ? 'maps.leadsDf' : 'maps.leads', { name, count: l.states })
   }

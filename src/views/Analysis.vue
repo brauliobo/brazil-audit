@@ -73,7 +73,7 @@ const rates = useAsync(() => [year.value, state.value, base.loading, loaded.valu
 })
 
 const benfordLegend = computed(() => [{ color: 'var(--chart-bar)', label: t('analysis.observed') }, { color: 'var(--chart-highlight)', label: t('analysis.expected', { chi2: num(benford.data.chi2), critical: num(15.51), n: int(benford.data.total) }) }])
-const pick = (key) => (e) => setParam(key, e.target.value)
+const pick = (key, e) => setParam(key, e.target.value)
 const stateOptions = computed(() => statesIn('rdv', year.value))
 const section = (r) => href(year.value, 'drill', [r.state, r.city, r.zone, r.section])
 const histLabels = computed(() => Array.from({ length: BINS }, (_, i) => pct(i / BINS, 1)))
@@ -94,11 +94,11 @@ const rateLabels = computed(() => rates.data.map((r) => r.state.toUpperCase()))
 h1 {{ t('analysis.title', { election: electionLabel(year) }) }}
 .cluster
   Field(:label="t('analysis.scope')")
-    select(:value="state ?? ''" @change="pick('state')")
+    select(:value="state ?? ''" @change="pick('state', $event)")
       option(value="") {{ t('analysis.loaded', { count: loaded }) }}
       option(v-for="s in stateOptions" :key="s" :value="s" :selected="s === state") {{ stateTitle(s) }}
   Field(v-if="candidates.data" :label="t('analysis.candidate')")
-    select(:value="cand" @change="pick('cand')")
+    select(:value="cand" @change="pick('cand', $event)")
       option(v-for="c in candidates.data" :key="c.cand" :value="c.cand" :selected="c.cand === cand") {{ c.name }} ({{ c.cand }})
 .grid-auto
   Panel(:title="t('analysis.histTitle')" :state="hist" :election="year" wide)

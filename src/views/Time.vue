@@ -73,7 +73,7 @@ const paced = useAsync(() => [year.value, state.value, city.value, rank.value, b
 const go2 = (a) => go(href(year.value, 'time', a, { clock: brt.value ? null : 'local' }))
 const pickState = (e) => go2(e.target.value ? [e.target.value] : [])
 const pickCity = (e) => go2(e.target.value ? [state.value, e.target.value] : [state.value])
-const pick = (key) => (e) => setParam(key, e.target.value)
+const pick = (key, e) => setParam(key, e.target.value)
 const secLink = (r) => href(year.value, 'time', [r.state, r.city, r.zone, r.section], { clock: brt.value ? null : 'local' })
 const sec = (v) => (v == null ? '–' : t('units.seconds', { n: int(v) }))
 const cols = computed(() => [
@@ -122,7 +122,7 @@ h1 {{ t('time.title', { place }) }}
   Panel(:title="t('time.pace')" :state="paced" :election="year" wide)
     .cluster
       Field(:label="t('time.sortBy')")
-        select(:value="rank" @change="pick('rank')")
+        select(:value="rank" @change="pick('rank', $event)")
           option(v-for="k in Object.keys(RANKS)" :key="k" :value="k" :selected="k === rank") {{ t(`time.rank.${k}`) }}
     p.muted {{ t('time.paceNote') }}
     DataTable(:columns="cols" :rows="paced.data")

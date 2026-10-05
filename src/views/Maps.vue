@@ -27,7 +27,7 @@ const uf = computed(() => params.value.get('uf') ?? 'sp')
 const office = computed(() => Number(params.value.get('office') ?? 1))
 const metric = computed(() => params.value.get('metric') ?? 'winner')
 const offices = computed(() => ELECTIONS[year.value].offices.filter((id) => [1, 3, 5].includes(id)))
-const pick = (key) => (e) => setParam(key, e.target.value)
+const pick = (key, e) => setParam(key, e.target.value)
 
 const base = useAsync(() => [year.value], async ([y]) => { await ensureRollups(y); return true })
 
@@ -43,11 +43,11 @@ const data = useAsync(() => [year.value, grain.value, scope.value === 'state' ? 
   if (base.loading) return null
   const args = g === 'uf' ? [o, cand] : [o, s, cand]
   const [rows, rates, map, overlay, winners] = await Promise.all([
-    q(unitSql(y, g), args), ELECTIONS[y].hasBlank ? q(rateSql(y, g), g === 'uf' ? [o] : [o, s]) : null, loadGeo(geoKind.value), scope.value === 'mun' ? loadGeo('uf') : null, stateWinners(q, y),
+    q(unitSql(y, g), args), ELECTIONS[y].hasBlank ? q(rateSql(y, g), g === 'uf' ? [o] : [o, s]) : null, loadGeo(geoKind.value), scope.value === 'mun' ? loadGeo('uf') : null, stateWinners(q, y, o),
   ])
   const units = unitsOf(rows)
   for (const r of rates ? objects(rates) : []) Object.assign(units.get(r.id) ?? {}, { rate: (r.blank + r.nul) / (r.nominal + r.blank + r.nul) })
-  return { units, map, overlay, winners }
+  return { units, map, overlay, winners, grain: g } // the grain travels with the data: the view may still show the previous result while the next loads
 })
 
 const scale = (v, lo, hi) => 0.15 + 0.85 * Math.min(Math.max((v - lo) / ((hi - lo) || 1), 0), 1)
@@ -75,13 +75,13 @@ const style = computed(() => {
 
 const tip = (id) => {
   const u = data.data.units.get(id)
-  const extra = [...(u.rate != null ? [t('maps.blankAndNull', { rate: pct(u.rate, 1) })] : []), ...(scope.value === 'uf' ? [t('maps.clickCities')] : [])]
-  return unitTip(u, grain.value, extra)
+  const extra = [...(u.rate != null ? [t('maps.blankAndNull', { rate: pct(u.rate, 1) })] : []), ...(data.data.grain === 'uf' ? [t('maps.clickCities')] : [])]
+  return unitTip(u, data.data.grain, extra)
 }
 // the UF map opens a state's cities in place (keeping metric, office and candidate); a municipality opens its drill-down
 const here = (changes) => href(year.value, 'maps', [], { ...Object.fromEntries(params.value), ...changes })
 const open = (id) => {
-  if (scope.value === 'uf') return go(here({ scope: 'state', uf: id }))
+  if (data.data.grain === 'uf') return go(here({ scope: 'state', uf: id }))
   const u = data.data.units.get(id)
   go(href(year.value, 'drill', [u.state, u.name], { office: office.value }))
 }
@@ -91,8 +91,8 @@ onMounted(() => addEventListener('keydown', onKey))
 onUnmounted(() => removeEventListener('keydown', onKey))
 
 const legend = computed(() => winnerLegend(data.data.units, office.value))
-const headline = computed(() => (year.value && data.data ? winnersHeadline(data.data.winners) : ''))
-const abroad = computed(() => data.data.winners.find((r) => r.state === 'zz' && r.rn === 1))
+const headline = computed(() => (year.value && data.data ? winnersHeadline(data.data.winners, office.value) : ''))
+const abroad = computed(() => data.data?.winners.find((r) => r.state === 'zz' && r.rn === 1))
 const gradient = computed(() => `linear-gradient(90deg, color-mix(in oklab, ${style.value.color} 15%, var(--map-blend-base)), ${style.value.color})`)
 const legendItems = computed(() => [
   ...(metric.value === 'winner' ? legend.value.map((l) => ({ color: partyColor(l.party), label: `${l.label} · ${l.n}` })) : []),
@@ -123,33 +123,33 @@ h1 {{ t('maps.title', { election: electionLabel(year) }) }}
 .cluster
   ResidualSwitch(v-if="ELECTIONS[year].hasResidual")
   Field(:label="t('maps.scale')")
-    select(@change="pick('scope')")
+    select(@change="pick('scope', $event)")
       option(value="uf" :selected="scope === 'uf'") {{ t('maps.scaleUf') }}
       option(value="mun" :selected="scope === 'mun'") {{ t('maps.scaleMun') }}
       option(value="state" :selected="scope === 'state'") {{ t('maps.scaleState') }}
   Field(v-if="scope === 'state'" :label="t('common.state')")
-    select(@change="pick('uf')")
+    select(@change="pick('uf', $event)")
       option(v-for="[s, title] in ufs" :key="s" :value="s" :selected="s === uf") {{ title }}
   Field(v-if="offices.length > 1" :label="t('common.office')")
-    select(@change="pick('office')")
+    select(@change="pick('office', $event)")
       option(v-for="id in offices" :key="id" :value="id" :selected="id === office") {{ officeName(id) }}
   Field(:label="t('maps.show')")
-    select(@change="pick('metric')")
+    select(@change="pick('metric', $event)")
       option(value="winner" :selected="metric === 'winner'") {{ t('maps.metric.winner') }}
       option(value="share" :selected="metric === 'share'") {{ t('maps.metric.share') }}
       option(value="margin" :selected="metric === 'margin'") {{ t('maps.metric.margin') }}
       option(value="blank" :selected="metric === 'blank'" :disabled="!ELECTIONS[year].hasBlank") {{ t('maps.metric.blank') }}
   Field(v-if="metric === 'share' && data.data" :label="t('maps.candidate')")
-    select(@change="pick('cand')")
+    select(@change="pick('cand', $event)")
       option(v-for="l in leaders" :key="l.cand" :value="l.cand" :selected="l.cand === shareCand") {{ candName(l) }}
-p.headline(v-if="headline") {{ t('maps.headline', { headline }) }}
+p.headline(v-if="headline") {{ t('maps.headline', { office: officeName(office), headline }) }}
 .grid-auto
   Panel(:title="panelTitle" :state="data" :election="year" wide)
     Breadcrumb(v-if="scope === 'state'" :items="[{ label: t('common.brazil'), href: here({ scope: 'uf', uf: null }) }, { label: stateTitle(uf) }]" :label="t('maps.mapNav')")
       template(#end)
         a(:href="href(year, 'drill', [uf], { office })") {{ t('maps.seeDetail') }}
     .mapwrap(:class="{ 'mapwrap--busy': data.loading }")
-      GeoMap(:map="data.data.map" :overlay="data.data.overlay" :fills="style.fills" :tip="tip" :keyboard="scope === 'uf'" :label="t('maps.mapLabel', { metric: metricName })" @pick="open" @hover="scope === 'uf' && preloadState($event)")
+      GeoMap(:map="data.data.map" :overlay="data.data.overlay" :fills="style.fills" :tip="tip" :keyboard="data.data.grain === 'uf'" :label="t('maps.mapLabel', { metric: metricName })" @pick="open" @hover="data.data.grain === 'uf' && preloadState($event)")
     Legend(:items="legendItems")
       span.muted(v-if="metric === 'winner'") {{ t('maps.strongerMargin') }}
       template(v-else)

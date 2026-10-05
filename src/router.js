@@ -3,6 +3,7 @@
 // href(); one delegated click handler turns same-origin clicks into client navigation.
 import { computed, nextTick, ref, watchEffect } from 'vue'
 import { DEFAULT_ELECTION, ELECTIONS, HIDDEN_VIEWS, VIEWS_NAV } from './model'
+import { renderError } from './errors'
 import { t } from './i18n'
 import { electionLabel, viewName } from './labels'
 
@@ -26,7 +27,7 @@ export const href = (election, view, args = [], params = {}) => {
 
 const canonical = ({ election, view, args, params }) => href(election, view, args, Object.fromEntries(params))
 const here = () => location.pathname + location.search
-const sync = () => (url.value = { path: location.pathname, search: location.search })
+const sync = () => { renderError.value = null; url.value = { path: location.pathname, search: location.search } }
 
 // ---- scroll, title and focus ------------------------------------------------------------------------------------------
 history.scrollRestoration = 'manual'

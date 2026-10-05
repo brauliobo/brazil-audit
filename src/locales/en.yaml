@@ -84,6 +84,8 @@ engine:
 
 errors:
   http: "{url}: HTTP {status}"
+  readOnly: "The console is read-only: statements that change data or tables are refused. Use select."
+  render: "Something went wrong while rendering this page: {message}"
   tableGone: "Table {table} no longer exists: every election uses the same tables ({tables}) with the columns election and turn. Example: where election = {year} and turn = {turn}. See the catalog in the examples."
 
 states:
@@ -160,7 +162,7 @@ maps:
     margin: Winning margin
     blank: Blank + null
   candidate: Candidate
-  headline: "President: {headline}"
+  headline: "{office}: {headline}"
   leads_one: "{name} wins {count} state"
   leads_other: "{name} wins {count} states"
   leadsDf_one: "{name} wins {count} state and the DF"
@@ -194,6 +196,8 @@ maps:
 
 parliament:
   title: "Parliament · {year}"
+  unavailable: This election has no seat data on the site.
+  seeAvailable: See {election}
   house: House
   senate: Senate
   chamber: Chamber of Deputies
@@ -303,7 +307,7 @@ sql:
   run: Run
   share: copy link
   copied: link copied
-  intro: "Every election uses the same tables ({tables}); filter by the columns election and turn. Elections: {elections}; the active one is {active}. When you name a table, the smaller states (and the small tables of every election) are imported automatically; for a specific state open it first in Drill down/Voting time."
+  intro: "Every election uses the same tables ({tables}); filter by the columns election and turn. Elections: {elections}; the active one is {active}. When you name a table, the smaller states (and the small tables of every election) are imported automatically; for a specific state open it first in Drill down/Voting time. The console is read-only."
   result: Result
   tablesTitle: Tables and views
   rows_one: "{count} row"

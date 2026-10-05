@@ -16,7 +16,7 @@ const focusable = (id) => (props.keyboard ? ` tabindex="0" role="button" aria-la
 const paths = computed(() => props.map.items.map(([id, d]) => `<path data-id="${id}" d="${d}"${attr(id)}${focusable(id)}/>`).join(''))
 const borders = computed(() => (props.overlay ? props.overlay.items.map(([, d]) => `<path d="${d}"/>`).join('') : ''))
 
-const idOf = (e) => e.target.dataset?.id
+const idOf = (e) => (props.fills[e.target.dataset?.id] ? e.target.dataset.id : null) // polygons without data are inert
 function show(e) {
   const id = idOf(e)
   if (!id) { tooltip.value.show = false; return }

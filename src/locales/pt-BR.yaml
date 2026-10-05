@@ -85,6 +85,8 @@ engine:
 
 errors:
   http: "{url}: HTTP {status}"
+  readOnly: "O console é somente leitura: comandos que alteram dados ou tabelas são recusados. Use select."
+  render: "Algo deu errado ao montar esta página: {message}"
   tableGone: "A tabela {table} não existe mais: todas as eleições usam as mesmas tabelas ({tables}) com as colunas election e turn. Exemplo: where election = {year} and turn = {turn}. Veja o catálogo nos exemplos."
 
 states:
@@ -161,7 +163,7 @@ maps:
     margin: Margem da vitória
     blank: Brancos + nulos
   candidate: Candidato
-  headline: "Presidente: {headline}"
+  headline: "{office}: {headline}"
   leads_one: "{name} vence em {count} estado"
   leads_other: "{name} vence em {count} estados"
   leadsDf_one: "{name} vence em {count} estado e no DF"
@@ -195,6 +197,8 @@ maps:
 
 parliament:
   title: "Parlamento · {year}"
+  unavailable: Esta eleição não tem dados de cadeiras no site.
+  seeAvailable: Ver {election}
   house: Casa
   senate: Senado
   chamber: Câmara dos Deputados
@@ -304,7 +308,7 @@ sql:
   run: Executar
   share: copiar link
   copied: link copiado
-  intro: "Todas as eleições usam as mesmas tabelas ({tables}); filtre pelas colunas election e turn. Eleições: {elections}; a ativa é {active}. Ao citar uma tabela, as UFs menores (e as tabelas pequenas de todas as eleições) são importadas sozinhas; para uma UF específica abra-a antes em Detalhar/Horários."
+  intro: "Todas as eleições usam as mesmas tabelas ({tables}); filtre pelas colunas election e turn. Eleições: {elections}; a ativa é {active}. Ao citar uma tabela, as UFs menores (e as tabelas pequenas de todas as eleições) são importadas sozinhas; para uma UF específica abra-a antes em Detalhar/Horários. O console é somente leitura."
   result: Resultado
   tablesTitle: Tabelas e views
   rows_one: "{count} linha"
