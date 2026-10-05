@@ -5,286 +5,6 @@
    "columns": "election,turn,state,city,zone,section,model,office,nominal,blank,nul,votes",
    "ddl": "create table rdv (election int, turn int, state text, city text, zone text, section text, model text, office int, nominal int, blank int, nul int, votes jsonb)",
    "parts": {
-    "2022/ac": {
-     "url": "rdv/2022-ac.csv.gz",
-     "bytes": 18187,
-     "rows": 2124,
-     "rawBytes": 163855,
-     "where": "election = 2022 and turn = 2 and state = 'ac' and office in (1)",
-     "offices": [
-      1
-     ]
-    },
-    "2022/al": {
-     "url": "rdv/2022-al.csv.gz",
-     "bytes": 57656,
-     "rows": 6626,
-     "rawBytes": 514009,
-     "where": "election = 2022 and turn = 2 and state = 'al' and office in (1)",
-     "offices": [
-      1
-     ]
-    },
-    "2022/am": {
-     "url": "rdv/2022-am.csv.gz",
-     "bytes": 61955,
-     "rows": 7453,
-     "rawBytes": 555520,
-     "where": "election = 2022 and turn = 2 and state = 'am' and office in (1)",
-     "offices": [
-      1
-     ]
-    },
-    "2022/ap": {
-     "url": "rdv/2022-ap.csv.gz",
-     "bytes": 14897,
-     "rows": 1740,
-     "rawBytes": 130089,
-     "where": "election = 2022 and turn = 2 and state = 'ap' and office in (1)",
-     "offices": [
-      1
-     ]
-    },
-    "2022/ba": {
-     "url": "rdv/2022-ba.csv.gz",
-     "bytes": 297150,
-     "rows": 34424,
-     "rawBytes": 2650611,
-     "where": "election = 2022 and turn = 2 and state = 'ba' and office in (1)",
-     "offices": [
-      1
-     ]
-    },
-    "2022/ce": {
-     "url": "rdv/2022-ce.csv.gz",
-     "bytes": 191063,
-     "rows": 22796,
-     "rawBytes": 1718865,
-     "where": "election = 2022 and turn = 2 and state = 'ce' and office in (1)",
-     "offices": [
-      1
-     ]
-    },
-    "2022/df": {
-     "url": "rdv/2022-df.csv.gz",
-     "bytes": 54034,
-     "rows": 6748,
-     "rawBytes": 510309,
-     "where": "election = 2022 and turn = 2 and state = 'df' and office in (1)",
-     "offices": [
-      1
-     ]
-    },
-    "2022/es": {
-     "url": "rdv/2022-es.csv.gz",
-     "bytes": 78164,
-     "rows": 9239,
-     "rawBytes": 710041,
-     "where": "election = 2022 and turn = 2 and state = 'es' and office in (1)",
-     "offices": [
-      1
-     ]
-    },
-    "2022/go": {
-     "url": "rdv/2022-go.csv.gz",
-     "bytes": 124899,
-     "rows": 14620,
-     "rawBytes": 1137990,
-     "where": "election = 2022 and turn = 2 and state = 'go' and office in (1)",
-     "offices": [
-      1
-     ]
-    },
-    "2022/ma": {
-     "url": "rdv/2022-ma.csv.gz",
-     "bytes": 144417,
-     "rows": 16423,
-     "rawBytes": 1287017,
-     "where": "election = 2022 and turn = 2 and state = 'ma' and office in (1)",
-     "offices": [
-      1
-     ]
-    },
-    "2022/mg": {
-     "url": "rdv/2022-mg.csv.gz",
-     "bytes": 435961,
-     "rows": 49981,
-     "rawBytes": 3898193,
-     "where": "election = 2022 and turn = 2 and state = 'mg' and office in (1)",
-     "offices": [
-      1
-     ]
-    },
-    "2022/ms": {
-     "url": "rdv/2022-ms.csv.gz",
-     "bytes": 58155,
-     "rows": 6912,
-     "rawBytes": 532652,
-     "where": "election = 2022 and turn = 2 and state = 'ms' and office in (1)",
-     "offices": [
-      1
-     ]
-    },
-    "2022/mt": {
-     "url": "rdv/2022-mt.csv.gz",
-     "bytes": 67768,
-     "rows": 7652,
-     "rawBytes": 596784,
-     "where": "election = 2022 and turn = 2 and state = 'mt' and office in (1)",
-     "offices": [
-      1
-     ]
-    },
-    "2022/pa": {
-     "url": "rdv/2022-pa.csv.gz",
-     "bytes": 158473,
-     "rows": 18235,
-     "rawBytes": 1396273,
-     "where": "election = 2022 and turn = 2 and state = 'pa' and office in (1)",
-     "offices": [
-      1
-     ]
-    },
-    "2022/pb": {
-     "url": "rdv/2022-pb.csv.gz",
-     "bytes": 82194,
-     "rows": 9602,
-     "rawBytes": 740251,
-     "where": "election = 2022 and turn = 2 and state = 'pb' and office in (1)",
-     "offices": [
-      1
-     ]
-    },
-    "2022/pe": {
-     "url": "rdv/2022-pe.csv.gz",
-     "bytes": 172255,
-     "rows": 20572,
-     "rawBytes": 1583069,
-     "where": "election = 2022 and turn = 2 and state = 'pe' and office in (1)",
-     "offices": [
-      1
-     ]
-    },
-    "2022/pi": {
-     "url": "rdv/2022-pi.csv.gz",
-     "bytes": 79234,
-     "rows": 8963,
-     "rawBytes": 699079,
-     "where": "election = 2022 and turn = 2 and state = 'pi' and office in (1)",
-     "offices": [
-      1
-     ]
-    },
-    "2022/pr": {
-     "url": "rdv/2022-pr.csv.gz",
-     "bytes": 221420,
-     "rows": 25721,
-     "rawBytes": 1986324,
-     "where": "election = 2022 and turn = 2 and state = 'pr' and office in (1)",
-     "offices": [
-      1
-     ]
-    },
-    "2022/rj": {
-     "url": "rdv/2022-rj.csv.gz",
-     "bytes": 287370,
-     "rows": 34068,
-     "rawBytes": 2710609,
-     "where": "election = 2022 and turn = 2 and state = 'rj' and office in (1)",
-     "offices": [
-      1
-     ]
-    },
-    "2022/rn": {
-     "url": "rdv/2022-rn.csv.gz",
-     "bytes": 67609,
-     "rows": 7674,
-     "rawBytes": 587313,
-     "where": "election = 2022 and turn = 2 and state = 'rn' and office in (1)",
-     "offices": [
-      1
-     ]
-    },
-    "2022/ro": {
-     "url": "rdv/2022-ro.csv.gz",
-     "bytes": 35445,
-     "rows": 4198,
-     "rawBytes": 328111,
-     "where": "election = 2022 and turn = 2 and state = 'ro' and office in (1)",
-     "offices": [
-      1
-     ]
-    },
-    "2022/rr": {
-     "url": "rdv/2022-rr.csv.gz",
-     "bytes": 10785,
-     "rows": 1268,
-     "rawBytes": 95235,
-     "where": "election = 2022 and turn = 2 and state = 'rr' and office in (1)",
-     "offices": [
-      1
-     ]
-    },
-    "2022/rs": {
-     "url": "rdv/2022-rs.csv.gz",
-     "bytes": 241558,
-     "rows": 27201,
-     "rawBytes": 2110129,
-     "where": "election = 2022 and turn = 2 and state = 'rs' and office in (1)",
-     "offices": [
-      1
-     ]
-    },
-    "2022/sc": {
-     "url": "rdv/2022-sc.csv.gz",
-     "bytes": 140426,
-     "rows": 16242,
-     "rawBytes": 1244761,
-     "where": "election = 2022 and turn = 2 and state = 'sc' and office in (1)",
-     "offices": [
-      1
-     ]
-    },
-    "2022/se": {
-     "url": "rdv/2022-se.csv.gz",
-     "bytes": 47389,
-     "rows": 5498,
-     "rawBytes": 428493,
-     "where": "election = 2022 and turn = 2 and state = 'se' and office in (1)",
-     "offices": [
-      1
-     ]
-    },
-    "2022/sp": {
-     "url": "rdv/2022-sp.csv.gz",
-     "bytes": 830971,
-     "rows": 101073,
-     "rawBytes": 7799693,
-     "where": "election = 2022 and turn = 2 and state = 'sp' and office in (1)",
-     "offices": [
-      1
-     ]
-    },
-    "2022/to": {
-     "url": "rdv/2022-to.csv.gz",
-     "bytes": 35676,
-     "rows": 3957,
-     "rawBytes": 309490,
-     "where": "election = 2022 and turn = 2 and state = 'to' and office in (1)",
-     "offices": [
-      1
-     ]
-    },
-    "2022/zz": {
-     "url": "rdv/2022-zz.csv.gz",
-     "bytes": 10909,
-     "rows": 1017,
-     "rawBytes": 74705,
-     "where": "election = 2022 and turn = 2 and state = 'zz' and office in (1)",
-     "offices": [
-      1
-     ]
-    },
     "2026/ac.6": {
      "url": "rdv/2026-ac.6.csv.gz",
      "bytes": 114907,
@@ -1160,6 +880,2374 @@
       3,
       5
      ]
+    },
+    "2018/ac.6": {
+     "url": "rdv/2018-ac.6.csv.gz",
+     "bytes": 103501,
+     "rows": 1924,
+     "rawBytes": 905522,
+     "where": "election = 2018 and turn = 1 and state = 'ac' and office in (6)",
+     "offices": [
+      6
+     ]
+    },
+    "2018/ac.7": {
+     "url": "rdv/2018-ac.7.csv.gz",
+     "bytes": 237664,
+     "rows": 1924,
+     "rawBytes": 1936843,
+     "where": "election = 2018 and turn = 1 and state = 'ac' and office in (7)",
+     "offices": [
+      7
+     ]
+    },
+    "2018/ac": {
+     "url": "rdv/2018-ac.csv.gz",
+     "bytes": 104750,
+     "rows": 5772,
+     "rawBytes": 704270,
+     "where": "election = 2018 and turn = 1 and state = 'ac' and office in (1,3,5)",
+     "offices": [
+      1,
+      3,
+      5
+     ]
+    },
+    "2018/al.6": {
+     "url": "rdv/2018-al.6.csv.gz",
+     "bytes": 290931,
+     "rows": 6387,
+     "rawBytes": 2515799,
+     "where": "election = 2018 and turn = 1 and state = 'al' and office in (6)",
+     "offices": [
+      6
+     ]
+    },
+    "2018/al.7": {
+     "url": "rdv/2018-al.7.csv.gz",
+     "bytes": 500306,
+     "rows": 6387,
+     "rawBytes": 4256350,
+     "where": "election = 2018 and turn = 1 and state = 'al' and office in (7)",
+     "offices": [
+      7
+     ]
+    },
+    "2018/al": {
+     "url": "rdv/2018-al.csv.gz",
+     "bytes": 376583,
+     "rows": 19161,
+     "rawBytes": 2545037,
+     "where": "election = 2018 and turn = 1 and state = 'al' and office in (1,3,5)",
+     "offices": [
+      1,
+      3,
+      5
+     ]
+    },
+    "2018/am.6": {
+     "url": "rdv/2018-am.6.csv.gz",
+     "bytes": 404378,
+     "rows": 7017,
+     "rawBytes": 3338529,
+     "where": "election = 2018 and turn = 1 and state = 'am' and office in (6)",
+     "offices": [
+      6
+     ]
+    },
+    "2018/am.7": {
+     "url": "rdv/2018-am.7.csv.gz",
+     "bytes": 984569,
+     "rows": 7017,
+     "rawBytes": 7712811,
+     "where": "election = 2018 and turn = 1 and state = 'am' and office in (7)",
+     "offices": [
+      7
+     ]
+    },
+    "2018/am": {
+     "url": "rdv/2018-am.csv.gz",
+     "bytes": 417726,
+     "rows": 21051,
+     "rawBytes": 2794944,
+     "where": "election = 2018 and turn = 1 and state = 'am' and office in (1,3,5)",
+     "offices": [
+      1,
+      3,
+      5
+     ]
+    },
+    "2018/ap.6": {
+     "url": "rdv/2018-ap.6.csv.gz",
+     "bytes": 136451,
+     "rows": 1632,
+     "rawBytes": 1202274,
+     "where": "election = 2018 and turn = 1 and state = 'ap' and office in (6)",
+     "offices": [
+      6
+     ]
+    },
+    "2018/ap.7": {
+     "url": "rdv/2018-ap.7.csv.gz",
+     "bytes": 259793,
+     "rows": 1632,
+     "rawBytes": 2168572,
+     "where": "election = 2018 and turn = 1 and state = 'ap' and office in (7)",
+     "offices": [
+      7
+     ]
+    },
+    "2018/ap": {
+     "url": "rdv/2018-ap.csv.gz",
+     "bytes": 109133,
+     "rows": 4896,
+     "rawBytes": 733983,
+     "where": "election = 2018 and turn = 1 and state = 'ap' and office in (1,3,5)",
+     "offices": [
+      1,
+      3,
+      5
+     ]
+    },
+    "2018/ba.6": {
+     "url": "rdv/2018-ba.6.csv.gz",
+     "bytes": 2299252,
+     "rows": 31192,
+     "rawBytes": 17802846,
+     "where": "election = 2018 and turn = 1 and state = 'ba' and office in (6)",
+     "offices": [
+      6
+     ]
+    },
+    "2018/ba.7": {
+     "url": "rdv/2018-ba.7.csv.gz",
+     "bytes": 2515606,
+     "rows": 31192,
+     "rawBytes": 19601322,
+     "where": "election = 2018 and turn = 1 and state = 'ba' and office in (7)",
+     "offices": [
+      7
+     ]
+    },
+    "2018/ba": {
+     "url": "rdv/2018-ba.csv.gz",
+     "bytes": 1811001,
+     "rows": 93576,
+     "rawBytes": 12180708,
+     "where": "election = 2018 and turn = 1 and state = 'ba' and office in (1,3,5)",
+     "offices": [
+      1,
+      3,
+      5
+     ]
+    },
+    "2018/ce.6": {
+     "url": "rdv/2018-ce.6.csv.gz",
+     "bytes": 1338014,
+     "rows": 21449,
+     "rawBytes": 10815190,
+     "where": "election = 2018 and turn = 1 and state = 'ce' and office in (6)",
+     "offices": [
+      6
+     ]
+    },
+    "2018/ce.7": {
+     "url": "rdv/2018-ce.7.csv.gz",
+     "bytes": 1734162,
+     "rows": 21449,
+     "rawBytes": 13577731,
+     "where": "election = 2018 and turn = 1 and state = 'ce' and office in (7)",
+     "offices": [
+      7
+     ]
+    },
+    "2018/ce": {
+     "url": "rdv/2018-ce.csv.gz",
+     "bytes": 1229363,
+     "rows": 64347,
+     "rawBytes": 8160714,
+     "where": "election = 2018 and turn = 1 and state = 'ce' and office in (1,3,5)",
+     "offices": [
+      1,
+      3,
+      5
+     ]
+    },
+    "2018/df.6": {
+     "url": "rdv/2018-df.6.csv.gz",
+     "bytes": 574856,
+     "rows": 6719,
+     "rawBytes": 5098214,
+     "where": "election = 2018 and turn = 1 and state = 'df' and office in (6)",
+     "offices": [
+      6
+     ]
+    },
+    "2018/df.8": {
+     "url": "rdv/2018-df.8.csv.gz",
+     "bytes": 1339298,
+     "rows": 6719,
+     "rawBytes": 10296172,
+     "where": "election = 2018 and turn = 1 and state = 'df' and office in (8)",
+     "offices": [
+      8
+     ]
+    },
+    "2018/df": {
+     "url": "rdv/2018-df.csv.gz",
+     "bytes": 538205,
+     "rows": 20170,
+     "rawBytes": 3821854,
+     "where": "election = 2018 and turn = 1 and state = 'df' and office in (1,3,5)",
+     "offices": [
+      1,
+      3,
+      5
+     ]
+    },
+    "2018/es.6": {
+     "url": "rdv/2018-es.6.csv.gz",
+     "bytes": 571994,
+     "rows": 8725,
+     "rawBytes": 4816926,
+     "where": "election = 2018 and turn = 1 and state = 'es' and office in (6)",
+     "offices": [
+      6
+     ]
+    },
+    "2018/es.7": {
+     "url": "rdv/2018-es.7.csv.gz",
+     "bytes": 922839,
+     "rows": 8725,
+     "rawBytes": 7225811,
+     "where": "election = 2018 and turn = 1 and state = 'es' and office in (7)",
+     "offices": [
+      7
+     ]
+    },
+    "2018/es": {
+     "url": "rdv/2018-es.csv.gz",
+     "bytes": 556339,
+     "rows": 26175,
+     "rawBytes": 3817877,
+     "where": "election = 2018 and turn = 1 and state = 'es' and office in (1,3,5)",
+     "offices": [
+      1,
+      3,
+      5
+     ]
+    },
+    "2018/go.6": {
+     "url": "rdv/2018-go.6.csv.gz",
+     "bytes": 888355,
+     "rows": 13995,
+     "rawBytes": 7439335,
+     "where": "election = 2018 and turn = 1 and state = 'go' and office in (6)",
+     "offices": [
+      6
+     ]
+    },
+    "2018/go.7": {
+     "url": "rdv/2018-go.7.csv.gz",
+     "bytes": 1517740,
+     "rows": 13995,
+     "rawBytes": 11746783,
+     "where": "election = 2018 and turn = 1 and state = 'go' and office in (7)",
+     "offices": [
+      7
+     ]
+    },
+    "2018/go": {
+     "url": "rdv/2018-go.csv.gz",
+     "bytes": 898509,
+     "rows": 41985,
+     "rawBytes": 6200707,
+     "where": "election = 2018 and turn = 1 and state = 'go' and office in (1,3,5)",
+     "offices": [
+      1,
+      3,
+      5
+     ]
+    },
+    "2018/ma.6": {
+     "url": "rdv/2018-ma.6.csv.gz",
+     "bytes": 866475,
+     "rows": 15830,
+     "rawBytes": 6847336,
+     "where": "election = 2018 and turn = 1 and state = 'ma' and office in (6)",
+     "offices": [
+      6
+     ]
+    },
+    "2018/ma.7": {
+     "url": "rdv/2018-ma.7.csv.gz",
+     "bytes": 1114870,
+     "rows": 15830,
+     "rawBytes": 8756920,
+     "where": "election = 2018 and turn = 1 and state = 'ma' and office in (7)",
+     "offices": [
+      7
+     ]
+    },
+    "2018/ma": {
+     "url": "rdv/2018-ma.csv.gz",
+     "bytes": 947510,
+     "rows": 47490,
+     "rawBytes": 6388359,
+     "where": "election = 2018 and turn = 1 and state = 'ma' and office in (1,3,5)",
+     "offices": [
+      1,
+      3,
+      5
+     ]
+    },
+    "2018/mg.6": {
+     "url": "rdv/2018-mg.6.csv.gz",
+     "bytes": 4552151,
+     "rows": 48166,
+     "rawBytes": 34167584,
+     "where": "election = 2018 and turn = 1 and state = 'mg' and office in (6)",
+     "offices": [
+      6
+     ]
+    },
+    "2018/mg.7": {
+     "url": "rdv/2018-mg.7.csv.gz",
+     "bytes": 4538480,
+     "rows": 48166,
+     "rawBytes": 33687410,
+     "where": "election = 2018 and turn = 1 and state = 'mg' and office in (7)",
+     "offices": [
+      7
+     ]
+    },
+    "2018/mg": {
+     "url": "rdv/2018-mg.csv.gz",
+     "bytes": 3307155,
+     "rows": 144498,
+     "rawBytes": 22479459,
+     "where": "election = 2018 and turn = 1 and state = 'mg' and office in (1,3,5)",
+     "offices": [
+      1,
+      3,
+      5
+     ]
+    },
+    "2018/ms.6": {
+     "url": "rdv/2018-ms.6.csv.gz",
+     "bytes": 368883,
+     "rows": 6529,
+     "rawBytes": 3153270,
+     "where": "election = 2018 and turn = 1 and state = 'ms' and office in (6)",
+     "offices": [
+      6
+     ]
+    },
+    "2018/ms.7": {
+     "url": "rdv/2018-ms.7.csv.gz",
+     "bytes": 540565,
+     "rows": 6529,
+     "rawBytes": 4579496,
+     "where": "election = 2018 and turn = 1 and state = 'ms' and office in (7)",
+     "offices": [
+      7
+     ]
+    },
+    "2018/ms": {
+     "url": "rdv/2018-ms.csv.gz",
+     "bytes": 428873,
+     "rows": 19587,
+     "rawBytes": 2988449,
+     "where": "election = 2018 and turn = 1 and state = 'ms' and office in (1,3,5)",
+     "offices": [
+      1,
+      3,
+      5
+     ]
+    },
+    "2018/mt.6": {
+     "url": "rdv/2018-mt.6.csv.gz",
+     "bytes": 425094,
+     "rows": 7247,
+     "rawBytes": 3562273,
+     "where": "election = 2018 and turn = 1 and state = 'mt' and office in (6)",
+     "offices": [
+      6
+     ]
+    },
+    "2018/mt.7": {
+     "url": "rdv/2018-mt.7.csv.gz",
+     "bytes": 630789,
+     "rows": 7247,
+     "rawBytes": 5154512,
+     "where": "election = 2018 and turn = 1 and state = 'mt' and office in (7)",
+     "offices": [
+      7
+     ]
+    },
+    "2018/mt": {
+     "url": "rdv/2018-mt.csv.gz",
+     "bytes": 452921,
+     "rows": 21741,
+     "rawBytes": 3073738,
+     "where": "election = 2018 and turn = 1 and state = 'mt' and office in (1,3,5)",
+     "offices": [
+      1,
+      3,
+      5
+     ]
+    },
+    "2018/pa.6": {
+     "url": "rdv/2018-pa.6.csv.gz",
+     "bytes": 951774,
+     "rows": 17286,
+     "rawBytes": 7834961,
+     "where": "election = 2018 and turn = 1 and state = 'pa' and office in (6)",
+     "offices": [
+      6
+     ]
+    },
+    "2018/pa.7": {
+     "url": "rdv/2018-pa.7.csv.gz",
+     "bytes": 1622328,
+     "rows": 17286,
+     "rawBytes": 12677302,
+     "where": "election = 2018 and turn = 1 and state = 'pa' and office in (7)",
+     "offices": [
+      7
+     ]
+    },
+    "2018/pa": {
+     "url": "rdv/2018-pa.csv.gz",
+     "bytes": 1147911,
+     "rows": 51858,
+     "rawBytes": 7585504,
+     "where": "election = 2018 and turn = 1 and state = 'pa' and office in (1,3,5)",
+     "offices": [
+      1,
+      3,
+      5
+     ]
+    },
+    "2018/pb.6": {
+     "url": "rdv/2018-pb.6.csv.gz",
+     "bytes": 554057,
+     "rows": 9955,
+     "rawBytes": 4540885,
+     "where": "election = 2018 and turn = 1 and state = 'pb' and office in (6)",
+     "offices": [
+      6
+     ]
+    },
+    "2018/pb.7": {
+     "url": "rdv/2018-pb.7.csv.gz",
+     "bytes": 709766,
+     "rows": 9955,
+     "rawBytes": 5693572,
+     "where": "election = 2018 and turn = 1 and state = 'pb' and office in (7)",
+     "offices": [
+      7
+     ]
+    },
+    "2018/pb": {
+     "url": "rdv/2018-pb.csv.gz",
+     "bytes": 557809,
+     "rows": 29865,
+     "rawBytes": 3653107,
+     "where": "election = 2018 and turn = 1 and state = 'pb' and office in (1,3,5)",
+     "offices": [
+      1,
+      3,
+      5
+     ]
+    },
+    "2018/pe.6": {
+     "url": "rdv/2018-pe.6.csv.gz",
+     "bytes": 1319313,
+     "rows": 19797,
+     "rawBytes": 10768626,
+     "where": "election = 2018 and turn = 1 and state = 'pe' and office in (6)",
+     "offices": [
+      6
+     ]
+    },
+    "2018/pe.7": {
+     "url": "rdv/2018-pe.7.csv.gz",
+     "bytes": 1719684,
+     "rows": 19797,
+     "rawBytes": 13897830,
+     "where": "election = 2018 and turn = 1 and state = 'pe' and office in (7)",
+     "offices": [
+      7
+     ]
+    },
+    "2018/pe": {
+     "url": "rdv/2018-pe.csv.gz",
+     "bytes": 1237488,
+     "rows": 59391,
+     "rawBytes": 8435585,
+     "where": "election = 2018 and turn = 1 and state = 'pe' and office in (1,3,5)",
+     "offices": [
+      1,
+      3,
+      5
+     ]
+    },
+    "2018/pi.6": {
+     "url": "rdv/2018-pi.6.csv.gz",
+     "bytes": 427090,
+     "rows": 8930,
+     "rawBytes": 3373516,
+     "where": "election = 2018 and turn = 1 and state = 'pi' and office in (6)",
+     "offices": [
+      6
+     ]
+    },
+    "2018/pi.7": {
+     "url": "rdv/2018-pi.7.csv.gz",
+     "bytes": 524593,
+     "rows": 8930,
+     "rawBytes": 4267356,
+     "where": "election = 2018 and turn = 1 and state = 'pi' and office in (7)",
+     "offices": [
+      7
+     ]
+    },
+    "2018/pi": {
+     "url": "rdv/2018-pi.csv.gz",
+     "bytes": 596780,
+     "rows": 26790,
+     "rawBytes": 4015202,
+     "where": "election = 2018 and turn = 1 and state = 'pi' and office in (1,3,5)",
+     "offices": [
+      1,
+      3,
+      5
+     ]
+    },
+    "2018/pr.6": {
+     "url": "rdv/2018-pr.6.csv.gz",
+     "bytes": 2083556,
+     "rows": 26137,
+     "rawBytes": 16272547,
+     "where": "election = 2018 and turn = 1 and state = 'pr' and office in (6)",
+     "offices": [
+      6
+     ]
+    },
+    "2018/pr.7": {
+     "url": "rdv/2018-pr.7.csv.gz",
+     "bytes": 2418689,
+     "rows": 26137,
+     "rawBytes": 18708761,
+     "where": "election = 2018 and turn = 1 and state = 'pr' and office in (7)",
+     "offices": [
+      7
+     ]
+    },
+    "2018/pr": {
+     "url": "rdv/2018-pr.csv.gz",
+     "bytes": 1851416,
+     "rows": 78411,
+     "rawBytes": 12759654,
+     "where": "election = 2018 and turn = 1 and state = 'pr' and office in (1,3,5)",
+     "offices": [
+      1,
+      3,
+      5
+     ]
+    },
+    "2018/rj.6": {
+     "url": "rdv/2018-rj.6.csv.gz",
+     "bytes": 4614779,
+     "rows": 33901,
+     "rawBytes": 35278662,
+     "where": "election = 2018 and turn = 1 and state = 'rj' and office in (6)",
+     "offices": [
+      6
+     ]
+    },
+    "2018/rj.7": {
+     "url": "rdv/2018-rj.7.csv.gz",
+     "bytes": 5791278,
+     "rows": 33901,
+     "rawBytes": 42326337,
+     "where": "election = 2018 and turn = 1 and state = 'rj' and office in (7)",
+     "offices": [
+      7
+     ]
+    },
+    "2018/rj": {
+     "url": "rdv/2018-rj.csv.gz",
+     "bytes": 2611877,
+     "rows": 101703,
+     "rawBytes": 18517958,
+     "where": "election = 2018 and turn = 1 and state = 'rj' and office in (1,3,5)",
+     "offices": [
+      1,
+      3,
+      5
+     ]
+    },
+    "2018/rn.6": {
+     "url": "rdv/2018-rn.6.csv.gz",
+     "bytes": 401091,
+     "rows": 7389,
+     "rawBytes": 3291391,
+     "where": "election = 2018 and turn = 1 and state = 'rn' and office in (6)",
+     "offices": [
+      6
+     ]
+    },
+    "2018/rn.7": {
+     "url": "rdv/2018-rn.7.csv.gz",
+     "bytes": 608779,
+     "rows": 7389,
+     "rawBytes": 5035685,
+     "where": "election = 2018 and turn = 1 and state = 'rn' and office in (7)",
+     "offices": [
+      7
+     ]
+    },
+    "2018/rn": {
+     "url": "rdv/2018-rn.csv.gz",
+     "bytes": 494527,
+     "rows": 22167,
+     "rawBytes": 3334751,
+     "where": "election = 2018 and turn = 1 and state = 'rn' and office in (1,3,5)",
+     "offices": [
+      1,
+      3,
+      5
+     ]
+    },
+    "2018/ro.6": {
+     "url": "rdv/2018-ro.6.csv.gz",
+     "bytes": 221885,
+     "rows": 4181,
+     "rawBytes": 1951507,
+     "where": "election = 2018 and turn = 1 and state = 'ro' and office in (6)",
+     "offices": [
+      6
+     ]
+    },
+    "2018/ro.7": {
+     "url": "rdv/2018-ro.7.csv.gz",
+     "bytes": 380089,
+     "rows": 4181,
+     "rawBytes": 3195868,
+     "where": "election = 2018 and turn = 1 and state = 'ro' and office in (7)",
+     "offices": [
+      7
+     ]
+    },
+    "2018/ro": {
+     "url": "rdv/2018-ro.csv.gz",
+     "bytes": 288372,
+     "rows": 12543,
+     "rawBytes": 2028397,
+     "where": "election = 2018 and turn = 1 and state = 'ro' and office in (1,3,5)",
+     "offices": [
+      1,
+      3,
+      5
+     ]
+    },
+    "2018/rr.6": {
+     "url": "rdv/2018-rr.6.csv.gz",
+     "bytes": 98046,
+     "rows": 1172,
+     "rawBytes": 846037,
+     "where": "election = 2018 and turn = 1 and state = 'rr' and office in (6)",
+     "offices": [
+      6
+     ]
+    },
+    "2018/rr.7": {
+     "url": "rdv/2018-rr.7.csv.gz",
+     "bytes": 180055,
+     "rows": 1172,
+     "rawBytes": 1488457,
+     "where": "election = 2018 and turn = 1 and state = 'rr' and office in (7)",
+     "offices": [
+      7
+     ]
+    },
+    "2018/rr": {
+     "url": "rdv/2018-rr.csv.gz",
+     "bytes": 74954,
+     "rows": 3516,
+     "rawBytes": 509596,
+     "where": "election = 2018 and turn = 1 and state = 'rr' and office in (1,3,5)",
+     "offices": [
+      1,
+      3,
+      5
+     ]
+    },
+    "2018/rs.6": {
+     "url": "rdv/2018-rs.6.csv.gz",
+     "bytes": 2362137,
+     "rows": 27274,
+     "rawBytes": 18645655,
+     "where": "election = 2018 and turn = 1 and state = 'rs' and office in (6)",
+     "offices": [
+      6
+     ]
+    },
+    "2018/rs.7": {
+     "url": "rdv/2018-rs.7.csv.gz",
+     "bytes": 2918081,
+     "rows": 27274,
+     "rawBytes": 22186645,
+     "where": "election = 2018 and turn = 1 and state = 'rs' and office in (7)",
+     "offices": [
+      7
+     ]
+    },
+    "2018/rs": {
+     "url": "rdv/2018-rs.csv.gz",
+     "bytes": 1835097,
+     "rows": 81822,
+     "rawBytes": 12430443,
+     "where": "election = 2018 and turn = 1 and state = 'rs' and office in (1,3,5)",
+     "offices": [
+      1,
+      3,
+      5
+     ]
+    },
+    "2018/sc.6": {
+     "url": "rdv/2018-sc.6.csv.gz",
+     "bytes": 1158559,
+     "rows": 15562,
+     "rawBytes": 9363892,
+     "where": "election = 2018 and turn = 1 and state = 'sc' and office in (6)",
+     "offices": [
+      6
+     ]
+    },
+    "2018/sc.7": {
+     "url": "rdv/2018-sc.7.csv.gz",
+     "bytes": 1428919,
+     "rows": 15562,
+     "rawBytes": 11280883,
+     "where": "election = 2018 and turn = 1 and state = 'sc' and office in (7)",
+     "offices": [
+      7
+     ]
+    },
+    "2018/sc": {
+     "url": "rdv/2018-sc.csv.gz",
+     "bytes": 1088254,
+     "rows": 46686,
+     "rawBytes": 7343562,
+     "where": "election = 2018 and turn = 1 and state = 'sc' and office in (1,3,5)",
+     "offices": [
+      1,
+      3,
+      5
+     ]
+    },
+    "2018/se.6": {
+     "url": "rdv/2018-se.6.csv.gz",
+     "bytes": 279900,
+     "rows": 5137,
+     "rawBytes": 2339473,
+     "where": "election = 2018 and turn = 1 and state = 'se' and office in (6)",
+     "offices": [
+      6
+     ]
+    },
+    "2018/se.7": {
+     "url": "rdv/2018-se.7.csv.gz",
+     "bytes": 419170,
+     "rows": 5137,
+     "rawBytes": 3509266,
+     "where": "election = 2018 and turn = 1 and state = 'se' and office in (7)",
+     "offices": [
+      7
+     ]
+    },
+    "2018/se": {
+     "url": "rdv/2018-se.csv.gz",
+     "bytes": 360485,
+     "rows": 15411,
+     "rawBytes": 2445153,
+     "where": "election = 2018 and turn = 1 and state = 'se' and office in (1,3,5)",
+     "offices": [
+      1,
+      3,
+      5
+     ]
+    },
+    "2018/sp.6": {
+     "url": "rdv/2018-sp.6.csv.gz",
+     "bytes": 11680644,
+     "rows": 96328,
+     "rawBytes": 88487604,
+     "where": "election = 2018 and turn = 1 and state = 'sp' and office in (6)",
+     "offices": [
+      6
+     ]
+    },
+    "2018/sp.7": {
+     "url": "rdv/2018-sp.7.csv.gz",
+     "bytes": 12299165,
+     "rows": 96328,
+     "rawBytes": 92981553,
+     "where": "election = 2018 and turn = 1 and state = 'sp' and office in (7)",
+     "offices": [
+      7
+     ]
+    },
+    "2018/sp": {
+     "url": "rdv/2018-sp.csv.gz",
+     "bytes": 7634395,
+     "rows": 288984,
+     "rawBytes": 54340302,
+     "where": "election = 2018 and turn = 1 and state = 'sp' and office in (1,3,5)",
+     "offices": [
+      1,
+      3,
+      5
+     ]
+    },
+    "2018/to.6": {
+     "url": "rdv/2018-to.6.csv.gz",
+     "bytes": 171854,
+     "rows": 3832,
+     "rawBytes": 1418064,
+     "where": "election = 2018 and turn = 1 and state = 'to' and office in (6)",
+     "offices": [
+      6
+     ]
+    },
+    "2018/to.7": {
+     "url": "rdv/2018-to.7.csv.gz",
+     "bytes": 256146,
+     "rows": 3832,
+     "rawBytes": 2111461,
+     "where": "election = 2018 and turn = 1 and state = 'to' and office in (7)",
+     "offices": [
+      7
+     ]
+    },
+    "2018/to": {
+     "url": "rdv/2018-to.csv.gz",
+     "bytes": 230505,
+     "rows": 11496,
+     "rawBytes": 1540587,
+     "where": "election = 2018 and turn = 1 and state = 'to' and office in (1,3,5)",
+     "offices": [
+      1,
+      3,
+      5
+     ]
+    },
+    "2018/zz": {
+     "url": "rdv/2018-zz.csv.gz",
+     "bytes": 17448,
+     "rows": 744,
+     "rawBytes": 113672,
+     "where": "election = 2018 and turn = 1 and state = 'zz' and office in (1,3,5)",
+     "offices": [
+      1,
+      3,
+      5
+     ]
+    },
+    "2018-2/ac": {
+     "url": "rdv/2018-2-ac.csv.gz",
+     "bytes": 20174,
+     "rows": 1924,
+     "rawBytes": 141034,
+     "where": "election = 2018 and turn = 2 and state = 'ac' and office in (1,3)",
+     "offices": [
+      1,
+      3
+     ]
+    },
+    "2018-2/al": {
+     "url": "rdv/2018-2-al.csv.gz",
+     "bytes": 69268,
+     "rows": 6387,
+     "rawBytes": 474029,
+     "where": "election = 2018 and turn = 2 and state = 'al' and office in (1,3)",
+     "offices": [
+      1,
+      3
+     ]
+    },
+    "2018-2/am": {
+     "url": "rdv/2018-2-am.csv.gz",
+     "bytes": 150573,
+     "rows": 14034,
+     "rawBytes": 997879,
+     "where": "election = 2018 and turn = 2 and state = 'am' and office in (1,3)",
+     "offices": [
+      1,
+      3
+     ]
+    },
+    "2018-2/ap": {
+     "url": "rdv/2018-2-ap.csv.gz",
+     "bytes": 35744,
+     "rows": 3264,
+     "rawBytes": 233667,
+     "where": "election = 2018 and turn = 2 and state = 'ap' and office in (1,3)",
+     "offices": [
+      1,
+      3
+     ]
+    },
+    "2018-2/ba": {
+     "url": "rdv/2018-2-ba.csv.gz",
+     "bytes": 338759,
+     "rows": 31192,
+     "rawBytes": 2299902,
+     "where": "election = 2018 and turn = 2 and state = 'ba' and office in (1,3)",
+     "offices": [
+      1,
+      3
+     ]
+    },
+    "2018-2/ce": {
+     "url": "rdv/2018-2-ce.csv.gz",
+     "bytes": 224844,
+     "rows": 21449,
+     "rawBytes": 1543764,
+     "where": "election = 2018 and turn = 2 and state = 'ce' and office in (1,3)",
+     "offices": [
+      1,
+      3
+     ]
+    },
+    "2018-2/df": {
+     "url": "rdv/2018-2-df.csv.gz",
+     "bytes": 143275,
+     "rows": 13451,
+     "rawBytes": 970672,
+     "where": "election = 2018 and turn = 2 and state = 'df' and office in (1,3)",
+     "offices": [
+      1,
+      3
+     ]
+    },
+    "2018-2/es": {
+     "url": "rdv/2018-2-es.csv.gz",
+     "bytes": 93730,
+     "rows": 8724,
+     "rawBytes": 640919,
+     "where": "election = 2018 and turn = 2 and state = 'es' and office in (1,3)",
+     "offices": [
+      1,
+      3
+     ]
+    },
+    "2018-2/go": {
+     "url": "rdv/2018-2-go.csv.gz",
+     "bytes": 149354,
+     "rows": 13995,
+     "rawBytes": 1038600,
+     "where": "election = 2018 and turn = 2 and state = 'go' and office in (1,3)",
+     "offices": [
+      1,
+      3
+     ]
+    },
+    "2018-2/ma": {
+     "url": "rdv/2018-2-ma.csv.gz",
+     "bytes": 167720,
+     "rows": 15830,
+     "rawBytes": 1177877,
+     "where": "election = 2018 and turn = 2 and state = 'ma' and office in (1,3)",
+     "offices": [
+      1,
+      3
+     ]
+    },
+    "2018-2/mg": {
+     "url": "rdv/2018-2-mg.csv.gz",
+     "bytes": 1098016,
+     "rows": 96332,
+     "rawBytes": 7207348,
+     "where": "election = 2018 and turn = 2 and state = 'mg' and office in (1,3)",
+     "offices": [
+      1,
+      3
+     ]
+    },
+    "2018-2/ms": {
+     "url": "rdv/2018-2-ms.csv.gz",
+     "bytes": 141461,
+     "rows": 13058,
+     "rawBytes": 964227,
+     "where": "election = 2018 and turn = 2 and state = 'ms' and office in (1,3)",
+     "offices": [
+      1,
+      3
+     ]
+    },
+    "2018-2/mt": {
+     "url": "rdv/2018-2-mt.csv.gz",
+     "bytes": 77901,
+     "rows": 7247,
+     "rawBytes": 537908,
+     "where": "election = 2018 and turn = 2 and state = 'mt' and office in (1,3)",
+     "offices": [
+      1,
+      3
+     ]
+    },
+    "2018-2/pa": {
+     "url": "rdv/2018-2-pa.csv.gz",
+     "bytes": 382990,
+     "rows": 34572,
+     "rawBytes": 2531240,
+     "where": "election = 2018 and turn = 2 and state = 'pa' and office in (1,3)",
+     "offices": [
+      1,
+      3
+     ]
+    },
+    "2018-2/pb": {
+     "url": "rdv/2018-2-pb.csv.gz",
+     "bytes": 107311,
+     "rows": 9955,
+     "rawBytes": 733395,
+     "where": "election = 2018 and turn = 2 and state = 'pb' and office in (1,3)",
+     "offices": [
+      1,
+      3
+     ]
+    },
+    "2018-2/pe": {
+     "url": "rdv/2018-2-pe.csv.gz",
+     "bytes": 209254,
+     "rows": 19797,
+     "rawBytes": 1459957,
+     "where": "election = 2018 and turn = 2 and state = 'pe' and office in (1,3)",
+     "offices": [
+      1,
+      3
+     ]
+    },
+    "2018-2/pi": {
+     "url": "rdv/2018-2-pi.csv.gz",
+     "bytes": 96335,
+     "rows": 8930,
+     "rawBytes": 664109,
+     "where": "election = 2018 and turn = 2 and state = 'pi' and office in (1,3)",
+     "offices": [
+      1,
+      3
+     ]
+    },
+    "2018-2/pr": {
+     "url": "rdv/2018-2-pr.csv.gz",
+     "bytes": 281327,
+     "rows": 26136,
+     "rawBytes": 1922659,
+     "where": "election = 2018 and turn = 2 and state = 'pr' and office in (1,3)",
+     "offices": [
+      1,
+      3
+     ]
+    },
+    "2018-2/rj": {
+     "url": "rdv/2018-2-rj.csv.gz",
+     "bytes": 757967,
+     "rows": 67802,
+     "rawBytes": 5179077,
+     "where": "election = 2018 and turn = 2 and state = 'rj' and office in (1,3)",
+     "offices": [
+      1,
+      3
+     ]
+    },
+    "2018-2/rn": {
+     "url": "rdv/2018-2-rn.csv.gz",
+     "bytes": 164598,
+     "rows": 14778,
+     "rawBytes": 1083977,
+     "where": "election = 2018 and turn = 2 and state = 'rn' and office in (1,3)",
+     "offices": [
+      1,
+      3
+     ]
+    },
+    "2018-2/ro": {
+     "url": "rdv/2018-2-ro.csv.gz",
+     "bytes": 89270,
+     "rows": 8362,
+     "rawBytes": 625249,
+     "where": "election = 2018 and turn = 2 and state = 'ro' and office in (1,3)",
+     "offices": [
+      1,
+      3
+     ]
+    },
+    "2018-2/rr": {
+     "url": "rdv/2018-2-rr.csv.gz",
+     "bytes": 25157,
+     "rows": 2344,
+     "rawBytes": 167886,
+     "where": "election = 2018 and turn = 2 and state = 'rr' and office in (1,3)",
+     "offices": [
+      1,
+      3
+     ]
+    },
+    "2018-2/rs": {
+     "url": "rdv/2018-2-rs.csv.gz",
+     "bytes": 620392,
+     "rows": 54548,
+     "rawBytes": 4070474,
+     "where": "election = 2018 and turn = 2 and state = 'rs' and office in (1,3)",
+     "offices": [
+      1,
+      3
+     ]
+    },
+    "2018-2/sc": {
+     "url": "rdv/2018-2-sc.csv.gz",
+     "bytes": 348842,
+     "rows": 31124,
+     "rawBytes": 2289331,
+     "where": "election = 2018 and turn = 2 and state = 'sc' and office in (1,3)",
+     "offices": [
+      1,
+      3
+     ]
+    },
+    "2018-2/se": {
+     "url": "rdv/2018-2-se.csv.gz",
+     "bytes": 116476,
+     "rows": 10274,
+     "rawBytes": 769194,
+     "where": "election = 2018 and turn = 2 and state = 'se' and office in (1,3)",
+     "offices": [
+      1,
+      3
+     ]
+    },
+    "2018-2/sp": {
+     "url": "rdv/2018-2-sp.csv.gz",
+     "bytes": 2138384,
+     "rows": 192656,
+     "rawBytes": 14292310,
+     "where": "election = 2018 and turn = 2 and state = 'sp' and office in (1,3)",
+     "offices": [
+      1,
+      3
+     ]
+    },
+    "2018-2/to": {
+     "url": "rdv/2018-2-to.csv.gz",
+     "bytes": 42118,
+     "rows": 3832,
+     "rawBytes": 285593,
+     "where": "election = 2018 and turn = 2 and state = 'to' and office in (1,3)",
+     "offices": [
+      1,
+      3
+     ]
+    },
+    "2018-2/zz": {
+     "url": "rdv/2018-2-zz.csv.gz",
+     "bytes": 10018,
+     "rows": 744,
+     "rawBytes": 52348,
+     "where": "election = 2018 and turn = 2 and state = 'zz' and office in (1,3)",
+     "offices": [
+      1,
+      3
+     ]
+    },
+    "2022/ac.6": {
+     "url": "rdv/2022-ac.6.csv.gz",
+     "bytes": 135669,
+     "rows": 2124,
+     "rawBytes": 1173160,
+     "where": "election = 2022 and turn = 1 and state = 'ac' and office in (6)",
+     "offices": [
+      6
+     ]
+    },
+    "2022/ac.7": {
+     "url": "rdv/2022-ac.7.csv.gz",
+     "bytes": 227880,
+     "rows": 2124,
+     "rawBytes": 1932224,
+     "where": "election = 2022 and turn = 1 and state = 'ac' and office in (7)",
+     "offices": [
+      7
+     ]
+    },
+    "2022/ac": {
+     "url": "rdv/2022-ac.csv.gz",
+     "bytes": 106005,
+     "rows": 6372,
+     "rawBytes": 752942,
+     "where": "election = 2022 and turn = 1 and state = 'ac' and office in (1,3,5)",
+     "offices": [
+      1,
+      3,
+      5
+     ]
+    },
+    "2022/al.6": {
+     "url": "rdv/2022-al.6.csv.gz",
+     "bytes": 395581,
+     "rows": 6626,
+     "rawBytes": 3340750,
+     "where": "election = 2022 and turn = 1 and state = 'al' and office in (6)",
+     "offices": [
+      6
+     ]
+    },
+    "2022/al.7": {
+     "url": "rdv/2022-al.7.csv.gz",
+     "bytes": 490710,
+     "rows": 6626,
+     "rawBytes": 4320930,
+     "where": "election = 2022 and turn = 1 and state = 'al' and office in (7)",
+     "offices": [
+      7
+     ]
+    },
+    "2022/al": {
+     "url": "rdv/2022-al.csv.gz",
+     "bytes": 310864,
+     "rows": 19878,
+     "rawBytes": 2146008,
+     "where": "election = 2022 and turn = 1 and state = 'al' and office in (1,3,5)",
+     "offices": [
+      1,
+      3,
+      5
+     ]
+    },
+    "2022/am.6": {
+     "url": "rdv/2022-am.6.csv.gz",
+     "bytes": 468073,
+     "rows": 7453,
+     "rawBytes": 3907644,
+     "where": "election = 2022 and turn = 1 and state = 'am' and office in (6)",
+     "offices": [
+      6
+     ]
+    },
+    "2022/am.7": {
+     "url": "rdv/2022-am.7.csv.gz",
+     "bytes": 899556,
+     "rows": 7453,
+     "rawBytes": 7428617,
+     "where": "election = 2022 and turn = 1 and state = 'am' and office in (7)",
+     "offices": [
+      7
+     ]
+    },
+    "2022/am": {
+     "url": "rdv/2022-am.csv.gz",
+     "bytes": 378258,
+     "rows": 22359,
+     "rawBytes": 2647221,
+     "where": "election = 2022 and turn = 1 and state = 'am' and office in (1,3,5)",
+     "offices": [
+      1,
+      3,
+      5
+     ]
+    },
+    "2022/ap.6": {
+     "url": "rdv/2022-ap.6.csv.gz",
+     "bytes": 156685,
+     "rows": 1740,
+     "rawBytes": 1386784,
+     "where": "election = 2022 and turn = 1 and state = 'ap' and office in (6)",
+     "offices": [
+      6
+     ]
+    },
+    "2022/ap.7": {
+     "url": "rdv/2022-ap.7.csv.gz",
+     "bytes": 238679,
+     "rows": 1740,
+     "rawBytes": 2059635,
+     "where": "election = 2022 and turn = 1 and state = 'ap' and office in (7)",
+     "offices": [
+      7
+     ]
+    },
+    "2022/ap": {
+     "url": "rdv/2022-ap.csv.gz",
+     "bytes": 81336,
+     "rows": 5220,
+     "rawBytes": 573049,
+     "where": "election = 2022 and turn = 1 and state = 'ap' and office in (1,3,5)",
+     "offices": [
+      1,
+      3,
+      5
+     ]
+    },
+    "2022/ba.6": {
+     "url": "rdv/2022-ba.6.csv.gz",
+     "bytes": 2927385,
+     "rows": 34424,
+     "rawBytes": 22513209,
+     "where": "election = 2022 and turn = 1 and state = 'ba' and office in (6)",
+     "offices": [
+      6
+     ]
+    },
+    "2022/ba.7": {
+     "url": "rdv/2022-ba.7.csv.gz",
+     "bytes": 3042647,
+     "rows": 34424,
+     "rawBytes": 23582252,
+     "where": "election = 2022 and turn = 1 and state = 'ba' and office in (7)",
+     "offices": [
+      7
+     ]
+    },
+    "2022/ba": {
+     "url": "rdv/2022-ba.csv.gz",
+     "bytes": 1542759,
+     "rows": 103272,
+     "rawBytes": 10418054,
+     "where": "election = 2022 and turn = 1 and state = 'ba' and office in (1,3,5)",
+     "offices": [
+      1,
+      3,
+      5
+     ]
+    },
+    "2022/ce.6": {
+     "url": "rdv/2022-ce.6.csv.gz",
+     "bytes": 1620797,
+     "rows": 22796,
+     "rawBytes": 13027004,
+     "where": "election = 2022 and turn = 1 and state = 'ce' and office in (6)",
+     "offices": [
+      6
+     ]
+    },
+    "2022/ce.7": {
+     "url": "rdv/2022-ce.7.csv.gz",
+     "bytes": 1943396,
+     "rows": 22796,
+     "rawBytes": 15685048,
+     "where": "election = 2022 and turn = 1 and state = 'ce' and office in (7)",
+     "offices": [
+      7
+     ]
+    },
+    "2022/ce": {
+     "url": "rdv/2022-ce.csv.gz",
+     "bytes": 934097,
+     "rows": 68388,
+     "rawBytes": 6328262,
+     "where": "election = 2022 and turn = 1 and state = 'ce' and office in (1,3,5)",
+     "offices": [
+      1,
+      3,
+      5
+     ]
+    },
+    "2022/df.6": {
+     "url": "rdv/2022-df.6.csv.gz",
+     "bytes": 559572,
+     "rows": 6748,
+     "rawBytes": 4875263,
+     "where": "election = 2022 and turn = 1 and state = 'df' and office in (6)",
+     "offices": [
+      6
+     ]
+    },
+    "2022/df.8": {
+     "url": "rdv/2022-df.8.csv.gz",
+     "bytes": 1150703,
+     "rows": 6748,
+     "rawBytes": 9506658,
+     "where": "election = 2022 and turn = 1 and state = 'df' and office in (8)",
+     "offices": [
+      8
+     ]
+    },
+    "2022/df": {
+     "url": "rdv/2022-df.csv.gz",
+     "bytes": 361915,
+     "rows": 20244,
+     "rawBytes": 2653585,
+     "where": "election = 2022 and turn = 1 and state = 'df' and office in (1,3,5)",
+     "offices": [
+      1,
+      3,
+      5
+     ]
+    },
+    "2022/es.6": {
+     "url": "rdv/2022-es.6.csv.gz",
+     "bytes": 643231,
+     "rows": 9239,
+     "rawBytes": 5453061,
+     "where": "election = 2022 and turn = 1 and state = 'es' and office in (6)",
+     "offices": [
+      6
+     ]
+    },
+    "2022/es.7": {
+     "url": "rdv/2022-es.7.csv.gz",
+     "bytes": 901001,
+     "rows": 9239,
+     "rawBytes": 7192995,
+     "where": "election = 2022 and turn = 1 and state = 'es' and office in (7)",
+     "offices": [
+      7
+     ]
+    },
+    "2022/es": {
+     "url": "rdv/2022-es.csv.gz",
+     "bytes": 447566,
+     "rows": 27717,
+     "rawBytes": 3143832,
+     "where": "election = 2022 and turn = 1 and state = 'es' and office in (1,3,5)",
+     "offices": [
+      1,
+      3,
+      5
+     ]
+    },
+    "2022/go.6": {
+     "url": "rdv/2022-go.6.csv.gz",
+     "bytes": 1197727,
+     "rows": 14620,
+     "rawBytes": 9818770,
+     "where": "election = 2022 and turn = 1 and state = 'go' and office in (6)",
+     "offices": [
+      6
+     ]
+    },
+    "2022/go.7": {
+     "url": "rdv/2022-go.7.csv.gz",
+     "bytes": 1644228,
+     "rows": 14620,
+     "rawBytes": 13017087,
+     "where": "election = 2022 and turn = 1 and state = 'go' and office in (7)",
+     "offices": [
+      7
+     ]
+    },
+    "2022/go": {
+     "url": "rdv/2022-go.csv.gz",
+     "bytes": 794098,
+     "rows": 43860,
+     "rawBytes": 5638511,
+     "where": "election = 2022 and turn = 1 and state = 'go' and office in (1,3,5)",
+     "offices": [
+      1,
+      3,
+      5
+     ]
+    },
+    "2022/ma.6": {
+     "url": "rdv/2022-ma.6.csv.gz",
+     "bytes": 1092377,
+     "rows": 16423,
+     "rawBytes": 8564146,
+     "where": "election = 2022 and turn = 1 and state = 'ma' and office in (6)",
+     "offices": [
+      6
+     ]
+    },
+    "2022/ma.7": {
+     "url": "rdv/2022-ma.7.csv.gz",
+     "bytes": 1250660,
+     "rows": 16423,
+     "rawBytes": 9956900,
+     "where": "election = 2022 and turn = 1 and state = 'ma' and office in (7)",
+     "offices": [
+      7
+     ]
+    },
+    "2022/ma": {
+     "url": "rdv/2022-ma.csv.gz",
+     "bytes": 727136,
+     "rows": 49269,
+     "rawBytes": 4974639,
+     "where": "election = 2022 and turn = 1 and state = 'ma' and office in (1,3,5)",
+     "offices": [
+      1,
+      3,
+      5
+     ]
+    },
+    "2022/mg.6": {
+     "url": "rdv/2022-mg.6.csv.gz",
+     "bytes": 4480477,
+     "rows": 49981,
+     "rawBytes": 33458734,
+     "where": "election = 2022 and turn = 1 and state = 'mg' and office in (6)",
+     "offices": [
+      6
+     ]
+    },
+    "2022/mg.7": {
+     "url": "rdv/2022-mg.7.csv.gz",
+     "bytes": 4798872,
+     "rows": 49981,
+     "rawBytes": 36132364,
+     "where": "election = 2022 and turn = 1 and state = 'mg' and office in (7)",
+     "offices": [
+      7
+     ]
+    },
+    "2022/mg": {
+     "url": "rdv/2022-mg.csv.gz",
+     "bytes": 2478208,
+     "rows": 149943,
+     "rawBytes": 17260650,
+     "where": "election = 2022 and turn = 1 and state = 'mg' and office in (1,3,5)",
+     "offices": [
+      1,
+      3,
+      5
+     ]
+    },
+    "2022/ms.6": {
+     "url": "rdv/2022-ms.6.csv.gz",
+     "bytes": 468403,
+     "rows": 6912,
+     "rawBytes": 4070814,
+     "where": "election = 2022 and turn = 1 and state = 'ms' and office in (6)",
+     "offices": [
+      6
+     ]
+    },
+    "2022/ms.7": {
+     "url": "rdv/2022-ms.7.csv.gz",
+     "bytes": 664729,
+     "rows": 6912,
+     "rawBytes": 5682032,
+     "where": "election = 2022 and turn = 1 and state = 'ms' and office in (7)",
+     "offices": [
+      7
+     ]
+    },
+    "2022/ms": {
+     "url": "rdv/2022-ms.csv.gz",
+     "bytes": 338910,
+     "rows": 20736,
+     "rawBytes": 2365249,
+     "where": "election = 2022 and turn = 1 and state = 'ms' and office in (1,3,5)",
+     "offices": [
+      1,
+      3,
+      5
+     ]
+    },
+    "2022/mt.6": {
+     "url": "rdv/2022-mt.6.csv.gz",
+     "bytes": 450138,
+     "rows": 7652,
+     "rawBytes": 3676326,
+     "where": "election = 2022 and turn = 1 and state = 'mt' and office in (6)",
+     "offices": [
+      6
+     ]
+    },
+    "2022/mt.7": {
+     "url": "rdv/2022-mt.7.csv.gz",
+     "bytes": 580678,
+     "rows": 7652,
+     "rawBytes": 4855898,
+     "where": "election = 2022 and turn = 1 and state = 'mt' and office in (7)",
+     "offices": [
+      7
+     ]
+    },
+    "2022/mt": {
+     "url": "rdv/2022-mt.csv.gz",
+     "bytes": 366735,
+     "rows": 22956,
+     "rawBytes": 2571791,
+     "where": "election = 2022 and turn = 1 and state = 'mt' and office in (1,3,5)",
+     "offices": [
+      1,
+      3,
+      5
+     ]
+    },
+    "2022/pa.6": {
+     "url": "rdv/2022-pa.6.csv.gz",
+     "bytes": 1321565,
+     "rows": 18235,
+     "rawBytes": 10612048,
+     "where": "election = 2022 and turn = 1 and state = 'pa' and office in (6)",
+     "offices": [
+      6
+     ]
+    },
+    "2022/pa.7": {
+     "url": "rdv/2022-pa.7.csv.gz",
+     "bytes": 1679894,
+     "rows": 18235,
+     "rawBytes": 13467815,
+     "where": "election = 2022 and turn = 1 and state = 'pa' and office in (7)",
+     "offices": [
+      7
+     ]
+    },
+    "2022/pa": {
+     "url": "rdv/2022-pa.csv.gz",
+     "bytes": 873186,
+     "rows": 54705,
+     "rawBytes": 6030018,
+     "where": "election = 2022 and turn = 1 and state = 'pa' and office in (1,3,5)",
+     "offices": [
+      1,
+      3,
+      5
+     ]
+    },
+    "2022/pb.6": {
+     "url": "rdv/2022-pb.6.csv.gz",
+     "bytes": 593018,
+     "rows": 9602,
+     "rawBytes": 4819289,
+     "where": "election = 2022 and turn = 1 and state = 'pb' and office in (6)",
+     "offices": [
+      6
+     ]
+    },
+    "2022/pb.7": {
+     "url": "rdv/2022-pb.7.csv.gz",
+     "bytes": 743461,
+     "rows": 9602,
+     "rawBytes": 6039524,
+     "where": "election = 2022 and turn = 1 and state = 'pb' and office in (7)",
+     "offices": [
+      7
+     ]
+    },
+    "2022/pb": {
+     "url": "rdv/2022-pb.csv.gz",
+     "bytes": 486363,
+     "rows": 28806,
+     "rawBytes": 3300265,
+     "where": "election = 2022 and turn = 1 and state = 'pb' and office in (1,3,5)",
+     "offices": [
+      1,
+      3,
+      5
+     ]
+    },
+    "2022/pe.6": {
+     "url": "rdv/2022-pe.6.csv.gz",
+     "bytes": 1711138,
+     "rows": 20572,
+     "rawBytes": 13800663,
+     "where": "election = 2022 and turn = 1 and state = 'pe' and office in (6)",
+     "offices": [
+      6
+     ]
+    },
+    "2022/pe.7": {
+     "url": "rdv/2022-pe.7.csv.gz",
+     "bytes": 1866960,
+     "rows": 20572,
+     "rawBytes": 15360842,
+     "where": "election = 2022 and turn = 1 and state = 'pe' and office in (7)",
+     "offices": [
+      7
+     ]
+    },
+    "2022/pe": {
+     "url": "rdv/2022-pe.csv.gz",
+     "bytes": 1085673,
+     "rows": 61716,
+     "rawBytes": 7435796,
+     "where": "election = 2022 and turn = 1 and state = 'pe' and office in (1,3,5)",
+     "offices": [
+      1,
+      3,
+      5
+     ]
+    },
+    "2022/pi.6": {
+     "url": "rdv/2022-pi.6.csv.gz",
+     "bytes": 475222,
+     "rows": 8963,
+     "rawBytes": 3789784,
+     "where": "election = 2022 and turn = 1 and state = 'pi' and office in (6)",
+     "offices": [
+      6
+     ]
+    },
+    "2022/pi.7": {
+     "url": "rdv/2022-pi.7.csv.gz",
+     "bytes": 554974,
+     "rows": 8963,
+     "rawBytes": 4634687,
+     "where": "election = 2022 and turn = 1 and state = 'pi' and office in (7)",
+     "offices": [
+      7
+     ]
+    },
+    "2022/pi": {
+     "url": "rdv/2022-pi.csv.gz",
+     "bytes": 383350,
+     "rows": 26889,
+     "rawBytes": 2640780,
+     "where": "election = 2022 and turn = 1 and state = 'pi' and office in (1,3,5)",
+     "offices": [
+      1,
+      3,
+      5
+     ]
+    },
+    "2022/pr.6": {
+     "url": "rdv/2022-pr.6.csv.gz",
+     "bytes": 2241410,
+     "rows": 25721,
+     "rawBytes": 17389153,
+     "where": "election = 2022 and turn = 1 and state = 'pr' and office in (6)",
+     "offices": [
+      6
+     ]
+    },
+    "2022/pr.7": {
+     "url": "rdv/2022-pr.7.csv.gz",
+     "bytes": 2566508,
+     "rows": 25721,
+     "rawBytes": 20036641,
+     "where": "election = 2022 and turn = 1 and state = 'pr' and office in (7)",
+     "offices": [
+      7
+     ]
+    },
+    "2022/pr": {
+     "url": "rdv/2022-pr.csv.gz",
+     "bytes": 1308738,
+     "rows": 77163,
+     "rawBytes": 9317796,
+     "where": "election = 2022 and turn = 1 and state = 'pr' and office in (1,3,5)",
+     "offices": [
+      1,
+      3,
+      5
+     ]
+    },
+    "2022/rj.6": {
+     "url": "rdv/2022-rj.6.csv.gz",
+     "bytes": 4971655,
+     "rows": 34068,
+     "rawBytes": 39035074,
+     "where": "election = 2022 and turn = 1 and state = 'rj' and office in (6)",
+     "offices": [
+      6
+     ]
+    },
+    "2022/rj.7": {
+     "url": "rdv/2022-rj.7.csv.gz",
+     "bytes": 5435009,
+     "rows": 34068,
+     "rawBytes": 41563748,
+     "where": "election = 2022 and turn = 1 and state = 'rj' and office in (7)",
+     "offices": [
+      7
+     ]
+    },
+    "2022/rj": {
+     "url": "rdv/2022-rj.csv.gz",
+     "bytes": 1813170,
+     "rows": 102204,
+     "rawBytes": 12971782,
+     "where": "election = 2022 and turn = 1 and state = 'rj' and office in (1,3,5)",
+     "offices": [
+      1,
+      3,
+      5
+     ]
+    },
+    "2022/rn.6": {
+     "url": "rdv/2022-rn.6.csv.gz",
+     "bytes": 474925,
+     "rows": 7674,
+     "rawBytes": 3854171,
+     "where": "election = 2022 and turn = 1 and state = 'rn' and office in (6)",
+     "offices": [
+      6
+     ]
+    },
+    "2022/rn.7": {
+     "url": "rdv/2022-rn.7.csv.gz",
+     "bytes": 602930,
+     "rows": 7674,
+     "rawBytes": 5002231,
+     "where": "election = 2022 and turn = 1 and state = 'rn' and office in (7)",
+     "offices": [
+      7
+     ]
+    },
+    "2022/rn": {
+     "url": "rdv/2022-rn.csv.gz",
+     "bytes": 374466,
+     "rows": 23022,
+     "rawBytes": 2528149,
+     "where": "election = 2022 and turn = 1 and state = 'rn' and office in (1,3,5)",
+     "offices": [
+      1,
+      3,
+      5
+     ]
+    },
+    "2022/ro.6": {
+     "url": "rdv/2022-ro.6.csv.gz",
+     "bytes": 257252,
+     "rows": 4198,
+     "rawBytes": 2233361,
+     "where": "election = 2022 and turn = 1 and state = 'ro' and office in (6)",
+     "offices": [
+      6
+     ]
+    },
+    "2022/ro.7": {
+     "url": "rdv/2022-ro.7.csv.gz",
+     "bytes": 386098,
+     "rows": 4198,
+     "rawBytes": 3269790,
+     "where": "election = 2022 and turn = 1 and state = 'ro' and office in (7)",
+     "offices": [
+      7
+     ]
+    },
+    "2022/ro": {
+     "url": "rdv/2022-ro.csv.gz",
+     "bytes": 199447,
+     "rows": 12594,
+     "rawBytes": 1431534,
+     "where": "election = 2022 and turn = 1 and state = 'ro' and office in (1,3,5)",
+     "offices": [
+      1,
+      3,
+      5
+     ]
+    },
+    "2022/rr.6": {
+     "url": "rdv/2022-rr.6.csv.gz",
+     "bytes": 98912,
+     "rows": 1268,
+     "rawBytes": 849172,
+     "where": "election = 2022 and turn = 1 and state = 'rr' and office in (6)",
+     "offices": [
+      6
+     ]
+    },
+    "2022/rr.7": {
+     "url": "rdv/2022-rr.7.csv.gz",
+     "bytes": 174685,
+     "rows": 1268,
+     "rawBytes": 1485707,
+     "where": "election = 2022 and turn = 1 and state = 'rr' and office in (7)",
+     "offices": [
+      7
+     ]
+    },
+    "2022/rr": {
+     "url": "rdv/2022-rr.csv.gz",
+     "bytes": 60691,
+     "rows": 3804,
+     "rawBytes": 438231,
+     "where": "election = 2022 and turn = 1 and state = 'rr' and office in (1,3,5)",
+     "offices": [
+      1,
+      3,
+      5
+     ]
+    },
+    "2022/rs.6": {
+     "url": "rdv/2022-rs.6.csv.gz",
+     "bytes": 2386337,
+     "rows": 27201,
+     "rawBytes": 18623702,
+     "where": "election = 2022 and turn = 1 and state = 'rs' and office in (6)",
+     "offices": [
+      6
+     ]
+    },
+    "2022/rs.7": {
+     "url": "rdv/2022-rs.7.csv.gz",
+     "bytes": 2932265,
+     "rows": 27201,
+     "rawBytes": 22718839,
+     "where": "election = 2022 and turn = 1 and state = 'rs' and office in (7)",
+     "offices": [
+      7
+     ]
+    },
+    "2022/rs": {
+     "url": "rdv/2022-rs.csv.gz",
+     "bytes": 1423556,
+     "rows": 81603,
+     "rawBytes": 9956179,
+     "where": "election = 2022 and turn = 1 and state = 'rs' and office in (1,3,5)",
+     "offices": [
+      1,
+      3,
+      5
+     ]
+    },
+    "2022/sc.6": {
+     "url": "rdv/2022-sc.6.csv.gz",
+     "bytes": 1283042,
+     "rows": 16242,
+     "rawBytes": 10227750,
+     "where": "election = 2022 and turn = 1 and state = 'sc' and office in (6)",
+     "offices": [
+      6
+     ]
+    },
+    "2022/sc.7": {
+     "url": "rdv/2022-sc.7.csv.gz",
+     "bytes": 1586008,
+     "rows": 16242,
+     "rawBytes": 12470748,
+     "where": "election = 2022 and turn = 1 and state = 'sc' and office in (7)",
+     "offices": [
+      7
+     ]
+    },
+    "2022/sc": {
+     "url": "rdv/2022-sc.csv.gz",
+     "bytes": 934569,
+     "rows": 48726,
+     "rawBytes": 6439135,
+     "where": "election = 2022 and turn = 1 and state = 'sc' and office in (1,3,5)",
+     "offices": [
+      1,
+      3,
+      5
+     ]
+    },
+    "2022/se.6": {
+     "url": "rdv/2022-se.6.csv.gz",
+     "bytes": 327356,
+     "rows": 5498,
+     "rawBytes": 2723183,
+     "where": "election = 2022 and turn = 1 and state = 'se' and office in (6)",
+     "offices": [
+      6
+     ]
+    },
+    "2022/se.7": {
+     "url": "rdv/2022-se.7.csv.gz",
+     "bytes": 477436,
+     "rows": 5498,
+     "rawBytes": 4056307,
+     "where": "election = 2022 and turn = 1 and state = 'se' and office in (7)",
+     "offices": [
+      7
+     ]
+    },
+    "2022/se": {
+     "url": "rdv/2022-se.csv.gz",
+     "bytes": 276195,
+     "rows": 16494,
+     "rawBytes": 1881230,
+     "where": "election = 2022 and turn = 1 and state = 'se' and office in (1,3,5)",
+     "offices": [
+      1,
+      3,
+      5
+     ]
+    },
+    "2022/sp.6": {
+     "url": "rdv/2022-sp.6.csv.gz",
+     "bytes": 13102177,
+     "rows": 101073,
+     "rawBytes": 102851497,
+     "where": "election = 2022 and turn = 1 and state = 'sp' and office in (6)",
+     "offices": [
+      6
+     ]
+    },
+    "2022/sp.7": {
+     "url": "rdv/2022-sp.7.csv.gz",
+     "bytes": 14265075,
+     "rows": 101073,
+     "rawBytes": 110164896,
+     "where": "election = 2022 and turn = 1 and state = 'sp' and office in (7)",
+     "offices": [
+      7
+     ]
+    },
+    "2022/sp": {
+     "url": "rdv/2022-sp.csv.gz",
+     "bytes": 5274083,
+     "rows": 303219,
+     "rawBytes": 38118396,
+     "where": "election = 2022 and turn = 1 and state = 'sp' and office in (1,3,5)",
+     "offices": [
+      1,
+      3,
+      5
+     ]
+    },
+    "2022/to.6": {
+     "url": "rdv/2022-to.6.csv.gz",
+     "bytes": 230227,
+     "rows": 3957,
+     "rawBytes": 1873325,
+     "where": "election = 2022 and turn = 1 and state = 'to' and office in (6)",
+     "offices": [
+      6
+     ]
+    },
+    "2022/to.7": {
+     "url": "rdv/2022-to.7.csv.gz",
+     "bytes": 293305,
+     "rows": 3957,
+     "rawBytes": 2425236,
+     "where": "election = 2022 and turn = 1 and state = 'to' and office in (7)",
+     "offices": [
+      7
+     ]
+    },
+    "2022/to": {
+     "url": "rdv/2022-to.csv.gz",
+     "bytes": 199405,
+     "rows": 11871,
+     "rawBytes": 1398009,
+     "where": "election = 2022 and turn = 1 and state = 'to' and office in (1,3,5)",
+     "offices": [
+      1,
+      3,
+      5
+     ]
+    },
+    "2022/zz": {
+     "url": "rdv/2022-zz.csv.gz",
+     "bytes": 19545,
+     "rows": 1018,
+     "rawBytes": 124910,
+     "where": "election = 2022 and turn = 1 and state = 'zz' and office in (1,3,5)",
+     "offices": [
+      1,
+      3,
+      5
+     ]
+    },
+    "2022-2/ac": {
+     "url": "rdv/2022-2-ac.csv.gz",
+     "bytes": 21478,
+     "rows": 2124,
+     "rawBytes": 155369,
+     "where": "election = 2022 and turn = 2 and state = 'ac' and office in (1,3)",
+     "offices": [
+      1,
+      3
+     ]
+    },
+    "2022-2/al": {
+     "url": "rdv/2022-2-al.csv.gz",
+     "bytes": 146606,
+     "rows": 13252,
+     "rawBytes": 988037,
+     "where": "election = 2022 and turn = 2 and state = 'al' and office in (1,3)",
+     "offices": [
+      1,
+      3
+     ]
+    },
+    "2022-2/am": {
+     "url": "rdv/2022-2-am.csv.gz",
+     "bytes": 159558,
+     "rows": 14906,
+     "rawBytes": 1065199,
+     "where": "election = 2022 and turn = 2 and state = 'am' and office in (1,3)",
+     "offices": [
+      1,
+      3
+     ]
+    },
+    "2022-2/ap": {
+     "url": "rdv/2022-2-ap.csv.gz",
+     "bytes": 17807,
+     "rows": 1740,
+     "rawBytes": 123172,
+     "where": "election = 2022 and turn = 2 and state = 'ap' and office in (1,3)",
+     "offices": [
+      1,
+      3
+     ]
+    },
+    "2022-2/ba": {
+     "url": "rdv/2022-2-ba.csv.gz",
+     "bytes": 741815,
+     "rows": 68848,
+     "rawBytes": 5072076,
+     "where": "election = 2022 and turn = 2 and state = 'ba' and office in (1,3)",
+     "offices": [
+      1,
+      3
+     ]
+    },
+    "2022-2/ce": {
+     "url": "rdv/2022-2-ce.csv.gz",
+     "bytes": 232424,
+     "rows": 22796,
+     "rawBytes": 1631200,
+     "where": "election = 2022 and turn = 2 and state = 'ce' and office in (1,3)",
+     "offices": [
+      1,
+      3
+     ]
+    },
+    "2022-2/df": {
+     "url": "rdv/2022-2-df.csv.gz",
+     "bytes": 66416,
+     "rows": 6748,
+     "rawBytes": 483998,
+     "where": "election = 2022 and turn = 2 and state = 'df' and office in (1,3)",
+     "offices": [
+      1,
+      3
+     ]
+    },
+    "2022-2/es": {
+     "url": "rdv/2022-2-es.csv.gz",
+     "bytes": 197700,
+     "rows": 18478,
+     "rawBytes": 1355426,
+     "where": "election = 2022 and turn = 2 and state = 'es' and office in (1,3)",
+     "offices": [
+      1,
+      3
+     ]
+    },
+    "2022-2/go": {
+     "url": "rdv/2022-2-go.csv.gz",
+     "bytes": 150958,
+     "rows": 14620,
+     "rawBytes": 1081036,
+     "where": "election = 2022 and turn = 2 and state = 'go' and office in (1,3)",
+     "offices": [
+      1,
+      3
+     ]
+    },
+    "2022-2/ma": {
+     "url": "rdv/2022-2-ma.csv.gz",
+     "bytes": 170988,
+     "rows": 16423,
+     "rawBytes": 1221503,
+     "where": "election = 2022 and turn = 2 and state = 'ma' and office in (1,3)",
+     "offices": [
+      1,
+      3
+     ]
+    },
+    "2022-2/mg": {
+     "url": "rdv/2022-2-mg.csv.gz",
+     "bytes": 529236,
+     "rows": 49981,
+     "rawBytes": 3710659,
+     "where": "election = 2022 and turn = 2 and state = 'mg' and office in (1,3)",
+     "offices": [
+      1,
+      3
+     ]
+    },
+    "2022-2/ms": {
+     "url": "rdv/2022-2-ms.csv.gz",
+     "bytes": 146426,
+     "rows": 13824,
+     "rawBytes": 1017676,
+     "where": "election = 2022 and turn = 2 and state = 'ms' and office in (1,3)",
+     "offices": [
+      1,
+      3
+     ]
+    },
+    "2022-2/mt": {
+     "url": "rdv/2022-2-mt.csv.gz",
+     "bytes": 79968,
+     "rows": 7652,
+     "rawBytes": 566278,
+     "where": "election = 2022 and turn = 2 and state = 'mt' and office in (1,3)",
+     "offices": [
+      1,
+      3
+     ]
+    },
+    "2022-2/pa": {
+     "url": "rdv/2022-2-pa.csv.gz",
+     "bytes": 188313,
+     "rows": 18235,
+     "rawBytes": 1324172,
+     "where": "election = 2022 and turn = 2 and state = 'pa' and office in (1,3)",
+     "offices": [
+      1,
+      3
+     ]
+    },
+    "2022-2/pb": {
+     "url": "rdv/2022-2-pb.csv.gz",
+     "bytes": 209590,
+     "rows": 19204,
+     "rawBytes": 1421804,
+     "where": "election = 2022 and turn = 2 and state = 'pb' and office in (1,3)",
+     "offices": [
+      1,
+      3
+     ]
+    },
+    "2022-2/pe": {
+     "url": "rdv/2022-2-pe.csv.gz",
+     "bytes": 446123,
+     "rows": 41144,
+     "rawBytes": 3038181,
+     "where": "election = 2022 and turn = 2 and state = 'pe' and office in (1,3)",
+     "offices": [
+      1,
+      3
+     ]
+    },
+    "2022-2/pi": {
+     "url": "rdv/2022-2-pi.csv.gz",
+     "bytes": 95013,
+     "rows": 8963,
+     "rawBytes": 664328,
+     "where": "election = 2022 and turn = 2 and state = 'pi' and office in (1,3)",
+     "offices": [
+      1,
+      3
+     ]
+    },
+    "2022-2/pr": {
+     "url": "rdv/2022-2-pr.csv.gz",
+     "bytes": 268234,
+     "rows": 25721,
+     "rawBytes": 1886544,
+     "where": "election = 2022 and turn = 2 and state = 'pr' and office in (1,3)",
+     "offices": [
+      1,
+      3
+     ]
+    },
+    "2022-2/rj": {
+     "url": "rdv/2022-2-rj.csv.gz",
+     "bytes": 351185,
+     "rows": 34068,
+     "rawBytes": 2586891,
+     "where": "election = 2022 and turn = 2 and state = 'rj' and office in (1,3)",
+     "offices": [
+      1,
+      3
+     ]
+    },
+    "2022-2/rn": {
+     "url": "rdv/2022-2-rn.csv.gz",
+     "bytes": 81182,
+     "rows": 7674,
+     "rawBytes": 557960,
+     "where": "election = 2022 and turn = 2 and state = 'rn' and office in (1,3)",
+     "offices": [
+      1,
+      3
+     ]
+    },
+    "2022-2/ro": {
+     "url": "rdv/2022-2-ro.csv.gz",
+     "bytes": 87462,
+     "rows": 8396,
+     "rawBytes": 624531,
+     "where": "election = 2022 and turn = 2 and state = 'ro' and office in (1,3)",
+     "offices": [
+      1,
+      3
+     ]
+    },
+    "2022-2/rr": {
+     "url": "rdv/2022-2-rr.csv.gz",
+     "bytes": 12643,
+     "rows": 1268,
+     "rawBytes": 90147,
+     "where": "election = 2022 and turn = 2 and state = 'rr' and office in (1,3)",
+     "offices": [
+      1,
+      3
+     ]
+    },
+    "2022-2/rs": {
+     "url": "rdv/2022-2-rs.csv.gz",
+     "bytes": 600791,
+     "rows": 54402,
+     "rawBytes": 4028185,
+     "where": "election = 2022 and turn = 2 and state = 'rs' and office in (1,3)",
+     "offices": [
+      1,
+      3
+     ]
+    },
+    "2022-2/sc": {
+     "url": "rdv/2022-2-sc.csv.gz",
+     "bytes": 340073,
+     "rows": 32484,
+     "rawBytes": 2374951,
+     "where": "election = 2022 and turn = 2 and state = 'sc' and office in (1,3)",
+     "offices": [
+      1,
+      3
+     ]
+    },
+    "2022-2/se": {
+     "url": "rdv/2022-2-se.csv.gz",
+     "bytes": 120249,
+     "rows": 10996,
+     "rawBytes": 822505,
+     "where": "election = 2022 and turn = 2 and state = 'se' and office in (1,3)",
+     "offices": [
+      1,
+      3
+     ]
+    },
+    "2022-2/sp": {
+     "url": "rdv/2022-2-sp.csv.gz",
+     "bytes": 2171505,
+     "rows": 202146,
+     "rawBytes": 14995668,
+     "where": "election = 2022 and turn = 2 and state = 'sp' and office in (1,3)",
+     "offices": [
+      1,
+      3
+     ]
+    },
+    "2022-2/to": {
+     "url": "rdv/2022-2-to.csv.gz",
+     "bytes": 42041,
+     "rows": 3957,
+     "rawBytes": 293814,
+     "where": "election = 2022 and turn = 2 and state = 'to' and office in (1,3)",
+     "offices": [
+      1,
+      3
+     ]
+    },
+    "2022-2/zz": {
+     "url": "rdv/2022-2-zz.csv.gz",
+     "bytes": 13013,
+     "rows": 1018,
+     "rawBytes": 70992,
+     "where": "election = 2022 and turn = 2 and state = 'zz' and office in (1,3)",
+     "offices": [
+      1,
+      3
+     ]
     }
    }
   },
@@ -1168,19 +3256,40 @@
    "columns": "election,turn,state,city,office,sections,nominal,blank,nul",
    "ddl": "create table tot (election int, turn int, state text, city text, office int, sections int, nominal bigint, blank bigint, nul bigint)",
    "parts": {
-    "2022/all": {
-     "url": "tot/2022.csv.gz",
-     "bytes": 61179,
-     "rows": 5709,
-     "rawBytes": 199422,
-     "where": "election = 2022 and turn = 2"
-    },
     "2026/all": {
      "url": "tot/2026.csv.gz",
      "bytes": 353988,
      "rows": 27972,
      "rawBytes": 1152158,
      "where": "election = 2026 and turn = 1"
+    },
+    "2018/all": {
+     "url": "tot/2018.csv.gz",
+     "bytes": 358517,
+     "rows": 27988,
+     "rawBytes": 1159360,
+     "where": "election = 2018 and turn = 1"
+    },
+    "2018-2/all": {
+     "url": "tot/2018-2.csv.gz",
+     "bytes": 117471,
+     "rows": 8701,
+     "rawBytes": 354759,
+     "where": "election = 2018 and turn = 2"
+    },
+    "2022/all": {
+     "url": "tot/2022.csv.gz",
+     "bytes": 348803,
+     "rows": 27990,
+     "rawBytes": 1146556,
+     "where": "election = 2022 and turn = 1"
+    },
+    "2022-2/all": {
+     "url": "tot/2022-2.csv.gz",
+     "bytes": 111950,
+     "rows": 8420,
+     "rawBytes": 338854,
+     "where": "election = 2022 and turn = 2"
     }
    }
   },
@@ -1189,19 +3298,40 @@
    "columns": "election,turn,state,city,office,cand,votes",
    "ddl": "create table res (election int, turn int, state text, city text, office int, cand text, votes bigint)",
    "parts": {
-    "2022/all": {
-     "url": "res/2022.csv.gz",
-     "bytes": 85980,
-     "rows": 11418,
-     "rawBytes": 371717,
-     "where": "election = 2022 and turn = 2"
-    },
     "2026/all": {
      "url": "res/2026.csv.gz",
      "bytes": 921607,
      "rows": 176007,
      "rawBytes": 5378319,
      "where": "election = 2026 and turn = 1"
+    },
+    "2018/all": {
+     "url": "res/2018.csv.gz",
+     "bytes": 1110200,
+     "rows": 211648,
+     "rawBytes": 6460104,
+     "where": "election = 2018 and turn = 1"
+    },
+    "2018-2/all": {
+     "url": "res/2018-2.csv.gz",
+     "bytes": 121308,
+     "rows": 17401,
+     "rawBytes": 565053,
+     "where": "election = 2018 and turn = 2"
+    },
+    "2022/all": {
+     "url": "res/2022.csv.gz",
+     "bytes": 872919,
+     "rows": 166186,
+     "rawBytes": 4977396,
+     "where": "election = 2022 and turn = 1"
+    },
+    "2022-2/all": {
+     "url": "res/2022-2.csv.gz",
+     "bytes": 118780,
+     "rows": 16835,
+     "rawBytes": 545717,
+     "where": "election = 2022 and turn = 2"
     }
    }
   },
@@ -1450,19 +3580,6 @@
     }
    }
   },
-  "cands": {
-   "name": "cands",
-   "columns": "election,uf,office,n,name,short_name,party,official_votes",
-   "ddl": "create table cands (election int, uf text, office int, n text, name text, short_name text, party text, official_votes int)",
-   "parts": {
-    "all": {
-     "url": "cands.csv.gz",
-     "bytes": 418910,
-     "rows": 18854,
-     "rawBytes": 1276023
-    }
-   }
-  },
   "mun_map": {
    "name": "mun_map",
    "columns": "state,city,ibge",
@@ -1470,9 +3587,9 @@
    "parts": {
     "all": {
      "url": "mun_map.csv.gz",
-     "bytes": 50739,
-     "rows": 5763,
-     "rawBytes": 134080
+     "bytes": 51229,
+     "rows": 5809,
+     "rawBytes": 135396
     }
    }
   },
@@ -1487,6 +3604,20 @@
      "rows": 1215,
      "rawBytes": 69719,
      "where": "election = 2026 and turn = 1"
+    },
+    "2018/all": {
+     "url": "elected/2018.csv.gz",
+     "bytes": 1183,
+     "rows": 53,
+     "rawBytes": 2614,
+     "where": "election = 2018 and turn = 1"
+    },
+    "2022/all": {
+     "url": "elected/2022.csv.gz",
+     "bytes": 617,
+     "rows": 27,
+     "rawBytes": 1292,
+     "where": "election = 2022 and turn = 1"
     }
    }
   },
@@ -1501,6 +3632,20 @@
      "rows": 479,
      "rawBytes": 10689,
      "where": "election = 2026 and turn = 1"
+    },
+    "2018/all": {
+     "url": "seats/2018.csv.gz",
+     "bytes": 2676,
+     "rows": 829,
+     "rawBytes": 15321,
+     "where": "election = 2018 and turn = 1"
+    },
+    "2022/all": {
+     "url": "seats/2022.csv.gz",
+     "bytes": 2135,
+     "rows": 597,
+     "rawBytes": 11635,
+     "where": "election = 2022 and turn = 1"
     }
    }
   },
@@ -1529,6 +3674,19 @@
      "rows": 3,
      "rawBytes": 315,
      "where": "election = 2026 and turn = 1"
+    }
+   }
+  },
+  "cands": {
+   "name": "cands",
+   "columns": "election,turn,uf,office,n,name,short_name,party,official_votes",
+   "ddl": "create table cands (election int, turn int, uf text, office int, n text, name text, short_name text, party text, official_votes bigint)",
+   "parts": {
+    "all": {
+     "url": "cands.csv.gz",
+     "bytes": 1462731,
+     "rows": 76683,
+     "rawBytes": 5083421
     }
    }
   }
@@ -1683,5 +3841,5 @@
   },
   "source": "IBGE malhas v3 (qualidade minima/intermediaria)"
  },
- "version": "2026-10-05T13:54:31.324Z"
+ "version": "2026-10-05T15:31:20.927Z"
 }

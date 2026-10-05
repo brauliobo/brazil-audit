@@ -114,24 +114,26 @@ function smallTable(name, el, rows) {
 
 // ---- rdv: section results per office, in the shape of the 2026 collector for every election ----------------------------------
 // votes = {candidate number: votes} of RDV kind 2 only. null ballots = kinds 4 (invalid number) + 6 + 7 (second senate vote), as the
-// official null total counts them. The legacy 2022 table only ever stored the two runoff candidates: blank/null stay NULL (never invented).
+// official null total counts them. The open-data sources use the same kinds (3 blank, 4 null) for 2018 and 2022.
 const sumOf = (...kinds) => kinds.map((k) => `(select coalesce(sum(value::int),0) from jsonb_each_text(votes->'${k}'))`).join('+')
 // one lazy part per office group: president/governor/senator together, each deputy office on its own (the bulk of the bytes)
 const OFFICE_PARTS = { main: [1, 3, 5], 6: [6], 7: [7], 8: [8] }
 
-const rdvSql = (el, s, offices) => el.source.kind === 'legacy'
-  ? `select ${el.year},${el.turn},state,city,zone,section,model,1,votes_13+votes_22,null,null,jsonb_build_object('13',votes_13,'22',votes_22)
-     from votes where state=${q(s)} order by city,zone,section,model`
-  : `select ${el.year},${el.turn},state,city,zone,section,model,office,${sumOf(2)},${sumOf(3)},${sumOf(4, 6, 7)},
-     coalesce(votes->'2','{}'::jsonb) from rdv_votes where state=${q(s)} and office in (${offices}) order by city,zone,section,model,office`
+// the open-data databases hold both rounds in one rdv_votes (a `turn` column) and have no urn model
+const isOpen = (el) => el.source.kind === 'open'
+const onTurn = (el, prefix = 'and') => (isOpen(el) ? ` ${prefix} turn = ${el.turn}` : '')
+const rdvSql = (el, s, offices) => `select ${el.year},${el.turn},state,city,zone,section,${isOpen(el) ? "''" : 'model'},office,${sumOf(2)},${sumOf(3)},${sumOf(4, 6, 7)},
+  coalesce(votes->'2','{}'::jsonb) from rdv_votes where state=${q(s)} and office in (${offices})${onTurn(el)} order by city,zone,section${isOpen(el) ? '' : ',model'},office`
 
-const statesOf = (el) => scalar(el.source.db, `select distinct state from ${el.source.kind === 'legacy' ? 'votes' : 'rdv_votes'} order by 1`)
-const citiesSql = (el) => `select distinct state,city from ${el.source.kind === 'legacy' ? 'votes' : 'rdv_votes where office=1'}`
+const statesOf = (el) => scalar(el.source.db, `select distinct state from rdv_votes${onTurn(el, 'where')} order by 1`)
+const citiesSql = (el) => `select distinct state,city from rdv_votes where office=1${onTurn(el)}`
 
 async function buildRdv(el) {
   const rdv = table('rdv')
   for (const s of list('states', await statesOf(el))) {
-    for (const [group, offices] of Object.entries(el.source.kind === 'legacy' ? { main: [1] } : OFFICE_PARTS)) {
+    for (const [group, wanted] of Object.entries(OFFICE_PARTS)) {
+      const offices = wanted.filter((o) => el.offices.includes(o))
+      if (!offices.length) continue
       const key = group === 'main' ? s : `${s}.${group}`
       const file = `${OUT}/rdv/${el.key}-${key}.csv.gz`
       part(rdv, el, key, file, await dump(el.source.db, [rdvSql(el, s, offices)], file), `state = ${q(s)} and office in (${offices})`, { offices })
@@ -252,30 +254,47 @@ const payload = async (url) => {
   return JSON.parse(Buffer.from((await res.text()).trim().split('.')[1], 'base64url').toString())
 }
 
-async function candidates(election, uf, office, url) {
+async function candidates(el, uf, office, url) {
   const { carg } = await payload(url)
-  return carg[0].agr.flatMap((a) => a.par.flatMap((p) => (p.cand ?? []).map((c) => [election, uf, office, c.n, c.nm, c.nmu, p.sg, c.vap ?? ''])))
+  return carg[0].agr.flatMap((a) => a.par.flatMap((p) => (p.cand ?? []).map((c) => [el.year, el.turn, uf, office, c.n, c.nm, c.nmu, p.sg, c.vap ?? ''])))
+}
+
+// 2026: the TSE candidate files (with their official totals)
+async function rdvCandidates(el) {
+  const TSE = 'https://resultados.tse.jus.br/oficial/ele2026'
+  const ufs = (await statesOf(el)).filter((u) => u !== 'zz')
+  const rows = await candidates(el, 'br', 1, `${TSE}/6257/dados/br/br-c0001-e006257-u.jws`)
+  for (const uf of ufs) {
+    for (const office of uf === 'df' ? [3, 5, 6, 8] : [3, 5, 6, 7]) {
+      rows.push(...(await candidates(el, uf, office, `${TSE}/6259/dados/${uf}/${uf}-c${String(office).padStart(4, '0')}-e006259-u.jws`)))
+    }
+  }
+  return rows
+}
+
+// 2018/2022: the collector's `candidates` table. It has no official totals file, so the national president totals are the sum of the
+// shipped section results (they equal the TSE numbers; the other offices have no total here).
+async function openCandidates(el) {
+  const nominal = new Map()
+  for (const line of gunzipSync(readFileSync(`${OUT}/res/${el.key}.csv.gz`)).toString().split('\n').filter(Boolean)) {
+    const [, , , , office, cand, votes] = parseCsvLine(line)
+    if (office === '1') nominal.set(cand, (nominal.get(cand) ?? 0) + +votes)
+  }
+  const sql = `select distinct on (state, office, number) lower(state), office, number, name, ballot_name, party from candidates where turn = ${el.turn} order by state, office, number, sq_candidato`
+  return (await text(el.source.db, [sql])).trim().split('\n').map(parseCsvLine).map(([uf, office, n, name, short, party]) => [el.year, el.turn, uf, office, n, name, short, party, uf === 'br' && office === '1' ? nominal.get(n) ?? 0 : ''])
 }
 
 async function buildCands() {
-  const TSE = 'https://resultados.tse.jus.br/oficial/ele2026'
-  const ufs = (await statesOf(ELECTIONS[2022])).filter((u) => u !== 'zz')
-  const rows = [
-    ...(await candidates(2026, 'br', 1, `${TSE}/6257/dados/br/br-c0001-e006257-u.jws`)),
-    // 2022 runoff, official totals
-    [2022, 'br', 1, '13', 'LUIZ INÁCIO LULA DA SILVA', 'LULA', 'PT', 60345999],
-    [2022, 'br', 1, '22', 'JAIR MESSIAS BOLSONARO', 'BOLSONARO', 'PL', 58206354],
-  ]
-  for (const uf of ufs) {
-    for (const office of uf === 'df' ? [3, 5, 6, 8] : [3, 5, 6, 7]) {
-      rows.push(...(await candidates(2026, uf, office, `${TSE}/6259/dados/${uf}/${uf}-c${String(office).padStart(4, '0')}-e006259-u.jws`)))
-    }
-  }
-  const body = csvOf(rows.map((r) => r.map((v) => String(v))))
+  const rows = []
+  for (const el of SELECTED) rows.push(...(await (isOpen(el) ? openCandidates : rdvCandidates)(el)))
+  // the other elections keep the rows already shipped (a partial run with --election=)
+  const kept = manifest.tables.cands && existsSync(`${OUT}/cands.csv.gz`) ? gunzipSync(readFileSync(`${OUT}/cands.csv.gz`)).toString().split('\n').filter(Boolean).map(parseCsvLine).filter((r) => !SELECTED.some((e) => e.year === +r[0] && e.turn === +r[1])) : []
+  const all = [...kept, ...rows.map((r) => r.map(String))]
+  const body = csvOf(all)
   writeFileSync(`${OUT}/cands.csv.gz`, gzipSync(body, { level: 9 }))
-  manifest.tables.cands = { name: 'cands', columns: 'election,uf,office,n,name,short_name,party,official_votes', ddl: 'create table cands (election int, uf text, office int, n text, name text, short_name text, party text, official_votes int)',
-    parts: { all: { url: 'cands.csv.gz', bytes: readFileSync(`${OUT}/cands.csv.gz`).length, rows: rows.length, rawBytes: body.length } } }
-  log(`cands: ${rows.length} rows`)
+  manifest.tables.cands = { name: 'cands', columns: 'election,turn,uf,office,n,name,short_name,party,official_votes', ddl: 'create table cands (election int, turn int, uf text, office int, n text, name text, short_name text, party text, official_votes bigint)',
+    parts: { all: { url: 'cands.csv.gz', bytes: readFileSync(`${OUT}/cands.csv.gz`).length, rows: all.length, rawBytes: body.length } } }
+  log(`cands: ${all.length} rows`)
 }
 
 // ---- maps and parliament -----------------------------------------------------------------------------------------------------
@@ -336,7 +355,18 @@ async function stateFile(uf, office, fresh) {
 
 const candidatesOf = (carg) => carg.agr.flatMap((a) => a.par.flatMap((p) => (p.cand ?? []).map((c) => ({ ...c, party: p.sg, bloc: a.com }))))
 
+// 2018/2022: the collector's `elected` table; seats count the elected candidates per party (no federation blocs)
+async function buildElectedOpen(el) {
+  const won = `from elected e left join candidates c on c.sq_candidato = e.sq_candidato and c.turn = e.turn where e.turn = ${el.turn} and e.outcome like 'ELEITO%'`
+  const elected = (await text(el.source.db, [`select lower(e.state), e.office, e.number, coalesce(c.ballot_name, e.name), e.party, e.outcome, e.votes ${won} and e.office = 5 order by 1, e.votes desc`])).trim().split('\n').map(parseCsvLine)
+  const seats = (await text(el.source.db, [`select lower(e.state), e.office, e.party, count(*) ${won} and e.office in (5, 6, 7, 8) group by 1, 2, 3 order by 1, 2, 4 desc`])).trim().split('\n').map(parseCsvLine)
+  for (const office of [5, 6, 7, 8]) log(`seats ${el.key} office ${office}: ${seats.filter((r) => +r[1] === office).reduce((t, r) => t + +r[3], 0)}`)
+  smallTable('elected', el, elected)
+  smallTable('seats', el, seats)
+}
+
 async function buildElected(el, mun) {
+  if (isOpen(el)) return buildElectedOpen(el)
   const [elected, seats] = [[], []]
   const ufs = mun.abr.map((a) => a.cd).filter((u) => u !== 'zz')
   for (const uf of ufs) {
@@ -378,7 +408,7 @@ async function buildResidual(el, mun) {
       const code = codes.get(`${uf}/${city}`)
       for (const office of officesOf(uf)) {
         const attempt = async (zone) => {
-          try { return residualOf(await officialFile(uf, code, zone, office), (zone ? dump.zones.get(`${city}|${zone}|${office}`) : dump.cities.get(`${city}|${office}`)) ?? EMPTY) } catch (e) { return { skip: 'no_official_file', detail: e.message.slice(-40) } }
+          try { return residualOf(await officialFile(el.year, uf, code, zone, office), (zone ? dump.zones.get(`${city}|${zone}|${office}`) : dump.cities.get(`${city}|${office}`)) ?? EMPTY) } catch (e) { return { skip: 'no_official_file', detail: e.message.slice(-40) } }
         }
         const results = await Promise.all([...zones.keys()].map(async (zone) => [zone, await attempt(zone)]))
         const failed = results.filter(([, r]) => r.skip)

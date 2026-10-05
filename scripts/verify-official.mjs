@@ -1,12 +1,18 @@
-// Compares the shipped 2026 data (res_2026 + residual_2026) with the official UF and national result files of the TSE.
-//   node scripts/verify-official.mjs            prints the match table and every mismatch
+// Compares the shipped data of an election (res + residual) with the official UF and national result files of the TSE.
+//   node scripts/verify-official.mjs [--election=2026]   prints the match table and every mismatch
+// Only elections with official result files wired (hasResidual in src/elections.js) can be checked.
 import { existsSync, readFileSync } from 'node:fs'
 import { gunzipSync } from 'node:zlib'
 import { parseCsvLine } from './csv.mjs'
 import { cached, tseMunicipalities } from './geo.mjs'
+import { ELECTIONS } from '../src/elections.js'
 import { OFFICIAL, dumpOf, officesOf, officialFile } from './official.mjs'
 
-const rows = (name) => gunzipSync(readFileSync(`data/${name}/2026.csv.gz`)).toString().trim().split('\n').map(parseCsvLine)
+const key = process.argv.find((a) => a.startsWith('--election='))?.split('=')[1] ?? '2026'
+const el = ELECTIONS[key]
+if (!el?.hasResidual) throw new Error(`election ${key}: no official result files are wired (see hasResidual in src/elections.js)`)
+
+const rows = (name) => gunzipSync(readFileSync(`data/${name}/${el.key}.csv.gz`)).toString().trim().split('\n').map(parseCsvLine)
 const UFS = [...new Set(rows('tot').map((r) => r[2]))].sort()
 
 // ours[uf][office] = Map(number -> votes, plus 'branco', 'nulo+invalidos')
@@ -21,7 +27,7 @@ for (const [, , uf, , office, , nominal, blank, nul] of rows('tot')) { add(uf, o
 
 const official = async (uf, office) => {
   const [event, cargo] = OFFICIAL[office]
-  const j = JSON.parse(await cached(`verify-${uf}-${cargo}.json`, `https://resultados.tse.jus.br/oficial/ele2026/${event}/dados/${uf}/${uf}-${cargo}-e00${event}-u.json`, { fresh: true }))
+  const j = JSON.parse(await cached(`verify-${el.key}-${uf}-${cargo}.json`, `https://resultados.tse.jus.br/oficial/ele${el.year}/${event}/dados/${uf}/${uf}-${cargo}-e00${event}-u.json`, { fresh: true }))
   return { j, cands: new Map(j.carg[0].agr.flatMap((a) => a.par.flatMap((p) => (p.cand ?? []).map((c) => [c.n, +c.vap])))) }
 }
 
@@ -57,12 +63,12 @@ const zones = [...new Set(residualRows.map((r) => `${r[0]}|${r[1]}|${r[3]}`))]
 let zoneOk = 0, zoneChecks = 0
 const zoneBad = []
 for (const uf of [...new Set(zones.map((z) => z.split('|')[0]))]) {
-  const parts = ['', '.6', '.7', '.8'].map((x) => `data/rdv/2026-${uf}${x}.csv.gz`).filter((f) => existsSync(f))
+  const parts = ['', '.6', '.7', '.8'].map((x) => `data/rdv/${el.key}-${uf}${x}.csv.gz`).filter((f) => existsSync(f))
   const dump = dumpOf(parts, new Set(zones.filter((z) => z.startsWith(`${uf}|`)).map((z) => z.split('|')[1])))
   for (const key of zones.filter((z) => z.startsWith(`${uf}|`))) {
     const [, city, zone] = key.split('|')
     for (const office of new Set(residualRows.filter((r) => r[0] === uf && r[1] === city && r[3] === zone).map((r) => +r[4]))) {
-      const j = await officialFile(uf, codes.get(`${uf}/${city}`), zone, office)
+      const j = await officialFile(el.year, uf, codes.get(`${uf}/${city}`), zone, office)
       const mine = new Map(dump.zones.get(`${city}|${zone}|${office}`)?.cands ?? [])
       for (const r of residualRows) if (r[0] === uf && r[1] === city && r[3] === zone && +r[4] === office && r[5] !== 'branco' && r[5] !== 'nulo') mine.set(r[5], (mine.get(r[5]) ?? 0) + +r[6])
       const blank = (dump.zones.get(`${city}|${zone}|${office}`)?.blank ?? 0) + residualRows.filter((r) => r[0] === uf && r[1] === city && r[3] === zone && +r[4] === office && r[5] === 'branco').reduce((t, r) => t + +r[6], 0)

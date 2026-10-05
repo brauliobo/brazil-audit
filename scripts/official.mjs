@@ -12,10 +12,10 @@ export const RDV = { city: 3, zone: 4, section: 5, office: 7, nominal: 8, blank:
 export const EMPTY = { cands: new Map(), blank: 0, nul: 0 }
 
 /** The official result file of a municipality (zone null) or of one zone of it; cached 12 h, throttled by cached(). */
-export async function officialFile(uf, cityCode, zone, office) {
+export async function officialFile(year, uf, cityCode, zone, office) {
   const [event, cargo] = OFFICIAL[office]
   const name = `${uf}${cityCode}${zone ? `-z${zone}` : ''}-${cargo}-e00${event}-u.json`
-  return JSON.parse(await cached(`official-${name}`, `https://resultados.tse.jus.br/oficial/ele2026/${event}/dados/${uf}/${name}`, { maxAgeHours: 12 }))
+  return JSON.parse(await cached(`official-${year}-${name}`, `https://resultados.tse.jus.br/oficial/ele${year}/${event}/dados/${uf}/${name}`, { maxAgeHours: 12 }))
 }
 
 /** What the given rdv part files hold for the cities: { zones: Map "city|zone|office", cities: Map "city|office" } of { cands, blank, nul }. */
