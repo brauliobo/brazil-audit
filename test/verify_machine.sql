@@ -40,11 +40,13 @@ and not exists (select 1 from rdv_machine r where (r.state, r.city_code, r.zone,
 create temp table ev as
 select state, city_code, zone, section, turn,
        case post when 'Presidente' then 1 when 'Governador' then 3 when 'Senador' then 5 when 'Deputado Federal' then 6 when 'Deputado Estadual' then 7
-                 when 'Deputado Distrital' then 8 else 0 end office, count(*) events
+                 when 'Deputado Distrital' then 8 when 'Prefeito' then 11 else 0 end office, count(*) events
 from voting_times group by 1, 2, 3, 4, 5, 6;
 create temp table bal as
 select state, city_code, zone, section, turn, office, (select sum(n.value::bigint) from jsonb_each(votes) k, jsonb_each(k.value) n) ballots from rdv_machine;
-select 'posts that are no office' check_name, count(*) from ev where office = 0;
+select 'posts with no office in the RDV' check_name, count(*) from ev where office = 0;
+select turn, post, count(distinct (state, city_code, zone, section)) sections, count(*) events from voting_times
+where post not in ('Presidente', 'Governador', 'Senador', 'Deputado Federal', 'Deputado Estadual', 'Deputado Distrital', 'Prefeito') group by 1, 2 order by 1, 2;
 select turn, office, count(*) section_offices, count(*) filter (where events = ballots) equal, count(*) filter (where events < ballots) fewer_events,
        count(*) filter (where events > ballots) more_events, sum(ballots - events) filter (where events < ballots) missing_events,
        sum(events - ballots) filter (where events > ballots) extra_events, sum(ballots) ballots, sum(events) events
@@ -78,3 +80,21 @@ select s.turn, count(*) last_vote_more_than_5min_after_closing, max(s.last_vote 
 from machine_sections s join section_urn u using (state, city_code, zone, section, turn) where s.last_vote > u.closed_at + interval '5 minutes' group by 1 order by 1;
 select turn, date_trunc('hour', first_vote)::time first_hour, count(*) from machine_sections where first_vote is not null group by 1, 2 order by 1, 2;
 select turn, date_trunc('hour', last_vote)::time last_hour, count(*) from machine_sections where last_vote is not null group by 1, 2 order by 1, 2;
+
+\echo '== diagnostics: where the RDV is not the open data, the files are missing, or the log has fewer votes than the RDV'
+\echo '-- sections whose RDV has fewer ballots than the open data in some office (the voters of a second urn are counted apart: BU .busa), by turn and state'
+select turn, state, count(distinct (city_code, zone, section)) sections from (
+  select m.turn, m.state, m.city_code, m.zone, m.section from rdv_machine m join rdv_votes o using (state, city_code, zone, section, turn, office)
+  where (select sum(n.value::bigint) from jsonb_each(m.votes) k, jsonb_each(k.value) n) <> (select sum(n.value::bigint) from jsonb_each(o.votes) k, jsonb_each(k.value) n)) t group by 1, 2 order by 1, 2;
+\echo '-- sections of the open data without machine files, by turn and state'
+select o.turn, o.state, count(*) sections from (select distinct state, city_code, zone, section, turn from rdv_votes) o
+where o.turn in (select distinct turn from machine_sections) and o.state in (select distinct state from machine_sections)
+and not exists (select 1 from machine_sections s where (s.state, s.city_code, s.zone, s.section, s.turn) = (o.state, o.city_code, o.zone, o.section, o.turn)) group by 1, 2 order by 1, 2;
+\echo '-- RDV offices outside the general election (office 11, mayor, of the supplementary elections of the same day), by turn and state'
+select turn, state, office, count(*) section_offices from rdv_machine where office not in (1, 3, 5, 6, 7, 8) group by 1, 2, 3 order by 1, 2;
+\echo '-- office 1, events vs ballots, by the origin of the BU of the section (urn_match)'
+create temp table e1 as select state, city_code, zone, section, turn, count(*) events from voting_times where post = 'Presidente' group by 1, 2, 3, 4, 5;
+select coalesce(u.origin, '?') origin, count(*) sections, count(*) filter (where e.events < b.ballots) fewer_events, count(*) filter (where e.events = b.ballots) equal,
+       count(*) filter (where e.events > b.ballots) more_events
+from (select state, city_code, zone, section, turn, (select sum(n.value::bigint) from jsonb_each(votes) k, jsonb_each(k.value) n) ballots from rdv_machine where office = 1) b
+join e1 e using (state, city_code, zone, section, turn) left join urn_match u using (state, city_code, zone, section, turn) group by 1 order by 2 desc;

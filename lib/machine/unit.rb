@@ -17,10 +17,10 @@ module Machine
     # each event has the model of its own log, and only the ones of the day of the round count (the urn of the second round has
     # the first one in its log); the votes have the model of the first log. A second RDV of a section is not stored.
     def self.add result, key, turn, rdv, logs, rdvs
-      all     = logs.map{ |log| [log, VotingLog.events(log)] }
-      events  = all.flat_map{ |log, evs| evs.select{ |_, time| time.start_with? MACHINE[:days][turn] }.map{ |post, time| [VotingLog.model(log), post, time] } }
-      garbled = all.sum{ |log, evs| VotingLog.garbled log, evs }
-      other   = all.sum{ |_, evs| evs.size } - events.size
+      all     = logs.map{ |log| [log, VotingLog.events(log), VotingLog.model(log)] }
+      events  = all.flat_map{ |_, evs, m| evs.select{ |_, time| time.start_with? MACHINE[:days][turn] }.map{ |post, time| [m, post, time] } }
+      garbled = all.sum{ |log, evs, _| VotingLog.garbled log, evs }
+      other   = all.sum{ |_, evs, _| evs.size } - events.size
       ballots = rdv ? rdv.values.sum{ |kinds| kinds.values.sum{ |numbers| numbers.values.sum } } : 0
       model   = logs.first && VotingLog.model(logs.first)
       times   = events.map(&:last)
