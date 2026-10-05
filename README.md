@@ -30,7 +30,7 @@ npm run preview
 
 Real paths with the History API under the base: `/<election>/<view>/<args…>?<state>`, e.g. `/brazil-audit/2026/maps?scope=state&uf=sp`,
 `/2026/drill/sp/SAO%20PAULO/0372`, `/2026/sql?q=…`. The first segment is the election (omitted = the latest), the view is
-`overview | maps | parliament | drill | analysis | time | sql`; the rest of the state (office, metric, candidate, scope, sort,
+`overview | maps | parliament | seats | drill | analysis | time | sql`; the rest of the state (office, metric, candidate, scope, sort,
 page, query) is in the query string. `src/router.js` is the whole router: `href()` builds the paths (base included) so every
 link is a plain `<a href>`, one delegated click handler navigates in place (modified clicks, `target`, `download`, other
 origins and in-page `#anchors` keep their native behaviour), back/forward restore the scroll position, the document title
@@ -94,10 +94,67 @@ imported (the panel says so), 2018 = open data only (the TSE published neither R
   and throttled; the volatile TSE result files are refetched on every run.
 - TSE municipality codes are not IBGE codes: `mun_map` joins them by (UF, name) using the `cdi` field of the TSE list;
   all 5,688 municipalities of 2026 and 5,709 of 2022 resolve (117 foreign cities have no polygon and are shown as "Exterior").
-- Seats are never recomputed: senators carry the elected status per candidate; for deputies the TSE files give the seats per
+- The Parlamento view never recomputes seats (the Cadeiras view below does): senators carry the elected status per candidate; for deputies the TSE files give the seats per
   party/federation (`vag`: 513 federal, 1,035 state, 24 district), so the chambers are drawn by party or federation. The
   elected deputies per candidate (`e = 's'`) are only partly published yet and are listed in `elected` as they appear.
   In 2026 only 54 of the 81 Senate seats are up.
+
+### Seat calculation (`/<election>/seats`)
+
+Recomputes the deputy seats (federal, state, district; per UF, plus the federal chamber as the sum of the UFs) from the votes in the
+database and shows every step: valid votes and seats, quociente eleitoral (also called coeficiente eleitoral / coeficiente de votação),
+quociente partidário, the sobras by maior média round by round, the elected candidates and first alternates, and the comparison with the
+official list. It works on whatever votes are loaded (so it projects a partial count; the residual switch adds the official totals of
+sections without files) and every number can be reproduced in the SQL console (each panel's SQL, plus a pure-SQL check of the quotients).
+`src/seats/calc.js` is the pure algorithm, `src/seats/rules.js` the rules as config (an election names its rule in `src/elections.js`:
+`seatRule`; the page offers the others as what-if), `src/seats/load.js` the SQL, `test/seats.test.js` the unit tests (`npm run test:seats`, also part of `npm test`) and
+`npm run verify:seats` (`scripts/verify-seats.mjs`) the comparison with the official result of every election, UF and office.
+
+Rules (verified against the texts):
+
+| Rule | Applies to | Sources |
+|---|---|---|
+| `coalitions2018`: coalitions are one list; candidate minimum 10% of QE; sobras by maior média among **all** parties and coalitions (not only those that reached the QE: Lei 13.488/2017 changed art. 109 §2 before 2018), first with a candidate of at least 10% of QE, then with no minimum; art. 111 if no list reaches the QE | 2018 | Código Eleitoral arts. 106-112 (planalto.gov.br/ccivil_03/leis/l4737compilado.htm); Lei 13.488/2017 art. 3; Res. TSE 23.554/2017 arts. 7-12 |
+| `federations2022`: federations, no coalitions; candidate 10% of QE; sobras phase 1 only lists with 80% of QE and candidates with 20%; phase 2 still only lists with 80%, no candidate minimum; art. 111 | the 2022 proclamation, before the STF | Lei 14.211/2021 (art. 1: CE arts. 107-111); Res. TSE 23.677/2021 original arts. 11-13 |
+| `stf2024`: as above, but phase 2 is open to every list and candidate; art. 111 struck down (no list reaches the QE: all seats by maior média, 80%/20% first) | 2022 as recalculated, and 2026 | STF ADIs 7228, 7263, 7325 (2024-02-28: from 2024 on; embargos 2025-03-13: from 2022 on, quorum of art. 27 of Lei 9.868/1999); Res. TSE 23.677 arts. 11 and 12-A as worded by Res. 23.734/2024 and 23.748/2026 |
+
+The QE rounds half down (a fraction up to 0.5 is dropped, above it rounds up, CE art. 106); the QP drops the fraction; ties of averages go to
+the list with more votes, then to the candidate with more votes (Res. 23.677 art. 11 §6-7); the average counts every seat the list holds,
+also the ones released by the 10% minimum (ADI 5420; Res. 23.677 art. 11 §5). Valid votes are the nominal votes of candidates whose votes the
+official result counts plus the legend votes; blank, null and annulled votes (Res. 23.677 arts. 20-22: annulled sub judice, rejected before
+the election) are out; the votes of a candidate rejected after the election count for the list's legend (art. 20 §2).
+
+Data added (about 170 KB gzip in total): `lineup` (one row per party list: bloc, valid legend votes, official valid votes; 2018/2022 from the
+TSE open data `votacao_partido_munzona`, 2026 from the state files + RDV legend votes with an official residual), `annulled` (candidate
+numbers whose votes the official result does not count) and the deputies of 2018/2022 in `elected`. The 2026 `elected`/`seats` were
+rebuilt: the earlier dump listed only 1,161 of the 1,572 elected deputies (the TSE had not totalized every UF yet). `node scripts/build-data.mjs --only=lineup`
+(and `--only=elected`) regenerate them.
+
+Verification (`npm run verify:seats`, the shipped dump, each UF and office with its own rule):
+
+| Election | Rule | UF/offices | Same elected as official | Valid votes = official | QE = TSE QE |
+|---|---|---|---|---|---|
+| 2018 | coalitions2018 | 54 (27 federal, 26 state, DF district) | 54 | 54 | n/a |
+| 2022 | stf2024 | 54 | 54 | 54 | n/a |
+| 2026 | stf2024 | 54 | 54 | 54 | 54 |
+
+What the verification showed (and what it does not):
+- The 2022 official list in the dump is the one **after** the STF recalculation (the collector ran after March 2025): the as-proclaimed
+  rule `federations2022` differs from it in exactly AP, DF, RO and TO (federal), as reported by the press. DF (Gilvan Maximo out, Rodrigo
+  Rollemberg in) and RO (Lebrão out, Rafael Fera in) are reproduced with the names of the press; the 2025 list for TO (press: Lázaro Botelho
+  out, Tiago Dimas in) and AP (press: Silvia Waiapi, Sonize Barbosa, Professora Goreth, Augusto Pupio out) is **not** reproduced by
+  `federations2022` on today's votes: in AP the PL candidates were annulled after the election (the votes of the original proclamation are
+  no longer in the data), and in TO the rule gives the last seat to UNIÃO (Dra. Angela da Facit) rather than to PP, so the TSE's original
+  implementation of the second stage must differ in a detail the texts do not settle. `federations2022` is therefore a what-if on today's votes, not a reconstruction of the 2022 night.
+- The unmodified collector data does **not** reproduce the official result: the RDV votes also count candidates rejected before the
+  election (the urns still had them; official: null votes), numbers of candidates withdrawn after the urns were loaded, and votes that the TSE
+  converts to legend for candidates rejected after the election. Using the official valid votes per party and the candidate validity of the
+  official result (tables `lineup`, `annulled`) removes all of that; the first runs without them had 3 to 9 UF/office mismatches per election
+  (e.g. MG federal 2022: PODE needs the 29,923 votes of candidate 1911, rejected after the election, as legend votes to take its second seat).
+- 2026 projection from the sections in the dump (switch the residual off): every UF/office still gives the official elected list;
+  the 773 sections (699 outside the abroad vote) missing in the dump are covered by the residual. A real partial count is as good as its closest
+  margin: the last column of the national table shows the votes the next list lacked for the last seat of each UF.
+- Ties between candidates with the same votes are broken by candidate number (the age of the CE art. 110 is not in the data); no tie occurs at a seat boundary (candidates or averages) in the three elections.
 
 ### Votes of sections without files (`residual`)
 
