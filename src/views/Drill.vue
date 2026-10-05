@@ -2,7 +2,7 @@
 import { computed } from 'vue'
 import { route, href, go, setParam } from '../router'
 import { ELECTIONS, UFS, candJoin, collate, fold, inElection } from '../model'
-import { electionLabel, officeName, stateName, stateTitle } from '../labels'
+import { electionLabel, officeItems, officeName, stateName, stateTitle } from '../labels'
 import { t } from '../i18n'
 import { ensure, ensureScope, ensureSmall, ensureState } from '../data'
 import { residualOn, rollup } from '../results'
@@ -10,7 +10,7 @@ import { useAsync } from '../use'
 import { objects } from '../db'
 import { int, pct } from '../format'
 import Panel from '../components/Panel.vue'
-import Field from '../components/Field.vue'
+import ButtonGroup from '../components/ButtonGroup.vue'
 import Notice from '../components/Notice.vue'
 import Skeleton from '../components/Skeleton.vue'
 import Breadcrumb from '../components/Breadcrumb.vue'
@@ -140,9 +140,7 @@ Notice(v-if="view.error" kind="danger")
 Skeleton(v-else-if="!view.data")
 .cluster(v-if="args.length < 4")
   ResidualSwitch(v-if="cfg.hasResidual && args.length < 3")
-  Field(v-if="cfg.offices.length > 1" :label="t('common.office')")
-    select(:value="office" @change="setParam('office', $event.target.value)")
-      option(v-for="id in cfg.offices" :key="id" :value="id" :selected="id === office") {{ officeName(id) }}
+  ButtonGroup(v-if="cfg.offices.length > 1" :label="t('common.office')" :items="officeItems(cfg.offices)" :value="office" @change="setParam('office', $event)")
 .grid-auto(v-if="view.data && view.data.mode === 'list'")
   Panel(:title="t('drill.result')" :state="view" :election="year")
     BarList(:items="items")

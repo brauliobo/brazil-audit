@@ -59,7 +59,13 @@
   --brand-mark-display: none;
   --summary-padding-y: var(--space-1);
   --textarea-font-size: var(--type-code-size);
-  --header-tabs-order: 0; /* narrow screens: tabs move to a second, scrolling row */
+  --header-tabs-order: 0; /* narrow screens: brand + language/theme, then the election, then the tabs (scrolling) */
+  --header-end-display: flex; /* contents on narrow screens: language/theme join the brand row, the election gets its own row */
+  --header-picker-order: 0;
+  --header-picker-basis: auto;
+  --header-picker-margin: 0;
+  --header-tools-order: 0;
+  --header-tools-margin: 0;
   --header-tabs-basis: auto;
   --header-tabs-wrap: wrap;
   --header-tabs-overflow: visible;
@@ -136,7 +142,8 @@
 /* breakpoints: one block set */
 @media (max-width: 40rem) {
   :root { --space-page: var(--space-3); --space-panel: var(--space-3); --type-h1-size: var(--font-size-700); --bars-columns: 1fr; --brand-full-display: none; --brand-mark-display: block;
-    --header-tabs-order: 1; --header-tabs-basis: 100%; --header-tabs-wrap: nowrap; --header-tabs-overflow: auto; }
+    --header-tabs-order: 3; --header-end-display: contents; --header-picker-order: 2; --header-picker-basis: 100%; --header-picker-margin: 0; --header-tools-order: 1; --header-tools-margin: auto;
+    --header-tabs-basis: 100%; --header-tabs-wrap: nowrap; --header-tabs-overflow: auto; }
 }
 @media (pointer: coarse) {
   :root { --control-height: var(--size-hit-area); --type-control-size: var(--font-size-500); --summary-padding-y: var(--space-3); --textarea-font-size: var(--type-control-size); } /* touch: 44px targets, 16px+ controls (no iOS zoom on focus) */

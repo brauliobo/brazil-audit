@@ -59,6 +59,7 @@ const FAMILIES = {
   'drill.levels.': ['state', 'city', 'zone', 'section'],
   'time.rank.': ['fast', 'regular', 'gap', 'diff'],
   'coverage.reasons.': ['not_totalized', 'negative', 'no_official_file', 'zone_files_disagree'],
+  'parliament.houses.': ['senate', 'chamber', 'state', 'district'],
   'raw.kind.': ['rdv', 'logs', 'aux'],
   'sources.layer.': ['logs', 'rdv', 'open', 'official'].flatMap((l) => [`${l}.name`, `${l}.role`]),
   'sources.state.': ['used', 'pending', 'none', 'unused'],

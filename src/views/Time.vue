@@ -9,6 +9,7 @@ import { useAsync } from '../use'
 import { objects } from '../db'
 import { clock, int, num } from '../format'
 import Panel from '../components/Panel.vue'
+import ButtonGroup from '../components/ButtonGroup.vue'
 import Field from '../components/Field.vue'
 import ColumnChart from '../components/ColumnChart.vue'
 import DataTable from '../components/DataTable.vue'
@@ -75,6 +76,7 @@ const go2 = (a) => go(href(year.value, 'time', a, { clock: brt.value ? null : 'l
 const pickState = (e) => go2(e.target.value ? [e.target.value] : [])
 const pickCity = (e) => go2(e.target.value ? [state.value, e.target.value] : [state.value])
 const pick = (key, e) => setParam(key, e.target.value)
+const clockItems = computed(() => [{ value: 'brt', label: t('time.clockBrt') }, { value: 'local', label: t('time.clockLocal') }])
 const secLink = (r) => href(year.value, 'time', [r.state, r.city, r.zone, r.section], { clock: brt.value ? null : 'local' })
 const sec = (v) => (v == null ? '–' : t('units.seconds', { n: int(v) }))
 const cols = computed(() => [
@@ -111,10 +113,7 @@ SourceBadge(:election="year" view="times")
     select(:value="city ?? ''" @change="pickCity")
       option(value="") {{ t('common.allCities') }}
       option(v-for="c in cities.data" :key="c.city" :value="c.city" :selected="c.city === city") {{ c.city }}
-  Field(:label="t('time.clock')")
-    select(:value="brt ? 'brt' : 'local'" @change="setParam('clock', $event.target.value === 'brt' ? null : 'local')")
-      option(value="brt") {{ t('time.clockBrt') }}
-      option(value="local") {{ t('time.clockLocal') }}
+  ButtonGroup(:label="t('time.clock')" :items="clockItems" :value="brt ? 'brt' : 'local'" @change="setParam('clock', $event === 'brt' ? null : 'local')")
   a(v-if="isSection" :href="href(year, 'drill', args)") {{ t('time.seeResults') }}
 .muted(v-if="!cfg.hasTimes") {{ t(cfg.sources.pending.includes('logs') ? 'time.pending' : 'time.unavailable') }}
 .grid-auto(v-else)

@@ -2,14 +2,14 @@
 import { computed } from 'vue'
 import { route, href, go, setParam } from '../router'
 import { ELECTIONS, candJoin, electionKey, inElection } from '../model'
-import { electionLabel, officeName, stateTitle } from '../labels'
+import { electionLabel, officeItems, stateTitle } from '../labels'
 import { t } from '../i18n'
 import { ensureSmall } from '../data'
 import { useAsync } from '../use'
 import { objects } from '../db'
 import { int, pct, signed, signedPct } from '../format'
 import Panel from '../components/Panel.vue'
-import Field from '../components/Field.vue'
+import ButtonGroup from '../components/ButtonGroup.vue'
 import Notice from '../components/Notice.vue'
 import BarList from '../components/BarList.vue'
 import Coverage from '../components/Coverage.vue'
@@ -106,9 +106,7 @@ SourceBadge(:election="year")
   #cobertura.span-all
     Coverage(:year="year")
   Panel(:title="t('overview.national')" :state="results" :election="year" wide)
-    Field(v-if="cfg.offices.length > 1" :label="t('common.office')")
-      select(:value="office" @change="setParam('office', $event.target.value)")
-        option(v-for="id in cfg.offices" :key="id" :value="id" :selected="id === office") {{ officeName(id) }}
+    ButtonGroup(v-if="cfg.offices.length > 1" :label="t('common.office')" :items="officeItems(cfg.offices)" :value="office" @change="setParam('office', $event)")
     p.muted(v-if="office !== 1") {{ t('overview.partyAggregate') }}
     BarList(:items="items")
     template(v-if="results.data.gap")

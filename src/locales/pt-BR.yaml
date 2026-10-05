@@ -212,10 +212,11 @@ parliament:
   unavailable: Esta eleição não tem dados de cadeiras no site.
   seeAvailable: Ver {election}
   house: Casa
-  senate: Senado
-  chamber: Câmara dos Deputados
-  state: Assembleia Legislativa (UF)
-  district: Câmara Legislativa do DF
+  houses:
+    senate: Senado
+    chamber: Câmara dos Deputados
+    state: Assembleia Legislativa (UF)
+    district: Câmara Legislativa do DF
   senateTitle: "Senado: {n} de 81 cadeiras em disputa"
   senateNote: "Em {year} renova-se uma parte do Senado ({n} vagas eleitas): o gráfico mostra as vagas eleitas; as demais cadeiras, de senadores eleitos em eleições anteriores, não estão nos dados."
   chamberTitle: "Câmara dos Deputados: {n} cadeiras"
@@ -469,6 +470,7 @@ design:
   option: "Opção {n}"
   input: Input
   inputValue: texto
+  buttonGroup: Grupo de botões
   switchOn: Interruptor ligado
   switchOff: Interruptor desligado
   tabsLabel: Exemplo de abas

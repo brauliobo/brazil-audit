@@ -10,6 +10,7 @@ import { useAsync } from '../use'
 import { objects } from '../db'
 import { int } from '../format'
 import Panel from '../components/Panel.vue'
+import ButtonGroup from '../components/ButtonGroup.vue'
 import Field from '../components/Field.vue'
 import Hemicycle from '../components/Hemicycle.vue'
 import SourceBadge from '../components/SourceBadge.vue'
@@ -28,6 +29,7 @@ const uf = computed(() => route.value.params.get('uf') ?? 'sp')
 const cfg = computed(() => CHAMBERS[chamber.value])
 const scoped = computed(() => chamber.value === 'state') // one state assembly at a time
 const ufs = computed(() => stateOptions(['df']))
+const houses = computed(() => Object.keys(CHAMBERS).map((value) => ({ value, label: t(`parliament.houses.${value}`) })))
 
 const seats = useAsync(() => [year.value, chamber.value, uf.value], async ([y, c, u], q) => {
   await ensureSmall(y, 'seats')
@@ -60,12 +62,7 @@ p.muted(v-if="!ELECTIONS[year].hasSeats")
   a(:href="href(SEATS_ELECTION, 'parliament')") {{ t('parliament.seeAvailable', { election: electionLabel(SEATS_ELECTION) }) }}
 template(v-else)
   .cluster
-    Field(:label="t('parliament.house')")
-      select(@change="setParam('chamber', $event.target.value)")
-        option(value="senate" :selected="chamber === 'senate'") {{ t('parliament.senate') }}
-        option(value="chamber" :selected="chamber === 'chamber'") {{ t('parliament.chamber') }}
-        option(value="state" :selected="chamber === 'state'") {{ t('parliament.state') }}
-        option(value="district" :selected="chamber === 'district'") {{ t('parliament.district') }}
+    ButtonGroup(:label="t('parliament.house')" :items="houses" :value="chamber" @change="setParam('chamber', $event)")
     Field(v-if="scoped" :label="t('common.state')")
       select(@change="setParam('uf', $event.target.value)")
         option(v-for="[s, name] in ufs" :key="s" :value="s" :selected="s === uf") {{ name }}

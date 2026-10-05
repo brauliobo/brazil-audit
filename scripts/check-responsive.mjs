@@ -37,7 +37,7 @@ const TOUCH = `(() => {
   }
   const rem = parseFloat(getComputedStyle(root).fontSize)
   const hit = parseFloat(getComputedStyle(root).getPropertyValue('--size-hit-area')) * rem
-  const dense = 'p, td, th, li, .chips, .legend, .breadcrumb, .panel__sql, .bars__row, .tooltip, .skip-link, label.switch, .segmented, .site-footer, .chip'
+  const dense = 'p, td, th, li, .chips, .legend, .breadcrumb, .panel__sql, .bars__row, .tooltip, .skip-link, label.switch, .site-footer, .chip'
   const bad = []
   for (const e of document.querySelectorAll('a, button, select, input:not([type=checkbox]), textarea, summary, [tabindex="0"]:not(main)')) {
     if (e.closest('svg, .map, .skip-link') || (e.tagName === 'A' && getComputedStyle(e).display === 'inline')) continue // inline text links are exempt (WCAG 2.5.8)

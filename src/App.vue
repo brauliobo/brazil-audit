@@ -6,6 +6,7 @@ import { viewName } from './labels'
 import { renderError } from './errors'
 import { t } from './i18n'
 import ElectionPicker from './components/ElectionPicker.vue'
+import EngineInfo from './components/EngineInfo.vue'
 import EngineStatus from './components/EngineStatus.vue'
 import LangSwitch from './components/LangSwitch.vue'
 import Logo from './components/Logo.vue'
@@ -36,15 +37,17 @@ header.site-header
     Logo.brand__full
     Logo.brand__mark(mark)
   Tabs(:items="nav" :label="t('nav.label')")
-  .header-tools
+  .header-end
     ElectionPicker
-    LangSwitch
-    ThemeSwitch
+    .header-tools
+      LangSwitch
+      ThemeSwitch
 EngineStatus
 main#main(tabindex="-1")
   Notice(v-if="renderError" kind="danger") {{ t('errors.render', { message: renderError.message }) }}
   component(:is="current" :key="route.view + route.election")
 footer.site-footer
+  EngineInfo
   | {{ t('footer.engine') }}&nbsp;
   a(href="https://pglite.dev") PGlite
   | &nbsp;· Vue 3.6 Vapor · {{ t('footer.data') }} ·&nbsp;

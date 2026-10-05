@@ -211,10 +211,11 @@ parliament:
   unavailable: This election has no seat data on the site.
   seeAvailable: See {election}
   house: House
-  senate: Senate
-  chamber: Chamber of Deputies
-  state: State Legislative Assembly
-  district: Legislative Chamber of the DF
+  houses:
+    senate: Senate
+    chamber: Chamber of Deputies
+    state: State Legislative Assembly
+    district: Legislative Chamber of the DF
   senateTitle: "Senate: {n} of 81 seats up for election"
   senateNote: "In {year} part of the Senate is renewed ({n} elected seats): the chart shows the elected seats; the other seats, held by senators elected in earlier elections, are not in the data."
   chamberTitle: "Chamber of Deputies: {n} seats"
@@ -468,6 +469,7 @@ design:
   option: "Option {n}"
   input: Input
   inputValue: text
+  buttonGroup: Button group
   switchOn: Switch on
   switchOff: Switch off
   tabsLabel: Tabs example

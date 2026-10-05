@@ -4,6 +4,8 @@ import { t } from './i18n'
 
 export const electionLabel = (key) => t('election.name', ELECTIONS[key])
 export const officeName = (id) => t(`offices.${id}`)
+/** Button group items of the offices of an election (only the ids it has). */
+export const officeItems = (ids) => ids.map((id) => ({ value: id, label: officeName(id) }))
 export const stateName = (uf) => t(`states.${uf}`)
 /** "SP · São Paulo" */
 export const stateTitle = (uf) => `${uf.toUpperCase()} · ${stateName(uf)}`

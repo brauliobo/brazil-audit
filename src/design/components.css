@@ -130,13 +130,20 @@ main:focus { outline: none; }
 .tabs a[aria-current="page"] { background: var(--tab-active-bg); color: var(--tab-active-fg); }
 .tabs a:hover { text-decoration: none; background: var(--accent-subtle); }
 .tabs a[aria-current="page"]:hover { background: var(--tab-active-bg); }
-.picker { display: inline-flex; flex-wrap: wrap; gap: var(--space-2); align-items: center; }
-.header-tools { display: flex; flex-wrap: wrap; gap: var(--space-2); align-items: center; margin-inline-start: auto; }
-/* segmented control: a row of mutually exclusive links (turn) or buttons (language, theme) */
-.segmented { display: inline-flex; gap: var(--space-hair); padding: var(--space-hair); border: var(--border-width-1) solid var(--segmented-border); border-radius: var(--segmented-radius); background: var(--segmented-bg); }
-.segmented > * { display: inline-flex; align-items: center; justify-content: center; min-height: calc(var(--segmented-height) - 2 * (var(--space-hair) + var(--border-width-1))); padding: var(--segmented-padding); border: 0; border-radius: var(--segmented-radius); background: transparent; color: var(--segmented-fg); font: inherit; font-size: var(--type-control-size); cursor: pointer; }
-.segmented > *:hover { background: var(--accent-subtle); text-decoration: none; }
-.segmented > [aria-pressed="true"], .segmented > [aria-current="page"] { background: var(--segmented-active-bg); color: var(--segmented-active-fg); }
+.header-end { display: var(--header-end-display); flex-wrap: wrap; gap: var(--space-2) var(--space-4); align-items: center; justify-content: flex-end; margin-inline-start: auto; }
+.site-header .picker { order: var(--header-picker-order); flex-basis: var(--header-picker-basis); margin-inline-start: var(--header-picker-margin); }
+.picker { display: flex; flex-wrap: wrap; gap: var(--space-2); align-items: center; }
+.header-tools { display: flex; flex-wrap: wrap; gap: var(--space-2); align-items: center; order: var(--header-tools-order); margin-inline-start: var(--header-tools-margin); }
+/* button group (ButtonGroup.vue): a labelled radiogroup of mutually exclusive buttons in a segmented control */
+.btngroup { display: inline-flex; flex-wrap: wrap; gap: var(--field-gap); align-items: center; max-width: 100%; }
+.btngroup__label { font-size: var(--field-label-size); color: var(--field-label-fg); }
+.segmented { display: inline-flex; flex-wrap: wrap; gap: var(--space-hair); max-width: 100%; border: var(--border-width-1) solid var(--segmented-border); border-radius: var(--segmented-radius); background: var(--segmented-bg); overflow: hidden; }
+.segmented--compact { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; }
+.segmented > * { display: inline-flex; align-items: center; justify-content: center; min-width: var(--segmented-height); min-height: var(--segmented-height); padding: var(--segmented-padding); border: 0; border-radius: var(--segmented-radius); background: transparent; color: var(--segmented-fg); font: inherit; font-size: var(--type-control-size); white-space: nowrap; cursor: pointer; }
+.segmented > *:hover:not(:disabled) { background: var(--accent-subtle); text-decoration: none; }
+.segmented > [aria-checked="true"], .segmented > [aria-checked="true"]:hover { background: var(--segmented-active-bg); color: var(--segmented-active-fg); }
+.segmented > *:disabled { opacity: var(--button-disabled-opacity); cursor: default; }
+.segmented > *:focus-visible { outline-offset: calc(-1 * var(--space-1)); }
 .segmented svg { width: var(--size-icon); height: var(--size-icon); fill: none; stroke: currentColor; stroke-linecap: round; stroke-linejoin: round; }
 .site-footer a { display: inline-flex; align-items: center; min-height: var(--control-height); }
 .site-footer { text-align: center; padding: var(--space-8) var(--space-4); font-size: var(--type-caption-size); color: var(--text-muted); }
@@ -147,7 +154,7 @@ main:focus { outline: none; }
 .engine-status { display: flex; flex-wrap: wrap; gap: var(--space-1) var(--space-4); align-items: center; padding: var(--space-1) var(--space-page); font-size: var(--type-caption-size); color: var(--text-muted); border-bottom: var(--border-width-1) solid var(--header-border); }
 .engine-status--error { color: var(--status-danger); }
 .engine-status progress { width: var(--size-progress); }
-.engine-status .btn { margin-inline-start: auto; }
+.engine-info { display: flex; flex-wrap: wrap; gap: var(--space-2) var(--space-4); align-items: center; justify-content: center; margin: var(--space-0) var(--space-0) var(--space-3); }
 .logo { display: block; height: var(--logo-size); width: auto; }
 .brand__full { display: var(--brand-full-display); }
 .brand__mark { display: var(--brand-mark-display); }

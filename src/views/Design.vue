@@ -1,11 +1,12 @@
 <script setup vapor>
-import { computed } from 'vue'
+import { computed, ref } from 'vue'
 import { href } from '../router'
 import { t } from '../i18n'
 import { stateTitle } from '../labels'
 import Breadcrumb from '../components/Breadcrumb.vue'
 import BarList from '../components/BarList.vue'
 import Button from '../components/Button.vue'
+import ButtonGroup from '../components/ButtonGroup.vue'
 import Chip from '../components/Chip.vue'
 import ColumnChart from '../components/ColumnChart.vue'
 import DataTable from '../components/DataTable.vue'
@@ -59,6 +60,8 @@ const tableCols = computed(() => [{ key: 'name', label: t('design.name') }, { ke
 const tableRows = computed(() => [{ name: t('design.row'), votes: 1234 }, { name: t('design.rowNote'), votes: 99, residual: true }])
 const seats = [{ key: 'a', label: 'PL', seats: 20, color: 'var(--candidate-pl)' }, { key: 'b', label: 'PT', seats: 12, color: 'var(--candidate-pt)' }, { key: 'c', label: 'PP', seats: 8, color: 'var(--cat-3)' }]
 const polar = computed(() => [{ election: '2026', a: { name: t('design.candidateA'), party: 'PL', share: 0.5 }, b: { name: t('design.candidateB'), party: 'PT', share: 0.3 } }])
+const choice = ref('a')
+const choices = computed(() => ['a', 'b', 'c'].map((value) => ({ value, label: t('design.option', { n: value.toUpperCase() }) })))
 const tipText = computed(() => `${t('design.tooltipTitle')}\n${t('design.tooltipDetail')}`)
 const columns = [3, 5, 8, 6, 9, 4, 7, 2]
 const columnLabels = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h']
@@ -132,6 +135,7 @@ p.muted {{ t('design.intro') }}
           option {{ t('design.option', { n: 'B' }) }}
       Field(:label="t('design.input')")
         input(:value="t('design.inputValue')")
+      ButtonGroup(:label="t('design.buttonGroup')" :items="choices" :value="choice" @change="choice = $event")
       Switch(:label="t('design.switchOn')" :checked="true")
       Switch(:label="t('design.switchOff')" :checked="false")
     .cluster

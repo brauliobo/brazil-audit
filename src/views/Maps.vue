@@ -2,7 +2,7 @@
 import { computed, nextTick, onMounted, onUnmounted } from 'vue'
 import { route, href, go, setParam } from '../router'
 import { ELECTIONS, inElection } from '../model'
-import { electionLabel, officeName, stateName, stateOptions, stateTitle } from '../labels'
+import { electionLabel, officeItems, officeName, stateName, stateOptions, stateTitle } from '../labels'
 import { t } from '../i18n'
 import { partyColor } from '../colors'
 import { loadGeo, preloadState } from '../geo'
@@ -13,6 +13,7 @@ import { int, pct } from '../format'
 import Panel from '../components/Panel.vue'
 import Field from '../components/Field.vue'
 import Breadcrumb from '../components/Breadcrumb.vue'
+import ButtonGroup from '../components/ButtonGroup.vue'
 import Chip from '../components/Chip.vue'
 import SourceBadge from '../components/SourceBadge.vue'
 import Legend from '../components/Legend.vue'
@@ -29,6 +30,8 @@ const office = computed(() => Number(params.value.get('office') ?? 1))
 const metric = computed(() => params.value.get('metric') ?? 'winner')
 const offices = computed(() => ELECTIONS[year.value].offices.filter((id) => [1, 3, 5].includes(id)))
 const pick = (key, e) => setParam(key, e.target.value)
+const scaleItems = computed(() => [['uf', 'maps.scaleUf'], ['mun', 'maps.scaleMun'], ['state', 'maps.scaleState']].map(([value, key]) => ({ value, label: t(key) })))
+const metricItems = computed(() => ['winner', 'share', 'margin', 'blank'].map((value) => ({ value, label: t(`maps.metric.${value}`), disabled: value === 'blank' && !ELECTIONS[year.value].hasBlank })))
 
 const base = useAsync(() => [year.value], async ([y]) => { await ensureRollups(y); return true })
 
@@ -133,23 +136,12 @@ h1 {{ t('maps.title', { election: electionLabel(year) }) }}
 SourceBadge(:election="year")
 .cluster
   ResidualSwitch(v-if="ELECTIONS[year].hasResidual")
-  Field(:label="t('maps.scale')")
-    select(@change="pick('scope', $event)")
-      option(value="uf" :selected="scope === 'uf'") {{ t('maps.scaleUf') }}
-      option(value="mun" :selected="scope === 'mun'") {{ t('maps.scaleMun') }}
-      option(value="state" :selected="scope === 'state'") {{ t('maps.scaleState') }}
+  ButtonGroup(:label="t('maps.scale')" :items="scaleItems" :value="scope" @change="setParam('scope', $event)")
   Field(v-if="scope === 'state'" :label="t('common.state')")
     select(@change="pick('uf', $event)")
       option(v-for="[s, title] in ufs" :key="s" :value="s" :selected="s === uf") {{ title }}
-  Field(v-if="offices.length > 1" :label="t('common.office')")
-    select(@change="pick('office', $event)")
-      option(v-for="id in offices" :key="id" :value="id" :selected="id === office") {{ officeName(id) }}
-  Field(:label="t('maps.show')")
-    select(@change="pick('metric', $event)")
-      option(value="winner" :selected="metric === 'winner'") {{ t('maps.metric.winner') }}
-      option(value="share" :selected="metric === 'share'") {{ t('maps.metric.share') }}
-      option(value="margin" :selected="metric === 'margin'") {{ t('maps.metric.margin') }}
-      option(value="blank" :selected="metric === 'blank'" :disabled="!ELECTIONS[year].hasBlank") {{ t('maps.metric.blank') }}
+  ButtonGroup(v-if="offices.length > 1" :label="t('common.office')" :items="officeItems(offices)" :value="office" @change="setParam('office', $event)")
+  ButtonGroup(:label="t('maps.show')" :items="metricItems" :value="metric" @change="setParam('metric', $event)")
   Field(v-if="data.data && data.data.grain === 'mun'" :label="t('maps.findCity')")
     input(list="map-places" :placeholder="t('maps.findCityHint')" @change="find($event)")
     datalist#map-places
