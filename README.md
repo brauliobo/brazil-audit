@@ -1,3 +1,5 @@
+<p align="center"><img src="public/logo.svg" alt="Auditoria eleitoral" height="48"></p>
+
 # Brazil audit
 
 Static analytics app for a Brazilian election audit. The repository is a database dump (`data/`) plus a Vue app that
