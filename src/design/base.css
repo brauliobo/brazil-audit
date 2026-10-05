@@ -11,7 +11,7 @@ a:hover { text-decoration: underline; }
 main { max-width: var(--size-page); margin: var(--space-0) auto; padding: var(--space-page); }
 code, pre { font-family: var(--font-mono); font-size: var(--type-code-size); }
 pre { margin: var(--space-2) var(--space-0); padding: var(--space-3); background: var(--surface-sunken); border-radius: var(--radius-control); overflow-x: auto; white-space: pre-wrap; }
-details summary { cursor: pointer; }
+details summary { padding-block: var(--summary-padding-y); cursor: pointer; }
 small { font-size: var(--type-small-size); }
 progress { accent-color: var(--accent); }
 

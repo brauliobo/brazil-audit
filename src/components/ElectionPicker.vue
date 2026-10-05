@@ -21,5 +21,5 @@ const pickYear = (e) => {
   select.control(:aria-label="t('election.year')" @change="pickYear")
     option(v-for="y in years" :key="y" :value="y" :selected="y === current.year") {{ y }}
   nav.segmented(v-if="turns.length > 1" :aria-label="t('election.round')")
-    a(v-for="e in turns" :key="e.key" :href="to(e.key)" :aria-current="e.key === current.key ? 'page' : null") {{ t('election.turn', e) }}
+    a(v-for="e in turns" :key="e.key" :href="to(e.key)" :title="t('election.turn', e)" :aria-label="t('election.turn', e)" :aria-current="e.key === current.key ? 'page' : null") {{ t('election.turnShort', e) }}
 </template>

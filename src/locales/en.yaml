@@ -21,6 +21,7 @@ election:
   year: Year
   round: Round
   turn: "Round {turn}"
+  turnShort: "R{turn}"
   name: "{year} · round {turn}"
 
 theme:

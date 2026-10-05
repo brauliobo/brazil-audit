@@ -57,6 +57,8 @@
   --brand-wordmark: var(--text-primary);
   --brand-full-display: block;
   --brand-mark-display: none;
+  --summary-padding-y: var(--space-1);
+  --textarea-font-size: var(--type-code-size);
   --header-tabs-order: 0; /* narrow screens: tabs move to a second, scrolling row */
   --header-tabs-basis: auto;
   --header-tabs-wrap: wrap;
@@ -137,7 +139,7 @@
     --header-tabs-order: 1; --header-tabs-basis: 100%; --header-tabs-wrap: nowrap; --header-tabs-overflow: auto; }
 }
 @media (pointer: coarse) {
-  :root { --control-height: var(--size-hit-area); }
+  :root { --control-height: var(--size-hit-area); --type-control-size: var(--font-size-500); --summary-padding-y: var(--space-3); --textarea-font-size: var(--type-control-size); } /* touch: 44px targets, 16px+ controls (no iOS zoom on focus) */
 }
 @media (prefers-reduced-motion: reduce) {
   :root { --motion-fast: 0.01ms; --motion-base: 0.01ms; --motion-loop: 0.01ms; }

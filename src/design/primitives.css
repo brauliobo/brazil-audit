@@ -137,6 +137,7 @@
   --size-swatch: 0.75rem;
   --size-control: 2.25rem;
   --size-hit-area: 2.75rem;
+  --size-target-min: 1.5rem; /* WCAG 2.5.8 minimum for dense controls (tables, chips, legends) */
   --size-page: 74rem;
   --size-chart-max: 40rem;
   --size-polar-max: 32.5rem;
