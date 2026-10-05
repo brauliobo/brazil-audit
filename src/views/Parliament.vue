@@ -1,8 +1,8 @@
 <script setup vapor>
 import { computed } from 'vue'
-import { route, setParam } from '../router'
-import { ELECTIONS, inElection } from '../model'
-import { stateName, stateOptions } from '../labels'
+import { route, href, setParam } from '../router'
+import { ELECTIONS, SEATS_ELECTION, inElection } from '../model'
+import { electionLabel, stateName, stateOptions } from '../labels'
 import { t } from '../i18n'
 import { blocColor } from '../colors'
 import { ensureSmall } from '../data'
@@ -53,21 +53,25 @@ const note = computed(() => t(cfg.value.note, { year: ELECTIONS[year.value].year
 
 <template lang="pug">
 h1 {{ t('parliament.title', { year: ELECTIONS[year].year }) }}
-.cluster
-  Field(:label="t('parliament.house')")
-    select(@change="setParam('chamber', $event.target.value)")
-      option(value="senate" :selected="chamber === 'senate'") {{ t('parliament.senate') }}
-      option(value="chamber" :selected="chamber === 'chamber'") {{ t('parliament.chamber') }}
-      option(value="state" :selected="chamber === 'state'") {{ t('parliament.state') }}
-      option(value="district" :selected="chamber === 'district'") {{ t('parliament.district') }}
-  Field(v-if="scoped" :label="t('common.state')")
-    select(@change="setParam('uf', $event.target.value)")
-      option(v-for="[s, name] in ufs" :key="s" :value="s" :selected="s === uf") {{ name }}
-.grid-auto
-  Panel(:title="title" :state="seats" :election="year" wide)
-    Hemicycle(:groups="seats.data.groups" :label="t('parliament.seatsBy', { title, count: seats.data.total })")
-    p.muted {{ note }}
-    p.muted {{ t('parliament.source') }}
-  Panel(v-if="chamber === 'senate'" :title="t('parliament.elected')" :state="elected" :election="year" wide)
-    DataTable(:columns="cols" :rows="elected.data")
+p.muted(v-if="!ELECTIONS[year].hasSeats")
+  | {{ t('parliament.unavailable') }}&nbsp;
+  a(:href="href(SEATS_ELECTION, 'parliament')") {{ t('parliament.seeAvailable', { election: electionLabel(SEATS_ELECTION) }) }}
+template(v-else)
+  .cluster
+    Field(:label="t('parliament.house')")
+      select(@change="setParam('chamber', $event.target.value)")
+        option(value="senate" :selected="chamber === 'senate'") {{ t('parliament.senate') }}
+        option(value="chamber" :selected="chamber === 'chamber'") {{ t('parliament.chamber') }}
+        option(value="state" :selected="chamber === 'state'") {{ t('parliament.state') }}
+        option(value="district" :selected="chamber === 'district'") {{ t('parliament.district') }}
+    Field(v-if="scoped" :label="t('common.state')")
+      select(@change="setParam('uf', $event.target.value)")
+        option(v-for="[s, name] in ufs" :key="s" :value="s" :selected="s === uf") {{ name }}
+  .grid-auto
+    Panel(:title="title" :state="seats" :election="year" wide)
+      Hemicycle(:groups="seats.data.groups" :label="t('parliament.seatsBy', { title, count: seats.data.total })")
+      p.muted {{ note }}
+      p.muted {{ t('parliament.source') }}
+    Panel(v-if="chamber === 'senate'" :title="t('parliament.elected')" :state="elected" :election="year" wide)
+      DataTable(:columns="cols" :rows="elected.data")
 </template>
