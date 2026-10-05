@@ -20,8 +20,10 @@ module Importer
 
   def self.import zip, entry, target
     DB.transaction do
-      stg = Staging.load zip, entry
+      stg, lines = Staging.load zip, entry
       rows, votes, unclassified, skipped = DB["SELECT count(*) AS rows, #{target::TOTALS} FROM #{stg}"].first.values
+      raise "#{name zip, entry}: #{rows} rows for #{lines - 1} lines" unless rows == lines - 1
+
       loaded = DB.execute_dui target.insert(stg, entry)
       DB[:imports].insert name: name(zip, entry), rows:, loaded:, votes:, unclassified:, skipped:, at: Time.now
       DB.run "DROP TABLE #{stg}"
