@@ -3,15 +3,15 @@
 //   sec (election,turn,state,city,zone,section,model,office,nominal,blank,nul)        one row per section and office
 //   cs  (election,turn,state,city,zone,section,model,office,cand,votes,nominal)       one row per section, office and candidate
 //   resx / totx  res / tot plus the official totals of sections without published files (residual)
-import { ELECTIONS } from './elections.js'
+import { ELECTIONS, ELECTION_LIST } from './elections.js'
 
-export { DEFAULT_ELECTION, ELECTIONS } from './elections.js'
+export { DEFAULT_ELECTION, ELECTIONS, ELECTION_LIST } from './elections.js'
 
 /** The election whose parliament the Parlamento tab opens when the current one has no seats data. */
-export const SEATS_ELECTION = Object.values(ELECTIONS).findLast((e) => e.hasSeats).key
+export const SEATS_ELECTION = ELECTION_LIST.findLast((e) => e.hasSeats).key
 
 /** The key of the election of a year and turn (as stored in the `election` and `turn` columns), if it is configured. */
-export const electionKey = (year, turn) => Object.values(ELECTIONS).find((e) => e.year === year && e.turn === turn)?.key
+export const electionKey = (year, turn) => ELECTION_LIST.find((e) => e.year === year && e.turn === turn)?.key
 
 /** `election = 2026 and turn = 1` for an election key, optionally on a table alias. */
 export const inElection = (key, alias = '') => {

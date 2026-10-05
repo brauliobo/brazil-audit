@@ -5,6 +5,13 @@
 //   offices   office ids on the ballot (1 president, 3 governor, 5 senator, 6 federal, 7 state, 8 district deputy); names are in the locale files
 //   hasBlank  blank and null ballots were collected (NULL columns otherwise); hasTimes  voting times (tables vt, vtc); hasResidual  official totals of sections without files (tables residual*);
 //   hasSeats  elected / seats tables; hasCoverage  own-sections coverage (tables cov, miss)
+//   sources   the layers of evidence, in priority order (1 logs > 2 rdv > 3 open > 4 official), as they stand for this election:
+//             logs  the machines' logs (every vote with its time; only the office, never the candidate): feed the voting times, tables vt/vtc, and the ballot counts
+//             rdv   the machine's own record of the votes per section and candidate: feeds rdv, res, tot and everything derived
+//             open  TSE open data (votacao_secao): feeds the same tables only when neither logs nor rdv exist
+//             official  official TSE totals: 'residual' adds the votes of sections without files (tables residual*), 'check' = verify scripts
+//             pending   layers the collector is still importing: shown as such, never as used
+//             logs/rdv/open must agree with hasTimes and source.kind (checked below), so this entry cannot drift from the data
 //   raw       where the raw files behind the dump are published: `tag` = GitHub release of `repo` (per-section zips, see INDEX.json), `indexDir` = its
 //             folder under RAW_INDEX_DIR, `branch` + `code` = the collector code, `coverage` = lists in that branch, `tseAux` = the TSE URL of a section's aux.json;
 //             without `tag` only the collector is linked
@@ -17,6 +24,7 @@ const RUNOFF = [1, 3] // the second round only elects president and governors
 const open = (year, turn) => ({
   key: turn === 1 ? `${year}` : `${year}-${turn}`, year, turn, offices: turn === 1 ? FULL : RUNOFF,
   hasBlank: true, hasTimes: false, hasResidual: false, hasSeats: turn === 1, hasCoverage: false,
+  sources: { logs: false, rdv: false, open: true, official: ['check'], pending: year === 2022 ? ['logs', 'rdv'] : [] }, // 2018: the TSE published neither RDV nor logs
   raw: { branch: '2018', code: [] },
   source: { kind: 'open', db: `brazil-audit-${year}` },
 })
@@ -28,6 +36,7 @@ const elections = [
   {
     key: '2026', year: 2026, turn: 1, offices: FULL,
     hasBlank: true, hasTimes: true, hasResidual: true, hasSeats: true, hasCoverage: true,
+    sources: { logs: true, rdv: true, open: false, official: ['residual', 'check'], pending: [] },
     raw: {
       tag: 'data-2026', indexDir: 'meta-2026', branch: '2026', code: ['lib/rdv.rb', 'lib/voting_log.rb'], coverage: ['coverage/missing-2026.tsv', 'coverage/summary-2026.tsv'],
       tseAux: 'https://resultados.tse.jus.br/oficial/ele2026/arquivo-urna/3220/dados/{uf}/{city}/{zone}/{section}/p003220-{uf}-m{city}-z{zone}-s{section}-aux.json',
@@ -35,7 +44,16 @@ const elections = [
     source: { kind: 'rdv', db: 'brazil-audit-2026' },
   },
 ]
+for (const e of elections) {
+  const { logs, rdv, open: openData } = e.sources
+  if (logs !== e.hasTimes || rdv !== (e.source.kind === 'rdv') || openData !== (e.source.kind === 'open') || e.sources.official.includes('residual') !== e.hasResidual) {
+    throw new Error(`election ${e.key}: sources disagree with hasTimes / source.kind / hasResidual`)
+  }
+}
+
+/** Chronological (year, then round): an object would list the year-only keys first. */
+export const ELECTION_LIST = elections
 export const ELECTIONS = Object.fromEntries(elections.map((e) => [e.key, e]))
 
 /** The most recent election is the default everywhere. */
-export const DEFAULT_ELECTION = Object.keys(ELECTIONS).at(-1)
+export const DEFAULT_ELECTION = elections.at(-1).key

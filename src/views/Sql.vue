@@ -1,7 +1,7 @@
 <script setup vapor>
 import { computed, ref } from 'vue'
 import { route, href, setParam } from '../router'
-import { ELECTIONS } from '../model'
+import { ELECTIONS, ELECTION_LIST } from '../model'
 import { electionLabel } from '../labels'
 import { t } from '../i18n'
 import { ensure, ensureDefault, ensureSmall } from '../data'
@@ -75,7 +75,7 @@ const pick = (e) => {
   sql.value = fill(example.sql, year.value)
   e.target.value = ''
 }
-const loadedElections = computed(() => Object.keys(ELECTIONS).map(electionLabel).join(', '))
+const loadedElections = computed(() => ELECTION_LIST.map((e) => electionLabel(e.key)).join(', '))
 const resultInfo = computed(() => [t('sql.rows', { count: out.value.rows.length }) + (out.value.rows.length > 500 ? ` ${t('sql.showing', { n: 500 })}` : ''), ms(out.value.ms)].join(' · '))
 if (route.value.params.get('q')) run()
 </script>
