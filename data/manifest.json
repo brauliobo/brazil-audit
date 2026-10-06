@@ -4366,202 +4366,6 @@
      "rawBytes": 85542,
      "where": "election = 2018 and turn = 1 and uf = 'to' and not (uf = 'br' or (unit = 'section' and city is null and pos <> 'd12'))"
     },
-    "2022/ac": {
-     "url": "benford_hist/2022-ac.csv.gz",
-     "bytes": 6569,
-     "rows": 1811,
-     "rawBytes": 67441,
-     "where": "election = 2022 and turn = 1 and uf = 'ac' and not (uf = 'br' or (unit = 'section' and city is null and pos <> 'd12'))"
-    },
-    "2022/al": {
-     "url": "benford_hist/2022-al.csv.gz",
-     "bytes": 9762,
-     "rows": 2485,
-     "rawBytes": 95548,
-     "where": "election = 2022 and turn = 1 and uf = 'al' and not (uf = 'br' or (unit = 'section' and city is null and pos <> 'd12'))"
-    },
-    "2022/am": {
-     "url": "benford_hist/2022-am.csv.gz",
-     "bytes": 9964,
-     "rows": 2580,
-     "rawBytes": 96773,
-     "where": "election = 2022 and turn = 1 and uf = 'am' and not (uf = 'br' or (unit = 'section' and city is null and pos <> 'd12'))"
-    },
-    "2022/ap": {
-     "url": "benford_hist/2022-ap.csv.gz",
-     "bytes": 6327,
-     "rows": 1805,
-     "rawBytes": 64594,
-     "where": "election = 2022 and turn = 1 and uf = 'ap' and not (uf = 'br' or (unit = 'section' and city is null and pos <> 'd12'))"
-    },
-    "2022/ba": {
-     "url": "benford_hist/2022-ba.csv.gz",
-     "bytes": 32501,
-     "rows": 7852,
-     "rawBytes": 341143,
-     "where": "election = 2022 and turn = 1 and uf = 'ba' and not (uf = 'br' or (unit = 'section' and city is null and pos <> 'd12'))"
-    },
-    "2022/br": {
-     "url": "benford_hist/2022-br.csv.gz",
-     "bytes": 201122,
-     "rows": 41681,
-     "rawBytes": 1515466,
-     "where": "election = 2022 and turn = 1 and (uf = 'br' or (unit = 'section' and city is null and pos <> 'd12'))"
-    },
-    "2022/ce": {
-     "url": "benford_hist/2022-ce.csv.gz",
-     "bytes": 27624,
-     "rows": 6850,
-     "rawBytes": 281385,
-     "where": "election = 2022 and turn = 1 and uf = 'ce' and not (uf = 'br' or (unit = 'section' and city is null and pos <> 'd12'))"
-    },
-    "2022/df": {
-     "url": "benford_hist/2022-df.csv.gz",
-     "bytes": 5647,
-     "rows": 1677,
-     "rawBytes": 58912,
-     "where": "election = 2022 and turn = 1 and uf = 'df' and not (uf = 'br' or (unit = 'section' and city is null and pos <> 'd12'))"
-    },
-    "2022/es": {
-     "url": "benford_hist/2022-es.csv.gz",
-     "bytes": 15990,
-     "rows": 3938,
-     "rawBytes": 158690,
-     "where": "election = 2022 and turn = 1 and uf = 'es' and not (uf = 'br' or (unit = 'section' and city is null and pos <> 'd12'))"
-    },
-    "2022/go": {
-     "url": "benford_hist/2022-go.csv.gz",
-     "bytes": 18122,
-     "rows": 4462,
-     "rawBytes": 185078,
-     "where": "election = 2022 and turn = 1 and uf = 'go' and not (uf = 'br' or (unit = 'section' and city is null and pos <> 'd12'))"
-    },
-    "2022/ma": {
-     "url": "benford_hist/2022-ma.csv.gz",
-     "bytes": 18416,
-     "rows": 4546,
-     "rawBytes": 184553,
-     "where": "election = 2022 and turn = 1 and uf = 'ma' and not (uf = 'br' or (unit = 'section' and city is null and pos <> 'd12'))"
-    },
-    "2022/mg": {
-     "url": "benford_hist/2022-mg.csv.gz",
-     "bytes": 51305,
-     "rows": 12279,
-     "rawBytes": 528400,
-     "where": "election = 2022 and turn = 1 and uf = 'mg' and not (uf = 'br' or (unit = 'section' and city is null and pos <> 'd12'))"
-    },
-    "2022/ms": {
-     "url": "benford_hist/2022-ms.csv.gz",
-     "bytes": 10164,
-     "rows": 2605,
-     "rawBytes": 100029,
-     "where": "election = 2022 and turn = 1 and uf = 'ms' and not (uf = 'br' or (unit = 'section' and city is null and pos <> 'd12'))"
-    },
-    "2022/mt": {
-     "url": "benford_hist/2022-mt.csv.gz",
-     "bytes": 11011,
-     "rows": 2756,
-     "rawBytes": 109364,
-     "where": "election = 2022 and turn = 1 and uf = 'mt' and not (uf = 'br' or (unit = 'section' and city is null and pos <> 'd12'))"
-    },
-    "2022/pa": {
-     "url": "benford_hist/2022-pa.csv.gz",
-     "bytes": 25575,
-     "rows": 6284,
-     "rawBytes": 258358,
-     "where": "election = 2022 and turn = 1 and uf = 'pa' and not (uf = 'br' or (unit = 'section' and city is null and pos <> 'd12'))"
-    },
-    "2022/pb": {
-     "url": "benford_hist/2022-pb.csv.gz",
-     "bytes": 11311,
-     "rows": 2876,
-     "rawBytes": 109707,
-     "where": "election = 2022 and turn = 1 and uf = 'pb' and not (uf = 'br' or (unit = 'section' and city is null and pos <> 'd12'))"
-    },
-    "2022/pe": {
-     "url": "benford_hist/2022-pe.csv.gz",
-     "bytes": 20626,
-     "rows": 5089,
-     "rawBytes": 213823,
-     "where": "election = 2022 and turn = 1 and uf = 'pe' and not (uf = 'br' or (unit = 'section' and city is null and pos <> 'd12'))"
-    },
-    "2022/pi": {
-     "url": "benford_hist/2022-pi.csv.gz",
-     "bytes": 9969,
-     "rows": 2522,
-     "rawBytes": 94992,
-     "where": "election = 2022 and turn = 1 and uf = 'pi' and not (uf = 'br' or (unit = 'section' and city is null and pos <> 'd12'))"
-    },
-    "2022/pr": {
-     "url": "benford_hist/2022-pr.csv.gz",
-     "bytes": 25908,
-     "rows": 6294,
-     "rawBytes": 267336,
-     "where": "election = 2022 and turn = 1 and uf = 'pr' and not (uf = 'br' or (unit = 'section' and city is null and pos <> 'd12'))"
-    },
-    "2022/rj": {
-     "url": "benford_hist/2022-rj.csv.gz",
-     "bytes": 28088,
-     "rows": 6960,
-     "rawBytes": 301784,
-     "where": "election = 2022 and turn = 1 and uf = 'rj' and not (uf = 'br' or (unit = 'section' and city is null and pos <> 'd12'))"
-    },
-    "2022/rn": {
-     "url": "benford_hist/2022-rn.csv.gz",
-     "bytes": 10201,
-     "rows": 2547,
-     "rawBytes": 99566,
-     "where": "election = 2022 and turn = 1 and uf = 'rn' and not (uf = 'br' or (unit = 'section' and city is null and pos <> 'd12'))"
-    },
-    "2022/ro": {
-     "url": "benford_hist/2022-ro.csv.gz",
-     "bytes": 10173,
-     "rows": 2657,
-     "rawBytes": 101908,
-     "where": "election = 2022 and turn = 1 and uf = 'ro' and not (uf = 'br' or (unit = 'section' and city is null and pos <> 'd12'))"
-    },
-    "2022/rr": {
-     "url": "benford_hist/2022-rr.csv.gz",
-     "bytes": 5142,
-     "rows": 1506,
-     "rawBytes": 53535,
-     "where": "election = 2022 and turn = 1 and uf = 'rr' and not (uf = 'br' or (unit = 'section' and city is null and pos <> 'd12'))"
-    },
-    "2022/rs": {
-     "url": "benford_hist/2022-rs.csv.gz",
-     "bytes": 32090,
-     "rows": 7748,
-     "rawBytes": 330561,
-     "where": "election = 2022 and turn = 1 and uf = 'rs' and not (uf = 'br' or (unit = 'section' and city is null and pos <> 'd12'))"
-    },
-    "2022/sc": {
-     "url": "benford_hist/2022-sc.csv.gz",
-     "bytes": 20078,
-     "rows": 4956,
-     "rawBytes": 200053,
-     "where": "election = 2022 and turn = 1 and uf = 'sc' and not (uf = 'br' or (unit = 'section' and city is null and pos <> 'd12'))"
-    },
-    "2022/se": {
-     "url": "benford_hist/2022-se.csv.gz",
-     "bytes": 9224,
-     "rows": 2400,
-     "rawBytes": 91962,
-     "where": "election = 2022 and turn = 1 and uf = 'se' and not (uf = 'br' or (unit = 'section' and city is null and pos <> 'd12'))"
-    },
-    "2022/sp": {
-     "url": "benford_hist/2022-sp.csv.gz",
-     "bytes": 98921,
-     "rows": 23793,
-     "rawBytes": 1037608,
-     "where": "election = 2022 and turn = 1 and uf = 'sp' and not (uf = 'br' or (unit = 'section' and city is null and pos <> 'd12'))"
-    },
-    "2022/to": {
-     "url": "benford_hist/2022-to.csv.gz",
-     "bytes": 7668,
-     "rows": 1982,
-     "rawBytes": 73995,
-     "where": "election = 2022 and turn = 1 and uf = 'to' and not (uf = 'br' or (unit = 'section' and city is null and pos <> 'd12'))"
-    },
     "2026/ac": {
      "url": "benford_hist/2026-ac.csv.gz",
      "bytes": 7005,
@@ -4961,6 +4765,202 @@
      "rawBytes": 26919,
      "where": "election = 2018 and turn = 2 and uf = 'to' and not (uf = 'br' or (unit = 'section' and city is null and pos <> 'd12'))"
     },
+    "2022/ac": {
+     "url": "benford_hist/2022-ac.csv.gz",
+     "bytes": 6569,
+     "rows": 1811,
+     "rawBytes": 67441,
+     "where": "election = 2022 and turn = 1 and uf = 'ac' and not (uf = 'br' or (unit = 'section' and city is null and pos <> 'd12'))"
+    },
+    "2022/al": {
+     "url": "benford_hist/2022-al.csv.gz",
+     "bytes": 9762,
+     "rows": 2485,
+     "rawBytes": 95548,
+     "where": "election = 2022 and turn = 1 and uf = 'al' and not (uf = 'br' or (unit = 'section' and city is null and pos <> 'd12'))"
+    },
+    "2022/am": {
+     "url": "benford_hist/2022-am.csv.gz",
+     "bytes": 9958,
+     "rows": 2580,
+     "rawBytes": 96772,
+     "where": "election = 2022 and turn = 1 and uf = 'am' and not (uf = 'br' or (unit = 'section' and city is null and pos <> 'd12'))"
+    },
+    "2022/ap": {
+     "url": "benford_hist/2022-ap.csv.gz",
+     "bytes": 6327,
+     "rows": 1805,
+     "rawBytes": 64594,
+     "where": "election = 2022 and turn = 1 and uf = 'ap' and not (uf = 'br' or (unit = 'section' and city is null and pos <> 'd12'))"
+    },
+    "2022/ba": {
+     "url": "benford_hist/2022-ba.csv.gz",
+     "bytes": 32493,
+     "rows": 7852,
+     "rawBytes": 341143,
+     "where": "election = 2022 and turn = 1 and uf = 'ba' and not (uf = 'br' or (unit = 'section' and city is null and pos <> 'd12'))"
+    },
+    "2022/br": {
+     "url": "benford_hist/2022-br.csv.gz",
+     "bytes": 201092,
+     "rows": 41681,
+     "rawBytes": 1515451,
+     "where": "election = 2022 and turn = 1 and (uf = 'br' or (unit = 'section' and city is null and pos <> 'd12'))"
+    },
+    "2022/ce": {
+     "url": "benford_hist/2022-ce.csv.gz",
+     "bytes": 27624,
+     "rows": 6850,
+     "rawBytes": 281385,
+     "where": "election = 2022 and turn = 1 and uf = 'ce' and not (uf = 'br' or (unit = 'section' and city is null and pos <> 'd12'))"
+    },
+    "2022/df": {
+     "url": "benford_hist/2022-df.csv.gz",
+     "bytes": 5647,
+     "rows": 1677,
+     "rawBytes": 58912,
+     "where": "election = 2022 and turn = 1 and uf = 'df' and not (uf = 'br' or (unit = 'section' and city is null and pos <> 'd12'))"
+    },
+    "2022/es": {
+     "url": "benford_hist/2022-es.csv.gz",
+     "bytes": 15990,
+     "rows": 3938,
+     "rawBytes": 158690,
+     "where": "election = 2022 and turn = 1 and uf = 'es' and not (uf = 'br' or (unit = 'section' and city is null and pos <> 'd12'))"
+    },
+    "2022/go": {
+     "url": "benford_hist/2022-go.csv.gz",
+     "bytes": 18122,
+     "rows": 4462,
+     "rawBytes": 185078,
+     "where": "election = 2022 and turn = 1 and uf = 'go' and not (uf = 'br' or (unit = 'section' and city is null and pos <> 'd12'))"
+    },
+    "2022/ma": {
+     "url": "benford_hist/2022-ma.csv.gz",
+     "bytes": 18411,
+     "rows": 4546,
+     "rawBytes": 184553,
+     "where": "election = 2022 and turn = 1 and uf = 'ma' and not (uf = 'br' or (unit = 'section' and city is null and pos <> 'd12'))"
+    },
+    "2022/mg": {
+     "url": "benford_hist/2022-mg.csv.gz",
+     "bytes": 51305,
+     "rows": 12279,
+     "rawBytes": 528400,
+     "where": "election = 2022 and turn = 1 and uf = 'mg' and not (uf = 'br' or (unit = 'section' and city is null and pos <> 'd12'))"
+    },
+    "2022/ms": {
+     "url": "benford_hist/2022-ms.csv.gz",
+     "bytes": 10164,
+     "rows": 2605,
+     "rawBytes": 100029,
+     "where": "election = 2022 and turn = 1 and uf = 'ms' and not (uf = 'br' or (unit = 'section' and city is null and pos <> 'd12'))"
+    },
+    "2022/mt": {
+     "url": "benford_hist/2022-mt.csv.gz",
+     "bytes": 10998,
+     "rows": 2756,
+     "rawBytes": 109364,
+     "where": "election = 2022 and turn = 1 and uf = 'mt' and not (uf = 'br' or (unit = 'section' and city is null and pos <> 'd12'))"
+    },
+    "2022/pa": {
+     "url": "benford_hist/2022-pa.csv.gz",
+     "bytes": 25575,
+     "rows": 6284,
+     "rawBytes": 258358,
+     "where": "election = 2022 and turn = 1 and uf = 'pa' and not (uf = 'br' or (unit = 'section' and city is null and pos <> 'd12'))"
+    },
+    "2022/pb": {
+     "url": "benford_hist/2022-pb.csv.gz",
+     "bytes": 11311,
+     "rows": 2876,
+     "rawBytes": 109707,
+     "where": "election = 2022 and turn = 1 and uf = 'pb' and not (uf = 'br' or (unit = 'section' and city is null and pos <> 'd12'))"
+    },
+    "2022/pe": {
+     "url": "benford_hist/2022-pe.csv.gz",
+     "bytes": 20627,
+     "rows": 5089,
+     "rawBytes": 213823,
+     "where": "election = 2022 and turn = 1 and uf = 'pe' and not (uf = 'br' or (unit = 'section' and city is null and pos <> 'd12'))"
+    },
+    "2022/pi": {
+     "url": "benford_hist/2022-pi.csv.gz",
+     "bytes": 9969,
+     "rows": 2522,
+     "rawBytes": 94992,
+     "where": "election = 2022 and turn = 1 and uf = 'pi' and not (uf = 'br' or (unit = 'section' and city is null and pos <> 'd12'))"
+    },
+    "2022/pr": {
+     "url": "benford_hist/2022-pr.csv.gz",
+     "bytes": 25908,
+     "rows": 6294,
+     "rawBytes": 267336,
+     "where": "election = 2022 and turn = 1 and uf = 'pr' and not (uf = 'br' or (unit = 'section' and city is null and pos <> 'd12'))"
+    },
+    "2022/rj": {
+     "url": "benford_hist/2022-rj.csv.gz",
+     "bytes": 28088,
+     "rows": 6960,
+     "rawBytes": 301784,
+     "where": "election = 2022 and turn = 1 and uf = 'rj' and not (uf = 'br' or (unit = 'section' and city is null and pos <> 'd12'))"
+    },
+    "2022/rn": {
+     "url": "benford_hist/2022-rn.csv.gz",
+     "bytes": 10201,
+     "rows": 2547,
+     "rawBytes": 99566,
+     "where": "election = 2022 and turn = 1 and uf = 'rn' and not (uf = 'br' or (unit = 'section' and city is null and pos <> 'd12'))"
+    },
+    "2022/ro": {
+     "url": "benford_hist/2022-ro.csv.gz",
+     "bytes": 10173,
+     "rows": 2657,
+     "rawBytes": 101908,
+     "where": "election = 2022 and turn = 1 and uf = 'ro' and not (uf = 'br' or (unit = 'section' and city is null and pos <> 'd12'))"
+    },
+    "2022/rr": {
+     "url": "benford_hist/2022-rr.csv.gz",
+     "bytes": 5142,
+     "rows": 1506,
+     "rawBytes": 53535,
+     "where": "election = 2022 and turn = 1 and uf = 'rr' and not (uf = 'br' or (unit = 'section' and city is null and pos <> 'd12'))"
+    },
+    "2022/rs": {
+     "url": "benford_hist/2022-rs.csv.gz",
+     "bytes": 32102,
+     "rows": 7748,
+     "rawBytes": 330561,
+     "where": "election = 2022 and turn = 1 and uf = 'rs' and not (uf = 'br' or (unit = 'section' and city is null and pos <> 'd12'))"
+    },
+    "2022/sc": {
+     "url": "benford_hist/2022-sc.csv.gz",
+     "bytes": 20078,
+     "rows": 4956,
+     "rawBytes": 200053,
+     "where": "election = 2022 and turn = 1 and uf = 'sc' and not (uf = 'br' or (unit = 'section' and city is null and pos <> 'd12'))"
+    },
+    "2022/se": {
+     "url": "benford_hist/2022-se.csv.gz",
+     "bytes": 9224,
+     "rows": 2400,
+     "rawBytes": 91962,
+     "where": "election = 2022 and turn = 1 and uf = 'se' and not (uf = 'br' or (unit = 'section' and city is null and pos <> 'd12'))"
+    },
+    "2022/sp": {
+     "url": "benford_hist/2022-sp.csv.gz",
+     "bytes": 98911,
+     "rows": 23793,
+     "rawBytes": 1037609,
+     "where": "election = 2022 and turn = 1 and uf = 'sp' and not (uf = 'br' or (unit = 'section' and city is null and pos <> 'd12'))"
+    },
+    "2022/to": {
+     "url": "benford_hist/2022-to.csv.gz",
+     "bytes": 7668,
+     "rows": 1982,
+     "rawBytes": 73995,
+     "where": "election = 2022 and turn = 1 and uf = 'to' and not (uf = 'br' or (unit = 'section' and city is null and pos <> 'd12'))"
+    },
     "2022-2/ac": {
      "url": "benford_hist/2022-2-ac.csv.gz",
      "bytes": 2512,
@@ -4998,7 +4998,7 @@
     },
     "2022-2/br": {
      "url": "benford_hist/2022-2-br.csv.gz",
-     "bytes": 34596,
+     "bytes": 34579,
      "rows": 7206,
      "rawBytes": 263606,
      "where": "election = 2022 and turn = 2 and (uf = 'br' or (unit = 'section' and city is null and pos <> 'd12'))"
@@ -5012,7 +5012,7 @@
     },
     "2022-2/df": {
      "url": "benford_hist/2022-2-df.csv.gz",
-     "bytes": 1715,
+     "bytes": 1713,
      "rows": 472,
      "rawBytes": 16482,
      "where": "election = 2022 and turn = 2 and uf = 'df' and not (uf = 'br' or (unit = 'section' and city is null and pos <> 'd12'))"
@@ -5124,14 +5124,14 @@
     },
     "2022-2/rs": {
      "url": "benford_hist/2022-2-rs.csv.gz",
-     "bytes": 20925,
+     "bytes": 20920,
      "rows": 5039,
      "rawBytes": 214690,
      "where": "election = 2022 and turn = 2 and uf = 'rs' and not (uf = 'br' or (unit = 'section' and city is null and pos <> 'd12'))"
     },
     "2022-2/sc": {
      "url": "benford_hist/2022-2-sc.csv.gz",
-     "bytes": 12312,
+     "bytes": 12299,
      "rows": 3025,
      "rawBytes": 123266,
      "where": "election = 2022 and turn = 2 and uf = 'sc' and not (uf = 'br' or (unit = 'section' and city is null and pos <> 'd12'))"
@@ -5372,202 +5372,6 @@
      "rows": 2312,
      "rawBytes": 131379,
      "where": "election = 2018 and turn = 1 and uf = 'to' and not (uf = 'br' or (unit = 'section' and city is null and pos <> 'd12'))"
-    },
-    "2022/ac": {
-     "url": "benford_base/2022-ac.csv.gz",
-     "bytes": 11482,
-     "rows": 1811,
-     "rawBytes": 100823,
-     "where": "election = 2022 and turn = 1 and uf = 'ac' and not (uf = 'br' or (unit = 'section' and city is null and pos <> 'd12'))"
-    },
-    "2022/al": {
-     "url": "benford_base/2022-al.csv.gz",
-     "bytes": 16889,
-     "rows": 2485,
-     "rawBytes": 141176,
-     "where": "election = 2022 and turn = 1 and uf = 'al' and not (uf = 'br' or (unit = 'section' and city is null and pos <> 'd12'))"
-    },
-    "2022/am": {
-     "url": "benford_base/2022-am.csv.gz",
-     "bytes": 17281,
-     "rows": 2580,
-     "rawBytes": 145933,
-     "where": "election = 2022 and turn = 1 and uf = 'am' and not (uf = 'br' or (unit = 'section' and city is null and pos <> 'd12'))"
-    },
-    "2022/ap": {
-     "url": "benford_base/2022-ap.csv.gz",
-     "bytes": 10955,
-     "rows": 1805,
-     "rawBytes": 96438,
-     "where": "election = 2022 and turn = 1 and uf = 'ap' and not (uf = 'br' or (unit = 'section' and city is null and pos <> 'd12'))"
-    },
-    "2022/ba": {
-     "url": "benford_base/2022-ba.csv.gz",
-     "bytes": 55836,
-     "rows": 7852,
-     "rawBytes": 480557,
-     "where": "election = 2022 and turn = 1 and uf = 'ba' and not (uf = 'br' or (unit = 'section' and city is null and pos <> 'd12'))"
-    },
-    "2022/br": {
-     "url": "benford_base/2022-br.csv.gz",
-     "bytes": 373423,
-     "rows": 41681,
-     "rawBytes": 2361008,
-     "where": "election = 2022 and turn = 1 and (uf = 'br' or (unit = 'section' and city is null and pos <> 'd12'))"
-    },
-    "2022/ce": {
-     "url": "benford_base/2022-ce.csv.gz",
-     "bytes": 48249,
-     "rows": 6850,
-     "rawBytes": 406316,
-     "where": "election = 2022 and turn = 1 and uf = 'ce' and not (uf = 'br' or (unit = 'section' and city is null and pos <> 'd12'))"
-    },
-    "2022/df": {
-     "url": "benford_base/2022-df.csv.gz",
-     "bytes": 8073,
-     "rows": 1677,
-     "rawBytes": 81523,
-     "where": "election = 2022 and turn = 1 and uf = 'df' and not (uf = 'br' or (unit = 'section' and city is null and pos <> 'd12'))"
-    },
-    "2022/es": {
-     "url": "benford_base/2022-es.csv.gz",
-     "bytes": 27228,
-     "rows": 3938,
-     "rawBytes": 231621,
-     "where": "election = 2022 and turn = 1 and uf = 'es' and not (uf = 'br' or (unit = 'section' and city is null and pos <> 'd12'))"
-    },
-    "2022/go": {
-     "url": "benford_base/2022-go.csv.gz",
-     "bytes": 31168,
-     "rows": 4462,
-     "rawBytes": 264916,
-     "where": "election = 2022 and turn = 1 and uf = 'go' and not (uf = 'br' or (unit = 'section' and city is null and pos <> 'd12'))"
-    },
-    "2022/ma": {
-     "url": "benford_base/2022-ma.csv.gz",
-     "bytes": 32055,
-     "rows": 4546,
-     "rawBytes": 267515,
-     "where": "election = 2022 and turn = 1 and uf = 'ma' and not (uf = 'br' or (unit = 'section' and city is null and pos <> 'd12'))"
-    },
-    "2022/mg": {
-     "url": "benford_base/2022-mg.csv.gz",
-     "bytes": 87024,
-     "rows": 12279,
-     "rawBytes": 744299,
-     "where": "election = 2022 and turn = 1 and uf = 'mg' and not (uf = 'br' or (unit = 'section' and city is null and pos <> 'd12'))"
-    },
-    "2022/ms": {
-     "url": "benford_base/2022-ms.csv.gz",
-     "bytes": 17740,
-     "rows": 2605,
-     "rawBytes": 148928,
-     "where": "election = 2022 and turn = 1 and uf = 'ms' and not (uf = 'br' or (unit = 'section' and city is null and pos <> 'd12'))"
-    },
-    "2022/mt": {
-     "url": "benford_base/2022-mt.csv.gz",
-     "bytes": 19274,
-     "rows": 2756,
-     "rawBytes": 160714,
-     "where": "election = 2022 and turn = 1 and uf = 'mt' and not (uf = 'br' or (unit = 'section' and city is null and pos <> 'd12'))"
-    },
-    "2022/pa": {
-     "url": "benford_base/2022-pa.csv.gz",
-     "bytes": 44735,
-     "rows": 6284,
-     "rawBytes": 372961,
-     "where": "election = 2022 and turn = 1 and uf = 'pa' and not (uf = 'br' or (unit = 'section' and city is null and pos <> 'd12'))"
-    },
-    "2022/pb": {
-     "url": "benford_base/2022-pb.csv.gz",
-     "bytes": 19362,
-     "rows": 2876,
-     "rawBytes": 160374,
-     "where": "election = 2022 and turn = 1 and uf = 'pb' and not (uf = 'br' or (unit = 'section' and city is null and pos <> 'd12'))"
-    },
-    "2022/pe": {
-     "url": "benford_base/2022-pe.csv.gz",
-     "bytes": 35255,
-     "rows": 5089,
-     "rawBytes": 302764,
-     "where": "election = 2022 and turn = 1 and uf = 'pe' and not (uf = 'br' or (unit = 'section' and city is null and pos <> 'd12'))"
-    },
-    "2022/pi": {
-     "url": "benford_base/2022-pi.csv.gz",
-     "bytes": 17778,
-     "rows": 2522,
-     "rawBytes": 142328,
-     "where": "election = 2022 and turn = 1 and uf = 'pi' and not (uf = 'br' or (unit = 'section' and city is null and pos <> 'd12'))"
-    },
-    "2022/pr": {
-     "url": "benford_base/2022-pr.csv.gz",
-     "bytes": 43682,
-     "rows": 6294,
-     "rawBytes": 376978,
-     "where": "election = 2022 and turn = 1 and uf = 'pr' and not (uf = 'br' or (unit = 'section' and city is null and pos <> 'd12'))"
-    },
-    "2022/rj": {
-     "url": "benford_base/2022-rj.csv.gz",
-     "bytes": 47030,
-     "rows": 6960,
-     "rawBytes": 419408,
-     "where": "election = 2022 and turn = 1 and uf = 'rj' and not (uf = 'br' or (unit = 'section' and city is null and pos <> 'd12'))"
-    },
-    "2022/rn": {
-     "url": "benford_base/2022-rn.csv.gz",
-     "bytes": 17753,
-     "rows": 2547,
-     "rawBytes": 147184,
-     "where": "election = 2022 and turn = 1 and uf = 'rn' and not (uf = 'br' or (unit = 'section' and city is null and pos <> 'd12'))"
-    },
-    "2022/ro": {
-     "url": "benford_base/2022-ro.csv.gz",
-     "bytes": 17694,
-     "rows": 2657,
-     "rawBytes": 151212,
-     "where": "election = 2022 and turn = 1 and uf = 'ro' and not (uf = 'br' or (unit = 'section' and city is null and pos <> 'd12'))"
-    },
-    "2022/rr": {
-     "url": "benford_base/2022-rr.csv.gz",
-     "bytes": 8774,
-     "rows": 1506,
-     "rawBytes": 79921,
-     "where": "election = 2022 and turn = 1 and uf = 'rr' and not (uf = 'br' or (unit = 'section' and city is null and pos <> 'd12'))"
-    },
-    "2022/rs": {
-     "url": "benford_base/2022-rs.csv.gz",
-     "bytes": 55081,
-     "rows": 7748,
-     "rawBytes": 468373,
-     "where": "election = 2022 and turn = 1 and uf = 'rs' and not (uf = 'br' or (unit = 'section' and city is null and pos <> 'd12'))"
-    },
-    "2022/sc": {
-     "url": "benford_base/2022-sc.csv.gz",
-     "bytes": 34900,
-     "rows": 4956,
-     "rawBytes": 289909,
-     "where": "election = 2022 and turn = 1 and uf = 'sc' and not (uf = 'br' or (unit = 'section' and city is null and pos <> 'd12'))"
-    },
-    "2022/se": {
-     "url": "benford_base/2022-se.csv.gz",
-     "bytes": 15908,
-     "rows": 2400,
-     "rawBytes": 136088,
-     "where": "election = 2022 and turn = 1 and uf = 'se' and not (uf = 'br' or (unit = 'section' and city is null and pos <> 'd12'))"
-    },
-    "2022/sp": {
-     "url": "benford_base/2022-sp.csv.gz",
-     "bytes": 165413,
-     "rows": 23793,
-     "rawBytes": 1440392,
-     "where": "election = 2022 and turn = 1 and uf = 'sp' and not (uf = 'br' or (unit = 'section' and city is null and pos <> 'd12'))"
-    },
-    "2022/to": {
-     "url": "benford_base/2022-to.csv.gz",
-     "bytes": 13797,
-     "rows": 1982,
-     "rawBytes": 111874,
-     "where": "election = 2022 and turn = 1 and uf = 'to' and not (uf = 'br' or (unit = 'section' and city is null and pos <> 'd12'))"
     },
     "2026/ac": {
      "url": "benford_base/2026-ac.csv.gz",
@@ -5968,6 +5772,202 @@
      "rawBytes": 40768,
      "where": "election = 2018 and turn = 2 and uf = 'to' and not (uf = 'br' or (unit = 'section' and city is null and pos <> 'd12'))"
     },
+    "2022/ac": {
+     "url": "benford_base/2022-ac.csv.gz",
+     "bytes": 11478,
+     "rows": 1811,
+     "rawBytes": 100805,
+     "where": "election = 2022 and turn = 1 and uf = 'ac' and not (uf = 'br' or (unit = 'section' and city is null and pos <> 'd12'))"
+    },
+    "2022/al": {
+     "url": "benford_base/2022-al.csv.gz",
+     "bytes": 16898,
+     "rows": 2485,
+     "rawBytes": 141183,
+     "where": "election = 2022 and turn = 1 and uf = 'al' and not (uf = 'br' or (unit = 'section' and city is null and pos <> 'd12'))"
+    },
+    "2022/am": {
+     "url": "benford_base/2022-am.csv.gz",
+     "bytes": 17321,
+     "rows": 2580,
+     "rawBytes": 145952,
+     "where": "election = 2022 and turn = 1 and uf = 'am' and not (uf = 'br' or (unit = 'section' and city is null and pos <> 'd12'))"
+    },
+    "2022/ap": {
+     "url": "benford_base/2022-ap.csv.gz",
+     "bytes": 10960,
+     "rows": 1805,
+     "rawBytes": 96427,
+     "where": "election = 2022 and turn = 1 and uf = 'ap' and not (uf = 'br' or (unit = 'section' and city is null and pos <> 'd12'))"
+    },
+    "2022/ba": {
+     "url": "benford_base/2022-ba.csv.gz",
+     "bytes": 55676,
+     "rows": 7852,
+     "rawBytes": 480525,
+     "where": "election = 2022 and turn = 1 and uf = 'ba' and not (uf = 'br' or (unit = 'section' and city is null and pos <> 'd12'))"
+    },
+    "2022/br": {
+     "url": "benford_base/2022-br.csv.gz",
+     "bytes": 373664,
+     "rows": 41681,
+     "rawBytes": 2360996,
+     "where": "election = 2022 and turn = 1 and (uf = 'br' or (unit = 'section' and city is null and pos <> 'd12'))"
+    },
+    "2022/ce": {
+     "url": "benford_base/2022-ce.csv.gz",
+     "bytes": 48189,
+     "rows": 6850,
+     "rawBytes": 406356,
+     "where": "election = 2022 and turn = 1 and uf = 'ce' and not (uf = 'br' or (unit = 'section' and city is null and pos <> 'd12'))"
+    },
+    "2022/df": {
+     "url": "benford_base/2022-df.csv.gz",
+     "bytes": 8065,
+     "rows": 1677,
+     "rawBytes": 81544,
+     "where": "election = 2022 and turn = 1 and uf = 'df' and not (uf = 'br' or (unit = 'section' and city is null and pos <> 'd12'))"
+    },
+    "2022/es": {
+     "url": "benford_base/2022-es.csv.gz",
+     "bytes": 27302,
+     "rows": 3938,
+     "rawBytes": 231606,
+     "where": "election = 2022 and turn = 1 and uf = 'es' and not (uf = 'br' or (unit = 'section' and city is null and pos <> 'd12'))"
+    },
+    "2022/go": {
+     "url": "benford_base/2022-go.csv.gz",
+     "bytes": 31116,
+     "rows": 4462,
+     "rawBytes": 264936,
+     "where": "election = 2022 and turn = 1 and uf = 'go' and not (uf = 'br' or (unit = 'section' and city is null and pos <> 'd12'))"
+    },
+    "2022/ma": {
+     "url": "benford_base/2022-ma.csv.gz",
+     "bytes": 32025,
+     "rows": 4546,
+     "rawBytes": 267535,
+     "where": "election = 2022 and turn = 1 and uf = 'ma' and not (uf = 'br' or (unit = 'section' and city is null and pos <> 'd12'))"
+    },
+    "2022/mg": {
+     "url": "benford_base/2022-mg.csv.gz",
+     "bytes": 87077,
+     "rows": 12279,
+     "rawBytes": 744227,
+     "where": "election = 2022 and turn = 1 and uf = 'mg' and not (uf = 'br' or (unit = 'section' and city is null and pos <> 'd12'))"
+    },
+    "2022/ms": {
+     "url": "benford_base/2022-ms.csv.gz",
+     "bytes": 17763,
+     "rows": 2605,
+     "rawBytes": 148911,
+     "where": "election = 2022 and turn = 1 and uf = 'ms' and not (uf = 'br' or (unit = 'section' and city is null and pos <> 'd12'))"
+    },
+    "2022/mt": {
+     "url": "benford_base/2022-mt.csv.gz",
+     "bytes": 19318,
+     "rows": 2756,
+     "rawBytes": 160726,
+     "where": "election = 2022 and turn = 1 and uf = 'mt' and not (uf = 'br' or (unit = 'section' and city is null and pos <> 'd12'))"
+    },
+    "2022/pa": {
+     "url": "benford_base/2022-pa.csv.gz",
+     "bytes": 44759,
+     "rows": 6284,
+     "rawBytes": 372929,
+     "where": "election = 2022 and turn = 1 and uf = 'pa' and not (uf = 'br' or (unit = 'section' and city is null and pos <> 'd12'))"
+    },
+    "2022/pb": {
+     "url": "benford_base/2022-pb.csv.gz",
+     "bytes": 19313,
+     "rows": 2876,
+     "rawBytes": 160387,
+     "where": "election = 2022 and turn = 1 and uf = 'pb' and not (uf = 'br' or (unit = 'section' and city is null and pos <> 'd12'))"
+    },
+    "2022/pe": {
+     "url": "benford_base/2022-pe.csv.gz",
+     "bytes": 35234,
+     "rows": 5089,
+     "rawBytes": 302739,
+     "where": "election = 2022 and turn = 1 and uf = 'pe' and not (uf = 'br' or (unit = 'section' and city is null and pos <> 'd12'))"
+    },
+    "2022/pi": {
+     "url": "benford_base/2022-pi.csv.gz",
+     "bytes": 17816,
+     "rows": 2522,
+     "rawBytes": 142319,
+     "where": "election = 2022 and turn = 1 and uf = 'pi' and not (uf = 'br' or (unit = 'section' and city is null and pos <> 'd12'))"
+    },
+    "2022/pr": {
+     "url": "benford_base/2022-pr.csv.gz",
+     "bytes": 43724,
+     "rows": 6294,
+     "rawBytes": 376822,
+     "where": "election = 2022 and turn = 1 and uf = 'pr' and not (uf = 'br' or (unit = 'section' and city is null and pos <> 'd12'))"
+    },
+    "2022/rj": {
+     "url": "benford_base/2022-rj.csv.gz",
+     "bytes": 47104,
+     "rows": 6960,
+     "rawBytes": 419393,
+     "where": "election = 2022 and turn = 1 and uf = 'rj' and not (uf = 'br' or (unit = 'section' and city is null and pos <> 'd12'))"
+    },
+    "2022/rn": {
+     "url": "benford_base/2022-rn.csv.gz",
+     "bytes": 17734,
+     "rows": 2547,
+     "rawBytes": 147212,
+     "where": "election = 2022 and turn = 1 and uf = 'rn' and not (uf = 'br' or (unit = 'section' and city is null and pos <> 'd12'))"
+    },
+    "2022/ro": {
+     "url": "benford_base/2022-ro.csv.gz",
+     "bytes": 17655,
+     "rows": 2657,
+     "rawBytes": 151180,
+     "where": "election = 2022 and turn = 1 and uf = 'ro' and not (uf = 'br' or (unit = 'section' and city is null and pos <> 'd12'))"
+    },
+    "2022/rr": {
+     "url": "benford_base/2022-rr.csv.gz",
+     "bytes": 8779,
+     "rows": 1506,
+     "rawBytes": 79907,
+     "where": "election = 2022 and turn = 1 and uf = 'rr' and not (uf = 'br' or (unit = 'section' and city is null and pos <> 'd12'))"
+    },
+    "2022/rs": {
+     "url": "benford_base/2022-rs.csv.gz",
+     "bytes": 54961,
+     "rows": 7748,
+     "rawBytes": 468378,
+     "where": "election = 2022 and turn = 1 and uf = 'rs' and not (uf = 'br' or (unit = 'section' and city is null and pos <> 'd12'))"
+    },
+    "2022/sc": {
+     "url": "benford_base/2022-sc.csv.gz",
+     "bytes": 34928,
+     "rows": 4956,
+     "rawBytes": 289900,
+     "where": "election = 2022 and turn = 1 and uf = 'sc' and not (uf = 'br' or (unit = 'section' and city is null and pos <> 'd12'))"
+    },
+    "2022/se": {
+     "url": "benford_base/2022-se.csv.gz",
+     "bytes": 15853,
+     "rows": 2400,
+     "rawBytes": 136095,
+     "where": "election = 2022 and turn = 1 and uf = 'se' and not (uf = 'br' or (unit = 'section' and city is null and pos <> 'd12'))"
+    },
+    "2022/sp": {
+     "url": "benford_base/2022-sp.csv.gz",
+     "bytes": 165252,
+     "rows": 23793,
+     "rawBytes": 1440435,
+     "where": "election = 2022 and turn = 1 and uf = 'sp' and not (uf = 'br' or (unit = 'section' and city is null and pos <> 'd12'))"
+    },
+    "2022/to": {
+     "url": "benford_base/2022-to.csv.gz",
+     "bytes": 13707,
+     "rows": 1982,
+     "rawBytes": 111874,
+     "where": "election = 2022 and turn = 1 and uf = 'to' and not (uf = 'br' or (unit = 'section' and city is null and pos <> 'd12'))"
+    },
     "2022-2/ac": {
      "url": "benford_base/2022-2-ac.csv.gz",
      "bytes": 4497,
@@ -5998,16 +5998,16 @@
     },
     "2022-2/ba": {
      "url": "benford_base/2022-2-ba.csv.gz",
-     "bytes": 40418,
+     "bytes": 40421,
      "rows": 5552,
-     "rawBytes": 340442,
+     "rawBytes": 340453,
      "where": "election = 2022 and turn = 2 and uf = 'ba' and not (uf = 'br' or (unit = 'section' and city is null and pos <> 'd12'))"
     },
     "2022-2/br": {
      "url": "benford_base/2022-2-br.csv.gz",
-     "bytes": 63166,
+     "bytes": 63168,
      "rows": 7206,
-     "rawBytes": 408141,
+     "rawBytes": 408136,
      "where": "election = 2022 and turn = 2 and (uf = 'br' or (unit = 'section' and city is null and pos <> 'd12'))"
     },
     "2022-2/ce": {
@@ -6019,7 +6019,7 @@
     },
     "2022-2/df": {
      "url": "benford_base/2022-2-df.csv.gz",
-     "bytes": 2554,
+     "bytes": 2559,
      "rows": 472,
      "rawBytes": 23742,
      "where": "election = 2022 and turn = 2 and uf = 'df' and not (uf = 'br' or (unit = 'section' and city is null and pos <> 'd12'))"
@@ -6131,16 +6131,16 @@
     },
     "2022-2/rs": {
      "url": "benford_base/2022-2-rs.csv.gz",
-     "bytes": 36539,
+     "bytes": 36515,
      "rows": 5039,
-     "rawBytes": 303936,
+     "rawBytes": 303927,
      "where": "election = 2022 and turn = 2 and uf = 'rs' and not (uf = 'br' or (unit = 'section' and city is null and pos <> 'd12'))"
     },
     "2022-2/sc": {
      "url": "benford_base/2022-2-sc.csv.gz",
-     "bytes": 21838,
+     "bytes": 21871,
      "rows": 3025,
-     "rawBytes": 177384,
+     "rawBytes": 177400,
      "where": "election = 2022 and turn = 2 and uf = 'sc' and not (uf = 'br' or (unit = 'section' and city is null and pos <> 'd12'))"
     },
     "2022-2/se": {
@@ -6379,202 +6379,6 @@
      "rows": 272,
      "rawBytes": 15545,
      "where": "election = 2018 and turn = 1 and uf = 'to' and not (uf = 'br' or (unit = 'section' and city is null and pos <> 'd12'))"
-    },
-    "2022/ac": {
-     "url": "benford_stat/2022-ac.csv.gz",
-     "bytes": 2134,
-     "rows": 212,
-     "rawBytes": 12143,
-     "where": "election = 2022 and turn = 1 and uf = 'ac' and not (uf = 'br' or (unit = 'section' and city is null and pos <> 'd12'))"
-    },
-    "2022/al": {
-     "url": "benford_stat/2022-al.csv.gz",
-     "bytes": 2906,
-     "rows": 268,
-     "rawBytes": 15918,
-     "where": "election = 2022 and turn = 1 and uf = 'al' and not (uf = 'br' or (unit = 'section' and city is null and pos <> 'd12'))"
-    },
-    "2022/am": {
-     "url": "benford_stat/2022-am.csv.gz",
-     "bytes": 2877,
-     "rows": 278,
-     "rawBytes": 16328,
-     "where": "election = 2022 and turn = 1 and uf = 'am' and not (uf = 'br' or (unit = 'section' and city is null and pos <> 'd12'))"
-    },
-    "2022/ap": {
-     "url": "benford_stat/2022-ap.csv.gz",
-     "bytes": 1924,
-     "rows": 198,
-     "rawBytes": 11074,
-     "where": "election = 2022 and turn = 1 and uf = 'ap' and not (uf = 'br' or (unit = 'section' and city is null and pos <> 'd12'))"
-    },
-    "2022/ba": {
-     "url": "benford_stat/2022-ba.csv.gz",
-     "bytes": 9096,
-     "rows": 830,
-     "rawBytes": 55121,
-     "where": "election = 2022 and turn = 1 and uf = 'ba' and not (uf = 'br' or (unit = 'section' and city is null and pos <> 'd12'))"
-    },
-    "2022/br": {
-     "url": "benford_stat/2022-br.csv.gz",
-     "bytes": 87363,
-     "rows": 8308,
-     "rawBytes": 476707,
-     "where": "election = 2022 and turn = 1 and (uf = 'br' or (unit = 'section' and city is null and pos <> 'd12'))"
-    },
-    "2022/ce": {
-     "url": "benford_stat/2022-ce.csv.gz",
-     "bytes": 7839,
-     "rows": 732,
-     "rawBytes": 46755,
-     "where": "election = 2022 and turn = 1 and uf = 'ce' and not (uf = 'br' or (unit = 'section' and city is null and pos <> 'd12'))"
-    },
-    "2022/df": {
-     "url": "benford_stat/2022-df.csv.gz",
-     "bytes": 1273,
-     "rows": 180,
-     "rawBytes": 9631,
-     "where": "election = 2022 and turn = 1 and uf = 'df' and not (uf = 'br' or (unit = 'section' and city is null and pos <> 'd12'))"
-    },
-    "2022/es": {
-     "url": "benford_stat/2022-es.csv.gz",
-     "bytes": 4530,
-     "rows": 418,
-     "rawBytes": 26143,
-     "where": "election = 2022 and turn = 1 and uf = 'es' and not (uf = 'br' or (unit = 'section' and city is null and pos <> 'd12'))"
-    },
-    "2022/go": {
-     "url": "benford_stat/2022-go.csv.gz",
-     "bytes": 5258,
-     "rows": 482,
-     "rawBytes": 30621,
-     "where": "election = 2022 and turn = 1 and uf = 'go' and not (uf = 'br' or (unit = 'section' and city is null and pos <> 'd12'))"
-    },
-    "2022/ma": {
-     "url": "benford_stat/2022-ma.csv.gz",
-     "bytes": 5227,
-     "rows": 482,
-     "rawBytes": 30299,
-     "where": "election = 2022 and turn = 1 and uf = 'ma' and not (uf = 'br' or (unit = 'section' and city is null and pos <> 'd12'))"
-    },
-    "2022/mg": {
-     "url": "benford_stat/2022-mg.csv.gz",
-     "bytes": 13860,
-     "rows": 1296,
-     "rawBytes": 85936,
-     "where": "election = 2022 and turn = 1 and uf = 'mg' and not (uf = 'br' or (unit = 'section' and city is null and pos <> 'd12'))"
-    },
-    "2022/ms": {
-     "url": "benford_stat/2022-ms.csv.gz",
-     "bytes": 3038,
-     "rows": 294,
-     "rawBytes": 17431,
-     "where": "election = 2022 and turn = 1 and uf = 'ms' and not (uf = 'br' or (unit = 'section' and city is null and pos <> 'd12'))"
-    },
-    "2022/mt": {
-     "url": "benford_stat/2022-mt.csv.gz",
-     "bytes": 3221,
-     "rows": 304,
-     "rawBytes": 18443,
-     "where": "election = 2022 and turn = 1 and uf = 'mt' and not (uf = 'br' or (unit = 'section' and city is null and pos <> 'd12'))"
-    },
-    "2022/pa": {
-     "url": "benford_stat/2022-pa.csv.gz",
-     "bytes": 7230,
-     "rows": 662,
-     "rawBytes": 42312,
-     "where": "election = 2022 and turn = 1 and uf = 'pa' and not (uf = 'br' or (unit = 'section' and city is null and pos <> 'd12'))"
-    },
-    "2022/pb": {
-     "url": "benford_stat/2022-pb.csv.gz",
-     "bytes": 3340,
-     "rows": 318,
-     "rawBytes": 18817,
-     "where": "election = 2022 and turn = 1 and uf = 'pb' and not (uf = 'br' or (unit = 'section' and city is null and pos <> 'd12'))"
-    },
-    "2022/pe": {
-     "url": "benford_stat/2022-pe.csv.gz",
-     "bytes": 5960,
-     "rows": 548,
-     "rawBytes": 35198,
-     "where": "election = 2022 and turn = 1 and uf = 'pe' and not (uf = 'br' or (unit = 'section' and city is null and pos <> 'd12'))"
-    },
-    "2022/pi": {
-     "url": "benford_stat/2022-pi.csv.gz",
-     "bytes": 2933,
-     "rows": 266,
-     "rawBytes": 15656,
-     "where": "election = 2022 and turn = 1 and uf = 'pi' and not (uf = 'br' or (unit = 'section' and city is null and pos <> 'd12'))"
-    },
-    "2022/pr": {
-     "url": "benford_stat/2022-pr.csv.gz",
-     "bytes": 7206,
-     "rows": 666,
-     "rawBytes": 43441,
-     "where": "election = 2022 and turn = 1 and uf = 'pr' and not (uf = 'br' or (unit = 'section' and city is null and pos <> 'd12'))"
-    },
-    "2022/rj": {
-     "url": "benford_stat/2022-rj.csv.gz",
-     "bytes": 7820,
-     "rows": 742,
-     "rawBytes": 48948,
-     "where": "election = 2022 and turn = 1 and uf = 'rj' and not (uf = 'br' or (unit = 'section' and city is null and pos <> 'd12'))"
-    },
-    "2022/rn": {
-     "url": "benford_stat/2022-rn.csv.gz",
-     "bytes": 3007,
-     "rows": 282,
-     "rawBytes": 16917,
-     "where": "election = 2022 and turn = 1 and uf = 'rn' and not (uf = 'br' or (unit = 'section' and city is null and pos <> 'd12'))"
-    },
-    "2022/ro": {
-     "url": "benford_stat/2022-ro.csv.gz",
-     "bytes": 3115,
-     "rows": 304,
-     "rawBytes": 17960,
-     "where": "election = 2022 and turn = 1 and uf = 'ro' and not (uf = 'br' or (unit = 'section' and city is null and pos <> 'd12'))"
-    },
-    "2022/rr": {
-     "url": "benford_stat/2022-rr.csv.gz",
-     "bytes": 1698,
-     "rows": 174,
-     "rawBytes": 9548,
-     "where": "election = 2022 and turn = 1 and uf = 'rr' and not (uf = 'br' or (unit = 'section' and city is null and pos <> 'd12'))"
-    },
-    "2022/rs": {
-     "url": "benford_stat/2022-rs.csv.gz",
-     "bytes": 8923,
-     "rows": 822,
-     "rawBytes": 53868,
-     "where": "election = 2022 and turn = 1 and uf = 'rs' and not (uf = 'br' or (unit = 'section' and city is null and pos <> 'd12'))"
-    },
-    "2022/sc": {
-     "url": "benford_stat/2022-sc.csv.gz",
-     "bytes": 5664,
-     "rows": 534,
-     "rawBytes": 33377,
-     "where": "election = 2022 and turn = 1 and uf = 'sc' and not (uf = 'br' or (unit = 'section' and city is null and pos <> 'd12'))"
-    },
-    "2022/se": {
-     "url": "benford_stat/2022-se.csv.gz",
-     "bytes": 2694,
-     "rows": 262,
-     "rawBytes": 15411,
-     "where": "election = 2022 and turn = 1 and uf = 'se' and not (uf = 'br' or (unit = 'section' and city is null and pos <> 'd12'))"
-    },
-    "2022/sp": {
-     "url": "benford_stat/2022-sp.csv.gz",
-     "bytes": 26145,
-     "rows": 2508,
-     "rawBytes": 168314,
-     "where": "election = 2022 and turn = 1 and uf = 'sp' and not (uf = 'br' or (unit = 'section' and city is null and pos <> 'd12'))"
-    },
-    "2022/to": {
-     "url": "benford_stat/2022-to.csv.gz",
-     "bytes": 2397,
-     "rows": 230,
-     "rawBytes": 13260,
-     "where": "election = 2022 and turn = 1 and uf = 'to' and not (uf = 'br' or (unit = 'section' and city is null and pos <> 'd12'))"
     },
     "2026/ac": {
      "url": "benford_stat/2026-ac.csv.gz",
@@ -6975,6 +6779,202 @@
      "rawBytes": 3993,
      "where": "election = 2018 and turn = 2 and uf = 'to' and not (uf = 'br' or (unit = 'section' and city is null and pos <> 'd12'))"
     },
+    "2022/ac": {
+     "url": "benford_stat/2022-ac.csv.gz",
+     "bytes": 2122,
+     "rows": 212,
+     "rawBytes": 12153,
+     "where": "election = 2022 and turn = 1 and uf = 'ac' and not (uf = 'br' or (unit = 'section' and city is null and pos <> 'd12'))"
+    },
+    "2022/al": {
+     "url": "benford_stat/2022-al.csv.gz",
+     "bytes": 2919,
+     "rows": 268,
+     "rawBytes": 15918,
+     "where": "election = 2022 and turn = 1 and uf = 'al' and not (uf = 'br' or (unit = 'section' and city is null and pos <> 'd12'))"
+    },
+    "2022/am": {
+     "url": "benford_stat/2022-am.csv.gz",
+     "bytes": 2920,
+     "rows": 278,
+     "rawBytes": 16331,
+     "where": "election = 2022 and turn = 1 and uf = 'am' and not (uf = 'br' or (unit = 'section' and city is null and pos <> 'd12'))"
+    },
+    "2022/ap": {
+     "url": "benford_stat/2022-ap.csv.gz",
+     "bytes": 1897,
+     "rows": 198,
+     "rawBytes": 11073,
+     "where": "election = 2022 and turn = 1 and uf = 'ap' and not (uf = 'br' or (unit = 'section' and city is null and pos <> 'd12'))"
+    },
+    "2022/ba": {
+     "url": "benford_stat/2022-ba.csv.gz",
+     "bytes": 9097,
+     "rows": 830,
+     "rawBytes": 55086,
+     "where": "election = 2022 and turn = 1 and uf = 'ba' and not (uf = 'br' or (unit = 'section' and city is null and pos <> 'd12'))"
+    },
+    "2022/br": {
+     "url": "benford_stat/2022-br.csv.gz",
+     "bytes": 87412,
+     "rows": 8308,
+     "rawBytes": 476845,
+     "where": "election = 2022 and turn = 1 and (uf = 'br' or (unit = 'section' and city is null and pos <> 'd12'))"
+    },
+    "2022/ce": {
+     "url": "benford_stat/2022-ce.csv.gz",
+     "bytes": 7873,
+     "rows": 732,
+     "rawBytes": 46759,
+     "where": "election = 2022 and turn = 1 and uf = 'ce' and not (uf = 'br' or (unit = 'section' and city is null and pos <> 'd12'))"
+    },
+    "2022/df": {
+     "url": "benford_stat/2022-df.csv.gz",
+     "bytes": 1273,
+     "rows": 180,
+     "rawBytes": 9621,
+     "where": "election = 2022 and turn = 1 and uf = 'df' and not (uf = 'br' or (unit = 'section' and city is null and pos <> 'd12'))"
+    },
+    "2022/es": {
+     "url": "benford_stat/2022-es.csv.gz",
+     "bytes": 4482,
+     "rows": 418,
+     "rawBytes": 26125,
+     "where": "election = 2022 and turn = 1 and uf = 'es' and not (uf = 'br' or (unit = 'section' and city is null and pos <> 'd12'))"
+    },
+    "2022/go": {
+     "url": "benford_stat/2022-go.csv.gz",
+     "bytes": 5267,
+     "rows": 482,
+     "rawBytes": 30602,
+     "where": "election = 2022 and turn = 1 and uf = 'go' and not (uf = 'br' or (unit = 'section' and city is null and pos <> 'd12'))"
+    },
+    "2022/ma": {
+     "url": "benford_stat/2022-ma.csv.gz",
+     "bytes": 5213,
+     "rows": 482,
+     "rawBytes": 30275,
+     "where": "election = 2022 and turn = 1 and uf = 'ma' and not (uf = 'br' or (unit = 'section' and city is null and pos <> 'd12'))"
+    },
+    "2022/mg": {
+     "url": "benford_stat/2022-mg.csv.gz",
+     "bytes": 13815,
+     "rows": 1296,
+     "rawBytes": 85916,
+     "where": "election = 2022 and turn = 1 and uf = 'mg' and not (uf = 'br' or (unit = 'section' and city is null and pos <> 'd12'))"
+    },
+    "2022/ms": {
+     "url": "benford_stat/2022-ms.csv.gz",
+     "bytes": 3003,
+     "rows": 294,
+     "rawBytes": 17400,
+     "where": "election = 2022 and turn = 1 and uf = 'ms' and not (uf = 'br' or (unit = 'section' and city is null and pos <> 'd12'))"
+    },
+    "2022/mt": {
+     "url": "benford_stat/2022-mt.csv.gz",
+     "bytes": 3202,
+     "rows": 304,
+     "rawBytes": 18433,
+     "where": "election = 2022 and turn = 1 and uf = 'mt' and not (uf = 'br' or (unit = 'section' and city is null and pos <> 'd12'))"
+    },
+    "2022/pa": {
+     "url": "benford_stat/2022-pa.csv.gz",
+     "bytes": 7300,
+     "rows": 662,
+     "rawBytes": 42339,
+     "where": "election = 2022 and turn = 1 and uf = 'pa' and not (uf = 'br' or (unit = 'section' and city is null and pos <> 'd12'))"
+    },
+    "2022/pb": {
+     "url": "benford_stat/2022-pb.csv.gz",
+     "bytes": 3333,
+     "rows": 318,
+     "rawBytes": 18800,
+     "where": "election = 2022 and turn = 1 and uf = 'pb' and not (uf = 'br' or (unit = 'section' and city is null and pos <> 'd12'))"
+    },
+    "2022/pe": {
+     "url": "benford_stat/2022-pe.csv.gz",
+     "bytes": 6022,
+     "rows": 548,
+     "rawBytes": 35201,
+     "where": "election = 2022 and turn = 1 and uf = 'pe' and not (uf = 'br' or (unit = 'section' and city is null and pos <> 'd12'))"
+    },
+    "2022/pi": {
+     "url": "benford_stat/2022-pi.csv.gz",
+     "bytes": 2924,
+     "rows": 266,
+     "rawBytes": 15673,
+     "where": "election = 2022 and turn = 1 and uf = 'pi' and not (uf = 'br' or (unit = 'section' and city is null and pos <> 'd12'))"
+    },
+    "2022/pr": {
+     "url": "benford_stat/2022-pr.csv.gz",
+     "bytes": 7213,
+     "rows": 666,
+     "rawBytes": 43469,
+     "where": "election = 2022 and turn = 1 and uf = 'pr' and not (uf = 'br' or (unit = 'section' and city is null and pos <> 'd12'))"
+    },
+    "2022/rj": {
+     "url": "benford_stat/2022-rj.csv.gz",
+     "bytes": 7813,
+     "rows": 742,
+     "rawBytes": 48940,
+     "where": "election = 2022 and turn = 1 and uf = 'rj' and not (uf = 'br' or (unit = 'section' and city is null and pos <> 'd12'))"
+    },
+    "2022/rn": {
+     "url": "benford_stat/2022-rn.csv.gz",
+     "bytes": 3019,
+     "rows": 282,
+     "rawBytes": 16943,
+     "where": "election = 2022 and turn = 1 and uf = 'rn' and not (uf = 'br' or (unit = 'section' and city is null and pos <> 'd12'))"
+    },
+    "2022/ro": {
+     "url": "benford_stat/2022-ro.csv.gz",
+     "bytes": 3110,
+     "rows": 304,
+     "rawBytes": 17969,
+     "where": "election = 2022 and turn = 1 and uf = 'ro' and not (uf = 'br' or (unit = 'section' and city is null and pos <> 'd12'))"
+    },
+    "2022/rr": {
+     "url": "benford_stat/2022-rr.csv.gz",
+     "bytes": 1686,
+     "rows": 174,
+     "rawBytes": 9522,
+     "where": "election = 2022 and turn = 1 and uf = 'rr' and not (uf = 'br' or (unit = 'section' and city is null and pos <> 'd12'))"
+    },
+    "2022/rs": {
+     "url": "benford_stat/2022-rs.csv.gz",
+     "bytes": 8900,
+     "rows": 822,
+     "rawBytes": 53881,
+     "where": "election = 2022 and turn = 1 and uf = 'rs' and not (uf = 'br' or (unit = 'section' and city is null and pos <> 'd12'))"
+    },
+    "2022/sc": {
+     "url": "benford_stat/2022-sc.csv.gz",
+     "bytes": 5637,
+     "rows": 534,
+     "rawBytes": 33369,
+     "where": "election = 2022 and turn = 1 and uf = 'sc' and not (uf = 'br' or (unit = 'section' and city is null and pos <> 'd12'))"
+    },
+    "2022/se": {
+     "url": "benford_stat/2022-se.csv.gz",
+     "bytes": 2706,
+     "rows": 262,
+     "rawBytes": 15416,
+     "where": "election = 2022 and turn = 1 and uf = 'se' and not (uf = 'br' or (unit = 'section' and city is null and pos <> 'd12'))"
+    },
+    "2022/sp": {
+     "url": "benford_stat/2022-sp.csv.gz",
+     "bytes": 26101,
+     "rows": 2508,
+     "rawBytes": 168348,
+     "where": "election = 2022 and turn = 1 and uf = 'sp' and not (uf = 'br' or (unit = 'section' and city is null and pos <> 'd12'))"
+    },
+    "2022/to": {
+     "url": "benford_stat/2022-to.csv.gz",
+     "bytes": 2413,
+     "rows": 230,
+     "rawBytes": 13257,
+     "where": "election = 2022 and turn = 1 and uf = 'to' and not (uf = 'br' or (unit = 'section' and city is null and pos <> 'd12'))"
+    },
     "2022-2/ac": {
      "url": "benford_stat/2022-2-ac.csv.gz",
      "bytes": 791,
@@ -7005,16 +7005,16 @@
     },
     "2022-2/ba": {
      "url": "benford_stat/2022-2-ba.csv.gz",
-     "bytes": 6627,
+     "bytes": 6611,
      "rows": 584,
-     "rawBytes": 39118,
+     "rawBytes": 39113,
      "where": "election = 2022 and turn = 2 and uf = 'ba' and not (uf = 'br' or (unit = 'section' and city is null and pos <> 'd12'))"
     },
     "2022-2/br": {
      "url": "benford_stat/2022-2-br.csv.gz",
-     "bytes": 15058,
+     "bytes": 15040,
      "rows": 1358,
-     "rawBytes": 78826,
+     "rawBytes": 78799,
      "where": "election = 2022 and turn = 2 and (uf = 'br' or (unit = 'section' and city is null and pos <> 'd12'))"
     },
     "2022-2/ce": {
@@ -7028,7 +7028,7 @@
      "url": "benford_stat/2022-2-df.csv.gz",
      "bytes": 455,
      "rows": 42,
-     "rawBytes": 2269,
+     "rawBytes": 2271,
      "where": "election = 2022 and turn = 2 and uf = 'df' and not (uf = 'br' or (unit = 'section' and city is null and pos <> 'd12'))"
     },
     "2022-2/es": {
@@ -7138,16 +7138,16 @@
     },
     "2022-2/rs": {
      "url": "benford_stat/2022-2-rs.csv.gz",
-     "bytes": 6030,
+     "bytes": 6038,
      "rows": 530,
-     "rawBytes": 34946,
+     "rawBytes": 34957,
      "where": "election = 2022 and turn = 2 and uf = 'rs' and not (uf = 'br' or (unit = 'section' and city is null and pos <> 'd12'))"
     },
     "2022-2/sc": {
      "url": "benford_stat/2022-2-sc.csv.gz",
-     "bytes": 3593,
+     "bytes": 3596,
      "rows": 318,
-     "rawBytes": 20249,
+     "rawBytes": 20252,
      "where": "election = 2022 and turn = 2 and uf = 'sc' and not (uf = 'br' or (unit = 'section' and city is null and pos <> 'd12'))"
     },
     "2022-2/se": {
@@ -7324,7 +7324,7 @@
   },
   "source": "IBGE malhas v3 (qualidade minima/intermediaria)"
  },
- "version": "2026-10-05T23:47:12.740Z",
+ "version": "2026-10-06T00:04:18.368Z",
  "raw": {
   "2026": {
    "url": "raw/2026.json",
