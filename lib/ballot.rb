@@ -20,8 +20,9 @@ module Ballot
     Cache.get FILE_URL, { state:, city:, zone:, section:, hash:, file: }, prefix: 'files', **opts
   end
 
-  # 2022 lists `nmarq` (file names); later years list `arq` ({nm, tp})
+  # 2022 lists `nmarq` (file names); later years list `arq` ({nm, tp}), where some sections have `logsa` instead of `log`
+  # and others (not installed, or only a bulletin) have no such file at all: nil
   def self.file_name hash, type
-    hash.arq ? hash.arq.find{ |a| a.tp == type }.nm : hash.nmarq.find{ |f| f.index ".#{type}" }
+    hash.arq ? hash.arq.find{ |a| a.tp.delete_suffix('sa') == type }&.nm : hash.nmarq.find{ |f| f.index ".#{type}" }
   end
 end

@@ -17,9 +17,9 @@ module Section
     !Ballot.final?(info) && Ballot.hashes(info).any?{ |hash| !Stored.done?(*key, hash[:hash]) }
   end
 
-  # with PHASE=store only the cached files are read, and the missing ones come back as nil
+  # with PHASE=store only the cached files are read, and the missing ones (or not published) come back as nil
   def self.fetch id, hash
-    (ENV['RDV_SKIP'] ? %w[log] : %w[log rdv]).map{ |type| Ballot.file(*id, Ballot.file_name(hash, type), fetch: FETCH) }
+    (ENV['RDV_SKIP'] ? %w[log] : %w[log rdv]).map{ |type| (name = Ballot.file_name(hash, type)) && Ballot.file(*id, name, fetch: FETCH) }
   end
 
   # everything is read before the database is touched, and written in one transaction, so a resume never finds half a section
