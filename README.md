@@ -188,8 +188,9 @@ in all but three UF/office pairs (pb/6 304, se/6 435, sp/6 803 votes of 117,898/
 
 499,248 sections have own files and results (the TSE total, 100% totalized). Another 17,931 sections are *aggregated*
 (`nsp != ns` in the TSE state configs): their votes are counted in the main section and they have no files of their
-own, so they are never counted as missing. The dump stores 496,814 of the 499,248 sections (99.5%); the other 2,434 had
-no `aux.json`/RDV published by the TSE and are listed in `miss` (shown in the overview). Kinds in the RDV: 2 nominal,
+own, so they are never counted as missing. The dump stores 499,206 of the 499,248 sections (99.99%); the other 42 (41 abroad whose machine
+was not installed, 1 in MA published with a bulletin but no RDV) are listed in `miss` (shown in the overview). The 31 sections
+of MG published as `logsa`/`rdv.dat` have votes but no vote events in their log, so no voting times. Kinds in the RDV: 2 nominal,
 3 blank, 4 invalid number, 6 null (the TSE site counts 4 and 6 as null; kinds 1 and 7 are not shipped). Candidate numbers
 that are not in the TSE candidate list appear as nominal in the RDV but are shown as "Outros / inválidos".
 
@@ -210,7 +211,7 @@ never scanned: it is probed once per section through its index (`state, city, zo
 Options `--only=votes|rdv|vt|rollups|results|cands`, `--states=`. Commit the result; the manifest `version`
 invalidates browser caches.
 
-### Voting-time encoding (full 2026: 496,788 sections, 24 MB gz)
+### Voting-time encoding (full 2026: 499,149 sections, 24 MB gz)
 
 - Only `post = 'Presidente'` (one event per voter; the Senate post has about two).
 - Times are the **local clock as recorded** (AC opens 06:00, RO/RR/AM/MT/MS 07:00, rest 08:00). Buckets start at 05:00
