@@ -24,10 +24,10 @@ const brt = computed(() => route.value.params.get('clock') !== 'local')
 const rank = computed(() => route.value.params.get('rank') ?? 'fast')
 const rows = async (q, sql, params) => objects(await q(sql, params))
 
-// Scope data: the tiny city rollups are always loaded; section rows (and their results) only for the selected UF.
+// Scope data: the tiny city rollups are always loaded; section rows (and their results) for the selected UF; for all of Brazil only the default budget of voting times (joining the results is too slow).
 const base = useAsync(() => [year.value, state.value], async ([y, s]) => {
   await ensureSmall(y, 'vtc')
-  if (s) await Promise.all([ensureScope('vt', y, s), ensureScope('rdv', y, s)])
+  await Promise.all([ensureScope('vt', y, s), s && ensureScope('rdv', y, s)])
   return true
 })
 const waiting = () => base.loading
