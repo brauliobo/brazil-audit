@@ -145,6 +145,10 @@
   --size-ramp: 10rem;
   --size-progress: 10rem;
   --size-skeleton: 7.5rem;
+  --size-skeleton-panel: 18rem;
+  --size-skeleton-chart: 32rem;
+  --size-chart-min: 18rem;
+  --size-main-min: 100dvh;
   --size-column-min: 26rem;
   --size-seat-column: 14.5rem;
   --size-track: 0.75rem;

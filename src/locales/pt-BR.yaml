@@ -84,7 +84,7 @@ engine:
   starting: Iniciando o PGlite (baixa o WASM e roda o initdb)…
   ready_one: PGlite (PostgreSQL em WASM, num worker) · {count} consulta
   ready_other: PGlite (PostgreSQL em WASM, num worker) · {count} consultas
-  importing: "importando {part} {progress}"
+  importing: "importando dados · {n} em andamento · {progress}"
   clear: limpar dados locais
   clearing: limpando…
   clearConfirm: Apagar os dados importados neste navegador? Eles serão baixados de novo quando necessário.

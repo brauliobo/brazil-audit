@@ -23,7 +23,7 @@
 .bf-controls .bf-minn { width: var(--size-label-column); }
 
 /* chart and measures */
-.bf-main { display: grid; grid-template-columns: repeat(auto-fit, minmax(var(--layout-column-min), 1fr)); gap: var(--space-4) var(--space-6); align-items: start; }
+.bf-main { min-height: var(--size-chart-min); display: grid; grid-template-columns: repeat(auto-fit, minmax(var(--layout-column-min), 1fr)); gap: var(--space-4) var(--space-6); align-items: start; }
 .bf-chart { min-width: 0; }
 .bf .bf-band { fill: var(--benford-band); }
 .bf .bf-dot { fill: var(--benford-law); }

@@ -6,7 +6,10 @@ import { pct } from '../format'
 import { t } from '../i18n'
 
 // The status bar under the header only while something is going on: starting the engine, importing parts, or an error.
-const busy = computed(() => engine.error || store.error || !engine.ready || Object.keys(store.progress).length > 0)
+const busy = computed(() => engine.error || store.error || !engine.ready || parts.value.length > 0)
+// one line for all the parts being imported (a whole country loads dozens): how many and their mean progress
+const parts = computed(() => Object.values(store.progress))
+const mean = computed(() => parts.value.reduce((a, p) => a + p, 0) / parts.value.length)
 </script>
 
 <template lang="pug">
@@ -16,5 +19,6 @@ const busy = computed(() => engine.error || store.error || !engine.ready || Obje
     span {{ t('engine.starting') }}
     progress
   template(v-else)
-    span(v-for="(p, key) in store.progress" :key="key") {{ t('engine.importing', { part: key, progress: pct(p, 0) }) }}
+    span {{ t('engine.importing', { n: parts.length, progress: pct(mean, 0) }) }}
+    progress(:value="mean")
 </template>

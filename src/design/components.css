@@ -89,6 +89,8 @@
   --bar-radius: var(--radius-1);
   --bar-label-column: var(--size-label-column);
   --skeleton-height: var(--size-skeleton);
+  --skeleton-panel-height: var(--size-skeleton-panel);
+  --skeleton-chart-height: var(--size-skeleton-chart);
   --skeleton-base: var(--border-default);
   --skeleton-radius: var(--radius-4);
   --notice-padding: var(--space-2) var(--space-3);
@@ -151,7 +153,7 @@ main:focus { outline: none; }
 .breadcrumb a, .breadcrumb b { display: inline-flex; align-items: center; min-height: var(--size-target-min); }
 .breadcrumb__sep { color: var(--breadcrumb-sep-fg); }
 .breadcrumb__end { margin-inline-start: auto; }
-.engine-status { display: flex; flex-wrap: wrap; gap: var(--space-1) var(--space-4); align-items: center; padding: var(--space-1) var(--space-page); font-size: var(--type-caption-size); color: var(--text-muted); border-bottom: var(--border-width-1) solid var(--header-border); }
+.engine-status { position: fixed; inset: auto var(--space-0) var(--space-0); z-index: var(--z-sticky); display: flex; flex-wrap: wrap; gap: var(--space-1) var(--space-4); align-items: center; padding: var(--space-2) var(--space-page); font-size: var(--type-caption-size); color: var(--text-muted); background: var(--surface-raised); border-top: var(--border-width-1) solid var(--header-border); } /* over the page, not in the flow: it comes and goes without moving the content */
 .engine-status--error { color: var(--status-danger); }
 .engine-status progress { width: var(--size-progress); }
 .engine-info { display: flex; flex-wrap: wrap; gap: var(--space-2) var(--space-4); align-items: center; justify-content: center; margin: var(--space-0) var(--space-0) var(--space-3); }
@@ -192,6 +194,8 @@ textarea.control { width: 100%; font-family: var(--font-mono); font-size: var(--
 .notice--warning { background: var(--status-warning-bg); color: var(--status-warning); }
 .notice--danger { background: var(--status-danger-bg); color: var(--status-danger); }
 .notice--success { background: var(--status-success-bg); color: var(--status-success); }
+.panel > .skeleton { height: var(--skeleton-panel-height); }
+.panel--chart > .skeleton { height: var(--skeleton-chart-height); }
 .skeleton { height: var(--skeleton-height); border-radius: var(--skeleton-radius); background: linear-gradient(90deg, var(--skeleton-base) 25%, transparent 50%, var(--skeleton-base) 75%); background-size: 200% 100%; animation: skeleton var(--motion-loop) var(--easing-linear) infinite; opacity: var(--opacity-busy); }
 @keyframes skeleton { to { background-position: -200% 0; } }
 .stat { display: flex; flex-direction: column; }

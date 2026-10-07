@@ -103,9 +103,6 @@ SourceBadge(:election="year")
 .cluster(v-if="cfg.hasResidual")
   ResidualSwitch
 .grid-auto
-  SourcesPanel(:election="year")
-  #cobertura.span-all
-    Coverage(:year="year")
   Panel(:title="t('overview.national')" :state="results" :election="year" wide)
     ButtonGroup(v-if="cfg.offices.length > 1" :label="t('common.office')" :items="officeItems(cfg.offices)" :value="office" @change="setParam('office', $event)")
     p.muted(v-if="office !== 1") {{ t('overview.partyAggregate') }}
@@ -127,4 +124,7 @@ SourceBadge(:election="year")
       a(:href="href(year, 'maps')") {{ t('overview.seeMaps') }}
   Panel(:title="t('overview.byState')" :state="states" :election="year" wide)
     DataTable(:columns="cols" :rows="states.data")
+  SourcesPanel(:election="year")
+  #cobertura.span-all
+    Coverage(:year="year")
 </template>

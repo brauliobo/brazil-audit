@@ -6,11 +6,11 @@ import Skeleton from './Skeleton.vue'
 import Notice from './Notice.vue'
 
 // `state` is a useAsync()/useQuery() result: drives the skeleton, the error box and the query-time badge.
-defineProps({ title: String, state: Object, election: String, wide: Boolean })
+defineProps({ title: String, state: Object, election: String, wide: Boolean, chart: Boolean }) // chart: the loading placeholder is as tall as a chart, so the panels below do not jump when it arrives
 </script>
 
 <template lang="pug">
-section.panel(:class="{ 'span-all': wide }")
+section.panel(:class="{ 'span-all': wide, 'panel--chart': chart }")
   header.panel__header
     h2(tabindex="-1") {{ title }}
     span.panel__badge(v-if="state && state.sqls.length" :class="{ 'panel__badge--stale': state.loading }") {{ state.loading ? '…' : ms(state.ms) }}

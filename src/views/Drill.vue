@@ -23,7 +23,7 @@ import ResidualSwitch from '../components/ResidualSwitch.vue'
 
 const LEVELS = ['state', 'city', 'zone', 'section']
 const SORTS = { sections: 'sections', nominal: 'nominal', first: 'c0', second: 'c1' } // ?sort= names -> result columns; anything else sorts by the unit
-const PAGE = 25
+const PAGE = 30 // the whole list of UFs (27 plus the votes abroad) fits in one page
 const year = computed(() => route.value.election)
 const cfg = computed(() => ELECTIONS[year.value])
 const args = computed(() => route.value.args)
@@ -147,7 +147,7 @@ Skeleton(v-else-if="!view.data")
   Panel(v-if="args.length === 1 && args[0] !== 'zz'" :title="t('maps.stateMapTitle', { state: stateName(args[0]) })" :state="view" :election="year")
     StateMap(:year="year" :uf="args[0]" :office="office")
   Panel(:title="t(`drill.levels.${LEVELS[args.length]}`)" :state="view" :election="year" wide)
-    DataTable(:columns="columns" :rows="view.data.rows" :sort="sort" :page="page" :size="25" :total="Number(view.data.total)" @sort="onSort" @page="setParam('page', $event ? $event + 1 : null)")
+    DataTable(:columns="columns" :rows="view.data.rows" :sort="sort" :page="page" :size="PAGE" :total="Number(view.data.total)" @sort="onSort" @page="setParam('page', $event ? $event + 1 : null)")
   RawData(v-if="args.length >= 2" :election="year" :level="LEVELS[args.length - 1]")
 .grid-auto(v-else-if="view.data")
   Panel(v-for="o in view.data.offices" :key="o.office" :title="cfg.offices.includes(o.office) ? officeName(o.office) : t('drill.officeFallback', { id: o.office })" :state="view" :election="year")

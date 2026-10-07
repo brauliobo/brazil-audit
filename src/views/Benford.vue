@@ -52,8 +52,10 @@ const candLabel = computed(() => options.value.find((o) => o.cand === cand.value
 const cities = useAsync(() => [p.value.election, p.value.office, p.value.uf, cand.value, loaded.loading], gated(async (_, q) => (cand.value && p.value.uf !== 'br' ? objects(await q(...data.citiesQuery(eff.value))).map((r) => r.city) : [])))
 
 // every result carries the position it was queried for: while a new query runs the old data stays on screen with its own digits
-const main = useAsync(() => scope([cand.value]), gated(async (_, q) => {
+const listed = computed(() => candList.data != null && labels.data != null) // before the candidates are known there is no "no data", only waiting
+const main = useAsync(() => scope([cand.value, listed.value]), gated(async (_, q) => {
   const ctx = eff.value
+  if (!listed.value) return null
   if (!ctx.cand) return { empty: true }
   const [digits, stat] = await Promise.all([q(...data.digitsQuery(ctx)), q(...data.statQuery(ctx))])
   const rows = objects(digits)
@@ -119,7 +121,7 @@ Notice(kind="warning")
   a(href="#bf-explainer") {{ t('benford.page.explainerLink') }}
 Controls(:p="eff" :cands="options" :cities="cities.data ?? []" :default-min-n="minSample(p.pos)")
 .grid-auto
-  Panel(:title="title" :state="main" :election="p.election" wide)
+  Panel(:title="title" :state="main" :election="p.election" wide chart)
     .bf-main(v-if="result")
       Chart(:result="result" :title="title")
       Stats(:result="result")
@@ -132,7 +134,7 @@ Controls(:p="eff" :cands="options" :cities="cities.data ?? []" :default-min-n="m
       p.muted {{ t('benford.sql.raw') }}
       pre {{ sqls[1] }}
       a(:href="href(p.election, 'sql', [], { q: sqls[1] })") {{ t('common.openInConsole') }}
-  Panel(v-if="result" :title="t('benford.table.title')" :state="main" :election="p.election" wide)
+  Panel(v-if="!main.data || result" :title="t('benford.table.title')" :state="main" :election="p.election" wide)
     DigitTable(:result="result")
   Panel(:title="t('benford.multiples.title')" :state="multiples" :election="p.election" wide)
     Multiples(:items="items" :link="(c) => here({ cand: c })")
@@ -152,7 +154,7 @@ Controls(:p="eff" :cands="options" :cities="cities.data ?? []" :default-min-n="m
     p.muted {{ t('benford.map.notice', { min: mapMinN }) }}
     p(v-if="places.data && !places.data.map") {{ t('benford.map.noMap') }}
     PlaceMap(v-else-if="places.data" :places="places.data.list" :map="places.data.map" :overlay="places.data.overlay" :metric="p.metric" :keyboard="grain === 'uf'" @pick="open")
-  Panel(v-if="places.data" :title="t('benford.ranking.title')" :state="places" :election="p.election" wide)
+  Panel(:title="t('benford.ranking.title')" :state="places" :election="p.election" wide)
     Ranking(:places="places.data.list" :election="p.election" :office="p.office" :here="(place) => here({ place })")
   section#bf-explainer.panel.span-all
     header.panel__header
