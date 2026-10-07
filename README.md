@@ -25,6 +25,12 @@ npm run preview
 - `.github/workflows/pages.yml` runs `npm ci`, `npm run build` and deploys `dist` with the official Pages actions. Enable
   Pages with source "GitHub Actions" in the repository settings. Nothing is downloaded at build time.
 - Pages limits: 1 GB site, 100 MB per file. Largest file is the 9.6 MB `pglite.wasm`; the data parts are 13 KB - 4.4 MB.
+- Browser checks against the built site (`node scripts/serve-pages.mjs 4190`, driving `agent-browser`): `npm run check:responsive`
+  (overflow, touch targets, form fonts) and `npm run check:usability`, which measures the ISO 9241-11 triad on ten visitor tasks
+  (desktop and 375 px phone, cold start): effectiveness (completion, errors), efficiency (time on task, interactions against the
+  shortest path, goals per minute) and satisfaction (proxies: errors, feedback while waiting, layout shift; with `--sus=answers.json`
+  the System Usability Scale score of real respondents joins the report). It fails when a task is not completed, is over its budget,
+  takes more interactions than its shortest path, or a proxy fails.
 
 ## Routes
 

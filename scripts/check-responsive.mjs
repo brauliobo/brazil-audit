@@ -3,10 +3,9 @@
 // Fails when a view scrolls horizontally (outside its own scroll containers) at any width, or when, with the touch rules applied (the
 // `(pointer: coarse)` block of the stylesheet is copied onto :root), a control is smaller than 44px (24px in dense contexts: tables, chips,
 // legends, paragraphs) or a form control has a font below 16px (iOS zooms the page on focus).
-import { execFileSync } from 'node:child_process'
+import { arg, baseUrl, browser, READY, sleep } from './lib/browser.mjs'
 
-const arg = (name, fallback) => process.argv.find((a) => a.startsWith(`--${name}=`))?.split('=')[1] ?? fallback
-const base = process.argv.find((a) => a.startsWith('http')) ?? 'http://127.0.0.1:4190/brazil-audit'
+const base = baseUrl()
 const session = arg('session', 'app')
 const widths = arg('widths', '320,375,768,1280').split(',').map(Number)
 const ALL = [
@@ -15,11 +14,8 @@ const ALL = [
 ]
 const ROUTES = arg('routes') ? ALL.filter((r) => r.includes(arg('routes'))) : ALL
 
-const ab = (...args) => execFileSync('agent-browser', ['--session', session, ...args], { encoding: 'utf8' }).trim().split('\n').at(-1)
-const evaluate = (js) => JSON.parse(JSON.parse(ab('eval', js)))
-const sleep = (ms) => new Promise((r) => setTimeout(r, ms))
+const { ab, evaluate } = browser(session)
 
-const READY = `(() => JSON.stringify(document.querySelectorAll('.panel, h1').length > 0 && !document.querySelector('.skeleton') && ![...document.querySelectorAll('.panel__badge')].some((m) => m.innerText === '…')))()`
 const OVERFLOW = `(() => {
   const vw = document.documentElement.clientWidth
   const wide = [...document.querySelectorAll('body *')].filter((e) => {

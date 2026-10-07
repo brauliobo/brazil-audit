@@ -18,6 +18,7 @@
     "check:elections": "node scripts/check-elections.mjs",
     "test": "npm run check:elections && npm run lint:tokens && npm run lint:i18n && npm run check:logo && npm run test:seats && npm run test:benford",
     "check:responsive": "node scripts/check-responsive.mjs",
+    "check:usability": "node scripts/check-usability.mjs && node scripts/check-usability.mjs --width=375 --height=700",
     "lint:i18n": "node scripts/lint-i18n.mjs && node scripts/check-i18n-detect.mjs",
     "brand": "node scripts/brand.mjs",
     "check:logo": "node scripts/check-logo.mjs"
