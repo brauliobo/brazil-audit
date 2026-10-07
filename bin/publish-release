@@ -3,6 +3,8 @@
 # then checks that the release holds exactly the local files, same sizes.
 #
 #   bin/publish-release <year>        (RELEASE_DIR, REPO: see bin/pack-release)
+#
+# Needs every raw file on disk; when only some are (the rest lives only in the release), use bin/merge-release.
 set -euo pipefail
 year=${1:?usage: bin/publish-release <year>}
 cd "$(dirname "$0")/.."

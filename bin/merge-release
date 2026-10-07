@@ -1,0 +1,118 @@
+#!/usr/bin/env python3
+"""Adds the raw files on disk to the zips of the GitHub release data-<year> that hold their neighbours, for when the
+release is the only complete copy (bin/publish-release needs every raw file on disk). Only the zips that receive new
+files are downloaded, rebuilt sorted with the new entries and uploaded again; INDEX.json, MANIFEST.tsv and SHA256SUMS are
+updated and the release is checked against them at the end.
+
+  bin/merge-release <year> [--dry]      (RELEASE_DIR, REPO: see bin/pack-release)
+"""
+import importlib.machinery
+import importlib.util
+import json
+import os
+import shutil
+import subprocess
+import sys
+import zipfile
+
+sys.dont_write_bytecode = True
+YEAR = sys.argv[1]
+OUT = os.environ.setdefault('RELEASE_DIR', '/srv/release-staging')
+REPO = os.environ.get('REPO', 'brauliobo/brazil-audit')
+TAG = f'data-{YEAR}'
+META = f'{OUT}/meta-{YEAR}'
+loader = importlib.machinery.SourceFileLoader('pack', os.path.join(os.path.dirname(os.path.abspath(__file__)), 'pack-release'))
+pack = importlib.util.module_from_spec(importlib.util.spec_from_loader('pack', loader))
+loader.exec_module(pack)
+
+
+def gh(action, *args):
+    subprocess.run(['gh', 'release', action, TAG, *args, '-R', REPO], check=True)
+
+
+def remote_meta():
+    os.makedirs(META, exist_ok=True)
+    for f in ('INDEX.json', 'MANIFEST.tsv', 'SHA256SUMS'):
+        gh('download', '-p', f, '-D', META, '--clobber')
+    index = json.load(open(f'{META}/INDEX.json'))
+    sums = {n: d for d, n in (l.split('  ') for l in open(f'{META}/SHA256SUMS').read().splitlines())}
+    sizes = {n: int(b) for n, _, b in (l.split('\t') for l in open(f'{META}/MANIFEST.tsv').read().splitlines()[1:])}
+    return index, {a['name']: a for a in index['assets']}, sums, sizes
+
+
+def cut_points(index):
+    parts = {}
+    for a in index['assets']:
+        parts.setdefault(f'{a["kind"]}-{a["uf"]}', []).append({'name': a['name'], 'bound': a['last'], 'sig': None})
+    for group in parts.values():
+        group.sort(key=lambda p: p['bound'])
+        group[-1]['bound'] = None
+    return parts
+
+
+def rebuild(job, assets):
+    name, path, source = job['name'], f'{OUT}/{job["name"]}', pack.base(YEAR)
+    if name in assets:
+        gh('download', '-p', name, '-D', OUT, '--clobber')
+    new = dict(job['files'])
+    old = zipfile.ZipFile(path) if name in assets else None
+    entries = {i.filename: i for i in old.infolist()} if old else {}
+    replaced = []
+    with zipfile.ZipFile(f'{path}.tmp', 'w', zipfile.ZIP_STORED) as out:
+        for fname in sorted(set(entries) | set(new)):
+            if fname in new:
+                if fname in entries and old.read(fname) != open(f'{source}/{fname}', 'rb').read():
+                    replaced.append(fname)
+                out.write(f'{source}/{fname}', fname)
+            else:
+                info = zipfile.ZipInfo(fname, entries[fname].date_time)
+                info.compress_type = zipfile.ZIP_STORED
+                with old.open(entries[fname]) as src, out.open(info, 'w') as dst:
+                    shutil.copyfileobj(src, dst, pack.MIB)
+    if old:
+        old.close()
+    os.rename(f'{path}.tmp', path)
+    with zipfile.ZipFile(path) as z:
+        infos = z.infolist()
+    names = [i.filename for i in infos]
+    assert names == sorted(names) and len(set(names)) == len(names), name
+    asset = {'name': name, 'kind': job['kind'], 'uf': job['uf'], 'first': names[0], 'last': names[-1],
+             'files': len(infos), 'bytes': sum(i.file_size for i in infos)}
+    return asset, pack.sha256(path), os.path.getsize(path), replaced
+
+
+def write_meta(index, assets, sums, sizes):
+    lst = [assets[n] for n in sorted(assets)]
+    json.dump({**index, 'assets': lst}, open(f'{META}/INDEX.json', 'w'), indent=1)
+    with open(f'{META}/MANIFEST.tsv', 'w') as f:
+        f.write('archive\tfiles\tbytes\n')
+        f.writelines(f'{a["name"]}\t{a["files"]}\t{sizes[a["name"]]}\n' for a in lst)
+    with open(f'{META}/SHA256SUMS', 'w') as f:
+        f.writelines(f'{sums[a["name"]]}  {a["name"]}\n' for a in lst)
+
+
+def verify(sizes):
+    out = subprocess.run(['gh', 'release', 'view', TAG, '-R', REPO, '--json', 'assets', '--jq', '.assets[] | "\\(.name) \\(.size)"'],
+                         check=True, capture_output=True, text=True).stdout
+    remote = {n: int(s) for n, s in (l.split() for l in out.splitlines())}
+    wrong = {n: (s, remote.get(n)) for n, s in sizes.items() if remote.get(n) != s}
+    assert not wrong, f'release differs from the manifest: {wrong}'
+    print(f'{YEAR}: the release matches the manifest ({len(sizes)} zips)')
+
+
+index, assets, sums, sizes = remote_meta()
+jobs = pack.plan(YEAR, pack.scan(YEAR), cut_points(index))
+for j in jobs:
+    print(f'{j["name"]}: +{len(j["files"])} files, {"existing" if j["name"] in assets else "NEW"}')
+if '--dry' in sys.argv:
+    sys.exit()
+
+for job in jobs:
+    asset, sha, size, replaced = rebuild(job, assets)
+    assets[asset['name']], sums[asset['name']], sizes[asset['name']] = asset, sha, size
+    print(f'{asset["name"]}: {asset["files"]} files, {asset["bytes"] >> 20} MiB' + (f', replaced {replaced}' if replaced else ''), flush=True)
+write_meta(index, assets, sums, sizes)
+for job in jobs:
+    gh('upload', f'{OUT}/{job["name"]}', '--clobber')
+gh('upload', *(f'{META}/{f}' for f in ('INDEX.json', 'MANIFEST.tsv', 'SHA256SUMS')), '--clobber')
+verify(sizes)
