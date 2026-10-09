@@ -14,6 +14,7 @@ const emit = defineEmits(['pick', 'hover'])
 const MARK_PX = 12
 const GUTTER = 64 // page and panel padding around the map, to size the text for narrow screens
 const tooltip = ref({ text: '', x: 0, y: 0, show: false })
+const hot = ref(null) // the group under the pointer (its shapes are highlighted together, with no outline of their own)
 const viewport = ref(innerWidth)
 const resize = () => (viewport.value = innerWidth)
 onMounted(() => addEventListener('resize', resize))
@@ -35,27 +36,30 @@ const box = computed(() => {
 const lineY = (l, i) => l.y0 + (i + 0.5) * LINE * size.value
 const leader = (l) => ({ x1: l.from[0], y1: l.from[1], x2: l.x - 0.25 * size.value, y2: l.y0 + textBox(l.lines, size.value)[1] / 2 })
 
+const groupOf = computed(() => Object.fromEntries(Object.entries(props.groups ?? {}).flatMap(([g, ids]) => ids.map((id) => [id, g]))))
 const attr = (id) => (props.fills[id] ? ` style="--c:${props.fills[id][0]};--t:${props.fills[id][1].toFixed(2)}"` : '')
 const focusable = (id) => (props.keyboard && props.fills[id] ? ` tabindex="0" role="button" aria-label="${props.tip(id).split('\n')[0].replaceAll('"', '&quot;')}"` : '')
-const paths = computed(() => items.value.map(([id, d]) => `<path data-id="${id}" d="${d}"${attr(id)}${focusable(id)}/>`).join(''))
+const paths = computed(() => items.value.map(([id, d]) => `<path data-id="${id}" d="${d}"${groupOf.value[id] && groupOf.value[id] === hot.value ? ' class="hot"' : ''}${attr(id)}${focusable(id)}/>`).join(''))
 const borders = computed(() => (props.overlay ? props.overlay.items.map(([, d]) => `<path d="${d}"/>`).join('') : ''))
 
 const idOf = (e) => (props.fills[e.target.dataset?.id] ? e.target.dataset.id : null) // polygons without data are inert
 function show(e) {
   const id = idOf(e)
+  hot.value = groupOf.value[id] ?? null
   if (!id) { tooltip.value.show = false; return }
   emit('hover', id)
   const box = e.currentTarget.parentElement.getBoundingClientRect()
   const at = e.type === 'focusin' ? e.target.getBoundingClientRect() : { left: e.clientX, top: e.clientY }
   Object.assign(tooltip.value, { text: props.tip(id), x: at.left - box.left + 12, y: at.top - box.top + 12, show: true })
 }
+const leave = () => { tooltip.value.show = false; hot.value = null }
 const pick = (e) => idOf(e) && emit('pick', idOf(e))
 const key = (e) => (e.key === 'Enter' || e.key === ' ') && pick(e)
 </script>
 
 <template lang="pug">
 .geomap
-  svg.map(:viewBox="box.join(' ')" role="group" :aria-label="label" @mousemove="show" @mouseleave="tooltip.show = false" @click="pick" @keydown="key" @focusin="show")
+  svg.map(:class="{ 'map--grouped': groups }" :viewBox="box.join(' ')" role="group" :aria-label="label" @mousemove="show" @mouseleave="leave" @click="pick" @keydown="key" @focusin="show")
     g.map__units(v-html="paths")
     g.map__borders(v-html="borders")
     g.map__marks(v-if="placed.labels.length" :font-size="size" :stroke-width="size * 0.2")
