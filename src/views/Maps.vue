@@ -172,7 +172,7 @@ const spread = useAsync(() => [year.value, base.loading, residualOn.value], asyn
 const binLabels = Array.from({ length: BINS }, (_, i) => `${Math.round(-100 + (i * 200) / BINS)}`)
 const ufs = computed(() => stateOptions())
 const panelTitle = computed(() => ({ uf: t('maps.panelUf'), region: t('maps.panelRegion'), mun: t('maps.panelMun'), state: t('maps.panelState', { state: stateName(uf.value) }) })[scope.value])
-const mapWidth = computed(() => (region.value ? 900 : 520)) // px a map is about to be shown at: the text inside is sized for it
+const mapWidth = computed(() => (region.value ? 640 : 520)) // px a map is about to be shown at: the text inside is sized for it
 const metricName = computed(() => t(`maps.metric.${metric.value}`))
 </script>
 

@@ -247,8 +247,8 @@ canvas.scatter { display: block; width: 100%; height: auto; }
 .map { display: block; width: 100%; height: auto; max-height: var(--size-map-max-height); }
 .map path { stroke: var(--map-unit-stroke); stroke-width: var(--map-unit-stroke-width); vector-effect: non-scaling-stroke; fill: var(--map-missing); }
 .map path[style] { fill: color-mix(in oklab, var(--c) calc(var(--t, 1) * 100%), var(--map-blend-base)); }
-.map path[data-id]:hover, .map path:focus-visible { stroke: var(--map-hover-stroke); stroke-width: var(--map-hover-stroke-width); outline: none; }
-.map--grouped path[data-id]:hover { stroke: var(--map-unit-stroke); stroke-width: var(--map-unit-stroke-width); }
+.map path:focus-visible { outline: none; }
+.map .map__outline { fill: none; stroke: var(--map-hover-stroke); stroke-width: var(--map-hover-stroke-width); stroke-linejoin: round; vector-effect: non-scaling-stroke; pointer-events: none; }
 .map path.hot { filter: brightness(var(--map-hot-brightness)); }
 .map .map__borders { pointer-events: none; }
 .map .map__borders path { fill: none; stroke: var(--map-border); stroke-width: var(--map-border-stroke-width); }
