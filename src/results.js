@@ -31,6 +31,13 @@ export async function stateWinners(q, year, office = 1) {
     select rk.state, rk.cand, rk.votes, rk.valid, rk.rn, c.short_name name, c.party from rk ${candJoin(year, 'rk')} where rn <= 2 order by state, rn`, [office]))
 }
 
+/** Votes of every candidate in each state (of every party, for the offices that differ by state): the base of the regional totals. */
+export async function stateVotes(q, year, office = 1) {
+  return objects(await q(`with v as (select r.state, case when r.office = 1 then r.cand else coalesce(c.party, '–') end key, c.short_name name, c.party, r.votes from ${rollup(year).res} r ${candJoin(year, 'r')}
+      where r.office = $1 and ${inElection(year, 'r')} and r.state <> 'zz')
+    select state, key, max(name) name, max(party) party, sum(votes) votes from v group by state, key`, [office]))
+}
+
 export const titleCase = (s) => s.toLowerCase().replace(/(^|\s)\S/g, (m) => m.toUpperCase())
 
 /** "Flavio Bolsonaro vence em 14 estados e no DF; Lula da Silva em 12": winner per state by nominal votes (parties, for the offices that differ by state). */

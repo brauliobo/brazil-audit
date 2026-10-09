@@ -161,10 +161,22 @@ overview:
   seeMaps: See maps
   byState: By state
 
+regions:
+  sudeste: Southeast
+  nordeste: Northeast
+  sul: South
+  norte: North
+  centro-oeste: Central-West
+
 maps:
   title: "Maps · {election}"
   scale: Scale
   scaleUf: Brazil by state
+  scaleRegion: By region
+  region: Region
+  regionAll: All regions
+  panelRegion: Brazil by region
+  regionMapLabel: "Map of the {region} region, coloured by: {metric}"
   scaleMun: Brazil by municipality
   scaleState: One state by municipality
   show: Show
@@ -193,7 +205,7 @@ maps:
   shareOf: "% of {name}"
   abroad: "Abroad: {name} {share}"
   openStateTable: Open the table of a state
-  note: "Source: TSE, IBGE. Hover (or Tab through the states) to see the votes; click a state to open its municipalities (Esc goes back to Brazil) and a municipality for the detail. Fernando de Noronha is shown enlarged in the corner."
+  note: "Source: TSE, IBGE. Hover (or Tab through the states) to see the votes; click a state to open its municipalities (Esc goes back to Brazil) and a municipality for the detail. Fernando de Noronha is shown enlarged in the corner. Inside the map: share of the state's nominal votes; where the text does not fit it goes beside the map (in the maps by region) or only in the tooltip."
   noShape: "No polygon in the map (they only appear in the search list and in the drill-down): {names}."
   blankAndNull: "Blank and null: {rate}"
   clickCities: Click to see the municipalities

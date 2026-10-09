@@ -103,6 +103,10 @@
   --map-border-stroke-width: var(--viz-stroke-thin);
   --map-label-size: var(--viz-font-lg);
   --map-busy-opacity: var(--opacity-busy);
+  --map-mark-fill: var(--viz-label-on-fill);
+  --map-mark-halo: var(--viz-label-halo);
+  --map-callout-fill: var(--text-primary);
+  --map-callout-halo: var(--surface-raised);
   --hemicycle-total-size: var(--viz-font-hero);
   --hemicycle-sub-size: var(--viz-font-md);
   --hemicycle-seat-dim: var(--seat-dim-opacity);
@@ -246,6 +250,14 @@ canvas.scatter { display: block; width: 100%; height: auto; }
 .map .map__borders { pointer-events: none; }
 .map .map__borders path { fill: none; stroke: var(--map-border); stroke-width: var(--map-border-stroke-width); }
 .map .map__label { fill: var(--map-label); font-size: var(--map-label-size); pointer-events: none; }
+.map .map__mark { fill: var(--map-mark-fill); stroke: var(--map-mark-halo); paint-order: stroke; pointer-events: none; font-variant-numeric: var(--type-numeric); }
+.map .map__mark--head { font-weight: var(--font-weight-bold); }
+.map .map__mark--out { fill: var(--map-callout-fill); stroke: var(--map-callout-halo); }
+.map .map__leader { stroke: var(--map-callout-fill); stroke-width: var(--map-border-stroke-width); vector-effect: non-scaling-stroke; pointer-events: none; }
+.regions { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(var(--size-region-min), 100%), 1fr)); gap: var(--space-6) var(--space-5); margin: var(--space-0); }
+.region { margin: var(--space-0); }
+.region h3 { margin: var(--space-0) var(--space-0) var(--space-1); }
+.region .headline { margin: var(--space-0) var(--space-0) var(--space-2); font-size: var(--font-size-300); }
 .mapwrap { transition: opacity var(--motion-base) var(--easing-standard); }
 .mapwrap--busy { opacity: var(--map-busy-opacity); cursor: progress; }
 

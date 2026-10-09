@@ -15,6 +15,7 @@ import { ELECTIONS, HIDDEN_VIEWS, THEMES, UFS, VIEWS_NAV } from '../src/model.js
 import { EXAMPLES, TABLES } from '../src/sqlExamples.js'
 import { LOCALES } from '../src/i18n.js'
 import { RULES } from '../src/seats/rules.js'
+import { REGION_IDS } from '../src/regions.js'
 
 const SRC = 'src'
 const errors = []
@@ -52,6 +53,7 @@ const officeIds = [...new Set(Object.values(ELECTIONS).flatMap((e) => e.offices)
 const FAMILIES = {
   'nav.': [...VIEWS_NAV, ...HIDDEN_VIEWS],
   'states.': UFS,
+  'regions.': REGION_IDS,
   'offices.': officeIds,
   'lang.': LOCALES,
   'theme.': THEMES,

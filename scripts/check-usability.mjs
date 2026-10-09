@@ -29,6 +29,8 @@ const TASKS = [
     done: `location.pathname.endsWith('/drill/sp') && document.querySelectorAll('.bars__row').length >= 2` },
   { id: 'city', goal: 'open the first city of São Paulo', start: '2026/drill/sp', steps: 2, budget: 20000, run: (u) => u.click('main .table tbody a'),
     done: `/\\/drill\\/sp\\/[^/]+$/.test(location.pathname) && document.querySelectorAll('.bars__row').length >= 2` },
+  { id: 'regions', goal: 'see the percentages of the candidates inside the map of the regions', start: '2026/maps', steps: 1, budget: 20000, run: (u) => u.radio('Por região'),
+    done: `location.search.includes('scope=region') && document.querySelectorAll('.region').length === 5 && document.querySelectorAll('.region .map__mark').length >= 40` },
   { id: 'times', goal: 'see the voting pace of Acre', start: '2026/overview', steps: 2, budget: 30000, run: async (u) => { await u.click(NAV('time')); await u.choose('main select', 'ac') },
     done: `location.pathname.endsWith('/time/ac') && document.querySelectorAll('main .table tbody tr').length > 0` },
   { id: 'benford', goal: 'open the Benford analysis', start: '2026/overview', steps: 1, budget: 30000, run: (u) => u.click(NAV('benford')), done: `location.pathname.endsWith('/benford') && !!document.querySelector('.panel svg')` },

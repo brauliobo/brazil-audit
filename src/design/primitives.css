@@ -154,6 +154,7 @@
   --size-track: 0.75rem;
   --size-swatch-card: 6rem;
   --size-map-max-height: 78vh;
+  --size-region-min: 30rem;
   --size-label-column: 7.5rem;
 
   /* breakpoints (documented here, used only in semantic.css): small < 40rem, medium < 64rem */

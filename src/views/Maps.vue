@@ -6,7 +6,8 @@ import { electionLabel, officeItems, officeName, stateName, stateOptions, stateT
 import { t } from '../i18n'
 import { partyColor } from '../colors'
 import { loadGeo, preloadState } from '../geo'
-import { candName, ensureRollups, residualOn, rollup, margin, quantile, stateWinners, titleCase, top, unitPlace, unitSql, unitTip, unitsOf, winnerFills, winnerLegend, winnersHeadline } from '../results'
+import { candName, ensureRollups, residualOn, rollup, margin, quantile, stateVotes, stateWinners, titleCase, top, unitPlace, unitSql, unitTip, unitsOf, winnerFills, winnerLegend, winnersHeadline } from '../results'
+import { REGIONS, REGION_IDS, regionTotals } from '../regions'
 import { useAsync } from '../use'
 import { objects } from '../db'
 import { int, pct } from '../format'
@@ -21,16 +22,20 @@ import ResidualSwitch from '../components/ResidualSwitch.vue'
 import GeoMap from '../components/GeoMap.vue'
 import ColumnChart from '../components/ColumnChart.vue'
 import Scatter from '../components/Scatter.vue'
+import BarList from '../components/BarList.vue'
 
 const year = computed(() => route.value.election)
 const params = computed(() => route.value.params)
-const scope = computed(() => params.value.get('scope') ?? 'uf') // uf | mun | state
+const scope = computed(() => params.value.get('scope') ?? 'uf') // uf | region | mun | state
+const region = computed(() => (params.value.get('region') in REGIONS ? params.value.get('region') : '')) // '' = the five regions side by side
+const shown = computed(() => (region.value ? [region.value] : REGION_IDS))
+const regionItems = computed(() => [['', t('maps.regionAll')], ...REGION_IDS.map((r) => [r, t(`regions.${r}`)])])
 const uf = computed(() => params.value.get('uf') ?? 'sp')
 const office = computed(() => Number(params.value.get('office') ?? 1))
 const metric = computed(() => params.value.get('metric') ?? 'winner')
 const offices = computed(() => ELECTIONS[year.value].offices.filter((id) => [1, 3, 5].includes(id)))
 const pick = (key, e) => setParam(key, e.target.value)
-const scaleItems = computed(() => [['uf', 'maps.scaleUf'], ['mun', 'maps.scaleMun'], ['state', 'maps.scaleState']].map(([value, key]) => ({ value, label: t(key) })))
+const scaleItems = computed(() => [['uf', 'maps.scaleUf'], ['region', 'maps.scaleRegion'], ['mun', 'maps.scaleMun'], ['state', 'maps.scaleState']].map(([value, key]) => ({ value, label: t(key) })))
 const metricItems = computed(() => ['winner', 'share', 'margin', 'blank'].map((value) => ({ value, label: t(`maps.metric.${value}`), disabled: value === 'blank' && !ELECTIONS[year.value].hasBlank })))
 
 const base = useAsync(() => [year.value], async ([y]) => { await ensureRollups(y); return true })
@@ -40,18 +45,20 @@ const rateSql = (y, grain) => (grain === 'uf'
   : `select m.ibge id, sum(t.blank) blank, sum(t.nul) nul, sum(t.nominal) nominal from ${rollup(y).tot} t join mun_map m on m.state = t.state and m.city = t.city
      where t.office = $1 and ${inElection(y, 't')} and ($2::text = '' or t.state = $2) group by 1`)
 
-const grain = computed(() => (scope.value === 'uf' ? 'uf' : 'mun'))
-const geoKind = computed(() => ({ uf: 'uf', mun: 'mun', state: uf.value })[scope.value])
+const byRegion = computed(() => scope.value === 'region')
+const grain = computed(() => (scope.value === 'uf' || byRegion.value ? 'uf' : 'mun'))
+const geoKind = computed(() => ({ uf: 'uf', region: 'uf', mun: 'mun', state: uf.value })[scope.value])
 
 const data = useAsync(() => [year.value, grain.value, scope.value === 'state' ? uf.value : '', office.value, params.value.get('cand') ?? '', base.loading, residualOn.value], async ([y, g, s, o, cand], q) => {
   if (base.loading) return null
   const args = g === 'uf' ? [o, cand] : [o, s, cand]
-  const [rows, rates, map, overlay, winners] = await Promise.all([
+  const [rows, rates, map, overlay, winners, votes] = await Promise.all([
     q(unitSql(y, g), args), ELECTIONS[y].hasBlank ? q(rateSql(y, g), g === 'uf' ? [o] : [o, s]) : null, loadGeo(geoKind.value), scope.value === 'mun' ? loadGeo('uf') : null, stateWinners(q, y, o),
+    g === 'uf' ? stateVotes(q, y, o) : null, // the regions are only a different crop of the UF map: switching to them needs no new load
   ])
   const units = unitsOf(rows)
   for (const r of rates ? objects(rates) : []) Object.assign(units.get(r.id) ?? {}, { rate: (r.blank + r.nul) / (r.nominal + r.blank + r.nul) })
-  return { units, map, overlay, winners, grain: g } // the grain travels with the data: the view may still show the previous result while the next loads
+  return { units, map, overlay, winners, grain: g, regions: votes && regionTotals(votes.map((r) => ({ ...r, name: o === 1 ? r.name : r.key }))) } // the grain travels with the data: the view may still show the previous result while the next loads
 })
 
 const scale = (v, lo, hi) => 0.15 + 0.85 * Math.min(Math.max((v - lo) / ((hi - lo) || 1), 0), 1)
@@ -76,6 +83,27 @@ const style = computed(() => {
   const color = m === 'share' ? partyColor(leaders.value.find((l) => l.cand === shareCand.value)?.party ?? '') : sequential[m]
   return { fills: Object.fromEntries(us.map((u) => [u.id, [color, scale(value(u), lo, hi)]])), range: [lo, hi], color }
 })
+
+// what a state says inside the map, the fullest first: the map writes the first one that fits the shape
+const firstName = (r) => candName(r).split(' ')[0]
+const markOf = (u) => {
+  const [head, a, b] = [u.id.toUpperCase(), top(u, 1), top(u, 2)]
+  const share = (r) => pct(r.votes / u.valid, 1)
+  if (['winner', 'margin'].includes(metric.value)) return [{ head, rows: [a, b].filter(Boolean).map((r) => `${firstName(r)} ${share(r)}`) }, { head, rows: [`${firstName(a)} ${share(a)}`] }, { head, rows: [share(a)] }, { rows: [share(a)] }]
+  const text = pct(metric.value === 'share' ? shareOf(u) : u.rate ?? 0, 1)
+  return [{ head, rows: [text] }, { rows: [text] }]
+}
+const marks = computed(() => (data.data.grain === 'uf' ? Object.fromEntries([...data.data.units].map(([id, u]) => [id, markOf(u)])) : null))
+
+// the survey of a region: its leading candidates (or parties), the rest together, and who wins how many of its states
+const LEADING = 4
+const bars = (id) => {
+  const { rows } = data.data.regions[id]
+  const rest = 1 - rows.slice(0, LEADING).reduce((sum, r) => sum + r.share, 0)
+  const bar = (label, share) => ({ label, value: share, text: pct(share, 1) })
+  return [...rows.slice(0, LEADING).map((r) => bar(`${r.name ? (office.value === 1 ? titleCase(r.name) : r.name) : t('common.others')}${r.party && r.party !== r.name ? ` (${r.party})` : ''}`, r.share)), ...(rows.length > LEADING ? [bar(t('common.others'), rest)] : [])]
+}
+const regionHeadline = (id) => winnersHeadline(data.data.winners.filter((r) => REGIONS[id].includes(r.state)), office.value)
 
 const tip = (id) => {
   const u = data.data.units.get(id)
@@ -127,7 +155,8 @@ const spread = useAsync(() => [year.value, base.loading, residualOn.value], asyn
 })
 const binLabels = Array.from({ length: BINS }, (_, i) => `${Math.round(-100 + (i * 200) / BINS)}`)
 const ufs = computed(() => stateOptions())
-const panelTitle = computed(() => (scope.value === 'state' ? t('maps.panelState', { state: stateName(uf.value) }) : t(scope.value === 'uf' ? 'maps.panelUf' : 'maps.panelMun')))
+const panelTitle = computed(() => ({ uf: t('maps.panelUf'), region: t('maps.panelRegion'), mun: t('maps.panelMun'), state: t('maps.panelState', { state: stateName(uf.value) }) })[scope.value])
+const mapWidth = computed(() => (region.value ? 900 : 520)) // px a map is about to be shown at: the text inside is sized for it
 const metricName = computed(() => t(`maps.metric.${metric.value}`))
 </script>
 
@@ -140,6 +169,9 @@ SourceBadge(:election="year")
   Field(v-if="scope === 'state'" :label="t('common.state')")
     select(@change="pick('uf', $event)")
       option(v-for="[s, title] in ufs" :key="s" :value="s" :selected="s === uf") {{ title }}
+  Field(v-if="byRegion" :label="t('maps.region')")
+    select(@change="pick('region', $event)")
+      option(v-for="[r, title] in regionItems" :key="r" :value="r" :selected="r === region") {{ title }}
   ButtonGroup(v-if="offices.length > 1" :label="t('common.office')" :items="officeItems(offices)" :value="office" @change="setParam('office', $event)")
   ButtonGroup(:label="t('maps.show')" :items="metricItems" :value="metric" @change="setParam('metric', $event)")
   Field(v-if="data.data && data.data.grain === 'mun'" :label="t('maps.findCity')")
@@ -151,12 +183,18 @@ SourceBadge(:election="year")
       option(v-for="l in leaders" :key="l.cand" :value="l.cand" :selected="l.cand === shareCand") {{ candName(l) }}
 p.headline(v-if="headline") {{ t('maps.headline', { office: officeName(office), headline }) }}
 .grid-auto
-  Panel(:title="panelTitle" :state="data" :election="year" wide)
+  Panel(:title="panelTitle" :state="data" :election="year" wide chart)
     Breadcrumb(v-if="scope === 'state'" :items="[{ label: t('common.brazil'), href: here({ scope: 'uf', uf: null }) }, { label: stateTitle(uf) }]" :label="t('maps.mapNav')")
       template(#end)
         a(:href="href(year, 'drill', [uf], { office })") {{ t('maps.seeDetail') }}
-    .mapwrap(:class="{ 'mapwrap--busy': data.loading }")
-      GeoMap(:map="data.data.map" :overlay="data.data.overlay" :fills="style.fills" :tip="tip" :keyboard="data.data.grain === 'uf'" :label="t('maps.mapLabel', { metric: metricName })" @pick="open" @hover="data.data.grain === 'uf' && preloadState($event)")
+    .regions(v-if="byRegion && data.data.regions" :class="{ 'mapwrap--busy': data.loading }")
+      figure.region(v-for="r in shown" :key="r")
+        h3 {{ t(`regions.${r}`) }}
+        p.headline {{ regionHeadline(r) }}
+        GeoMap(:map="data.data.map" :view="REGIONS[r]" :fills="style.fills" :tip="tip" keyboard callouts :marks="marks" :width="mapWidth" :label="t('maps.regionMapLabel', { region: t(`regions.${r}`), metric: metricName })" @pick="open" @hover="preloadState($event)")
+        BarList(:items="bars(r)")
+    .mapwrap(v-else :class="{ 'mapwrap--busy': data.loading }")
+      GeoMap(:map="data.data.map" :overlay="data.data.overlay" :fills="style.fills" :tip="tip" :keyboard="data.data.grain === 'uf'" :marks="marks" :width="700" :label="t('maps.mapLabel', { metric: metricName })" @pick="open" @hover="data.data.grain === 'uf' && preloadState($event)")
     Legend(:items="legendItems")
       span.muted(v-if="metric === 'winner'") {{ t('maps.strongerMargin') }}
       template(v-else)
@@ -164,7 +202,7 @@ p.headline(v-if="headline") {{ t('maps.headline', { office: officeName(office), 
         i.legend__ramp(:style="{ background: gradient }")
         span.muted {{ pct(style.range[1], 0) }}
         span.muted(v-if="metric === 'share'") {{ t('maps.shareOf', { name: candName(leaders.find((l) => l.cand === shareCand)) }) }}
-    details.statelinks(v-if="scope === 'uf'")
+    details.statelinks(v-if="scope === 'uf' || byRegion")
       summary {{ t('maps.openStateTable') }}
       .chips
         Chip(v-for="[s] in ufs" :key="s" :href="href(year, 'drill', [s], { office })") {{ s.toUpperCase() }}

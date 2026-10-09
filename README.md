@@ -101,6 +101,11 @@ logs against the RDV (events = ballots per president section) are measured at bu
   when it is hovered/opened, the national municipality map only when chosen. Fernando de Noronha (outline from the single
   municipality mesh) is drawn magnified in the bottom-right corner of the national maps. Downloads are cached in `.cache/` (git-ignored)
   and throttled; the volatile TSE result files are refetched on every run.
+- Regional maps (`/maps?scope=region`, optionally `&region=sudeste`): the UF geometry cropped to each of the five IBGE regions
+  (`src/regions.js`), with the top two candidates' share written inside every UF. `src/shapes.js` reads the SVG paths and tries
+  each text variant, fullest first, until one fits inside the shape (even-odd chords, so holes such as the DF in Goiás count);
+  where none fits, the regional maps put the fullest text in a column beside the map tied to the UF by a line, and the national
+  map leaves it to the tooltip. Under each map, the regional totals by candidate (by party for governor and senator).
 - TSE municipality codes are not IBGE codes: `mun_map` joins them by (UF, name) using the `cdi` field of the TSE list;
   all 5,688 municipalities of 2026 and 5,709 of 2022 resolve (117 foreign cities have no polygon and are shown as "Exterior").
 - The Parlamento view never recomputes seats (the Cadeiras view below does): senators carry the elected status per candidate; for deputies the TSE files give the seats per

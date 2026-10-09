@@ -162,10 +162,22 @@ overview:
   seeMaps: Ver mapas
   byState: Por UF
 
+regions:
+  sudeste: Sudeste
+  nordeste: Nordeste
+  sul: Sul
+  norte: Norte
+  centro-oeste: Centro-Oeste
+
 maps:
   title: "Mapas · {election}"
   scale: Escala
   scaleUf: Brasil por UF
+  scaleRegion: Por região
+  region: Região
+  regionAll: Todas as regiões
+  panelRegion: Brasil por região
+  regionMapLabel: "Mapa da região {region}, colorido por: {metric}"
   scaleMun: Brasil por município
   scaleState: Uma UF por município
   show: Mostrar
@@ -194,7 +206,7 @@ maps:
   shareOf: "% de {name}"
   abroad: "Exterior: {name} {share}"
   openStateTable: Abrir a tabela de uma UF
-  note: "Fonte: TSE, IBGE. Passe o mouse (ou use Tab nas UFs) para ver os votos; clique numa UF para abrir os municípios dela (Esc volta ao Brasil) e num município para o detalhamento. Fernando de Noronha aparece ampliado no canto."
+  note: "Fonte: TSE, IBGE. Passe o mouse (ou use Tab nas UFs) para ver os votos; clique numa UF para abrir os municípios dela (Esc volta ao Brasil) e num município para o detalhamento. Fernando de Noronha aparece ampliado no canto. Dentro do mapa: percentual dos votos nominais da UF; onde o texto não cabe ele aparece ao lado (nos mapas por região) ou só no balão."
   noShape: "Sem polígono no mapa (só aparecem na lista de busca e no detalhamento): {names}."
   blankAndNull: "Brancos e nulos: {rate}"
   clickCities: Clique para ver os municípios
