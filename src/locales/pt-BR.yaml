@@ -177,6 +177,8 @@ maps:
   region: Região
   regionAll: Todas as regiões
   panelRegion: Brasil por região
+  regionsMapLabel: "Mapa do Brasil por região, colorido por: {metric}"
+  clickRegion: Clique para ver só esta região
   regionMapLabel: "Mapa da região {region}, colorido por: {metric}"
   scaleMun: Brasil por município
   scaleState: Uma UF por município

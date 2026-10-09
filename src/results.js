@@ -75,12 +75,12 @@ export function unitsOf(result) {
   return units
 }
 
-export const candName = (r) => (r.cname ? titleCase(r.cname) : t('common.others'))
+export const candName = (r) => r.label ?? (r.cname ? titleCase(r.cname) : t('common.others')) // label: already written (regional totals)
 export const top = (u, n) => u.list.find((r) => r.rn === n)
 export const margin = (u) => (u.list.length > 1 ? (top(u, 1).votes - (top(u, 2)?.votes ?? 0)) / u.valid : 1)
 export const quantile = (values, p) => values.toSorted((a, b) => a - b)[Math.floor((values.length - 1) * p)] ?? 1
 
-export const unitPlace = (u, grain) => (grain === 'uf' ? stateTitle(u.id) : `${titleCase(u.name)} (${u.state.toUpperCase()})`)
+export const unitPlace = (u, grain) => (grain === 'region' ? t(`regions.${u.id}`) : grain === 'uf' ? stateTitle(u.id) : `${titleCase(u.name)} (${u.state.toUpperCase()})`)
 
 /** Tooltip text of a unit: place, its top candidates and the winner (+ optional extra lines). */
 export const unitTip = (u, grain, extra = []) => [

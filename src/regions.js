@@ -8,6 +8,8 @@ export const REGIONS = {
 }
 export const REGION_IDS = Object.keys(REGIONS)
 
+export const regionOf = (uf) => REGION_IDS.find((id) => REGIONS[id].includes(uf))
+
 const sum = (rows) => rows.reduce((total, r) => total + r.votes, 0)
 
 /** Votes and shares of every candidate (or party) in each region, from rows of { state, key, name, party, votes }: { id: { total, rows } }, rows by votes. */

@@ -7,7 +7,7 @@ import { t } from '../i18n'
 import { partyColor } from '../colors'
 import { loadGeo, preloadState } from '../geo'
 import { candName, ensureRollups, residualOn, rollup, margin, quantile, stateVotes, stateWinners, titleCase, top, unitPlace, unitSql, unitTip, unitsOf, winnerFills, winnerLegend, winnersHeadline } from '../results'
-import { REGIONS, REGION_IDS, regionTotals } from '../regions'
+import { REGIONS, REGION_IDS, regionOf, regionTotals } from '../regions'
 import { useAsync } from '../use'
 import { objects } from '../db'
 import { int, pct } from '../format'
@@ -73,36 +73,52 @@ const shareCand = computed(() => params.value.get('cand') || leaders.value[0]?.c
 const shareOf = (u) => (u.list.find((r) => r.cand === shareCand.value)?.votes ?? 0) / u.valid
 const sequential = { margin: 'var(--seq-margin)', blank: 'var(--seq-blank)' }
 
-const style = computed(() => {
-  const us = [...data.data.units.values()]
+const styleOf = (units) => {
+  const us = [...units.values()]
   const m = metric.value
-  if (m === 'winner') return { fills: winnerFills(data.data.units), range: [0, 0], color: null }
+  if (m === 'winner') return { fills: winnerFills(units), range: [0, 0], color: null }
   const value = { share: shareOf, margin, blank: (u) => u.rate ?? 0 }[m]
   const vs = us.map(value)
   const [lo, hi] = [quantile(vs, 0.02), quantile(vs, 0.98)]
   const color = m === 'share' ? partyColor(leaders.value.find((l) => l.cand === shareCand.value)?.party ?? '') : sequential[m]
   return { fills: Object.fromEntries(us.map((u) => [u.id, [color, scale(value(u), lo, hi)]])), range: [lo, hi], color }
-})
+}
+const style = computed(() => styleOf(data.data.units))
 
 // what a state says inside the map, the fullest first: the map writes the first one that fits the shape
 const firstName = (r) => candName(r).split(' ')[0]
-const markOf = (u) => {
-  const [head, a, b] = [u.id.toUpperCase(), top(u, 1), top(u, 2)]
+const markOf = (u, head) => {
+  const [a, b] = [top(u, 1), top(u, 2)]
   const share = (r) => pct(r.votes / u.valid, 1)
   if (['winner', 'margin'].includes(metric.value)) return [{ head, rows: [a, b].filter(Boolean).map((r) => `${firstName(r)} ${share(r)}`) }, { head, rows: [`${firstName(a)} ${share(a)}`] }, { head, rows: [share(a)] }, { rows: [share(a)] }]
   const text = pct(metric.value === 'share' ? shareOf(u) : u.rate ?? 0, 1)
   return [{ head, rows: [text] }, { rows: [text] }]
 }
-const marks = computed(() => (data.data.grain === 'uf' ? Object.fromEntries([...data.data.units].map(([id, u]) => [id, markOf(u)])) : null))
+const marks = computed(() => (data.data.grain === 'uf' ? Object.fromEntries([...data.data.units].map(([id, u]) => [id, markOf(u, id.toUpperCase())])) : null))
 
 // the survey of a region: its leading candidates (or parties), the rest together, and who wins how many of its states
 const LEADING = 4
+const nameOf = (r) => (r.name ? (office.value === 1 ? titleCase(r.name) : r.name) : t('common.others')) // parties are not names: no title case
 const bars = (id) => {
   const { rows } = data.data.regions[id]
   const rest = 1 - rows.slice(0, LEADING).reduce((sum, r) => sum + r.share, 0)
   const bar = (label, share) => ({ label, value: share, text: pct(share, 1) })
-  return [...rows.slice(0, LEADING).map((r) => bar(`${r.name ? (office.value === 1 ? titleCase(r.name) : r.name) : t('common.others')}${r.party && r.party !== r.name ? ` (${r.party})` : ''}`, r.share)), ...(rows.length > LEADING ? [bar(t('common.others'), rest)] : [])]
+  return [...rows.slice(0, LEADING).map((r) => bar(`${nameOf(r)}${r.party && r.party !== r.name ? ` (${r.party})` : ''}`, r.share)), ...(rows.length > LEADING ? [bar(t('common.others'), rest)] : [])]
 }
+
+// the whole of Brazil by region: a region is a unit like a state (its votes, ranked), coloured and marked once, and its states share its colour
+const regionUnits = computed(() => new Map(REGION_IDS.map((id) => {
+  const { total, rows } = data.data.regions[id]
+  const rates = REGIONS[id].map((s) => data.data.units.get(s)).filter((u) => u?.rate != null)
+  const away = rates.reduce((sum, u) => sum + (u.valid * u.rate) / (1 - u.rate), 0) // blank and null votes of its states
+  const list = rows.map((r, i) => ({ cand: r.key, label: nameOf(r), party: r.party, votes: r.votes, rn: i + 1 }))
+  return [id, { id, valid: total, list, rate: rates.length ? away / (away + total) : undefined }]
+})))
+const regionStyle = computed(() => styleOf(regionUnits.value))
+const regionFills = computed(() => Object.fromEntries(REGION_IDS.flatMap((id) => REGIONS[id].map((s) => [s, regionStyle.value.fills[id]]))))
+const regionMarks = computed(() => Object.fromEntries([...regionUnits.value].map(([id, u]) => [id, markOf(u, t(`regions.${id}`))])))
+const regionTip = (uf) => unitTip(regionUnits.value.get(regionOf(uf)), 'region', [t('maps.clickRegion')])
+const openRegion = (uf) => { go(here({ region: regionOf(uf) })); focusPanel() }
 const regionHeadline = (id) => winnersHeadline(data.data.winners.filter((r) => REGIONS[id].includes(r.state)), office.value)
 
 const tip = (id) => {
@@ -188,6 +204,9 @@ p.headline(v-if="headline") {{ t('maps.headline', { office: officeName(office), 
       template(#end)
         a(:href="href(year, 'drill', [uf], { office })") {{ t('maps.seeDetail') }}
     .regions(v-if="byRegion && data.data.regions" :class="{ 'mapwrap--busy': data.loading }")
+      figure.region.region--brazil(v-if="!region")
+        h3 {{ t('common.brazil') }}
+        GeoMap(:map="data.data.map" :groups="REGIONS" :fills="regionFills" :tip="regionTip" :marks="regionMarks" :width="800" :label="t('maps.regionsMapLabel', { metric: metricName })" @pick="openRegion")
       figure.region(v-for="r in shown" :key="r")
         h3 {{ t(`regions.${r}`) }}
         p.headline {{ regionHeadline(r) }}

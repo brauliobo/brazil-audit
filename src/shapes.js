@@ -4,6 +4,7 @@
 const CHAR = 0.6 // average glyph width over the font size, bold digits included
 export const LINE = 1.2 // line height over the font size
 const GAP = 0.6 // font sizes between a shape and its callout, and between callouts
+const TOUCH = 1e-6 // stretches that meet at a shared border are one
 const ROWS = 24 // positions tried from the top of a shape to its bottom
 
 /** The rings of a path as [[x, y]]. */
@@ -33,6 +34,13 @@ export function shapeOf(d) {
   return cache.get(d)
 }
 
+/** One path for several neighbouring shapes (a region), placed and cropped as a whole: its box is theirs, not that of its largest ring. */
+export function compose(ds) {
+  const d = ds.join('')
+  cache.set(d, { rs: rings(d), box: boundsOf(ds) })
+  return d
+}
+
 /** The box that holds all shapes: [x0, y0, x1, y1]. */
 export const boundsOf = (ds) => ds.map((d) => shapeOf(d).box).reduce((a, b) => [Math.min(a[0], b[0]), Math.min(a[1], b[1]), Math.max(a[2], b[2]), Math.max(a[3], b[3])])
 
@@ -42,7 +50,7 @@ function spans(rs, y) {
     const [x2, y2] = r[(i + 1) % r.length]
     return (y1 <= y) !== (y2 <= y) ? [x1 + ((y - y1) / (y2 - y1)) * (x2 - x1)] : []
   })).sort((a, b) => a - b)
-  return xs.flatMap((x, i) => (i % 2 ? [] : [[x, xs[i + 1]]]))
+  return xs.flatMap((x, i) => (i % 2 ? [] : [[x, xs[i + 1]]])).reduce((out, [a, b]) => (out.length && a - out.at(-1)[1] < TOUCH ? [...out.slice(0, -1), [out.at(-1)[0], b]] : [...out, [a, b]]), [])
 }
 
 // the part of the stretch [a, b] that every row has in common, as the stretch of the row that overlaps it most

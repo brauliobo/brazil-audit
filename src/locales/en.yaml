@@ -176,6 +176,8 @@ maps:
   region: Region
   regionAll: All regions
   panelRegion: Brazil by region
+  regionsMapLabel: "Map of Brazil by region, coloured by: {metric}"
+  clickRegion: Click to see only this region
   regionMapLabel: "Map of the {region} region, coloured by: {metric}"
   scaleMun: Brazil by municipality
   scaleState: One state by municipality

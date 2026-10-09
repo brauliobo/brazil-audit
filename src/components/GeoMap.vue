@@ -1,6 +1,6 @@
 <script setup vapor>
 import { computed, onMounted, onUnmounted, ref, watch } from 'vue'
-import { LINE, boundsOf, layout, textBox } from '../shapes'
+import { LINE, boundsOf, compose, layout, textBox } from '../shapes'
 import Tooltip from './Tooltip.vue'
 
 // Choropleth over pre-projected SVG paths. The paths are one innerHTML string and events are delegated to the svg (5.5k
@@ -8,7 +8,8 @@ import Tooltip from './Tooltip.vue'
 // share of that colour mixed into the map base (done in CSS, see .map path[style]); tip(id) returns the tooltip text.
 // view: the ids to show, the map being cropped to them (a region). marks: { id: [variant, ...] } written inside the shapes (see layout() in
 // shapes.js), at a font size that renders as MARK_PX when the map is `width` px wide; with callouts the shapes that cannot hold the text get it beside the map.
-const props = defineProps({ map: Object, overlay: Object, fills: Object, tip: Function, label: String, keyboard: Boolean, view: Array, marks: Object, callouts: Boolean, width: { type: Number, default: 640 } })
+// groups: { id: [shape ids] } puts the marks on groups of shapes (a region) instead of on each shape; marks is then keyed by the group id.
+const props = defineProps({ groups: Object, map: Object, overlay: Object, fills: Object, tip: Function, label: String, keyboard: Boolean, view: Array, marks: Object, callouts: Boolean, width: { type: Number, default: 640 } })
 const emit = defineEmits(['pick', 'hover'])
 const MARK_PX = 12
 const GUTTER = 64 // page and panel padding around the map, to size the text for narrow screens
@@ -20,14 +21,15 @@ onUnmounted(() => removeEventListener('resize', resize))
 
 watch(() => props.map, () => (tooltip.value.show = false)) // a tooltip from the previous map must not linger
 
+const pathOf = computed(() => new Map(props.map.items))
 const items = computed(() => (props.view ? props.map.items.filter(([id]) => props.view.includes(id)) : props.map.items))
 const bounds = computed(() => (props.view ? boundsOf(items.value.map(([, d]) => d)) : [0, 0, props.map.w, props.map.h]))
 const size = computed(() => ((bounds.value[2] - bounds.value[0]) * MARK_PX) / Math.min(props.width, viewport.value - GUTTER))
-const placed = computed(() => (props.marks ? layout(items.value, props.marks, { size: size.value, callouts: props.callouts }) : { labels: [], right: 0, bottom: 0 }))
+const markItems = computed(() => (props.groups ? Object.entries(props.groups).map(([g, ids]) => [g, compose(ids.map((id) => pathOf.value.get(id)))]) : items.value))
+const placed = computed(() => (props.marks ? layout(markItems.value, props.marks, { size: size.value, callouts: props.callouts }) : { labels: [], right: 0, bottom: 0 }))
 const box = computed(() => {
-  if (!props.view) return [0, 0, props.map.w, props.map.h]
   const [x0, y0, x1, y1] = bounds.value
-  const pad = size.value
+  const pad = props.view ? size.value : 0 // the whole map has its own margins
   return [x0 - pad, y0 - pad, Math.max(x1, placed.value.right) + pad - (x0 - pad), Math.max(y1, placed.value.bottom) + pad - (y0 - pad)]
 })
 const lineY = (l, i) => l.y0 + (i + 0.5) * LINE * size.value

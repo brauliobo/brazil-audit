@@ -4,7 +4,7 @@ import assert from 'node:assert/strict'
 import { readFileSync } from 'node:fs'
 import { UFS } from '../src/model.js'
 import { REGIONS, REGION_IDS, regionTotals } from '../src/regions.js'
-import { boundsOf, layout, place, rings, textBox } from '../src/shapes.js'
+import { boundsOf, compose, layout, place, rings, textBox } from '../src/shapes.js'
 
 const map = JSON.parse(readFileSync('data/geo/uf.json', 'utf8'))
 const path = Object.fromEntries(map.items)
@@ -65,4 +65,24 @@ test('callouts stack without overlapping, in the order of the map', () => {
   const column = labels.filter((l) => l.out).sort((a, b) => a.y0 - b.y0)
   assert.ok(column.length >= 3)
   column.slice(1).forEach((l, i) => assert.ok(l.y0 >= column[i].y0 + textBox(column[i].lines, size)[1], `${l.id} overlaps ${column[i].id}`))
+})
+
+test('a region is one shape: its states join across their shared borders and the text fits across them', () => {
+  const sul = compose(REGIONS.sul.map((id) => path[id]))
+  const [x0, y0, x1, y1] = boundsOf(REGIONS.sul.map((id) => path[id]))
+  const size = 17
+  const [w, h] = textBox(['Sul', 'Flávio 60,1%', 'Lula 31,3%'], size)
+  const at = place(sul, w, h)
+  assert.ok(at && at.x - w / 2 >= x0 && at.x + w / 2 <= x1 && at.y - h / 2 >= y0 && at.y + h / 2 <= y1)
+  const sudeste = REGIONS.sudeste.map((id) => path[id])
+  assert.ok(place(compose(sudeste), 300, 10), 'a line crossing SP and MG fits in the Southeast')
+  assert.ok(sudeste.every((d) => !place(d, 300, 10)), 'but in none of its states alone')
+})
+
+test('whole-Brazil marks per region: one label per region, written inside it', () => {
+  const regions = Object.fromEntries(REGION_IDS.map((id) => [id, [{ head: id, rows: ['Flávio 51,4%', 'Lula 39,7%'] }, { rows: ['51,4%'] }]]))
+  const items = Object.entries(REGIONS).map(([id, ufs]) => [id, compose(ufs.map((u) => path[u]))])
+  const { labels } = layout(items, regions, { size: 17, callouts: false })
+  assert.deepEqual(labels.map((l) => l.id).sort(), [...REGION_IDS].sort())
+  assert.ok(labels.every((l) => !l.out))
 })

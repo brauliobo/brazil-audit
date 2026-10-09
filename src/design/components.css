@@ -256,6 +256,7 @@ canvas.scatter { display: block; width: 100%; height: auto; }
 .map .map__leader { stroke: var(--map-callout-fill); stroke-width: var(--map-border-stroke-width); vector-effect: non-scaling-stroke; pointer-events: none; }
 .regions { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(var(--size-region-min), 100%), 1fr)); gap: var(--space-6) var(--space-5); margin: var(--space-0); }
 .region { margin: var(--space-0); }
+.region--brazil { grid-column: 1 / -1; }
 .region h3 { margin: var(--space-0) var(--space-0) var(--space-1); }
 .region .headline { margin: var(--space-0) var(--space-0) var(--space-2); font-size: var(--font-size-300); }
 .mapwrap { transition: opacity var(--motion-base) var(--easing-standard); }
