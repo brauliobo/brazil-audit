@@ -13,11 +13,13 @@ import { parseCsvLine } from './csv.mjs'
 import { EMPTY, RDV, dumpOf, officesOf, officialFile, residualOf } from './official.mjs'
 import { buildGeometry, cached, tseMunicipalities } from './geo.mjs'
 import { buildSeatsData } from './seats-data.mjs'
+import { CORE } from '../src/signals.js'
+import { sectionRows, sgCsv, sgzCsv, sgzRows } from './signals-data.mjs'
 
 const opt = Object.fromEntries(process.argv.slice(2).map((a) => a.replace(/^--/, '').split('=')))
 const list = (k, all) => (opt[k] ? opt[k].split(',') : all)
 const SELECTED = list('election', Object.keys(ELECTIONS)).map((k) => ELECTIONS[k])
-const ONLY = list('only', ['rdv', 'vt', 'logmatch', 'results', 'cands', 'geo', 'elected', 'residual', 'raw', 'lineup'])
+const ONLY = list('only', ['rdv', 'vt', 'logmatch', 'results', 'cands', 'geo', 'elected', 'residual', 'raw', 'lineup', 'signals'])
 const OUT = 'data'
 const T0 = 18000 // time-of-day buckets: 05:00 local clock, 10 minutes each, 90 buckets (05:00-20:00), edges clamped
 const STEP = 600
@@ -27,6 +29,7 @@ const NB = 90
 const FIXED_TZ = { 'pe/FERNANDO DE NORONHA': 1 }
 
 // The shared schema. Every table starts with `election int, turn int` (cands has its own election column, mun_map has none).
+const SG = 'state text, city text, zone text, section text, school int, aptos int, comp int, zabs real, v int, bio int, man int, nor int, run int, hv smallint[], hm smallint[], hn smallint[], lt int, zman real, znf real, dlate int, dnf real, fl int, med int, gap int'
 const SCHEMA = {
   rdv: 'state text, city text, zone text, section text, model text, office int, nominal int, blank int, nul int, votes jsonb',
   vt: 'state text, city text, zone text, section text, model text, n int, first int, last int, med int, p10 int, p90 int, maxgap int, b smallint[]',
@@ -41,6 +44,9 @@ const SCHEMA = {
   seats: 'uf text, office int, bloc text, seats int',
   lineup: 'uf text, office int, party text, sigla text, bloc text, name text, valid boolean, legend bigint, residual bigint, official bigint',
   annulled: 'uf text, office int, n text',
+  sg: SG,
+  sgf: SG,
+  sgz: 'state text, city text, zone text, sections int, aptos int, comp int, v int, bio int, man int, nor int, lt int, hv int[], hm int[], hn int[], flagged int',
 }
 
 const q = (s) => `'${s.replaceAll("'", "''")}'`
@@ -113,6 +119,23 @@ function smallTable(name, el, rows) {
   const t = table(name)
   t.parts[`${el.key}/all`] = { url: `${name}/${el.key}.csv.gz`, bytes: readFileSync(file).length, rows: rows.length, rawBytes: body.length, where: `election = ${el.year} and turn = ${el.turn}` }
   log(`${name}/${el.key}: ${rows.length} rows, ${t.parts[`${el.key}/all`].bytes} bytes gz`)
+}
+
+// ---- signals: how far each section stands from its neighbours (src/signals.js, scripts/signals-data.mjs) ---------------------------
+// One sg part per UF; sgf (the sections with a core signal) and sgz (zones) are small and ship whole. IDENT_DIR = the output of
+// tools/logscan (Rust) for the elections with logs, one directory per election: $IDENT_DIR/<election key>/*.tsv.
+async function buildSignals(el) {
+  const rows = await sectionRows(el, { identDir: `${process.env.IDENT_DIR}/${el.key}` })
+  mkdirSync(`${OUT}/sg`, { recursive: true })
+  for (const uf of [...new Set(rows.map((r) => r.state))].sort()) {
+    const inUf = rows.filter((r) => r.state === uf)
+    const body = csvOf(inUf.map((r) => sgCsv(el, r)))
+    const file = `${OUT}/sg/${el.key}-${uf}.csv.gz`
+    writeFileSync(file, gzipSync(body, { level: 9 }))
+    part(table('sg'), el, uf, file, { rows: inUf.length, rawBytes: body.length }, `state = ${q(uf)}`)
+  }
+  smallTable('sgf', el, rows.filter((r) => r.fl & CORE).map((r) => sgCsv(el, r).slice(2)))
+  smallTable('sgz', el, sgzRows(rows).map((z) => sgzCsv(el, z).slice(2)))
 }
 
 // ---- rdv: section results per office, in the shape of the 2026 collector for every election ----------------------------------
@@ -508,6 +531,7 @@ for (const el of SELECTED) {
   if (el.hasTimes && ONLY.includes('logmatch')) buildLogMatch(el)
   if (ONLY.includes('results')) await buildResults(el)
   if (el.hasSeats && ONLY.includes('lineup')) await buildSeatsData(el, { text, smallTable })
+  if (ONLY.includes('signals')) await buildSignals(el)
 }
 if (ONLY.includes('cands')) await buildCands()
 if (['geo', 'elected', 'residual'].some((k) => ONLY.includes(k)) || !manifest.tables.mun_map) {
