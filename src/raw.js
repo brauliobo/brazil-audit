@@ -3,6 +3,7 @@
 // zip holds a section: the keys are `files/<uf>-<city>-<zone>-<section>` (aux: `ballots/...`) and an asset holds every key between
 // its first and last, compared as plain strings. Pure functions: also used by scripts/check-raw.mjs.
 import { REPO } from './elections.js'
+import { findPack } from './logpack.js'
 
 const KINDS = ['rdv', 'logs', 'aux']
 const GITHUB = `https://github.com/${REPO}`
@@ -19,10 +20,19 @@ export function findAssets(raw, id) {
   }))
 }
 
+/** The compact log (pack + index, see src/logpack.js) that holds the section, from data/logs/<election>.json: { kind, name, files, bytes, zone, section }. */
+export function findLogpack(config, id) {
+  const [, , zone, section] = id.split('-')
+  const [found] = findPack(config, id)
+  return found && { kind: 'logpack', name: `${found[0]}.pack`, files: found[3], bytes: found[4], zone, section }
+}
+
 export const releaseUrl = (raw) => `${GITHUB}/releases/tag/${raw.tag}`
 export const assetUrl = (raw, asset) => `${GITHUB}/releases/download/${raw.tag}/${asset.name}`
 /** Prints the section's file from the downloaded zip (the entry names carry a hash after the section, hence the glob). */
-export const commandOf = (asset, id) => `unzip -p ${asset.name} '${keyOf(asset.kind, id)}${asset.kind === 'aux' ? '*' : '-*'}'`
+export const commandOf = (asset, id) => (asset.kind === 'logpack'
+  ? `logscan show ${asset.name.replace(/pack$/, 'idx')} ${asset.name} ${asset.zone} ${asset.section}` // i18n-ignore: tools/logscan prints the section's voters and lines
+  : `unzip -p ${asset.name} '${keyOf(asset.kind, id)}${asset.kind === 'aux' ? '*' : '-*'}'`)
 
 /** The live TSE address of the section's aux.json, for the elections that configure it. */
 export const tseAuxUrl = (el, { uf, city, zone, section }) => el.raw.tseAux?.replaceAll('{uf}', uf).replaceAll('{city}', city).replace('{zone}', zone).replace('{section}', section)

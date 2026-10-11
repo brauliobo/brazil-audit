@@ -20,3 +20,4 @@ export const cell = (n) => nf({ maximumFractionDigits: 6, useGrouping: 'min2' })
 export const ms = (t) => (t < 10 ? `${num(t, 1)} ms` : t < 1000 ? `${int(t)} ms` : `${num(t / 1000, 2)} s`)
 export const bytes = (n) => (n < 1024 ** 2 ? `${int(n / 1024)} KB` : `${num(n / 1024 ** 2, 1)} MB`)
 export const clock = (sec) => `${String(Math.floor(sec / 3600) % 24).padStart(2, '0')}:${String(Math.floor(sec / 60) % 60).padStart(2, '0')}`
+export const hms = (sec) => `${clock(sec)}:${String(sec % 60).padStart(2, '0')}`

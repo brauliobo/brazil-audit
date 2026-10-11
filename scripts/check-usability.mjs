@@ -1,6 +1,6 @@
 // Usability audit by ISO 9241-11 (usability = effectiveness, efficiency and satisfaction in a context of use), against a running
 // Pages-like server (`node scripts/serve-pages.mjs 4190`), driving agent-browser as a first-time visitor on a desktop (or --width=375 phone):
-//   node scripts/check-usability.mjs [baseUrl] [--session=ux] [--width=1280 --height=800] [--runs=3] [--json=report.json] [--sus=answers.json]
+//   node scripts/check-usability.mjs [baseUrl] [--session=ux] [--width=1280 --height=800] [--runs=3] [--only=id,id] [--json=report.json] [--sus=answers.json]
 // Each task is a goal a visitor has, with a success check on what the page shows (not on the route alone):
 //   effectiveness  completion (the goal state was reached within the time limit) and errors on the way (page errors, console errors, error notices);
 //   efficiency     time on task (data loading included), interactions against the shortest path (clicks, keys, choices, and a scroll when
@@ -33,6 +33,11 @@ const TASKS = [
     done: `location.search.includes('scope=region') && document.querySelectorAll('.region--brazil .map__mark').length >= 5 && document.querySelectorAll('.region:not(.region--brazil)').length === 5 && document.querySelectorAll('.region:not(.region--brazil) .map__mark').length >= 40` },
   { id: 'times', goal: 'see the voting pace of Acre', start: '2026/overview', steps: 2, budget: 30000, run: async (u) => { await u.click(NAV('time')); await u.choose('main select', 'ac') },
     done: `location.pathname.endsWith('/time/ac') && document.querySelectorAll('main .table tbody tr').length > 0` },
+  { id: 'signals', goal: 'see which sections stand out in Acre', start: '2026/overview', steps: 2, budget: 30000, run: async (u) => { await u.click(NAV('signals')); await u.choose('main select', 'ac') },
+    done: `location.pathname.endsWith('/signals/ac') && document.querySelectorAll('main .panel svg, main .panel canvas').length > 0 && document.querySelectorAll('main .table tbody tr').length > 0` },
+  { id: 'logsearch', goal: 'find the ballot-box log of a section from its zone and section number, written as people say it', start: '2026/overview', steps: 2, budget: 30000,
+    run: async (u) => { await u.type("input[name='q']", 'AC zona 8 seção 8'); await u.press('Enter') },
+    done: `/\\/logs\\/ac\\/[^/]+\\/0008\\/0008$/.test(location.pathname) && document.querySelectorAll('main .table tbody tr').length > 0` },
   { id: 'benford', goal: 'open the Benford analysis', start: '2026/overview', steps: 1, budget: 30000, run: (u) => u.click(NAV('benford')), done: `location.pathname.endsWith('/benford') && !!document.querySelector('.panel svg')` },
   { id: 'language', goal: 'read the site in English', start: '2026/overview', steps: 1, budget: 10000, run: (u) => u.radio('English'),
     done: `document.documentElement.lang === 'en' && document.querySelector('h1').innerText.startsWith('Overview')` },
@@ -68,6 +73,7 @@ function actor(limit) {
     reach,
     click: (sel) => act(sel, 'click', sel),
     choose: (sel, value) => act(sel, 'select', sel, value),
+    type: (sel, text) => act(sel, 'fill', sel, text),
     radio: (name) => { u.steps++; ab('find', 'role', 'radio', 'click', '--name', name) },
     press: (key) => { u.steps++; ab('press', key) },
   })
@@ -125,7 +131,7 @@ const sec = (ms) => `${(ms / 1000).toFixed(1)}s`
 ab('set', 'viewport', arg('width', '1280'), arg('height', '800'))
 ab('open', `${base}/${LANG}`)
 const results = []
-for (const task of TASKS) {
+for (const task of TASKS.filter((t) => !arg('only') || arg('only').split(',').includes(t.id))) {
   const r = await measure(task)
   results.push(r)
   console.log(`${r.problems.length ? 'FAIL' : 'ok  '} ${r.id.padEnd(9)} ${sec(r.ms).padStart(6)} ${String(r.steps).padStart(2)}/${r.optimal} steps  errors ${r.errors}  shift ${r.cls}  ${r.goal}${r.problems.length ? `  <- ${r.problems.join('; ')}` : ''}`)

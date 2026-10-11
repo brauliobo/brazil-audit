@@ -11,13 +11,16 @@ import EngineStatus from './components/EngineStatus.vue'
 import LangSwitch from './components/LangSwitch.vue'
 import Logo from './components/Logo.vue'
 import Notice from './components/Notice.vue'
+import SectionSearch from './components/SectionSearch.vue'
 import Tabs from './components/Tabs.vue'
 import ThemeSwitch from './components/ThemeSwitch.vue'
 import Overview from './views/Overview.vue'
 import Drill from './views/Drill.vue'
 import Analysis from './views/Analysis.vue'
 import Benford from './views/Benford.vue'
+import Signals from './views/Signals.vue'
 import Time from './views/Time.vue'
+import Logs from './views/Logs.vue'
 import Sql from './views/Sql.vue'
 import Maps from './views/Maps.vue'
 import Parliament from './views/Parliament.vue'
@@ -26,7 +29,7 @@ import Design from './views/Design.vue'
 import NotFound from './views/NotFound.vue'
 
 const REPO = 'https://github.com/brauliobo/brazil-audit'
-const views = { overview: Overview, maps: Maps, parliament: Parliament, seats: Seats, drill: Drill, analysis: Analysis, benford: Benford, time: Time, sql: Sql, design: Design }
+const views = { overview: Overview, maps: Maps, parliament: Parliament, seats: Seats, drill: Drill, analysis: Analysis, benford: Benford, signals: Signals, time: Time, logs: Logs, sql: Sql, design: Design }
 const current = computed(() => (route.value.notFound ? NotFound : views[route.value.view]))
 const election = computed(() => route.value.election)
 const nav = computed(() => VIEWS_NAV.map((v) => ({ label: viewName(v), href: href(election.value, v), current: route.value.view === v })))
@@ -46,6 +49,7 @@ header.site-header
       ThemeSwitch
 EngineStatus
 main#main(tabindex="-1")
+  SectionSearch(v-if="!route.notFound && route.view !== 'design'")
   Notice(v-if="renderError" kind="danger") {{ t('errors.render', { message: renderError.message }) }}
   component(:is="current" :key="route.view + route.election")
 footer.site-footer

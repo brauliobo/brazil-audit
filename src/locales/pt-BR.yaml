@@ -16,7 +16,9 @@ nav:
   drill: Detalhar
   analysis: Análise
   benford: Benford
+  signals: Sinais
   time: Horários
+  logs: Logs da urna
   sql: SQL
   design: Sistema de design
 
@@ -422,6 +424,8 @@ drill:
   officeFallback: "Cargo {id}"
   voteTime: Horário de votação
   seeTimes: ver horários desta seção →
+  signals: Sinais da seção
+  seeSignals: comparar esta seção com as vizinhas →
 
 analysis:
   title: "Análise · {election}"
@@ -447,6 +451,108 @@ analysis:
   blanks: brancos
   nulls: nulos
 
+signals:
+  title: "Sinais por seção · {place} · {election}"
+  caution: "Um sinal é só um motivo para olhar uma seção de perto, não uma prova de fraude. Seções pequenas, zonas rurais, falha da biometria e filas explicam muitos casos; por isso cada seção é comparada com as vizinhas da mesma cidade."
+  summary: Resumo
+  headline: "{flagged} de {sections} seções ({share}) têm pelo menos um dos 3 sinais principais."
+  several: "{two} têm 2 ou mais sinais e {three} têm os 3."
+  chance: "Numa eleição sem nada fora do normal, esperam-se cerca de {expected} seções em cada sinal só por acaso. Foram encontradas {abs} com abstenção muito baixa e {man} com muita liberação manual."
+  chanceAbs: "Numa eleição sem nada fora do normal, esperam-se cerca de {expected} seções com abstenção tão baixa só por acaso. Foram encontradas {abs}. Esta eleição não tem logs das urnas, então só esse sinal existe."
+  how: "Os 3 sinais principais: abstenção muito abaixo das vizinhas (z ≤ −3, ao menos 50 eleitores), 15% ou mais dos votos às 17h ou depois (ao menos 10 votos e voto mais tardio que o das outras seções da escola) e liberação manual muito acima das vizinhas (z ≥ 3, ao menos 5). O z é ajustado pela variação normal de cada UF."
+  tabs: Análises
+  tab:
+    abstention: Abstenção
+    late: Votos tardios
+    nofp: Sem biometria
+    cross: Cruzamento
+  byState: Abstenção por UF
+  byStateNote: "A linha é a média do país ({mean})."
+  zones: Abstenção por zona
+  zonesNote: "{zones} zonas com 500 eleitores ou mais, em faixas de 2 pontos percentuais."
+  zonesCount_one: "{count} zona"
+  zonesCount_other: "{count} zonas"
+  funnel: Abstenção × tamanho da seção
+  funnelNote: "Cada ponto é uma seção. As linhas marcam 2 e 3 desvios em torno da média da UF ({mean}); seções pequenas variam mais, por isso o funil. Em destaque, as seções com abstenção muito baixa."
+  pickState: Escolha uma UF acima para ver o gráfico.
+  lowAbstention: Seções com abstenção mais baixa que as vizinhas
+  lowAbstentionNote: "Abstenção muito abaixo das outras seções do município (z ≤ −3)."
+  lateHours: Votos por hora
+  lateHoursNote: "Parte dos votos de cada hora (horário de Brasília). Votos às 17h ou depois são o sinal de votos tardios."
+  lateList: Seções com votos tardios
+  lateListNote: "15% ou mais dos votos às 17h ou depois. A última coluna diz quantos minutos mais tarde essa seção votou que as outras da escola."
+  nofpHours: Eleitores sem biometria por hora
+  nofpHoursNote: "{all} dos eleitores foram liberados sem biometria (barras), {manual} deles após tentar a digital (linha)."
+  manualList: Seções com muita liberação manual
+  manualListNote: "Eleitores liberados pelo mesário depois de a digital falhar, bem acima das seções vizinhas (z ≥ 3)."
+  byCount: Seções por número de sinais
+  byCountNote: "Quantas seções cumprem 1 ou mais, 2 ou mais e os 3 sinais principais. Clique na UF para filtrar."
+  crossList: Seções com 2 ou mais sinais
+  crossListNote: "Quanto mais sinais ao mesmo tempo, mais vale conferir. Ainda assim, não é prova."
+  col:
+    voters: Eleitores aptos
+    abstention: Abstenção
+    z: z
+    votes: Votos
+    late: Às 17h ou depois
+    lateShare: Votos tardios
+    later: Mais tarde que a escola
+    manual: Manuais
+    tried: Tentaram a digital
+    manualShare: Liberação manual
+    nofpShare: Sem biometria
+    run: Maior sequência
+    one: "1 ou mais"
+    two: "2 ou mais"
+    three: Os 3
+    criteria: Sinais
+    signals: Sinais
+  minutes: "+{n} min"
+  place: "Seção {section} · zona {zone} · {city}/{state}"
+  zoneSection: "zona {zone} · seção {section}"
+  short:
+    abstention: Abstenção baixa
+    late: Votos tardios
+    manual: Liberação manual
+    late10: Tardios (10% ou mais)
+    lateNoFp: Tardios sem biometria
+    turnout: Comparecimento do log ≠ oficial
+    noFp: Muitos sem biometria
+    streak: Sequência manual
+    schoolNoFp: Sem biometria acima da escola
+    later: Mais tarde que a escola
+    fast: Ritmo rápido
+    idle: Pausa longa
+  about:
+    abstention: "abstenção muito abaixo das seções vizinhas do município."
+    late: "15% ou mais dos votos às 17h ou depois, e mais tarde que o resto da escola."
+    manual: "liberação manual muito acima das seções vizinhas."
+    late10: "10% ou mais dos votos às 17h ou depois."
+    lateNoFp: "mais da metade dos votos tardios sem biometria."
+    turnout: "o número de votos no log difere do comparecimento oficial."
+    noFp: "muitos eleitores sem biometria (digital falha ou sem cadastro) acima das vizinhas."
+    streak: "8 ou mais eleitores seguidos liberados manualmente."
+    schoolNoFp: "25 pontos percentuais ou mais de eleitores sem biometria acima do resto da escola."
+    later: "votou, em média, 60 minutos ou mais depois do resto da escola."
+    fast: "mediana de 45 segundos ou menos entre dois votos (ao menos 60 votos)."
+    idle: "pausa de 2 horas ou mais entre dois votos (ao menos 60 votos)."
+  sectionTitle: "Seção {section} · zona {zone} · {city}/{state}"
+  noSection: Seção não encontrada nos sinais desta eleição.
+  seeResults: resultados da seção →
+  seeTimes: horários dos votos →
+  noneMet: Nenhum sinal nesta seção.
+  compare: Comparação
+  scope:
+    section: Esta seção
+    school: Escola (todas as seções)
+    zone: Zona
+    city: Município
+    state: UF
+    country: Brasil
+  hourly: Votos por hora
+  hourlyNote: "As barras são esta seção; a linha é o que ela teria se votasse como o resto do município."
+  school: Outras seções da escola
+
 time:
   title: "Horários de votação · {place} · {election}"
   placeSection: "Seção {section} · zona {zone} · {city}/{state}"
@@ -455,6 +561,7 @@ time:
   clockBrt: Brasília (UTC-3)
   clockLocal: local, como gravado
   seeResults: resultados da seção →
+  seeSignals: sinais da seção →
   pending: "Os logs desta eleição estão sendo importados: os horários aparecem aqui quando estiverem prontos."
   unavailable: Esta eleição não tem o horário de cada voto (só a abertura e o fechamento da urna); escolha outra que tenha.
   curveTitle: "Votos a cada 10 minutos (um registro por eleitor, na votação para presidente)"
@@ -464,6 +571,7 @@ time:
   pace: Ritmo por seção
   sortBy: Ordenar por
   paceNote: "Estatísticas por seção a partir dos intervalos entre votos (a mediana de uma votação normal fica perto de 100 s). Só entram UFs carregadas: escolha uma UF."
+  paceSignals: "Comparadas com as vizinhas, junto dos outros sinais →"
   rank:
     fast: Votação mais rápida (menor p10 do intervalo entre votos)
     regular: Ritmo regular demais ((p90 − p10) / mediana)
@@ -475,6 +583,63 @@ time:
   last: Último
   median: Mediana
   maxGap: Maior pausa
+
+logs:
+  title: "Logs da urna · {place} · {election}"
+  unavailable: Os logs desta eleição não estão publicados em arquivos compactos que o navegador consiga ler; escolha uma que os tenha.
+  intro: "Escolha a seção (UF, município, zona e seção) e, se quiser, o horário aproximado: só os bytes dessa seção são baixados, sob demanda."
+  secret: "Isto é o que a urna escreveu no próprio log: quando cada eleitor foi liberado, como foi identificado, quando o voto foi computado e as demais linhas. O voto é secreto: nenhum arquivo publicado (log, RDV, boletim) guarda o número que cada eleitor digitou, e o log só diz o cargo, nunca o candidato. O voto de uma pessoa, portanto, não pode ser achado nestes dados. Um registro fora do comum é um sinal para olhar com cuidado, não prova de fraude."
+  choose: escolha…
+  at: Horário (por volta de)
+  span: Margem
+  spanOption: "± {n} min"
+  numbers: Números digitados
+  show: Ver logs
+  seeLogs: log da urna desta seção →
+  absent: Esta seção não está nos logs publicados.
+  clock: "Horários do relógio da própria urna, como gravados (sem conversão para o horário de Brasília)."
+  window: "Janela: {from} a {to}."
+  votersTitle: "Eleitores liberados e votos computados ({n} de {total})"
+  eventsTitle: "Outras linhas do log ({n} de {total})"
+  noVoters: Nenhum eleitor nesta janela.
+  noEvents: Nenhuma outra linha nesta janela.
+  otherDays: "Linhas de outros dias, não guardadas: {n}."
+  fetched: "Baixado sob demanda: {size} desta seção, mais o índice do arquivo ({index}), que fica em cache no navegador."
+  cityTitle: "Seções de {city}/{state}"
+  numbersTitle: "Números digitados: votos de cada um nesta seção (RDV)"
+  numbersNote: "O boletim da urna (RDV) só traz o total de cada número na seção, sem ligação com eleitor nem horário: mostra se o número recebeu votos aqui e quantos, não quem votou nele. Um número que não aparece em nenhum cargo não foi votado por ninguém nesta seção."
+  numberNone: sem votos nesta seção
+  method:
+    fingerprint: digital do eleitor
+    afterTry: mesário, após tentar a digital
+    withoutTry: mesário, sem tentar a digital
+  col:
+    urn: Urna
+    enabled: Liberado
+    done: Voto computado
+    duration: Duração
+    method: Identificação
+    tries: Tentativas de digital
+    wrong: Teclas indevidas
+    corrected: Corrigiu
+    time: Hora
+    level: Nível
+    module: Módulo
+    message: Registro
+    number: Número
+    candidate: Candidato
+    party: Partido
+    votes: Votos
+
+lookup:
+  label: Ir para uma seção ou município
+  placeholder: "SP zona 127 seção 680, ou um município"
+  go: Buscar
+  empty: "Digite o município, ou a zona e a seção (por exemplo: SP zona 127 seção 680)."
+  needState: "Informe também a UF (por exemplo: SP zona 127 seção 680)."
+  notFound: "Nada encontrado em {state} para esta busca."
+  several: "Mais de um resultado em {state}: escolha um."
+  match: "{city} · zona {zone} · seção {section}"
 
 sql:
   title: Console SQL
@@ -508,6 +673,9 @@ sql:
     totx: "view: tot + votos de seções sem arquivo"
     vt: horários de votação por seção
     vtc: horários por município
+    sg: "sinais por seção: abstenção, identificação do eleitor, votos por hora e distância dos vizinhos (fl = máscara de sinais)"
+    sgf: seções de sg com algum dos 3 sinais principais
+    sgz: sinais somados por zona
     cov: cobertura por UF
     miss: seções sem arquivos
     residual: votos de seções sem arquivo (total oficial)
@@ -554,9 +722,11 @@ raw:
     rdv: Resultado da urna (RDV)
     logs: Log da urna
     aux: Arquivo de apuração (aux.json)
+    logpack: Log compacto (lido no navegador)
   none: Sem arquivos publicados pelo TSE para esta seção.
   noPerSection: Os arquivos por seção desta eleição não estão publicados aqui; os números vêm dos dados abertos do TSE, por UF.
   zipNote: "Os arquivos ficam dentro de zips, assets de uma release do GitHub (sem link por arquivo): baixe o zip indicado e extraia o arquivo da seção com o comando."
+  packNote: "O log compacto não é um zip: vem como .pack mais o .idx (mesmo nome) na release; a visão Logs da urna lê do arquivo só os bytes desta seção, e o comando de tools/logscan o imprime."
   copy: copiar comando
   copied: copiado
   copyLabel: "Copiar o comando para {file}"

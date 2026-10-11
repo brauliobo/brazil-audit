@@ -154,6 +154,10 @@ Skeleton(v-else-if="!view.data")
     BarList(:items="sectionItems(o.rows)")
     p.muted {{ officeTotals(o) }}
   Panel(v-if="cfg.hasTimes" :title="t('drill.voteTime')" :state="view" :election="year")
-    a(:href="href(year, 'time', args)") {{ t('drill.seeTimes') }}
+    .cluster
+      a(:href="href(year, 'time', args)") {{ t('drill.seeTimes') }}
+      a(v-if="cfg.raw.logpack" :href="href(year, 'logs', args)") {{ t('logs.seeLogs') }}
+  Panel(:title="t('drill.signals')" :election="year")
+    a(:href="href(year, 'signals', args)") {{ t('drill.seeSignals') }}
   RawData(:election="year" level="section" :uf="args[0]" :city="args[1]" :zone="args[2]" :section="args[3]")
 </template>

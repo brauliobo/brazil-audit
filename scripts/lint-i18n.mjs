@@ -16,6 +16,8 @@ import { EXAMPLES, TABLES } from '../src/sqlExamples.js'
 import { LOCALES } from '../src/i18n.js'
 import { RULES } from '../src/seats/rules.js'
 import { REGION_IDS } from '../src/regions.js'
+import { SIGNALS, TABS } from '../src/signals.js'
+import { METHODS } from '../src/logpack.js'
 
 const SRC = 'src'
 const errors = []
@@ -61,9 +63,14 @@ const FAMILIES = {
   'drill.level.': ['state', 'city', 'zone', 'section'],
   'drill.levels.': ['state', 'city', 'zone', 'section'],
   'time.rank.': ['fast', 'regular', 'gap', 'diff'],
+  'signals.tab.': TABS,
+  'signals.short.': SIGNALS,
+  'signals.about.': SIGNALS,
+  'signals.scope.': ['section', 'school', 'zone', 'city', 'state', 'country'],
   'coverage.reasons.': ['not_totalized', 'negative', 'no_official_file', 'zone_files_disagree'],
   'parliament.houses.': ['senate', 'chamber', 'state', 'district'],
-  'raw.kind.': ['rdv', 'logs', 'aux'],
+  'raw.kind.': ['rdv', 'logs', 'aux', 'logpack'],
+  'logs.method.': METHODS,
   'sources.layer.': ['logs', 'rdv', 'open', 'official'].flatMap((l) => [`${l}.name`, `${l}.role`]),
   'sources.state.': ['used', 'pending', 'none', 'unused'],
   'sources.official.': ['residual', 'check'],

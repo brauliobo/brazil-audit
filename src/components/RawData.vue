@@ -6,7 +6,8 @@ import { useAsync } from '../use'
 import { objects } from '../db'
 import { bytes } from '../format'
 import { t } from '../i18n'
-import { assetUrl, branchUrl, commandOf, fileUrl, findAssets, releaseUrl, sectionId, tseAuxUrl } from '../raw'
+import { assetUrl, branchUrl, commandOf, fileUrl, findAssets, findLogpack, releaseUrl, sectionId, tseAuxUrl } from '../raw'
+import { loadConfig } from '../logpack'
 import Button from './Button.vue'
 import Panel from './Panel.vue'
 
@@ -25,7 +26,8 @@ const section = useAsync(() => [props.election, props.level, props.uf, props.cit
   const [lost] = el.value.hasCoverage ? objects(await q(`select count(*)::int n from miss where election = ${el.value.year} and turn = ${el.value.turn} and state = $1 and city = $2 and zone = $3 and section = $4`, [uf, city, zone, sec])) : [{ n: 0 }]
   const raw = el.value.raw.tag ? await loadRaw(key) : null
   const id = sectionId(uf, m.tse, zone, sec)
-  return { raw, id, lost: lost.n > 0, assets: raw && findAssets(raw, id), tseAux: tseAuxUrl(el.value, { uf, city: m.tse, zone, section: sec }) }
+  const logpack = el.value.raw.logpack ? findLogpack(await loadConfig(key), id) : null
+  return { raw, id, lost: lost.n > 0, assets: raw && { ...findAssets(raw, id), logpack }, tseAux: tseAuxUrl(el.value, { uf, city: m.tse, zone, section: sec }) }
 })
 
 const rows = computed(() => Object.values(section.data.assets).filter(Boolean).map((a) => ({ ...a, url: assetUrl(section.data.raw, a), command: commandOf(a, section.data.id) })))
@@ -57,6 +59,7 @@ Panel(v-if="level === 'section'" :title="t('raw.title')" :state="section" :elect
         code {{ row.command }}
         Button(variant="ghost" :label="t('raw.copyLabel', { file: row.name })" @click="copy(row)") {{ copied === row.kind ? t('raw.copied') : t('raw.copy') }}
     p.muted {{ t('raw.zipNote') }}
+    p.muted(v-if="section.data.assets.logpack") {{ t('raw.packNote') }}
     p.muted(v-if="section.data.tseAux")
       a(:href="section.data.tseAux") {{ t('raw.tseAux') }}
     p.muted(v-else-if="el.raw.tag") {{ t('raw.tseGone') }}

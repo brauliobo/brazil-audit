@@ -15,7 +15,9 @@ nav:
   drill: Drill down
   analysis: Analysis
   benford: Benford
+  signals: Signals
   time: Voting time
+  logs: Ballot-box logs
   sql: SQL
   design: Design system
 
@@ -421,6 +423,8 @@ drill:
   officeFallback: "Office {id}"
   voteTime: Voting time
   seeTimes: see the times of this section →
+  signals: Section signals
+  seeSignals: compare this section with its neighbours →
 
 analysis:
   title: "Analysis · {election}"
@@ -446,6 +450,108 @@ analysis:
   blanks: blank
   nulls: "null"
 
+signals:
+  title: "Section signals · {place} · {election}"
+  caution: "A signal is only a reason to look at a section more closely, not proof of fraud. Small sections, rural zones, fingerprint failures and queues explain many cases, which is why each section is compared with the other sections of its city."
+  summary: Summary
+  headline: "{flagged} of {sections} sections ({share}) have at least one of the 3 main signals."
+  several: "{two} have 2 or more signals and {three} have all 3."
+  chance: "In an election with nothing unusual, about {expected} sections per signal would still show up by chance. Found: {abs} with very low abstention and {man} with a lot of manual release."
+  chanceAbs: "In an election with nothing unusual, about {expected} sections with abstention this low would still show up by chance. Found: {abs}. This election has no urn logs, so it is the only signal available."
+  how: "The 3 main signals: abstention far below the neighbours (z ≤ −3, at least 50 voters), 15% or more of the votes at 5 pm or later (at least 10 votes, and later than the other sections of the school) and manual release far above the neighbours (z ≥ 3, at least 5). The z is adjusted by each state's normal variation."
+  tabs: Analyses
+  tab:
+    abstention: Abstention
+    late: Late votes
+    nofp: No fingerprint
+    cross: Cross table
+  byState: Abstention by state
+  byStateNote: "The line is the national mean ({mean})."
+  zones: Abstention by zone
+  zonesNote: "{zones} zones with 500 voters or more, in bands of 2 percentage points."
+  zonesCount_one: "{count} zone"
+  zonesCount_other: "{count} zones"
+  funnel: Abstention × section size
+  funnelNote: "Each dot is a section. The lines mark 2 and 3 standard deviations around the state mean ({mean}); small sections vary more, hence the funnel. Highlighted: the sections with very low abstention."
+  pickState: Pick a state above to see the chart.
+  lowAbstention: Sections with lower abstention than their neighbours
+  lowAbstentionNote: "Abstention far below the other sections of the city (z ≤ −3)."
+  lateHours: Votes per hour
+  lateHoursNote: "Share of the votes of each hour (Brasília time). Votes at 5 pm or later are the late-votes signal."
+  lateList: Sections with late votes
+  lateListNote: "15% or more of the votes at 5 pm or later. The last column says how many minutes later this section voted than the others of its school."
+  nofpHours: Voters without fingerprint per hour
+  nofpHoursNote: "{all} of the voters were released without a fingerprint (bars), {manual} of them after trying it (line)."
+  manualList: Sections with a lot of manual release
+  manualListNote: "Voters released by the poll worker after the fingerprint failed, far above the neighbouring sections (z ≥ 3)."
+  byCount: Sections by number of signals
+  byCountNote: "How many sections meet 1 or more, 2 or more and all 3 main signals. Click a state to filter."
+  crossList: Sections with 2 or more signals
+  crossListNote: "The more signals at once, the more it is worth checking. Still not proof."
+  col:
+    voters: Eligible voters
+    abstention: Abstention
+    z: z
+    votes: Votes
+    late: At 5 pm or later
+    lateShare: Late votes
+    later: Later than the school
+    manual: Manual
+    tried: Tried the fingerprint
+    manualShare: Manual release
+    nofpShare: No fingerprint
+    run: Longest streak
+    one: "1 or more"
+    two: "2 or more"
+    three: All 3
+    criteria: Signals
+    signals: Signals
+  minutes: "+{n} min"
+  place: "Section {section} · zone {zone} · {city}/{state}"
+  zoneSection: "zone {zone} · section {section}"
+  short:
+    abstention: Low abstention
+    late: Late votes
+    manual: Manual release
+    late10: Late (10% or more)
+    lateNoFp: Late without fingerprint
+    turnout: Log turnout ≠ official
+    noFp: Many without fingerprint
+    streak: Manual streak
+    schoolNoFp: No fingerprint above school
+    later: Later than the school
+    fast: Fast pace
+    idle: Long pause
+  about:
+    abstention: "abstention far below the neighbouring sections of the city."
+    late: "15% or more of the votes at 5 pm or later, and later than the rest of the school."
+    manual: "manual release far above the neighbouring sections."
+    late10: "10% or more of the votes at 5 pm or later."
+    lateNoFp: "more than half of the late votes without a fingerprint."
+    turnout: "the number of votes in the log differs from the official turnout."
+    noFp: "many voters without a fingerprint (failed or not registered), above the neighbours."
+    streak: "8 or more voters in a row released manually."
+    schoolNoFp: "25 percentage points or more of voters without a fingerprint above the rest of the school."
+    later: "voted, on average, 60 minutes or more later than the rest of the school."
+    fast: "median of 45 seconds or less between two votes (at least 60 votes)."
+    idle: "a pause of 2 hours or more between two votes (at least 60 votes)."
+  sectionTitle: "Section {section} · zone {zone} · {city}/{state}"
+  noSection: Section not found in this election's signals.
+  seeResults: section results →
+  seeTimes: voting times →
+  noneMet: No signals in this section.
+  compare: Comparison
+  scope:
+    section: This section
+    school: School (all sections)
+    zone: Zone
+    city: Municipality
+    state: State
+    country: Brazil
+  hourly: Votes per hour
+  hourlyNote: "The bars are this section; the line is what it would have if it voted like the rest of the municipality."
+  school: Other sections of the school
+
 time:
   title: "Voting time · {place} · {election}"
   placeSection: "Section {section} · zone {zone} · {city}/{state}"
@@ -454,6 +560,7 @@ time:
   clockBrt: Brasília (UTC-3)
   clockLocal: local, as recorded
   seeResults: section results →
+  seeSignals: section signals →
   pending: "The logs of this election are being imported: the times will appear here when they are ready."
   unavailable: This election has no time for each vote (only the opening and closing of the ballot box); pick one that does.
   curveTitle: "Votes every 10 minutes (one record per voter, in the vote for president)"
@@ -463,6 +570,7 @@ time:
   pace: Pace per section
   sortBy: Sort by
   paceNote: "Per-section statistics from the intervals between votes (the median of a normal voting is close to 100 s). Only loaded states are included: pick a state."
+  paceSignals: "Ranked against their neighbours, with the other signals →"
   rank:
     fast: Fastest voting (lowest p10 of the interval between votes)
     regular: Too regular a pace ((p90 − p10) / median)
@@ -474,6 +582,63 @@ time:
   last: Last
   median: Median
   maxGap: Longest pause
+
+logs:
+  title: "Ballot-box logs · {place} · {election}"
+  unavailable: This election's logs are not published as compact files the browser can read; pick one that has them.
+  intro: "Pick the section (state, municipality, zone and section) and, if you want, the approximate time: only the bytes of that section are downloaded, on demand."
+  secret: "This is what the ballot box wrote in its own log: when each voter was enabled, how they were identified, when the vote was computed, and the other lines. The vote is secret: no published file (log, RDV, tally) keeps the number each voter typed, and the log only says the office, never the candidate. A person's vote therefore cannot be found in this data. An unusual record is a signal to look closer, not proof of fraud."
+  choose: choose…
+  at: Time (around)
+  span: Margin
+  spanOption: "± {n} min"
+  numbers: Numbers typed
+  show: Show logs
+  seeLogs: ballot-box log of this section →
+  absent: This section is not in the published logs.
+  clock: "Times of the ballot box's own clock, as recorded (not converted to Brasília time)."
+  window: "Window: {from} to {to}."
+  votersTitle: "Voters enabled and votes computed ({n} of {total})"
+  eventsTitle: "Other lines of the log ({n} of {total})"
+  noVoters: No voter in this window.
+  noEvents: No other line in this window.
+  otherDays: "Lines of other days, not kept: {n}."
+  fetched: "Downloaded on demand: {size} for this section, plus the file's index ({index}), which stays cached in the browser."
+  cityTitle: "Sections of {city}/{state}"
+  numbersTitle: "Numbers typed: votes of each one in this section (RDV)"
+  numbersNote: "The ballot box's tally (RDV) only has the total of each number in the section, with no link to any voter or time: it shows whether the number received votes here and how many, not who voted for it. A number that appears for no office was voted by nobody in this section."
+  numberNone: no votes in this section
+  method:
+    fingerprint: voter's fingerprint
+    afterTry: poll worker, after trying the fingerprint
+    withoutTry: poll worker, without trying the fingerprint
+  col:
+    urn: Urn
+    enabled: Enabled
+    done: Vote computed
+    duration: Duration
+    method: Identification
+    tries: Fingerprint tries
+    wrong: Wrong keys
+    corrected: Corrected
+    time: Time
+    level: Level
+    module: Module
+    message: Record
+    number: Number
+    candidate: Candidate
+    party: Party
+    votes: Votes
+
+lookup:
+  label: Go to a section or municipality
+  placeholder: "SP zone 127 section 680, or a municipality"
+  go: Search
+  empty: "Type the municipality, or the zone and section (for example: SP zone 127 section 680)."
+  needState: "Also give the state (for example: SP zone 127 section 680)."
+  notFound: "Nothing found in {state} for this search."
+  several: "More than one result in {state}: pick one."
+  match: "{city} · zone {zone} · section {section}"
 
 sql:
   title: SQL console
@@ -507,6 +672,9 @@ sql:
     totx: "view: tot + votes of sections without files"
     vt: voting times per section
     vtc: times per municipality
+    sg: "signals per section: abstention, how voters were identified, votes per hour and distance from the neighbours (fl = signal bit mask)"
+    sgf: sections of sg with one of the 3 main signals
+    sgz: signals summed per zone
     cov: coverage per state
     miss: sections without files
     residual: votes of sections without files (official total)
@@ -553,9 +721,11 @@ raw:
     rdv: Ballot-box result (RDV)
     logs: Ballot-box log
     aux: Tally file (aux.json)
+    logpack: Compact log (read in the browser)
   none: No files published by the TSE for this section.
   noPerSection: The per-section files of this election are not published here; the numbers come from the TSE open data, per state.
   zipNote: "The files are inside zips, assets of a GitHub release (no link per file): download the zip shown and extract the section's file with the command."
+  packNote: "The compact log is not a zip: it comes as a .pack plus its .idx (same name) in the release; the site's Logs view reads only this section's bytes from it, and the tools/logscan command prints it."
   copy: copy command
   copied: copied
   copyLabel: "Copy the command for {file}"

@@ -115,6 +115,8 @@ SourceBadge(:election="year" view="times")
       option(v-for="c in cities.data" :key="c.city" :value="c.city" :selected="c.city === city") {{ c.city }}
   ButtonGroup(:label="t('time.clock')" :items="clockItems" :value="brt ? 'brt' : 'local'" @change="setParam('clock', $event === 'brt' ? null : 'local')")
   a(v-if="isSection" :href="href(year, 'drill', args)") {{ t('time.seeResults') }}
+  a(v-if="isSection" :href="href(year, 'signals', args)") {{ t('time.seeSignals') }}
+  a(v-if="isSection && cfg.raw.logpack" :href="href(year, 'logs', args)") {{ t('logs.seeLogs') }}
 .muted(v-if="!cfg.hasTimes") {{ t(cfg.sources.pending.includes('logs') ? 'time.pending' : 'time.unavailable') }}
 .grid-auto(v-else)
   Panel(:title="t('time.curveTitle')" :state="curve" :election="year" wide)
@@ -126,5 +128,6 @@ SourceBadge(:election="year" view="times")
         select(:value="rank" @change="pick('rank', $event)")
           option(v-for="k in Object.keys(RANKS)" :key="k" :value="k" :selected="k === rank") {{ t(`time.rank.${k}`) }}
     p.muted {{ t('time.paceNote') }}
+      a(:href="href(year, 'signals', state ? [state] : [], { tab: 'cross' })") {{ t('time.paceSignals') }}
     DataTable(:columns="cols" :rows="paced.data")
 </template>

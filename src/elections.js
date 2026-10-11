@@ -16,7 +16,7 @@
 //             logs/rdv/open must agree with hasTimes and source.kind (checked below), so this entry cannot drift from the data
 //   raw       where the raw files behind the dump are published: `tag` = GitHub release of `repo` (per-section zips, see INDEX.json), `indexDir` = its
 //             folder under RAW_INDEX_DIR, `branch` + `code` = the collector code, `coverage` = lists in that branch, `tseAux` = the TSE URL of a section's aux.json;
-//             without `tag` only the collector is linked
+//             without `tag` only the collector is linked; `logpack` = the section logs are also published as packs the browser reads on demand (data/logs/<key>.json, src/logpack.js)
 //   source    where the build reads it: kind 'rdv' = the 2026 collector (rdv_votes with the urn model + voting_times),
 //             'machine' = the 2022 machines' RDV and logs (rdv_machine, voting_times, per round, in the collector database of branch 2018),
 //             'open' = the TSE open-data collector (rdv_votes per round, section_detail, candidates, elected; no voting times)
@@ -49,7 +49,7 @@ const elections = [
     hasBlank: true, hasTimes: true, hasResidual: true, hasSeats: true, hasCoverage: true, seatRule: 'stf2024',
     sources: { logs: true, rdv: true, open: false, official: ['residual', 'check'], pending: [], differences: {} },
     raw: {
-      tag: 'data-2026', indexDir: 'meta-2026', branch: '2026', code: ['lib/rdv.rb', 'lib/voting_log.rb'], coverage: ['coverage/missing-2026.tsv', 'coverage/summary-2026.tsv'],
+      tag: 'data-2026', indexDir: 'meta-2026', logpack: true, branch: '2026', code: ['lib/rdv.rb', 'lib/voting_log.rb'], coverage: ['coverage/missing-2026.tsv', 'coverage/summary-2026.tsv'],
       tseAux: 'https://resultados.tse.jus.br/oficial/ele2026/arquivo-urna/3220/dados/{uf}/{city}/{zone}/{section}/p003220-{uf}-m{city}-z{zone}-s{section}-aux.json',
     },
     source: { kind: 'rdv', db: 'brazil-audit-2026' },

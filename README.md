@@ -36,7 +36,7 @@ npm run preview
 
 Real paths with the History API under the base: `/<election>/<view>/<args…>?<state>`, e.g. `/brazil-audit/2026/maps?scope=state&uf=sp`,
 `/2026/drill/sp/SAO%20PAULO/0372`, `/2026/sql?q=…`. The first segment is the election (omitted = the latest), the view is
-`overview | maps | parliament | seats | drill | analysis | time | sql`; the rest of the state (office, metric, candidate, scope, sort,
+`overview | maps | parliament | seats | drill | analysis | benford | signals | time | logs | sql`; the rest of the state (office, metric, candidate, scope, sort,
 page, query) is in the query string. `src/router.js` is the whole router: `href()` builds the paths (base included) so every
 link is a plain `<a href>`, one delegated click handler navigates in place (modified clicks, `target`, `download`, other
 origins and in-page `#anchors` keep their native behaviour), back/forward restore the scroll position, the document title
@@ -223,6 +223,36 @@ never scanned: it is probed once per section through its index (`state, city, zo
 Options `--only=votes|rdv|vt|rollups|results|cands`, `--states=`. Commit the result; the manifest `version`
 invalidates browser caches.
 
+### Section signals (`/<election>/signals`, tables `sg`, `sgf`, `sgz`)
+
+Screening of sections by how far they stand from their neighbours, after the video "Auditoria das eleições" and the public tool
+[ralbuque/esteleicao](https://github.com/ralbuque/esteleicao). **A signal is a reason to look at a section, never proof of fraud**
+(the view says so). The definitions are in `src/signals.js`, shared by the build and the view:
+
+- Three core signals: **abstention** far below the other sections of the city (z ≤ −3, at least 50 voters on the roll), **late votes**
+  (15% or more of the votes at 17h Brasília or later, at least 10, and when the school has other sections an average voting time at
+  least 30 min later than theirs) and **manual release** (voters enabled by the poll worker after the fingerprint failed, z ≥ 3, at least 5).
+  Nine more complement them in the section page (late with a looser limit, late without fingerprint, log turnout different from the
+  official one, many without fingerprint, a streak of 8 manual releases, gap to the school, 60 min later than the school, a median of 45 s
+  or less between votes, a pause of 2 h or more; the last two come from `vt`, the table of the Horários view, so the pace is computed once).
+- z is the binomial z of the section against the others of its city (of its state when the city has fewer than 6 sections), divided
+  by the square root of the state's robust overdispersion (1.4826·MAD of the z, squared, at least 1). The repository above adds an
+  additive variance instead; this multiplicative form (Spiegelhalter's funnel plot) is a simplification that needs no per-city fit.
+  The view shows how many sections a perfectly ordinary election would flag by chance (0.135% of them) next to those found.
+- Sources: aptos, comparecimento and school from the TSE open data `detalhe_votacao_secao` (cached in `.cache/`), and for the elections with
+  logs `tools/logscan` (Rust, about 6x faster than the Python it replaced and a fraction of its CPU; `cargo test` runs its checks), which reads each urn's log and counts per section the voters enabled by fingerprint, by the poll worker after
+  trying the fingerprint (`man`) and without trying one (`nor`, no fingerprint registered), their longest streak and their hours.
+  The 2018 election has no logs, so only the abstention signal exists there.
+- Tables: `sg` (one row per section, per UF part), `sgf` (the rows of `sg` with a core signal, whole) and `sgz` (zone sums). Hourly arrays are
+  15 values from 05h to 19h in Brasília time (the machine's clock re-based with `vtc.tz`).
+- Not reproduced for lack of data: replaced machines, delayed opening. The Horários view (`vt`, `vtc`) stays the place to explore the voting
+  curve and the pace of any section; the Sinais view only keeps what is compared against the neighbours, and each links to the other.
+
+```sh
+npm run logscan -- 04/10/2026 <out dir> <logs zip>…   # one TSV per archive (2026 .jez and 2022 .logjez); LOGSCAN_THREADS=4
+IDENT_DIR=<dir with one folder per election key> nice -n 10 node scripts/build-data.mjs --election=2026 --only=signals
+```
+
 ### Voting-time encoding (full 2026: 499,149 sections, 24 MB gz)
 
 - Only `post = 'Presidente'` (one event per voter; the Senate post has about two).
@@ -289,6 +319,34 @@ gh release download data-2026 -R brauliobo/brazil-audit -p '2026-rdv-sp-*' -p SH
 sha256sum -c SHA256SUMS --ignore-missing
 unzip 2026-rdv-sp-01.zip                  # or a single file: unzip 2026-rdv-sp-01.zip files/<name>
 ```
+
+### Section logs on demand (`/<election>/logs/<uf>/<city>/<zone>/<section>`)
+
+What was measured before choosing the format: the release assets cannot be read by a browser (the download redirects to
+`release-assets.githubusercontent.com`, which sends no CORS headers, and a zip is only useful with Range requests anyway).
+`raw.githubusercontent.com`, GitHub Pages and jsDelivr send `Access-Control-Allow-Origin: *` and answer Range with 206; a file in git
+is limited to 100 MB and Pages to 1 GB, so the packs go to a git branch (`data-logs`) read through `raw.githubusercontent.com`.
+
+What the sources hold: the logs have the identification, the biometric attempts, the vote and the end of each voter with a clock time,
+but the vote is a secret ballot and is never linked to the voter; the RDV has the tally per number of the section, also unlinked. So
+"the first voter voted 22111, the second 22111" cannot be answered by any file: the site shows who voted when (and the section's tally
+for the numbers typed in the search box), never which number each voter chose. The tallies are signals about a section, not proof of fraud.
+
+Format (`tools/logscan`, `logscan pack <dd/mm/yyyy> <key> <out dir> <logs.zip>...`): one `<key>-logpack-<uf>-<nn>.pack` and `.idx` per source
+zip. The `.idx` (raw deflate, 16 bytes per section: city, zone, section, offset, length) is read whole; the `.pack` holds one raw-deflate blob
+per section (voters in columns: time, duration, flags, wrong keys; the remaining events as dictionary templates), so a section is one Range
+request of about 2 KB. Only the voting day is kept, numbers of 10 or more digits are redacted and the other days are counted. A pack is about
+2.5% of its zip (about 1.5 GB for 2026). `logscan show <idx> <pack> <zone> <section>` prints a section in a terminal.
+
+```sh
+node scripts/build-logpack-index.mjs 2026 /srv/logpack/out/2026     # data/logs/2026.json: which pack holds which zone and section
+# publish: a data-logs branch whose 2026/ folder has the .pack and .idx files (VITE_LOGS_BASE overrides the address, ?logs= in dev)
+npm run test:logpack                                               # the format and the on-demand reader, with and without Range
+```
+
+The same files are also attached to the release `data-2026` (new names, the zips stay), as the permanent copy; the site reads the branch.
+The search box at the top of every page accepts "SP zona 127 seção 680" (also with a city name) and opens the log, the signals, the time chart
+or the drill-down of that section, whichever view is open.
 
 ## Licenses
 
