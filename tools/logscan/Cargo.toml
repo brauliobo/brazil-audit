@@ -1,0 +1,18 @@
+[package]
+name = "logscan"
+version = "0.1.0"
+edition = "2021"
+description = "Reads the urns' logs of the release's archives: how each voter was identified, per section"
+
+[dependencies]
+anyhow = "1"
+flate2 = "1"
+rayon = "1"
+regex = "1"
+sevenz-rust = "0.6"
+zip = { version = "2", default-features = false, features = ["deflate"] }
+
+[profile.release]
+opt-level = 3
+lto = true
+codegen-units = 1
