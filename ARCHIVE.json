@@ -1,0 +1,698 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-10-26T21:56:19.634558+00:00",
+  "status": "published",
+  "dataset": {
+    "id": "resultados-2012",
+    "title": "Resultados - 2012",
+    "groups": [
+      "resultados"
+    ],
+    "family": "resultados",
+    "years": [
+      2012
+    ],
+    "license": "cc-by",
+    "source": "https://dadosabertos.tse.jus.br/dataset/resultados-2012",
+    "branch": "archive/resultados-2012",
+    "tag": "data-resultados-2012",
+    "releaseUrl": "https://github.com/brauliobo/brazil-audit/releases/tag/data-resultados-2012",
+    "normalized": false,
+    "status": "catalogued",
+    "inScope": true
+  },
+  "resources": [
+    {
+      "id": "01f124d9-d4a0-4e96-9d1c-7be06e63adb2",
+      "name": "Votação nominal por município e zona",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_candidato_munzona/votacao_candidato_munzona_2012.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_candidato_munzona/votacao_candidato_munzona_2012.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 57792613,
+      "lastModified": "Wed, 28 Jul 2021 18:10:49 GMT",
+      "etag": "\"371d865-5c832e7f3fc40\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:56:07.281316+00:00",
+      "sha256": "9a369573ea67f06caf03e44de29a9e710c5bc3d344b8d30d24f89c9004d9cf6c",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "01f124d9-votacao_candidato_munzona_2012.zip",
+          "bytes": 57792613,
+          "sha256": "9a369573ea67f06caf03e44de29a9e710c5bc3d344b8d30d24f89c9004d9cf6c"
+        }
+      ]
+    },
+    {
+      "id": "c56f0ac5-efe7-4881-bbd9-0cab7fc96d32",
+      "name": "Votação em partido por município e zona",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_partido_munzona/votacao_partido_munzona_2012.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_partido_munzona/votacao_partido_munzona_2012.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 3993821,
+      "lastModified": "Fri, 03 Sep 2021 20:12:15 GMT",
+      "etag": "\"3cf0dd-5cb1cea5c65c0\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:56:08.437999+00:00",
+      "sha256": "8ccb50040abf361aa451df4b584fa7b0e636cd114026d1f311be18c92d9b7ec1",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "c56f0ac5-votacao_partido_munzona_2012.zip",
+          "bytes": 3993821,
+          "sha256": "8ccb50040abf361aa451df4b584fa7b0e636cd114026d1f311be18c92d9b7ec1"
+        }
+      ]
+    },
+    {
+      "id": "61722e47-c463-450c-8270-7a4e503caeb9",
+      "name": "Detalhe da apuração por município e zona",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/detalhe_votacao_munzona/detalhe_votacao_munzona_2012.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/detalhe_votacao_munzona/detalhe_votacao_munzona_2012.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 1101167,
+      "lastModified": "Fri, 08 Aug 2025 16:13:27 GMT",
+      "etag": "\"10cd6f-63bdcdaadb7d3\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:56:08.646381+00:00",
+      "sha256": "032fd85cba89ef411a31018764a1ea64fa842330718775b775c083de05221ddd",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "61722e47-detalhe_votacao_munzona_2012.zip",
+          "bytes": 1101167,
+          "sha256": "032fd85cba89ef411a31018764a1ea64fa842330718775b775c083de05221ddd"
+        }
+      ]
+    },
+    {
+      "id": "12895809-3b81-4689-bbfb-d7d36d1891b9",
+      "name": "Detalhe da apuração por seção eleitoral",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/detalhe_votacao_secao/detalhe_votacao_secao_2012.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/detalhe_votacao_secao/detalhe_votacao_secao_2012.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 25326135,
+      "lastModified": "Fri, 03 Sep 2021 20:11:18 GMT",
+      "etag": "\"1827237-5cb1ce6f6a580\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:56:09.289701+00:00",
+      "sha256": "593acc35b5e1800d2bb8e88bdc908acd1a5fbbf84eaa6344a81464ac4fca69d4",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "12895809-detalhe_votacao_secao_2012.zip",
+          "bytes": 25326135,
+          "sha256": "593acc35b5e1800d2bb8e88bdc908acd1a5fbbf84eaa6344a81464ac4fca69d4"
+        }
+      ]
+    },
+    {
+      "id": "b2f255e6-08c9-4f59-9385-c0d47605f2e1",
+      "name": "Relatório de votação de candidatos com votação anulada (pedido de registro irregular)",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/relat_ata_totalizacao/2012/candidatos_com_votacao_anulada_ou_registro_decisao_judicial_2012.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/relat_ata_totalizacao/2012/candidatos_com_votacao_anulada_ou_registro_decisao_judicial_2012.zip",
+      "format": "PDF",
+      "status": "excluded",
+      "bytes": 3742600,
+      "lastModified": "Fri, 05 Jul 2024 13:17:48 GMT",
+      "etag": "\"391b88-61c7fe3c7e15f\"",
+      "inScope": false
+    },
+    {
+      "id": "7dadfea1-8c3d-474e-8f73-f483a89c0423",
+      "name": "AC - Votação por seção eleitoral - 2012",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2012_AC.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2012_AC.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 1550223,
+      "lastModified": "Fri, 03 Sep 2021 20:14:06 GMT",
+      "etag": "\"17a78f-5cb1cf0fa1f80\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:56:09.463123+00:00",
+      "sha256": "e3a04c928997255fcf8a680e7a5bb59c03b9480e1d69604e634c9999b65bc8ec",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "7dadfea1-votacao_secao_2012_AC.zip",
+          "bytes": 1550223,
+          "sha256": "e3a04c928997255fcf8a680e7a5bb59c03b9480e1d69604e634c9999b65bc8ec"
+        }
+      ]
+    },
+    {
+      "id": "0318e0b6-a4e6-4c3e-846b-e09d91d79672",
+      "name": "AL - Votação por seção eleitoral - 2012",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2012_AL.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2012_AL.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 3752563,
+      "lastModified": "Fri, 03 Sep 2021 20:14:06 GMT",
+      "etag": "\"394273-5cb1cf0fa1f80\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:56:09.714969+00:00",
+      "sha256": "6f2622ed9d7303175cb7f29c24490cfacba7e5740d4a3f30b8e2f368da306758",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "0318e0b6-votacao_secao_2012_AL.zip",
+          "bytes": 3752563,
+          "sha256": "6f2622ed9d7303175cb7f29c24490cfacba7e5740d4a3f30b8e2f368da306758"
+        }
+      ]
+    },
+    {
+      "id": "538bd296-97eb-4053-a502-b339be637929",
+      "name": "AP - Votação por seção eleitoral - 2012",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2012_AP.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2012_AP.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 1514511,
+      "lastModified": "Fri, 03 Sep 2021 20:14:07 GMT",
+      "etag": "\"171c0f-5cb1cf10961c0\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:56:09.867997+00:00",
+      "sha256": "11cb98bd5e0c612dd35a3ad25a29ffddd6bdc72e1a35a5ba79d27a58871043cd",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "538bd296-votacao_secao_2012_AP.zip",
+          "bytes": 1514511,
+          "sha256": "11cb98bd5e0c612dd35a3ad25a29ffddd6bdc72e1a35a5ba79d27a58871043cd"
+        }
+      ]
+    },
+    {
+      "id": "87e20732-d5f3-44aa-b8c2-5ce15d98a7ec",
+      "name": "AM - Votação por seção eleitoral - 2012",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2012_AM.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2012_AM.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 8575093,
+      "lastModified": "Fri, 03 Sep 2021 20:14:07 GMT",
+      "etag": "\"82d875-5cb1cf10961c0\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:56:10.158532+00:00",
+      "sha256": "55cc28e464b5a2d95beb05cc568360394f056d5b85f92da4eda97247d1a7ed81",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "87e20732-votacao_secao_2012_AM.zip",
+          "bytes": 8575093,
+          "sha256": "55cc28e464b5a2d95beb05cc568360394f056d5b85f92da4eda97247d1a7ed81"
+        }
+      ]
+    },
+    {
+      "id": "69677180-87a2-4caa-b72a-c36ee279a778",
+      "name": "BA - Votação por seção eleitoral - 2012",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2012_BA.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2012_BA.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 20913139,
+      "lastModified": "Fri, 03 Sep 2021 20:14:07 GMT",
+      "etag": "\"13f1bf3-5cb1cf10961c0\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:56:10.710947+00:00",
+      "sha256": "ff25fc279c14593c7c538d7f452e69046c9daacbe0f4d157d58ae8c8be17b1b4",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "69677180-votacao_secao_2012_BA.zip",
+          "bytes": 20913139,
+          "sha256": "ff25fc279c14593c7c538d7f452e69046c9daacbe0f4d157d58ae8c8be17b1b4"
+        }
+      ]
+    },
+    {
+      "id": "747d506c-492a-4a6e-82de-e6b8faaa1df3",
+      "name": "CE - Votação por seção eleitoral - 2012",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2012_CE.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2012_CE.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 12926550,
+      "lastModified": "Fri, 03 Sep 2021 20:14:07 GMT",
+      "etag": "\"c53e56-5cb1cf10961c0\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:56:11.049321+00:00",
+      "sha256": "0b9d1734463e4cdff1a3638c18a32e58895f79cedee8b7498f8d7ab4b42188a1",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "747d506c-votacao_secao_2012_CE.zip",
+          "bytes": 12926550,
+          "sha256": "0b9d1734463e4cdff1a3638c18a32e58895f79cedee8b7498f8d7ab4b42188a1"
+        }
+      ]
+    },
+    {
+      "id": "7af26f1e-15c8-467e-ad5a-5f3221d865d9",
+      "name": "ES - Votação por seção eleitoral - 2012",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2012_ES.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2012_ES.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 5937527,
+      "lastModified": "Fri, 03 Sep 2021 20:14:07 GMT",
+      "etag": "\"5a9977-5cb1cf10961c0\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:56:11.330961+00:00",
+      "sha256": "ad48c753612bf79c213395e2f7e4b7c77405a10160e32e32d800d3a2e601005d",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "7af26f1e-votacao_secao_2012_ES.zip",
+          "bytes": 5937527,
+          "sha256": "ad48c753612bf79c213395e2f7e4b7c77405a10160e32e32d800d3a2e601005d"
+        }
+      ]
+    },
+    {
+      "id": "701569d3-a1a8-499e-a8fa-9af45f6ba307",
+      "name": "GO - Votação por seção eleitoral - 2012",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2012_GO.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2012_GO.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 10245509,
+      "lastModified": "Fri, 03 Sep 2021 20:14:08 GMT",
+      "etag": "\"9c5585-5cb1cf118a400\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:56:11.611141+00:00",
+      "sha256": "f7963d7e8d0964d035523b611f97db0d37dbec0b302a6a19946e8280cf1e99bb",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "701569d3-votacao_secao_2012_GO.zip",
+          "bytes": 10245509,
+          "sha256": "f7963d7e8d0964d035523b611f97db0d37dbec0b302a6a19946e8280cf1e99bb"
+        }
+      ]
+    },
+    {
+      "id": "b79c99c1-c148-4103-b59b-5c7fffa28133",
+      "name": "MA - Votação por seção eleitoral - 2012",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2012_MA.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2012_MA.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 9040218,
+      "lastModified": "Fri, 03 Sep 2021 20:14:08 GMT",
+      "etag": "\"89f15a-5cb1cf118a400\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:56:11.922152+00:00",
+      "sha256": "0d4671b2ea2721d1e91d84fe5bb36cf76a164dcd9fbe54ba0e2c608fd96d144f",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "b79c99c1-votacao_secao_2012_MA.zip",
+          "bytes": 9040218,
+          "sha256": "0d4671b2ea2721d1e91d84fe5bb36cf76a164dcd9fbe54ba0e2c608fd96d144f"
+        }
+      ]
+    },
+    {
+      "id": "ca92e1ab-159c-47e2-bb47-a33cc01c7b90",
+      "name": "MT - Votação por seção eleitoral - 2012",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2012_MT.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2012_MT.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 4685841,
+      "lastModified": "Fri, 03 Sep 2021 20:14:08 GMT",
+      "etag": "\"478011-5cb1cf118a400\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:56:12.169778+00:00",
+      "sha256": "d08c6b573a1110d0d220cf6c3ec606f39c1202af4b802078d3c1474c5bdfdb3b",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "ca92e1ab-votacao_secao_2012_MT.zip",
+          "bytes": 4685841,
+          "sha256": "d08c6b573a1110d0d220cf6c3ec606f39c1202af4b802078d3c1474c5bdfdb3b"
+        }
+      ]
+    },
+    {
+      "id": "06f2c717-30df-4341-91e4-7a2ad880610e",
+      "name": "MS - Votação por seção eleitoral - 2012",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2012_MS.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2012_MS.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 4327830,
+      "lastModified": "Fri, 03 Sep 2021 20:14:08 GMT",
+      "etag": "\"420996-5cb1cf118a400\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:56:12.400355+00:00",
+      "sha256": "f287cee3c17b10aac4834eac1e85ceae13687fd4577b57e0f2396418f07b3423",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "06f2c717-votacao_secao_2012_MS.zip",
+          "bytes": 4327830,
+          "sha256": "f287cee3c17b10aac4834eac1e85ceae13687fd4577b57e0f2396418f07b3423"
+        }
+      ]
+    },
+    {
+      "id": "ba45ffc8-97a0-4545-b893-90e49f7d8569",
+      "name": "MG - Votação por seção eleitoral - 2012",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2012_MG.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2012_MG.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 34737902,
+      "lastModified": "Fri, 03 Sep 2021 20:14:09 GMT",
+      "etag": "\"2120eee-5cb1cf127e640\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:56:13.155881+00:00",
+      "sha256": "6720b716c0dae1cce5d39584fc3c6ce6e26074edd99d68d47982f87d8bbfad41",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "ba45ffc8-votacao_secao_2012_MG.zip",
+          "bytes": 34737902,
+          "sha256": "6720b716c0dae1cce5d39584fc3c6ce6e26074edd99d68d47982f87d8bbfad41"
+        }
+      ]
+    },
+    {
+      "id": "a9b28928-818b-4e4e-8957-006a6692171f",
+      "name": "PA - Votação por seção eleitoral - 2012",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2012_PA.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2012_PA.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 12885452,
+      "lastModified": "Fri, 03 Sep 2021 20:14:09 GMT",
+      "etag": "\"c49dcc-5cb1cf127e640\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:56:13.490031+00:00",
+      "sha256": "bb57e55963bb5228dabc21785185e2bb2461698b6a02a4caf2e20832adb39ded",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "a9b28928-votacao_secao_2012_PA.zip",
+          "bytes": 12885452,
+          "sha256": "bb57e55963bb5228dabc21785185e2bb2461698b6a02a4caf2e20832adb39ded"
+        }
+      ]
+    },
+    {
+      "id": "7282513b-8ebc-4341-a618-e4f9efc82888",
+      "name": "PB - Votação por seção eleitoral - 2012",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2012_PB.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2012_PB.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 5679675,
+      "lastModified": "Fri, 03 Sep 2021 20:14:09 GMT",
+      "etag": "\"56aa3b-5cb1cf127e640\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:56:13.758368+00:00",
+      "sha256": "c61cd9de78372445eceb5864943bb0e7729c340d449af45e2ca25dbc897ccd23",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "7282513b-votacao_secao_2012_PB.zip",
+          "bytes": 5679675,
+          "sha256": "c61cd9de78372445eceb5864943bb0e7729c340d449af45e2ca25dbc897ccd23"
+        }
+      ]
+    },
+    {
+      "id": "9dfc0e6f-f074-4601-87cc-b6c3d165827c",
+      "name": "PR - Votação por seção eleitoral - 2012",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2012_PR.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2012_PR.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 18394709,
+      "lastModified": "Fri, 03 Sep 2021 20:14:10 GMT",
+      "etag": "\"118ae55-5cb1cf1372880\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:56:14.189396+00:00",
+      "sha256": "c678df7ad2874112b74ab8685ff34ef392202aaead69df8c211b0d5c160d2bb5",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "9dfc0e6f-votacao_secao_2012_PR.zip",
+          "bytes": 18394709,
+          "sha256": "c678df7ad2874112b74ab8685ff34ef392202aaead69df8c211b0d5c160d2bb5"
+        }
+      ]
+    },
+    {
+      "id": "3c1314d1-a66a-4d04-bdff-c4ffe37d33e3",
+      "name": "PE - Votação por seção eleitoral - 2012",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2012_PE.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2012_PE.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 13233300,
+      "lastModified": "Fri, 03 Sep 2021 20:14:09 GMT",
+      "etag": "\"c9ec94-5cb1cf127e640\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:56:14.578678+00:00",
+      "sha256": "c3ea61255f0087094ea2deb4f3a795246e7dd3c4d8fce115ceb8198754449c98",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "3c1314d1-votacao_secao_2012_PE.zip",
+          "bytes": 13233300,
+          "sha256": "c3ea61255f0087094ea2deb4f3a795246e7dd3c4d8fce115ceb8198754449c98"
+        }
+      ]
+    },
+    {
+      "id": "7c678344-255b-424e-93e1-27bdb6fc6efd",
+      "name": "PI - Votação por seção eleitoral - 2012",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2012_PI.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2012_PI.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 4128514,
+      "lastModified": "Fri, 03 Sep 2021 20:14:09 GMT",
+      "etag": "\"3eff02-5cb1cf127e640\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:56:14.829581+00:00",
+      "sha256": "c1ae68ce37397451ebf48333f89de3427da7675ec21f8f8cbbf9fa66a5cb9e85",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "7c678344-votacao_secao_2012_PI.zip",
+          "bytes": 4128514,
+          "sha256": "c1ae68ce37397451ebf48333f89de3427da7675ec21f8f8cbbf9fa66a5cb9e85"
+        }
+      ]
+    },
+    {
+      "id": "fd119a57-5b47-4b19-8e52-b542bad492af",
+      "name": "RJ - Votação por seção eleitoral - 2012",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2012_RJ.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2012_RJ.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 37119487,
+      "lastModified": "Fri, 03 Sep 2021 20:14:10 GMT",
+      "etag": "\"23665ff-5cb1cf1372880\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:56:15.780941+00:00",
+      "sha256": "8fe3517977a331d2337ceb077be65af8331483165f23a1334c1ab9fc3856082a",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "fd119a57-votacao_secao_2012_RJ.zip",
+          "bytes": 37119487,
+          "sha256": "8fe3517977a331d2337ceb077be65af8331483165f23a1334c1ab9fc3856082a"
+        }
+      ]
+    },
+    {
+      "id": "ad831f02-2037-4b1e-a97d-61a53e617ce6",
+      "name": "RN - Votação por seção eleitoral - 2012",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2012_RN.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2012_RN.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 3870890,
+      "lastModified": "Fri, 03 Sep 2021 20:14:10 GMT",
+      "etag": "\"3b10aa-5cb1cf1372880\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:56:16.085763+00:00",
+      "sha256": "8b0c2331a112f92425910a542b819537c0d3a0eb8f569c3b3980e9979a93c857",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "ad831f02-votacao_secao_2012_RN.zip",
+          "bytes": 3870890,
+          "sha256": "8b0c2331a112f92425910a542b819537c0d3a0eb8f569c3b3980e9979a93c857"
+        }
+      ]
+    },
+    {
+      "id": "21a5cf55-7faf-41d2-a9e9-2f769b74d05e",
+      "name": "RS - Votação por seção eleitoral - 2012",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2012_RS.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2012_RS.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 17396154,
+      "lastModified": "Fri, 03 Sep 2021 20:14:11 GMT",
+      "etag": "\"10971ba-5cb1cf1466ac0\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:56:16.696232+00:00",
+      "sha256": "5e33e7e983aec9b61ea5eacf9fa98bb194d3dc490522d3650555d7f1993e69ea",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "21a5cf55-votacao_secao_2012_RS.zip",
+          "bytes": 17396154,
+          "sha256": "5e33e7e983aec9b61ea5eacf9fa98bb194d3dc490522d3650555d7f1993e69ea"
+        }
+      ]
+    },
+    {
+      "id": "bf033bb5-8042-436a-9e6e-8afb1c19eb28",
+      "name": "RO - Votação por seção eleitoral - 2012",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2012_RO.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2012_RO.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 2982671,
+      "lastModified": "Fri, 03 Sep 2021 20:14:10 GMT",
+      "etag": "\"2d830f-5cb1cf1372880\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:56:16.976384+00:00",
+      "sha256": "4446ffcf8c64060691593164d958a73b7e7205e794572bbe2a2430f2b27b8975",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "bf033bb5-votacao_secao_2012_RO.zip",
+          "bytes": 2982671,
+          "sha256": "4446ffcf8c64060691593164d958a73b7e7205e794572bbe2a2430f2b27b8975"
+        }
+      ]
+    },
+    {
+      "id": "fee3d692-4391-497e-b920-ebe6df990796",
+      "name": "RR - Votação por seção eleitoral - 2012",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2012_RR.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2012_RR.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 1153506,
+      "lastModified": "Fri, 03 Sep 2021 20:14:10 GMT",
+      "etag": "\"1199e2-5cb1cf1372880\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:56:17.079635+00:00",
+      "sha256": "6acd1d23ea092fa3e3f3a2205a5f8a2f6a90d53cec42e1aea02cf8aa68a7f177",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "fee3d692-votacao_secao_2012_RR.zip",
+          "bytes": 1153506,
+          "sha256": "6acd1d23ea092fa3e3f3a2205a5f8a2f6a90d53cec42e1aea02cf8aa68a7f177"
+        }
+      ]
+    },
+    {
+      "id": "9e74948e-602b-4f88-90ad-84e01dcb82eb",
+      "name": "SC - Votação por seção eleitoral - 2012",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2012_SC.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2012_SC.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 8298900,
+      "lastModified": "Fri, 03 Sep 2021 20:14:11 GMT",
+      "etag": "\"7ea194-5cb1cf1466ac0\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:56:17.400185+00:00",
+      "sha256": "46c891ffb7c225c5fc0be3ed15d38dd2741e4c5af683beca62aae7c20cd92f03",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "9e74948e-votacao_secao_2012_SC.zip",
+          "bytes": 8298900,
+          "sha256": "46c891ffb7c225c5fc0be3ed15d38dd2741e4c5af683beca62aae7c20cd92f03"
+        }
+      ]
+    },
+    {
+      "id": "870463c6-4a81-47e6-84a1-0f3b8d728c5d",
+      "name": "SP - Votação por seção eleitoral - 2012",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2012_SP.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2012_SP.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 85405272,
+      "lastModified": "Fri, 03 Sep 2021 20:14:13 GMT",
+      "etag": "\"5172e58-5cb1cf164ef40\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:56:19.312540+00:00",
+      "sha256": "68e31939f28553a91aba4b716b0e9e4826495cbc56c38cd0ad6c0d6b5e871a52",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "870463c6-votacao_secao_2012_SP.zip",
+          "bytes": 85405272,
+          "sha256": "68e31939f28553a91aba4b716b0e9e4826495cbc56c38cd0ad6c0d6b5e871a52"
+        }
+      ]
+    },
+    {
+      "id": "9572dac5-3320-4f24-a93a-d5c54ad6f948",
+      "name": "SE - Votação por seção eleitoral - 2012",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2012_SE.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2012_SE.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 2937581,
+      "lastModified": "Fri, 03 Sep 2021 20:14:11 GMT",
+      "etag": "\"2cd2ed-5cb1cf1466ac0\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:56:19.519730+00:00",
+      "sha256": "5e9a8236479f8a122985e78cc036e102504d892cd0d9def44128d867aa2524a7",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "9572dac5-votacao_secao_2012_SE.zip",
+          "bytes": 2937581,
+          "sha256": "5e9a8236479f8a122985e78cc036e102504d892cd0d9def44128d867aa2524a7"
+        }
+      ]
+    },
+    {
+      "id": "be14a409-a662-476d-8ebf-a7d0a0ee9a89",
+      "name": "TO - Votação por seção eleitoral - 2012",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2012_TO.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2012_TO.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 2079486,
+      "lastModified": "Fri, 03 Sep 2021 20:14:11 GMT",
+      "etag": "\"1fbafe-5cb1cf1466ac0\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:56:19.632304+00:00",
+      "sha256": "ff92f1ee2f5a8ca7e315e6f76637b9dd43ebe7de9cc3588b62a164ee8bfc9b63",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "be14a409-votacao_secao_2012_TO.zip",
+          "bytes": 2079486,
+          "sha256": "ff92f1ee2f5a8ca7e315e6f76637b9dd43ebe7de9cc3588b62a164ee8bfc9b63"
+        }
+      ]
+    }
+  ]
+}
