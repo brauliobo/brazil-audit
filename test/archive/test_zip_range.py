@@ -52,6 +52,20 @@ class RemoteArchiveTest(unittest.TestCase):
             self.assertEqual(z.read('urn-rdv.dat'), b'actual anonymous RDV')
             self.assertLess(file.transferred, len(body) // 10)
 
+    def test_transport_timeout_reconnects_the_same_versioned_range(self):
+        attempts = []
+        def request(req, timeout):
+            if req.get_method() == 'HEAD':
+                return Response(b'', 200, {'Content-Length': '100', 'ETag': '"version"'})
+            attempts.append((req.get_header('Range'), req.get_header('If-match')))
+            if len(attempts) == 1:
+                raise TimeoutError('Source TLS read timed out')
+            return Response(b'x' * 100, 206, {'Content-Range': 'bytes 0-99/100', 'ETag': '"version"'})
+        with patch('urllib.request.urlopen', request), RemoteZipFile('https://cdn.tse.jus.br/a.zip', connection=Connection(request)) as file:
+            self.assertEqual(file.read(1), b'x')
+            self.assertEqual(file.requests, 2)
+        self.assertEqual(attempts[0], attempts[1])
+
     def test_a_server_ignoring_ranges_is_an_error_not_a_full_download_fallback(self):
         def request(req, timeout):
             if req.get_method() == 'HEAD':

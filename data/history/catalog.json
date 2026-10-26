@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-26T22:34:55.549996+00:00",
+  "generatedAt": "2026-10-26T22:38:22.522561+00:00",
   "source": {
     "url": "https://dadosabertos.tse.jus.br/api/3/action/package_search",
     "license": "cc-by"
@@ -85226,7 +85226,7 @@
       "normalized": false,
       "inScope": true,
       "releaseUrl": "https://github.com/brauliobo/brazil-audit/releases/tag/data-rdv-resultados-2020-suplementares",
-      "status": "partial",
+      "status": "published",
       "resources": [
         {
           "id": "da1eae04-e0e7-4984-bbf5-0c7beb9d65f4",
@@ -85234,63 +85234,65 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2020/arqurnatot/bu_imgbu_logjez_rdv_vscmr_ele_suplementares_2020.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2020/arqurnatot/bu_imgbu_logjez_rdv_vscmr_ele_suplementares_2020.zip",
           "format": "CSV",
-          "status": "partial",
+          "status": "published",
           "bytes": 257015077,
           "lastModified": "Fri, 06 Dec 2024 14:54:42 GMT",
           "etag": "\"f51bd25-6289b31e92427\"",
           "inScope": true,
           "sourceBytes": 257015077,
-          "retrievedAt": "2026-10-26T22:16:16.981837+00:00",
-          "membersAvailable": 17,
-          "membersExtracted": 17,
+          "retrievedAt": "2026-10-26T22:34:43.208622+00:00",
+          "selectionVersion": 2,
+          "membersAvailable": 1609,
+          "membersExtracted": 1609,
           "membersReused": 0,
-          "networkBytes": 7784317,
-          "requests": 37,
-          "elapsedSeconds": 2.37,
+          "networkBytes": 14944125,
+          "requests": 1785,
+          "elapsedSeconds": 22.11,
           "assets": [
             {
               "name": "da1eae04-rdv-00.zip",
-              "bytes": 1407,
-              "sha256": "9a0f3d3f2944802d6fb2fedf59d89c0e16b02dfc5cfcce9644ab3479ff0ff4b3"
+              "bytes": 93196,
+              "sha256": "ea0cc97ccfab4d6b7c57f831975a57a1d3c5f5c795eb7dba7050d2e1bb30f1e1"
             },
             {
               "name": "da1eae04-rdv-01.zip",
-              "bytes": 970,
-              "sha256": "955db4bd394a5450a44114c0bdd1898a5fa139bd7c12a8902fdab57114ad90dc"
+              "bytes": 92801,
+              "sha256": "e97db456e44391c434081df8a1a70a3918f2fdc1b4837d137bbf7b27b58ffa77"
             },
             {
               "name": "da1eae04-rdv-02.zip",
-              "bytes": 939,
-              "sha256": "d79de731563c172b2ccbfbc064f86f99cc6a9601db788075a2660e82e71912d8"
+              "bytes": 92636,
+              "sha256": "b1e6300a7a7860e197d2fdbd087e6b50253e279e59a321f6f043daa6d88350a2"
             },
             {
               "name": "da1eae04-rdv-03.zip",
-              "bytes": 973,
-              "sha256": "6c6a9a62c57cd024619a1c08940a73d923508485d770bab296fabb18c5cd6923"
+              "bytes": 92893,
+              "sha256": "33f68e3adc26542c361f706f529e49993c8ccff07e6e728a6f18906cabeabe75"
             },
             {
               "name": "da1eae04-rdv-04.zip",
-              "bytes": 974,
-              "sha256": "c8b4fa2e65cda6e5a2e99584b2e65a21d56fb59f05af48a3bebecbbab1ecce61"
+              "bytes": 92938,
+              "sha256": "5f34a0c4578b3798bb517e7aed36bd0a8f012ff729cc93ee258259b9f175afe1"
             },
             {
               "name": "da1eae04-rdv-05.zip",
-              "bytes": 934,
-              "sha256": "b5c7c24fe1db5c7a2d8726438d220f70885efa878e4dd0aac84967339c8b84ca"
+              "bytes": 92666,
+              "sha256": "a0c63b863dbb5a09d0aad4ab031c1d3da7c1d1cc3807b902205a19abdf2bc273"
             },
             {
               "name": "da1eae04-rdv-06.zip",
-              "bytes": 961,
-              "sha256": "f022d703d17871e8eaf9403555f8a5d7561515bb64dcbcecd8d3a8322a7d1c73"
+              "bytes": 92893,
+              "sha256": "aa01657199c13daa806ef974c83b17adcab4f52a259c58689dffac6534c77774"
             },
             {
               "name": "da1eae04-rdv-07.zip",
-              "bytes": 957,
-              "sha256": "e37766e023e154d64aac24487a2ee892ba46001305116b0ec46ed49b4cfdc528"
+              "bytes": 93067,
+              "sha256": "0448b4df02c93ba530fc17210b52b40c5e587b12ebd8132fc6cddc4de47033c4"
             }
           ]
         }
-      ]
+      ],
+      "publicationVerifiedAt": "2026-10-26T22:37:29.656218+00:00"
     }
   ],
   "knownSourceBytes": 2633827505950,

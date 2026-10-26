@@ -44,16 +44,23 @@ class RemoteZipFile(io.RawIOBase):
         return position
 
     def fetch(self, start, end):
-        self.connection.request('GET', self.path, headers={'Range': f'bytes={start}-{end}', 'If-Match': self.etag})
-        with self.connection.getresponse() as response:
-            expected = f'bytes {start}-{end}/{self.size}'
-            if response.status != 206 or response.headers.get('Content-Range') != expected or response.headers.get('ETag') != self.etag:
-                raise ValueError('Source does not supply stable, exact HTTP byte ranges')
-            data = response.read()
+        for attempt in range(3):
+            self.requests += 1
+            try:
+                self.connection.request('GET', self.path, headers={'Range': f'bytes={start}-{end}', 'If-Match': self.etag})
+                with self.connection.getresponse() as response:
+                    expected = f'bytes {start}-{end}/{self.size}'
+                    if response.status != 206 or response.headers.get('Content-Range') != expected or response.headers.get('ETag') != self.etag:
+                        raise ValueError('Source does not supply stable, exact HTTP byte ranges')
+                    data = response.read()
+                break
+            except (TimeoutError, ConnectionError, http.client.RemoteDisconnected, http.client.IncompleteRead):
+                self.connection.close()
+                if attempt == 2:
+                    raise
         if len(data) != end - start + 1:
             raise ValueError('Truncated HTTP byte range')
         self.transferred += len(data)
-        self.requests += 1
         return data
 
     def block(self, index):
