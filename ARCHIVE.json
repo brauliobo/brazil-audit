@@ -1,0 +1,92 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-10-26T21:49:34.937434+00:00",
+  "status": "published",
+  "dataset": {
+    "id": "resultados-1990",
+    "title": "Resultados - 1990",
+    "groups": [
+      "resultados"
+    ],
+    "family": "resultados",
+    "years": [
+      1990
+    ],
+    "license": "cc-by",
+    "source": "https://dadosabertos.tse.jus.br/dataset/resultados-1990",
+    "branch": "archive/resultados-1990",
+    "tag": "data-resultados-1990",
+    "releaseUrl": "https://github.com/brauliobo/brazil-audit/releases/tag/data-resultados-1990",
+    "normalized": false,
+    "status": "catalogued",
+    "inScope": true
+  },
+  "resources": [
+    {
+      "id": "7a6adb19-aba0-473d-abc3-a1d45b5c4ce6",
+      "name": "Detalhe de apuração por UF",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/detalhe_votacao_uf/detalhe_votacao_uf_1990.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/detalhe_votacao_uf/detalhe_votacao_uf_1990.zip",
+      "format": "TXT",
+      "status": "prepared",
+      "bytes": 289865,
+      "lastModified": "Thu, 16 Apr 2015 19:39:51 GMT",
+      "etag": "\"46c49-513dca08ecfc0\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:49:34.414589+00:00",
+      "sha256": "10d9242fd9326f1ad24b1b92a79de1c39db91c9a23e634a1ef6d0edad567fa8a",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "7a6adb19-detalhe_votacao_uf_1990.zip",
+          "bytes": 289865,
+          "sha256": "10d9242fd9326f1ad24b1b92a79de1c39db91c9a23e634a1ef6d0edad567fa8a"
+        }
+      ]
+    },
+    {
+      "id": "e9d370d6-1eb5-4e52-bb6c-dde91d6cae7c",
+      "name": "Votação nominal por UF",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_candidato_uf/votacao_candidato_uf_1990.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_candidato_uf/votacao_candidato_uf_1990.zip",
+      "format": "TXT",
+      "status": "prepared",
+      "bytes": 636256,
+      "lastModified": "Mon, 26 May 2014 16:14:43 GMT",
+      "etag": "\"9b560-4fa4fe084c2c0\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:49:34.673100+00:00",
+      "sha256": "57012c6e9d216a84895c6e3d53a5d705151eac9b7ebe8c90f5c3cfc87520f57e",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "e9d370d6-votacao_candidato_uf_1990.zip",
+          "bytes": 636256,
+          "sha256": "57012c6e9d216a84895c6e3d53a5d705151eac9b7ebe8c90f5c3cfc87520f57e"
+        }
+      ]
+    },
+    {
+      "id": "01202c15-3073-4950-a7d2-11437b8259bd",
+      "name": "Votação partido por UF",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_partido_uf/votacao_partido_uf_1990.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_partido_uf/votacao_partido_uf_1990.zip",
+      "format": "TXT",
+      "status": "prepared",
+      "bytes": 305982,
+      "lastModified": "Mon, 26 May 2014 16:15:13 GMT",
+      "etag": "\"4ab3e-4fa4fe24e8640\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:49:34.935595+00:00",
+      "sha256": "090abe2f18a5d950e1ae94eba4814abe9eeddfdd4e6d378500e041e42419e2b9",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "01202c15-votacao_partido_uf_1990.zip",
+          "bytes": 305982,
+          "sha256": "090abe2f18a5d950e1ae94eba4814abe9eeddfdd4e6d378500e041e42419e2b9"
+        }
+      ]
+    }
+  ]
+}
