@@ -1,0 +1,48 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-10-26T21:52:41.728966+00:00",
+  "status": "published",
+  "dataset": {
+    "id": "eleitorado-2006",
+    "title": "Eleitorado - 2006",
+    "groups": [
+      "eleitorado"
+    ],
+    "family": "eleitorado",
+    "years": [
+      2006
+    ],
+    "license": "cc-by",
+    "source": "https://dadosabertos.tse.jus.br/dataset/eleitorado-2006",
+    "branch": "archive/eleitorado-2006",
+    "tag": "data-eleitorado-2006",
+    "releaseUrl": "https://github.com/brauliobo/brazil-audit/releases/tag/data-eleitorado-2006",
+    "normalized": false,
+    "status": "catalogued",
+    "inScope": true
+  },
+  "resources": [
+    {
+      "id": "d8470173-01ba-4f3d-9b68-c40ab8cd1dd2",
+      "name": "Eleitorado - 2006",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitorado/perfil_eleitorado_2006.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitorado/perfil_eleitorado_2006.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 2268213,
+      "lastModified": "Mon, 06 Sep 2021 19:13:45 GMT",
+      "etag": "\"229c35-5cb5872ac2c40\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:52:41.725748+00:00",
+      "sha256": "7e08ce10070b073594a14550dfecd79b8108c887234cb17afb52f4193fa58e91",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "d8470173-perfil_eleitorado_2006.zip",
+          "bytes": 2268213,
+          "sha256": "7e08ce10070b073594a14550dfecd79b8108c887234cb17afb52f4193fa58e91"
+        }
+      ]
+    }
+  ]
+}
