@@ -13,7 +13,7 @@ import zipfile
 from tse_archive import read_json, write_json, now, sha256
 
 COLUMNS = ['election_id', 'year', 'turn', 'description', 'date', 'election_type', 'scope', 'state', 'city_code', 'zone', 'office', 'office_key', 'office_name',
-           'eligible', 'present', 'absent', 'blank', 'null', 'valid', 'sections', 'not_installed', 'transit', 'source_url', 'source_id']
+           'eligible', 'installed', 'present', 'absent', 'blank', 'null', 'valid', 'sections', 'not_installed', 'transit', 'source_url', 'source_id']
 LEGACY = ['DATA_GERACAO', 'HORA_GERACAO', 'ANO_ELEICAO', 'NUM_TURNO', 'DESC_ELEICAO', 'SIGLA_UF', 'SIGLA_UE', 'COD_CARGO',
           'DESC_CARGO', 'QTD_APTOS', 'QTD_COMPARECIMENTO', 'QTD_ABSTENCOES', 'QTD_VOTOS_LIQUIDOS', 'QTD_VOTOS_BRANCOS',
           'QTD_VOTOS_NULOS', 'QTD_VOTOS_LEGENDA', 'QTD_VOTOS_ANULADOS_APU_SEP', 'QTD_SECOES_TOT', 'QTD_SECOES_ANULADAS',
@@ -61,16 +61,18 @@ def normalize(raw, resource):
                   sections=number(get('QT_TOTAL_SECOES', 'QTD_SECOES_TOT')),
                   not_installed=number(get('QT_ELEITORES_SECOES_NAO_INSTALADAS')),
                   transit=get('ST_VOTO_EM_TRANSITO') or '', source_url=resource['url'], source_id=resource['id'])
+    eligible, present, absent, not_installed = [result[k] for k in ['eligible', 'present', 'absent', 'not_installed']]
+    result['installed'] = eligible if None not in [eligible, present, absent] and eligible == present + absent else eligible - not_installed if None not in [eligible, present, absent, not_installed] and eligible == present + absent + not_installed else None
     return result
 
 
 def source_issue(row):
-    if None not in [row['eligible'], row['present'], row['absent']] and row['present'] + row['absent'] > row['eligible']:
-        return 'Reported attendance plus abstention exceeds the reported electorate.'
+    if None not in [row['eligible'], row['present'], row['absent']] and row['installed'] is None:
+        return 'Reported turnout does not reconcile with electorate and known uninstalled sections.'
     return None
 
 
-METRICS = ['eligible', 'present', 'absent', 'blank', 'null', 'valid', 'sections', 'not_installed']
+METRICS = ['eligible', 'installed', 'present', 'absent', 'blank', 'null', 'valid', 'sections', 'not_installed']
 
 
 def reconcile(previous, row):
@@ -111,6 +113,7 @@ def build(root, out):
     missing = []
     ambiguous = []
     inconsistent = []
+    year_conflicts = {}
     for dataset in catalog['datasets']:
         sources = [r for r in dataset['resources'] if r.get('inScope') and any(k in r['url'] for k in ['/detalhe_votacao_uf/', '/detalhe_votacao_munzona/'])]
         if not sources:
@@ -123,10 +126,13 @@ def build(root, out):
                 missing.append(resource['url'])
                 continue
             for row in records(path, resource):
+                date_year = re.search(r'(\d{4})$', row['date'])
+                if date_year and int(date_year.group(1)) != row['year']:
+                    year_conflicts[row['election_id']] = dict(electionId=row['election_id'], declaredYear=row['year'], date=row['date'], source=resource['url'])
                 issue = source_issue(row)
                 if issue:
-                    inconsistent.append(dict(reason=issue, record=row.copy(), unavailableMetrics=['eligible', 'present', 'absent']))
-                    row = {**row, 'eligible': None, 'present': None, 'absent': None}
+                    inconsistent.append(dict(reason=issue, record=row.copy(), unavailableMetrics=['installed', 'present', 'absent']))
+                    row = {**row, 'installed': None, 'present': None, 'absent': None}
                 identity = tuple(row[k] for k in ['election_id', 'scope', 'state', 'city_code', 'zone', 'office', 'transit'])
                 if identity in collection:
                     merged, conflicts = reconcile(collection[identity], row)
@@ -137,12 +143,15 @@ def build(root, out):
                     collection[identity] = row
         for row in collection.values():
             election = elections.setdefault(row['election_id'], dict(id=row['election_id'], year=row['year'], turn=row['turn'],
-                                         description=row['description'], rows=[], offices={}, sources=set()))
+                                         description=row['description'], rows=[], offices={}, sources=set(), sourceDatasetYears=set()))
             election['rows'].append(row)
             election['offices'][row['office_key']] = dict(id=row['office'], key=row['office_key'], name=row['office_name'])
             election['sources'].add(row['source_url'])
+            package_year = re.search(r'(?:^|-)((?:19|20)\d{2})(?:-|$)', dataset['id'])
+            if package_year:
+                election['sourceDatasetYears'].add(int(package_year.group(1)))
     index = dict(version=1, generatedAt=now(), columns=COLUMNS, missingSources=missing, ambiguousUnits=len(ambiguous), inconsistentUnits=len(inconsistent), diagnostics='history/diagnostics.json', elections=[])
-    write_json(out / 'diagnostics.json', dict(generatedAt=now(), ambiguousUnits=ambiguous, inconsistentUnits=inconsistent))
+    write_json(out / 'diagnostics.json', dict(generatedAt=now(), ambiguousUnits=ambiguous, inconsistentUnits=inconsistent, electionYearConflicts=list(year_conflicts.values())))
     for e in sorted(elections.values(), key=lambda e: (e['year'], e['turn'] or 0, e['id'])):
         slug = re.sub(r'[^A-Za-z0-9._-]+', '-', e['id'])
         path = out / f'indicators-{slug}.csv.gz'
@@ -154,7 +163,7 @@ def build(root, out):
         encoded = body.getvalue().encode('utf8')
         with path.open('wb') as raw, gzip.GzipFile(filename='', mode='wb', fileobj=raw, mtime=0) as zipped:
             zipped.write(encoded)
-        index['elections'].append(dict(id=e['id'], year=e['year'], turn=e['turn'], description=e['description'],
+        index['elections'].append(dict(id=e['id'], year=e['year'], turn=e['turn'], description=e['description'], dates=sorted({r['date'] for r in e['rows'] if r['date']}), electionTypes=sorted({r['election_type'] for r in e['rows'] if r['election_type']}), sourceDatasetYears=sorted(e['sourceDatasetYears']), yearDateConflict=e['id'] in year_conflicts,
             parts=[dict(url=f'history/{path.name}', rows=len(e['rows']), bytes=path.stat().st_size, rawBytes=len(encoded), sha256=sha256(path),
                         scopes=sorted({r['scope'] for r in e['rows']}))], offices=list(e['offices'].values()), sources=sorted(e['sources'])))
     write_json(out / 'indicators.json', index)

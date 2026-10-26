@@ -44,6 +44,20 @@ class HistoricalSummariesTest(unittest.TestCase):
         self.assertIsNone(merged['blank'])
         self.assertIsNone(merged['null'])
 
+    def test_installed_electorate_requires_the_source_participation_balance(self):
+        raw = {'ANO_ELEICAO': '2022', 'QT_APTOS': '11077', 'QT_COMPARECIMENTO': '2336', 'QT_ABSTENCOES': '172',
+               'QT_ELEITORES_SECOES_NAO_INSTALADAS': '0'}
+        source = {'id': 'source', 'url': 'https://cdn.tse.jus.br/source.zip'}
+        row = history.normalize(raw, source)
+        self.assertEqual(row['eligible'], 11077)
+        self.assertIsNone(row['installed'])
+        self.assertIsNotNone(history.source_issue(row))
+        raw['QT_ELEITORES_SECOES_NAO_INSTALADAS'] = '8569'
+        row = history.normalize(raw, source)
+        self.assertEqual(row['installed'], 2508)
+        self.assertEqual(row['eligible'], 11077)
+        self.assertIsNone(history.source_issue(row))
+
     def test_headerless_official_legacy_archive_keeps_its_first_record(self):
         with tempfile.TemporaryDirectory() as root:
             path = pathlib.Path(root) / 'source.zip'

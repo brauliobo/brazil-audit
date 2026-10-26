@@ -4,6 +4,7 @@ import argparse
 import concurrent.futures
 import csv
 import datetime
+import fcntl
 import hashlib
 import io
 import json
@@ -124,6 +125,15 @@ def probe(root, workers):
 
 
 def download(root, resource):
+    key = hashlib.sha256(resource['url'].encode()).hexdigest()
+    directory = root / 'downloads' / key
+    directory.mkdir(parents=True, exist_ok=True)
+    with (directory / 'download.lock').open('w') as lock:
+        fcntl.flock(lock, fcntl.LOCK_EX)
+        return _download(root, resource)
+
+
+def _download(root, resource):
     url = resource['url']
     key = hashlib.sha256(url.encode()).hexdigest()
     directory = root / 'downloads' / key
@@ -240,6 +250,12 @@ def publish(root, dataset):
         assets = [dict(name=p.name, bytes=p.stat().st_size, sha256=sha256(p)) for p in published]
         paths.extend(published)
         entries.append({**resource, **record, 'status': 'prepared', 'removedPersonalColumns': removed, 'assets': assets})
+    return publish_prepared(root, dataset, entries, paths)
+
+
+def publish_prepared(root, dataset, entries, paths):
+    directory = root / 'releases' / dataset['id']
+    directory.mkdir(parents=True, exist_ok=True)
     status = 'published' if all(e['status'] in ['prepared', 'excluded'] for e in entries) else 'partial'
     manifest = dict(schemaVersion=1, generatedAt=now(), status=status, dataset={k: v for k, v in dataset.items() if k != 'resources'}, resources=entries)
     write_json(directory / 'ARCHIVE.json', manifest)
@@ -266,8 +282,20 @@ def publish(root, dataset):
     exists = subprocess.run(['gh', 'release', 'view', dataset['tag'], '-R', REPO], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL).returncode == 0
     if not exists:
         subprocess.run(['gh', 'release', 'create', dataset['tag'], '-R', REPO, '--target', branch, '--title', dataset['title'], '--notes-file', str(directory / 'README.md')], check=True)
+    current = json.loads(command('gh', 'api', f'repos/{REPO}/releases/tags/{dataset["tag"]}', '--jq', '.assets'))
+    known = {a['name']: (a['size'], a.get('digest')) for a in current}
     for path in paths + [directory / name for name in files]:
-        subprocess.run(['gh', 'release', 'upload', dataset['tag'], str(path), '-R', REPO, '--clobber'], check=True)
+        if known.get(path.name) == (path.stat().st_size, f'sha256:{sha256(path)}'):
+            continue
+        # An established GitHub upload may stall indefinitely after a broken TCP path.
+        # Reconnect bounded attempts; no successful-state substitute is written on failure.
+        for attempt in range(3):
+            try:
+                subprocess.run(['gh', 'release', 'upload', dataset['tag'], str(path), '-R', REPO, '--clobber'], check=True, timeout=300)
+                break
+            except (subprocess.TimeoutExpired, subprocess.CalledProcessError):
+                if attempt == 2:
+                    raise
     assets = json.loads(command('gh', 'api', f'repos/{REPO}/releases/tags/{dataset["tag"]}', '--jq', '.assets'))
     expected = {p.name: (p.stat().st_size, sha256(p)) for p in paths + [directory / name for name in files]}
     remote_assets = {a['name']: (a['size'], a.get('digest')) for a in assets}
