@@ -10,7 +10,8 @@ const stems = readdirSync(dir).filter((f) => f.startsWith(`${key}-logpack-`) && 
 const assets = []
 for (const stem of stems) {
   const { records } = parseIndex(await inflate(readFileSync(`${dir}/${stem}.idx`)))
-  const keys = records.map((r) => sectionKey(stem.split('-')[2], r.city, r.zone, r.section)).sort()
+  const state = stem.slice(`${key}-logpack-`.length).split('-')[0]
+  const keys  = records.map((r) => sectionKey(state, r.city, r.zone, r.section)).sort()
   assets.push([stem, keys[0], keys.at(-1), records.length, statSync(`${dir}/${stem}.pack`).size, statSync(`${dir}/${stem}.idx`).size])
 }
 mkdirSync('data/logs', { recursive: true })
