@@ -1,0 +1,92 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-10-26T21:49:43.089810+00:00",
+  "status": "published",
+  "dataset": {
+    "id": "resultados-1994",
+    "title": "Resultados - 1994",
+    "groups": [
+      "resultados"
+    ],
+    "family": "resultados",
+    "years": [
+      1994
+    ],
+    "license": "cc-by",
+    "source": "https://dadosabertos.tse.jus.br/dataset/resultados-1994",
+    "branch": "archive/resultados-1994",
+    "tag": "data-resultados-1994",
+    "releaseUrl": "https://github.com/brauliobo/brazil-audit/releases/tag/data-resultados-1994",
+    "normalized": false,
+    "status": "catalogued",
+    "inScope": true
+  },
+  "resources": [
+    {
+      "id": "611566ef-627a-447b-80af-367c4adb3bfd",
+      "name": "Votação nominal por município e zona",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_candidato_munzona/votacao_candidato_munzona_1994.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_candidato_munzona/votacao_candidato_munzona_1994.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 42301735,
+      "lastModified": "Fri, 13 Feb 2026 17:00:14 GMT",
+      "etag": "\"2857927-64ab789f0e380\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:49:42.073790+00:00",
+      "sha256": "67e6525a84aedbd6a27b6bc525642d7d904011f6f02caf5ac56e60a4cc384913",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "611566ef-votacao_candidato_munzona_1994.zip",
+          "bytes": 42301735,
+          "sha256": "67e6525a84aedbd6a27b6bc525642d7d904011f6f02caf5ac56e60a4cc384913"
+        }
+      ]
+    },
+    {
+      "id": "c76ba7eb-71e9-42d6-b3de-388030eb0d94",
+      "name": "Votação em partido por município e zona",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_partido_munzona/votacao_partido_munzona_1994.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_partido_munzona/votacao_partido_munzona_1994.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 9409623,
+      "lastModified": "Fri, 13 Feb 2026 17:00:14 GMT",
+      "etag": "\"8f9457-64ab789f0e380\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:49:42.709761+00:00",
+      "sha256": "101f49e981d7340bbf50cf753542ddc956c2d31d89a4999903ca0d2286098c11",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "c76ba7eb-votacao_partido_munzona_1994.zip",
+          "bytes": 9409623,
+          "sha256": "101f49e981d7340bbf50cf753542ddc956c2d31d89a4999903ca0d2286098c11"
+        }
+      ]
+    },
+    {
+      "id": "4934661e-a0ac-477c-b549-37f6420f7dc4",
+      "name": "Detalhe da apuração por município e zona",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/detalhe_votacao_munzona/detalhe_votacao_munzona_1994.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/detalhe_votacao_munzona/detalhe_votacao_munzona_1994.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 1594934,
+      "lastModified": "Fri, 13 Feb 2026 17:00:14 GMT",
+      "etag": "\"185636-64ab789f0e380\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:49:43.086964+00:00",
+      "sha256": "a540bebfe13035d59a4b7e846f0fa43a02eceb7c735ba28006b8c234ead2a5ab",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "4934661e-detalhe_votacao_munzona_1994.zip",
+          "bytes": 1594934,
+          "sha256": "a540bebfe13035d59a4b7e846f0fa43a02eceb7c735ba28006b8c234ead2a5ab"
+        }
+      ]
+    }
+  ]
+}
