@@ -23,8 +23,14 @@ def finalize(root, out):
         dataset = manifest['dataset']
         verification = read_json(root / 'releases' / dataset['id'] / 'VERIFIED.json')
         if dataset['id'] not in existing:
-            catalog['datasets'].append({**dataset, 'status': manifest['status'], 'publicationVerifiedAt': verification['verifiedAt'],
-                                        'normalized': False, 'inScope': True, 'resources': [{**r, 'status': 'published' if r['status'] == 'prepared' else r['status']} for r in manifest['resources']]})
+            complete = all(r.get('selectionVersion') == 2 and r['membersAvailable'] == r['membersExtracted'] + r['membersReused'] for r in manifest['resources'])
+            status = manifest['status'] if complete else 'partial'
+            clean = {k: v for k, v in dataset.items() if k not in ['publicationVerifiedAt', 'releaseUrl', 'status']}
+            clean.update(releaseUrl=f'https://github.com/brauliobo/brazil-audit/releases/tag/{dataset["tag"]}', status=status,
+                         normalized=False, inScope=True, family='rdv', resources=[{**r, 'inScope': True, 'status': 'published' if complete else 'partial'} for r in manifest['resources']])
+            if complete:
+                clean['publicationVerifiedAt'] = verification['verifiedAt']
+            catalog['datasets'].append(clean)
     basic = [d for d in catalog['datasets'] if d.get('inScope') and not d['id'].startswith('rdv-')]
     bundles = [dict(id=d['id'], resources=sum('/arqurnatot/' in r['url'] and r['url'].endswith('.zip') for r in d['resources'])) for d in catalog['datasets'] if not d['id'].startswith('rdv-')]
     bundles = [d for d in bundles if d['resources']]
@@ -36,6 +42,9 @@ def finalize(root, out):
                  publishedCollections=sum(d['id'].startswith('rdv-') and d['status'] == 'published' for d in catalog['datasets']),
                  scope='Public RDV download sources documented by the official CKAN catalogue. Historical legal existence of RDV does not establish a public bulk download URL.',
                  historicalAccessReference='https://www.tse.jus.br/legislacao/compilada/res/2013/resolucao-no-23-397-de-17-de-dezembro-de-2013')))
+    catalog['datasetCount'] = len(catalog['datasets'])
+    catalog['resourceCount'] = sum(len(d['resources']) for d in catalog['datasets'])
+    catalog['inScopeDatasetCount'] = sum(bool(d.get('inScope')) for d in catalog['datasets'])
     catalog['generatedAt'] = now()
     write_json(out, catalog)
 

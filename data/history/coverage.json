@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-26T22:30:37.188826+00:00",
+  "generatedAt": "2026-10-26T22:34:55.549580+00:00",
   "basic": {
     "collections": 98,
     "published": 98,
@@ -77,7 +77,7 @@
         "resources": 1
       }
     ],
-    "publishedCollections": 1,
+    "publishedCollections": 0,
     "scope": "Public RDV download sources documented by the official CKAN catalogue. Historical legal existence of RDV does not establish a public bulk download URL.",
     "historicalAccessReference": "https://www.tse.jus.br/legislacao/compilada/res/2013/resolucao-no-23-397-de-17-de-dezembro-de-2013"
   }

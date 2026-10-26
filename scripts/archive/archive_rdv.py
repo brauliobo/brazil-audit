@@ -65,10 +65,6 @@ def extract_bundle(root, resource, reused):
     directory = root / 'rdv' / key
     directory.mkdir(parents=True, exist_ok=True)
     state = directory / 'VERIFIED.json'
-    if state.exists():
-        result = read_json(state)
-        if all((directory / a['name']).exists() and sha256(directory / a['name']) == a['sha256'] for a in result['assets']):
-            return result, [directory / a['name'] for a in result['assets']]
     started = time.monotonic()
     with RemoteZipFile(resource['url']) as remote, zipfile.ZipFile(remote) as source:
         version = remote.size, remote.etag
@@ -76,6 +72,15 @@ def extract_bundle(root, resource, reused):
         if not members:
             raise ValueError(f'No recognized RDV members in official bundle: {resource["url"]}')
         network, requests = remote.transferred, remote.requests
+    inventory = sorted((m.filename, m.file_size, m.CRC) for m in members)
+    if state.exists():
+        result = read_json(state)
+        recorded = sorted([(m['name'], m['bytes'], m['crc32']) for m in result['extracted']] +
+                          [(m['sourceMember'], m['bytes'], m['crc32']) for m in result['reused']])
+        if result['etag'] == version[1] and recorded == inventory and all((directory / a['name']).exists() and sha256(directory / a['name']) == a['sha256'] for a in result['assets']):
+            result['selectionVersion'] = 2
+            write_json(state, result)
+            return result, [directory / a['name'] for a in result['assets']]
     state_match = re.search(r'_([A-Z]{2})\.zip$', resource['url'])
     state_code = state_match.group(1) if state_match else None
     matched = []
@@ -112,12 +117,21 @@ def extract_bundle(root, resource, reused):
             network += transferred
             requests += count
     result = dict(url=resource['url'], etag=version[1], sourceBytes=version[0], retrievedAt=now(),
-                  status='prepared', membersAvailable=len(members), membersExtracted=len(extracted), membersReused=len(matched),
+                  status='prepared', selectionVersion=2, membersAvailable=len(members), membersExtracted=len(extracted), membersReused=len(matched),
                   reused=matched, extracted=extracted, networkBytes=network, requests=requests, elapsedSeconds=round(time.monotonic()-started, 2),
                   assets=[dict(name=p.name, bytes=p.stat().st_size, sha256=sha256(p)) for p in paths])
     write_json(state, result)
     print(json.dumps({k: result[k] for k in ['url', 'membersAvailable', 'membersExtracted', 'membersReused', 'networkBytes', 'elapsedSeconds']}), flush=True)
     return result, paths
+
+
+def derived_collection(dataset, resources):
+    identifier = f'rdv-{dataset["id"]}'
+    tag = f'data-{identifier}'
+    return dict(id=identifier, title=f'RDV · {dataset["title"]}', groups=dataset['groups'], family='rdv', years=dataset['years'],
+                license=dataset['license'], source=dataset['source'], branch=f'archive/{identifier}', tag=tag,
+                releaseUrl=f'https://github.com/{REPO}/releases/tag/{tag}', normalized=False, status='downloading',
+                resources=resources, inScope=True)
 
 
 def main():
@@ -131,8 +145,7 @@ def main():
         resources = [r for r in dataset['resources'] if '/arqurnatot/' in r['url'] and r['url'].endswith('.zip')]
         if not resources or a.dataset and dataset['id'] not in a.dataset:
             continue
-        collection = {**dataset, 'id': f'rdv-{dataset["id"]}', 'title': f'RDV · {dataset["title"]}',
-                      'branch': f'archive/rdv-{dataset["id"]}', 'tag': f'data-rdv-{dataset["id"]}', 'resources': resources, 'inScope': True}
+        collection = derived_collection(dataset, resources)
         entries, paths = [], []
         with concurrent.futures.ThreadPoolExecutor(max_workers=4) as pool:
             for resource, (result, files) in zip(resources, pool.map(lambda r: extract_bundle(a.root, r, reused), resources)):

@@ -1,13 +1,13 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-26T22:30:37.189100+00:00",
+  "generatedAt": "2026-10-26T22:34:55.549996+00:00",
   "source": {
     "url": "https://dadosabertos.tse.jus.br/api/3/action/package_search",
     "license": "cc-by"
   },
   "earliestYear": 1933,
-  "datasetCount": 190,
-  "resourceCount": 5968,
+  "datasetCount": 191,
+  "resourceCount": 5969,
   "uniqueUrlCount": 5960,
   "datasets": [
     {
@@ -85215,7 +85215,7 @@
       "groups": [
         "resultados"
       ],
-      "family": "resultados",
+      "family": "rdv",
       "years": [
         2020
       ],
@@ -85223,11 +85223,10 @@
       "source": "https://dadosabertos.tse.jus.br/dataset/resultados-2020-suplementares",
       "branch": "archive/rdv-resultados-2020-suplementares",
       "tag": "data-rdv-resultados-2020-suplementares",
-      "releaseUrl": "https://github.com/brauliobo/brazil-audit/releases/tag/data-resultados-2020-suplementares",
       "normalized": false,
-      "status": "published",
       "inScope": true,
-      "publicationVerifiedAt": "2026-10-26T22:17:39.232112+00:00",
+      "releaseUrl": "https://github.com/brauliobo/brazil-audit/releases/tag/data-rdv-resultados-2020-suplementares",
+      "status": "partial",
       "resources": [
         {
           "id": "da1eae04-e0e7-4984-bbf5-0c7beb9d65f4",
@@ -85235,11 +85234,11 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2020/arqurnatot/bu_imgbu_logjez_rdv_vscmr_ele_suplementares_2020.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2020/arqurnatot/bu_imgbu_logjez_rdv_vscmr_ele_suplementares_2020.zip",
           "format": "CSV",
-          "status": "published",
+          "status": "partial",
           "bytes": 257015077,
           "lastModified": "Fri, 06 Dec 2024 14:54:42 GMT",
           "etag": "\"f51bd25-6289b31e92427\"",
-          "inScope": false,
+          "inScope": true,
           "sourceBytes": 257015077,
           "retrievedAt": "2026-10-26T22:16:16.981837+00:00",
           "membersAvailable": 17,
@@ -85297,7 +85296,7 @@
   "knownSourceBytes": 2633827505950,
   "sourceUnavailableCount": 3,
   "scope": "Basic electoral data: results, electorate, attendance, abstention, blanks, nulls, sections and minimum candidate/territorial identities.",
-  "inScopeDatasetCount": 98,
+  "inScopeDatasetCount": 99,
   "inScopeUniqueResourceCount": 693,
   "inScopeKnownSourceBytes": 25882033659,
   "normalizedIndex": "history/indicators.json"
