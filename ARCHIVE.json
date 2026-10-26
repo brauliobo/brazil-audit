@@ -1,0 +1,70 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-10-26T21:49:29.125739+00:00",
+  "status": "published",
+  "dataset": {
+    "id": "candidatos-1990",
+    "title": "Candidatos - 1990",
+    "groups": [
+      "candidatos"
+    ],
+    "family": "candidatos",
+    "years": [
+      1990
+    ],
+    "license": "cc-by",
+    "source": "https://dadosabertos.tse.jus.br/dataset/candidatos-1990",
+    "branch": "archive/candidatos-1990",
+    "tag": "data-candidatos-1990",
+    "releaseUrl": "https://github.com/brauliobo/brazil-audit/releases/tag/data-candidatos-1990",
+    "normalized": false,
+    "status": "catalogued",
+    "inScope": true
+  },
+  "resources": [
+    {
+      "id": "fcce92e0-4d12-428f-8282-707384e82d8f",
+      "name": "Legendas",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_legendas/consulta_legendas_1990.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_legendas/consulta_legendas_1990.zip",
+      "format": "TXT",
+      "status": "prepared",
+      "bytes": 306446,
+      "lastModified": "Thu, 16 Apr 2015 19:35:41 GMT",
+      "etag": "\"4ad0e-513dc91a81d40\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:49:28.794512+00:00",
+      "sha256": "9120f2da3abeb921eb12bb5b47ea918cbd0ec4926089e3bbdef1e80fb2720c70",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "fcce92e0-consulta_legendas_1990.zip",
+          "bytes": 306446,
+          "sha256": "9120f2da3abeb921eb12bb5b47ea918cbd0ec4926089e3bbdef1e80fb2720c70"
+        }
+      ]
+    },
+    {
+      "id": "310ba955-1532-4eb5-8431-2bfb372d9b18",
+      "name": "Vagas",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_vagas/consulta_vagas_1990.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_vagas/consulta_vagas_1990.zip",
+      "format": "TXT",
+      "status": "prepared",
+      "bytes": 286794,
+      "lastModified": "Thu, 16 Apr 2015 19:35:53 GMT",
+      "etag": "\"4604a-513dc925f3840\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:49:29.124763+00:00",
+      "sha256": "a33fb423146d1e71a11bcee07ea1940a22113cc735a10a9b64439ad7959d69c6",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "310ba955-consulta_vagas_1990.zip",
+          "bytes": 286794,
+          "sha256": "a33fb423146d1e71a11bcee07ea1940a22113cc735a10a9b64439ad7959d69c6"
+        }
+      ]
+    }
+  ]
+}
