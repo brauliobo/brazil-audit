@@ -10,6 +10,7 @@ import { objects } from '../db'
 import { int, num, pct } from '../format'
 import { SIGNALS, TABS, bit, FIRST_HOUR } from '../signals'
 import Panel from '../components/Panel.vue'
+import OfficialTurnout from '../components/OfficialTurnout.vue'
 import Field from '../components/Field.vue'
 import Notice from '../components/Notice.vue'
 import Tabs from '../components/Tabs.vue'
@@ -115,7 +116,8 @@ const percent = (v) => `${num(v, 1)}%`
 </script>
 
 <template lang="pug">
-h1 {{ t('signals.title', { place, election: electionLabel(year) }) }}
+h1 {{ t(cfg.hasTurnout && !cfg.hasSignals ? 'turnout.pageTitle' : 'signals.title', { place, election: electionLabel(year) }) }}
+OfficialTurnout(v-if="cfg.hasTurnout" :year="year")
 p.muted(v-if="!cfg.hasSignals") {{ t('signals.unavailable') }}
 template(v-else)
   Notice(kind="warning") {{ t('signals.caution') }}

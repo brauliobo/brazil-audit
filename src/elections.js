@@ -5,6 +5,7 @@
 //   offices   office ids on the ballot (1 president, 3 governor, 5 senator, 6 federal, 7 state, 8 district deputy); names are in the locale files
 //   hasBlank  blank and null ballots were collected (NULL columns otherwise); hasTimes  voting times (tables vt, vtc); hasResidual  official totals of sections without files (tables residual*);
 //   hasSeats  elected / seats tables; hasCoverage  own-sections coverage (tables cov, miss)
+//   hasTurnout official aggregate electorate/turnout/abstention (table turnout), independent of section-level signals
 //   seatRule  the proportional rule of its deputy offices (an id of src/seats/rules.js); the Cadeiras view recomputes the seats with it
 //   sources   the layers of evidence, in priority order (1 logs > 2 rdv > 3 open > 4 official), as they stand for this election:
 //             logs  the machines' logs (every vote with its time; only the office, never the candidate): feed the voting times, tables vt/vtc, and the ballot counts
@@ -58,8 +59,8 @@ const elections = [
   },
   {
     key: '2026-2', year: 2026, turn: 2, date: '2026-10-25', offices: RUNOFF,
-    hasBlank: true, hasTimes: true, hasResidual: true, hasSeats: false, hasCoverage: true, hasSignals: false,
-    sources: { logs: true, rdv: true, open: false, official: ['residual', 'check'], pending: [], differences: {} },
+    hasBlank: true, hasTimes: true, hasResidual: true, hasSeats: false, hasCoverage: true, hasSignals: false, hasTurnout: true,
+    sources: { logs: true, rdv: true, open: false, official: ['residual', 'check', 'turnout'], pending: [], differences: {} },
     raw: {
       tag: 'data-2026-2', indexDir: 'meta-2026-2', pleito: '003221', logpack: true, branch: '2026', code: ['lib/rdv.rb', 'lib/voting_log.rb'], coverage: ['coverage/missing-2026-2.tsv', 'coverage/summary-2026-2.tsv'],
       tseAux: 'https://resultados.tse.jus.br/oficial/ele2026/arquivo-urna/3221/dados/{uf}/{city}/{zone}/{section}/p003221-{uf}-m{city}-z{zone}-s{section}-aux.json',

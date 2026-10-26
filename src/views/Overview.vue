@@ -13,6 +13,7 @@ import ButtonGroup from '../components/ButtonGroup.vue'
 import Notice from '../components/Notice.vue'
 import BarList from '../components/BarList.vue'
 import Coverage from '../components/Coverage.vue'
+import OfficialTurnout from '../components/OfficialTurnout.vue'
 import SourceBadge from '../components/SourceBadge.vue'
 import SourcesPanel from '../components/SourcesPanel.vue'
 import DataTable from '../components/DataTable.vue'
@@ -103,6 +104,7 @@ SourceBadge(:election="year")
 .cluster(v-if="cfg.hasResidual")
   ResidualSwitch
 .grid-auto
+  OfficialTurnout(v-if="cfg.hasTurnout" :year="year" summary)
   Panel(:title="t('overview.national')" :state="results" :election="year" wide)
     ButtonGroup(v-if="cfg.offices.length > 1" :label="t('common.office')" :items="officeItems(cfg.offices)" :value="office" @change="setParam('office', $event)")
     p.muted(v-if="office !== 1") {{ t('overview.partyAggregate') }}

@@ -66,6 +66,7 @@ cannot decode it from JS and Pages does not serve `.br`. Every compressed data p
 | `res` | state, city, office, cand, votes | votes per candidate (municipality; deputies per UF, `city` NULL) |
 | `vt` | state, city, zone, section, model, n, first, last, med, p10, p90, maxgap, b smallint[] | voting times per section (president post, 90 ten-minute buckets of the local clock); 2026 and 2022 (both rounds, from the machines' logs) |
 | `vtc` | state, city, sections, n, tz, b int[] | city rollup of `vt` + estimated clock offset vs Brasília; 2026 and 2022 |
+| `turnout` | scope, state, city, code, zone, electorate, installed, not_installed, totalized, uncounted, present, absent, sections, counted, generated, url | official presidential electorate, turnout and abstention; one independent row per country, UF, municipality or zone within a municipality; 2026 runoff |
 | `cov`, `miss` | state, own, stored, aggregated, missing / state, city, zone, section | coverage per UF and the sections without published files; 2026 only |
 | `residual`, `residual_skipped` | uf, city, city_code, zone, office, number, votes, sections_missing / uf, city, zone, office, reason, detail | official totals of sections without files (see below) and the cases left out; 2026 only |
 | `elected`, `seats` | uf, office, n, name, party, status, votes / uf, office, bloc, seats | elected senators and seats per party (2026: per party/federation as the TSE assigns them); first rounds only |
@@ -355,3 +356,11 @@ or the drill-down of that section, whichever view is open.
 
 The application code is MIT licensed (`LICENSE`, Copyright (c) 2026 brauliobo). PGlite is Apache-2.0 (PostgreSQL itself
 is under the PostgreSQL License). The election data are TSE open data (https://dadosabertos.tse.jus.br, licence Creative Commons Attribution, CC BY); the municipal geometry is IBGE's.
+
+### Official turnout and abstention
+
+The 2026 runoff includes all presidential result JSONs from TSE event 6258 at country, state, municipality and municipality/zone level. The `turnout` table keeps these scopes separate: sum only one level, never all rows. The percentage denominator is `installed` (voters assigned to installed sections), with `present + absent = installed`; `electorate` additionally includes `not_installed`. At national level, 423 voters belong to non-installed sections, so using the total electorate would not reproduce the published percentage. `totalized` and `uncounted` retain the official completeness fields. Rows retain their official URL and generation timestamp.
+
+Regenerate with `nice -n 10 node scripts/build-data.mjs --election=2026-2 --only=turnout`. Downloads use four workers and the existing 12-hour cache. The release asset `2026-2-official-turnout.zip` preserves the source JSONs, configuration and provenance manifest; the CSV is also downloadable from the interface. Official aggregate turnout is available under Overview and Signals, while section-level statistical signals still await the detailed electorate, attendance and polling-place source. No first-round electorate is substituted and no section-level rate is inferred from RDV votes.
+
+Package the downloaded source snapshot with `nice -n 10 python3 scripts/pack-official-turnout.py --election=2026-2 --output=/path/to/release-staging`. The archive and its external provenance manifest verify the JSON electorate fields against the shipped CSV before packaging, and emit a separate SHA256SUMS without changing existing raw-log/RDV archives.

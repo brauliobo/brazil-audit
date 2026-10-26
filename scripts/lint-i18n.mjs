@@ -73,7 +73,7 @@ const FAMILIES = {
   'logs.method.': METHODS,
   'sources.layer.': ['logs', 'rdv', 'open', 'official'].flatMap((l) => [`${l}.name`, `${l}.role`]),
   'sources.state.': ['used', 'pending', 'none', 'unused'],
-  'sources.official.': ['residual', 'check'],
+  'sources.official.': ['residual', 'check', 'turnout'],
   'sources.diff.': ['foreignMissing', 'fewerBallots', 'secondUrnNoRdv'],
   'sources.badge.': ['rdv', 'rdvOfficial', 'open', 'openPending', 'logs', 'officialFiles'],
   'sql.examples.': EXAMPLES.map((e) => e.id),

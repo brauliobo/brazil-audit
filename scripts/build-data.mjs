@@ -14,18 +14,20 @@ import { EMPTY, RDV, dumpOf, officesOf, officialEvent, officialFile, residualOf 
 import { buildGeometry, cached, tseMunicipalities } from './geo.mjs'
 import { buildSeatsData } from './seats-data.mjs'
 import { CORE } from '../src/signals.js'
+import { buildOfficialTurnout, TURNOUT_SCHEMA } from './official-turnout.mjs'
 import { vtSql, votingTimeRollups } from './voting-time.mjs'
 import { sectionRows, sgCsv, sgzCsv, sgzRows } from './signals-data.mjs'
 
 const opt = Object.fromEntries(process.argv.slice(2).map((a) => a.replace(/^--/, '').split('=')))
 const list = (k, all) => (opt[k] ? opt[k].split(',') : all)
 const SELECTED = list('election', Object.keys(ELECTIONS)).map((k) => ELECTIONS[k])
-const ONLY = list('only', ['rdv', 'vt', 'logmatch', 'results', 'cands', 'geo', 'elected', 'residual', 'raw', 'lineup', 'signals'])
+const ONLY = list('only', ['rdv', 'vt', 'logmatch', 'results', 'cands', 'geo', 'elected', 'residual', 'raw', 'lineup', 'signals', 'turnout'])
 const OUT = 'data'
 
 // The shared schema. Every table starts with `election int, turn int` (cands has its own election column, mun_map has none).
 const SG = 'state text, city text, zone text, section text, school int, aptos int, comp int, zabs real, v int, bio int, man int, nor int, run int, hv smallint[], hm smallint[], hn smallint[], lt int, zman real, znf real, dlate int, dnf real, fl int, med int, gap int'
 const SCHEMA = {
+  turnout: TURNOUT_SCHEMA,
   rdv: 'state text, city text, zone text, section text, model text, office int, nominal int, blank int, nul int, votes jsonb',
   vt: 'state text, city text, zone text, section text, model text, n int, first int, last int, med int, p10 int, p90 int, maxgap int, b smallint[]',
   vtc: 'state text, city text, sections int, n int, tz int, b int[]',
@@ -486,6 +488,7 @@ for (const el of SELECTED) {
   if (el.hasTimes && ONLY.includes('logmatch')) buildLogMatch(el)
   if (ONLY.includes('results')) await buildResults(el)
   if (el.hasSeats && ONLY.includes('lineup')) await buildSeatsData(el, { text, smallTable })
+  if (el.hasTurnout && ONLY.includes('turnout')) await buildOfficialTurnout(el, { smallTable, log })
   if (el.hasSignals && ONLY.includes('signals')) await buildSignals(el)
 }
 if (ONLY.includes('cands')) await buildCands()

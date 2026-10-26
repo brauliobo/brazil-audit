@@ -12,7 +12,7 @@
     "test:seats": "node --test test/seats.test.js",
     "test:benford": "node --test 'test/benford/*.test.js'",
     "test:times": "node --test test/voting-time.test.js",
-    "test:official": "node --test test/official.test.js",
+    "test:official": "node --test test/official.test.js test/official-turnout.test.js",
     "test:regions": "node --test test/regions.test.js",
     "test:charts": "node --test test/chart-scale.test.js",
     "test:signals": "node --test test/signals.test.js",

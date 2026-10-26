@@ -660,6 +660,7 @@ sql:
   rows_other: "{count} rows"
   showing: (showing {n})
   examples:
+    turnout: "Official abstention and turnout by state"
     uf: Leading candidate by state
     ranking: Municipality ranking by the first place's votes
     outliers: Sections with an atypical size in the municipality (z-score, AC)
@@ -680,6 +681,7 @@ sql:
     vtc: times per municipality
     sg: "signals per section: abstention, how voters were identified, votes per hour and distance from the neighbours (fl = signal bit mask)"
     sgf: sections of sg with one of the 3 main signals
+    turnout: "official electorate, turnout and abstention by scope (country, state, municipality, zone)"
     sgz: signals summed per zone
     cov: coverage per state
     miss: sections without files
@@ -764,6 +766,7 @@ sources:
   feeds: "Feeds: {tables}."
   official:
     residual: votes of sections without files (residual, resx, totx)
+    turnout: official abstention and participation (turnout)
     check: check against the official files (verify-* scripts)
   differences: "Documented differences between this source and the official totals (not errors):"
   diff:
@@ -1054,3 +1057,23 @@ benford:
   teaser:
     body: "The full analysis (1st and 2nd digit, simulated baseline, maps and ranking) is in the Benford view. Counts per polling station have a bounded size and deviate from Benford's law even with no manipulation; a deviation is only statistical."
     link: "open the Benford analysis"
+
+turnout:
+  pageTitle: "Abstention and turnout · {place} · {election}"
+  title: "Official abstention and turnout"
+  place: "Location"
+  electorate: "Eligible voters"
+  present: "Turnout"
+  absent: "Absent voters"
+  rate: "Abstention"
+  zone: "Zone"
+  allZones: "All zones"
+  summaryAbsent: "Abstention: {rate} · {n} voters"
+  summaryPresent: "Turnout: {rate} · {n} voters"
+  summaryElectorate: "Total electorate: {n}"
+  denominator: "Percentages use the {n} voters assigned to installed polling sections. Another {excluded} voters belong to sections that were not installed and are excluded from the denominator."
+  source: "Source: official TSE results"
+  details: "View by state, municipality and zone →"
+  scopeNote: "Official totals are available by state, municipality and zone within each municipality. Each level is queried separately without counting voters more than once. Section-level signals still await the detailed source."
+  download: "Download all data (compressed CSV)"
+  rawDownload: "Download official sources (ZIP)"

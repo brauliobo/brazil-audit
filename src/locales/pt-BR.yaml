@@ -661,6 +661,7 @@ sql:
   rows_other: "{count} linhas"
   showing: (mostrando {n})
   examples:
+    turnout: "Abstenção e comparecimento oficiais por UF"
     uf: Candidato mais votado por UF
     ranking: Ranking de municípios por votos do primeiro colocado
     outliers: Seções com tamanho atípico no município (z-score, AC)
@@ -681,6 +682,7 @@ sql:
     vtc: horários por município
     sg: "sinais por seção: abstenção, identificação do eleitor, votos por hora e distância dos vizinhos (fl = máscara de sinais)"
     sgf: seções de sg com algum dos 3 sinais principais
+    turnout: "eleitorado, comparecimento e abstenção oficiais por escopo (Brasil, UF, município, zona)"
     sgz: sinais somados por zona
     cov: cobertura por UF
     miss: seções sem arquivos
@@ -765,6 +767,7 @@ sources:
   feeds: "Alimenta: {tables}."
   official:
     residual: votos de seções sem arquivo (residual, resx, totx)
+    turnout: abstenção e comparecimento oficiais (turnout)
     check: conferência com os arquivos oficiais (scripts verify-*)
   differences: "Diferenças documentadas entre esta fonte e os totais oficiais (não são erros):"
   diff:
@@ -1055,3 +1058,23 @@ benford:
   teaser:
     body: "A análise completa (1º e 2º dígitos, linha de base simulada, mapas e ranking) está na visão Benford. Contagens por seção têm tamanho limitado e desviam da Lei de Benford mesmo sem manipulação; um desvio é só estatístico."
     link: "abrir a análise de Benford"
+
+turnout:
+  pageTitle: "Abstenção e comparecimento · {place} · {election}"
+  title: "Abstenção e comparecimento oficiais"
+  place: "Localidade"
+  electorate: "Eleitores aptos"
+  present: "Comparecimento"
+  absent: "Ausências"
+  rate: "Abstenção"
+  zone: "Zona"
+  allZones: "Todas as zonas"
+  summaryAbsent: "Abstenção: {rate} · {n} eleitores"
+  summaryPresent: "Comparecimento: {rate} · {n} eleitores"
+  summaryElectorate: "Eleitorado total: {n}"
+  denominator: "Percentuais sobre os {n} eleitores das seções instaladas. Outros {excluded} eleitores pertencem a seções não instaladas e não entram no denominador."
+  source: "Fonte: resultado oficial do TSE"
+  details: "Ver por UF, município e zona →"
+  scopeNote: "Os totais oficiais são apresentados por UF, município e zona dentro do município. Cada nível é consultado separadamente, sem somar os mesmos eleitores mais de uma vez. Os dados por seção para os sinais continuam aguardando a fonte detalhada."
+  download: "Baixar todos os dados (CSV compactado)"
+  rawDownload: "Baixar fontes oficiais (ZIP)"
