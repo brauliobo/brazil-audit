@@ -1,0 +1,48 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-10-26T21:50:38.373082+00:00",
+  "status": "published",
+  "dataset": {
+    "id": "eleitorado-2002",
+    "title": "Eleitorado - 2002",
+    "groups": [
+      "eleitorado"
+    ],
+    "family": "eleitorado",
+    "years": [
+      2002
+    ],
+    "license": "cc-by",
+    "source": "https://dadosabertos.tse.jus.br/dataset/eleitorado-2002",
+    "branch": "archive/eleitorado-2002",
+    "tag": "data-eleitorado-2002",
+    "releaseUrl": "https://github.com/brauliobo/brazil-audit/releases/tag/data-eleitorado-2002",
+    "normalized": false,
+    "status": "catalogued",
+    "inScope": true
+  },
+  "resources": [
+    {
+      "id": "f75a355e-2502-4ea4-802a-432f84b10042",
+      "name": "Eleitorado - 2002",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitorado/perfil_eleitorado_2002.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitorado/perfil_eleitorado_2002.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 2244531,
+      "lastModified": "Mon, 06 Sep 2021 19:13:45 GMT",
+      "etag": "\"223fb3-5cb5872ac2c40\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:50:38.370665+00:00",
+      "sha256": "45737185ef698107a3e54419ec12614bef7867df30055707cec8fb8aef1453b7",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "f75a355e-perfil_eleitorado_2002.zip",
+          "bytes": 2244531,
+          "sha256": "45737185ef698107a3e54419ec12614bef7867df30055707cec8fb8aef1453b7"
+        }
+      ]
+    }
+  ]
+}
