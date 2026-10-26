@@ -1,0 +1,730 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-10-26T21:51:12.331053+00:00",
+  "status": "published",
+  "dataset": {
+    "id": "resultados-1998",
+    "title": "Resultados - 1998",
+    "groups": [
+      "resultados"
+    ],
+    "family": "resultados",
+    "years": [
+      1998
+    ],
+    "license": "cc-by",
+    "source": "https://dadosabertos.tse.jus.br/dataset/resultados-1998",
+    "branch": "archive/resultados-1998",
+    "tag": "data-resultados-1998",
+    "releaseUrl": "https://github.com/brauliobo/brazil-audit/releases/tag/data-resultados-1998",
+    "normalized": false,
+    "status": "catalogued",
+    "inScope": true
+  },
+  "resources": [
+    {
+      "id": "37bf0c3a-26e2-46b9-b4d0-e2522b50cddf",
+      "name": "Votação nominal por município e zona",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_candidato_munzona/votacao_candidato_munzona_1998.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_candidato_munzona/votacao_candidato_munzona_1998.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 106050738,
+      "lastModified": "Wed, 20 Sep 2023 21:08:21 GMT",
+      "etag": "\"65234b2-605d0c6729b40\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:50:14.527076+00:00",
+      "sha256": "8cb16d1c4901efdb46334df5f534712c1d36eea379725d68e33b9f3534963ab4",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "37bf0c3a-votacao_candidato_munzona_1998.zip",
+          "bytes": 106050738,
+          "sha256": "8cb16d1c4901efdb46334df5f534712c1d36eea379725d68e33b9f3534963ab4"
+        }
+      ]
+    },
+    {
+      "id": "1423006b-71bf-4cd1-b655-2c94c97262e6",
+      "name": "Votação em partido por município e zona",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_partido_munzona/votacao_partido_munzona_1998.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_partido_munzona/votacao_partido_munzona_1998.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 7525027,
+      "lastModified": "Tue, 05 Sep 2023 21:30:26 GMT",
+      "etag": "\"72d2a3-604a355cde080\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:50:15.347132+00:00",
+      "sha256": "bc1d945681ce02eda7b0d04d4638a554c011b48fac4263d394529e0b628c808c",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "1423006b-votacao_partido_munzona_1998.zip",
+          "bytes": 7525027,
+          "sha256": "bc1d945681ce02eda7b0d04d4638a554c011b48fac4263d394529e0b628c808c"
+        }
+      ]
+    },
+    {
+      "id": "006d929e-c3e5-4e6c-8eb2-f28c3b80f582",
+      "name": "Detalhe da apuração por município e zona",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/detalhe_votacao_munzona/detalhe_votacao_munzona_1998.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/detalhe_votacao_munzona/detalhe_votacao_munzona_1998.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 3356350,
+      "lastModified": "Fri, 08 Aug 2025 16:33:17 GMT",
+      "etag": "\"3336be-63bdd21973d52\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:50:15.697594+00:00",
+      "sha256": "15ef1975b291ee17ff3261066f076aa4efe35443791b0ef5bf3363c7ccfba14b",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "006d929e-detalhe_votacao_munzona_1998.zip",
+          "bytes": 3356350,
+          "sha256": "15ef1975b291ee17ff3261066f076aa4efe35443791b0ef5bf3363c7ccfba14b"
+        }
+      ]
+    },
+    {
+      "id": "404f54dd-b436-4962-a137-7f6274c6edc4",
+      "name": "Detalhe da apuração por seção eleitoral",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/detalhe_votacao_secao/detalhe_votacao_secao_1998.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/detalhe_votacao_secao/detalhe_votacao_secao_1998.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 38623857,
+      "lastModified": "Tue, 05 Sep 2023 22:12:21 GMT",
+      "etag": "\"24d5a71-604a3ebb5bb40\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:50:16.886285+00:00",
+      "sha256": "ca60a9f3c4f6a8d35b9c6edaba3c6d783f3ea1e6a1ee36825fc5fb6271c22108",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "404f54dd-detalhe_votacao_secao_1998.zip",
+          "bytes": 38623857,
+          "sha256": "ca60a9f3c4f6a8d35b9c6edaba3c6d783f3ea1e6a1ee36825fc5fb6271c22108"
+        }
+      ]
+    },
+    {
+      "id": "1acdc6da-84ba-4261-820e-3e02a11bc44a",
+      "name": "Presidente - Votação por seção eleitoral – 1998",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_1998_BR.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_1998_BR.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 2841465,
+      "lastModified": "Tue, 16 Feb 2016 16:19:23 GMT",
+      "etag": "\"2b5b79-52be57f12d8c0\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:50:17.355851+00:00",
+      "sha256": "5a40305f7038643cacac4c57c6b28ccb3779b2700034cea4f283d3087528a197",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "1acdc6da-votacao_secao_1998_BR.zip",
+          "bytes": 2841465,
+          "sha256": "5a40305f7038643cacac4c57c6b28ccb3779b2700034cea4f283d3087528a197"
+        }
+      ]
+    },
+    {
+      "id": "acf221fb-fb9c-4499-a501-8a916c21967e",
+      "name": "AC - Votação por seção eleitoral - 1998",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_1998_AC.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_1998_AC.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 1548251,
+      "lastModified": "Wed, 20 Apr 2022 13:08:43 GMT",
+      "etag": "\"179fdb-5dd15b158ecc0\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:50:17.751284+00:00",
+      "sha256": "f7db88e44a9865fe900fe9c10b328b6ec2479efdb34c332cb0a37cd80b9cd9a9",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "acf221fb-votacao_secao_1998_AC.zip",
+          "bytes": 1548251,
+          "sha256": "f7db88e44a9865fe900fe9c10b328b6ec2479efdb34c332cb0a37cd80b9cd9a9"
+        }
+      ]
+    },
+    {
+      "id": "5c5e81d7-6c6a-4573-996f-187f8470e1d6",
+      "name": "AL - Votação por seção eleitoral - 1998",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_1998_AL.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_1998_AL.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 3721877,
+      "lastModified": "Wed, 20 Apr 2022 13:08:46 GMT",
+      "etag": "\"38ca95-5dd15b186b380\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:50:18.205991+00:00",
+      "sha256": "6cd1d9d1d3f3903dec22e3f2d171d8e420f68b211c36672f7b9a36ab69825506",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "5c5e81d7-votacao_secao_1998_AL.zip",
+          "bytes": 3721877,
+          "sha256": "6cd1d9d1d3f3903dec22e3f2d171d8e420f68b211c36672f7b9a36ab69825506"
+        }
+      ]
+    },
+    {
+      "id": "1c984779-6118-49c1-8ed3-70fec0c0031a",
+      "name": "AP - Votação por seção eleitoral - 1998",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_1998_AP.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_1998_AP.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 1465592,
+      "lastModified": "Wed, 20 Apr 2022 13:08:54 GMT",
+      "etag": "\"165cf8-5dd15b200c580\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:50:18.576000+00:00",
+      "sha256": "b8a6cdc439bfccf1a206bba65bb2a0c240841781a5b9d0a35c5110ea5aa1e70e",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "1c984779-votacao_secao_1998_AP.zip",
+          "bytes": 1465592,
+          "sha256": "b8a6cdc439bfccf1a206bba65bb2a0c240841781a5b9d0a35c5110ea5aa1e70e"
+        }
+      ]
+    },
+    {
+      "id": "bbda5afc-98f4-44aa-a38c-0d07aaeed8b4",
+      "name": "AM - Votação por seção eleitoral - 1998",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_1998_AM.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_1998_AM.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 4602892,
+      "lastModified": "Wed, 20 Apr 2022 13:09:10 GMT",
+      "etag": "\"463c0c-5dd15b2f4e980\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:50:19.027808+00:00",
+      "sha256": "6c2da1b2df43a8799e6e031fd795ace04f64369be31fd7a064640389c090ace4",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "bbda5afc-votacao_secao_1998_AM.zip",
+          "bytes": 4602892,
+          "sha256": "6c2da1b2df43a8799e6e031fd795ace04f64369be31fd7a064640389c090ace4"
+        }
+      ]
+    },
+    {
+      "id": "71ec2ea1-f1e6-4c50-b45b-c1302269f55d",
+      "name": "BA - Votação por seção eleitoral - 1998",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_1998_BA.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_1998_BA.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 18051879,
+      "lastModified": "Wed, 20 Apr 2022 13:13:45 GMT",
+      "etag": "\"1137327-5dd15c3591440\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:50:19.903250+00:00",
+      "sha256": "8f9cf9a4ce5467e291d9344ac58fbf002d6c782234c59eefa5cde04fae3d0b9d",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "71ec2ea1-votacao_secao_1998_BA.zip",
+          "bytes": 18051879,
+          "sha256": "8f9cf9a4ce5467e291d9344ac58fbf002d6c782234c59eefa5cde04fae3d0b9d"
+        }
+      ]
+    },
+    {
+      "id": "4e681c92-c871-48b4-9c5e-60ed4fa0bb11",
+      "name": "CE - Votação por seção eleitoral - 1998",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_1998_CE.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_1998_CE.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 11685233,
+      "lastModified": "Wed, 20 Apr 2022 13:09:37 GMT",
+      "etag": "\"b24d71-5dd15b490e640\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:50:20.513678+00:00",
+      "sha256": "5f40c6d7dde6833d381926ec8241ff150380c1e821fb42d08c086478792e035c",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "4e681c92-votacao_secao_1998_CE.zip",
+          "bytes": 11685233,
+          "sha256": "5f40c6d7dde6833d381926ec8241ff150380c1e821fb42d08c086478792e035c"
+        }
+      ]
+    },
+    {
+      "id": "3ee036bb-c628-4d2a-9c42-ee83bcbd4612",
+      "name": "DF - Votação por seção eleitoral - 1998",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_1998_DF.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_1998_DF.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 9183189,
+      "lastModified": "Wed, 20 Apr 2022 13:09:26 GMT",
+      "etag": "\"8c1fd5-5dd15b3e90d80\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:50:21.069734+00:00",
+      "sha256": "c1feb6e7eee56ea4793c3dc0631e6bda8fcd574be12509618e98ce25eee19787",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "3ee036bb-votacao_secao_1998_DF.zip",
+          "bytes": 9183189,
+          "sha256": "c1feb6e7eee56ea4793c3dc0631e6bda8fcd574be12509618e98ce25eee19787"
+        }
+      ]
+    },
+    {
+      "id": "92e00043-c78d-45b9-9b98-0bd59f617517",
+      "name": "ES - Votação por seção eleitoral - 1998",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_1998_ES.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_1998_ES.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 5554363,
+      "lastModified": "Wed, 20 Apr 2022 13:13:55 GMT",
+      "etag": "\"54c0bb-5dd15c3f1aac0\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:50:21.521454+00:00",
+      "sha256": "acb697c6a9118d32ce8436f703f73b0851f47cfe092b3e9b3ea6e2121c7f74bd",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "92e00043-votacao_secao_1998_ES.zip",
+          "bytes": 5554363,
+          "sha256": "acb697c6a9118d32ce8436f703f73b0851f47cfe092b3e9b3ea6e2121c7f74bd"
+        }
+      ]
+    },
+    {
+      "id": "9072d2ae-1fd3-47d1-98f3-199167542d74",
+      "name": "GO - Votação por seção eleitoral - 1998",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_1998_GO.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_1998_GO.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 9101986,
+      "lastModified": "Wed, 20 Apr 2022 13:14:00 GMT",
+      "etag": "\"8ae2a2-5dd15c43df600\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:50:22.094322+00:00",
+      "sha256": "8a27a782ad8c3b6bb794f7ebeccbc94790dd97a5ef69331ea8ad050994662fc0",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "9072d2ae-votacao_secao_1998_GO.zip",
+          "bytes": 9101986,
+          "sha256": "8a27a782ad8c3b6bb794f7ebeccbc94790dd97a5ef69331ea8ad050994662fc0"
+        }
+      ]
+    },
+    {
+      "id": "6553eb40-c881-4c98-abff-d1d26097044b",
+      "name": "MA - Votação por seção eleitoral - 1998",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_1998_MA.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_1998_MA.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 7758333,
+      "lastModified": "Wed, 20 Apr 2022 13:11:24 GMT",
+      "etag": "\"7661fd-5dd15baf19700\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:50:22.564281+00:00",
+      "sha256": "331a6e0cc0a5ec0590a709b554d07217e2a1c94193ed2cf9a5b66761e7e93d39",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "6553eb40-votacao_secao_1998_MA.zip",
+          "bytes": 7758333,
+          "sha256": "331a6e0cc0a5ec0590a709b554d07217e2a1c94193ed2cf9a5b66761e7e93d39"
+        }
+      ]
+    },
+    {
+      "id": "69072d52-bea1-44e3-9517-eeddbee3933a",
+      "name": "MT - Votação por seção eleitoral - 1998",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_1998_MT.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_1998_MT.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 2815569,
+      "lastModified": "Wed, 20 Apr 2022 13:08:30 GMT",
+      "etag": "\"2af651-5dd15b0928f80\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:50:23.182488+00:00",
+      "sha256": "fa9d570c7de7d60e0ae2bd916aaed46c5fd116aa0691294c44fa1d197a71c0cc",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "69072d52-votacao_secao_1998_MT.zip",
+          "bytes": 2815569,
+          "sha256": "fa9d570c7de7d60e0ae2bd916aaed46c5fd116aa0691294c44fa1d197a71c0cc"
+        }
+      ]
+    },
+    {
+      "id": "59c16e02-f1bf-404a-837e-ac21d6e074be",
+      "name": "MS - Votação por seção eleitoral - 1998",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_1998_MS.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_1998_MS.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 2994316,
+      "lastModified": "Wed, 20 Apr 2022 13:08:01 GMT",
+      "etag": "\"2db08c-5dd15aed80e40\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:50:23.626850+00:00",
+      "sha256": "bed479722ce3f09251a27e682685b5d65807f11756db38c53499cc61d3e19b84",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "59c16e02-votacao_secao_1998_MS.zip",
+          "bytes": 2994316,
+          "sha256": "bed479722ce3f09251a27e682685b5d65807f11756db38c53499cc61d3e19b84"
+        }
+      ]
+    },
+    {
+      "id": "d98dd012-c60d-4a1f-98a3-404769c9505c",
+      "name": "MG - Votação por seção eleitoral - 1998",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_1998_MG.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_1998_MG.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 38690509,
+      "lastModified": "Wed, 20 Apr 2022 13:09:13 GMT",
+      "etag": "\"24e5ecd-5dd15b322b040\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:50:24.950981+00:00",
+      "sha256": "890c1bb8e45f1a8db5125203fc03ca15fbd31d98c5afccb16e63e92eeb942989",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "d98dd012-votacao_secao_1998_MG.zip",
+          "bytes": 38690509,
+          "sha256": "890c1bb8e45f1a8db5125203fc03ca15fbd31d98c5afccb16e63e92eeb942989"
+        }
+      ]
+    },
+    {
+      "id": "7a0c2fae-4249-49a3-9dd2-b339e8792c7c",
+      "name": "PA - Votação por seção eleitoral - 1998",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_1998_PA.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_1998_PA.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 10268322,
+      "lastModified": "Wed, 20 Apr 2022 13:08:22 GMT",
+      "etag": "\"9caea2-5dd15b0187d80\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:50:26.650867+00:00",
+      "sha256": "f2ddf47eab7e2552f6dec4f6f66808f35c3bf6c4522b8c28d737dec57bd8caef",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "7a0c2fae-votacao_secao_1998_PA.zip",
+          "bytes": 10268322,
+          "sha256": "f2ddf47eab7e2552f6dec4f6f66808f35c3bf6c4522b8c28d737dec57bd8caef"
+        }
+      ]
+    },
+    {
+      "id": "7bbeb749-c1d0-4ad8-b9c6-06d5ac3ffa6d",
+      "name": "PB - Votação por seção eleitoral - 1998",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_1998_PB.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_1998_PB.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 4451339,
+      "lastModified": "Wed, 20 Apr 2022 13:10:08 GMT",
+      "etag": "\"43ec0b-5dd15b669ec00\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:50:27.076189+00:00",
+      "sha256": "0f8decddd4c5ba449d750e7291d1ed41981d795f1f781dfdd9a1baa1a5965eff",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "7bbeb749-votacao_secao_1998_PB.zip",
+          "bytes": 4451339,
+          "sha256": "0f8decddd4c5ba449d750e7291d1ed41981d795f1f781dfdd9a1baa1a5965eff"
+        }
+      ]
+    },
+    {
+      "id": "bae227b2-f60d-4300-8892-b848f0831296",
+      "name": "PR - Votação por seção eleitoral - 1998",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_1998_PR.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_1998_PR.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 16924081,
+      "lastModified": "Wed, 20 Apr 2022 13:10:33 GMT",
+      "etag": "\"1023db1-5dd15b7e76440\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:50:27.895020+00:00",
+      "sha256": "5ddc0416a30df142fc4d5c2df795c646aacd834bd881e3cecb7248738c841df2",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "bae227b2-votacao_secao_1998_PR.zip",
+          "bytes": 16924081,
+          "sha256": "5ddc0416a30df142fc4d5c2df795c646aacd834bd881e3cecb7248738c841df2"
+        }
+      ]
+    },
+    {
+      "id": "7ae0f588-5123-45ca-b1f7-aaecde854937",
+      "name": "PE - Votação por seção eleitoral - 1998",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_1998_PE.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_1998_PE.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 15957377,
+      "lastModified": "Wed, 20 Apr 2022 13:09:49 GMT",
+      "etag": "\"f37d81-5dd15b5480140\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:50:31.407932+00:00",
+      "sha256": "8438531396c077025c60b0c3965e66ea872ef105a862368b0c86ebbad2ec2b21",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "7ae0f588-votacao_secao_1998_PE.zip",
+          "bytes": 15957377,
+          "sha256": "8438531396c077025c60b0c3965e66ea872ef105a862368b0c86ebbad2ec2b21"
+        }
+      ]
+    },
+    {
+      "id": "a7e3940b-8c85-481f-9325-1013b576dcee",
+      "name": "PI - Votação por seção eleitoral - 1998",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_1998_PI.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_1998_PI.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 3592961,
+      "lastModified": "Wed, 20 Apr 2022 13:10:18 GMT",
+      "etag": "\"36d301-5dd15b7028280\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:50:31.800910+00:00",
+      "sha256": "178d34661e9eed98fb52acef07e074c86d6515402460129e2b9d0012c3d696d5",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "a7e3940b-votacao_secao_1998_PI.zip",
+          "bytes": 3592961,
+          "sha256": "178d34661e9eed98fb52acef07e074c86d6515402460129e2b9d0012c3d696d5"
+        }
+      ]
+    },
+    {
+      "id": "29418451-412a-45c9-954b-5789cb5951a1",
+      "name": "RJ - Votação por seção eleitoral - 1998",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_1998_RJ.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_1998_RJ.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 65650966,
+      "lastModified": "Wed, 20 Apr 2022 13:10:04 GMT",
+      "etag": "\"3e9c116-5dd15b62ce300\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:50:33.809142+00:00",
+      "sha256": "765b33ac3f20f5cf573d17df5862c1cdf01a35f8835134854685208ef45b6a40",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "29418451-votacao_secao_1998_RJ.zip",
+          "bytes": 65650966,
+          "sha256": "765b33ac3f20f5cf573d17df5862c1cdf01a35f8835134854685208ef45b6a40"
+        }
+      ]
+    },
+    {
+      "id": "44882536-62e9-4985-af46-0abd8c8c859c",
+      "name": "RN - Votação por seção eleitoral - 1998",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_1998_RN.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_1998_RN.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 3452667,
+      "lastModified": "Wed, 20 Apr 2022 13:10:43 GMT",
+      "etag": "\"34aefb-5dd15b87ffac0\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:50:34.938041+00:00",
+      "sha256": "0f1474cd22fe242522971c3f74a4be48026ddf3241c617ee0ccc4278c7bfad04",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "44882536-votacao_secao_1998_RN.zip",
+          "bytes": 3452667,
+          "sha256": "0f1474cd22fe242522971c3f74a4be48026ddf3241c617ee0ccc4278c7bfad04"
+        }
+      ]
+    },
+    {
+      "id": "ed87119e-452a-402c-b353-268bd2311b64",
+      "name": "RS - Votação por seção eleitoral - 1998",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_1998_RS.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_1998_RS.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 26500999,
+      "lastModified": "Wed, 20 Apr 2022 13:10:36 GMT",
+      "etag": "\"1945f87-5dd15b8152b00\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:50:40.086966+00:00",
+      "sha256": "8e0eb283ee771da47fb0062de018ae0d732dc4af99dcb7c463fdb0a4ed955c25",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "ed87119e-votacao_secao_1998_RS.zip",
+          "bytes": 26500999,
+          "sha256": "8e0eb283ee771da47fb0062de018ae0d732dc4af99dcb7c463fdb0a4ed955c25"
+        }
+      ]
+    },
+    {
+      "id": "3a8eb0e7-bbd0-48f2-be55-c9f5a2327bc9",
+      "name": "RO - Votação por seção eleitoral - 1998",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_1998_RO.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_1998_RO.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 2608804,
+      "lastModified": "Wed, 20 Apr 2022 13:10:55 GMT",
+      "etag": "\"27cea4-5dd15b93715c0\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:50:40.786476+00:00",
+      "sha256": "43abc9c70a0db644d94228903fdd4573a9c23843ff1c5ebe0f94a751c4210f15",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "3a8eb0e7-votacao_secao_1998_RO.zip",
+          "bytes": 2608804,
+          "sha256": "43abc9c70a0db644d94228903fdd4573a9c23843ff1c5ebe0f94a751c4210f15"
+        }
+      ]
+    },
+    {
+      "id": "89af1264-a480-48ab-b566-6daa05604b7b",
+      "name": "RR - Votação por seção eleitoral - 1998",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_1998_RR.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_1998_RR.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 1164052,
+      "lastModified": "Wed, 20 Apr 2022 13:10:59 GMT",
+      "etag": "\"11c314-5dd15b9741ec0\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:50:41.206222+00:00",
+      "sha256": "84984a834df32521f012d260222dd9c32e2858d44a87cb74971049bbb84c74da",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "89af1264-votacao_secao_1998_RR.zip",
+          "bytes": 1164052,
+          "sha256": "84984a834df32521f012d260222dd9c32e2858d44a87cb74971049bbb84c74da"
+        }
+      ]
+    },
+    {
+      "id": "c2940b86-913d-4542-bbd4-9dba2f4bb2e3",
+      "name": "SC - Votação por seção eleitoral - 1998",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_1998_SC.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_1998_SC.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 9101789,
+      "lastModified": "Wed, 20 Apr 2022 13:11:11 GMT",
+      "etag": "\"8ae1dd-5dd15ba2b39c0\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:50:42.971931+00:00",
+      "sha256": "32fcae3d53dd000b06e916da484a2aac032d9cb29a518ed95d3ec267a3ec4dbb",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "c2940b86-votacao_secao_1998_SC.zip",
+          "bytes": 9101789,
+          "sha256": "32fcae3d53dd000b06e916da484a2aac032d9cb29a518ed95d3ec267a3ec4dbb"
+        }
+      ]
+    },
+    {
+      "id": "64d8caf2-5187-418d-ae56-f424dccc5037",
+      "name": "SP - Votação por seção eleitoral - 1998",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_1998_SP.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_1998_SP.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 113170254,
+      "lastModified": "Wed, 20 Apr 2022 13:09:40 GMT",
+      "etag": "\"6bed74e-5dd15b4bead00\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:51:10.762378+00:00",
+      "sha256": "6750ac6625ad99b8c80acc307c6b4df7754add488016748c8b35438265a02817",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "64d8caf2-votacao_secao_1998_SP.zip",
+          "bytes": 113170254,
+          "sha256": "6750ac6625ad99b8c80acc307c6b4df7754add488016748c8b35438265a02817"
+        }
+      ]
+    },
+    {
+      "id": "f9eac9c2-0836-4787-a491-83c8fa6a0edf",
+      "name": "SE - Votação por seção eleitoral - 1998",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_1998_SE.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_1998_SE.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 3205305,
+      "lastModified": "Wed, 20 Apr 2022 13:11:22 GMT",
+      "etag": "\"30e8b9-5dd15bad31280\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:51:11.805471+00:00",
+      "sha256": "901e819a3db3f45bb7942944ffb62e27c1b970fbde6d185a702600ed876204b5",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "f9eac9c2-votacao_secao_1998_SE.zip",
+          "bytes": 3205305,
+          "sha256": "901e819a3db3f45bb7942944ffb62e27c1b970fbde6d185a702600ed876204b5"
+        }
+      ]
+    },
+    {
+      "id": "75a9f607-b6e3-4fe3-a986-b9b424ff23b8",
+      "name": "TO - Votação por seção eleitoral - 1998",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_1998_TO.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_1998_TO.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 1568226,
+      "lastModified": "Wed, 20 Apr 2022 13:08:19 GMT",
+      "etag": "\"17ede2-5dd15afeab6c0\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:51:12.328999+00:00",
+      "sha256": "b9a04b1496b6bda3a01fbf295f4ead258a93cd698ae47e7bf792825b99560cf8",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "75a9f607-votacao_secao_1998_TO.zip",
+          "bytes": 1568226,
+          "sha256": "b9a04b1496b6bda3a01fbf295f4ead258a93cd698ae47e7bf792825b99560cf8"
+        }
+      ]
+    }
+  ]
+}
