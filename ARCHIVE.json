@@ -1,0 +1,228 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-10-26T21:49:54.952555+00:00",
+  "status": "published",
+  "dataset": {
+    "id": "candidatos-1996",
+    "title": "Candidatos - 1996",
+    "groups": [
+      "candidatos"
+    ],
+    "family": "candidatos",
+    "years": [
+      1996
+    ],
+    "license": "cc-by",
+    "source": "https://dadosabertos.tse.jus.br/dataset/candidatos-1996",
+    "branch": "archive/candidatos-1996",
+    "tag": "data-candidatos-1996",
+    "releaseUrl": "https://github.com/brauliobo/brazil-audit/releases/tag/data-candidatos-1996",
+    "normalized": false,
+    "status": "catalogued",
+    "inScope": true
+  },
+  "resources": [
+    {
+      "id": "d1b64a53-4a03-4b11-8043-bcff4b24f60f",
+      "name": "Candidatos",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_cand/consulta_cand_1996.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_cand/consulta_cand_1996.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 26156815,
+      "lastModified": "Fri, 13 Feb 2026 17:00:14 GMT",
+      "etag": "\"18f1f0f-64ab789f0e380\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:49:49.454176+00:00",
+      "sha256": "77ef54dd5d1c20d49b386597b45859efc21d2f59405c025ced688163b7eca95b",
+      "removedPersonalColumns": {
+        "consulta_cand_1996_BRASIL.csv": [
+          "NR_CPF_CANDIDATO",
+          "DS_EMAIL",
+          "NR_TITULO_ELEITORAL_CANDIDATO"
+        ],
+        "consulta_cand_1996_MG.csv": [
+          "NR_CPF_CANDIDATO",
+          "DS_EMAIL",
+          "NR_TITULO_ELEITORAL_CANDIDATO"
+        ],
+        "consulta_cand_1996_SP.csv": [
+          "NR_CPF_CANDIDATO",
+          "DS_EMAIL",
+          "NR_TITULO_ELEITORAL_CANDIDATO"
+        ],
+        "consulta_cand_1996_SC.csv": [
+          "NR_CPF_CANDIDATO",
+          "DS_EMAIL",
+          "NR_TITULO_ELEITORAL_CANDIDATO"
+        ],
+        "consulta_cand_1996_CE.csv": [
+          "NR_CPF_CANDIDATO",
+          "DS_EMAIL",
+          "NR_TITULO_ELEITORAL_CANDIDATO"
+        ],
+        "consulta_cand_1996_GO.csv": [
+          "NR_CPF_CANDIDATO",
+          "DS_EMAIL",
+          "NR_TITULO_ELEITORAL_CANDIDATO"
+        ],
+        "consulta_cand_1996_PB.csv": [
+          "NR_CPF_CANDIDATO",
+          "DS_EMAIL",
+          "NR_TITULO_ELEITORAL_CANDIDATO"
+        ],
+        "consulta_cand_1996_AP.csv": [
+          "NR_CPF_CANDIDATO",
+          "DS_EMAIL",
+          "NR_TITULO_ELEITORAL_CANDIDATO"
+        ],
+        "consulta_cand_1996_SE.csv": [
+          "NR_CPF_CANDIDATO",
+          "DS_EMAIL",
+          "NR_TITULO_ELEITORAL_CANDIDATO"
+        ],
+        "consulta_cand_1996_TO.csv": [
+          "NR_CPF_CANDIDATO",
+          "DS_EMAIL",
+          "NR_TITULO_ELEITORAL_CANDIDATO"
+        ],
+        "consulta_cand_1996_RS.csv": [
+          "NR_CPF_CANDIDATO",
+          "DS_EMAIL",
+          "NR_TITULO_ELEITORAL_CANDIDATO"
+        ],
+        "consulta_cand_1996_PR.csv": [
+          "NR_CPF_CANDIDATO",
+          "DS_EMAIL",
+          "NR_TITULO_ELEITORAL_CANDIDATO"
+        ],
+        "consulta_cand_1996_MT.csv": [
+          "NR_CPF_CANDIDATO",
+          "DS_EMAIL",
+          "NR_TITULO_ELEITORAL_CANDIDATO"
+        ],
+        "consulta_cand_1996_AC.csv": [
+          "NR_CPF_CANDIDATO",
+          "DS_EMAIL",
+          "NR_TITULO_ELEITORAL_CANDIDATO"
+        ],
+        "consulta_cand_1996_RJ.csv": [
+          "NR_CPF_CANDIDATO",
+          "DS_EMAIL",
+          "NR_TITULO_ELEITORAL_CANDIDATO"
+        ],
+        "consulta_cand_1996_AL.csv": [
+          "NR_CPF_CANDIDATO",
+          "DS_EMAIL",
+          "NR_TITULO_ELEITORAL_CANDIDATO"
+        ],
+        "consulta_cand_1996_PI.csv": [
+          "NR_CPF_CANDIDATO",
+          "DS_EMAIL",
+          "NR_TITULO_ELEITORAL_CANDIDATO"
+        ],
+        "consulta_cand_1996_RO.csv": [
+          "NR_CPF_CANDIDATO",
+          "DS_EMAIL",
+          "NR_TITULO_ELEITORAL_CANDIDATO"
+        ],
+        "consulta_cand_1996_MS.csv": [
+          "NR_CPF_CANDIDATO",
+          "DS_EMAIL",
+          "NR_TITULO_ELEITORAL_CANDIDATO"
+        ],
+        "consulta_cand_1996_PA.csv": [
+          "NR_CPF_CANDIDATO",
+          "DS_EMAIL",
+          "NR_TITULO_ELEITORAL_CANDIDATO"
+        ],
+        "consulta_cand_1996_PE.csv": [
+          "NR_CPF_CANDIDATO",
+          "DS_EMAIL",
+          "NR_TITULO_ELEITORAL_CANDIDATO"
+        ],
+        "consulta_cand_1996_RR.csv": [
+          "NR_CPF_CANDIDATO",
+          "DS_EMAIL",
+          "NR_TITULO_ELEITORAL_CANDIDATO"
+        ],
+        "consulta_cand_1996_AM.csv": [
+          "NR_CPF_CANDIDATO",
+          "DS_EMAIL",
+          "NR_TITULO_ELEITORAL_CANDIDATO"
+        ],
+        "consulta_cand_1996_MA.csv": [
+          "NR_CPF_CANDIDATO",
+          "DS_EMAIL",
+          "NR_TITULO_ELEITORAL_CANDIDATO"
+        ],
+        "consulta_cand_1996_RN.csv": [
+          "NR_CPF_CANDIDATO",
+          "DS_EMAIL",
+          "NR_TITULO_ELEITORAL_CANDIDATO"
+        ],
+        "consulta_cand_1996_ES.csv": [
+          "NR_CPF_CANDIDATO",
+          "DS_EMAIL",
+          "NR_TITULO_ELEITORAL_CANDIDATO"
+        ],
+        "consulta_cand_1996_BA.csv": [
+          "NR_CPF_CANDIDATO",
+          "DS_EMAIL",
+          "NR_TITULO_ELEITORAL_CANDIDATO"
+        ]
+      },
+      "assets": [
+        {
+          "name": "d1b64a53-consulta_cand_1996.zip",
+          "bytes": 25109774,
+          "sha256": "658adeae9327a61700c658396df54e8a438ec3e1484feff78df441bb5c7d7ab9"
+        }
+      ]
+    },
+    {
+      "id": "ce0b0b19-349f-4159-9e28-744cb93b3604",
+      "name": "Candidatos - Informações complementares",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_cand_complementar/consulta_cand_complementar_1996.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_cand_complementar/consulta_cand_complementar_1996.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 5409072,
+      "lastModified": "Fri, 13 Feb 2026 17:00:14 GMT",
+      "etag": "\"528930-64ab789f0e380\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:49:54.419211+00:00",
+      "sha256": "32e9c20ee6442548da30a52038070dd7804dc99c592b8628a39bbe172b1b03f3",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "ce0b0b19-consulta_cand_complementar_1996.zip",
+          "bytes": 5409072,
+          "sha256": "32e9c20ee6442548da30a52038070dd7804dc99c592b8628a39bbe172b1b03f3"
+        }
+      ]
+    },
+    {
+      "id": "de4fefed-9834-4dc0-bead-c1316f1def7d",
+      "name": "Vagas",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_vagas/consulta_vagas_1996.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_vagas/consulta_vagas_1996.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 396742,
+      "lastModified": "Fri, 13 Feb 2026 17:00:14 GMT",
+      "etag": "\"60dc6-64ab789f0e380\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:49:54.951403+00:00",
+      "sha256": "0fe58932519d5f0480baa85ab23f82345f14f8f31a8d10a4b2c26662e3f147fe",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "de4fefed-consulta_vagas_1996.zip",
+          "bytes": 396742,
+          "sha256": "0fe58932519d5f0480baa85ab23f82345f14f8f31a8d10a4b2c26662e3f147fe"
+        }
+      ]
+    }
+  ]
+}
