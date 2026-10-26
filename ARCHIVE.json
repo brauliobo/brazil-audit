@@ -1,0 +1,70 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-10-26T21:49:27.270845+00:00",
+  "status": "published",
+  "dataset": {
+    "id": "resultados-1989",
+    "title": "Resultados - 1989",
+    "groups": [
+      "resultados"
+    ],
+    "family": "resultados",
+    "years": [
+      1989
+    ],
+    "license": "cc-by",
+    "source": "https://dadosabertos.tse.jus.br/dataset/resultados-1989",
+    "branch": "archive/resultados-1989",
+    "tag": "data-resultados-1989",
+    "releaseUrl": "https://github.com/brauliobo/brazil-audit/releases/tag/data-resultados-1989",
+    "normalized": false,
+    "status": "catalogued",
+    "inScope": true
+  },
+  "resources": [
+    {
+      "id": "73247a4f-ebee-4999-b1b8-a92bef22b7d6",
+      "name": "Detalhe de apuração por UF",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/detalhe_votacao_uf/detalhe_votacao_uf_1989.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/detalhe_votacao_uf/detalhe_votacao_uf_1989.zip",
+      "format": "TXT",
+      "status": "prepared",
+      "bytes": 281239,
+      "lastModified": "Thu, 16 Apr 2015 19:39:51 GMT",
+      "etag": "\"44a97-513dca08ecfc0\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:49:27.025814+00:00",
+      "sha256": "872b3788c7801df751dc37886af0116342bb8470a3e91313490e14f9598cb990",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "73247a4f-detalhe_votacao_uf_1989.zip",
+          "bytes": 281239,
+          "sha256": "872b3788c7801df751dc37886af0116342bb8470a3e91313490e14f9598cb990"
+        }
+      ]
+    },
+    {
+      "id": "f0e4ab52-fc8f-435a-92f1-c0f6ce7eea90",
+      "name": "Votação nominal por UF",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_candidato_uf/votacao_candidato_uf_1989.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_candidato_uf/votacao_candidato_uf_1989.zip",
+      "format": "TXT",
+      "status": "prepared",
+      "bytes": 285967,
+      "lastModified": "Mon, 26 May 2014 16:14:43 GMT",
+      "etag": "\"45d0f-4fa4fe084c2c0\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:49:27.270263+00:00",
+      "sha256": "10197cf6f047663860536b29003011df07fc394678f53da1cf626f2afa68c6bb",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "f0e4ab52-votacao_candidato_uf_1989.zip",
+          "bytes": 285967,
+          "sha256": "10197cf6f047663860536b29003011df07fc394678f53da1cf626f2afa68c6bb"
+        }
+      ]
+    }
+  ]
+}
