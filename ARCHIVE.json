@@ -1,0 +1,422 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-10-26T21:57:01.226601+00:00",
+  "status": "published",
+  "dataset": {
+    "id": "eleitorado-2014",
+    "title": "Eleitorado - 2014",
+    "groups": [
+      "eleitorado"
+    ],
+    "family": "eleitorado",
+    "years": [
+      2014
+    ],
+    "license": "cc-by",
+    "source": "https://dadosabertos.tse.jus.br/dataset/eleitorado-2014",
+    "branch": "archive/eleitorado-2014",
+    "tag": "data-eleitorado-2014",
+    "releaseUrl": "https://github.com/brauliobo/brazil-audit/releases/tag/data-eleitorado-2014",
+    "normalized": false,
+    "status": "catalogued",
+    "inScope": true
+  },
+  "resources": [
+    {
+      "id": "5b4ddb1b-378c-487b-bc4e-420928c19686",
+      "name": "Eleitorado - 2014",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitorado/perfil_eleitorado_2014.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitorado/perfil_eleitorado_2014.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 32269026,
+      "lastModified": "Tue, 26 Aug 2025 12:48:26 GMT",
+      "etag": "\"1ec62e2-63d441691fa80\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:56:49.088220+00:00",
+      "sha256": "a4276a1aeaae888a6a1df17ee2cd44f52b82778460cf39f40f9f5c2126e34f11",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "5b4ddb1b-perfil_eleitorado_2014.zip",
+          "bytes": 32269026,
+          "sha256": "a4276a1aeaae888a6a1df17ee2cd44f52b82778460cf39f40f9f5c2126e34f11"
+        }
+      ]
+    },
+    {
+      "id": "51b496e2-e801-4719-8df1-e2c6c588edbb",
+      "name": "Perfil Eleitor com Deficiência - 2014",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_deficiente/perfil_eleitor_deficiencia_2014.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_deficiente/perfil_eleitor_deficiencia_2014.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 20048394,
+      "lastModified": "Tue, 06 Dec 2022 20:53:28 GMT",
+      "etag": "\"131ea0a-5ef2efeec8200\"",
+      "inScope": false
+    },
+    {
+      "id": "ad8e6e5c-076c-4b35-a6d1-c7365e01d110",
+      "name": "Eleitorado por local de votação - 2014",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/eleitorado_locais_votacao/eleitorado_local_votacao_2014.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/eleitorado_locais_votacao/eleitorado_local_votacao_2014.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 76300968,
+      "lastModified": "Wed, 20 Aug 2025 13:51:24 GMT",
+      "etag": "\"48c42a8-63ccc44b56f00\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:56:52.476363+00:00",
+      "sha256": "4e4ee398526734c44acf39b09c26c76ee1dae34a0d69ab845eafe0bbbbf302bf",
+      "removedPersonalColumns": {
+        "eleitorado_local_votacao_2014.csv": [
+          "NR_TELEFONE_LOCAL"
+        ]
+      },
+      "assets": [
+        {
+          "name": "ad8e6e5c-eleitorado_local_votacao_2014.zip",
+          "bytes": 74182758,
+          "sha256": "64639af7989f6953ee5b26e01842fd18dab2db9dcf026a20a9b8aa846f855908"
+        }
+      ]
+    },
+    {
+      "id": "c196a6d1-acb5-4b75-b603-537b37678b5a",
+      "name": "AC - Perfil do eleitorado por seção eleitoral - 2014",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2014_AC.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2014_AC.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 1999120,
+      "lastModified": "Tue, 26 Aug 2025 12:48:50 GMT",
+      "etag": "\"1e8110-63d4418003080\"",
+      "inScope": false
+    },
+    {
+      "id": "915d9ae4-cfca-40b8-8235-af623ba6a6fb",
+      "name": "AL - Perfil do eleitorado por seção eleitoral - 2014",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2014_AL.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2014_AL.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 7847095,
+      "lastModified": "Tue, 26 Aug 2025 12:50:16 GMT",
+      "etag": "\"77bcb7-63d441d207200\"",
+      "inScope": false
+    },
+    {
+      "id": "aa2b33e4-6065-4f71-b05a-fcbb618c1a44",
+      "name": "AM - Perfil do eleitorado por seção eleitoral - 2014",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2014_AM.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2014_AM.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 6849143,
+      "lastModified": "Tue, 26 Aug 2025 12:48:31 GMT",
+      "etag": "\"688277-63d4416de45c0\"",
+      "inScope": false
+    },
+    {
+      "id": "1df34f09-d0ed-4018-8e9a-ed3708b2991b",
+      "name": "AP - Perfil do eleitorado por seção eleitoral - 2014",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2014_AP.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2014_AP.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 1674044,
+      "lastModified": "Tue, 26 Aug 2025 12:49:46 GMT",
+      "etag": "\"198b3c-63d441b56ae80\"",
+      "inScope": false
+    },
+    {
+      "id": "6e80b8e9-d517-47ec-9fb1-af9d6c4d5f03",
+      "name": "BA - Perfil do eleitorado por seção eleitoral - 2014",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2014_BA.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2014_BA.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 34545818,
+      "lastModified": "Tue, 26 Aug 2025 12:49:17 GMT",
+      "etag": "\"20f209a-63d44199c2d40\"",
+      "inScope": false
+    },
+    {
+      "id": "263cb07b-819d-47b4-b1b8-d499ef08c47c",
+      "name": "CE - Perfil do eleitorado por seção eleitoral - 2014",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2014_CE.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2014_CE.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 22049787,
+      "lastModified": "Tue, 26 Aug 2025 12:48:48 GMT",
+      "etag": "\"15073fb-63d4417e1ac00\"",
+      "inScope": false
+    },
+    {
+      "id": "388a649c-0ac0-47ca-a124-0ff9f0e89406",
+      "name": "DF - Perfil do eleitorado por seção eleitoral - 2014",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2014_DF.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2014_DF.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 4999320,
+      "lastModified": "Mon, 03 May 2021 13:40:01 GMT",
+      "etag": "\"4c4898-5c16d1924ee40\"",
+      "inScope": false
+    },
+    {
+      "id": "f94d4628-1359-4794-895e-2791c9a3b94c",
+      "name": "ES - Perfil do eleitorado por seção eleitoral - 2014",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2014_ES.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2014_ES.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 9402565,
+      "lastModified": "Tue, 26 Aug 2025 12:50:32 GMT",
+      "etag": "\"8f78c5-63d441e149600\"",
+      "inScope": false
+    },
+    {
+      "id": "54e94a6a-2d1a-4ef3-952a-609c539207bc",
+      "name": "GO - Perfil do eleitorado por seção eleitoral - 2014",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2014_GO.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2014_GO.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 17277755,
+      "lastModified": "Tue, 26 Aug 2025 12:45:48 GMT",
+      "etag": "\"107a33b-63d440d271700\"",
+      "inScope": false
+    },
+    {
+      "id": "24edd145-dd64-468f-982e-2ecdbd7ab600",
+      "name": "MA - Perfil do eleitorado por seção eleitoral  - 2014",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2014_MA.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2014_MA.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 16230119,
+      "lastModified": "Tue, 26 Aug 2025 12:50:26 GMT",
+      "etag": "\"f7a6e7-63d441db90880\"",
+      "inScope": false
+    },
+    {
+      "id": "1d5831ef-9b7b-454a-a0dd-9d2fdc57e2f6",
+      "name": "MG - Perfil do eleitorado por seção eleitoral - 2014",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2014_MG.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2014_MG.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 54022096,
+      "lastModified": "Tue, 26 Aug 2025 12:49:44 GMT",
+      "etag": "\"3384fd0-63d441b382a00\"",
+      "inScope": false
+    },
+    {
+      "id": "c8cfd63f-4004-4f8b-98e9-5a787d388292",
+      "name": "MS - Perfil do eleitorado por seção eleitoral - 2014",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2014_MS.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2014_MS.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 6661051,
+      "lastModified": "Tue, 26 Aug 2025 12:48:36 GMT",
+      "etag": "\"65a3bb-63d44172a9100\"",
+      "inScope": false
+    },
+    {
+      "id": "b567be3f-b3d5-4c7f-86ac-46301f4dba37",
+      "name": "MT - Perfil do eleitorado por seção eleitoral - 2014",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2014_MT.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2014_MT.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 8585498,
+      "lastModified": "Tue, 26 Aug 2025 12:45:38 GMT",
+      "etag": "\"83011a-63d440c8e8080\"",
+      "inScope": false
+    },
+    {
+      "id": "e4c39a3c-76fd-4113-be77-47fab6899bc3",
+      "name": "PA - Perfil do eleitorado por seção eleitoral - 2014",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2014_PA.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2014_PA.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 17243183,
+      "lastModified": "Tue, 26 Aug 2025 12:45:57 GMT",
+      "etag": "\"1071c2f-63d440db06b40\"",
+      "inScope": false
+    },
+    {
+      "id": "beada1af-5264-4b9a-a2c7-26c657736435",
+      "name": "PB - Perfil do eleitorado por seção eleitoral - 2014",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2014_PB.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2014_PB.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 11039505,
+      "lastModified": "Tue, 26 Aug 2025 12:46:05 GMT",
+      "etag": "\"a87311-63d440e2a7d40\"",
+      "inScope": false
+    },
+    {
+      "id": "22bd1595-253b-4667-87e4-9cd77a1fefcd",
+      "name": "PE - Perfil do eleitorado por seção eleitoral - 2014",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2014_PE.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2014_PE.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 22985278,
+      "lastModified": "Tue, 26 Aug 2025 12:46:18 GMT",
+      "etag": "\"15eba3e-63d440ef0da80\"",
+      "inScope": false
+    },
+    {
+      "id": "169d80bd-02cd-41bc-aa0c-2717abf71690",
+      "name": "PI - Perfil do eleitorado por seção eleitoral - 2014",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2014_PI.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2014_PI.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 8877620,
+      "lastModified": "Tue, 26 Aug 2025 12:46:24 GMT",
+      "etag": "\"877634-63d440f4c6800\"",
+      "inScope": false
+    },
+    {
+      "id": "959c8976-e05f-4b0c-99bc-6c63e3378f82",
+      "name": "PR - Perfil do eleitorado por seção eleitoral - 2014",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2014_PR.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2014_PR.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 30281816,
+      "lastModified": "Tue, 26 Aug 2025 12:46:41 GMT",
+      "etag": "\"1ce1058-63d44104fce40\"",
+      "inScope": false
+    },
+    {
+      "id": "ec33c382-dfeb-4cd8-a446-07be0cad3f09",
+      "name": "RJ - Perfil do eleitorado por seção eleitoral - 2014",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2014_RJ.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2014_RJ.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 41626206,
+      "lastModified": "Tue, 26 Aug 2025 12:47:04 GMT",
+      "etag": "\"27b2a5e-63d4411aec200\"",
+      "inScope": false
+    },
+    {
+      "id": "07d5b78b-0563-448e-a43a-37e484dd183b",
+      "name": "RN - Perfil do eleitorado por seção eleitoral - 2014",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2014_RN.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2014_RN.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 8747242,
+      "lastModified": "Tue, 26 Aug 2025 12:47:10 GMT",
+      "etag": "\"8578ea-63d44120a4f80\"",
+      "inScope": false
+    },
+    {
+      "id": "252aa3b1-7076-4179-ac9b-74c8f1ffb673",
+      "name": "RO - Perfil do eleitorado por seção eleitoral - 2014",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2014_RO.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2014_RO.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 4402178,
+      "lastModified": "Tue, 26 Aug 2025 12:47:13 GMT",
+      "etag": "\"432c02-63d4412381640\"",
+      "inScope": false
+    },
+    {
+      "id": "b5cd56dc-1993-42f2-9033-07bec965ec30",
+      "name": "RR - Perfil do eleitorado por seção eleitoral - 2014",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2014_RR.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2014_RR.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 1215678,
+      "lastModified": "Tue, 26 Aug 2025 12:49:49 GMT",
+      "etag": "\"128cbe-63d441b847540\"",
+      "inScope": false
+    },
+    {
+      "id": "21bba1cc-7039-422f-a8cd-bbdea3d49b60",
+      "name": "RS - Perfil do eleitorado por seção eleitoral - 2014",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2014_RS.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2014_RS.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 33161649,
+      "lastModified": "Tue, 26 Aug 2025 12:50:11 GMT",
+      "etag": "\"1fa01b1-63d441cd426c0\"",
+      "inScope": false
+    },
+    {
+      "id": "9e5bf62c-dfc6-4f5e-b7ba-cf3dccb1c952",
+      "name": "SE - Perfil do eleitorado por seção eleitoral - 2014",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2014_SE.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2014_SE.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 5677294,
+      "lastModified": "Tue, 26 Aug 2025 12:49:53 GMT",
+      "etag": "\"56a0ee-63d441bc17e40\"",
+      "inScope": false
+    },
+    {
+      "id": "81f9c9d3-feb5-4b5b-9bbf-422223b23bd6",
+      "name": "SC - Perfil do eleitorado por seção eleitoral - 2014",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2014_SC.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2014_SC.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 17812624,
+      "lastModified": "Tue, 26 Aug 2025 12:49:00 GMT",
+      "etag": "\"10fcc90-63d441898c700\"",
+      "inScope": false
+    },
+    {
+      "id": "90d772fb-7a1a-4ccd-93bc-ab0d780c2d36",
+      "name": "SP - Perfil do eleitorado por seção eleitoral - 2014",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2014_SP.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2014_SP.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 107428190,
+      "lastModified": "Tue, 26 Aug 2025 12:48:10 GMT",
+      "etag": "\"667395e-63d44159dd680\"",
+      "inScope": false
+    },
+    {
+      "id": "e7cc29ad-a64b-4e8a-89d9-8eb18d4a4777",
+      "name": "TO - Perfil do eleitorado por seção eleitoral - 2014",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2014_TO.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2014_TO.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 4053803,
+      "lastModified": "Tue, 26 Aug 2025 12:47:17 GMT",
+      "etag": "\"3ddb2b-63d4412751f40\"",
+      "inScope": false
+    },
+    {
+      "id": "5a048b33-1550-4816-bb4a-6a8fbbb0aece",
+      "name": "ZZ - Perfil do eleitorado por seção eleitoral - 2014",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2014_ZZ.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2014_ZZ.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 950784,
+      "lastModified": "Mon, 03 May 2021 13:41:23 GMT",
+      "etag": "\"e8200-5c16d1e0826c0\"",
+      "inScope": false
+    }
+  ]
+}
