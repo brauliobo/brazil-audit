@@ -1,0 +1,88 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-10-26T21:45:38.336646+00:00",
+  "status": "published",
+  "dataset": {
+    "id": "candidatos-1934",
+    "title": "Candidatos - 1934",
+    "groups": [
+      "candidatos"
+    ],
+    "family": "candidatos",
+    "years": [
+      1934
+    ],
+    "license": "cc-by",
+    "source": "https://dadosabertos.tse.jus.br/dataset/candidatos-1934",
+    "branch": "archive/candidatos-1934",
+    "tag": "data-candidatos-1934",
+    "releaseUrl": "https://github.com/brauliobo/brazil-audit/releases/tag/data-candidatos-1934",
+    "normalized": false,
+    "status": "catalogued"
+  },
+  "resources": [
+    {
+      "id": "b3dc9aff-d8b3-45b7-9c1e-0c00512e9d32",
+      "name": "Candidato legenda",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_legendas/candidato_legenda_1934_br.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_legendas/candidato_legenda_1934_br.zip",
+      "format": "TXT",
+      "status": "prepared",
+      "bytes": 397161,
+      "lastModified": "Tue, 16 Mar 2021 22:11:34 GMT",
+      "etag": "\"60f69-5bdaea634f180\"",
+      "downloadedAt": "2026-10-26T21:45:37.610449+00:00",
+      "sha256": "52c6bb0338537235980e6311796e26eff7a62ee24e39d2f514adcc208c0d2492",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "b3dc9aff-candidato_legenda_1934_br.zip",
+          "bytes": 397161,
+          "sha256": "52c6bb0338537235980e6311796e26eff7a62ee24e39d2f514adcc208c0d2492"
+        }
+      ]
+    },
+    {
+      "id": "3e67c3a4-5130-4663-b7c8-937dbef163b7",
+      "name": "Legendas",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_legendas/consulta_legendas_1934_br.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_legendas/consulta_legendas_1934_br.zip",
+      "format": "TXT",
+      "status": "prepared",
+      "bytes": 352378,
+      "lastModified": "Tue, 16 Mar 2021 21:23:26 GMT",
+      "etag": "\"5607a-5bdadfa118f80\"",
+      "downloadedAt": "2026-10-26T21:45:38.018075+00:00",
+      "sha256": "8b4b63b1552b533d62e13c302a7df06fe66a7f2a01c02f3bec1e8cc19c861e8a",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "3e67c3a4-consulta_legendas_1934_br.zip",
+          "bytes": 352378,
+          "sha256": "8b4b63b1552b533d62e13c302a7df06fe66a7f2a01c02f3bec1e8cc19c861e8a"
+        }
+      ]
+    },
+    {
+      "id": "a418a87a-e79f-4a6b-a449-fa9ef2cd2e6b",
+      "name": "Vagas",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_vagas/consulta_vagas_1934_br.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_vagas/consulta_vagas_1934_br.zip",
+      "format": "TXT",
+      "status": "prepared",
+      "bytes": 350347,
+      "lastModified": "Tue, 16 Mar 2021 21:27:20 GMT",
+      "etag": "\"5588b-5bdae08041e00\"",
+      "downloadedAt": "2026-10-26T21:45:38.335996+00:00",
+      "sha256": "5241a36ec33c1749fd26af7bcb72bda65e31c6ba92738c511e1aa14e441f009c",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "a418a87a-consulta_vagas_1934_br.zip",
+          "bytes": 350347,
+          "sha256": "5241a36ec33c1749fd26af7bcb72bda65e31c6ba92738c511e1aa14e441f009c"
+        }
+      ]
+    }
+  ]
+}
