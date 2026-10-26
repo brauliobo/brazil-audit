@@ -38,7 +38,7 @@ const whereOf = (el, part) => `election = ${el.year} and turn = ${el.turn} and $
 export function writeParts(root, el, table, rows) {
   const dir = `${root}/${table}`
   mkdirSync(dir, { recursive: true })
-  for (const f of readdirSync(dir).filter((f) => f.startsWith(`${el.key}-`))) rmSync(`${dir}/${f}`)
+  for (const f of readdirSync(dir).filter((f) => f.match(/^(.*)-[a-z]{2}\.csv\.gz$/)?.[1] === el.key)) rmSync(`${dir}/${f}`)
   const parts = {}
   for (const [part, list] of Map.groupBy(rows, partOf)) {
     const body = list.map((r) => r.map(csv).join(',')).join('\n') + '\n'
