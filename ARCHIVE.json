@@ -1,0 +1,1246 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-10-26T21:56:34.537525+00:00",
+  "status": "published",
+  "dataset": {
+    "id": "candidatos-2014",
+    "title": "Candidatos - 2014",
+    "groups": [
+      "candidatos"
+    ],
+    "family": "candidatos",
+    "years": [
+      2014
+    ],
+    "license": "cc-by",
+    "source": "https://dadosabertos.tse.jus.br/dataset/candidatos-2014",
+    "branch": "archive/candidatos-2014",
+    "tag": "data-candidatos-2014",
+    "releaseUrl": "https://github.com/brauliobo/brazil-audit/releases/tag/data-candidatos-2014",
+    "normalized": false,
+    "status": "catalogued",
+    "inScope": true
+  },
+  "resources": [
+    {
+      "id": "04748069-4442-4d05-9fe9-ba2dfb4a92ae",
+      "name": "Candidatos",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_cand/consulta_cand_2014.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_cand/consulta_cand_2014.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 4530527,
+      "lastModified": "Tue, 26 Aug 2025 16:59:56 GMT",
+      "etag": "\"45215f-63d479a022107\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:56:33.651958+00:00",
+      "sha256": "ad31cc36d9a6c89eac3d034533fffe1964aaf038697acaf32320cb9a09151087",
+      "removedPersonalColumns": {
+        "consulta_cand_2014_TO.csv": [
+          "NR_CPF_CANDIDATO",
+          "DS_EMAIL",
+          "NR_TITULO_ELEITORAL_CANDIDATO"
+        ],
+        "consulta_cand_2014_PR.csv": [
+          "NR_CPF_CANDIDATO",
+          "DS_EMAIL",
+          "NR_TITULO_ELEITORAL_CANDIDATO"
+        ],
+        "consulta_cand_2014_PE.csv": [
+          "NR_CPF_CANDIDATO",
+          "DS_EMAIL",
+          "NR_TITULO_ELEITORAL_CANDIDATO"
+        ],
+        "consulta_cand_2014_AM.csv": [
+          "NR_CPF_CANDIDATO",
+          "DS_EMAIL",
+          "NR_TITULO_ELEITORAL_CANDIDATO"
+        ],
+        "consulta_cand_2014_SP.csv": [
+          "NR_CPF_CANDIDATO",
+          "DS_EMAIL",
+          "NR_TITULO_ELEITORAL_CANDIDATO"
+        ],
+        "consulta_cand_2014_AL.csv": [
+          "NR_CPF_CANDIDATO",
+          "DS_EMAIL",
+          "NR_TITULO_ELEITORAL_CANDIDATO"
+        ],
+        "consulta_cand_2014_SE.csv": [
+          "NR_CPF_CANDIDATO",
+          "DS_EMAIL",
+          "NR_TITULO_ELEITORAL_CANDIDATO"
+        ],
+        "consulta_cand_2014_BA.csv": [
+          "NR_CPF_CANDIDATO",
+          "DS_EMAIL",
+          "NR_TITULO_ELEITORAL_CANDIDATO"
+        ],
+        "consulta_cand_2014_AP.csv": [
+          "NR_CPF_CANDIDATO",
+          "DS_EMAIL",
+          "NR_TITULO_ELEITORAL_CANDIDATO"
+        ],
+        "consulta_cand_2014_AC.csv": [
+          "NR_CPF_CANDIDATO",
+          "DS_EMAIL",
+          "NR_TITULO_ELEITORAL_CANDIDATO"
+        ],
+        "consulta_cand_2014_BR.csv": [
+          "NR_CPF_CANDIDATO",
+          "DS_EMAIL",
+          "NR_TITULO_ELEITORAL_CANDIDATO"
+        ],
+        "consulta_cand_2014_DF.csv": [
+          "NR_CPF_CANDIDATO",
+          "DS_EMAIL",
+          "NR_TITULO_ELEITORAL_CANDIDATO"
+        ],
+        "consulta_cand_2014_ES.csv": [
+          "NR_CPF_CANDIDATO",
+          "DS_EMAIL",
+          "NR_TITULO_ELEITORAL_CANDIDATO"
+        ],
+        "consulta_cand_2014_CE.csv": [
+          "NR_CPF_CANDIDATO",
+          "DS_EMAIL",
+          "NR_TITULO_ELEITORAL_CANDIDATO"
+        ],
+        "consulta_cand_2014_BRASIL.csv": [
+          "NR_CPF_CANDIDATO",
+          "DS_EMAIL",
+          "NR_TITULO_ELEITORAL_CANDIDATO"
+        ],
+        "consulta_cand_2014_GO.csv": [
+          "NR_CPF_CANDIDATO",
+          "DS_EMAIL",
+          "NR_TITULO_ELEITORAL_CANDIDATO"
+        ],
+        "consulta_cand_2014_PA.csv": [
+          "NR_CPF_CANDIDATO",
+          "DS_EMAIL",
+          "NR_TITULO_ELEITORAL_CANDIDATO"
+        ],
+        "consulta_cand_2014_MS.csv": [
+          "NR_CPF_CANDIDATO",
+          "DS_EMAIL",
+          "NR_TITULO_ELEITORAL_CANDIDATO"
+        ],
+        "consulta_cand_2014_MA.csv": [
+          "NR_CPF_CANDIDATO",
+          "DS_EMAIL",
+          "NR_TITULO_ELEITORAL_CANDIDATO"
+        ],
+        "consulta_cand_2014_MT.csv": [
+          "NR_CPF_CANDIDATO",
+          "DS_EMAIL",
+          "NR_TITULO_ELEITORAL_CANDIDATO"
+        ],
+        "consulta_cand_2014_MG.csv": [
+          "NR_CPF_CANDIDATO",
+          "DS_EMAIL",
+          "NR_TITULO_ELEITORAL_CANDIDATO"
+        ],
+        "consulta_cand_2014_PB.csv": [
+          "NR_CPF_CANDIDATO",
+          "DS_EMAIL",
+          "NR_TITULO_ELEITORAL_CANDIDATO"
+        ],
+        "consulta_cand_2014_RJ.csv": [
+          "NR_CPF_CANDIDATO",
+          "DS_EMAIL",
+          "NR_TITULO_ELEITORAL_CANDIDATO"
+        ],
+        "consulta_cand_2014_PI.csv": [
+          "NR_CPF_CANDIDATO",
+          "DS_EMAIL",
+          "NR_TITULO_ELEITORAL_CANDIDATO"
+        ],
+        "consulta_cand_2014_RN.csv": [
+          "NR_CPF_CANDIDATO",
+          "DS_EMAIL",
+          "NR_TITULO_ELEITORAL_CANDIDATO"
+        ],
+        "consulta_cand_2014_RS.csv": [
+          "NR_CPF_CANDIDATO",
+          "DS_EMAIL",
+          "NR_TITULO_ELEITORAL_CANDIDATO"
+        ],
+        "consulta_cand_2014_SC.csv": [
+          "NR_CPF_CANDIDATO",
+          "DS_EMAIL",
+          "NR_TITULO_ELEITORAL_CANDIDATO"
+        ],
+        "consulta_cand_2014_RO.csv": [
+          "NR_CPF_CANDIDATO",
+          "DS_EMAIL",
+          "NR_TITULO_ELEITORAL_CANDIDATO"
+        ],
+        "consulta_cand_2014_RR.csv": [
+          "NR_CPF_CANDIDATO",
+          "DS_EMAIL",
+          "NR_TITULO_ELEITORAL_CANDIDATO"
+        ]
+      },
+      "assets": [
+        {
+          "name": "04748069-consulta_cand_2014.zip",
+          "bytes": 3369242,
+          "sha256": "86054279a7d3f5921792b1dca613ba7e8ab3896050de17d5a0022a0c18ef46e4"
+        }
+      ]
+    },
+    {
+      "id": "5b0f766c-e034-4579-b57b-ba3061a1a8cf",
+      "name": "Bens de candidatos",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/bem_candidato/bem_candidato_2014.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/bem_candidato/bem_candidato_2014.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 6280980,
+      "lastModified": "Tue, 26 Aug 2025 17:04:20 GMT",
+      "etag": "\"5fd714-63d47a9c8bac2\"",
+      "inScope": false
+    },
+    {
+      "id": "112f7dca-2960-4668-ada8-d09476259667",
+      "name": "Coligações",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_coligacao/consulta_coligacao_2014.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_coligacao/consulta_coligacao_2014.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 398179,
+      "lastModified": "Tue, 26 Aug 2025 17:02:38 GMT",
+      "etag": "\"61363-63d47a3b20a03\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:56:34.329563+00:00",
+      "sha256": "25db428d0d955987310721a21a5d25dd4a8464c58c72b3978597956ac0358bac",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "112f7dca-consulta_coligacao_2014.zip",
+          "bytes": 398179,
+          "sha256": "25db428d0d955987310721a21a5d25dd4a8464c58c72b3978597956ac0358bac"
+        }
+      ]
+    },
+    {
+      "id": "e572e251-ade6-4559-8c01-75d26e1a085a",
+      "name": "Vagas",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_vagas/consulta_vagas_2014.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_vagas/consulta_vagas_2014.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 184286,
+      "lastModified": "Tue, 26 Aug 2025 17:04:56 GMT",
+      "etag": "\"2cfde-63d47abe5a50f\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:56:34.536558+00:00",
+      "sha256": "8e85d4c434a5bf91cb709eebd8d289aa148d9f3c892823c3cc5fd82e5ce297fc",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "e572e251-consulta_vagas_2014.zip",
+          "bytes": 184286,
+          "sha256": "8e85d4c434a5bf91cb709eebd8d289aa148d9f3c892823c3cc5fd82e5ce297fc"
+        }
+      ]
+    },
+    {
+      "id": "2b41b1f5-d1fb-482e-84f0-e05d70a4f8eb",
+      "name": "Motivo da Cassação",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/motivo_cassacao/motivo_cassacao_2014.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/motivo_cassacao/motivo_cassacao_2014.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 175761,
+      "lastModified": "Wed, 01 Sep 2021 15:07:24 GMT",
+      "etag": "\"2ae91-5caf06c732300\"",
+      "inScope": false
+    },
+    {
+      "id": "f1bc863d-2207-400e-bee1-88eab3e86b3d",
+      "name": "AC - Certidões criminais ",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/certidao_criminal/certidao_criminal_2014_AC.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/certidao_criminal/certidao_criminal_2014_AC.zip",
+      "format": "JPEG",
+      "status": "excluded",
+      "bytes": 906698998,
+      "lastModified": "Fri, 02 Dec 2022 10:57:51 GMT",
+      "etag": "\"360b20f6-5eed63577a9c0\"",
+      "inScope": false
+    },
+    {
+      "id": "8ea8f9ad-7a9e-4286-ba65-689862583ec5",
+      "name": "AM - Certidões criminais",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/certidao_criminal/certidao_criminal_2014_AM.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/certidao_criminal/certidao_criminal_2014_AM.zip",
+      "format": "JPEG",
+      "status": "excluded",
+      "bytes": 1346868657,
+      "lastModified": "Fri, 02 Dec 2022 11:35:06 GMT",
+      "etag": "\"504795b1-5eed6baaf0e80\"",
+      "inScope": false
+    },
+    {
+      "id": "e479af19-0886-49ab-bfee-f3fb9cad1b79",
+      "name": "AP - Certidões criminais",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/certidao_criminal/certidao_criminal_2014_AP.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/certidao_criminal/certidao_criminal_2014_AP.zip",
+      "format": "JPEG",
+      "status": "excluded",
+      "bytes": 989073410,
+      "lastModified": "Fri, 02 Dec 2022 11:59:11 GMT",
+      "etag": "\"3af41002-5eed710d001c0\"",
+      "inScope": false
+    },
+    {
+      "id": "e33cf880-faf5-45ed-922a-f49fa3ac5b99",
+      "name": "BA - Certidões criminais ",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/certidao_criminal/certidao_criminal_2014_BA.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/certidao_criminal/certidao_criminal_2014_BA.zip",
+      "format": "JPEG",
+      "status": "excluded",
+      "bytes": 1596518292,
+      "lastModified": "Fri, 02 Dec 2022 14:02:46 GMT",
+      "etag": "\"5f28ef94-5eed8cac7ed80\"",
+      "inScope": false
+    },
+    {
+      "id": "c83eec49-7ea7-42f4-b0d2-b63d0408dc8e",
+      "name": "BR - Certidões criminais",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/certidao_criminal/certidao_criminal_2014_BR.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/certidao_criminal/certidao_criminal_2014_BR.zip",
+      "format": "JPEG",
+      "status": "excluded",
+      "bytes": 31322,
+      "lastModified": "Fri, 06 Jan 2023 19:10:45 GMT",
+      "etag": "\"7a5a-5f19d2cb2e8d9\"",
+      "inScope": false
+    },
+    {
+      "id": "3ff3aea0-dd96-47ea-85f4-cbcb1fb307ba",
+      "name": "CE - Certidões criminais ",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/certidao_criminal/certidao_criminal_2014_CE.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/certidao_criminal/certidao_criminal_2014_CE.zip",
+      "format": "JPEG",
+      "status": "excluded",
+      "bytes": 1493578734,
+      "lastModified": "Fri, 02 Dec 2022 14:28:14 GMT",
+      "etag": "\"590633ee-5eed925db5b80\"",
+      "inScope": false
+    },
+    {
+      "id": "214850ec-84dc-41ce-9b12-6cb86c6e722d",
+      "name": "DF - Certidões criminais",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/certidao_criminal/certidao_criminal_2014_DF.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/certidao_criminal/certidao_criminal_2014_DF.zip",
+      "format": "JPEG",
+      "status": "excluded",
+      "bytes": 1859395747,
+      "lastModified": "Sat, 03 Dec 2022 22:47:16 GMT",
+      "etag": "\"6ed420a3-5eef43c616500\"",
+      "inScope": false
+    },
+    {
+      "id": "68771a24-ab69-440f-ba43-7a3ba2f076bb",
+      "name": "ES - Certidões criminais",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/certidao_criminal/certidao_criminal_2014_ES.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/certidao_criminal/certidao_criminal_2014_ES.zip",
+      "format": "JPEG",
+      "status": "excluded",
+      "bytes": 2062101257,
+      "lastModified": "Sun, 04 Dec 2022 00:00:03 GMT",
+      "etag": "\"7ae92b09-5eef540ac86c0\"",
+      "inScope": false
+    },
+    {
+      "id": "6c6635c2-4d1e-4d7a-8476-7ed1db27a11e",
+      "name": "GO - Certidões criminais  ",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/certidao_criminal/certidao_criminal_2014_GO.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/certidao_criminal/certidao_criminal_2014_GO.zip",
+      "format": "JPEG",
+      "status": "excluded",
+      "bytes": 1908422556,
+      "lastModified": "Sun, 04 Dec 2022 01:04:02 GMT",
+      "etag": "\"71c0379c-5eef6257f0480\"",
+      "inScope": false
+    },
+    {
+      "id": "f38f7e00-aa88-41f5-8948-c6b81ad54fc5",
+      "name": "MA - Certidões criminais",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/certidao_criminal/certidao_criminal_2014_MA.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/certidao_criminal/certidao_criminal_2014_MA.zip",
+      "format": "JPEG",
+      "status": "excluded",
+      "bytes": 1865374839,
+      "lastModified": "Sun, 04 Dec 2022 02:43:15 GMT",
+      "etag": "\"6f2f5c77-5eef7885296c0\"",
+      "inScope": false
+    },
+    {
+      "id": "3ec204e8-4661-44e3-af52-5ee25bca0b82",
+      "name": "MG - Certidões criminais",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/certidao_criminal/certidao_criminal_2014_MG.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/certidao_criminal/certidao_criminal_2014_MG.zip",
+      "format": "JPEG",
+      "status": "excluded",
+      "bytes": 2840131450,
+      "lastModified": "Sun, 04 Dec 2022 04:04:36 GMT",
+      "etag": "\"a948f77a-5eef8ab40bd00\"",
+      "inScope": false
+    },
+    {
+      "id": "3e5f0774-cdd0-4b29-8937-0de9ca6f0993",
+      "name": "MS - Certidões criminais",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/certidao_criminal/certidao_criminal_2014_MS.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/certidao_criminal/certidao_criminal_2014_MS.zip",
+      "format": "JPEG",
+      "status": "excluded",
+      "bytes": 674012777,
+      "lastModified": "Sun, 04 Dec 2022 04:27:21 GMT",
+      "etag": "\"282c9e69-5eef8fc9cfc40\"",
+      "inScope": false
+    },
+    {
+      "id": "1bbe1b16-8807-46c0-84f8-c8939ac25d5d",
+      "name": "MT - Certidões criminais",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/certidao_criminal/certidao_criminal_2014_MT.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/certidao_criminal/certidao_criminal_2014_MT.zip",
+      "format": "JPEG",
+      "status": "excluded",
+      "bytes": 976050547,
+      "lastModified": "Sun, 04 Dec 2022 04:53:12 GMT",
+      "etag": "\"3a2d5973-5eef9590f5e00\"",
+      "inScope": false
+    },
+    {
+      "id": "1e66b835-0ec9-4304-8cd1-65203106fdfe",
+      "name": "PA - Certidões criminais ",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/certidao_criminal/certidao_criminal_2014_PA.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/certidao_criminal/certidao_criminal_2014_PA.zip",
+      "format": "JPEG",
+      "status": "excluded",
+      "bytes": 1873573596,
+      "lastModified": "Sun, 04 Dec 2022 05:39:32 GMT",
+      "etag": "\"6fac76dc-5eef9fec2cd00\"",
+      "inScope": false
+    },
+    {
+      "id": "5c3a5e69-541d-4d84-a512-6b07d03f4b20",
+      "name": "PB - Certidões criminais",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/certidao_criminal/certidao_criminal_2014_PB.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/certidao_criminal/certidao_criminal_2014_PB.zip",
+      "format": "JPEG",
+      "status": "excluded",
+      "bytes": 788338806,
+      "lastModified": "Sun, 04 Dec 2022 05:57:41 GMT",
+      "etag": "\"2efd1876-5eefa3fab9f40\"",
+      "inScope": false
+    },
+    {
+      "id": "ff6f9acf-101e-434b-a19c-301272456875",
+      "name": "PE - Certidões criminais ",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/certidao_criminal/certidao_criminal_2014_PE.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/certidao_criminal/certidao_criminal_2014_PE.zip",
+      "format": "JPEG",
+      "status": "excluded",
+      "bytes": 923686057,
+      "lastModified": "Sun, 04 Dec 2022 06:20:44 GMT",
+      "etag": "\"370e54a9-5eefa921a8700\"",
+      "inScope": false
+    },
+    {
+      "id": "16ef4700-ac3a-4127-aca7-76accffb878a",
+      "name": "PI - Certidões criminais",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/certidao_criminal/certidao_criminal_2014_PI.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/certidao_criminal/certidao_criminal_2014_PI.zip",
+      "format": "JPEG",
+      "status": "excluded",
+      "bytes": 1266911786,
+      "lastModified": "Sun, 04 Dec 2022 06:50:04 GMT",
+      "etag": "\"4b838a2a-5eefafb01ff00\"",
+      "inScope": false
+    },
+    {
+      "id": "5a2f5347-5927-4bba-9395-8de4d58e6005",
+      "name": "PR - Certidões criminais  ",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/certidao_criminal/certidao_criminal_2014_PR.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/certidao_criminal/certidao_criminal_2014_PR.zip",
+      "format": "JPEG",
+      "status": "excluded",
+      "bytes": 3371768510,
+      "lastModified": "Sun, 04 Dec 2022 08:17:08 GMT",
+      "etag": "\"c8f91abe-5eefc3261e900\"",
+      "inScope": false
+    },
+    {
+      "id": "10716878-912b-4630-b0ab-419b70a0e840",
+      "name": "RJ - Certidões criminais",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/certidao_criminal/certidao_criminal_2014_RJ.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/certidao_criminal/certidao_criminal_2014_RJ.zip",
+      "format": "JPEG",
+      "status": "excluded",
+      "bytes": 7834023739,
+      "lastModified": "Sun, 04 Dec 2022 11:11:30 GMT",
+      "etag": "\"1d2f1b73b-5eefea1f75c80\"",
+      "inScope": false
+    },
+    {
+      "id": "b96154cc-828c-48f9-ab1f-4a0e81e79e09",
+      "name": "RN - Certidões criminais  ",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/certidao_criminal/certidao_criminal_2014_RN.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/certidao_criminal/certidao_criminal_2014_RN.zip",
+      "format": "JPEG",
+      "status": "excluded",
+      "bytes": 594572836,
+      "lastModified": "Sun, 04 Dec 2022 11:29:44 GMT",
+      "etag": "\"23707624-5eefee32c7a00\"",
+      "inScope": false
+    },
+    {
+      "id": "74bcb95c-a013-49a8-9c30-a2ce59c342ce",
+      "name": "RO - Certidões criminais  ",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/certidao_criminal/certidao_criminal_2014_RO.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/certidao_criminal/certidao_criminal_2014_RO.zip",
+      "format": "JPEG",
+      "status": "excluded",
+      "bytes": 1062456814,
+      "lastModified": "Sun, 04 Dec 2022 11:54:29 GMT",
+      "etag": "\"3f53cdee-5eeff3bafc740\"",
+      "inScope": false
+    },
+    {
+      "id": "34d65ae0-3f2f-45c2-a28b-f2e8955a6358",
+      "name": "RS - Certidões criminais ",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/certidao_criminal/certidao_criminal_2014_RS.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/certidao_criminal/certidao_criminal_2014_RS.zip",
+      "format": "JPEG",
+      "status": "excluded",
+      "bytes": 1648001517,
+      "lastModified": "Sun, 04 Dec 2022 12:37:34 GMT",
+      "etag": "\"623a81ed-5eeffd5c3bf80\"",
+      "inScope": false
+    },
+    {
+      "id": "b5d7b750-0d75-4afc-b234-6dc9946f3249",
+      "name": "SC - Certidões criminais  ",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/certidao_criminal/certidao_criminal_2014_SC.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/certidao_criminal/certidao_criminal_2014_SC.zip",
+      "format": "JPEG",
+      "status": "excluded",
+      "bytes": 1107501569,
+      "lastModified": "Sun, 04 Dec 2022 13:11:19 GMT",
+      "etag": "\"42032201-5ef004e76cbc0\"",
+      "inScope": false
+    },
+    {
+      "id": "21529316-b390-48b4-abf9-f67b4c9d8e26",
+      "name": "SE - Certidões criminais",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/certidao_criminal/certidao_criminal_2014_SE.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/certidao_criminal/certidao_criminal_2014_SE.zip",
+      "format": "JPEG",
+      "status": "excluded",
+      "bytes": 228371923,
+      "lastModified": "Sun, 04 Dec 2022 13:20:26 GMT",
+      "etag": "\"d9cadd3-5ef006f115a80\"",
+      "inScope": false
+    },
+    {
+      "id": "80d8b389-2c8f-4ec7-8f8c-5efea636cfb9",
+      "name": "SP - Certidões criminais ",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/certidao_criminal/certidao_criminal_2014_SP.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/certidao_criminal/certidao_criminal_2014_SP.zip",
+      "format": "JPEG",
+      "status": "excluded",
+      "bytes": 8294428696,
+      "lastModified": "Sun, 04 Dec 2022 17:18:35 GMT",
+      "etag": "\"1ee62f018-5ef03c2c230c0\"",
+      "inScope": false
+    },
+    {
+      "id": "44922929-3ef0-4cbb-a518-c11200c3d0ef",
+      "name": "TO - Certidões criminais ",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/certidao_criminal/certidao_criminal_2014_TO.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/certidao_criminal/certidao_criminal_2014_TO.zip",
+      "format": "JPEG",
+      "status": "excluded",
+      "bytes": 1021063027,
+      "lastModified": "Sun, 04 Dec 2022 17:46:48 GMT",
+      "etag": "\"3cdc2f73-5ef0427ab5200\"",
+      "inScope": false
+    },
+    {
+      "id": "43c09171-464f-408b-89aa-98dc80a638a5",
+      "name": "AC - Proposta de governo",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2014_AC.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2014_AC.zip",
+      "format": "PDF",
+      "status": "excluded",
+      "bytes": 4863052,
+      "lastModified": "Mon, 06 Mar 2023 17:37:18 GMT",
+      "etag": "\"4a344c-5f63ebf184f80\"",
+      "inScope": false
+    },
+    {
+      "id": "b4635bd5-d83d-4c23-b635-e9a4d647d466",
+      "name": "AL - Proposta de governo",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2014_AL.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2014_AL.zip",
+      "format": "PDF",
+      "status": "excluded",
+      "bytes": 10740636,
+      "lastModified": "Mon, 06 Mar 2023 18:06:02 GMT",
+      "etag": "\"a3e39c-5f63f25da7680\"",
+      "inScope": false
+    },
+    {
+      "id": "22c80e19-c8c4-447b-8b0c-0d630513dc59",
+      "name": "AM - Proposta de governo",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2014_AM.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2014_AM.zip",
+      "format": "PDF",
+      "status": "excluded",
+      "bytes": 112005598,
+      "lastModified": "Mon, 06 Mar 2023 17:39:00 GMT",
+      "etag": "\"6ad11de-5f63ec52cb500\"",
+      "inScope": false
+    },
+    {
+      "id": "9983a70e-14fb-4a7a-b69e-1877c8ed8d1e",
+      "name": "AP - Proposta de governo",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2014_AP.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2014_AP.zip",
+      "format": "PDF",
+      "status": "excluded",
+      "bytes": 2870584,
+      "lastModified": "Mon, 06 Mar 2023 17:40:01 GMT",
+      "etag": "\"2bcd38-5f63ec8cf7e40\"",
+      "inScope": false
+    },
+    {
+      "id": "e00aa51f-6d20-4f64-8af5-802510944fc4",
+      "name": "BA - Proposta de governo",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2014_BA.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2014_BA.zip",
+      "format": "PDF",
+      "status": "excluded",
+      "bytes": 9228118,
+      "lastModified": "Mon, 06 Mar 2023 17:41:04 GMT",
+      "etag": "\"8ccf56-5f63ecc90cc00\"",
+      "inScope": false
+    },
+    {
+      "id": "5e5ed963-f98c-46d4-b96c-d11f2010afd2",
+      "name": "BR - Proposta de governo",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2014_BR.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2014_BR.zip",
+      "format": "PDF",
+      "status": "excluded",
+      "bytes": 13997821,
+      "lastModified": "Mon, 06 Mar 2023 17:27:33 GMT",
+      "etag": "\"d596fd-5f63e9c39eb40\"",
+      "inScope": false
+    },
+    {
+      "id": "453f3440-00c2-4057-9386-da5939b20357",
+      "name": "CE - Proposta de governo",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2014_CE.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2014_CE.zip",
+      "format": "PDF",
+      "status": "excluded",
+      "bytes": 3326841,
+      "lastModified": "Mon, 06 Mar 2023 17:42:00 GMT",
+      "etag": "\"32c379-5f63ecfe74a00\"",
+      "inScope": false
+    },
+    {
+      "id": "35b20f91-61a1-4918-aa6f-dc48089f71fb",
+      "name": "DF - Proposta de governo",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2014_DF.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2014_DF.zip",
+      "format": "PDF",
+      "status": "excluded",
+      "bytes": 8078925,
+      "lastModified": "Mon, 06 Mar 2023 17:43:09 GMT",
+      "etag": "\"7b464d-5f63ed4042540\"",
+      "inScope": false
+    },
+    {
+      "id": "f41b374b-e42d-42fc-a8ba-52f6ced852da",
+      "name": "ES - Proposta de governo",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2014_ES.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2014_ES.zip",
+      "format": "PDF",
+      "status": "excluded",
+      "bytes": 2091087,
+      "lastModified": "Mon, 06 Mar 2023 17:44:12 GMT",
+      "etag": "\"1fe84f-5f63ed7c57300\"",
+      "inScope": false
+    },
+    {
+      "id": "6e5c0964-13d0-4522-8344-20e5cec0976e",
+      "name": "GO - Proposta de governo",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2014_GO.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2014_GO.zip",
+      "format": "PDF",
+      "status": "excluded",
+      "bytes": 10443054,
+      "lastModified": "Mon, 06 Mar 2023 17:45:04 GMT",
+      "etag": "\"9f592e-5f63edadee800\"",
+      "inScope": false
+    },
+    {
+      "id": "6381aa08-1991-4aea-bea5-46b02a2b362a",
+      "name": "MA - Proposta de governo",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2014_MA.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2014_MA.zip",
+      "format": "PDF",
+      "status": "excluded",
+      "bytes": 3076396,
+      "lastModified": "Mon, 06 Mar 2023 17:45:51 GMT",
+      "etag": "\"2ef12c-5f63eddac11c0\"",
+      "inScope": false
+    },
+    {
+      "id": "8536c6ec-9306-41ec-a9c1-7cb555e6a9e6",
+      "name": "MG - Proposta de governo",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2014_MG.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2014_MG.zip",
+      "format": "PDF",
+      "status": "excluded",
+      "bytes": 8279101,
+      "lastModified": "Mon, 06 Mar 2023 17:46:33 GMT",
+      "etag": "\"7e543d-5f63ee02cf040\"",
+      "inScope": false
+    },
+    {
+      "id": "8aeda18d-37db-46c1-90d7-affa915cdc19",
+      "name": "MS - Proposta de governo",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2014_MS.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2014_MS.zip",
+      "format": "PDF",
+      "status": "excluded",
+      "bytes": 8850639,
+      "lastModified": "Mon, 06 Mar 2023 17:47:20 GMT",
+      "etag": "\"870ccf-5f63ee2fa1a00\"",
+      "inScope": false
+    },
+    {
+      "id": "fb466d1a-f922-49c6-a84d-866a37a5f272",
+      "name": "MT - Proposta de governo",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2014_MT.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2014_MT.zip",
+      "format": "PDF",
+      "status": "excluded",
+      "bytes": 7372071,
+      "lastModified": "Mon, 06 Mar 2023 17:48:14 GMT",
+      "etag": "\"707d27-5f63ee6321380\"",
+      "inScope": false
+    },
+    {
+      "id": "8c8ff1de-a81c-43f3-a247-5c3c2a785580",
+      "name": "PA - Proposta de governo",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2014_PA.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2014_PA.zip",
+      "format": "PDF",
+      "status": "excluded",
+      "bytes": 6085768,
+      "lastModified": "Mon, 06 Mar 2023 17:49:02 GMT",
+      "etag": "\"5cdc88-5f63ee90e7f80\"",
+      "inScope": false
+    },
+    {
+      "id": "49a173f6-b3e7-48e9-bb1d-48a4b30d6d01",
+      "name": "PB - Proposta de governo",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2014_PB.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2014_PB.zip",
+      "format": "PDF",
+      "status": "excluded",
+      "bytes": 5113856,
+      "lastModified": "Mon, 06 Mar 2023 17:49:47 GMT",
+      "etag": "\"4e0800-5f63eebbd24c0\"",
+      "inScope": false
+    },
+    {
+      "id": "7ed833af-1acd-4a08-98d1-2ba9d1387a48",
+      "name": "PE - Proposta de governo",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2014_PE.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2014_PE.zip",
+      "format": "PDF",
+      "status": "excluded",
+      "bytes": 1561841,
+      "lastModified": "Mon, 06 Mar 2023 17:50:37 GMT",
+      "etag": "\"17d4f1-5f63eeeb81540\"",
+      "inScope": false
+    },
+    {
+      "id": "c8910aa8-c790-4c2e-828f-0ff588261bf7",
+      "name": "PI - Proposta de governo",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2014_PI.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2014_PI.zip",
+      "format": "PDF",
+      "status": "excluded",
+      "bytes": 5347258,
+      "lastModified": "Mon, 06 Mar 2023 17:51:32 GMT",
+      "etag": "\"5197ba-5f63ef1ff5100\"",
+      "inScope": false
+    },
+    {
+      "id": "d35dbc3a-c969-4f66-97f4-e0f582ca678d",
+      "name": "PR - Proposta de governo",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2014_PR.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2014_PR.zip",
+      "format": "PDF",
+      "status": "excluded",
+      "bytes": 8238572,
+      "lastModified": "Mon, 06 Mar 2023 17:52:19 GMT",
+      "etag": "\"7db5ec-5f63ef4cc7ac0\"",
+      "inScope": false
+    },
+    {
+      "id": "d16f32c6-c01e-472b-b281-611295d3280a",
+      "name": "RJ - Proposta de governo",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2014_RJ.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2014_RJ.zip",
+      "format": "PDF",
+      "status": "excluded",
+      "bytes": 41079152,
+      "lastModified": "Mon, 06 Mar 2023 17:53:00 GMT",
+      "etag": "\"272d170-5f63ef73e1700\"",
+      "inScope": false
+    },
+    {
+      "id": "d5ed2daa-e9f8-46e7-a0fa-ff7da186ee8b",
+      "name": "RN - Proposta de governo",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2014_RN.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2014_RN.zip",
+      "format": "PDF",
+      "status": "excluded",
+      "bytes": 2730005,
+      "lastModified": "Mon, 06 Mar 2023 17:53:30 GMT",
+      "etag": "\"29a815-5f63ef907da80\"",
+      "inScope": false
+    },
+    {
+      "id": "5b53feb1-3c5f-4066-aed1-e1bed15df3a6",
+      "name": "RO - Proposta de governo",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2014_RO.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2014_RO.zip",
+      "format": "PDF",
+      "status": "excluded",
+      "bytes": 3526897,
+      "lastModified": "Mon, 06 Mar 2023 17:54:05 GMT",
+      "etag": "\"35d0f1-5f63efb1de940\"",
+      "inScope": false
+    },
+    {
+      "id": "a44b0d4a-c095-4c23-afc3-489bd234670c",
+      "name": "RR - Proposta de governo",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2014_RR.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2014_RR.zip",
+      "format": "PDF",
+      "status": "excluded",
+      "bytes": 9417533,
+      "lastModified": "Mon, 06 Mar 2023 18:05:45 GMT",
+      "etag": "\"8fb33d-5f63f24d71040\"",
+      "inScope": false
+    },
+    {
+      "id": "660670db-093e-4d52-a181-30b9d2aa255c",
+      "name": "RS - Proposta de governo",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2014_RS.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2014_RS.zip",
+      "format": "PDF",
+      "status": "excluded",
+      "bytes": 6695534,
+      "lastModified": "Mon, 06 Mar 2023 17:55:17 GMT",
+      "etag": "\"662a6e-5f63eff688b40\"",
+      "inScope": false
+    },
+    {
+      "id": "3ccd2354-5753-47e7-a5f8-3bcedc330b48",
+      "name": "SC - Proposta de governo",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2014_SC.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2014_SC.zip",
+      "format": "PDF",
+      "status": "excluded",
+      "bytes": 3021720,
+      "lastModified": "Mon, 06 Mar 2023 17:55:57 GMT",
+      "etag": "\"2e1b98-5f63f01cae540\"",
+      "inScope": false
+    },
+    {
+      "id": "98e6afab-f082-46de-be59-55ec5cf3a15e",
+      "name": "SE - Proposta de governo",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2014_SE.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2014_SE.zip",
+      "format": "PDF",
+      "status": "excluded",
+      "bytes": 23521516,
+      "lastModified": "Mon, 06 Mar 2023 17:57:05 GMT",
+      "etag": "\"166e8ec-5f63f05d87e40\"",
+      "inScope": false
+    },
+    {
+      "id": "bae336f3-6549-453a-bca7-eaff07552add",
+      "name": "SP - Proposta de governo",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2014_SP.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2014_SP.zip",
+      "format": "PDF",
+      "status": "excluded",
+      "bytes": 2622836,
+      "lastModified": "Mon, 06 Mar 2023 17:58:14 GMT",
+      "etag": "\"280574-5f63f09f55980\"",
+      "inScope": false
+    },
+    {
+      "id": "e6447cca-b389-4288-b227-8bbe462292a4",
+      "name": "TO - Proposta de governo",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2014_TO.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2014_TO.zip",
+      "format": "PDF",
+      "status": "excluded",
+      "bytes": 13857376,
+      "lastModified": "Mon, 06 Mar 2023 17:59:29 GMT",
+      "etag": "\"d37260-5f63f0e6dc240\"",
+      "inScope": false
+    },
+    {
+      "id": "454fc237-e280-4efb-b64c-a25b339d2fc1",
+      "name": "AC - Fotos de candidatos",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2014/fotos/foto_cand2014_AC_div.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2014/fotos/foto_cand2014_AC_div.zip",
+      "format": "JPEG",
+      "status": "excluded",
+      "bytes": 3239944,
+      "lastModified": "Fri, 27 Sep 2024 15:08:03 GMT",
+      "etag": "\"317008-6231b38b8fac0\"",
+      "inScope": false
+    },
+    {
+      "id": "6523d4d6-585f-4743-9386-03eaac07e644",
+      "name": "AL - Fotos de candidatos",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2014/fotos/foto_cand2014_AL_div.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2014/fotos/foto_cand2014_AL_div.zip",
+      "format": "JPEG",
+      "status": "excluded",
+      "bytes": 2491320,
+      "lastModified": "Fri, 27 Sep 2024 15:08:03 GMT",
+      "etag": "\"2603b8-6231b38b8fac0\"",
+      "inScope": false
+    },
+    {
+      "id": "5c04aae1-cbb3-4c90-86c3-880af1367b8e",
+      "name": "AM - Fotos de candidatos",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2014/fotos/foto_cand2014_AM_div.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2014/fotos/foto_cand2014_AM_div.zip",
+      "format": "JPEG",
+      "status": "excluded",
+      "bytes": 3901329,
+      "lastModified": "Fri, 27 Sep 2024 15:08:03 GMT",
+      "etag": "\"3b8791-6231b38b8fac0\"",
+      "inScope": false
+    },
+    {
+      "id": "87e8920f-7b7f-4b81-9a34-d06112d3b199",
+      "name": "AP - Fotos de candidatos",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2014/fotos/foto_cand2014_AP_div.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2014/fotos/foto_cand2014_AP_div.zip",
+      "format": "JPEG",
+      "status": "excluded",
+      "bytes": 2876907,
+      "lastModified": "Fri, 27 Sep 2024 15:08:03 GMT",
+      "etag": "\"2be5eb-6231b38b8fac0\"",
+      "inScope": false
+    },
+    {
+      "id": "1ab6b498-881d-447f-a806-affc3bd88df9",
+      "name": "BA - Fotos de candidatos",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2014/fotos/foto_cand2014_BA_div.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2014/fotos/foto_cand2014_BA_div.zip",
+      "format": "JPEG",
+      "status": "excluded",
+      "bytes": 5483944,
+      "lastModified": "Fri, 27 Sep 2024 15:08:03 GMT",
+      "etag": "\"53ada8-6231b38b8fac0\"",
+      "inScope": false
+    },
+    {
+      "id": "a700b19c-140c-497a-9c30-9b3337c29bee",
+      "name": "BR - Fotos de candidatos",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2014/fotos/foto_cand2014_BR_div.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2014/fotos/foto_cand2014_BR_div.zip",
+      "format": "JPEG",
+      "status": "excluded",
+      "bytes": 276327,
+      "lastModified": "Fri, 27 Sep 2024 15:08:03 GMT",
+      "etag": "\"43767-6231b38b8fac0\"",
+      "inScope": false
+    },
+    {
+      "id": "24652222-2843-4f21-9fc9-1f089e09268f",
+      "name": "CE - Fotos de candidatos",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2014/fotos/foto_cand2014_CE_div.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2014/fotos/foto_cand2014_CE_div.zip",
+      "format": "JPEG",
+      "status": "excluded",
+      "bytes": 4456474,
+      "lastModified": "Fri, 27 Sep 2024 15:08:03 GMT",
+      "etag": "\"44001a-6231b38b8fac0\"",
+      "inScope": false
+    },
+    {
+      "id": "46e7d5be-7db3-4df7-8a8e-882aeea58a02",
+      "name": "DF - Fotos de candidatos",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2014/fotos/foto_cand2014_DF_div.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2014/fotos/foto_cand2014_DF_div.zip",
+      "format": "JPEG",
+      "status": "excluded",
+      "bytes": 5984348,
+      "lastModified": "Fri, 27 Sep 2024 15:08:03 GMT",
+      "etag": "\"5b505c-6231b38b8fac0\"",
+      "inScope": false
+    },
+    {
+      "id": "d94ec26f-e040-4b85-9b04-31ef0838a6d8",
+      "name": "ES - Fotos de candidatos",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2014/fotos/foto_cand2014_ES_div.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2014/fotos/foto_cand2014_ES_div.zip",
+      "format": "JPEG",
+      "status": "excluded",
+      "bytes": 3990295,
+      "lastModified": "Fri, 27 Sep 2024 15:08:03 GMT",
+      "etag": "\"3ce317-6231b38b8fac0\"",
+      "inScope": false
+    },
+    {
+      "id": "555333e3-8816-4a28-a6a5-192700661b08",
+      "name": "GO - Fotos de candidatos",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2014/fotos/foto_cand2014_GO_div.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2014/fotos/foto_cand2014_GO_div.zip",
+      "format": "JPEG",
+      "status": "excluded",
+      "bytes": 5315162,
+      "lastModified": "Fri, 27 Sep 2024 15:08:03 GMT",
+      "etag": "\"511a5a-6231b38b8fac0\"",
+      "inScope": false
+    },
+    {
+      "id": "06473eb3-c87d-45b4-9fc2-691654c8ee3e",
+      "name": "MA - Fotos de candidatos",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2014/fotos/foto_cand2014_MA_div.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2014/fotos/foto_cand2014_MA_div.zip",
+      "format": "JPEG",
+      "status": "excluded",
+      "bytes": 4461121,
+      "lastModified": "Fri, 27 Sep 2024 15:08:03 GMT",
+      "etag": "\"441241-6231b38b8fac0\"",
+      "inScope": false
+    },
+    {
+      "id": "8e460207-245d-4ba1-b50e-f5cc9f6ba657",
+      "name": "MG - Fotos de candidatos",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2014/fotos/foto_cand2014_MG_div.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2014/fotos/foto_cand2014_MG_div.zip",
+      "format": "JPEG",
+      "status": "excluded",
+      "bytes": 9785301,
+      "lastModified": "Fri, 27 Sep 2024 15:08:04 GMT",
+      "etag": "\"954fd5-6231b38c83d00\"",
+      "inScope": false
+    },
+    {
+      "id": "5235db67-dc5b-4345-acfd-d9d222a35e5c",
+      "name": "MS - Fotos de candidatos",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2014/fotos/foto_cand2014_MS_div.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2014/fotos/foto_cand2014_MS_div.zip",
+      "format": "JPEG",
+      "status": "excluded",
+      "bytes": 3116237,
+      "lastModified": "Fri, 27 Sep 2024 15:08:04 GMT",
+      "etag": "\"2f8ccd-6231b38c83d00\"",
+      "inScope": false
+    },
+    {
+      "id": "deda4c4c-2e79-4164-84f7-8619c4fa88c7",
+      "name": "MT - Fotos de candidatos",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2014/fotos/foto_cand2014_MT_div.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2014/fotos/foto_cand2014_MT_div.zip",
+      "format": "JPEG",
+      "status": "excluded",
+      "bytes": 2545560,
+      "lastModified": "Fri, 27 Sep 2024 15:08:04 GMT",
+      "etag": "\"26d798-6231b38c83d00\"",
+      "inScope": false
+    },
+    {
+      "id": "760e0f92-ebce-42b1-830f-4e8ae24442e0",
+      "name": "PA - Fotos de candidatos",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2014/fotos/foto_cand2014_PA_div.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2014/fotos/foto_cand2014_PA_div.zip",
+      "format": "JPEG",
+      "status": "excluded",
+      "bytes": 5248356,
+      "lastModified": "Fri, 27 Sep 2024 15:08:04 GMT",
+      "etag": "\"501564-6231b38c83d00\"",
+      "inScope": false
+    },
+    {
+      "id": "e899bbe4-1bbf-4334-90e8-bc879cc457c1",
+      "name": "PB - Fotos de candidatos",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2014/fotos/foto_cand2014_PB_div.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2014/fotos/foto_cand2014_PB_div.zip",
+      "format": "JPEG",
+      "status": "excluded",
+      "bytes": 2995616,
+      "lastModified": "Fri, 27 Sep 2024 15:08:04 GMT",
+      "etag": "\"2db5a0-6231b38c83d00\"",
+      "inScope": false
+    },
+    {
+      "id": "280b9858-79ac-44ce-af19-0e76db4db32c",
+      "name": "PE - Fotos de candidatos",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2014/fotos/foto_cand2014_PE_div.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2014/fotos/foto_cand2014_PE_div.zip",
+      "format": "JPEG",
+      "status": "excluded",
+      "bytes": 3807874,
+      "lastModified": "Fri, 27 Sep 2024 15:08:04 GMT",
+      "etag": "\"3a1a82-6231b38c83d00\"",
+      "inScope": false
+    },
+    {
+      "id": "a27e44d6-346b-4237-b235-1a79465f9a61",
+      "name": "PI - Fotos de candidatos",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2014/fotos/foto_cand2014_PI_div.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2014/fotos/foto_cand2014_PI_div.zip",
+      "format": "JPEG",
+      "status": "excluded",
+      "bytes": 2174074,
+      "lastModified": "Fri, 27 Sep 2024 15:08:04 GMT",
+      "etag": "\"212c7a-6231b38c83d00\"",
+      "inScope": false
+    },
+    {
+      "id": "bda19be9-8751-4de9-adf6-392954ae84e7",
+      "name": "PR - Fotos de candidatos",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2014/fotos/foto_cand2014_PR_div.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2014/fotos/foto_cand2014_PR_div.zip",
+      "format": "JPEG",
+      "status": "excluded",
+      "bytes": 6338491,
+      "lastModified": "Fri, 27 Sep 2024 15:08:04 GMT",
+      "etag": "\"60b7bb-6231b38c83d00\"",
+      "inScope": false
+    },
+    {
+      "id": "c9560be5-ef28-4ef1-8e5e-b7172fc9d88c",
+      "name": "RJ - Fotos de candidatos",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2014/fotos/foto_cand2014_RJ_div.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2014/fotos/foto_cand2014_RJ_div.zip",
+      "format": "JPEG",
+      "status": "excluded",
+      "bytes": 15214679,
+      "lastModified": "Fri, 27 Sep 2024 15:08:04 GMT",
+      "etag": "\"e82857-6231b38c83d00\"",
+      "inScope": false
+    },
+    {
+      "id": "732150b2-63df-4527-b491-60a796665eef",
+      "name": "RN - Fotos de candidatos",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2014/fotos/foto_cand2014_RN_div.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2014/fotos/foto_cand2014_RN_div.zip",
+      "format": "JPEG",
+      "status": "excluded",
+      "bytes": 2123731,
+      "lastModified": "Fri, 27 Sep 2024 15:08:04 GMT",
+      "etag": "\"2067d3-6231b38c83d00\"",
+      "inScope": false
+    },
+    {
+      "id": "7f01fe76-6bea-44e4-b51a-88cb7f5b6efc",
+      "name": "RO - Fotos de candidatos",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2014/fotos/foto_cand2014_RO_div.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2014/fotos/foto_cand2014_RO_div.zip",
+      "format": "JPEG",
+      "status": "excluded",
+      "bytes": 3105179,
+      "lastModified": "Fri, 27 Sep 2024 15:08:04 GMT",
+      "etag": "\"2f619b-6231b38c83d00\"",
+      "inScope": false
+    },
+    {
+      "id": "33bd8841-4c9e-49f7-a022-06e6986377df",
+      "name": "RR - Fotos de candidatos",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2014/fotos/foto_cand2014_RR_div.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2014/fotos/foto_cand2014_RR_div.zip",
+      "format": "JPEG",
+      "status": "excluded",
+      "bytes": 2764646,
+      "lastModified": "Fri, 27 Sep 2024 15:08:04 GMT",
+      "etag": "\"2a2f66-6231b38c83d00\"",
+      "inScope": false
+    },
+    {
+      "id": "88c184d0-a44d-451c-8770-bf1d27a34068",
+      "name": "RS - Fotos de candidatos",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2014/fotos/foto_cand2014_RS_div.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2014/fotos/foto_cand2014_RS_div.zip",
+      "format": "JPEG",
+      "status": "excluded",
+      "bytes": 5543250,
+      "lastModified": "Fri, 27 Sep 2024 15:08:04 GMT",
+      "etag": "\"549552-6231b38c83d00\"",
+      "inScope": false
+    },
+    {
+      "id": "56de4297-6abb-4039-938f-c87ebbf00deb",
+      "name": "SC - Fotos de candidatos",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2014/fotos/foto_cand2014_SC_div.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2014/fotos/foto_cand2014_SC_div.zip",
+      "format": "JPEG",
+      "status": "excluded",
+      "bytes": 3477099,
+      "lastModified": "Fri, 27 Sep 2024 15:08:04 GMT",
+      "etag": "\"350e6b-6231b38c83d00\"",
+      "inScope": false
+    },
+    {
+      "id": "bbb80eaf-fd01-4b5d-b4e6-d714c86bfc0f",
+      "name": "SE - Fotos de candidatos",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2014/fotos/foto_cand2014_SE_div.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2014/fotos/foto_cand2014_SE_div.zip",
+      "format": "JPEG",
+      "status": "excluded",
+      "bytes": 1656712,
+      "lastModified": "Fri, 27 Sep 2024 15:08:04 GMT",
+      "etag": "\"194788-6231b38c83d00\"",
+      "inScope": false
+    },
+    {
+      "id": "d5794ca5-0650-4a28-9f39-d64501dcf546",
+      "name": "SP - Fotos de candidatos",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2014/fotos/foto_cand2014_SP_div.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2014/fotos/foto_cand2014_SP_div.zip",
+      "format": "JPEG",
+      "status": "excluded",
+      "bytes": 18106907,
+      "lastModified": "Fri, 27 Sep 2024 15:08:04 GMT",
+      "etag": "\"1144a1b-6231b38c83d00\"",
+      "inScope": false
+    },
+    {
+      "id": "9d4e6f61-98ef-4f02-a10d-95054a1453de",
+      "name": "TO - Fotos de candidatos",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2014/fotos/foto_cand2014_TO_div.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2014/fotos/foto_cand2014_TO_div.zip",
+      "format": "JPEG",
+      "status": "excluded",
+      "bytes": 2096987,
+      "lastModified": "Fri, 27 Sep 2024 15:08:05 GMT",
+      "etag": "\"1fff5b-6231b38d77f40\"",
+      "inScope": false
+    }
+  ]
+}
