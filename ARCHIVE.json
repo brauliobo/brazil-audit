@@ -1,0 +1,48 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-10-26T21:49:38.824184+00:00",
+  "status": "published",
+  "dataset": {
+    "id": "eleitorado-1994",
+    "title": "Eleitorado - 1994",
+    "groups": [
+      "eleitorado"
+    ],
+    "family": "eleitorado",
+    "years": [
+      1994
+    ],
+    "license": "cc-by",
+    "source": "https://dadosabertos.tse.jus.br/dataset/eleitorado-1994",
+    "branch": "archive/eleitorado-1994",
+    "tag": "data-eleitorado-1994",
+    "releaseUrl": "https://github.com/brauliobo/brazil-audit/releases/tag/data-eleitorado-1994",
+    "normalized": false,
+    "status": "catalogued",
+    "inScope": true
+  },
+  "resources": [
+    {
+      "id": "2c071206-ef21-4cc7-b34f-96710e789898",
+      "name": "Eleitorado - 1994",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitorado/perfil_eleitorado_1994.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitorado/perfil_eleitorado_1994.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 260619,
+      "lastModified": "Mon, 06 Sep 2021 19:13:44 GMT",
+      "etag": "\"3fa0b-5cb58729cea00\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:49:38.823564+00:00",
+      "sha256": "d1a4bf37fbaf50906c0757f375c3dfa8019bb5b3d3f31f836e020f1a5adadbdb",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "2c071206-perfil_eleitorado_1994.zip",
+          "bytes": 260619,
+          "sha256": "d1a4bf37fbaf50906c0757f375c3dfa8019bb5b3d3f31f836e020f1a5adadbdb"
+        }
+      ]
+    }
+  ]
+}
