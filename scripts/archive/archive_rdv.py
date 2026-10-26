@@ -8,11 +8,14 @@ import pathlib
 import re
 import subprocess
 import time
+import threading
 import zipfile
 from tse_archive import read_json, write_json, now, sha256, publish_prepared
 from zip_range import RemoteZipFile
 
 REPO = 'brauliobo/brazil-audit'
+STREAMS = 16
+NETWORK_SLOTS = threading.BoundedSemaphore(32)
 SOURCE = re.compile(r'(o\d+)([a-z]{2})(\d{13})-rdv\.dat$', re.I)
 BARE = re.compile(r'(o\d+)-(\d{13})\.rdv$', re.I)
 LEGACY = re.compile(r'(?:^|/)([a-z]{2})-[^/]+-(o\d+)-(\d{13})\.rdv$', re.I)
@@ -66,7 +69,7 @@ def extract_bundle(root, resource, reused):
     directory.mkdir(parents=True, exist_ok=True)
     state = directory / 'VERIFIED.json'
     started = time.monotonic()
-    with RemoteZipFile(resource['url'], capture=True) as remote, zipfile.ZipFile(remote) as source:
+    with NETWORK_SLOTS, RemoteZipFile(resource['url'], capture=True) as remote, zipfile.ZipFile(remote) as source:
         version = remote.size, remote.etag
         members = [m for m in source.infolist() if m.filename.lower().endswith(('.rdv', '-rdv.dat'))]
         if not members:
@@ -97,7 +100,7 @@ def extract_bundle(root, resource, reused):
         output = directory / f'{resource["id"][:8]}-rdv-{index:02d}.zip'
         partial = output.with_suffix('.zip.part')
         records = []
-        with RemoteZipFile(resource['url'], snapshot=snapshot) as stream, zipfile.ZipFile(stream) as source, zipfile.ZipFile(partial, 'w', compression=zipfile.ZIP_DEFLATED, compresslevel=6) as target:
+        with NETWORK_SLOTS, RemoteZipFile(resource['url'], snapshot=snapshot) as stream, zipfile.ZipFile(stream) as source, zipfile.ZipFile(partial, 'w', compression=zipfile.ZIP_DEFLATED, compresslevel=6) as target:
             for member in names:
                 data = source.read(member)  # Read this exact central-directory entry and verify its CRC, including ZIP64.
                 target.writestr(member.filename, data)
@@ -108,10 +111,10 @@ def extract_bundle(root, resource, reused):
             if archive.testzip():
                 raise ValueError('Output RDV ZIP CRC mismatch')
         return output, records, network, requests
-    tasks = [(i, selected[i::8]) for i in range(min(8, len(selected)))]
+    tasks = [(i, selected[i::STREAMS]) for i in range(min(STREAMS, len(selected)))]
     paths = []
     extracted = []
-    with concurrent.futures.ThreadPoolExecutor(max_workers=8) as pool:
+    with concurrent.futures.ThreadPoolExecutor(max_workers=STREAMS) as pool:
         for output, records, transferred, count in pool.map(shard, tasks):
             paths.append(output)
             extracted.extend(records)

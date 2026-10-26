@@ -65,3 +65,51 @@ class DerivedCollectionTest(unittest.TestCase):
             self.assertEqual(result['membersExtracted'], 2)
             self.assertEqual(result['selectionVersion'], 2)
             self.assertEqual(len(paths), 2)
+
+    def test_more_than_eight_streams_share_the_global_connection_budget(self):
+        import io
+        import tempfile
+        import threading
+        import time
+        import zipfile
+        from unittest.mock import patch
+        import archive_rdv
+        buffer = io.BytesIO()
+        with zipfile.ZipFile(buffer, 'w') as archive:
+            for i in range(12):
+                archive.writestr(f'section-{i}.rdv', b'votes')
+        body = buffer.getvalue()
+        active = peak = 0
+        lock = threading.Lock()
+        class Source(io.BytesIO):
+            def __init__(self, *args, **kwargs):
+                nonlocal active, peak
+                super().__init__(body)
+                self.size, self.etag, self.transferred, self.requests = len(body), 'version', 0, 0
+                with lock:
+                    active += 1
+                    peak = max(peak, active)
+            def read(self, n=-1):
+                time.sleep(.001)
+                return super().read(n)
+            def snapshot(self):
+                return None
+            def close(self):
+                nonlocal active
+                if not self.closed:
+                    with lock:
+                        active -= 1
+                super().close()
+        # Simulate thirty-one connections occupied by the other bundle workers.
+        for _ in range(31):
+            archive_rdv.NETWORK_SLOTS.acquire()
+        try:
+            with tempfile.TemporaryDirectory() as temporary, patch('archive_rdv.RemoteZipFile', Source):
+                result, paths = archive_rdv.extract_bundle(pathlib.Path(temporary), dict(id='resource', url='https://cdn.tse.jus.br/source.zip'), {})
+            self.assertEqual(len(paths), 12)
+            self.assertEqual(result['membersExtracted'], 12)
+            self.assertEqual(peak, 1)
+            self.assertEqual(active, 0)
+        finally:
+            for _ in range(31):
+                archive_rdv.NETWORK_SLOTS.release()
