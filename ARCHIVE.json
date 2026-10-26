@@ -1,0 +1,686 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-10-26T21:54:15.995823+00:00",
+  "status": "published",
+  "dataset": {
+    "id": "resultados-2008",
+    "title": "Resultados - 2008",
+    "groups": [
+      "resultados"
+    ],
+    "family": "resultados",
+    "years": [
+      2008
+    ],
+    "license": "cc-by",
+    "source": "https://dadosabertos.tse.jus.br/dataset/resultados-2008",
+    "branch": "archive/resultados-2008",
+    "tag": "data-resultados-2008",
+    "releaseUrl": "https://github.com/brauliobo/brazil-audit/releases/tag/data-resultados-2008",
+    "normalized": false,
+    "status": "catalogued",
+    "inScope": true
+  },
+  "resources": [
+    {
+      "id": "075f91b8-e61e-437f-91f9-e7be607df5c8",
+      "name": "Votação nominal por município e zona",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_candidato_munzona/votacao_candidato_munzona_2008.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_candidato_munzona/votacao_candidato_munzona_2008.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 42670412,
+      "lastModified": "Mon, 21 Mar 2022 15:38:58 GMT",
+      "etag": "\"28b194c-5dabc4b71a880\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:53:52.270505+00:00",
+      "sha256": "8e54af745a95f18f66158f711232bf9668e2df57694137db28fbab567216763f",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "075f91b8-votacao_candidato_munzona_2008.zip",
+          "bytes": 42670412,
+          "sha256": "8e54af745a95f18f66158f711232bf9668e2df57694137db28fbab567216763f"
+        }
+      ]
+    },
+    {
+      "id": "2b90b145-3063-4652-9278-5524d270bd40",
+      "name": "Votação em partido por município e zona",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_partido_munzona/votacao_partido_munzona_2008.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_partido_munzona/votacao_partido_munzona_2008.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 3647188,
+      "lastModified": "Thu, 19 Aug 2021 17:10:04 GMT",
+      "etag": "\"37a6d4-5c9ec9f33f300\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:53:53.526078+00:00",
+      "sha256": "37de8e24af94fb726002fbb6bc3e1bc27fc51d75116573a5be2a25da4c786bb2",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "2b90b145-votacao_partido_munzona_2008.zip",
+          "bytes": 3647188,
+          "sha256": "37de8e24af94fb726002fbb6bc3e1bc27fc51d75116573a5be2a25da4c786bb2"
+        }
+      ]
+    },
+    {
+      "id": "4d28b65e-9ef2-4144-83fb-b39d03be0e44",
+      "name": "Detalhe da apuração por município e zona",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/detalhe_votacao_munzona/detalhe_votacao_munzona_2008.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/detalhe_votacao_munzona/detalhe_votacao_munzona_2008.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 1427766,
+      "lastModified": "Fri, 08 Aug 2025 16:15:26 GMT",
+      "etag": "\"15c936-63bdce1c3aeb7\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:53:54.068660+00:00",
+      "sha256": "eb842670e5d3a7df15debaf3bc2188bc70c8c5aa6237e92dbf55e9e564d503c5",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "4d28b65e-detalhe_votacao_munzona_2008.zip",
+          "bytes": 1427766,
+          "sha256": "eb842670e5d3a7df15debaf3bc2188bc70c8c5aa6237e92dbf55e9e564d503c5"
+        }
+      ]
+    },
+    {
+      "id": "616fe531-2a65-45a0-8ddd-cf9d65bcbeee",
+      "name": "Detalhe da apuração por seção eleitoral",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/detalhe_votacao_secao/detalhe_votacao_secao_2008.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/detalhe_votacao_secao/detalhe_votacao_secao_2008.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 23125768,
+      "lastModified": "Thu, 19 Aug 2021 16:49:26 GMT",
+      "etag": "\"160df08-5c9ec55699180\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:53:55.331503+00:00",
+      "sha256": "8348136a02bb0cbd90ae81492ecabc9b091ed8d9a61e98490390a92325a0f5b6",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "616fe531-detalhe_votacao_secao_2008.zip",
+          "bytes": 23125768,
+          "sha256": "8348136a02bb0cbd90ae81492ecabc9b091ed8d9a61e98490390a92325a0f5b6"
+        }
+      ]
+    },
+    {
+      "id": "d69498eb-3bb8-4632-b488-e8026a5f83ac",
+      "name": "AC - Votação por seção eleitoral - 2008",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2008_AC.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2008_AC.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 1181036,
+      "lastModified": "Tue, 25 Jun 2024 14:54:06 GMT",
+      "etag": "\"12056c-61bb811c01f80\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:53:55.695919+00:00",
+      "sha256": "2d9aec408c3e85b86f3991cc9abe6a1a4f731070a9bc96dffe7ec1f094f261d0",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "d69498eb-votacao_secao_2008_AC.zip",
+          "bytes": 1181036,
+          "sha256": "2d9aec408c3e85b86f3991cc9abe6a1a4f731070a9bc96dffe7ec1f094f261d0"
+        }
+      ]
+    },
+    {
+      "id": "13ee6932-9aab-4c07-ae3a-dccb1ca33925",
+      "name": "AL - Votação por seção eleitoral - 2008",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2008_AL.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2008_AL.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 3905888,
+      "lastModified": "Tue, 25 Jun 2024 14:54:26 GMT",
+      "etag": "\"3b9960-61bb812f14c80\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:53:56.079038+00:00",
+      "sha256": "a0e2ae2468f2f452cff4dbd5432b64f61bd07a42abbf709a1d6b7918afb373ad",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "13ee6932-votacao_secao_2008_AL.zip",
+          "bytes": 3905888,
+          "sha256": "a0e2ae2468f2f452cff4dbd5432b64f61bd07a42abbf709a1d6b7918afb373ad"
+        }
+      ]
+    },
+    {
+      "id": "3b603106-48de-4acc-85f6-1df22bdca3e7",
+      "name": "AP - Votação por seção eleitoral - 2008",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2008_AP.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2008_AP.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 1313066,
+      "lastModified": "Tue, 25 Jun 2024 14:53:34 GMT",
+      "etag": "\"14092a-61bb80fd7d780\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:53:56.433314+00:00",
+      "sha256": "f3f924499debc0ec80231f9b38b1d68132a2f5f4478aee7b1b1a9f6e518d02fb",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "3b603106-votacao_secao_2008_AP.zip",
+          "bytes": 1313066,
+          "sha256": "f3f924499debc0ec80231f9b38b1d68132a2f5f4478aee7b1b1a9f6e518d02fb"
+        }
+      ]
+    },
+    {
+      "id": "9e7d8959-2e30-4906-9b5f-d765b86f7822",
+      "name": "AM - Votação por seção eleitoral - 2008",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2008_AM.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2008_AM.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 10150184,
+      "lastModified": "Tue, 25 Jun 2024 14:54:01 GMT",
+      "etag": "\"9ae128-61bb81173d440\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:53:57.093286+00:00",
+      "sha256": "b93e8e7853d15b5b36dcad6438cfcef5750133f0bd1e03ed9134e6a0c83c02b1",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "9e7d8959-votacao_secao_2008_AM.zip",
+          "bytes": 10150184,
+          "sha256": "b93e8e7853d15b5b36dcad6438cfcef5750133f0bd1e03ed9134e6a0c83c02b1"
+        }
+      ]
+    },
+    {
+      "id": "c6d6ce26-d652-42af-b861-5c076a91dfb9",
+      "name": "BA - Votação por seção eleitoral - 2008",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2008_BA.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2008_BA.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 26811663,
+      "lastModified": "Tue, 25 Jun 2024 14:53:28 GMT",
+      "etag": "\"1991d0f-61bb80f7c4a00\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:53:57.852952+00:00",
+      "sha256": "d87dbed43abf28cb660bdd189d30695e52e11588baaab94362f5c54dfcfeffa7",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "c6d6ce26-votacao_secao_2008_BA.zip",
+          "bytes": 26811663,
+          "sha256": "d87dbed43abf28cb660bdd189d30695e52e11588baaab94362f5c54dfcfeffa7"
+        }
+      ]
+    },
+    {
+      "id": "89e396c4-8ecd-4b08-86ca-e17e9fa7bd35",
+      "name": "CE - Votação por seção eleitoral - 2008",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2008_CE.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2008_CE.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 17349515,
+      "lastModified": "Tue, 25 Jun 2024 14:54:11 GMT",
+      "etag": "\"108bb8b-61bb8120c6ac0\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:53:58.587891+00:00",
+      "sha256": "c51d1a0605631a807189089cee430adfeb11d29d1d0073104e0cd3e865542649",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "89e396c4-votacao_secao_2008_CE.zip",
+          "bytes": 17349515,
+          "sha256": "c51d1a0605631a807189089cee430adfeb11d29d1d0073104e0cd3e865542649"
+        }
+      ]
+    },
+    {
+      "id": "cbdee8d2-17ef-41b5-b7c1-24bad6ad2154",
+      "name": "ES - Votação por seção eleitoral - 2008",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2008_ES.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2008_ES.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 6124391,
+      "lastModified": "Tue, 25 Jun 2024 14:54:21 GMT",
+      "etag": "\"5d7367-61bb812a50140\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:53:59.371247+00:00",
+      "sha256": "05dbd7bca1e8127c698343a7b9ef1aa6c70cac9d18f0c35ebffa9febf3976881",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "cbdee8d2-votacao_secao_2008_ES.zip",
+          "bytes": 6124391,
+          "sha256": "05dbd7bca1e8127c698343a7b9ef1aa6c70cac9d18f0c35ebffa9febf3976881"
+        }
+      ]
+    },
+    {
+      "id": "cdabe7c4-b65e-4bc6-9e09-8ea1592b8d7e",
+      "name": "GO - Votação por seção eleitoral - 2008",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2008_GO.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2008_GO.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 11597564,
+      "lastModified": "Tue, 25 Jun 2024 14:54:16 GMT",
+      "etag": "\"b0f6fc-61bb81258b600\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:53:59.941086+00:00",
+      "sha256": "0329e7a93d21c1a3a01225ea6b9bd7ed7e97e2daff4410f73538073c6c3bd97b",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "cdabe7c4-votacao_secao_2008_GO.zip",
+          "bytes": 11597564,
+          "sha256": "0329e7a93d21c1a3a01225ea6b9bd7ed7e97e2daff4410f73538073c6c3bd97b"
+        }
+      ]
+    },
+    {
+      "id": "05ea0394-eddf-4d1a-9633-6be1869c6baa",
+      "name": "MA - Votação por seção eleitoral - 2008",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2008_MA.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2008_MA.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 10924665,
+      "lastModified": "Tue, 25 Jun 2024 14:54:29 GMT",
+      "etag": "\"a6b279-61bb8131f1340\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:54:00.495446+00:00",
+      "sha256": "54cdbe0ac12847e9bb83167812a802e2cf4a2e0557cd0e2e46c09c1e0b20852e",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "05ea0394-votacao_secao_2008_MA.zip",
+          "bytes": 10924665,
+          "sha256": "54cdbe0ac12847e9bb83167812a802e2cf4a2e0557cd0e2e46c09c1e0b20852e"
+        }
+      ]
+    },
+    {
+      "id": "4a15acec-638d-447b-afcc-73ee7b6a3752",
+      "name": "MT - Votação por seção eleitoral - 2008",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2008_MT.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2008_MT.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 4814814,
+      "lastModified": "Tue, 25 Jun 2024 14:53:46 GMT",
+      "etag": "\"4977de-61bb8108ef280\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:54:00.924077+00:00",
+      "sha256": "d289aa1879c87548a4b06639526740f7a66af9a7168d91eaadbece1855f04c0e",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "4a15acec-votacao_secao_2008_MT.zip",
+          "bytes": 4814814,
+          "sha256": "d289aa1879c87548a4b06639526740f7a66af9a7168d91eaadbece1855f04c0e"
+        }
+      ]
+    },
+    {
+      "id": "54f61ace-82c5-4b3e-9a86-9aae76e7e039",
+      "name": "MS - Votação por seção eleitoral - 2008",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2008_MS.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2008_MS.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 3938207,
+      "lastModified": "Tue, 25 Jun 2024 14:53:56 GMT",
+      "etag": "\"3c179f-61bb811278900\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:54:01.317902+00:00",
+      "sha256": "8ccbb38a2beb732b7ad7636c9072051decc08a52670a77a4b7f44a84b06c5b04",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "54f61ace-votacao_secao_2008_MS.zip",
+          "bytes": 3938207,
+          "sha256": "8ccbb38a2beb732b7ad7636c9072051decc08a52670a77a4b7f44a84b06c5b04"
+        }
+      ]
+    },
+    {
+      "id": "f7c7f29e-6966-4c33-8bb5-815b8980b8db",
+      "name": "MG - Votação por seção eleitoral - 2008",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2008_MG.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2008_MG.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 41904989,
+      "lastModified": "Tue, 25 Jun 2024 14:53:40 GMT",
+      "etag": "\"27f6b5d-61bb810336500\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:54:02.895954+00:00",
+      "sha256": "8ed26561e44dcf50ef1855b5efde555969a1a4960396dacff256080d36ed3804",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "f7c7f29e-votacao_secao_2008_MG.zip",
+          "bytes": 41904989,
+          "sha256": "8ed26561e44dcf50ef1855b5efde555969a1a4960396dacff256080d36ed3804"
+        }
+      ]
+    },
+    {
+      "id": "7b2e2f05-3614-4f3b-b0a5-f8f9463b0d05",
+      "name": "PA - Votação por seção eleitoral - 2008",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2008_PA.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2008_PA.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 13957664,
+      "lastModified": "Tue, 25 Jun 2024 14:53:50 GMT",
+      "etag": "\"d4fa20-61bb810cbfb80\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:54:03.643598+00:00",
+      "sha256": "c223755e6f0a65fc616543b74d71610d0f40e5729b9e321bc2415729cd7d120b",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "7b2e2f05-votacao_secao_2008_PA.zip",
+          "bytes": 13957664,
+          "sha256": "c223755e6f0a65fc616543b74d71610d0f40e5729b9e321bc2415729cd7d120b"
+        }
+      ]
+    },
+    {
+      "id": "d0625bd9-ab5d-4f6b-b503-226227f2b507",
+      "name": "PB - Votação por seção eleitoral - 2008",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2008_PB.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2008_PB.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 5932073,
+      "lastModified": "Tue, 25 Jun 2024 14:47:04 GMT",
+      "etag": "\"5a8429-61bb7f898ea00\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:54:04.245448+00:00",
+      "sha256": "62f2b69522b0cc62d4f610f72df661492ce959bacf403ae55a6a9186116bdfd8",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "d0625bd9-votacao_secao_2008_PB.zip",
+          "bytes": 5932073,
+          "sha256": "62f2b69522b0cc62d4f610f72df661492ce959bacf403ae55a6a9186116bdfd8"
+        }
+      ]
+    },
+    {
+      "id": "9083b328-bcf6-4760-88d7-7ade9d30e1a7",
+      "name": "PR - Votação por seção eleitoral - 2008",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2008_PR.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2008_PR.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 22510577,
+      "lastModified": "Tue, 25 Jun 2024 14:46:52 GMT",
+      "etag": "\"1577bf1-61bb7f7e1cf00\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:54:05.266258+00:00",
+      "sha256": "9a1c92e78e0168f70bac0ab3cf55d290e931ab11d5372b5fbe9ccbb830d87959",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "9083b328-votacao_secao_2008_PR.zip",
+          "bytes": 22510577,
+          "sha256": "9a1c92e78e0168f70bac0ab3cf55d290e931ab11d5372b5fbe9ccbb830d87959"
+        }
+      ]
+    },
+    {
+      "id": "539e7e06-55cf-4d57-880d-b4f68fdea936",
+      "name": "PE - Votação por seção eleitoral - 2008",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2008_PE.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2008_PE.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 16620367,
+      "lastModified": "Tue, 25 Jun 2024 14:46:58 GMT",
+      "etag": "\"fd9b4f-61bb7f83d5c80\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:54:07.748959+00:00",
+      "sha256": "442eb024706f878ad9abbea70c606d2a56c98fc9962051ee67832547a31b4d1b",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "539e7e06-votacao_secao_2008_PE.zip",
+          "bytes": 16620367,
+          "sha256": "442eb024706f878ad9abbea70c606d2a56c98fc9962051ee67832547a31b4d1b"
+        }
+      ]
+    },
+    {
+      "id": "c21463e8-8c99-465b-b6c7-3dda2a6e043e",
+      "name": "PI - Votação por seção eleitoral - 2008",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2008_PI.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2008_PI.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 4166314,
+      "lastModified": "Tue, 25 Jun 2024 14:47:10 GMT",
+      "etag": "\"3f92aa-61bb7f8f47780\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:54:08.220345+00:00",
+      "sha256": "f10d0841943b6e745d78d4018118b7e87a6841c3018deb388b3310843511f0ab",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "c21463e8-votacao_secao_2008_PI.zip",
+          "bytes": 4166314,
+          "sha256": "f10d0841943b6e745d78d4018118b7e87a6841c3018deb388b3310843511f0ab"
+        }
+      ]
+    },
+    {
+      "id": "4ca2bfcd-b015-4625-aa84-665c49c70fab",
+      "name": "RJ - Votação por seção eleitoral - 2008",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2008_RJ.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2008_RJ.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 43708783,
+      "lastModified": "Tue, 25 Jun 2024 14:46:42 GMT",
+      "etag": "\"29af16f-61bb7f7493880\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:54:09.734260+00:00",
+      "sha256": "049813d7be3df8e4ebcc4d74a039d996a98c4b14c36d6486c6f0d19dc4492bb0",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "4ca2bfcd-votacao_secao_2008_RJ.zip",
+          "bytes": 43708783,
+          "sha256": "049813d7be3df8e4ebcc4d74a039d996a98c4b14c36d6486c6f0d19dc4492bb0"
+        }
+      ]
+    },
+    {
+      "id": "5fd2a2e2-085c-42ac-990f-6a718c2528ad",
+      "name": "RN - Votação por seção eleitoral - 2008",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2008_RN.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2008_RN.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 4114239,
+      "lastModified": "Tue, 25 Jun 2024 14:47:18 GMT",
+      "etag": "\"3ec73f-61bb7f96e8980\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:54:10.218250+00:00",
+      "sha256": "8e3d2f367672c4126ee5c220120a8c125787ad2915d24ee9158da8c3e4365ac6",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "5fd2a2e2-votacao_secao_2008_RN.zip",
+          "bytes": 4114239,
+          "sha256": "8e3d2f367672c4126ee5c220120a8c125787ad2915d24ee9158da8c3e4365ac6"
+        }
+      ]
+    },
+    {
+      "id": "f1643e9e-3c59-4fd3-b635-fe1d51f12e35",
+      "name": "RS - Votação por seção eleitoral - 2008",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2008_RS.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2008_RS.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 20923159,
+      "lastModified": "Tue, 25 Jun 2024 14:46:18 GMT",
+      "etag": "\"13f4317-61bb7f5db0280\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:54:11.031541+00:00",
+      "sha256": "b86c0ee2b8cf028db8479d26e5d785755d098fa2d6df3b7653cf913a99e683e0",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "f1643e9e-votacao_secao_2008_RS.zip",
+          "bytes": 20923159,
+          "sha256": "b86c0ee2b8cf028db8479d26e5d785755d098fa2d6df3b7653cf913a99e683e0"
+        }
+      ]
+    },
+    {
+      "id": "f7efef86-a638-4593-a5d3-dbc656ec3d6d",
+      "name": "RO - Votação por seção eleitoral - 2008",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2008_RO.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2008_RO.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 3354159,
+      "lastModified": "Tue, 25 Jun 2024 14:46:35 GMT",
+      "etag": "\"332e2f-61bb7f6de68c0\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:54:11.453562+00:00",
+      "sha256": "dfdd39eb60aee61291604f8530e17ba9969c6f378f65fde43311d7bd90999359",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "f7efef86-votacao_secao_2008_RO.zip",
+          "bytes": 3354159,
+          "sha256": "dfdd39eb60aee61291604f8530e17ba9969c6f378f65fde43311d7bd90999359"
+        }
+      ]
+    },
+    {
+      "id": "d3aa3747-4ef7-4435-986f-156d03176861",
+      "name": "RR - Votação por seção eleitoral - 2008",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2008_RR.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2008_RR.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 1110654,
+      "lastModified": "Tue, 25 Jun 2024 14:46:25 GMT",
+      "etag": "\"10f27e-61bb7f645d240\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:54:11.791827+00:00",
+      "sha256": "cafb529e8bb3525f19cc04ec28483641c1be0c0252787c5ce8f9ceb7e23faa91",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "d3aa3747-votacao_secao_2008_RR.zip",
+          "bytes": 1110654,
+          "sha256": "cafb529e8bb3525f19cc04ec28483641c1be0c0252787c5ce8f9ceb7e23faa91"
+        }
+      ]
+    },
+    {
+      "id": "ad118423-87c1-40b4-b535-5d53415ccc29",
+      "name": "SC - Votação por seção eleitoral - 2008",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2008_SC.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2008_SC.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 9253798,
+      "lastModified": "Tue, 25 Jun 2024 14:46:09 GMT",
+      "etag": "\"8d33a6-61bb7f551ae40\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:54:12.303891+00:00",
+      "sha256": "56c1d5f435b14d240b0180892eec69eeb912df9d0029c21c9ca12b909df6e4b6",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "ad118423-votacao_secao_2008_SC.zip",
+          "bytes": 9253798,
+          "sha256": "56c1d5f435b14d240b0180892eec69eeb912df9d0029c21c9ca12b909df6e4b6"
+        }
+      ]
+    },
+    {
+      "id": "1a403e3f-b3c2-413d-98da-f683b5778845",
+      "name": "SP - Votação por seção eleitoral - 2008",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2008_SP.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2008_SP.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 95247698,
+      "lastModified": "Tue, 25 Jun 2024 14:45:53 GMT",
+      "etag": "\"5ad5d52-61bb7f45d8a40\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:54:15.092403+00:00",
+      "sha256": "9ee0c2317dd1af5a68fb307da48eb4ab11662f961f76c0da23e4fa4fbd8b7301",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "1a403e3f-votacao_secao_2008_SP.zip",
+          "bytes": 95247698,
+          "sha256": "9ee0c2317dd1af5a68fb307da48eb4ab11662f961f76c0da23e4fa4fbd8b7301"
+        }
+      ]
+    },
+    {
+      "id": "0acc740b-64c2-4f78-9f49-3d8ef75d4de4",
+      "name": "SE - Votação por seção eleitoral - 2008",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2008_SE.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2008_SE.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 2912045,
+      "lastModified": "Tue, 25 Jun 2024 14:45:57 GMT",
+      "etag": "\"2c6f2d-61bb7f49a9340\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:54:15.599153+00:00",
+      "sha256": "5ebad5ceb5dfefb459a2e78610fd7fba3eb39c7ee87f1f479fcbc7775f29dc72",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "0acc740b-votacao_secao_2008_SE.zip",
+          "bytes": 2912045,
+          "sha256": "5ebad5ceb5dfefb459a2e78610fd7fba3eb39c7ee87f1f479fcbc7775f29dc72"
+        }
+      ]
+    },
+    {
+      "id": "ed0f6809-f694-4563-979f-14a2164e10e9",
+      "name": "TO - Votação por seção eleitoral - 2008",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2008_TO.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2008_TO.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 2002462,
+      "lastModified": "Tue, 25 Jun 2024 14:45:40 GMT",
+      "etag": "\"1e8e1e-61bb7f3972d00\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:54:15.993705+00:00",
+      "sha256": "34a31e3b4ea28d8e3329ec67819ac5f03ca22f660c5e274cfe35b7a90dc2a996",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "ed0f6809-votacao_secao_2008_TO.zip",
+          "bytes": 2002462,
+          "sha256": "34a31e3b4ea28d8e3329ec67819ac5f03ca22f660c5e274cfe35b7a90dc2a996"
+        }
+      ]
+    }
+  ]
+}
