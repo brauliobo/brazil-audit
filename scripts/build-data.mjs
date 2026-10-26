@@ -15,6 +15,7 @@ import { buildGeometry, cached, tseMunicipalities } from './geo.mjs'
 import { buildSeatsData } from './seats-data.mjs'
 import { CORE } from '../src/signals.js'
 import { buildOfficialTurnout, TURNOUT_SCHEMA } from './official-turnout.mjs'
+import { tableDefinition } from './table-schema.mjs'
 import { vtSql, votingTimeRollups } from './voting-time.mjs'
 import { sectionRows, sgCsv, sgzCsv, sgzRows } from './signals-data.mjs'
 
@@ -91,8 +92,7 @@ async function dump(db, queries, file) {
 
 /** The manifest entry of a shared table (columns and DDL come from SCHEMA). */
 function table(name) {
-  const cols = SCHEMA[name].split(',').map((c) => c.trim().split(' ')[0]).join(',')
-  return (manifest.tables[name] ??= { name, columns: `election,turn,${cols}`, ddl: `create table ${name} (election int, turn int, ${SCHEMA[name]})`, parts: {} })
+  return (manifest.tables[name] = tableDefinition(name, SCHEMA[name], manifest.tables[name]))
 }
 
 /** Registers a part file: key `<year>/<part>`, `where` = the rows the part owns (the loader deletes them before a re-import). */

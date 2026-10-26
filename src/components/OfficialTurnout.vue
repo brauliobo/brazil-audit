@@ -25,7 +25,7 @@ const base = useAsync(() => [props.year], async ([y]) => { await ensureSmall(y, 
 const data = useAsync(() => [props.year, args.value, base.loading], async ([y, a], q) => {
   if (base.loading) return null
   const rows = objects(await q(`select *, absent::float8 / nullif(installed,0) rate from turnout where ${inElection(y)} order by state,city,zone`))
-  const selected = rows.find((r) => r.scope === (a[2] ? 'zone' : a[1] ? 'city' : a[0] ? 'uf' : 'br') && r.state === (a[0] || 'br') && r.city === (a[1] || '') && r.zone === (a[2] || ''))
+  const selected = rows.find((r) => r.scope === (a[2] ? 'zone' : a[1] ? 'city' : a[0] ? 'uf' : 'br') && r.state === (a[0] || 'br') && r.city === (a[1] ?? null) && r.zone === (a[2] ?? null))
   const children = rows.filter((r) => a[2] ? r === selected : a[1] ? r.scope === 'zone' && r.state === a[0] && r.city === a[1] : a[0] ? r.scope === 'city' && r.state === a[0] : r.scope === 'uf')
   return { selected, children, states: rows.filter((r) => r.scope === 'uf'), cities: rows.filter((r) => r.scope === 'city' && r.state === a[0]), zones: rows.filter((r) => r.scope === 'zone' && r.state === a[0] && r.city === a[1]) }
 })

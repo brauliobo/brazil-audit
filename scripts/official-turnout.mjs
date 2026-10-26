@@ -23,8 +23,11 @@ export function turnoutUrl(el, target) {
 }
 
 export function turnoutRow(el, target, source) {
+  if (source.tpabr !== { br: 'br', uf: 'uf', city: 'mu', zone: 'zona' }[target.scope]) throw new Error(`wrong scope: ${key(target)}`)
   if (+source.ele !== el.official.events[1] || +source.t !== el.turn) throw new Error(`wrong election: ${key(target)}`)
-  const values = [source.e.te,source.e.esi,source.e.esni,source.e.est,source.e.esnt,source.e.c,source.e.a,source.s.ts,source.s.st].map(Number)
+  const raw = [source.e.te,source.e.esi,source.e.esni,source.e.est,source.e.esnt,source.e.c,source.e.a,source.s.ts,source.s.st]
+  if (raw.some((v) => !/^\d+$/.test(String(v)))) throw new Error(`missing electorate: ${key(target)}`)
+  const values = raw.map(Number)
   const row = { ...target, ...Object.fromEntries(fields.map((f,i) => [f,values[i]])), generated: `${source.dg} ${source.hg}`, url: turnoutUrl(el,target) }
   if (values.some((v) => !Number.isSafeInteger(v) || v < 0) || row.present + row.absent !== row.installed || row.installed + row.not_installed !== row.electorate || row.totalized + row.uncounted !== row.electorate) throw new Error(`invalid electorate: ${key(target)}`)
   if (row.counted !== row.sections) throw new Error(`not totalized: ${key(target)}`)

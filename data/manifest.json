@@ -9405,6 +9405,20 @@
      "where": "election = 2022 and turn = 2"
     }
    }
+  },
+  "turnout": {
+   "name": "turnout",
+   "columns": "election,turn,scope,state,city,code,zone,electorate,installed,not_installed,totalized,uncounted,present,absent,sections,counted,generated,url",
+   "ddl": "create table turnout (election int, turn int, scope text, state text, city text, code text, zone text, electorate bigint, installed bigint, not_installed bigint, totalized bigint, uncounted bigint, present bigint, absent bigint, sections int, counted int, generated text, url text)",
+   "parts": {
+    "2026-2/all": {
+     "url": "turnout/2026-2.csv.gz",
+     "bytes": 288963,
+     "rows": 12078,
+     "rawBytes": 2247619,
+     "where": "election = 2026 and turn = 2"
+    }
+   }
   }
  },
  "geo": {
@@ -9557,7 +9571,7 @@
   },
   "source": "IBGE malhas v3 (qualidade minima/intermediaria)"
  },
- "version": "2026-10-26T18:46:48.910Z",
+ "version": "2026-10-26T21:46:35.598Z",
  "raw": {
   "2026": {
    "url": "raw/2026.json",
