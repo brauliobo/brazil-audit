@@ -53,8 +53,7 @@ serves `dist/` with exactly these semantics (no rewrites, 301 for directories, 4
 
 Every election lives in the **same tables**, told apart by the `election` and `turn` columns; the elections are configured once in
 `src/elections.js` (read by `scripts/build-data.mjs` and by the app) and the URL keeps the election first: `/2026/...`, the first round of a
-year is `/<year>/...` and a later one `/<year>-<turn>/...` (`/2018`, `/2018-2`, `/2022`, `/2022-2`; the 2026 runoff plugs in with one more
-entry of the config). A bare `/2022/...` used to be the runoff of the first version of the site: it is now the first round, the runoff is `/2022-2/...`. `data/manifest.json` lists the tables (DDL,
+year is `/<year>/...` and a later one `/<year>-<turn>/...` (`/2018`, `/2018-2`, `/2022`, `/2022-2`, `/2026`, `/2026-2`). The 2026 runoff is the default election; it includes president and the six governor runoffs. Parliament and seats link to the latest first round with those data. A bare `/2022/...` used to be the runoff of the first version of the site: it is now the first round, the runoff is `/2022-2/...`. `data/manifest.json` lists the tables (DDL,
 columns) and their parts (`<election>/<part>`, url, rows, bytes, and the `where` that identifies the rows of a part so a re-import
 replaces them). Parts are gzip CSV, loaded lazily with `COPY ... FROM '/dev/blob'` (inflated with `DecompressionStream`):
 `data/<table>/<election>[-<uf>].csv.gz`, deputy offices of 2026 as separate parts (`-sp.6`, `-sp.7`). Brotli is not usable: browsers
@@ -209,6 +208,8 @@ that are not in the TSE candidate list appear as nominal in the RDV but are show
 ### Regenerate
 
 ```sh
+nice -n 10 node scripts/build-data.mjs --election=2026-2 # regenerate the runoff (IDENT_DIR and RAW_INDEX_DIR supply local parsed logs and release indexes)
+nice -n 10 node scripts/build-benford.mjs --election=2026-2 # runoff Benford histograms and simulated baselines
 nice -n 10 npm run data                              # all elections, all UFs (~11 min on a loaded machine, mostly the 2026 voting times)
 nice -n 10 node scripts/build-data.mjs --election=2018,2018-2,2022,2022-2 --only=rdv,results   # the open-data elections: about 2 minutes
 node scripts/verify-open.mjs --election=2022-2       # elected candidates vs the official totals in the source database
@@ -222,6 +223,8 @@ inside Postgres per state: results dumps, the voting-time buckets and gap statis
 never scanned: it is probed once per section through its index (`state, city, zone, section, model, post` prefix).
 Options `--only=votes|rdv|vt|rollups|results|cands`, `--states=`. Commit the result; the manifest `version`
 invalidates browser caches.
+
+The 2026 runoff includes all collected section results and voting times, with coverage showing sections still missing from the processed data. Its signals are awaiting the TSE's runoff electorate, turnout and polling-place detail; first-round turnout is never reused as second-round evidence.
 
 ### Section signals (`/<election>/signals`, tables `sg`, `sgf`, `sgz`)
 
@@ -291,7 +294,7 @@ parts, 28 MB gz), voting-time pace table 1 s. PGlite has no autovacuum, so every
 ## Dados brutos
 
 The raw TSE files behind the dump (`aux.json`, the RDV and the logs of 2022 and 2026) are published as GitHub release
-assets of [`brauliobo/brazil-audit`](https://github.com/brauliobo/brazil-audit/releases), tags `data-2026` and
+assets of [`brauliobo/brazil-audit`](https://github.com/brauliobo/brazil-audit/releases), tags `data-2026`, `data-2026-2` and
 `data-2022`. GitHub does not take 1.5 million loose files, so each asset is an independent zip of one state and one kind
 of file, below 1.8 GiB (a big state has several), named `<year>-<kind>-<uf>-NN.zip`:
 

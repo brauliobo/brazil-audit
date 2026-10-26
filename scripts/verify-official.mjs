@@ -6,7 +6,7 @@ import { gunzipSync } from 'node:zlib'
 import { parseCsvLine } from './csv.mjs'
 import { cached, tseMunicipalities } from './geo.mjs'
 import { ELECTIONS } from '../src/elections.js'
-import { OFFICIAL, dumpOf, officesOf, officialFile } from './official.mjs'
+import { officialEvent, dumpOf, officesOf, officialFile } from './official.mjs'
 
 const key = process.argv.find((a) => a.startsWith('--election='))?.split('=')[1] ?? '2026'
 const el = ELECTIONS[key]
@@ -26,7 +26,7 @@ for (const [, , uf, , , , office, number, votes] of rows('residual')) {
 for (const [, , uf, , office, , nominal, blank, nul] of rows('tot')) { add(uf, office, 'branco', blank); add(uf, office, 'nulo', nul); add(uf, office, 'nominal', nominal) }
 
 const official = async (uf, office) => {
-  const [event, cargo] = OFFICIAL[office]
+  const [event, cargo] = officialEvent(el, office)
   const j = JSON.parse(await cached(`verify-${el.key}-${uf}-${cargo}.json`, `https://resultados.tse.jus.br/oficial/ele${el.year}/${event}/dados/${uf}/${uf}-${cargo}-e00${event}-u.json`, { fresh: true }))
   return { j, cands: new Map(j.carg[0].agr.flatMap((a) => a.par.flatMap((p) => (p.cand ?? []).map((c) => [c.n, +c.vap])))) }
 }
@@ -35,7 +35,7 @@ const mismatches = []
 const nullDiffs = []
 let pairs = 0, matched = 0
 for (const uf of [...UFS, 'br']) {
-  for (const office of uf === 'br' ? [1] : officesOf(uf)) {
+  for (const office of uf === 'br' ? [1] : officesOf(el, uf)) {
     let o
     try { o = await official(uf, office) } catch (e) { mismatches.push([uf, office, 'official file', e.message.slice(-30), '']); pairs++; continue }
     const mine = uf === 'br' ? new Map(UFS.flatMap((u) => [...(ours[u]?.[office] ?? [])]).reduce((m, [k, v]) => m.set(k, (m.get(k) ?? 0) + v), new Map())) : ours[uf][office]
@@ -68,7 +68,7 @@ for (const uf of [...new Set(zones.map((z) => z.split('|')[0]))]) {
   for (const key of zones.filter((z) => z.startsWith(`${uf}|`))) {
     const [, city, zone] = key.split('|')
     for (const office of new Set(residualRows.filter((r) => r[0] === uf && r[1] === city && r[3] === zone).map((r) => +r[4]))) {
-      const j = await officialFile(el.year, uf, codes.get(`${uf}/${city}`), zone, office)
+      const j = await officialFile(el, uf, codes.get(`${uf}/${city}`), zone, office)
       const mine = new Map(dump.zones.get(`${city}|${zone}|${office}`)?.cands ?? [])
       for (const r of residualRows) if (r[0] === uf && r[1] === city && r[3] === zone && +r[4] === office && r[5] !== 'branco' && r[5] !== 'nulo') mine.set(r[5], (mine.get(r[5]) ?? 0) + +r[6])
       const blank = (dump.zones.get(`${city}|${zone}|${office}`)?.blank ?? 0) + residualRows.filter((r) => r[0] === uf && r[1] === city && r[3] === zone && +r[4] === office && r[5] === 'branco').reduce((t, r) => t + +r[6], 0)

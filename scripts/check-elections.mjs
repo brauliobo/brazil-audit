@@ -10,6 +10,7 @@ import { RULES } from '../src/seats/rules.js'
 
 const chronological = [...ELECTION_LIST].sort((a, b) => a.year - b.year || a.turn - b.turn)
 assert.deepEqual(ELECTION_LIST.map((e) => e.key), chronological.map((e) => e.key), 'ELECTION_LIST must be chronological')
+for (const e of ELECTION_LIST) assert.equal(typeof e.hasSignals, 'boolean', `signals availability of ${e.key}`)
 for (const e of ELECTION_LIST) assert.equal(e.key, e.turn === 1 ? `${e.year}` : `${e.year}-${e.turn}`, `key of ${e.key}`)
 assert.equal(new Set(ELECTION_LIST.map((e) => e.key)).size, ELECTION_LIST.length, 'duplicate election keys')
 assert.deepEqual(Object.keys(ELECTIONS).sort(), ELECTION_LIST.map((e) => e.key).sort(), 'ELECTIONS and ELECTION_LIST differ')
@@ -20,7 +21,7 @@ assert.equal(SEATS_ELECTION, chronological.findLast((e) => e.hasSeats).key, 'SEA
 
 // every deputy election names a rule that exists, and /seats opens the latest election with seats data
 for (const e of ELECTION_LIST.filter((x) => x.seatRule)) assert.ok(e.hasSeats && RULES[e.seatRule], `seatRule of ${e.key}`)
-assert.equal(ELECTIONS[SEATS_ELECTION].seatRule && SEATS_ELECTION, latest, 'the latest election must have seat rules (the seats view opens it)')
+assert.ok(ELECTIONS[SEATS_ELECTION].seatRule, 'the latest election with seats must have seat rules')
 
 const BASE = '/brazil-audit/'
 for (const path of ['', 'overview', 'maps', 'seats', 'time/sp', 'drill/sp/SÃO%20PAULO']) {

@@ -10,7 +10,7 @@ import { pipeline } from 'node:stream/promises'
 import { Transform } from 'node:stream'
 import { ELECTIONS, REPO } from '../src/elections.js'
 import { parseCsvLine } from './csv.mjs'
-import { EMPTY, RDV, dumpOf, officesOf, officialFile, residualOf } from './official.mjs'
+import { EMPTY, RDV, dumpOf, officesOf, officialEvent, officialFile, residualOf } from './official.mjs'
 import { buildGeometry, cached, tseMunicipalities } from './geo.mjs'
 import { buildSeatsData } from './seats-data.mjs'
 import { CORE } from '../src/signals.js'
@@ -269,7 +269,6 @@ function buildLogMatch(el) {
 // residual always describe the same snapshot. tot: per city/office totals; res: votes per candidate (per city for president/governor/
 // senator, per UF for deputies: per-city lists would be ~1M rows); coverage: own sections (TSE state configs; sections with nsp != ns
 // are aggregated into another section and have no files of their own) against the sections in the parts.
-const TSE_CFG = 'https://resultados.tse.jus.br/oficial/ele2026/arquivo-urna/3220/config'
 const rdvFiles = (el, uf) => Object.entries(manifest.tables.rdv.parts).filter(([id]) => id.startsWith(`${el.key}/`) && (id.split('/')[1] === uf || id.split('/')[1].startsWith(`${uf}.`))).map(([, p]) => `${OUT}/${p.url}`)
 const ufsInDump = (el) => [...new Set(Object.keys(manifest.tables.rdv.parts).filter((id) => id.startsWith(`${el.key}/`)).map((id) => id.split('/')[1].split('.')[0]))].sort()
 
@@ -293,8 +292,8 @@ function scanRdv(el, uf) {
   return { tot, res, stored }
 }
 
-async function ownSections(uf) {
-  const cfg = await (await fetch(`${TSE_CFG}/${uf}/${uf}-p003220-cs.json`)).json()
+async function ownSections(el, uf) {
+  const cfg = JSON.parse(await cached(`sections-${el.key}-${uf}.json`, `https://resultados.tse.jus.br/oficial/ele${el.year}/arquivo-urna/${+el.raw.pleito}/config/${uf}/${uf}-p${el.raw.pleito}-cs.json`, { maxAgeHours: 12 }))
   const own = new Set()
   let aggregated = 0
   for (const [city, zone, c] of cfg.abr.flatMap((a) => a.mu.flatMap((m) => m.zon.flatMap((z) => z.sec.map((c) => [m.nm, z.cd, c]))))) (c.nsp && c.nsp !== c.ns ? aggregated++ : own.add(`${city}\t${zone}\t${c.ns}`))
@@ -308,7 +307,7 @@ async function buildResults(el) {
     tot.push(...[...t].map(([k, v]) => [uf, ...k.split('\t'), ...v]))
     res.push(...[...r].map(([k, v]) => { const [city, office, cand] = k.split('\t'); return [uf, city || null, office, cand, v] }))
     if (!el.hasCoverage) continue
-    const { own, aggregated } = await ownSections(uf)
+    const { own, aggregated } = await ownSections(el, uf)
     const lost = [...own].filter((k) => !stored.has(k)).sort()
     cov.push([uf, own.size, stored.size, aggregated, lost.length])
     missing.push(...lost.map((k) => [uf, ...k.split('\t')]))
@@ -333,12 +332,14 @@ async function candidates(el, uf, office, url) {
 
 // 2026: the TSE candidate files (with their official totals)
 async function rdvCandidates(el) {
-  const TSE = 'https://resultados.tse.jus.br/oficial/ele2026'
+  const TSE = `https://resultados.tse.jus.br/oficial/ele${el.year}`
+  const [presidentEvent, presidentCargo] = officialEvent(el, 1)
   const ufs = (await statesOf(el)).filter((u) => u !== 'zz')
-  const rows = await candidates(el, 'br', 1, `${TSE}/6257/dados/br/br-c0001-e006257-u.jws`)
+  const rows = await candidates(el, 'br', 1, `${TSE}/${presidentEvent}/dados/br/br-${presidentCargo}-e00${presidentEvent}-u.jws`)
   for (const uf of ufs) {
-    for (const office of uf === 'df' ? [3, 5, 6, 8] : [3, 5, 6, 7]) {
-      rows.push(...(await candidates(el, uf, office, `${TSE}/6259/dados/${uf}/${uf}-c${String(office).padStart(4, '0')}-e006259-u.jws`)))
+    for (const office of officesOf(el, uf).filter((o) => o !== 1)) {
+      const [event, cargo] = officialEvent(el, office)
+      rows.push(...(await candidates(el, uf, office, `${TSE}/${event}/dados/${uf}/${uf}-${cargo}-e00${event}-u.jws`)))
     }
   }
   return rows
@@ -476,9 +477,9 @@ async function buildResidual(el, mun) {
     const dump = dumpOf(rdvFiles(el, uf), new Set(cities.map(([c]) => c)))
     for (const [city, zones] of cities) {
       const code = codes.get(`${uf}/${city}`)
-      for (const office of officesOf(uf)) {
+      for (const office of officesOf(el, uf)) {
         const attempt = async (zone) => {
-          try { return residualOf(await officialFile(el.year, uf, code, zone, office), (zone ? dump.zones.get(`${city}|${zone}|${office}`) : dump.cities.get(`${city}|${office}`)) ?? EMPTY) } catch (e) { return { skip: 'no_official_file', detail: e.message.slice(-40) } }
+          try { return residualOf(await officialFile(el, uf, code, zone, office), (zone ? dump.zones.get(`${city}|${zone}|${office}`) : dump.cities.get(`${city}|${office}`)) ?? EMPTY) } catch (e) { return { skip: 'no_official_file', detail: e.message.slice(-40) } }
         }
         const results = await Promise.all([...zones.keys()].map(async (zone) => [zone, await attempt(zone)]))
         const failed = results.filter(([, r]) => r.skip)
@@ -531,7 +532,7 @@ for (const el of SELECTED) {
   if (el.hasTimes && ONLY.includes('logmatch')) buildLogMatch(el)
   if (ONLY.includes('results')) await buildResults(el)
   if (el.hasSeats && ONLY.includes('lineup')) await buildSeatsData(el, { text, smallTable })
-  if (ONLY.includes('signals')) await buildSignals(el)
+  if (el.hasSignals && ONLY.includes('signals')) await buildSignals(el)
 }
 if (ONLY.includes('cands')) await buildCands()
 if (['geo', 'elected', 'residual'].some((k) => ONLY.includes(k)) || !manifest.tables.mun_map) {

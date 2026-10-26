@@ -30,6 +30,7 @@ const tabs = computed(() => (cfg.value.hasTimes ? TABS : TABS.slice(0, 1)))
 const tab = computed(() => (tabs.value.includes(route.value.params.get('tab')) ? route.value.params.get('tab') : 'abstention'))
 
 const base = useAsync(() => [year.value, state.value], async ([y, s]) => {
+  if (!ELECTIONS[y].hasSignals) return null
   await ensureSmall(y, 'sgz', 'sgf')
   if (s) await ensureState('sg', y, s)
   return true
@@ -37,7 +38,7 @@ const base = useAsync(() => [year.value, state.value], async ([y, s]) => {
 
 // A panel's query runs only while its tab is open: `r(sql, params)` returns row objects, params default to [state].
 const use = (only, run) => useAsync(() => [year.value, state.value, tab.value, base.loading], async ([y, s, tb], q) =>
-  base.loading || (only && tb !== only) ? null : run(y, s, async (sql, params = [s]) => objects(await q(sql, params))))
+  !ELECTIONS[y].hasSignals || base.loading || (only && tb !== only) ? null : run(y, s, async (sql, params = [s]) => objects(await q(sql, params))))
 const scope = `($1::text is null or state = $1)`
 const crit = `((fl & 1) + ((fl >> 1) & 1) + ((fl >> 2) & 1))`
 
@@ -115,57 +116,59 @@ const percent = (v) => `${num(v, 1)}%`
 
 <template lang="pug">
 h1 {{ t('signals.title', { place, election: electionLabel(year) }) }}
-Notice(kind="warning") {{ t('signals.caution') }}
-SignalSection(v-if="isSection" :year="year" :args="args")
+p.muted(v-if="!cfg.hasSignals") {{ t('signals.unavailable') }}
 template(v-else)
-  .cluster
-    Field(:label="t('common.state')")
-      select(:value="state ?? ''" @change="pickState")
-        option(value="") {{ t('common.brazil') }}
-        option(v-for="s in statesIn('sg', year)" :key="s" :value="s" :selected="s === state") {{ stateTitle(s) }}
-  Panel(:title="t('signals.summary')" :state="head" :election="year" wide)
-    ul
-      li {{ t('signals.headline', { flagged: int(head.data.one), sections: int(head.data.sections), share: pct(head.data.one / head.data.sections, 2) }) }}
-      li(v-if="cfg.hasTimes") {{ t('signals.several', { two: int(head.data.two), three: int(head.data.three) }) }}
-      li(v-if="cfg.hasTimes") {{ t('signals.chance', { expected: int(head.data.chance), abs: int(head.data.abs), man: int(head.data.man) }) }}
-      li(v-else) {{ t('signals.chanceAbs', { expected: int(head.data.chance), abs: int(head.data.abs) }) }}
-    p.muted {{ t('signals.how') }}
-  Tabs(v-if="tabs.length > 1" :items="tabItems" :label="t('signals.tabs')")
-  .grid-auto
-    template(v-if="tab === 'abstention'")
-      Panel(:title="t('signals.byState')" :state="byState" :election="year" wide)
-        p.muted {{ t('signals.byStateNote', { mean: pct(byState.data.mean, 1) }) }}
-        ColumnChart(:label="t('signals.byState')" :values="byState.data.values" :labels="byState.data.labels" :line="byState.data.line" :height="260" :fmt="percent")
-      Panel(:title="t('signals.zones')" :state="zones" :election="year")
-        p.muted {{ t('signals.zonesNote', { zones: int(zones.data.total) }) }}
-        ColumnChart(:label="t('signals.zones')" :values="zones.data.values" :labels="zones.data.labels" :height="240" :tick="int" :fmt="(v) => t('signals.zonesCount', { count: v })")
-      Panel(:title="t('signals.funnel')" :state="funnel" :election="year" wide)
-        p.muted(v-if="funnel.data.none") {{ t('signals.pickState') }}
-        template(v-else)
-          p.muted {{ t('signals.funnelNote', { mean: pct(funnel.data.mean, 1) }) }}
-          Scatter(:points="funnel.data.points" :marks="funnel.data.marks" :curves="funnel.data.curves" :x-label="t('signals.col.voters')" :y-label="t('signals.col.abstention')")
-      Panel(:title="t('signals.lowAbstention')" :state="lowAbstention" :election="year" wide)
-        p.muted {{ t('signals.lowAbstentionNote') }}
-        DataTable(:columns="lowCols" :rows="lowAbstention.data")
-    template(v-else-if="tab === 'late'")
-      Panel(:title="t('signals.lateHours')" :state="lateHours" :election="year" wide)
-        p.muted {{ t('signals.lateHoursNote') }}
-        ColumnChart(:label="t('signals.lateHours')" :values="lateHours.data.values" :labels="lateHours.data.labels" :height="260" :fmt="percent")
-      Panel(:title="t('signals.lateList')" :state="lateList" :election="year" wide)
-        p.muted {{ t('signals.lateListNote') }}
-        DataTable(:columns="lateCols" :rows="lateList.data")
-    template(v-else-if="tab === 'nofp'")
-      Panel(:title="t('signals.nofpHours')" :state="nofpHours" :election="year" wide)
-        p.muted {{ t('signals.nofpHoursNote', { all: pct(nofpHours.data.share, 1), manual: pct(nofpHours.data.manual, 1) }) }}
-        ColumnChart(:label="t('signals.nofpHours')" :values="nofpHours.data.values" :labels="nofpHours.data.labels" :line="nofpHours.data.line" :height="260" :fmt="percent")
-      Panel(:title="t('signals.manualList')" :state="manualList" :election="year" wide)
-        p.muted {{ t('signals.manualListNote') }}
-        DataTable(:columns="manualCols" :rows="manualList.data")
-    template(v-else)
-      Panel(:title="t('signals.byCount')" :state="byCount" :election="year")
-        p.muted {{ t('signals.byCountNote') }}
-        DataTable(:columns="stateCols" :rows="byCount.data")
-      Panel(:title="t('signals.crossList')" :state="crossList" :election="year" wide)
-        p.muted {{ t('signals.crossListNote') }}
-        DataTable(:columns="crossCols" :rows="crossList.data")
+  Notice(kind="warning") {{ t('signals.caution') }}
+  SignalSection(v-if="isSection" :year="year" :args="args")
+  template(v-else)
+    .cluster
+      Field(:label="t('common.state')")
+        select(:value="state ?? ''" @change="pickState")
+          option(value="") {{ t('common.brazil') }}
+          option(v-for="s in statesIn('sg', year)" :key="s" :value="s" :selected="s === state") {{ stateTitle(s) }}
+    Panel(:title="t('signals.summary')" :state="head" :election="year" wide)
+      ul
+        li {{ t('signals.headline', { flagged: int(head.data.one), sections: int(head.data.sections), share: pct(head.data.one / head.data.sections, 2) }) }}
+        li(v-if="cfg.hasTimes") {{ t('signals.several', { two: int(head.data.two), three: int(head.data.three) }) }}
+        li(v-if="cfg.hasTimes") {{ t('signals.chance', { expected: int(head.data.chance), abs: int(head.data.abs), man: int(head.data.man) }) }}
+        li(v-else) {{ t('signals.chanceAbs', { expected: int(head.data.chance), abs: int(head.data.abs) }) }}
+      p.muted {{ t('signals.how') }}
+    Tabs(v-if="tabs.length > 1" :items="tabItems" :label="t('signals.tabs')")
+    .grid-auto
+      template(v-if="tab === 'abstention'")
+        Panel(:title="t('signals.byState')" :state="byState" :election="year" wide)
+          p.muted {{ t('signals.byStateNote', { mean: pct(byState.data.mean, 1) }) }}
+          ColumnChart(:label="t('signals.byState')" :values="byState.data.values" :labels="byState.data.labels" :line="byState.data.line" :height="260" :fmt="percent")
+        Panel(:title="t('signals.zones')" :state="zones" :election="year")
+          p.muted {{ t('signals.zonesNote', { zones: int(zones.data.total) }) }}
+          ColumnChart(:label="t('signals.zones')" :values="zones.data.values" :labels="zones.data.labels" :height="240" :tick="int" :fmt="(v) => t('signals.zonesCount', { count: v })")
+        Panel(:title="t('signals.funnel')" :state="funnel" :election="year" wide)
+          p.muted(v-if="funnel.data.none") {{ t('signals.pickState') }}
+          template(v-else)
+            p.muted {{ t('signals.funnelNote', { mean: pct(funnel.data.mean, 1) }) }}
+            Scatter(:points="funnel.data.points" :marks="funnel.data.marks" :curves="funnel.data.curves" :x-label="t('signals.col.voters')" :y-label="t('signals.col.abstention')")
+        Panel(:title="t('signals.lowAbstention')" :state="lowAbstention" :election="year" wide)
+          p.muted {{ t('signals.lowAbstentionNote') }}
+          DataTable(:columns="lowCols" :rows="lowAbstention.data")
+      template(v-else-if="tab === 'late'")
+        Panel(:title="t('signals.lateHours')" :state="lateHours" :election="year" wide)
+          p.muted {{ t('signals.lateHoursNote') }}
+          ColumnChart(:label="t('signals.lateHours')" :values="lateHours.data.values" :labels="lateHours.data.labels" :height="260" :fmt="percent")
+        Panel(:title="t('signals.lateList')" :state="lateList" :election="year" wide)
+          p.muted {{ t('signals.lateListNote') }}
+          DataTable(:columns="lateCols" :rows="lateList.data")
+      template(v-else-if="tab === 'nofp'")
+        Panel(:title="t('signals.nofpHours')" :state="nofpHours" :election="year" wide)
+          p.muted {{ t('signals.nofpHoursNote', { all: pct(nofpHours.data.share, 1), manual: pct(nofpHours.data.manual, 1) }) }}
+          ColumnChart(:label="t('signals.nofpHours')" :values="nofpHours.data.values" :labels="nofpHours.data.labels" :line="nofpHours.data.line" :height="260" :fmt="percent")
+        Panel(:title="t('signals.manualList')" :state="manualList" :election="year" wide)
+          p.muted {{ t('signals.manualListNote') }}
+          DataTable(:columns="manualCols" :rows="manualList.data")
+      template(v-else)
+        Panel(:title="t('signals.byCount')" :state="byCount" :election="year")
+          p.muted {{ t('signals.byCountNote') }}
+          DataTable(:columns="stateCols" :rows="byCount.data")
+        Panel(:title="t('signals.crossList')" :state="crossList" :election="year" wide)
+          p.muted {{ t('signals.crossListNote') }}
+          DataTable(:columns="crossCols" :rows="crossList.data")
 </template>

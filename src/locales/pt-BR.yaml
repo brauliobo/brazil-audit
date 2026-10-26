@@ -452,6 +452,7 @@ analysis:
   nulls: nulos
 
 signals:
+  unavailable: Os sinais desta eleição aguardam os dados oficiais de eleitorado, comparecimento e local de votação por seção. Os votos, horários e logs coletados estão disponíveis nas outras páginas.
   title: "Sinais por seção · {place} · {election}"
   caution: "Um sinal é só um motivo para olhar uma seção de perto, não uma prova de fraude. Seções pequenas, zonas rurais, falha da biometria e filas explicam muitos casos; por isso cada seção é comparada com as vizinhas da mesma cidade."
   summary: Resumo

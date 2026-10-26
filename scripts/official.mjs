@@ -5,17 +5,18 @@ import { gunzipSync } from 'node:zlib'
 import { parseCsvLine } from './csv.mjs'
 import { cached } from './geo.mjs'
 
-export const OFFICIAL = { 1: ['6257', 'c0001'], 3: ['6259', 'c0003'], 5: ['6259', 'c0005'], 6: ['6259', 'c0006'], 7: ['6259', 'c0007'], 8: ['6259', 'c0008'] }
-export const officesOf = (uf) => (uf === 'zz' ? [1] : uf === 'df' ? [1, 3, 5, 6, 8] : [1, 3, 5, 6, 7])
+/** Event and cargo identifiers are properties of the election, including its round. */
+export const officialEvent = (el, office) => [String(el.official.events[office]), `c${String(office).padStart(4, '0')}`]
+export const officesOf = (el, uf) => el.offices.filter((office) => (uf !== 'zz' || office === 1) && (uf !== 'df' || office !== 7) && (uf === 'df' || office !== 8) && (office !== 3 || !el.official?.governors || el.official.governors.includes(uf)))
 /** Column positions in an rdv part line (election, turn, state, city, zone, section, model, office, nominal, blank, nul, votes). */
 export const RDV = { city: 3, zone: 4, section: 5, office: 7, nominal: 8, blank: 9, nul: 10, votes: 11 }
 export const EMPTY = { cands: new Map(), blank: 0, nul: 0 }
 
 /** The official result file of a municipality (zone null) or of one zone of it; cached 12 h, throttled by cached(). */
-export async function officialFile(year, uf, cityCode, zone, office) {
-  const [event, cargo] = OFFICIAL[office]
+export async function officialFile(el, uf, cityCode, zone, office) {
+  const [event, cargo] = officialEvent(el, office)
   const name = `${uf}${cityCode}${zone ? `-z${zone}` : ''}-${cargo}-e00${event}-u.json`
-  return JSON.parse(await cached(`official-${year}-${name}`, `https://resultados.tse.jus.br/oficial/ele${year}/${event}/dados/${uf}/${name}`, { maxAgeHours: 12 }))
+  return JSON.parse(await cached(`official-${el.key}-${name}`, `https://resultados.tse.jus.br/oficial/ele${el.year}/${event}/dados/${uf}/${name}`, { maxAgeHours: 12 }))
 }
 
 /** What the given rdv part files hold for the cities: { zones: Map "city|zone|office", cities: Map "city|office" } of { cands, blank, nul }. */

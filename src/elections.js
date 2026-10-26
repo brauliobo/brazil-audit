@@ -26,7 +26,7 @@ const RUNOFF = [1, 3] // the second round only elects president and governors
 
 const open = (year, turn, seatRule) => ({
   key: turn === 1 ? `${year}` : `${year}-${turn}`, year, turn, offices: turn === 1 ? FULL : RUNOFF,
-  hasBlank: true, hasTimes: false, hasResidual: false, hasSeats: turn === 1, hasCoverage: false, seatRule,
+  hasBlank: true, hasTimes: false, hasResidual: false, hasSeats: turn === 1, hasCoverage: false, hasSignals: true, seatRule,
   sources: { logs: false, rdv: false, open: true, official: ['check'], pending: [], differences: {} }, // 2018: the TSE published neither RDV nor logs
   raw: { branch: '2018', code: [] },
   source: { kind: 'open', db: `brazil-audit-${year}` },
@@ -46,13 +46,25 @@ const elections = [
   { ...machine(2, { secondUrnNoRdv: 4 }), raw: { tag: 'data-2022', indexDir: 'meta-2022', branch: '2022', code: ['script.rb'] } },
   {
     key: '2026', year: 2026, turn: 1, offices: FULL,
-    hasBlank: true, hasTimes: true, hasResidual: true, hasSeats: true, hasCoverage: true, seatRule: 'stf2024',
+    hasBlank: true, hasTimes: true, hasResidual: true, hasSeats: true, hasCoverage: true, hasSignals: true, seatRule: 'stf2024',
     sources: { logs: true, rdv: true, open: false, official: ['residual', 'check'], pending: [], differences: {} },
     raw: {
-      tag: 'data-2026', indexDir: 'meta-2026', logpack: true, branch: '2026', code: ['lib/rdv.rb', 'lib/voting_log.rb'], coverage: ['coverage/missing-2026.tsv', 'coverage/summary-2026.tsv'],
+      tag: 'data-2026', indexDir: 'meta-2026', pleito: '003220', logpack: true, branch: '2026', code: ['lib/rdv.rb', 'lib/voting_log.rb'], coverage: ['coverage/missing-2026.tsv', 'coverage/summary-2026.tsv'],
       tseAux: 'https://resultados.tse.jus.br/oficial/ele2026/arquivo-urna/3220/dados/{uf}/{city}/{zone}/{section}/p003220-{uf}-m{city}-z{zone}-s{section}-aux.json',
     },
     source: { kind: 'rdv', db: 'brazil-audit-2026' },
+    official: { events: { 1: 6257, 3: 6259, 5: 6259, 6: 6259, 7: 6259, 8: 6259 } },
+  },
+  {
+    key: '2026-2', year: 2026, turn: 2, offices: RUNOFF,
+    hasBlank: true, hasTimes: true, hasResidual: true, hasSeats: false, hasCoverage: true, hasSignals: false,
+    sources: { logs: true, rdv: true, open: false, official: ['residual', 'check'], pending: [], differences: {} },
+    raw: {
+      tag: 'data-2026-2', indexDir: 'meta-2026-2', pleito: '003221', logpack: true, branch: '2026', code: ['lib/rdv.rb', 'lib/voting_log.rb'], coverage: ['coverage/missing-2026-2.tsv', 'coverage/summary-2026-2.tsv'],
+      tseAux: 'https://resultados.tse.jus.br/oficial/ele2026/arquivo-urna/3221/dados/{uf}/{city}/{zone}/{section}/p003221-{uf}-m{city}-z{zone}-s{section}-aux.json',
+    },
+    source: { kind: 'rdv', db: 'brazil-audit-2026-2' },
+    official: { events: { 1: 6258, 3: 6260 }, governors: ['ac', 'am', 'df', 'es', 'rn', 'to'] },
   },
 ]
 for (const e of elections) {

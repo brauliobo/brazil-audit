@@ -451,6 +451,7 @@ analysis:
   nulls: "null"
 
 signals:
+  unavailable: Signals for this election await official registered-voter, turnout and polling-place data per section. Collected votes, voting times and logs are available on the other pages.
   title: "Section signals · {place} · {election}"
   caution: "A signal is only a reason to look at a section more closely, not proof of fraud. Small sections, rural zones, fingerprint failures and queues explain many cases, which is why each section is compared with the other sections of its city."
   summary: Summary
