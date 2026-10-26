@@ -1,0 +1,92 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-10-26T21:49:21.279415+00:00",
+  "status": "published",
+  "dataset": {
+    "id": "resultados-1986",
+    "title": "Resultados - 1986",
+    "groups": [
+      "resultados"
+    ],
+    "family": "resultados",
+    "years": [
+      1986
+    ],
+    "license": "cc-by",
+    "source": "https://dadosabertos.tse.jus.br/dataset/resultados-1986",
+    "branch": "archive/resultados-1986",
+    "tag": "data-resultados-1986",
+    "releaseUrl": "https://github.com/brauliobo/brazil-audit/releases/tag/data-resultados-1986",
+    "normalized": false,
+    "status": "catalogued",
+    "inScope": true
+  },
+  "resources": [
+    {
+      "id": "bfb36d93-a899-4ae2-8f0f-ed349d13ba3d",
+      "name": "Detalhe de apuração por UF",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/detalhe_votacao_uf/detalhe_votacao_uf_1986.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/detalhe_votacao_uf/detalhe_votacao_uf_1986.zip",
+      "format": "TXT",
+      "status": "prepared",
+      "bytes": 288879,
+      "lastModified": "Thu, 16 Apr 2015 19:39:51 GMT",
+      "etag": "\"4686f-513dca08ecfc0\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:49:20.791866+00:00",
+      "sha256": "5f27ea745661880d3dd674b534e8ea31b45dd277e319de6344bf914edd97c2b2",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "bfb36d93-detalhe_votacao_uf_1986.zip",
+          "bytes": 288879,
+          "sha256": "5f27ea745661880d3dd674b534e8ea31b45dd277e319de6344bf914edd97c2b2"
+        }
+      ]
+    },
+    {
+      "id": "0d9c0d50-c39f-47f4-834c-6de361472fbf",
+      "name": "Votação nominal por UF",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_candidato_uf/votacao_candidato_uf_1986.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_candidato_uf/votacao_candidato_uf_1986.zip",
+      "format": "TXT",
+      "status": "prepared",
+      "bytes": 561805,
+      "lastModified": "Mon, 26 May 2014 16:14:43 GMT",
+      "etag": "\"8928d-4fa4fe084c2c0\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:49:21.063198+00:00",
+      "sha256": "c2e3201a0f58e4e77ee951322d47b0a88fddcbfb94d553777f598ad5c83ddeee",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "0d9c0d50-votacao_candidato_uf_1986.zip",
+          "bytes": 561805,
+          "sha256": "c2e3201a0f58e4e77ee951322d47b0a88fddcbfb94d553777f598ad5c83ddeee"
+        }
+      ]
+    },
+    {
+      "id": "efccf3d1-b66c-4d64-947c-09fc15133cf6",
+      "name": "Votação partido por UF",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_partido_uf/votacao_partido_uf_1986.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_partido_uf/votacao_partido_uf_1986.zip",
+      "format": "TXT",
+      "status": "prepared",
+      "bytes": 300667,
+      "lastModified": "Mon, 26 May 2014 16:15:13 GMT",
+      "etag": "\"4967b-4fa4fe24e8640\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:49:21.278381+00:00",
+      "sha256": "df620abc6a4ab143f0c3c0b6551335df58070f1ffd6fae4968889b11d6258feb",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "efccf3d1-votacao_partido_uf_1986.zip",
+          "bytes": 300667,
+          "sha256": "df620abc6a4ab143f0c3c0b6551335df58070f1ffd6fae4968889b11d6258feb"
+        }
+      ]
+    }
+  ]
+}
