@@ -13,14 +13,17 @@ import zipfile
 from tse_archive import read_json, write_json, now, sha256
 
 COLUMNS = ['election_id', 'source_election_id', 'year', 'turn', 'description', 'date', 'election_type', 'scope', 'state', 'city_code', 'zone', 'office', 'office_key', 'office_name',
-           'eligible', 'installed', 'present', 'absent', 'blank', 'null', 'null_total', 'null_technical', 'valid', 'sections', 'not_installed', 'transit', 'source_url', 'source_id']
+           'eligible', 'installed', 'present', 'absent', 'blank', 'null', 'null_total', 'null_technical', 'annulled', 'annulled_subjudice', 'annulled_separate', 'valid', 'sections', 'not_installed', 'transit', 'source_url', 'source_id', 'source_sha256']
 METRIC_DEFINITIONS = {
     'eligible': 'Registered electorate reported by QT_APTOS/QTD_APTOS.',
     'installed': 'Participation denominator; available only when electorate, reported attendance, abstention and uninstalled-section voters reconcile.',
     'null': 'Reported null votes: QT_VOTOS_NULOS/QTD_VOTOS_NULOS.',
     'null_total': 'Distinct official QT_TOTAL_VOTOS_NULOS quantity; retained without assuming equivalence with ordinary null votes.',
     'null_technical': 'Reported QT_VOTOS_NULOS_TECNICOS; distinct technical null votes.',
-    'valid': 'QT_TOTAL_VOTOS_VALIDOS only when consistent with nominal and list components; historical votos líquidos are not silently converted.'
+    'annulled': 'QT_TOTAL_VOTOS_ANULADOS: votes annulled due to the legal status of candidacies or parties.',
+    'annulled_subjudice': 'QT_TOTAL_VOTOS_ANUL_SUBJUD: annulled votes under judicial appeal.',
+    'annulled_separate': 'QT_VOTOS_ANULADOS_APU_SEP/QTD_VOTOS_ANULADOS_APU_SEP: separately counted votes from urns under judicial review; neither valid nor null pending judgment.',
+    'valid': 'Native official JSON v.vv, or QT_TOTAL_VOTOS_VALIDOS only when consistent with nominal and list components; historical votos líquidos are not silently converted.'
 }
 LEGACY = ['DATA_GERACAO', 'HORA_GERACAO', 'ANO_ELEICAO', 'NUM_TURNO', 'DESC_ELEICAO', 'SIGLA_UF', 'SIGLA_UE', 'COD_CARGO',
           'DESC_CARGO', 'QTD_APTOS', 'QTD_COMPARECIMENTO', 'QTD_ABSTENCOES', 'QTD_VOTOS_LIQUIDOS', 'QTD_VOTOS_BRANCOS',
@@ -65,15 +68,16 @@ def normalize(raw, resource):
     valid = total if None not in [total, nominal, legend] and total == nominal + legend else None
     result = dict(election_id=event_id, source_election_id=get('CD_ELEICAO') or '', year=year, turn=turn, description=description,
                   date=date, election_type=get('NM_TIPO_ELEICAO') or '',
-                  scope='zone' if zone and city else 'municipality' if city else 'state', state=state, city_code=city, zone=zone,
+                  scope='national' if state == 'br' and not city else 'zone' if zone and city else 'municipality' if city else 'state', state=state, city_code=city, zone=zone,
                   office=code, office_key=office_key(code, name), office_name=name,
                   eligible=number(get('QT_APTOS', 'QTD_APTOS')), present=number(get('QT_COMPARECIMENTO', 'QTD_COMPARECIMENTO')),
                   absent=number(get('QT_ABSTENCOES', 'QTD_ABSTENCOES')), blank=number(get('QT_VOTOS_BRANCOS', 'QTD_VOTOS_BRANCOS')),
                   null=number(get('QT_VOTOS_NULOS', 'QTD_VOTOS_NULOS')), null_total=number(get('QT_TOTAL_VOTOS_NULOS')),
-                  null_technical=number(get('QT_VOTOS_NULOS_TECNICOS')), valid=valid,
+                  null_technical=number(get('QT_VOTOS_NULOS_TECNICOS')), annulled=number(get('QT_TOTAL_VOTOS_ANULADOS')),
+                  annulled_subjudice=number(get('QT_TOTAL_VOTOS_ANUL_SUBJUD')), annulled_separate=number(get('QT_VOTOS_ANULADOS_APU_SEP', 'QTD_VOTOS_ANULADOS_APU_SEP')), valid=valid,
                   sections=number(get('QT_TOTAL_SECOES', 'QTD_SECOES_TOT')),
                   not_installed=number(get('QT_ELEITORES_SECOES_NAO_INSTALADAS')),
-                  transit=get('ST_VOTO_EM_TRANSITO') or '', source_url=resource['url'], source_id=resource['id'])
+                  transit=get('ST_VOTO_EM_TRANSITO') or '', source_url=resource['url'], source_id=resource['id'], source_sha256=resource.get('sha256') or '')
     eligible, present, absent, not_installed = [result[k] for k in ['eligible', 'present', 'absent', 'not_installed']]
     result['installed'] = None
     if None not in [eligible, present, absent]:
@@ -90,7 +94,7 @@ def source_issue(row):
     return None
 
 
-METRICS = ['eligible', 'installed', 'present', 'absent', 'blank', 'null', 'null_total', 'null_technical', 'valid', 'sections', 'not_installed']
+METRICS = ['eligible', 'installed', 'present', 'absent', 'blank', 'null', 'null_total', 'null_technical', 'annulled', 'annulled_subjudice', 'annulled_separate', 'valid', 'sections', 'not_installed']
 
 
 def reconcile(previous, row):
@@ -122,6 +126,27 @@ def records(path, resource):
                         if len(row) != len(columns):
                             raise ValueError(f'Column count mismatch: {resource["url"]}:{member}')
                         yield normalize(dict(zip(columns, row)), resource)
+
+
+IDENTITY = ['election_id', 'scope', 'state', 'city_code', 'zone', 'office', 'transit']
+
+
+def append_row(elections, row, source_year, ambiguous, source_anchor=True):
+    event = elections.setdefault(row['election_id'], dict(id=row['election_id'], year=row['year'], turn=row['turn'],
+                                 description=row['description'], rows={}, offices={}, sources=set(), sourceDatasetYears=set()))
+    identity = tuple(row[k] for k in IDENTITY)
+    if identity in event['rows']:
+        previous = event['rows'][identity]
+        merged, conflicts = reconcile(previous, row)
+        if conflicts:
+            ambiguous.append(dict(identity=identity, reason='Conflicting source metrics at the same election/date/grain.', unavailableMetrics=conflicts, records=[previous, row]))
+        event['rows'][identity] = merged
+    else:
+        event['rows'][identity] = row
+    event['offices'][row['office_key']] = dict(id=row['office'], key=row['office_key'], name=row['office_name'])
+    if source_anchor:
+        event['sources'].add(row['source_url'])
+    event['sourceDatasetYears'].add(source_year)
 
 
 def build(root, out):
@@ -159,15 +184,12 @@ def build(root, out):
                     collection[identity] = merged
                 else:
                     collection[identity] = row
+        package_year = re.search(r'(?:^|-)((?:19|20)\d{2})(?:-|$)', dataset['id'])
         for row in collection.values():
-            election = elections.setdefault(row['election_id'], dict(id=row['election_id'], year=row['year'], turn=row['turn'],
-                                         description=row['description'], rows=[], offices={}, sources=set(), sourceDatasetYears=set()))
-            election['rows'].append(row)
-            election['offices'][row['office_key']] = dict(id=row['office'], key=row['office_key'], name=row['office_name'])
-            election['sources'].add(row['source_url'])
-            package_year = re.search(r'(?:^|-)((?:19|20)\d{2})(?:-|$)', dataset['id'])
-            if package_year:
-                election['sourceDatasetYears'].add(int(package_year.group(1)))
+            append_row(elections, row, int(package_year.group(1)) if package_year else row['year'], ambiguous)
+    from official_history import official_rows
+    for row, source_year, anchor in official_rows(root, normalize):
+        append_row(elections, row, source_year, ambiguous, anchor)
     index = dict(version=1, generatedAt=now(), columns=COLUMNS, metricDefinitions=METRIC_DEFINITIONS, missingSources=missing, ambiguousUnits=len(ambiguous), inconsistentUnits=len(inconsistent), diagnostics='history/diagnostics.json', elections=[])
     write_json(out / 'diagnostics.json', dict(generatedAt=now(), ambiguousUnits=ambiguous, inconsistentUnits=inconsistent, electionYearConflicts=list(year_conflicts.values())))
     for e in sorted(elections.values(), key=lambda e: (e['year'], e['turn'] or 0, e['id'])):
@@ -176,14 +198,14 @@ def build(root, out):
         body = io.StringIO(newline='')
         writer = csv.writer(body, lineterminator='\n')
         writer.writerow(COLUMNS)
-        for row in e['rows']:
+        for row in e['rows'].values():
             writer.writerow([row[k] for k in COLUMNS])
         encoded = body.getvalue().encode('utf8')
         with path.open('wb') as raw, gzip.GzipFile(filename='', mode='wb', fileobj=raw, mtime=0) as zipped:
             zipped.write(encoded)
-        index['elections'].append(dict(id=e['id'], year=e['year'], turn=e['turn'], description=e['description'], dates=sorted({r['date'] for r in e['rows'] if r['date']}), electionTypes=sorted({r['election_type'] for r in e['rows'] if r['election_type']}), sourceElectionIds=sorted({r['source_election_id'] for r in e['rows'] if r['source_election_id']}), sourceDatasetYears=sorted(e['sourceDatasetYears']), yearDateConflict=e['id'] in year_conflicts,
+        index['elections'].append(dict(id=e['id'], year=e['year'], turn=e['turn'], description=e['description'], dates=sorted({r['date'] for r in e['rows'].values() if r['date']}), electionTypes=sorted({r['election_type'] for r in e['rows'].values() if r['election_type']}), sourceElectionIds=sorted({r['source_election_id'] for r in e['rows'].values() if r['source_election_id']}), sourceDatasetYears=sorted(e['sourceDatasetYears']), yearDateConflict=e['id'] in year_conflicts,
             parts=[dict(url=f'history/{path.name}', rows=len(e['rows']), bytes=path.stat().st_size, rawBytes=len(encoded), sha256=sha256(path),
-                        scopes=sorted({r['scope'] for r in e['rows']}))], offices=list(e['offices'].values()), sources=sorted(e['sources'])))
+                        scopes=sorted({r['scope'] for r in e['rows'].values()}))], offices=list(e['offices'].values()), sources=sorted(e['sources'])))
     write_json(out / 'indicators.json', index)
     print(json.dumps(dict(elections=len(index['elections']), rows=sum(p['rows'] for e in index['elections'] for p in e['parts']), missingSources=len(missing))), flush=True)
 

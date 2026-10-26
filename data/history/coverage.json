@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-26T22:38:22.521959+00:00",
+  "generatedAt": "2026-10-26T23:01:00.903981+00:00",
   "basic": {
     "collections": 98,
     "published": 98,
@@ -7,7 +7,7 @@
     "publishedBytes": 25822806792
   },
   "historical": {
-    "elections": 642,
+    "elections": 644,
     "declaredYears": [
       1933,
       1934,
@@ -46,7 +46,7 @@
       2024,
       2026
     ],
-    "rows": 435911,
+    "rows": 447995,
     "missingSources": []
   },
   "rdv": {
