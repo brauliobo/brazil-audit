@@ -44,7 +44,7 @@ export function writeParts(root, el, table, rows) {
     const body = list.map((r) => r.map(csv).join(',')).join('\n') + '\n'
     const gz = gzipSync(body, { level: 9 })
     writeFileSync(`${dir}/${el.key}-${part}.csv.gz`, gz)
-    parts[`${el.key}/${part}`] = { url: `${table}/${el.key}-${part}.csv.gz`, bytes: gz.length, rows: list.length, rawBytes: body.length, where: whereOf(el, part) }
+    parts[`${el.key}/${part}`] = { url: `${table}/${el.key}-${part}.csv.gz`, bytes: gz.length, rows: list.length, rawBytes: Buffer.byteLength(body), where: whereOf(el, part) }
   }
   return parts
 }

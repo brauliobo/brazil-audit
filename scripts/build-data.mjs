@@ -112,7 +112,7 @@ function smallTable(name, el, rows) {
   mkdirSync(`${OUT}/${name}`, { recursive: true })
   writeFileSync(file, gzipSync(body, { level: 9 }))
   const t = table(name)
-  t.parts[`${el.key}/all`] = { url: `${name}/${el.key}.csv.gz`, bytes: readFileSync(file).length, rows: rows.length, rawBytes: body.length, where: `election = ${el.year} and turn = ${el.turn}` }
+  t.parts[`${el.key}/all`] = { url: `${name}/${el.key}.csv.gz`, bytes: readFileSync(file).length, rows: rows.length, rawBytes: Buffer.byteLength(body), where: `election = ${el.year} and turn = ${el.turn}` }
   log(`${name}/${el.key}: ${rows.length} rows, ${t.parts[`${el.key}/all`].bytes} bytes gz`)
 }
 
@@ -127,7 +127,7 @@ async function buildSignals(el) {
     const body = csvOf(inUf.map((r) => sgCsv(el, r)))
     const file = `${OUT}/sg/${el.key}-${uf}.csv.gz`
     writeFileSync(file, gzipSync(body, { level: 9 }))
-    part(table('sg'), el, uf, file, { rows: inUf.length, rawBytes: body.length }, `state = ${q(uf)}`)
+    part(table('sg'), el, uf, file, { rows: inUf.length, rawBytes: Buffer.byteLength(body) }, `state = ${q(uf)}`)
   }
   smallTable('sgf', el, rows.filter((r) => r.fl & CORE).map((r) => sgCsv(el, r).slice(2)))
   smallTable('sgz', el, sgzRows(rows).map((z) => sgzCsv(el, z).slice(2)))
@@ -318,7 +318,7 @@ async function buildCands() {
   const body = csvOf(all)
   writeFileSync(`${OUT}/cands.csv.gz`, gzipSync(body, { level: 9 }))
   manifest.tables.cands = { name: 'cands', columns: 'election,turn,uf,office,n,name,short_name,party,official_votes', ddl: 'create table cands (election int, turn int, uf text, office int, n text, name text, short_name text, party text, official_votes bigint)',
-    parts: { all: { url: 'cands.csv.gz', bytes: readFileSync(`${OUT}/cands.csv.gz`).length, rows: all.length, rawBytes: body.length } } }
+    parts: { all: { url: 'cands.csv.gz', bytes: readFileSync(`${OUT}/cands.csv.gz`).length, rows: all.length, rawBytes: Buffer.byteLength(body) } } }
   log(`cands: ${all.length} rows`)
 }
 
@@ -349,7 +349,7 @@ async function buildMunicipalities() {
   const body = csvOf(rows)
   writeFileSync(`${OUT}/mun_map.csv.gz`, gzipSync(body, { level: 9 }))
   manifest.tables.mun_map = { name: 'mun_map', columns: 'state,city,ibge,tse', ddl: 'create table mun_map (state text, city text, ibge text, tse text)',
-    parts: { all: { url: 'mun_map.csv.gz', bytes: readFileSync(`${OUT}/mun_map.csv.gz`).length, rows: rows.length, rawBytes: body.length } } }
+    parts: { all: { url: 'mun_map.csv.gz', bytes: readFileSync(`${OUT}/mun_map.csv.gz`).length, rows: rows.length, rawBytes: Buffer.byteLength(body) } } }
   log(`mun_map: ${rows.length} rows`)
   return mun
 }
@@ -361,7 +361,7 @@ async function buildGeo(mun) {
     mkdirSync(`${OUT}/geo`, { recursive: true })
     const body = JSON.stringify(map)
     writeFileSync(`${OUT}/geo/${name}.json`, body)
-    return { url: `geo/${name}.json`, bytes: body.length, items: map.items.length }
+    return { url: `geo/${name}.json`, bytes: Buffer.byteLength(body), items: map.items.length }
   }
   manifest.geo = { uf: write('uf', geo.uf), mun: write('mun', geo.mun), states: Object.fromEntries(Object.entries(geo.states).map(([uf, m]) => [uf, write(`mun-${uf}`, m)])), source: 'IBGE malhas v3 (qualidade minima/intermediaria)' }
   log(`geometry: ${Object.values(manifest.geo.states).reduce((t, g) => t + g.bytes, 0) + manifest.geo.uf.bytes + manifest.geo.mun.bytes} bytes`)
@@ -474,8 +474,8 @@ async function buildRaw(el) {
   const body = JSON.stringify({ repo: index.repo, tag, assets: index.assets.map((a) => [a.kind, a.name, key(a.first), key(a.last), a.files, a.bytes]) })
   mkdirSync(`${OUT}/raw`, { recursive: true })
   writeFileSync(`${OUT}/raw/${el.key}.json`, body)
-  ;(manifest.raw ??= {})[el.key] = { url: `raw/${el.key}.json`, bytes: body.length, assets: index.assets.length }
-  log(`raw/${el.key}: ${index.assets.length} assets of ${tag}, ${body.length} bytes`)
+  ;(manifest.raw ??= {})[el.key] = { url: `raw/${el.key}.json`, bytes: Buffer.byteLength(body), assets: index.assets.length }
+  log(`raw/${el.key}: ${index.assets.length} assets of ${tag}, ${Buffer.byteLength(body)} bytes`)
 }
 
 mkdirSync(OUT, { recursive: true })
