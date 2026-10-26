@@ -13,7 +13,15 @@ import zipfile
 from tse_archive import read_json, write_json, now, sha256
 
 COLUMNS = ['election_id', 'source_election_id', 'year', 'turn', 'description', 'date', 'election_type', 'scope', 'state', 'city_code', 'zone', 'office', 'office_key', 'office_name',
-           'eligible', 'installed', 'present', 'absent', 'blank', 'null', 'valid', 'sections', 'not_installed', 'transit', 'source_url', 'source_id']
+           'eligible', 'installed', 'present', 'absent', 'blank', 'null', 'null_total', 'null_technical', 'valid', 'sections', 'not_installed', 'transit', 'source_url', 'source_id']
+METRIC_DEFINITIONS = {
+    'eligible': 'Registered electorate reported by QT_APTOS/QTD_APTOS.',
+    'installed': 'Participation denominator; available only when electorate, reported attendance, abstention and uninstalled-section voters reconcile.',
+    'null': 'Reported null votes: QT_VOTOS_NULOS/QTD_VOTOS_NULOS.',
+    'null_total': 'Distinct official QT_TOTAL_VOTOS_NULOS quantity; retained without assuming equivalence with ordinary null votes.',
+    'null_technical': 'Reported QT_VOTOS_NULOS_TECNICOS; distinct technical null votes.',
+    'valid': 'QT_TOTAL_VOTOS_VALIDOS only when consistent with nominal and list components; historical votos líquidos are not silently converted.'
+}
 LEGACY = ['DATA_GERACAO', 'HORA_GERACAO', 'ANO_ELEICAO', 'NUM_TURNO', 'DESC_ELEICAO', 'SIGLA_UF', 'SIGLA_UE', 'COD_CARGO',
           'DESC_CARGO', 'QTD_APTOS', 'QTD_COMPARECIMENTO', 'QTD_ABSTENCOES', 'QTD_VOTOS_LIQUIDOS', 'QTD_VOTOS_BRANCOS',
           'QTD_VOTOS_NULOS', 'QTD_VOTOS_LEGENDA', 'QTD_VOTOS_ANULADOS_APU_SEP', 'QTD_SECOES_TOT', 'QTD_SECOES_ANULADAS',
@@ -61,12 +69,18 @@ def normalize(raw, resource):
                   office=code, office_key=office_key(code, name), office_name=name,
                   eligible=number(get('QT_APTOS', 'QTD_APTOS')), present=number(get('QT_COMPARECIMENTO', 'QTD_COMPARECIMENTO')),
                   absent=number(get('QT_ABSTENCOES', 'QTD_ABSTENCOES')), blank=number(get('QT_VOTOS_BRANCOS', 'QTD_VOTOS_BRANCOS')),
-                  null=number(get('QT_TOTAL_VOTOS_NULOS', 'QTD_VOTOS_NULOS')), valid=valid,
+                  null=number(get('QT_VOTOS_NULOS', 'QTD_VOTOS_NULOS')), null_total=number(get('QT_TOTAL_VOTOS_NULOS')),
+                  null_technical=number(get('QT_VOTOS_NULOS_TECNICOS')), valid=valid,
                   sections=number(get('QT_TOTAL_SECOES', 'QTD_SECOES_TOT')),
                   not_installed=number(get('QT_ELEITORES_SECOES_NAO_INSTALADAS')),
                   transit=get('ST_VOTO_EM_TRANSITO') or '', source_url=resource['url'], source_id=resource['id'])
     eligible, present, absent, not_installed = [result[k] for k in ['eligible', 'present', 'absent', 'not_installed']]
-    result['installed'] = eligible if None not in [eligible, present, absent] and eligible == present + absent else eligible - not_installed if None not in [eligible, present, absent, not_installed] and eligible == present + absent + not_installed else None
+    result['installed'] = None
+    if None not in [eligible, present, absent]:
+        if eligible == present + absent:
+            result['installed'] = eligible
+        elif not_installed is not None and eligible == present + absent + not_installed:
+            result['installed'] = eligible - not_installed
     return result
 
 
@@ -76,7 +90,7 @@ def source_issue(row):
     return None
 
 
-METRICS = ['eligible', 'installed', 'present', 'absent', 'blank', 'null', 'valid', 'sections', 'not_installed']
+METRICS = ['eligible', 'installed', 'present', 'absent', 'blank', 'null', 'null_total', 'null_technical', 'valid', 'sections', 'not_installed']
 
 
 def reconcile(previous, row):
@@ -154,7 +168,7 @@ def build(root, out):
             package_year = re.search(r'(?:^|-)((?:19|20)\d{2})(?:-|$)', dataset['id'])
             if package_year:
                 election['sourceDatasetYears'].add(int(package_year.group(1)))
-    index = dict(version=1, generatedAt=now(), columns=COLUMNS, missingSources=missing, ambiguousUnits=len(ambiguous), inconsistentUnits=len(inconsistent), diagnostics='history/diagnostics.json', elections=[])
+    index = dict(version=1, generatedAt=now(), columns=COLUMNS, metricDefinitions=METRIC_DEFINITIONS, missingSources=missing, ambiguousUnits=len(ambiguous), inconsistentUnits=len(inconsistent), diagnostics='history/diagnostics.json', elections=[])
     write_json(out / 'diagnostics.json', dict(generatedAt=now(), ambiguousUnits=ambiguous, inconsistentUnits=inconsistent, electionYearConflicts=list(year_conflicts.values())))
     for e in sorted(elections.values(), key=lambda e: (e['year'], e['turn'] or 0, e['id'])):
         slug = re.sub(r'[^A-Za-z0-9._-]+', '-', e['id'])

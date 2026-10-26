@@ -44,6 +44,13 @@ class HistoricalSummariesTest(unittest.TestCase):
         self.assertIsNone(merged['blank'])
         self.assertIsNone(merged['null'])
 
+    def test_null_ballot_fields_retain_their_distinct_official_meanings(self):
+        row = history.normalize({'ANO_ELEICAO': '2006', 'QT_VOTOS_NULOS': '2740', 'QT_TOTAL_VOTOS_NULOS': '2737',
+                                 'QT_VOTOS_NULOS_TECNICOS': '0'}, {'id': 'source', 'url': 'https://cdn.tse.jus.br/source.zip'})
+        self.assertEqual(row['null'], 2740)
+        self.assertEqual(row['null_total'], 2737)
+        self.assertEqual(row['null_technical'], 0)
+
     def test_distinct_supplementary_dates_do_not_collapse_under_a_reused_source_code(self):
         raw = {'ANO_ELEICAO': '2008', 'CD_ELEICAO': '32', 'NR_TURNO': '1', 'DT_ELEICAO': '01/03/2009'}
         source = {'id': 'source', 'url': 'https://cdn.tse.jus.br/source.zip'}

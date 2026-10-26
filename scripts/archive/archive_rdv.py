@@ -136,7 +136,7 @@ def main():
         entries, paths = [], []
         with concurrent.futures.ThreadPoolExecutor(max_workers=4) as pool:
             for resource, (result, files) in zip(resources, pool.map(lambda r: extract_bundle(a.root, r, reused), resources)):
-                entries.append({**resource, **result})
+                entries.append({**resource, **result, 'inScope': True})
                 paths.extend(files)
         # Per-member integrity and exact reuse evidence are release assets, not a huge Pages catalogue.
         detail = a.root / 'releases' / collection['id'] / 'MEMBERS.json'

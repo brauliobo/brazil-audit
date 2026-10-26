@@ -1,0 +1,84 @@
+{
+  "generatedAt": "2026-10-26T22:30:37.188826+00:00",
+  "basic": {
+    "collections": 98,
+    "published": 98,
+    "assets": 987,
+    "publishedBytes": 25822806792
+  },
+  "historical": {
+    "elections": 642,
+    "declaredYears": [
+      1933,
+      1934,
+      1945,
+      1947,
+      1950,
+      1954,
+      1955,
+      1958,
+      1960,
+      1962,
+      1965,
+      1966,
+      1970,
+      1974,
+      1978,
+      1982,
+      1986,
+      1989,
+      1990,
+      1994,
+      1996,
+      1998,
+      2000,
+      2002,
+      2004,
+      2006,
+      2008,
+      2010,
+      2012,
+      2014,
+      2016,
+      2018,
+      2020,
+      2022,
+      2024,
+      2026
+    ],
+    "rows": 435911,
+    "missingSources": []
+  },
+  "rdv": {
+    "documentedBundles": 139,
+    "collections": [
+      {
+        "id": "resultados-2020-suplementares",
+        "resources": 1
+      },
+      {
+        "id": "resultados-2022-arquivos-transmitidos-para-totalizacao",
+        "resources": 56
+      },
+      {
+        "id": "resultados-2024-arquivos-transmitidos-para-totalizacao",
+        "resources": 52
+      },
+      {
+        "id": "resultados-2026-arquivos-transmitidos-para-totalizacao",
+        "resources": 28
+      },
+      {
+        "id": "resultados-eleicoes-suplementares-2022",
+        "resources": 1
+      },
+      {
+        "id": "resultados-eleicoes-suplementares-2024",
+        "resources": 1
+      }
+    ],
+    "publishedCollections": 1,
+    "scope": "Public RDV download sources documented by the official CKAN catalogue. Historical legal existence of RDV does not establish a public bulk download URL.",
+    "historicalAccessReference": "https://www.tse.jus.br/legislacao/compilada/res/2013/resolucao-no-23-397-de-17-de-dezembro-de-2013"
+  }
+}

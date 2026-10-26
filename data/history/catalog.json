@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-26T22:20:56.352695+00:00",
+  "generatedAt": "2026-10-26T22:30:37.189100+00:00",
   "source": {
     "url": "https://dadosabertos.tse.jus.br/api/3/action/package_search",
     "license": "cc-by"
@@ -60488,7 +60488,7 @@
       "tag": "data-resultados-2022",
       "releaseUrl": "https://github.com/brauliobo/brazil-audit/releases/tag/data-resultados-2022",
       "normalized": false,
-      "status": "catalogued",
+      "status": "published",
       "resources": [
         {
           "id": "47f692af-7309-4a21-b536-0d1386d449b9",
@@ -60520,11 +60520,20 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_candidato_munzona/votacao_candidato_munzona_2022.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_candidato_munzona/votacao_candidato_munzona_2022.zip",
           "format": "CSV",
-          "status": "catalogued",
+          "status": "published",
           "bytes": 642592078,
           "lastModified": "Sat, 24 Oct 2026 07:24:58 GMT",
           "etag": "\"264d2d4e-65e90fe80037a\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "56265a50afc3765efeabc3d88b1e8ef35796ac38572fb1344496f3d3c8543369",
+          "assets": [
+            {
+              "name": "40fdcf49-votacao_candidato_munzona_2022.zip",
+              "bytes": 642592078,
+              "sha256": "56265a50afc3765efeabc3d88b1e8ef35796ac38572fb1344496f3d3c8543369"
+            }
+          ],
+          "removedPersonalColumns": {}
         },
         {
           "id": "ffb14f0e-85eb-4618-8031-7cb88f95e05e",
@@ -60532,11 +60541,20 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_partido_munzona/votacao_partido_munzona_2022.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_partido_munzona/votacao_partido_munzona_2022.zip",
           "format": "CSV",
-          "status": "catalogued",
+          "status": "published",
           "bytes": 26046497,
           "lastModified": "Sat, 24 Oct 2026 06:24:16 GMT",
           "etag": "\"18d7021-65e9025699649\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "beb096164c42e2feb2f39b8669991a44e7bae6cc439eb5ed30d380bdfbbfe1ba",
+          "assets": [
+            {
+              "name": "ffb14f0e-votacao_partido_munzona_2022.zip",
+              "bytes": 26046497,
+              "sha256": "beb096164c42e2feb2f39b8669991a44e7bae6cc439eb5ed30d380bdfbbfe1ba"
+            }
+          ],
+          "removedPersonalColumns": {}
         },
         {
           "id": "0e59001a-3c9f-4a0d-a8db-7befdba22330",
@@ -60544,11 +60562,20 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/detalhe_votacao_munzona/detalhe_votacao_munzona_2022.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/detalhe_votacao_munzona/detalhe_votacao_munzona_2022.zip",
           "format": "CSV",
-          "status": "catalogued",
+          "status": "published",
           "bytes": 4429327,
           "lastModified": "Sat, 24 Oct 2026 06:52:18 GMT",
           "etag": "\"43960f-65e9089b62cca\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "dbf41c5e95c2efedc72848bd0ec70a47f419b539c82e893388314749617ea2f4",
+          "assets": [
+            {
+              "name": "0e59001a-detalhe_votacao_munzona_2022.zip",
+              "bytes": 4429327,
+              "sha256": "dbf41c5e95c2efedc72848bd0ec70a47f419b539c82e893388314749617ea2f4"
+            }
+          ],
+          "removedPersonalColumns": {}
         },
         {
           "id": "9f042e8b-ed41-4b18-a01b-e0613a68d90c",
@@ -60556,11 +60583,20 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/detalhe_votacao_secao/detalhe_votacao_secao_2022.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/detalhe_votacao_secao/detalhe_votacao_secao_2022.zip",
           "format": "CSV",
-          "status": "catalogued",
+          "status": "published",
           "bytes": 243822213,
           "lastModified": "Fri, 31 Jul 2026 19:47:56 GMT",
           "etag": "\"e886e85-657ed7705d300\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "ad22c50b9e6d9dfb096a2170680a190f1734895ba89d8977b95fd63ca02c03da",
+          "assets": [
+            {
+              "name": "9f042e8b-detalhe_votacao_secao_2022.zip",
+              "bytes": 243822213,
+              "sha256": "ad22c50b9e6d9dfb096a2170680a190f1734895ba89d8977b95fd63ca02c03da"
+            }
+          ],
+          "removedPersonalColumns": {}
         },
         {
           "id": "f509562b-3b7f-487d-ad61-145a7ae6b96f",
@@ -60568,11 +60604,20 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2022_BR.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2022_BR.zip",
           "format": "CSV",
-          "status": "catalogued",
+          "status": "published",
           "bytes": 271292455,
           "lastModified": "Thu, 24 Nov 2022 14:26:58 GMT",
           "etag": "\"102b9827-5ee383298b080\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "9353993de5cf03778aef44e01d4925e7ee105f5262491d344a2f0dbc956b0139",
+          "assets": [
+            {
+              "name": "f509562b-votacao_secao_2022_BR.zip",
+              "bytes": 271292455,
+              "sha256": "9353993de5cf03778aef44e01d4925e7ee105f5262491d344a2f0dbc956b0139"
+            }
+          ],
+          "removedPersonalColumns": {}
         },
         {
           "id": "c8f4430e-8d63-47d5-9c87-30581ffb0c6a",
@@ -60580,11 +60625,20 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2022_AC.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2022_AC.zip",
           "format": "CSV",
-          "status": "catalogued",
+          "status": "published",
           "bytes": 6680201,
           "lastModified": "Mon, 22 Jun 2026 14:45:09 GMT",
           "etag": "\"65ee89-654d8b06d54bc\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "d17b815a4d6faa49de01380890c40ec2247ffee1096d30804ce47cdc35b3b518",
+          "assets": [
+            {
+              "name": "c8f4430e-votacao_secao_2022_AC.zip",
+              "bytes": 6680201,
+              "sha256": "d17b815a4d6faa49de01380890c40ec2247ffee1096d30804ce47cdc35b3b518"
+            }
+          ],
+          "removedPersonalColumns": {}
         },
         {
           "id": "65e7b342-d14f-402d-a7c7-e9911ff45583",
@@ -60592,11 +60646,20 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2022_AL.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2022_AL.zip",
           "format": "CSV",
-          "status": "catalogued",
+          "status": "published",
           "bytes": 30273477,
           "lastModified": "Mon, 22 Jun 2026 14:45:25 GMT",
           "etag": "\"1cdefc5-654d8b1580dbf\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "d5ae3a20a8ecc32b750dc19caae54321abd43bdc2bfe8f47ede4dc53de1cd4ca",
+          "assets": [
+            {
+              "name": "65e7b342-votacao_secao_2022_AL.zip",
+              "bytes": 30273477,
+              "sha256": "d5ae3a20a8ecc32b750dc19caae54321abd43bdc2bfe8f47ede4dc53de1cd4ca"
+            }
+          ],
+          "removedPersonalColumns": {}
         },
         {
           "id": "7ae9b9ce-0c50-4142-bfb3-92a8e84962e9",
@@ -60604,11 +60667,20 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2022_AM.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2022_AM.zip",
           "format": "CSV",
-          "status": "catalogued",
+          "status": "published",
           "bytes": 44046931,
           "lastModified": "Mon, 22 Jun 2026 14:45:22 GMT",
           "etag": "\"2a01a53-654d8b1283bba\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "1ba6c258320799f595bdbe1563582926bbf7bae87640b59ad9b1edd2702beb97",
+          "assets": [
+            {
+              "name": "7ae9b9ce-votacao_secao_2022_AM.zip",
+              "bytes": 44046931,
+              "sha256": "1ba6c258320799f595bdbe1563582926bbf7bae87640b59ad9b1edd2702beb97"
+            }
+          ],
+          "removedPersonalColumns": {}
         },
         {
           "id": "a534b390-3e94-4c19-8442-16415ac0169f",
@@ -60616,11 +60688,20 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2022_AP.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2022_AP.zip",
           "format": "CSV",
-          "status": "catalogued",
+          "status": "published",
           "bytes": 7258929,
           "lastModified": "Mon, 22 Jun 2026 14:44:58 GMT",
           "etag": "\"6ec331-654d8afc5c6cc\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "e7f0c8836f5dcbb0e59e17cc68701f819cd33565fd5ab87a41a6d562977df579",
+          "assets": [
+            {
+              "name": "a534b390-votacao_secao_2022_AP.zip",
+              "bytes": 7258929,
+              "sha256": "e7f0c8836f5dcbb0e59e17cc68701f819cd33565fd5ab87a41a6d562977df579"
+            }
+          ],
+          "removedPersonalColumns": {}
         },
         {
           "id": "aca0a7a4-8d07-4d59-affe-98ca29809226",
@@ -60628,11 +60709,20 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2022_BA.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2022_BA.zip",
           "format": "CSV",
-          "status": "catalogued",
+          "status": "published",
           "bytes": 191461319,
           "lastModified": "Mon, 22 Jun 2026 14:44:56 GMT",
           "etag": "\"b6977c7-654d8afa01296\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "54d397ff4b5a39d6bb363f774402ffeee61a0c2c5d2b8096db16b019d3f02e64",
+          "assets": [
+            {
+              "name": "aca0a7a4-votacao_secao_2022_BA.zip",
+              "bytes": 191461319,
+              "sha256": "54d397ff4b5a39d6bb363f774402ffeee61a0c2c5d2b8096db16b019d3f02e64"
+            }
+          ],
+          "removedPersonalColumns": {}
         },
         {
           "id": "d5827dc3-1cdf-4477-a920-8ebb0a725f3a",
@@ -60640,11 +60730,20 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2022_CE.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2022_CE.zip",
           "format": "CSV",
-          "status": "catalogued",
+          "status": "published",
           "bytes": 111548497,
           "lastModified": "Mon, 22 Jun 2026 14:44:49 GMT",
           "etag": "\"6a61851-654d8af378555\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "47a8a151d4b511963a163ad60c6719d3a8f861a6c2503dbb3dbe69878d3fad9c",
+          "assets": [
+            {
+              "name": "d5827dc3-votacao_secao_2022_CE.zip",
+              "bytes": 111548497,
+              "sha256": "47a8a151d4b511963a163ad60c6719d3a8f861a6c2503dbb3dbe69878d3fad9c"
+            }
+          ],
+          "removedPersonalColumns": {}
         },
         {
           "id": "35f3aa57-bd6c-4ec6-8676-4a51ca8b832a",
@@ -60652,11 +60751,20 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2022_DF.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2022_DF.zip",
           "format": "CSV",
-          "status": "catalogued",
+          "status": "published",
           "bytes": 34314301,
           "lastModified": "Thu, 24 Nov 2022 14:27:37 GMT",
           "etag": "\"20b983d-5ee3834ebc840\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "eb9184e4927df556c8bf1b4c1678cbef11555de6438abdccd26181ddea284459",
+          "assets": [
+            {
+              "name": "35f3aa57-votacao_secao_2022_DF.zip",
+              "bytes": 34314301,
+              "sha256": "eb9184e4927df556c8bf1b4c1678cbef11555de6438abdccd26181ddea284459"
+            }
+          ],
+          "removedPersonalColumns": {}
         },
         {
           "id": "825e26d6-ecfc-492f-a650-852944c87d81",
@@ -60664,11 +60772,20 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2022_ES.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2022_ES.zip",
           "format": "CSV",
-          "status": "catalogued",
+          "status": "published",
           "bytes": 49893772,
           "lastModified": "Mon, 22 Jun 2026 14:44:58 GMT",
           "etag": "\"2f9518c-654d8afbb6a7d\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "2c5dbd8fe808b1e485c1024c3367d0719c03a56a0f9ddcb9beb3cd9dfae5057a",
+          "assets": [
+            {
+              "name": "825e26d6-votacao_secao_2022_ES.zip",
+              "bytes": 49893772,
+              "sha256": "2c5dbd8fe808b1e485c1024c3367d0719c03a56a0f9ddcb9beb3cd9dfae5057a"
+            }
+          ],
+          "removedPersonalColumns": {}
         },
         {
           "id": "d5fc403d-3977-4f1a-bc31-291c6822455d",
@@ -60676,11 +60793,20 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2022_GO.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2022_GO.zip",
           "format": "CSV",
-          "status": "catalogued",
+          "status": "published",
           "bytes": 94828607,
           "lastModified": "Mon, 22 Jun 2026 14:45:11 GMT",
           "etag": "\"5a6f83f-654d8b08a278a\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "be46c92b743a95add1a73818579d2f0cc15fc736c4445abbb194a2ef0cf2585a",
+          "assets": [
+            {
+              "name": "d5fc403d-votacao_secao_2022_GO.zip",
+              "bytes": 94828607,
+              "sha256": "be46c92b743a95add1a73818579d2f0cc15fc736c4445abbb194a2ef0cf2585a"
+            }
+          ],
+          "removedPersonalColumns": {}
         },
         {
           "id": "3dfa5b9d-3abe-4278-8578-b60f23c37eb9",
@@ -60688,11 +60814,20 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2022_MA.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2022_MA.zip",
           "format": "CSV",
-          "status": "catalogued",
+          "status": "published",
           "bytes": 71322283,
           "lastModified": "Mon, 22 Jun 2026 14:45:12 GMT",
           "etag": "\"4404aab-654d8b09b07cb\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "7422ee2870be969afc971d7e9ae5cd14f2ddc0ba3c3cfb70e4c713127023673e",
+          "assets": [
+            {
+              "name": "3dfa5b9d-votacao_secao_2022_MA.zip",
+              "bytes": 71322283,
+              "sha256": "7422ee2870be969afc971d7e9ae5cd14f2ddc0ba3c3cfb70e4c713127023673e"
+            }
+          ],
+          "removedPersonalColumns": {}
         },
         {
           "id": "8169c471-00f0-496c-a992-c69352064fae",
@@ -60700,11 +60835,20 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2022_MG.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2022_MG.zip",
           "format": "CSV",
-          "status": "catalogued",
+          "status": "published",
           "bytes": 295129070,
           "lastModified": "Mon, 22 Jun 2026 14:44:47 GMT",
           "etag": "\"11974fee-654d8af1d46ad\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "e35b85dcc15fea438b7e6d039db49bcb9b035bc3174a91334ffd37ebd93db9f6",
+          "assets": [
+            {
+              "name": "8169c471-votacao_secao_2022_MG.zip",
+              "bytes": 295129070,
+              "sha256": "e35b85dcc15fea438b7e6d039db49bcb9b035bc3174a91334ffd37ebd93db9f6"
+            }
+          ],
+          "removedPersonalColumns": {}
         },
         {
           "id": "91ab09eb-d662-492e-a88d-adc7aa3cc002",
@@ -60712,11 +60856,20 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2022_MS.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2022_MS.zip",
           "format": "CSV",
-          "status": "catalogued",
+          "status": "published",
           "bytes": 38353961,
           "lastModified": "Mon, 22 Jun 2026 14:44:51 GMT",
           "etag": "\"2493c29-654d8af5b2e1d\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "0e377349b066b24b2024e1ebe1bfe96f1b1f91d02f67f33f9694df52b810a5c0",
+          "assets": [
+            {
+              "name": "91ab09eb-votacao_secao_2022_MS.zip",
+              "bytes": 38353961,
+              "sha256": "0e377349b066b24b2024e1ebe1bfe96f1b1f91d02f67f33f9694df52b810a5c0"
+            }
+          ],
+          "removedPersonalColumns": {}
         },
         {
           "id": "8e25cbdf-426c-4d0c-92cb-5310f1f0e475",
@@ -60724,11 +60877,20 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2022_MT.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2022_MT.zip",
           "format": "CSV",
-          "status": "catalogued",
+          "status": "published",
           "bytes": 34570017,
           "lastModified": "Mon, 22 Jun 2026 14:44:50 GMT",
           "etag": "\"20f7f21-654d8af4c74a2\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "371117d76ec7f115e4575fab2d08a819df611dff08f1ecdc975640709da62f74",
+          "assets": [
+            {
+              "name": "8e25cbdf-votacao_secao_2022_MT.zip",
+              "bytes": 34570017,
+              "sha256": "371117d76ec7f115e4575fab2d08a819df611dff08f1ecdc975640709da62f74"
+            }
+          ],
+          "removedPersonalColumns": {}
         },
         {
           "id": "895eeea9-45d3-46fc-916c-b169a50a3dc0",
@@ -60736,11 +60898,20 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2022_PA.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2022_PA.zip",
           "format": "CSV",
-          "status": "catalogued",
+          "status": "published",
           "bytes": 96960303,
           "lastModified": "Mon, 22 Jun 2026 14:45:02 GMT",
           "etag": "\"5c77f2f-654d8affe0cd9\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "efec9371ca3e571ed6c06586d1232c0616be44582d65447f4147c52aaa9c7cba",
+          "assets": [
+            {
+              "name": "895eeea9-votacao_secao_2022_PA.zip",
+              "bytes": 96960303,
+              "sha256": "efec9371ca3e571ed6c06586d1232c0616be44582d65447f4147c52aaa9c7cba"
+            }
+          ],
+          "removedPersonalColumns": {}
         },
         {
           "id": "6f68d7f3-67c0-45af-8743-1d3aea701eab",
@@ -60748,11 +60919,20 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2022_PB.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2022_PB.zip",
           "format": "CSV",
-          "status": "catalogued",
+          "status": "published",
           "bytes": 47957126,
           "lastModified": "Mon, 22 Jun 2026 14:45:20 GMT",
           "etag": "\"2dbc486-654d8b1118b37\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "6918c138a450eb218cc19933537411377fb0f383d6a51fd3b7b9736f60c5c992",
+          "assets": [
+            {
+              "name": "6f68d7f3-votacao_secao_2022_PB.zip",
+              "bytes": 47957126,
+              "sha256": "6918c138a450eb218cc19933537411377fb0f383d6a51fd3b7b9736f60c5c992"
+            }
+          ],
+          "removedPersonalColumns": {}
         },
         {
           "id": "f382f4e4-a794-430c-a035-d23730257995",
@@ -60760,11 +60940,20 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2022_PE.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2022_PE.zip",
           "format": "CSV",
-          "status": "catalogued",
+          "status": "published",
           "bytes": 122201173,
           "lastModified": "Mon, 22 Jun 2026 14:45:06 GMT",
           "etag": "\"748a455-654d8b04110dc\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "058f042466913b5467b431e5e30d19f2138dd2a1ab3b938f6b39f059b4d8f347",
+          "assets": [
+            {
+              "name": "f382f4e4-votacao_secao_2022_PE.zip",
+              "bytes": 122201173,
+              "sha256": "058f042466913b5467b431e5e30d19f2138dd2a1ab3b938f6b39f059b4d8f347"
+            }
+          ],
+          "removedPersonalColumns": {}
         },
         {
           "id": "1d9d6040-c1e5-41f9-94fe-80e4af52f0bf",
@@ -60772,11 +60961,20 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2022_PI.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2022_PI.zip",
           "format": "CSV",
-          "status": "catalogued",
+          "status": "published",
           "bytes": 33011338,
           "lastModified": "Mon, 22 Jun 2026 14:45:28 GMT",
           "etag": "\"1f7b68a-654d8b1888ba3\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "3883b3e9a67ce1b20723606e3a59d3d3d88562cbf1be8ce350e74a11dd31e99e",
+          "assets": [
+            {
+              "name": "1d9d6040-votacao_secao_2022_PI.zip",
+              "bytes": 33011338,
+              "sha256": "3883b3e9a67ce1b20723606e3a59d3d3d88562cbf1be8ce350e74a11dd31e99e"
+            }
+          ],
+          "removedPersonalColumns": {}
         },
         {
           "id": "ac7bb6a5-68e4-4852-a690-dd2b526c92ee",
@@ -60784,11 +60982,20 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2022_PR.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2022_PR.zip",
           "format": "CSV",
-          "status": "catalogued",
+          "status": "published",
           "bytes": 160959351,
           "lastModified": "Mon, 22 Jun 2026 14:45:17 GMT",
           "etag": "\"9980b77-654d8b0dac3f9\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "67048a3c8d94b96cec79b3f51b612fdaa77833a556220e64a94dd10f4d6ee872",
+          "assets": [
+            {
+              "name": "ac7bb6a5-votacao_secao_2022_PR.zip",
+              "bytes": 160959351,
+              "sha256": "67048a3c8d94b96cec79b3f51b612fdaa77833a556220e64a94dd10f4d6ee872"
+            }
+          ],
+          "removedPersonalColumns": {}
         },
         {
           "id": "48e557cd-42ae-4b8d-b3dc-fc3c1625ce7e",
@@ -60796,11 +61003,20 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2022_RJ.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2022_RJ.zip",
           "format": "CSV",
-          "status": "catalogued",
+          "status": "published",
           "bytes": 314526595,
           "lastModified": "Mon, 22 Jun 2026 14:45:18 GMT",
           "etag": "\"12bf4b83-654d8b0f62b80\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "0adf67cbe0573691765467cc18f68e02ff92567e42d8f03ec2f149cc37eef9f8",
+          "assets": [
+            {
+              "name": "48e557cd-votacao_secao_2022_RJ.zip",
+              "bytes": 314526595,
+              "sha256": "0adf67cbe0573691765467cc18f68e02ff92567e42d8f03ec2f149cc37eef9f8"
+            }
+          ],
+          "removedPersonalColumns": {}
         },
         {
           "id": "680a8385-d189-412c-9441-8caf460a4fb7",
@@ -60808,11 +61024,20 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2022_RN.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2022_RN.zip",
           "format": "CSV",
-          "status": "catalogued",
+          "status": "published",
           "bytes": 34686541,
           "lastModified": "Mon, 22 Jun 2026 14:44:55 GMT",
           "etag": "\"211464d-654d8af8d617f\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "b211fba5ddfecf2c27c323496c5330927c1205f59958705601b13e03f7f3aacd",
+          "assets": [
+            {
+              "name": "680a8385-votacao_secao_2022_RN.zip",
+              "bytes": 34686541,
+              "sha256": "b211fba5ddfecf2c27c323496c5330927c1205f59958705601b13e03f7f3aacd"
+            }
+          ],
+          "removedPersonalColumns": {}
         },
         {
           "id": "4647eee5-f0ea-44ee-a525-7019660afdf0",
@@ -60820,11 +61045,20 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2022_RO.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2022_RO.zip",
           "format": "CSV",
-          "status": "catalogued",
+          "status": "published",
           "bytes": 20721026,
           "lastModified": "Mon, 22 Jun 2026 14:44:05 GMT",
           "etag": "\"13c2d82-654d8ac9a728c\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "399bd2850ac81cd4e0cd0e04e6583e7f38c25737290c9b5777bbb52b72a7d4a4",
+          "assets": [
+            {
+              "name": "4647eee5-votacao_secao_2022_RO.zip",
+              "bytes": 20721026,
+              "sha256": "399bd2850ac81cd4e0cd0e04e6583e7f38c25737290c9b5777bbb52b72a7d4a4"
+            }
+          ],
+          "removedPersonalColumns": {}
         },
         {
           "id": "4fe47e38-cbfc-4ef5-93ea-31fcf56b4617",
@@ -60832,11 +61066,20 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2022_RR.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2022_RR.zip",
           "format": "CSV",
-          "status": "catalogued",
+          "status": "published",
           "bytes": 7723169,
           "lastModified": "Mon, 22 Jun 2026 14:45:22 GMT",
           "etag": "\"75d8a1-654d8b1340350\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "66b18486f64797d2e08930c4bd02548281481cf4aa4318f68ee41801f3dd45fe",
+          "assets": [
+            {
+              "name": "4fe47e38-votacao_secao_2022_RR.zip",
+              "bytes": 7723169,
+              "sha256": "66b18486f64797d2e08930c4bd02548281481cf4aa4318f68ee41801f3dd45fe"
+            }
+          ],
+          "removedPersonalColumns": {}
         },
         {
           "id": "12858da8-e607-4b3b-8aa4-9a866c70573c",
@@ -60844,11 +61087,20 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2022_RS.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2022_RS.zip",
           "format": "CSV",
-          "status": "catalogued",
+          "status": "published",
           "bytes": 181897570,
           "lastModified": "Mon, 22 Jun 2026 14:44:34 GMT",
           "etag": "\"ad78962-654d8ae5626d2\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "a6ca495c557673c7ea655bedcde1cf829b4630e916b72da00100589d2d61826a",
+          "assets": [
+            {
+              "name": "12858da8-votacao_secao_2022_RS.zip",
+              "bytes": 181897570,
+              "sha256": "a6ca495c557673c7ea655bedcde1cf829b4630e916b72da00100589d2d61826a"
+            }
+          ],
+          "removedPersonalColumns": {}
         },
         {
           "id": "ff3e660a-6387-4632-97f7-9b60a477751a",
@@ -60856,11 +61108,20 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2022_SC.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2022_SC.zip",
           "format": "CSV",
-          "status": "catalogued",
+          "status": "published",
           "bytes": 100162943,
           "lastModified": "Mon, 22 Jun 2026 14:44:38 GMT",
           "etag": "\"5f85d7f-654d8ae875095\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "a658388c8b6094c1cf8623b5c2a7d5b87771c31ed1afb1edac88dadf3b9081e7",
+          "assets": [
+            {
+              "name": "ff3e660a-votacao_secao_2022_SC.zip",
+              "bytes": 100162943,
+              "sha256": "a658388c8b6094c1cf8623b5c2a7d5b87771c31ed1afb1edac88dadf3b9081e7"
+            }
+          ],
+          "removedPersonalColumns": {}
         },
         {
           "id": "5de81a35-7c2d-451c-8c25-b770b4949c05",
@@ -60868,11 +61129,20 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2022_SE.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2022_SE.zip",
           "format": "CSV",
-          "status": "catalogued",
+          "status": "published",
           "bytes": 25947561,
           "lastModified": "Mon, 22 Jun 2026 14:44:27 GMT",
           "etag": "\"18beda9-654d8ade0c85c\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "96530d4198fa97a330ab6a46568fa418190714238f4986eec2a25a2fac1827d6",
+          "assets": [
+            {
+              "name": "5de81a35-votacao_secao_2022_SE.zip",
+              "bytes": 25947561,
+              "sha256": "96530d4198fa97a330ab6a46568fa418190714238f4986eec2a25a2fac1827d6"
+            }
+          ],
+          "removedPersonalColumns": {}
         },
         {
           "id": "5c375ecc-9c40-4c75-921c-686a920c150a",
@@ -60880,11 +61150,20 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2022_SP.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2022_SP.zip",
           "format": "CSV",
-          "status": "catalogued",
+          "status": "published",
           "bytes": 900947881,
           "lastModified": "Mon, 22 Jun 2026 14:44:46 GMT",
           "etag": "\"35b35fa9-654d8af0b6885\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "36c417ab6af3fc0a69c01a2ae5ee34d05fb8f2068eee70565c693ebef059688e",
+          "assets": [
+            {
+              "name": "5c375ecc-votacao_secao_2022_SP.zip",
+              "bytes": 900947881,
+              "sha256": "36c417ab6af3fc0a69c01a2ae5ee34d05fb8f2068eee70565c693ebef059688e"
+            }
+          ],
+          "removedPersonalColumns": {}
         },
         {
           "id": "9447e759-fede-4f7d-9e70-01b73cc9bc5c",
@@ -60892,14 +61171,24 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2022_TO.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2022_TO.zip",
           "format": "CSV",
-          "status": "catalogued",
+          "status": "published",
           "bytes": 16828225,
           "lastModified": "Mon, 22 Jun 2026 14:44:40 GMT",
           "etag": "\"100c741-654d8aeb2aa16\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "b2dedc70f6921376b3d7d1a16383a29c3db85880befa164b19f06ba60f377a9c",
+          "assets": [
+            {
+              "name": "9447e759-votacao_secao_2022_TO.zip",
+              "bytes": 16828225,
+              "sha256": "b2dedc70f6921376b3d7d1a16383a29c3db85880befa164b19f06ba60f377a9c"
+            }
+          ],
+          "removedPersonalColumns": {}
         }
       ],
       "inScope": true,
+      "publicationVerifiedAt": "2026-10-26T22:27:48.352245+00:00",
       "normalizedSummaries": {
         "index": "history/indicators.json",
         "elections": [
@@ -76302,7 +76591,7 @@
       "tag": "data-resultados-2026",
       "releaseUrl": "https://github.com/brauliobo/brazil-audit/releases/tag/data-resultados-2026",
       "normalized": false,
-      "status": "catalogued",
+      "status": "published",
       "resources": [
         {
           "id": "c807b826-21ff-4bcf-97ca-d86482656320",
@@ -76310,11 +76599,20 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_candidato_munzona/votacao_candidato_munzona_2026.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_candidato_munzona/votacao_candidato_munzona_2026.zip",
           "format": "CSV",
-          "status": "catalogued",
+          "status": "published",
           "bytes": 452159174,
           "lastModified": "Sun, 25 Oct 2026 16:16:37 GMT",
           "etag": "\"1af366c6-65eac89a8ef12\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "cef14bbf848da85cb1462657c9d3c95cd2d76d9b884c4ccd579e0384035be9a6",
+          "assets": [
+            {
+              "name": "c807b826-votacao_candidato_munzona_2026.zip",
+              "bytes": 452159174,
+              "sha256": "cef14bbf848da85cb1462657c9d3c95cd2d76d9b884c4ccd579e0384035be9a6"
+            }
+          ],
+          "removedPersonalColumns": {}
         },
         {
           "id": "b255886a-23f5-462f-8385-b2df4c3ddac3",
@@ -76322,11 +76620,20 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_partido_munzona/votacao_partido_munzona_2026.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_partido_munzona/votacao_partido_munzona_2026.zip",
           "format": "CSV",
-          "status": "catalogued",
+          "status": "published",
           "bytes": 22850814,
           "lastModified": "Sun, 25 Oct 2026 15:40:04 GMT",
           "etag": "\"15cacfe-65eac06f042e7\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "ab13f303f226a80b255e948cd2ad4e44abfcdbafb38e92698b125e401997caec",
+          "assets": [
+            {
+              "name": "b255886a-votacao_partido_munzona_2026.zip",
+              "bytes": 22850814,
+              "sha256": "ab13f303f226a80b255e948cd2ad4e44abfcdbafb38e92698b125e401997caec"
+            }
+          ],
+          "removedPersonalColumns": {}
         },
         {
           "id": "db2f6a49-a150-42a5-9aca-9ddd16d297f0",
@@ -76334,11 +76641,20 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/detalhe_votacao_munzona/detalhe_votacao_munzona_2026.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/detalhe_votacao_munzona/detalhe_votacao_munzona_2026.zip",
           "format": "CSV",
-          "status": "catalogued",
+          "status": "published",
           "bytes": 2511067,
           "lastModified": "Sun, 25 Oct 2026 15:58:00 GMT",
           "etag": "\"2650db-65eac471f9365\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "7f6f40a14ba805b453b1d85c18fe12eec4225cfbf2ba21989ecd7c4e15a12043",
+          "assets": [
+            {
+              "name": "db2f6a49-detalhe_votacao_munzona_2026.zip",
+              "bytes": 2511067,
+              "sha256": "7f6f40a14ba805b453b1d85c18fe12eec4225cfbf2ba21989ecd7c4e15a12043"
+            }
+          ],
+          "removedPersonalColumns": {}
         },
         {
           "id": "32892c16-6a45-436e-a2d1-0809c31f3898",
@@ -76346,11 +76662,20 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/detalhe_votacao_secao/detalhe_votacao_secao_2026.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/detalhe_votacao_secao/detalhe_votacao_secao_2026.zip",
           "format": "CSV",
-          "status": "catalogued",
-          "bytes": 176923175,
+          "status": "published",
+          "bytes": 234357769,
           "lastModified": "Wed, 07 Oct 2026 20:54:59 GMT",
           "etag": "\"a8ba227-65d465412458b\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "8ef9ce3a85cde260471faf7a83a9b4f5ccf3993fdda942aacaa658574344789c",
+          "assets": [
+            {
+              "name": "32892c16-detalhe_votacao_secao_2026.zip",
+              "bytes": 234357769,
+              "sha256": "8ef9ce3a85cde260471faf7a83a9b4f5ccf3993fdda942aacaa658574344789c"
+            }
+          ],
+          "removedPersonalColumns": {}
         },
         {
           "id": "01ea4ccd-f443-469c-9f29-c69ff97f7d4c",
@@ -76358,11 +76683,20 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2026_BR.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2026_BR.zip",
           "format": "CSV",
-          "status": "catalogued",
+          "status": "published",
           "bytes": 161616519,
           "lastModified": "Tue, 06 Oct 2026 19:22:49 GMT",
           "etag": "\"9a21287-65d30ec9f3a44\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "2d42006d0f6c6e00bad83f5c23cd3d78cd3e3182dbc1ad6718222b6b132c23e1",
+          "assets": [
+            {
+              "name": "01ea4ccd-votacao_secao_2026_BR.zip",
+              "bytes": 161616519,
+              "sha256": "2d42006d0f6c6e00bad83f5c23cd3d78cd3e3182dbc1ad6718222b6b132c23e1"
+            }
+          ],
+          "removedPersonalColumns": {}
         },
         {
           "id": "287995e2-91ee-45b6-977a-722ff52575e8",
@@ -76370,11 +76704,20 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2026_AC.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2026_AC.zip",
           "format": "CSV",
-          "status": "catalogued",
+          "status": "published",
           "bytes": 7589844,
           "lastModified": "Tue, 06 Oct 2026 19:22:47 GMT",
           "etag": "\"73cfd4-65d30ec7557c3\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "7ab68fccb1f10aef820a3abcd90ad452fb1b941e3a77d40574a6f54780df330a",
+          "assets": [
+            {
+              "name": "287995e2-votacao_secao_2026_AC.zip",
+              "bytes": 7589844,
+              "sha256": "7ab68fccb1f10aef820a3abcd90ad452fb1b941e3a77d40574a6f54780df330a"
+            }
+          ],
+          "removedPersonalColumns": {}
         },
         {
           "id": "54c50a0c-bc26-479e-84aa-98ec0d2c577f",
@@ -76382,11 +76725,20 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2026_AL.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2026_AL.zip",
           "format": "CSV",
-          "status": "catalogued",
+          "status": "published",
           "bytes": 20370155,
           "lastModified": "Tue, 06 Oct 2026 19:22:47 GMT",
           "etag": "\"136d2eb-65d30ec79fb3e\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "a2d1dd89cc6eeeac64546d02ae61023af7f2cbe1494c2ab5e49229e91f568546",
+          "assets": [
+            {
+              "name": "54c50a0c-votacao_secao_2026_AL.zip",
+              "bytes": 20370155,
+              "sha256": "a2d1dd89cc6eeeac64546d02ae61023af7f2cbe1494c2ab5e49229e91f568546"
+            }
+          ],
+          "removedPersonalColumns": {}
         },
         {
           "id": "90a5f163-64d8-4c84-9922-3491b5df0733",
@@ -76394,11 +76746,20 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2026_AM.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2026_AM.zip",
           "format": "CSV",
-          "status": "catalogued",
+          "status": "published",
           "bytes": 35311558,
           "lastModified": "Tue, 06 Oct 2026 19:22:47 GMT",
           "etag": "\"21acfc6-65d30ec76b751\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "a359460257f8de5a19fd0e1027ff8f1c2ed566e9bf7f7c2707a43eb57d04fa11",
+          "assets": [
+            {
+              "name": "90a5f163-votacao_secao_2026_AM.zip",
+              "bytes": 35311558,
+              "sha256": "a359460257f8de5a19fd0e1027ff8f1c2ed566e9bf7f7c2707a43eb57d04fa11"
+            }
+          ],
+          "removedPersonalColumns": {}
         },
         {
           "id": "cca1341f-6abd-4bd8-b0da-14f5d96563b3",
@@ -76406,11 +76767,20 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2026_AP.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2026_AP.zip",
           "format": "CSV",
-          "status": "catalogued",
-          "bytes": 5771130,
+          "status": "published",
+          "bytes": 5958741,
           "lastModified": "Tue, 06 Oct 2026 19:22:45 GMT",
           "etag": "\"580f7a-65d30ec5475e9\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "3b9996b97dccca0f37bdb042eef1c478eae071508e6c52c6913ac2991cf3dca3",
+          "assets": [
+            {
+              "name": "cca1341f-votacao_secao_2026_AP.zip",
+              "bytes": 5958741,
+              "sha256": "3b9996b97dccca0f37bdb042eef1c478eae071508e6c52c6913ac2991cf3dca3"
+            }
+          ],
+          "removedPersonalColumns": {}
         },
         {
           "id": "13716e05-e5b9-4eef-9dbf-536d7ae2624f",
@@ -76418,11 +76788,20 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2026_BA.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2026_BA.zip",
           "format": "CSV",
-          "status": "catalogued",
+          "status": "published",
           "bytes": 159441051,
           "lastModified": "Tue, 06 Oct 2026 19:29:04 GMT",
           "etag": "\"980e09b-65d3102f73d83\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "752d6709c3ca5cbb31edbe6235171cbd32ddfea56b081b7de415048c9eaaf11e",
+          "assets": [
+            {
+              "name": "13716e05-votacao_secao_2026_BA.zip",
+              "bytes": 159441051,
+              "sha256": "752d6709c3ca5cbb31edbe6235171cbd32ddfea56b081b7de415048c9eaaf11e"
+            }
+          ],
+          "removedPersonalColumns": {}
         },
         {
           "id": "ae5d7dce-66be-42f9-ac67-64a9aadeceaf",
@@ -76430,11 +76809,20 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2026_CE.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2026_CE.zip",
           "format": "CSV",
-          "status": "catalogued",
+          "status": "published",
           "bytes": 100505036,
           "lastModified": "Tue, 06 Oct 2026 19:22:43 GMT",
           "etag": "\"5fd95cc-65d30ec41b532\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "917f9998a724abaf43c89b25c4bff9645e9bf1149c35f30184fa90df5b721db9",
+          "assets": [
+            {
+              "name": "ae5d7dce-votacao_secao_2026_CE.zip",
+              "bytes": 100505036,
+              "sha256": "917f9998a724abaf43c89b25c4bff9645e9bf1149c35f30184fa90df5b721db9"
+            }
+          ],
+          "removedPersonalColumns": {}
         },
         {
           "id": "71a09425-4da0-465a-9320-9f7c5ad1820b",
@@ -76442,11 +76830,20 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2026_DF.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2026_DF.zip",
           "format": "CSV",
-          "status": "catalogued",
-          "bytes": 35961696,
+          "status": "published",
+          "bytes": 31021958,
           "lastModified": "Mon, 26 Oct 2026 17:38:43 GMT",
           "etag": "\"224bb60-65ec1cd266ecb\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "1977095614b8029f7c18fa4d97683b668eae4cbbdf26a2b1a767eab47f5db2d4",
+          "assets": [
+            {
+              "name": "71a09425-votacao_secao_2026_DF.zip",
+              "bytes": 31021958,
+              "sha256": "1977095614b8029f7c18fa4d97683b668eae4cbbdf26a2b1a767eab47f5db2d4"
+            }
+          ],
+          "removedPersonalColumns": {}
         },
         {
           "id": "fb75fd61-271f-4af2-b64b-1ebaecb0457f",
@@ -76454,11 +76851,20 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2026_ES.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2026_ES.zip",
           "format": "CSV",
-          "status": "catalogued",
-          "bytes": 36500775,
+          "status": "published",
+          "bytes": 36106147,
           "lastModified": "Tue, 06 Oct 2026 19:22:41 GMT",
           "etag": "\"22cf527-65d30ec173a59\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "10434c669b9ef7a20cde25545f8db78303b2a0306594df253e64f562bb6cc8b3",
+          "assets": [
+            {
+              "name": "fb75fd61-votacao_secao_2026_ES.zip",
+              "bytes": 36106147,
+              "sha256": "10434c669b9ef7a20cde25545f8db78303b2a0306594df253e64f562bb6cc8b3"
+            }
+          ],
+          "removedPersonalColumns": {}
         },
         {
           "id": "80c2cc3d-d690-44dc-a364-33232b4f9b04",
@@ -76466,11 +76872,20 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2026_GO.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2026_GO.zip",
           "format": "CSV",
-          "status": "catalogued",
-          "bytes": 81562914,
+          "status": "published",
+          "bytes": 83816451,
           "lastModified": "Tue, 06 Oct 2026 19:22:39 GMT",
           "etag": "\"4dc8d22-65d30ebff8bef\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "b82316c58e57139e3db371b6d4669a93d5439eabbb8abebe9cbd02e8cbd295ee",
+          "assets": [
+            {
+              "name": "80c2cc3d-votacao_secao_2026_GO.zip",
+              "bytes": 83816451,
+              "sha256": "b82316c58e57139e3db371b6d4669a93d5439eabbb8abebe9cbd02e8cbd295ee"
+            }
+          ],
+          "removedPersonalColumns": {}
         },
         {
           "id": "5bead165-baa9-448c-9d7e-3c229c7f3c47",
@@ -76478,11 +76893,20 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2026_MA.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2026_MA.zip",
           "format": "CSV",
-          "status": "catalogued",
+          "status": "published",
           "bytes": 65492254,
           "lastModified": "Tue, 06 Oct 2026 19:22:37 GMT",
           "etag": "\"3e7551e-65d30ebe009a4\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "c5c0f000db290b7027adffae525d392c738e5dda99fe7667de78893f3704e114",
+          "assets": [
+            {
+              "name": "5bead165-votacao_secao_2026_MA.zip",
+              "bytes": 65492254,
+              "sha256": "c5c0f000db290b7027adffae525d392c738e5dda99fe7667de78893f3704e114"
+            }
+          ],
+          "removedPersonalColumns": {}
         },
         {
           "id": "2aaa40ff-70d2-43f3-ad0f-9a0318ade46c",
@@ -76490,11 +76914,20 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2026_MG.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2026_MG.zip",
           "format": "CSV",
-          "status": "catalogued",
-          "bytes": 255063843,
+          "status": "published",
+          "bytes": 267625809,
           "lastModified": "Tue, 06 Oct 2026 19:32:09 GMT",
           "etag": "\"f33f723-65d310dfa2ba8\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "4d6cda601ab8127d0c7ef91558243e81d5f82ac23ce94f65891fe6cca5c1f868",
+          "assets": [
+            {
+              "name": "2aaa40ff-votacao_secao_2026_MG.zip",
+              "bytes": 267625809,
+              "sha256": "4d6cda601ab8127d0c7ef91558243e81d5f82ac23ce94f65891fe6cca5c1f868"
+            }
+          ],
+          "removedPersonalColumns": {}
         },
         {
           "id": "f3aed09e-8471-436c-a3e7-a358927381be",
@@ -76502,11 +76935,20 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2026_MS.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2026_MS.zip",
           "format": "CSV",
-          "status": "catalogued",
-          "bytes": 23588312,
+          "status": "published",
+          "bytes": 22659531,
           "lastModified": "Tue, 06 Oct 2026 19:22:38 GMT",
           "etag": "\"167edd8-65d30ebf7a86f\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "5a67c6e9d2ae5997c7ce535abea49c35feb97089cebf026136ac4d6e9d922c84",
+          "assets": [
+            {
+              "name": "f3aed09e-votacao_secao_2026_MS.zip",
+              "bytes": 22659531,
+              "sha256": "5a67c6e9d2ae5997c7ce535abea49c35feb97089cebf026136ac4d6e9d922c84"
+            }
+          ],
+          "removedPersonalColumns": {}
         },
         {
           "id": "77ec8635-5130-466b-a488-41358db47b8c",
@@ -76514,11 +76956,20 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2026_MT.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2026_MT.zip",
           "format": "CSV",
-          "status": "catalogued",
-          "bytes": 29991568,
+          "status": "published",
+          "bytes": 31060799,
           "lastModified": "Tue, 06 Oct 2026 19:22:38 GMT",
           "etag": "\"1c9a290-65d30ebf5fea8\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "3d91f38b185070a085e0e168de501a14f0b2bdbf072a5122e3456b2ea78a1acd",
+          "assets": [
+            {
+              "name": "77ec8635-votacao_secao_2026_MT.zip",
+              "bytes": 31060799,
+              "sha256": "3d91f38b185070a085e0e168de501a14f0b2bdbf072a5122e3456b2ea78a1acd"
+            }
+          ],
+          "removedPersonalColumns": {}
         },
         {
           "id": "13eceaad-7984-4f5c-9544-4aa443780eca",
@@ -76526,11 +76977,20 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2026_PA.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2026_PA.zip",
           "format": "CSV",
-          "status": "catalogued",
+          "status": "published",
           "bytes": 86538339,
           "lastModified": "Tue, 06 Oct 2026 19:22:31 GMT",
           "etag": "\"5287863-65d30eb842689\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "93da39b28319470acf4fdf4d8603a8bf36db9dc56e33423832019d2ec459caca",
+          "assets": [
+            {
+              "name": "13eceaad-votacao_secao_2026_PA.zip",
+              "bytes": 86538339,
+              "sha256": "93da39b28319470acf4fdf4d8603a8bf36db9dc56e33423832019d2ec459caca"
+            }
+          ],
+          "removedPersonalColumns": {}
         },
         {
           "id": "b3d641b5-be8a-4a95-a8bf-9792ec9fdf9e",
@@ -76538,11 +76998,20 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2026_PB.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2026_PB.zip",
           "format": "CSV",
-          "status": "catalogued",
-          "bytes": 36057750,
+          "status": "published",
+          "bytes": 37422947,
           "lastModified": "Tue, 06 Oct 2026 19:22:34 GMT",
           "etag": "\"2263296-65d30ebad2e4b\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "c2a3a9f3434d8267857b4d278ccc7f541e5bd8a2e8433f9d510215ada2bcbc75",
+          "assets": [
+            {
+              "name": "b3d641b5-votacao_secao_2026_PB.zip",
+              "bytes": 37422947,
+              "sha256": "c2a3a9f3434d8267857b4d278ccc7f541e5bd8a2e8433f9d510215ada2bcbc75"
+            }
+          ],
+          "removedPersonalColumns": {}
         },
         {
           "id": "19355892-1025-48e1-9cbf-4fa100f9eb25",
@@ -76550,11 +77019,20 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2026_PE.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2026_PE.zip",
           "format": "CSV",
-          "status": "catalogued",
+          "status": "published",
           "bytes": 101591607,
           "lastModified": "Wed, 07 Oct 2026 21:03:22 GMT",
           "etag": "\"60e2a37-65d4672092753\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "b4a6978d407ce5af0861dbc68fab05c5f311d3398c23a0adb9e94e3e28dd8fba",
+          "assets": [
+            {
+              "name": "19355892-votacao_secao_2026_PE.zip",
+              "bytes": 101591607,
+              "sha256": "b4a6978d407ce5af0861dbc68fab05c5f311d3398c23a0adb9e94e3e28dd8fba"
+            }
+          ],
+          "removedPersonalColumns": {}
         },
         {
           "id": "60fb75b0-1f32-4278-8f75-e8b6da274581",
@@ -76562,11 +77040,20 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2026_PI.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2026_PI.zip",
           "format": "CSV",
-          "status": "catalogued",
+          "status": "published",
           "bytes": 30590209,
           "lastModified": "Tue, 06 Oct 2026 19:22:31 GMT",
           "etag": "\"1d2c501-65d30eb80fdf4\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "b075e46995ca84c057f3078d4ac51850d88c70bcace8baafc5ee740c65f64562",
+          "assets": [
+            {
+              "name": "60fb75b0-votacao_secao_2026_PI.zip",
+              "bytes": 30590209,
+              "sha256": "b075e46995ca84c057f3078d4ac51850d88c70bcace8baafc5ee740c65f64562"
+            }
+          ],
+          "removedPersonalColumns": {}
         },
         {
           "id": "a2018ffc-58ce-4dd1-848a-9ef09b20dc91",
@@ -76574,11 +77061,20 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2026_PR.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2026_PR.zip",
           "format": "CSV",
-          "status": "catalogued",
-          "bytes": 152428338,
+          "status": "published",
+          "bytes": 146080760,
           "lastModified": "Mon, 26 Oct 2026 17:39:25 GMT",
           "etag": "\"915df32-65ec1cf9faa4e\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "63ef4e0f03fa4ee68e55c931ea73294c7cf0949b638f0b8bdec2158899064ce2",
+          "assets": [
+            {
+              "name": "a2018ffc-votacao_secao_2026_PR.zip",
+              "bytes": 146080760,
+              "sha256": "63ef4e0f03fa4ee68e55c931ea73294c7cf0949b638f0b8bdec2158899064ce2"
+            }
+          ],
+          "removedPersonalColumns": {}
         },
         {
           "id": "0069b075-2f46-449a-9881-0d63be3046fe",
@@ -76586,11 +77082,20 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2026_RJ.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2026_RJ.zip",
           "format": "CSV",
-          "status": "catalogued",
-          "bytes": 288342281,
+          "status": "published",
+          "bytes": 291504128,
           "lastModified": "Tue, 06 Oct 2026 19:32:16 GMT",
           "etag": "\"112fc109-65d310e65be55\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "33cf8906752970ee6d21c0d426ffbbe74c1f5c1e8a798c55891f33973197ba74",
+          "assets": [
+            {
+              "name": "0069b075-votacao_secao_2026_RJ.zip",
+              "bytes": 291504128,
+              "sha256": "33cf8906752970ee6d21c0d426ffbbe74c1f5c1e8a798c55891f33973197ba74"
+            }
+          ],
+          "removedPersonalColumns": {}
         },
         {
           "id": "41e881d8-35fc-4f7c-b194-87dd61ae259b",
@@ -76598,11 +77103,20 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2026_RN.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2026_RN.zip",
           "format": "CSV",
-          "status": "catalogued",
+          "status": "published",
           "bytes": 23383338,
           "lastModified": "Tue, 06 Oct 2026 19:22:30 GMT",
           "etag": "\"164cd2a-65d30eb7cc3f0\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "c695728b1f1511fb4f90151ccb7911a4e5a6bfced07bd911d0846aae92832af5",
+          "assets": [
+            {
+              "name": "41e881d8-votacao_secao_2026_RN.zip",
+              "bytes": 23383338,
+              "sha256": "c695728b1f1511fb4f90151ccb7911a4e5a6bfced07bd911d0846aae92832af5"
+            }
+          ],
+          "removedPersonalColumns": {}
         },
         {
           "id": "66c4a8fd-4d54-41df-adec-9fdbf496faec",
@@ -76610,11 +77124,20 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2026_RO.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2026_RO.zip",
           "format": "CSV",
-          "status": "catalogued",
+          "status": "published",
           "bytes": 11476238,
           "lastModified": "Tue, 06 Oct 2026 19:22:44 GMT",
           "etag": "\"af1d0e-65d30ec4de257\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "9e881b2fad94ceafb76a6621b18f3831186920254ba46ecec79980d9ce09d283",
+          "assets": [
+            {
+              "name": "66c4a8fd-votacao_secao_2026_RO.zip",
+              "bytes": 11476238,
+              "sha256": "9e881b2fad94ceafb76a6621b18f3831186920254ba46ecec79980d9ce09d283"
+            }
+          ],
+          "removedPersonalColumns": {}
         },
         {
           "id": "c4865429-918f-424d-9047-79d52e58ea5a",
@@ -76622,11 +77145,20 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2026_RR.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2026_RR.zip",
           "format": "CSV",
-          "status": "catalogued",
+          "status": "published",
           "bytes": 5392174,
           "lastModified": "Tue, 06 Oct 2026 19:22:45 GMT",
           "etag": "\"52472e-65d30ec5c2a8a\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "14e80dc93d854879fe1301292749f40197c73ce5eda7c0bf4e7e64f617f31ed6",
+          "assets": [
+            {
+              "name": "c4865429-votacao_secao_2026_RR.zip",
+              "bytes": 5392174,
+              "sha256": "14e80dc93d854879fe1301292749f40197c73ce5eda7c0bf4e7e64f617f31ed6"
+            }
+          ],
+          "removedPersonalColumns": {}
         },
         {
           "id": "0400f5ae-6c55-4ec3-9f21-d44621c08afb",
@@ -76634,11 +77166,20 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2026_RS.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2026_RS.zip",
           "format": "CSV",
-          "status": "catalogued",
-          "bytes": 144569003,
+          "status": "published",
+          "bytes": 149832038,
           "lastModified": "Tue, 06 Oct 2026 19:22:34 GMT",
           "etag": "\"89df2ab-65d30ebb7b1aa\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "35f690742c8bb94c40e04762cf51ce0069be1363458e29b276df9aab4c599919",
+          "assets": [
+            {
+              "name": "0400f5ae-votacao_secao_2026_RS.zip",
+              "bytes": 149832038,
+              "sha256": "35f690742c8bb94c40e04762cf51ce0069be1363458e29b276df9aab4c599919"
+            }
+          ],
+          "removedPersonalColumns": {}
         },
         {
           "id": "a8a56b6a-17cb-42ad-b59d-150184b4bd46",
@@ -76646,11 +77187,20 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2026_SC.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2026_SC.zip",
           "format": "CSV",
-          "status": "catalogued",
+          "status": "published",
           "bytes": 77963794,
           "lastModified": "Tue, 06 Oct 2026 19:22:41 GMT",
           "etag": "\"4a5a212-65d30ec1fa692\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "034d396ca1e1bfad565ba86194cf159f79d9f51722f28629df3ce0127c08f8f9",
+          "assets": [
+            {
+              "name": "a8a56b6a-votacao_secao_2026_SC.zip",
+              "bytes": 77963794,
+              "sha256": "034d396ca1e1bfad565ba86194cf159f79d9f51722f28629df3ce0127c08f8f9"
+            }
+          ],
+          "removedPersonalColumns": {}
         },
         {
           "id": "4b8b9d2d-69a9-4728-8381-48189c295e65",
@@ -76658,11 +77208,20 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2026_SE.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2026_SE.zip",
           "format": "CSV",
-          "status": "catalogued",
-          "bytes": 18746487,
+          "status": "published",
+          "bytes": 19756325,
           "lastModified": "Tue, 06 Oct 2026 19:22:37 GMT",
           "etag": "\"11e0c77-65d30ebda54ba\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "e4b77b8db4b173965bba72cbcd3ba1cbfd6173bab3146d5a573ab9685fed2829",
+          "assets": [
+            {
+              "name": "4b8b9d2d-votacao_secao_2026_SE.zip",
+              "bytes": 19756325,
+              "sha256": "e4b77b8db4b173965bba72cbcd3ba1cbfd6173bab3146d5a573ab9685fed2829"
+            }
+          ],
+          "removedPersonalColumns": {}
         },
         {
           "id": "30378d01-7c4a-43a8-84c8-4fc7499a9efe",
@@ -76670,11 +77229,20 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2026_SP.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2026_SP.zip",
           "format": "CSV",
-          "status": "catalogued",
+          "status": "published",
           "bytes": 767459830,
           "lastModified": "Tue, 06 Oct 2026 20:03:39 GMT",
           "etag": "\"2dbe81f6-65d317ea6b499\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "49d5f1f6938425e53cbd0e9ec5d391ea90bde5fcce432e031666e18dcd960a8a",
+          "assets": [
+            {
+              "name": "30378d01-votacao_secao_2026_SP.zip",
+              "bytes": 767459830,
+              "sha256": "49d5f1f6938425e53cbd0e9ec5d391ea90bde5fcce432e031666e18dcd960a8a"
+            }
+          ],
+          "removedPersonalColumns": {}
         },
         {
           "id": "2f5d9a47-0363-4bb9-a1be-eaf08b74e39f",
@@ -76682,11 +77250,20 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2026_TO.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2026_TO.zip",
           "format": "CSV",
-          "status": "catalogued",
+          "status": "published",
           "bytes": 12707217,
           "lastModified": "Tue, 06 Oct 2026 19:22:43 GMT",
           "etag": "\"c1e591-65d30ec395c82\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "b7802f099755f74d0a22e8faeed235645cf85eaeb760948e2a6cf21df5951f9e",
+          "assets": [
+            {
+              "name": "2f5d9a47-votacao_secao_2026_TO.zip",
+              "bytes": 12707217,
+              "sha256": "b7802f099755f74d0a22e8faeed235645cf85eaeb760948e2a6cf21df5951f9e"
+            }
+          ],
+          "removedPersonalColumns": {}
         },
         {
           "id": "46543640-063f-4633-bf32-ad4ed51d6653",
@@ -77038,6 +77615,7 @@
         }
       ],
       "inScope": true,
+      "publicationVerifiedAt": "2026-10-26T22:27:45.062797+00:00",
       "normalizedSummaries": {
         "index": "history/indicators.json",
         "elections": [
@@ -84657,7 +85235,7 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2020/arqurnatot/bu_imgbu_logjez_rdv_vscmr_ele_suplementares_2020.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2020/arqurnatot/bu_imgbu_logjez_rdv_vscmr_ele_suplementares_2020.zip",
           "format": "CSV",
-          "status": "prepared",
+          "status": "published",
           "bytes": 257015077,
           "lastModified": "Fri, 06 Dec 2024 14:54:42 GMT",
           "etag": "\"f51bd25-6289b31e92427\"",

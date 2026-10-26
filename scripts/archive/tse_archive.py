@@ -259,7 +259,7 @@ def publish_prepared(root, dataset, entries, paths):
     status = 'published' if all(e['status'] in ['prepared', 'excluded'] for e in entries) else 'partial'
     manifest = dict(schemaVersion=1, generatedAt=now(), status=status, dataset={k: v for k, v in dataset.items() if k != 'resources'}, resources=entries)
     write_json(directory / 'ARCHIVE.json', manifest)
-    sums = '\n'.join(f"{a['sha256']}  {a['name']}" for e in entries for a in e.get('assets', [])) + '\n'
+    sums = '\n'.join(f'{sha256(path)}  {path.name}' for path in paths) + '\n'
     (directory / 'SHA256SUMS').write_text(sums)
     readme = f"# {dataset['title']}\n\nFonte: {dataset['source']}\n\nLicença: {dataset['license']}. Dados arquivados, ainda não normalizados para todas as análises.\n\nARCHIVE.json identifica URL, instante, hash original, assets publicados e eventuais colunas pessoais removidas. Arquivos multipartes devem ser concatenados em ordem antes da extração.\n"
     (directory / 'README.md').write_text(readme)
