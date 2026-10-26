@@ -1,0 +1,730 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-10-26T21:53:29.641615+00:00",
+  "status": "published",
+  "dataset": {
+    "id": "resultados-2006",
+    "title": "Resultados - 2006",
+    "groups": [
+      "resultados"
+    ],
+    "family": "resultados",
+    "years": [
+      2006
+    ],
+    "license": "cc-by",
+    "source": "https://dadosabertos.tse.jus.br/dataset/resultados-2006",
+    "branch": "archive/resultados-2006",
+    "tag": "data-resultados-2006",
+    "releaseUrl": "https://github.com/brauliobo/brazil-audit/releases/tag/data-resultados-2006",
+    "normalized": false,
+    "status": "catalogued",
+    "inScope": true
+  },
+  "resources": [
+    {
+      "id": "9ccf996b-f0cb-432c-bde3-74f475ec427d",
+      "name": "Votação nominal por município e zona",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_candidato_munzona/votacao_candidato_munzona_2006.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_candidato_munzona/votacao_candidato_munzona_2006.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 130940089,
+      "lastModified": "Fri, 13 May 2022 23:19:55 GMT",
+      "etag": "\"7cdfcb9-5deece984dcc0\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:52:55.575192+00:00",
+      "sha256": "9bd23c339924ee761347a80590deff8bbbe2f483ff5a5b3d478998ce59ec929e",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "9ccf996b-votacao_candidato_munzona_2006.zip",
+          "bytes": 130940089,
+          "sha256": "9bd23c339924ee761347a80590deff8bbbe2f483ff5a5b3d478998ce59ec929e"
+        }
+      ]
+    },
+    {
+      "id": "413f64c6-6398-4e28-a4f2-015e633d357a",
+      "name": "Votação em partido por município e zona",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_partido_munzona/votacao_partido_munzona_2006.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_partido_munzona/votacao_partido_munzona_2006.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 8894538,
+      "lastModified": "Fri, 13 May 2022 23:19:20 GMT",
+      "etag": "\"87b84a-5deece76ece00\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:52:56.301338+00:00",
+      "sha256": "03dcdef80b254c8a5e02753ba6359a94ae7f050f5973eef7fc03bf315f23cc35",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "413f64c6-votacao_partido_munzona_2006.zip",
+          "bytes": 8894538,
+          "sha256": "03dcdef80b254c8a5e02753ba6359a94ae7f050f5973eef7fc03bf315f23cc35"
+        }
+      ]
+    },
+    {
+      "id": "2a119246-68b4-44a9-ab82-5812e1558860",
+      "name": "Detalhe da apuração por município e zona",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/detalhe_votacao_munzona/detalhe_votacao_munzona_2006.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/detalhe_votacao_munzona/detalhe_votacao_munzona_2006.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 3893736,
+      "lastModified": "Fri, 08 Aug 2025 16:29:38 GMT",
+      "etag": "\"3b69e8-63bdd148a5312\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:52:56.701325+00:00",
+      "sha256": "9cc8d3a710f33f7dc2b301e01cab58a67e78b6ab3bf0bd48031e7cdb46f6870f",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "2a119246-detalhe_votacao_munzona_2006.zip",
+          "bytes": 3893736,
+          "sha256": "9cc8d3a710f33f7dc2b301e01cab58a67e78b6ab3bf0bd48031e7cdb46f6870f"
+        }
+      ]
+    },
+    {
+      "id": "997a4369-d0b9-402b-8805-6d5950f1d542",
+      "name": "Detalhe da apuração por seção eleitoral",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/detalhe_votacao_secao/detalhe_votacao_secao_2006.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/detalhe_votacao_secao/detalhe_votacao_secao_2006.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 63608788,
+      "lastModified": "Fri, 13 May 2022 23:58:16 GMT",
+      "etag": "\"3ca97d4-5deed72ab5600\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:52:58.554026+00:00",
+      "sha256": "191acfd59485b4cd76f793167cd82548b4aa3eba5818d352ede367ed3698ac4e",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "997a4369-detalhe_votacao_secao_2006.zip",
+          "bytes": 63608788,
+          "sha256": "191acfd59485b4cd76f793167cd82548b4aa3eba5818d352ede367ed3698ac4e"
+        }
+      ]
+    },
+    {
+      "id": "9a58db4c-5370-4df2-86e0-5d7e73c2443e",
+      "name": "Presidente - Votação por seção eleitoral - 2006",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2006_BR.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2006_BR.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 22094673,
+      "lastModified": "Fri, 13 May 2022 23:17:37 GMT",
+      "etag": "\"1512351-5deece14b2640\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:52:59.475672+00:00",
+      "sha256": "c675f86d5c9724f7ff869155b777fedf8acec40c4386c50d3f5d78d2522622f5",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "9a58db4c-votacao_secao_2006_BR.zip",
+          "bytes": 22094673,
+          "sha256": "c675f86d5c9724f7ff869155b777fedf8acec40c4386c50d3f5d78d2522622f5"
+        }
+      ]
+    },
+    {
+      "id": "f4485a6e-a42d-4b95-8a27-8ccdab044a63",
+      "name": "AC - Votação por seção eleitoral - 2006",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2006_AC.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2006_AC.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 2141595,
+      "lastModified": "Fri, 13 May 2022 23:18:30 GMT",
+      "etag": "\"20ad9b-5deece473dd80\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:52:59.845305+00:00",
+      "sha256": "8298f3fd4d7c56e2d07d054b73331d63fabe40f1b5a1dda596e62113af889ae0",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "f4485a6e-votacao_secao_2006_AC.zip",
+          "bytes": 2141595,
+          "sha256": "8298f3fd4d7c56e2d07d054b73331d63fabe40f1b5a1dda596e62113af889ae0"
+        }
+      ]
+    },
+    {
+      "id": "68a4e304-4c97-4478-9a73-06fee46d9928",
+      "name": "AL - Votação por seção eleitoral - 2006",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2006_AL.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2006_AL.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 5497778,
+      "lastModified": "Fri, 13 May 2022 23:18:15 GMT",
+      "etag": "\"53e3b2-5deece38efbc0\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:53:00.301619+00:00",
+      "sha256": "58854c1ea20d37bb84e05f117697739c8d4b937ba9137eeeac19673ab13647a2",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "68a4e304-votacao_secao_2006_AL.zip",
+          "bytes": 5497778,
+          "sha256": "58854c1ea20d37bb84e05f117697739c8d4b937ba9137eeeac19673ab13647a2"
+        }
+      ]
+    },
+    {
+      "id": "7ebf76c9-9b52-4e31-b28a-26ce43b3cf7f",
+      "name": "AP - Votação por seção eleitoral - 2006",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2006_AP.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2006_AP.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 2246078,
+      "lastModified": "Fri, 13 May 2022 23:18:00 GMT",
+      "etag": "\"2245be-5deece2aa1a00\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:53:00.709905+00:00",
+      "sha256": "deff8651a1952f659f1c8239dcd0c00a5ecc9fb43d31ad5fd8f418521491abed",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "7ebf76c9-votacao_secao_2006_AP.zip",
+          "bytes": 2246078,
+          "sha256": "deff8651a1952f659f1c8239dcd0c00a5ecc9fb43d31ad5fd8f418521491abed"
+        }
+      ]
+    },
+    {
+      "id": "859b9627-0ea9-482e-b567-d7d606891dee",
+      "name": "AM - Votação por seção eleitoral - 2006",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2006_AM.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2006_AM.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 8130114,
+      "lastModified": "Fri, 13 May 2022 23:18:12 GMT",
+      "etag": "\"7c0e42-5deece3613500\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:53:01.243961+00:00",
+      "sha256": "e601b0b62b97bd78f308df4b66b85ce6686c4ec272c00b3eb4917e81f67593e0",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "859b9627-votacao_secao_2006_AM.zip",
+          "bytes": 8130114,
+          "sha256": "e601b0b62b97bd78f308df4b66b85ce6686c4ec272c00b3eb4917e81f67593e0"
+        }
+      ]
+    },
+    {
+      "id": "90237d4f-c39d-479c-8b59-a7762e7129f4",
+      "name": "BA - Votação por seção eleitoral - 2006",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2006_BA.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2006_BA.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 32168761,
+      "lastModified": "Fri, 13 May 2022 23:17:42 GMT",
+      "etag": "\"1eadb39-5deece1977180\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:53:02.618836+00:00",
+      "sha256": "319b4b8ba2c953b49499ca5e7b086586cf3a26ab4498bd02b48dd076fb9e02be",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "90237d4f-votacao_secao_2006_BA.zip",
+          "bytes": 32168761,
+          "sha256": "319b4b8ba2c953b49499ca5e7b086586cf3a26ab4498bd02b48dd076fb9e02be"
+        }
+      ]
+    },
+    {
+      "id": "be611341-d252-44c9-9798-080e49753fae",
+      "name": "CE - Votação por seção eleitoral - 2006",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2006_CE.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2006_CE.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 20012388,
+      "lastModified": "Fri, 13 May 2022 23:17:30 GMT",
+      "etag": "\"1315d64-5deece0e05680\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:53:03.670509+00:00",
+      "sha256": "4aad0ab46288613080ce33cd89593e049cd8f6ab130caa4ad9d865fbbf452eed",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "be611341-votacao_secao_2006_CE.zip",
+          "bytes": 20012388,
+          "sha256": "4aad0ab46288613080ce33cd89593e049cd8f6ab130caa4ad9d865fbbf452eed"
+        }
+      ]
+    },
+    {
+      "id": "09c15b17-7299-4f41-99e9-0220709fdd68",
+      "name": "DF - Votação por seção eleitoral - 2006",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2006_DF.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2006_DF.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 13070654,
+      "lastModified": "Fri, 13 May 2022 23:17:15 GMT",
+      "etag": "\"c7713e-5deecdffb74c0\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:53:04.378844+00:00",
+      "sha256": "7d7f371a6b117ae8877ed628752b252169aaeeb23a71a43000cc420ff76b8b05",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "09c15b17-votacao_secao_2006_DF.zip",
+          "bytes": 13070654,
+          "sha256": "7d7f371a6b117ae8877ed628752b252169aaeeb23a71a43000cc420ff76b8b05"
+        }
+      ]
+    },
+    {
+      "id": "2f5ac5d0-04c0-4fea-837c-a8e52230b6c8",
+      "name": "ES - Votação por seção eleitoral - 2006",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2006_ES.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2006_ES.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 7819075,
+      "lastModified": "Fri, 13 May 2022 23:17:04 GMT",
+      "etag": "\"774f43-5deecdf539c00\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:53:05.163079+00:00",
+      "sha256": "f8e6b015a2c95fe0a2bd7afd15b6a0cad5e8181fe4ac76a0bb6d6ce5f1883781",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "2f5ac5d0-votacao_secao_2006_ES.zip",
+          "bytes": 7819075,
+          "sha256": "f8e6b015a2c95fe0a2bd7afd15b6a0cad5e8181fe4ac76a0bb6d6ce5f1883781"
+        }
+      ]
+    },
+    {
+      "id": "3cb6dc37-d387-47a8-9590-0f7fcc3d69b5",
+      "name": "GO - Votação por seção eleitoral - 2006",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2006_GO.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2006_GO.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 14849607,
+      "lastModified": "Fri, 13 May 2022 23:16:49 GMT",
+      "etag": "\"e29647-5deecde6eba40\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:53:05.902209+00:00",
+      "sha256": "2cb13eeff39664ba664e229c5f362bfc0f3d11c2bae181f2782d501c3148e9f1",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "3cb6dc37-votacao_secao_2006_GO.zip",
+          "bytes": 14849607,
+          "sha256": "2cb13eeff39664ba664e229c5f362bfc0f3d11c2bae181f2782d501c3148e9f1"
+        }
+      ]
+    },
+    {
+      "id": "04895778-d358-478a-9b1f-2382359e99ec",
+      "name": "MA - Votação por seção eleitoral - 2006",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2006_MA.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2006_MA.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 14037777,
+      "lastModified": "Fri, 13 May 2022 23:16:40 GMT",
+      "etag": "\"d63311-5deecdde56600\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:53:06.617014+00:00",
+      "sha256": "f65acd5df5fbf310a6ecb42f56fab06015275f6bf2db78d4bd0d554ab09dbe2f",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "04895778-votacao_secao_2006_MA.zip",
+          "bytes": 14037777,
+          "sha256": "f65acd5df5fbf310a6ecb42f56fab06015275f6bf2db78d4bd0d554ab09dbe2f"
+        }
+      ]
+    },
+    {
+      "id": "f03e1fa6-3465-4bdc-b15f-5516bdc45655",
+      "name": "MT - Votação por seção eleitoral - 2006",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2006_MT.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2006_MT.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 4742972,
+      "lastModified": "Fri, 13 May 2022 23:38:06 GMT",
+      "etag": "\"485f3c-5deed2a8c3380\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:53:07.050067+00:00",
+      "sha256": "30ae0b10e28729d8d62fbb6087aff09fd4e99de6db80fc10e07f8b807ee9ee12",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "f03e1fa6-votacao_secao_2006_MT.zip",
+          "bytes": 4742972,
+          "sha256": "30ae0b10e28729d8d62fbb6087aff09fd4e99de6db80fc10e07f8b807ee9ee12"
+        }
+      ]
+    },
+    {
+      "id": "9650dc71-673b-4c96-99cc-9d87fd29684a",
+      "name": "MS - Votação por seção eleitoral - 2006",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2006_MS.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2006_MS.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 4762763,
+      "lastModified": "Fri, 13 May 2022 23:16:19 GMT",
+      "etag": "\"48ac8b-5deecdca4f6c0\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:53:07.604440+00:00",
+      "sha256": "19bb4478e6c3bff2748e695df02001d2220a7a4de4876bef8d5acc136e07ea64",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "9650dc71-votacao_secao_2006_MS.zip",
+          "bytes": 4762763,
+          "sha256": "19bb4478e6c3bff2748e695df02001d2220a7a4de4876bef8d5acc136e07ea64"
+        }
+      ]
+    },
+    {
+      "id": "a64e3ef7-fb30-416a-a0a6-e32f0858537f",
+      "name": "MG - Votação por seção eleitoral - 2006",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2006_MG.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2006_MG.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 50296362,
+      "lastModified": "Fri, 13 May 2022 23:16:28 GMT",
+      "etag": "\"2ff762a-5deecdd2e4b00\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:53:09.085594+00:00",
+      "sha256": "5575b345afa6e21d52f23e078fd468c4236b635f882e445d320c742ad42f1952",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "a64e3ef7-votacao_secao_2006_MG.zip",
+          "bytes": 50296362,
+          "sha256": "5575b345afa6e21d52f23e078fd468c4236b635f882e445d320c742ad42f1952"
+        }
+      ]
+    },
+    {
+      "id": "a96fc739-1fbe-491c-bc7b-c425abb6e63b",
+      "name": "PA - Votação por seção eleitoral - 2006",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2006_PA.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2006_PA.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 15456363,
+      "lastModified": "Fri, 13 May 2022 23:16:04 GMT",
+      "etag": "\"ebd86b-5deecdbc01500\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:53:09.981246+00:00",
+      "sha256": "a9f4fc10a15939e8744af352240c98a19ab7ea781b13b11eb7fc7e961811b7dd",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "a96fc739-votacao_secao_2006_PA.zip",
+          "bytes": 15456363,
+          "sha256": "a9f4fc10a15939e8744af352240c98a19ab7ea781b13b11eb7fc7e961811b7dd"
+        }
+      ]
+    },
+    {
+      "id": "50edeaf1-a95f-42ca-9fc6-c6a997a08c83",
+      "name": "PB - Votação por seção eleitoral - 2006",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2006_PB.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2006_PB.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 7464485,
+      "lastModified": "Fri, 13 May 2022 23:15:47 GMT",
+      "etag": "\"71e625-5deecdabcaec0\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:53:10.477576+00:00",
+      "sha256": "c514a3a378dd62925b82036b38991c6054093fb06b979f920f468ca4e5650030",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "50edeaf1-votacao_secao_2006_PB.zip",
+          "bytes": 7464485,
+          "sha256": "c514a3a378dd62925b82036b38991c6054093fb06b979f920f468ca4e5650030"
+        }
+      ]
+    },
+    {
+      "id": "e730c3a3-7cd6-4faa-8dc2-c1da232be1cb",
+      "name": "PR - Votação por seção eleitoral - 2006",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2006_PR.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2006_PR.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 26433577,
+      "lastModified": "Fri, 13 May 2022 23:15:34 GMT",
+      "etag": "\"1935829-5deecd9f65180\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:53:11.407541+00:00",
+      "sha256": "b73a481d054eb4e8042f8d01a16f9497fb3e353bfbf1fe1b50c96478dfe4dfb9",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "e730c3a3-votacao_secao_2006_PR.zip",
+          "bytes": 26433577,
+          "sha256": "b73a481d054eb4e8042f8d01a16f9497fb3e353bfbf1fe1b50c96478dfe4dfb9"
+        }
+      ]
+    },
+    {
+      "id": "56d64fb6-1c82-4a50-b5b9-3702b9772bed",
+      "name": "PE - Votação por seção eleitoral - 2006",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2006_PE.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2006_PE.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 24022727,
+      "lastModified": "Fri, 13 May 2022 23:15:40 GMT",
+      "etag": "\"16e8ec7-5deecda51df00\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:53:12.353877+00:00",
+      "sha256": "0e8b489e5be5548b9afb38bb0e37f6d09d190980b7454c7d40267813f4b9101f",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "56d64fb6-votacao_secao_2006_PE.zip",
+          "bytes": 24022727,
+          "sha256": "0e8b489e5be5548b9afb38bb0e37f6d09d190980b7454c7d40267813f4b9101f"
+        }
+      ]
+    },
+    {
+      "id": "70fc2e8b-6035-49c9-8fcc-9a8a470a84b1",
+      "name": "PI - Votação por seção eleitoral - 2006",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2006_PI.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2006_PI.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 5940380,
+      "lastModified": "Fri, 13 May 2022 23:38:40 GMT",
+      "etag": "\"5aa49c-5deed2c930000\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:53:12.648955+00:00",
+      "sha256": "6170258d96aa3026a151df19ef168d0c36b95305052f356cd34ee3352502eb25",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "70fc2e8b-votacao_secao_2006_PI.zip",
+          "bytes": 5940380,
+          "sha256": "6170258d96aa3026a151df19ef168d0c36b95305052f356cd34ee3352502eb25"
+        }
+      ]
+    },
+    {
+      "id": "6e3ecee1-177a-4d4e-9bee-f1a1ae54e1a7",
+      "name": "RJ - Votação por seção eleitoral - 2006",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2006_RJ.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2006_RJ.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 80204241,
+      "lastModified": "Fri, 13 May 2022 23:15:13 GMT",
+      "etag": "\"4c7d1d1-5deecd8b5e240\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:53:14.786300+00:00",
+      "sha256": "e0a9f90495c45825dfe23c751e10c119cc5df942f30fa28ea5cfbb6bc06a7fb4",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "6e3ecee1-votacao_secao_2006_RJ.zip",
+          "bytes": 80204241,
+          "sha256": "e0a9f90495c45825dfe23c751e10c119cc5df942f30fa28ea5cfbb6bc06a7fb4"
+        }
+      ]
+    },
+    {
+      "id": "8954e603-de37-4066-8f00-e0b954ebfa38",
+      "name": "RN - Votação por seção eleitoral - 2006",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2006_RN.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2006_RN.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 5599941,
+      "lastModified": "Fri, 13 May 2022 23:15:07 GMT",
+      "etag": "\"5572c5-5deecd85a54c0\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:53:15.274346+00:00",
+      "sha256": "6b74d4b239a08b406745b02c5e805d14ec9a765b824ee40d9965f0af3efe762a",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "8954e603-votacao_secao_2006_RN.zip",
+          "bytes": 5599941,
+          "sha256": "6b74d4b239a08b406745b02c5e805d14ec9a765b824ee40d9965f0af3efe762a"
+        }
+      ]
+    },
+    {
+      "id": "06a3079d-f367-4dc4-907c-2cf3bcf557ef",
+      "name": "RS - Votação por seção eleitoral - 2006",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2006_RS.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2006_RS.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 37948054,
+      "lastModified": "Fri, 13 May 2022 23:14:22 GMT",
+      "etag": "\"2430a96-5deecd5abaf80\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:53:16.547749+00:00",
+      "sha256": "3c51e9326bc42ed6d5ae10ce0242a53931d9087430c10bec5246223d8e8199b8",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "06a3079d-votacao_secao_2006_RS.zip",
+          "bytes": 37948054,
+          "sha256": "3c51e9326bc42ed6d5ae10ce0242a53931d9087430c10bec5246223d8e8199b8"
+        }
+      ]
+    },
+    {
+      "id": "80e29f75-00da-47ca-a8de-ae3565a36d01",
+      "name": "RO - Votação por seção eleitoral - 2006",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2006_RO.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2006_RO.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 3973213,
+      "lastModified": "Fri, 13 May 2022 23:14:09 GMT",
+      "etag": "\"3ca05d-5deecd4e55240\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:53:16.983645+00:00",
+      "sha256": "7a70c241397d87c886cba88e0292b3bbded13d9fd17eee538278dd2fb6c606f5",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "80e29f75-votacao_secao_2006_RO.zip",
+          "bytes": 3973213,
+          "sha256": "7a70c241397d87c886cba88e0292b3bbded13d9fd17eee538278dd2fb6c606f5"
+        }
+      ]
+    },
+    {
+      "id": "6b209bf6-1d80-4369-bd3e-e69eed652211",
+      "name": "RR - Votação por seção eleitoral - 2006",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2006_RR.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2006_RR.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 2054603,
+      "lastModified": "Fri, 13 May 2022 23:13:53 GMT",
+      "etag": "\"1f59cb-5deecd3f12e40\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:53:17.385319+00:00",
+      "sha256": "ef346aa5b4dd44449f3bb569979863ec1ac59ba5fa7c6a811ea4c2d85088559f",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "6b209bf6-votacao_secao_2006_RR.zip",
+          "bytes": 2054603,
+          "sha256": "ef346aa5b4dd44449f3bb569979863ec1ac59ba5fa7c6a811ea4c2d85088559f"
+        }
+      ]
+    },
+    {
+      "id": "4a32e328-2cfd-41aa-8b9e-daf632c483cb",
+      "name": "SC - Votação por seção eleitoral - 2006",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2006_SC.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2006_SC.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 11731101,
+      "lastModified": "Fri, 13 May 2022 23:13:37 GMT",
+      "etag": "\"b3009d-5deecd2fd0a40\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:53:18.007870+00:00",
+      "sha256": "a271d607db1eba0cf004d1ec1322caa9126fa475095c4b9e567485c9ced93c17",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "4a32e328-votacao_secao_2006_SC.zip",
+          "bytes": 11731101,
+          "sha256": "a271d607db1eba0cf004d1ec1322caa9126fa475095c4b9e567485c9ced93c17"
+        }
+      ]
+    },
+    {
+      "id": "919defca-46bf-45b9-8a26-4f93fb92f5e5",
+      "name": "SP - Votação por seção eleitoral - 2006",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2006_SP.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2006_SP.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 161113159,
+      "lastModified": "Fri, 13 May 2022 23:15:21 GMT",
+      "etag": "\"99a6447-5deecd92ff440\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:53:28.755756+00:00",
+      "sha256": "38ca4ea33c64af67d3bbe9b57d914f1118e31f0ca2165a3f53229e0ed78cd518",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "919defca-votacao_secao_2006_SP.zip",
+          "bytes": 161113159,
+          "sha256": "38ca4ea33c64af67d3bbe9b57d914f1118e31f0ca2165a3f53229e0ed78cd518"
+        }
+      ]
+    },
+    {
+      "id": "29d73ac0-6700-41a7-b07c-20140fa246f8",
+      "name": "SE - Votação por seção eleitoral - 2006",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2006_SE.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2006_SE.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 3208478,
+      "lastModified": "Fri, 13 May 2022 23:14:48 GMT",
+      "etag": "\"30f51e-5deecd7386a00\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:53:29.273336+00:00",
+      "sha256": "5bc59f8253f201c73248ac43cecb15241f78dcecf91a98d5ad5423c087dfaa12",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "29d73ac0-votacao_secao_2006_SE.zip",
+          "bytes": 3208478,
+          "sha256": "5bc59f8253f201c73248ac43cecb15241f78dcecf91a98d5ad5423c087dfaa12"
+        }
+      ]
+    },
+    {
+      "id": "7c24f331-bb89-4d4e-8079-6f4980bba70b",
+      "name": "TO - Votação por seção eleitoral - 2006",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2006_TO.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2006_TO.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 2711695,
+      "lastModified": "Fri, 13 May 2022 23:14:35 GMT",
+      "etag": "\"29608f-5deecd6720cc0\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:53:29.638171+00:00",
+      "sha256": "df3a455f9d3314f52a4504370fa6f97d36057d0a1d7ab1c7b5f58a79ce5a26a2",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "7c24f331-votacao_secao_2006_TO.zip",
+          "bytes": 2711695,
+          "sha256": "df3a455f9d3314f52a4504370fa6f97d36057d0a1d7ab1c7b5f58a79ce5a26a2"
+        }
+      ]
+    }
+  ]
+}
