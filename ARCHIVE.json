@@ -1,0 +1,88 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-10-26T21:45:38.295480+00:00",
+  "status": "published",
+  "dataset": {
+    "id": "resultados-1934",
+    "title": "Resultados - 1934",
+    "groups": [
+      "resultados"
+    ],
+    "family": "resultados",
+    "years": [
+      1934
+    ],
+    "license": "cc-by",
+    "source": "https://dadosabertos.tse.jus.br/dataset/resultados-1934",
+    "branch": "archive/resultados-1934",
+    "tag": "data-resultados-1934",
+    "releaseUrl": "https://github.com/brauliobo/brazil-audit/releases/tag/data-resultados-1934",
+    "normalized": false,
+    "status": "catalogued"
+  },
+  "resources": [
+    {
+      "id": "16333f27-18f7-477f-bbbd-fb94e8c8d1a2",
+      "name": "Detalhe de apuração por UF",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/detalhe_votacao_uf/detalhe_votacao_uf_1934_br.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/detalhe_votacao_uf/detalhe_votacao_uf_1934_br.zip",
+      "format": "TXT",
+      "status": "prepared",
+      "bytes": 351001,
+      "lastModified": "Tue, 16 Mar 2021 21:30:51 GMT",
+      "etag": "\"55b19-5bdae1497b8c0\"",
+      "downloadedAt": "2026-10-26T21:45:37.608403+00:00",
+      "sha256": "2d673a355f4a4478c17ce570548364d1ffea45373b1f4e15d0c8edf9a15e4dc7",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "16333f27-detalhe_votacao_uf_1934_br.zip",
+          "bytes": 351001,
+          "sha256": "2d673a355f4a4478c17ce570548364d1ffea45373b1f4e15d0c8edf9a15e4dc7"
+        }
+      ]
+    },
+    {
+      "id": "7fc54848-c5ca-475e-8adb-b2d3d19e97d2",
+      "name": "Votação nominal por UF",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_candidato_uf/votacao_candidato_uf_1934_br.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_candidato_uf/votacao_candidato_uf_1934_br.zip",
+      "format": "TXT",
+      "status": "prepared",
+      "bytes": 444320,
+      "lastModified": "Tue, 16 Mar 2021 21:33:26 GMT",
+      "etag": "\"6c7a0-5bdae1dd4d580\"",
+      "downloadedAt": "2026-10-26T21:45:37.980886+00:00",
+      "sha256": "999c31623c81c077226e9b765a097a1344043658ef2506d53dc053d500852106",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "7fc54848-votacao_candidato_uf_1934_br.zip",
+          "bytes": 444320,
+          "sha256": "999c31623c81c077226e9b765a097a1344043658ef2506d53dc053d500852106"
+        }
+      ]
+    },
+    {
+      "id": "b07d02f1-2796-4e0e-b90e-99ba7394af5d",
+      "name": "Votação em partido por UF",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_partido_uf/votacao_partido_uf_1934_br.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_partido_uf/votacao_partido_uf_1934_br.zip",
+      "format": "TXT",
+      "status": "prepared",
+      "bytes": 352814,
+      "lastModified": "Tue, 16 Mar 2021 21:35:37 GMT",
+      "etag": "\"5622e-5bdae25a3bc40\"",
+      "downloadedAt": "2026-10-26T21:45:38.294832+00:00",
+      "sha256": "c028f4ea20248ed1272cca35bc23ce4d5778213ebc8f0196e98a31d131b22e39",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "b07d02f1-votacao_partido_uf_1934_br.zip",
+          "bytes": 352814,
+          "sha256": "c028f4ea20248ed1272cca35bc23ce4d5778213ebc8f0196e98a31d131b22e39"
+        }
+      ]
+    }
+  ]
+}
