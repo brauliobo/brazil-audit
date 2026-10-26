@@ -1,0 +1,922 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-10-26T21:53:58.902288+00:00",
+  "status": "published",
+  "dataset": {
+    "id": "candidatos-2010",
+    "title": "Candidatos - 2010",
+    "groups": [
+      "candidatos"
+    ],
+    "family": "candidatos",
+    "years": [
+      2010
+    ],
+    "license": "cc-by",
+    "source": "https://dadosabertos.tse.jus.br/dataset/candidatos-2010",
+    "branch": "archive/candidatos-2010",
+    "tag": "data-candidatos-2010",
+    "releaseUrl": "https://github.com/brauliobo/brazil-audit/releases/tag/data-candidatos-2010",
+    "normalized": false,
+    "status": "catalogued",
+    "inScope": true
+  },
+  "resources": [
+    {
+      "id": "753073e5-2347-411b-806a-4bb32a4f3aba",
+      "name": "Candidatos",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_cand/consulta_cand_2010.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_cand/consulta_cand_2010.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 4939410,
+      "lastModified": "Wed, 01 Sep 2021 14:02:29 GMT",
+      "etag": "\"4b5e92-5caef844a2740\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:53:57.579214+00:00",
+      "sha256": "761c8eb2683b0ccdfab535dc92452384bcfc95b1ca7dba9579081ea352281328",
+      "removedPersonalColumns": {
+        "consulta_cand_2010_AC.csv": [
+          "NR_CPF_CANDIDATO",
+          "NM_EMAIL",
+          "NR_TITULO_ELEITORAL_CANDIDATO"
+        ],
+        "consulta_cand_2010_AL.csv": [
+          "NR_CPF_CANDIDATO",
+          "NM_EMAIL",
+          "NR_TITULO_ELEITORAL_CANDIDATO"
+        ],
+        "consulta_cand_2010_AM.csv": [
+          "NR_CPF_CANDIDATO",
+          "NM_EMAIL",
+          "NR_TITULO_ELEITORAL_CANDIDATO"
+        ],
+        "consulta_cand_2010_AP.csv": [
+          "NR_CPF_CANDIDATO",
+          "NM_EMAIL",
+          "NR_TITULO_ELEITORAL_CANDIDATO"
+        ],
+        "consulta_cand_2010_BA.csv": [
+          "NR_CPF_CANDIDATO",
+          "NM_EMAIL",
+          "NR_TITULO_ELEITORAL_CANDIDATO"
+        ],
+        "consulta_cand_2010_CE.csv": [
+          "NR_CPF_CANDIDATO",
+          "NM_EMAIL",
+          "NR_TITULO_ELEITORAL_CANDIDATO"
+        ],
+        "consulta_cand_2010_DF.csv": [
+          "NR_CPF_CANDIDATO",
+          "NM_EMAIL",
+          "NR_TITULO_ELEITORAL_CANDIDATO"
+        ],
+        "consulta_cand_2010_ES.csv": [
+          "NR_CPF_CANDIDATO",
+          "NM_EMAIL",
+          "NR_TITULO_ELEITORAL_CANDIDATO"
+        ],
+        "consulta_cand_2010_GO.csv": [
+          "NR_CPF_CANDIDATO",
+          "NM_EMAIL",
+          "NR_TITULO_ELEITORAL_CANDIDATO"
+        ],
+        "consulta_cand_2010_MA.csv": [
+          "NR_CPF_CANDIDATO",
+          "NM_EMAIL",
+          "NR_TITULO_ELEITORAL_CANDIDATO"
+        ],
+        "consulta_cand_2010_MG.csv": [
+          "NR_CPF_CANDIDATO",
+          "NM_EMAIL",
+          "NR_TITULO_ELEITORAL_CANDIDATO"
+        ],
+        "consulta_cand_2010_MS.csv": [
+          "NR_CPF_CANDIDATO",
+          "NM_EMAIL",
+          "NR_TITULO_ELEITORAL_CANDIDATO"
+        ],
+        "consulta_cand_2010_MT.csv": [
+          "NR_CPF_CANDIDATO",
+          "NM_EMAIL",
+          "NR_TITULO_ELEITORAL_CANDIDATO"
+        ],
+        "consulta_cand_2010_PA.csv": [
+          "NR_CPF_CANDIDATO",
+          "NM_EMAIL",
+          "NR_TITULO_ELEITORAL_CANDIDATO"
+        ],
+        "consulta_cand_2010_PB.csv": [
+          "NR_CPF_CANDIDATO",
+          "NM_EMAIL",
+          "NR_TITULO_ELEITORAL_CANDIDATO"
+        ],
+        "consulta_cand_2010_PE.csv": [
+          "NR_CPF_CANDIDATO",
+          "NM_EMAIL",
+          "NR_TITULO_ELEITORAL_CANDIDATO"
+        ],
+        "consulta_cand_2010_PI.csv": [
+          "NR_CPF_CANDIDATO",
+          "NM_EMAIL",
+          "NR_TITULO_ELEITORAL_CANDIDATO"
+        ],
+        "consulta_cand_2010_PR.csv": [
+          "NR_CPF_CANDIDATO",
+          "NM_EMAIL",
+          "NR_TITULO_ELEITORAL_CANDIDATO"
+        ],
+        "consulta_cand_2010_RJ.csv": [
+          "NR_CPF_CANDIDATO",
+          "NM_EMAIL",
+          "NR_TITULO_ELEITORAL_CANDIDATO"
+        ],
+        "consulta_cand_2010_RN.csv": [
+          "NR_CPF_CANDIDATO",
+          "NM_EMAIL",
+          "NR_TITULO_ELEITORAL_CANDIDATO"
+        ],
+        "consulta_cand_2010_RO.csv": [
+          "NR_CPF_CANDIDATO",
+          "NM_EMAIL",
+          "NR_TITULO_ELEITORAL_CANDIDATO"
+        ],
+        "consulta_cand_2010_RR.csv": [
+          "NR_CPF_CANDIDATO",
+          "NM_EMAIL",
+          "NR_TITULO_ELEITORAL_CANDIDATO"
+        ],
+        "consulta_cand_2010_RS.csv": [
+          "NR_CPF_CANDIDATO",
+          "NM_EMAIL",
+          "NR_TITULO_ELEITORAL_CANDIDATO"
+        ],
+        "consulta_cand_2010_SC.csv": [
+          "NR_CPF_CANDIDATO",
+          "NM_EMAIL",
+          "NR_TITULO_ELEITORAL_CANDIDATO"
+        ],
+        "consulta_cand_2010_SE.csv": [
+          "NR_CPF_CANDIDATO",
+          "NM_EMAIL",
+          "NR_TITULO_ELEITORAL_CANDIDATO"
+        ],
+        "consulta_cand_2010_SP.csv": [
+          "NR_CPF_CANDIDATO",
+          "NM_EMAIL",
+          "NR_TITULO_ELEITORAL_CANDIDATO"
+        ],
+        "consulta_cand_2010_TO.csv": [
+          "NR_CPF_CANDIDATO",
+          "NM_EMAIL",
+          "NR_TITULO_ELEITORAL_CANDIDATO"
+        ],
+        "consulta_cand_2010_BR.csv": [
+          "NR_CPF_CANDIDATO",
+          "NM_EMAIL",
+          "NR_TITULO_ELEITORAL_CANDIDATO"
+        ],
+        "consulta_cand_2010_BRASIL.csv": [
+          "NR_CPF_CANDIDATO",
+          "NM_EMAIL",
+          "NR_TITULO_ELEITORAL_CANDIDATO"
+        ]
+      },
+      "assets": [
+        {
+          "name": "753073e5-consulta_cand_2010.zip",
+          "bytes": 3923182,
+          "sha256": "361316e981d7c156dfe7dc3701806ba8a61a64324bbe7cb765c1b3f7badc4b1a"
+        }
+      ]
+    },
+    {
+      "id": "3680654b-423d-46f8-a954-10b575413499",
+      "name": "Bens de candidatos",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/bem_candidato/bem_candidato_2010.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/bem_candidato/bem_candidato_2010.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 5051219,
+      "lastModified": "Wed, 01 Sep 2021 14:11:42 GMT",
+      "etag": "\"4d1353-5caefa5404380\"",
+      "inScope": false
+    },
+    {
+      "id": "a2c64d9f-a48f-412a-9aa4-15fa91ee7448",
+      "name": "Coligações",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_coligacao/consulta_coligacao_2010.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_coligacao/consulta_coligacao_2010.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 520548,
+      "lastModified": "Wed, 01 Sep 2021 14:44:23 GMT",
+      "etag": "\"7f164-5caf01a22bfc0\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:53:58.642165+00:00",
+      "sha256": "e845d544735356da840014e4ffb28d8126e5af12daefbb8ec82ee2c9a98ae5e0",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "a2c64d9f-consulta_coligacao_2010.zip",
+          "bytes": 520548,
+          "sha256": "e845d544735356da840014e4ffb28d8126e5af12daefbb8ec82ee2c9a98ae5e0"
+        }
+      ]
+    },
+    {
+      "id": "eeb8d1f7-2832-4a19-bbc5-988e01c7e20c",
+      "name": "Vagas",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_vagas/consulta_vagas_2010.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_vagas/consulta_vagas_2010.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 181121,
+      "lastModified": "Wed, 01 Sep 2021 15:04:23 GMT",
+      "etag": "\"2c381-5caf061a94bc0\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:53:58.901308+00:00",
+      "sha256": "5a848da659bc8994a18baf23cf5bc22d08077249e1d95c678f4f922030553728",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "eeb8d1f7-consulta_vagas_2010.zip",
+          "bytes": 181121,
+          "sha256": "5a848da659bc8994a18baf23cf5bc22d08077249e1d95c678f4f922030553728"
+        }
+      ]
+    },
+    {
+      "id": "455fd076-f765-46d2-a97b-51d3ffa191cb",
+      "name": "AC - Proposta de governo",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2010_AC.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2010_AC.zip",
+      "format": "PDF",
+      "status": "excluded",
+      "bytes": 15088448,
+      "lastModified": "Mon, 06 Mar 2023 19:05:08 GMT",
+      "etag": "\"e63b40-5f63ff9362100\"",
+      "inScope": false
+    },
+    {
+      "id": "e8cf55eb-8429-4365-a3ae-aafafefeb322",
+      "name": "AL - Proposta de governo",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2010_AL.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2010_AL.zip",
+      "format": "PDF",
+      "status": "excluded",
+      "bytes": 11720164,
+      "lastModified": "Mon, 06 Mar 2023 19:04:09 GMT",
+      "etag": "\"b2d5e4-5f63ff5b1dc40\"",
+      "inScope": false
+    },
+    {
+      "id": "69624d7c-cae4-412e-a2bd-40de3e68df81",
+      "name": "AM - Proposta de governo",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2010_AM.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2010_AM.zip",
+      "format": "PDF",
+      "status": "excluded",
+      "bytes": 11676860,
+      "lastModified": "Mon, 06 Mar 2023 19:06:06 GMT",
+      "etag": "\"b22cbc-5f63ffcab2380\"",
+      "inScope": false
+    },
+    {
+      "id": "d49281dc-1726-4333-8ff5-60fe3d72e34e",
+      "name": "AP - Proposta de governo",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2010_AP.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2010_AP.zip",
+      "format": "PDF",
+      "status": "excluded",
+      "bytes": 20837076,
+      "lastModified": "Mon, 06 Mar 2023 19:07:18 GMT",
+      "etag": "\"13df2d4-5f64000f5c580\"",
+      "inScope": false
+    },
+    {
+      "id": "0e1ff408-a99a-48c9-b8f5-eceb62a86644",
+      "name": "BA - Proposta de governo",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2010_BA.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2010_BA.zip",
+      "format": "PDF",
+      "status": "excluded",
+      "bytes": 27783755,
+      "lastModified": "Mon, 06 Mar 2023 19:08:49 GMT",
+      "etag": "\"1a7f24b-5f64006625240\"",
+      "inScope": false
+    },
+    {
+      "id": "abd0a5e7-d4b4-4a52-898f-b26abdf5e1ab",
+      "name": "BR - Proposta de governo",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2010_BR.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2010_BR.zip",
+      "format": "PDF",
+      "status": "excluded",
+      "bytes": 7668169,
+      "lastModified": "Mon, 06 Mar 2023 19:03:01 GMT",
+      "etag": "\"7501c9-5f63ff1a44340\"",
+      "inScope": false
+    },
+    {
+      "id": "2378c778-576a-4e27-ab42-c706764de70c",
+      "name": "CE - Proposta de governo",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2010_CE.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2010_CE.zip",
+      "format": "PDF",
+      "status": "excluded",
+      "bytes": 40289056,
+      "lastModified": "Mon, 06 Mar 2023 19:10:22 GMT",
+      "etag": "\"266c320-5f6400bed6380\"",
+      "inScope": false
+    },
+    {
+      "id": "ac225225-8a90-49bf-bb26-3fc8c495cd50",
+      "name": "DF - Proposta de governo",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2010_DF.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2010_DF.zip",
+      "format": "PDF",
+      "status": "excluded",
+      "bytes": 13804437,
+      "lastModified": "Mon, 06 Mar 2023 19:11:18 GMT",
+      "etag": "\"d2a395-5f6400f43e180\"",
+      "inScope": false
+    },
+    {
+      "id": "e96eb530-13e7-4c57-9b83-6713bfc0bc5e",
+      "name": "ES - Proposta de governo",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2010_ES.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2010_ES.zip",
+      "format": "PDF",
+      "status": "excluded",
+      "bytes": 12766312,
+      "lastModified": "Mon, 06 Mar 2023 19:12:27 GMT",
+      "etag": "\"c2cc68-5f6401360bcc0\"",
+      "inScope": false
+    },
+    {
+      "id": "cc3198ac-90e6-42ee-80f5-b9e1619cd2be",
+      "name": "GO - Proposta de governo",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2010_GO.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2010_GO.zip",
+      "format": "PDF",
+      "status": "excluded",
+      "bytes": 22860713,
+      "lastModified": "Mon, 06 Mar 2023 19:13:50 GMT",
+      "etag": "\"15cd3a9-5f64018533780\"",
+      "inScope": false
+    },
+    {
+      "id": "9974c7ab-e7a0-49ab-a895-d0fea5ba8d0e",
+      "name": "MA - Proposta de governo",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2010_MA.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2010_MA.zip",
+      "format": "PDF",
+      "status": "excluded",
+      "bytes": 47382418,
+      "lastModified": "Mon, 06 Mar 2023 19:15:31 GMT",
+      "etag": "\"2d2ff92-5f6401e585ac0\"",
+      "inScope": false
+    },
+    {
+      "id": "a63acc21-d4da-46d5-a5dc-2ad21a997239",
+      "name": "MG - Proposta de governo",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2010_MG.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2010_MG.zip",
+      "format": "PDF",
+      "status": "excluded",
+      "bytes": 99889867,
+      "lastModified": "Mon, 06 Mar 2023 19:18:03 GMT",
+      "etag": "\"5f432cb-5f6402767b0c0\"",
+      "inScope": false
+    },
+    {
+      "id": "16247f32-577e-4ee2-ae39-3265a823284a",
+      "name": "MS - Proposta de governo",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2010_MS.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2010_MS.zip",
+      "format": "PDF",
+      "status": "excluded",
+      "bytes": 18695871,
+      "lastModified": "Mon, 06 Mar 2023 19:19:06 GMT",
+      "etag": "\"11d46bf-5f6402b28fe80\"",
+      "inScope": false
+    },
+    {
+      "id": "0e92a0be-dda7-417f-9d7d-96aae37341ed",
+      "name": "MT - Proposta de governo",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2010_MT.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2010_MT.zip",
+      "format": "PDF",
+      "status": "excluded",
+      "bytes": 19931769,
+      "lastModified": "Mon, 06 Mar 2023 19:20:18 GMT",
+      "etag": "\"1302279-5f6402f73a080\"",
+      "inScope": false
+    },
+    {
+      "id": "b276e8bb-da93-4ab0-a01f-046b9ec84c82",
+      "name": "PA - Proposta de governo",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2010_PA.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2010_PA.zip",
+      "format": "PDF",
+      "status": "excluded",
+      "bytes": 15556273,
+      "lastModified": "Mon, 06 Mar 2023 19:21:30 GMT",
+      "etag": "\"ed5eb1-5f64033be4280\"",
+      "inScope": false
+    },
+    {
+      "id": "10513d0e-2c2d-4c63-bc10-7b718b093b32",
+      "name": "PB - Proposta de governo",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2010_PB.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2010_PB.zip",
+      "format": "PDF",
+      "status": "excluded",
+      "bytes": 24101605,
+      "lastModified": "Mon, 06 Mar 2023 19:22:48 GMT",
+      "etag": "\"16fc2e5-5f64038647200\"",
+      "inScope": false
+    },
+    {
+      "id": "7a845a4c-b528-41fc-b8e4-5cdb5b4896a8",
+      "name": "PE - Proposta de governo",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2010_PE.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2010_PE.zip",
+      "format": "PDF",
+      "status": "excluded",
+      "bytes": 18036481,
+      "lastModified": "Mon, 06 Mar 2023 19:24:04 GMT",
+      "etag": "\"1133701-5f6403cec1d00\"",
+      "inScope": false
+    },
+    {
+      "id": "a13d7082-d3e2-4641-bd3c-10ab27f9dd07",
+      "name": "PI - Proposta de governo",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2010_PI.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2010_PI.zip",
+      "format": "PDF",
+      "status": "excluded",
+      "bytes": 44909231,
+      "lastModified": "Mon, 06 Mar 2023 19:25:50 GMT",
+      "etag": "\"2ad42af-5f640433d8b80\"",
+      "inScope": false
+    },
+    {
+      "id": "5f669b56-38c7-4c47-b9aa-c6e5f5e269fa",
+      "name": "PR - Proposta de governo",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2010_PR.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2010_PR.zip",
+      "format": "PDF",
+      "status": "excluded",
+      "bytes": 26845589,
+      "lastModified": "Mon, 06 Mar 2023 19:27:10 GMT",
+      "etag": "\"199a195-5f64048023f80\"",
+      "inScope": false
+    },
+    {
+      "id": "3c466c4d-721f-4076-a7d4-a6c637a851f5",
+      "name": "RJ - Proposta de governo",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2010_RJ.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2010_RJ.zip",
+      "format": "PDF",
+      "status": "excluded",
+      "bytes": 93399724,
+      "lastModified": "Mon, 06 Mar 2023 19:29:31 GMT",
+      "etag": "\"5912aac-5f6405069bcc0\"",
+      "inScope": false
+    },
+    {
+      "id": "8e3bc52e-607f-4286-94f8-f6d84c659e52",
+      "name": "RN - Proposta de governo",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2010_RN.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2010_RN.zip",
+      "format": "PDF",
+      "status": "excluded",
+      "bytes": 9520364,
+      "lastModified": "Mon, 06 Mar 2023 19:30:24 GMT",
+      "etag": "\"9144ec-5f64053927400\"",
+      "inScope": false
+    },
+    {
+      "id": "3113fa02-4730-4200-9e78-1c596048f810",
+      "name": "RO - Proposta de governo",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2010_RO.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2010_RO.zip",
+      "format": "PDF",
+      "status": "excluded",
+      "bytes": 10992895,
+      "lastModified": "Mon, 06 Mar 2023 19:31:42 GMT",
+      "etag": "\"a7bcff-5f6405838a380\"",
+      "inScope": false
+    },
+    {
+      "id": "7b1e532f-9ab0-43f9-808d-548a7161e156",
+      "name": "RR - Proposta de governo",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2010_RR.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2010_RR.zip",
+      "format": "PDF",
+      "status": "excluded",
+      "bytes": 17928020,
+      "lastModified": "Mon, 06 Mar 2023 19:33:16 GMT",
+      "etag": "\"1118f54-5f6405dd2f700\"",
+      "inScope": false
+    },
+    {
+      "id": "1101766d-3075-4f4d-867c-19d276d3df91",
+      "name": "RS - Proposta de governo",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2010_RS.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2010_RS.zip",
+      "format": "PDF",
+      "status": "excluded",
+      "bytes": 42414905,
+      "lastModified": "Mon, 06 Mar 2023 19:35:40 GMT",
+      "etag": "\"2873339-5f64066683b00\"",
+      "inScope": false
+    },
+    {
+      "id": "a26709cb-0d2e-475b-a3a8-c554bbc295bd",
+      "name": "SC - Proposta de governo",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2010_SC.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2010_SC.zip",
+      "format": "PDF",
+      "status": "excluded",
+      "bytes": 15823803,
+      "lastModified": "Mon, 06 Mar 2023 19:37:04 GMT",
+      "etag": "\"f173bb-5f6406b69f800\"",
+      "inScope": false
+    },
+    {
+      "id": "d01ab10a-2028-456c-bdfc-6ab26432690d",
+      "name": "SE - Proposta de governo",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2010_SE.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2010_SE.zip",
+      "format": "PDF",
+      "status": "excluded",
+      "bytes": 45076235,
+      "lastModified": "Mon, 06 Mar 2023 19:38:21 GMT",
+      "etag": "\"2afcf0b-5f6407000e540\"",
+      "inScope": false
+    },
+    {
+      "id": "382f8945-c743-4514-aaaf-5d9c0c95ea6f",
+      "name": "SP - Proposta de governo",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2010_SP.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2010_SP.zip",
+      "format": "PDF",
+      "status": "excluded",
+      "bytes": 43985244,
+      "lastModified": "Mon, 06 Mar 2023 19:40:05 GMT",
+      "etag": "\"29f295c-5f6407633cf40\"",
+      "inScope": false
+    },
+    {
+      "id": "d96fcb9b-7527-4f2e-b0ca-f2561348bc2d",
+      "name": "TO - Proposta de governo",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2010_TO.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2010_TO.zip",
+      "format": "PDF",
+      "status": "excluded",
+      "bytes": 38410928,
+      "lastModified": "Mon, 06 Mar 2023 19:41:18 GMT",
+      "etag": "\"24a1ab0-5f6407a8db380\"",
+      "inScope": false
+    },
+    {
+      "id": "cf159282-7d35-49eb-a522-3ce6179f5f75",
+      "name": "AC - Fotos de candidatos",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2010/fotos/foto_cand2010_AC_div.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2010/fotos/foto_cand2010_AC_div.zip",
+      "format": "JPEG",
+      "status": "excluded",
+      "bytes": 2841612,
+      "lastModified": "Fri, 27 Sep 2024 14:43:23 GMT",
+      "etag": "\"2b5c0c-6231ae081f8c0\"",
+      "inScope": false
+    },
+    {
+      "id": "3d9257a2-7331-45cc-acf6-fb673befdf33",
+      "name": "AL - Fotos de candidatos",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2010/fotos/foto_cand2010_AL_div.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2010/fotos/foto_cand2010_AL_div.zip",
+      "format": "JPEG",
+      "status": "excluded",
+      "bytes": 2769551,
+      "lastModified": "Fri, 27 Sep 2024 14:43:23 GMT",
+      "etag": "\"2a428f-6231ae081f8c0\"",
+      "inScope": false
+    },
+    {
+      "id": "78f4a5b9-664d-4f13-a5da-9972b3f67e51",
+      "name": "AM - Fotos de candidatos",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2010/fotos/foto_cand2010_AM_div.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2010/fotos/foto_cand2010_AM_div.zip",
+      "format": "JPEG",
+      "status": "excluded",
+      "bytes": 3047767,
+      "lastModified": "Fri, 27 Sep 2024 14:43:23 GMT",
+      "etag": "\"2e8157-6231ae081f8c0\"",
+      "inScope": false
+    },
+    {
+      "id": "f2bca926-7675-4785-b1ba-ec617cefacbf",
+      "name": "AP - Fotos de candidatos",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2010/fotos/foto_cand2010_AP_div.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2010/fotos/foto_cand2010_AP_div.zip",
+      "format": "JPEG",
+      "status": "excluded",
+      "bytes": 2925090,
+      "lastModified": "Fri, 27 Sep 2024 14:43:24 GMT",
+      "etag": "\"2ca222-6231ae0913b00\"",
+      "inScope": false
+    },
+    {
+      "id": "ef89d63e-27c8-4827-b64d-8689b273310d",
+      "name": "BA - Fotos de candidatos",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2010/fotos/foto_cand2010_BA_div.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2010/fotos/foto_cand2010_BA_div.zip",
+      "format": "JPEG",
+      "status": "excluded",
+      "bytes": 5985017,
+      "lastModified": "Fri, 27 Sep 2024 14:43:24 GMT",
+      "etag": "\"5b52f9-6231ae0913b00\"",
+      "inScope": false
+    },
+    {
+      "id": "b76698f0-0bca-445b-9710-f8c6e611d003",
+      "name": "BR - Fotos de candidatos",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2010/fotos/foto_cand2010_BR_div.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2010/fotos/foto_cand2010_BR_div.zip",
+      "format": "JPEG",
+      "status": "excluded",
+      "bytes": 261815,
+      "lastModified": "Fri, 27 Sep 2024 14:43:24 GMT",
+      "etag": "\"3feb7-6231ae0913b00\"",
+      "inScope": false
+    },
+    {
+      "id": "35d40196-4c58-4842-97b6-f6fad1a5496b",
+      "name": "CE - Fotos de candidatos",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2010/fotos/foto_cand2010_CE_div.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2010/fotos/foto_cand2010_CE_div.zip",
+      "format": "JPEG",
+      "status": "excluded",
+      "bytes": 4861419,
+      "lastModified": "Fri, 27 Sep 2024 14:43:24 GMT",
+      "etag": "\"4a2deb-6231ae0913b00\"",
+      "inScope": false
+    },
+    {
+      "id": "8588cc0e-8fd7-4e65-bf66-84eae9288f88",
+      "name": "DF - Fotos de candidatos",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2010/fotos/foto_cand2010_DF_div.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2010/fotos/foto_cand2010_DF_div.zip",
+      "format": "JPEG",
+      "status": "excluded",
+      "bytes": 6114050,
+      "lastModified": "Fri, 27 Sep 2024 14:43:24 GMT",
+      "etag": "\"5d4b02-6231ae0913b00\"",
+      "inScope": false
+    },
+    {
+      "id": "7ae2a932-484d-4d40-945c-62dd6d5a242b",
+      "name": "ES - Fotos de candidatos",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2010/fotos/foto_cand2010_ES_div.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2010/fotos/foto_cand2010_ES_div.zip",
+      "format": "JPEG",
+      "status": "excluded",
+      "bytes": 3030920,
+      "lastModified": "Fri, 27 Sep 2024 14:43:24 GMT",
+      "etag": "\"2e3f88-6231ae0913b00\"",
+      "inScope": false
+    },
+    {
+      "id": "2de45ba1-1886-4f59-8269-e9b7726036c0",
+      "name": "GO - Fotos de candidatos",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2010/fotos/foto_cand2010_GO_div.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2010/fotos/foto_cand2010_GO_div.zip",
+      "format": "JPEG",
+      "status": "excluded",
+      "bytes": 4829258,
+      "lastModified": "Fri, 27 Sep 2024 14:43:24 GMT",
+      "etag": "\"49b04a-6231ae0913b00\"",
+      "inScope": false
+    },
+    {
+      "id": "ed7db7de-e06f-4dd5-855b-fe661b0a5b9a",
+      "name": "MA - Fotos de candidatos",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2010/fotos/foto_cand2010_MA_div.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2010/fotos/foto_cand2010_MA_div.zip",
+      "format": "JPEG",
+      "status": "excluded",
+      "bytes": 3749530,
+      "lastModified": "Fri, 27 Sep 2024 14:43:24 GMT",
+      "etag": "\"39369a-6231ae0913b00\"",
+      "inScope": false
+    },
+    {
+      "id": "0eebf62f-7de1-43cf-80dc-1446430fff60",
+      "name": "MG - Fotos de candidatos",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2010/fotos/foto_cand2010_MG_div.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2010/fotos/foto_cand2010_MG_div.zip",
+      "format": "JPEG",
+      "status": "excluded",
+      "bytes": 9752665,
+      "lastModified": "Fri, 27 Sep 2024 14:43:24 GMT",
+      "etag": "\"94d059-6231ae0913b00\"",
+      "inScope": false
+    },
+    {
+      "id": "9a88e460-1018-45e1-aef8-03d4fe9a5d85",
+      "name": "MS - Fotos de candidatos",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2010/fotos/foto_cand2010_MS_div.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2010/fotos/foto_cand2010_MS_div.zip",
+      "format": "JPEG",
+      "status": "excluded",
+      "bytes": 2278239,
+      "lastModified": "Fri, 27 Sep 2024 14:43:24 GMT",
+      "etag": "\"22c35f-6231ae0913b00\"",
+      "inScope": false
+    },
+    {
+      "id": "3b45814b-d9a4-4100-b777-2aca08ee2eff",
+      "name": "MT - Fotos de candidatos",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2010/fotos/foto_cand2010_MT_div.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2010/fotos/foto_cand2010_MT_div.zip",
+      "format": "JPEG",
+      "status": "excluded",
+      "bytes": 2595351,
+      "lastModified": "Fri, 27 Sep 2024 14:43:24 GMT",
+      "etag": "\"279a17-6231ae0913b00\"",
+      "inScope": false
+    },
+    {
+      "id": "5dd9a245-1370-4dfc-a694-b1d1e33f4412",
+      "name": "PA - Fotos de candidatos",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2010/fotos/foto_cand2010_PA_div.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2010/fotos/foto_cand2010_PA_div.zip",
+      "format": "JPEG",
+      "status": "excluded",
+      "bytes": 5024786,
+      "lastModified": "Fri, 27 Sep 2024 14:43:25 GMT",
+      "etag": "\"4cac12-6231ae0a07d40\"",
+      "inScope": false
+    },
+    {
+      "id": "e9ab6fb0-0978-4b2f-a2cc-356f4fde3deb",
+      "name": "PB - Fotos de candidatos",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2010/fotos/foto_cand2010_PB_div.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2010/fotos/foto_cand2010_PB_div.zip",
+      "format": "JPEG",
+      "status": "excluded",
+      "bytes": 2770282,
+      "lastModified": "Fri, 27 Sep 2024 14:43:25 GMT",
+      "etag": "\"2a456a-6231ae0a07d40\"",
+      "inScope": false
+    },
+    {
+      "id": "d5652c20-359a-4ab8-852c-0b81db4c8bcc",
+      "name": "PE - Fotos de candidatos",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2010/fotos/foto_cand2010_PE_div.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2010/fotos/foto_cand2010_PE_div.zip",
+      "format": "JPEG",
+      "status": "excluded",
+      "bytes": 4238219,
+      "lastModified": "Fri, 27 Sep 2024 14:43:25 GMT",
+      "etag": "\"40ab8b-6231ae0a07d40\"",
+      "inScope": false
+    },
+    {
+      "id": "063dce1e-c2b2-47c2-90c0-efb06466708e",
+      "name": "PI - Fotos de candidatos",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2010/fotos/foto_cand2010_PI_div.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2010/fotos/foto_cand2010_PI_div.zip",
+      "format": "JPEG",
+      "status": "excluded",
+      "bytes": 4195541,
+      "lastModified": "Fri, 27 Sep 2024 14:43:25 GMT",
+      "etag": "\"4004d5-6231ae0a07d40\"",
+      "inScope": false
+    },
+    {
+      "id": "b275ebdc-b506-4b8c-94ee-3c6fdf2b18ab",
+      "name": "PR - Fotos de candidatos",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2010/fotos/foto_cand2010_PR_div.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2010/fotos/foto_cand2010_PR_div.zip",
+      "format": "JPEG",
+      "status": "excluded",
+      "bytes": 5972023,
+      "lastModified": "Fri, 27 Sep 2024 14:43:25 GMT",
+      "etag": "\"5b2037-6231ae0a07d40\"",
+      "inScope": false
+    },
+    {
+      "id": "d097747b-e599-49c2-b14a-f899e72dbdb5",
+      "name": "RJ - Fotos de candidatos",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2010/fotos/foto_cand2010_RJ_div.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2010/fotos/foto_cand2010_RJ_div.zip",
+      "format": "JPEG",
+      "status": "excluded",
+      "bytes": 15788757,
+      "lastModified": "Fri, 27 Sep 2024 14:43:25 GMT",
+      "etag": "\"f0ead5-6231ae0a07d40\"",
+      "inScope": false
+    },
+    {
+      "id": "4d612787-4def-4be3-9f78-cf27b378c16b",
+      "name": "RN - Fotos de candidatos",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2010/fotos/foto_cand2010_RN_div.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2010/fotos/foto_cand2010_RN_div.zip",
+      "format": "JPEG",
+      "status": "excluded",
+      "bytes": 1591437,
+      "lastModified": "Fri, 27 Sep 2024 14:43:25 GMT",
+      "etag": "\"18488d-6231ae0a07d40\"",
+      "inScope": false
+    },
+    {
+      "id": "80b2f5de-c295-4ae2-a021-e3b06eb9944d",
+      "name": "RO - Fotos de candidatos",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2010/fotos/foto_cand2010_RO_div.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2010/fotos/foto_cand2010_RO_div.zip",
+      "format": "JPEG",
+      "status": "excluded",
+      "bytes": 2976083,
+      "lastModified": "Fri, 27 Sep 2024 14:43:25 GMT",
+      "etag": "\"2d6953-6231ae0a07d40\"",
+      "inScope": false
+    },
+    {
+      "id": "d873146e-9e94-45f5-9615-66d1e415c6b1",
+      "name": "RR - Fotos de candidatos",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2010/fotos/foto_cand2010_RR_div.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2010/fotos/foto_cand2010_RR_div.zip",
+      "format": "JPEG",
+      "status": "excluded",
+      "bytes": 3116432,
+      "lastModified": "Fri, 27 Sep 2024 14:43:25 GMT",
+      "etag": "\"2f8d90-6231ae0a07d40\"",
+      "inScope": false
+    },
+    {
+      "id": "4c99abec-5865-4f5e-ae46-12139a8f0803",
+      "name": "RS - Fotos de candidatos",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2010/fotos/foto_cand2010_RS_div.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2010/fotos/foto_cand2010_RS_div.zip",
+      "format": "JPEG",
+      "status": "excluded",
+      "bytes": 5863864,
+      "lastModified": "Fri, 27 Sep 2024 14:43:25 GMT",
+      "etag": "\"5979b8-6231ae0a07d40\"",
+      "inScope": false
+    },
+    {
+      "id": "7503196c-da67-4836-928b-4dd2992a11de",
+      "name": "SC - Fotos de candidatos",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2010/fotos/foto_cand2010_SC_div.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2010/fotos/foto_cand2010_SC_div.zip",
+      "format": "JPEG",
+      "status": "excluded",
+      "bytes": 3585366,
+      "lastModified": "Fri, 27 Sep 2024 14:43:25 GMT",
+      "etag": "\"36b556-6231ae0a07d40\"",
+      "inScope": false
+    },
+    {
+      "id": "223be584-19a4-49c1-8354-996ffe53e382",
+      "name": "SE - Fotos de candidatos",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2010/fotos/foto_cand2010_SE_div.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2010/fotos/foto_cand2010_SE_div.zip",
+      "format": "JPEG",
+      "status": "excluded",
+      "bytes": 1691361,
+      "lastModified": "Fri, 27 Sep 2024 14:43:26 GMT",
+      "etag": "\"19cee1-6231ae0afbf80\"",
+      "inScope": false
+    },
+    {
+      "id": "5bf3b41d-bf06-4e1f-8eb6-82250fa81d3f",
+      "name": "SP - Fotos de candidatos",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2010/fotos/foto_cand2010_SP_div.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2010/fotos/foto_cand2010_SP_div.zip",
+      "format": "JPEG",
+      "status": "excluded",
+      "bytes": 18835962,
+      "lastModified": "Fri, 27 Sep 2024 14:43:26 GMT",
+      "etag": "\"11f69fa-6231ae0afbf80\"",
+      "inScope": false
+    },
+    {
+      "id": "b13bc158-c490-44f5-979a-bc5ecf2927eb",
+      "name": "TO - Fotos de candidatos",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2010/fotos/foto_cand2010_TO_div.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2010/fotos/foto_cand2010_TO_div.zip",
+      "format": "JPEG",
+      "status": "excluded",
+      "bytes": 1939990,
+      "lastModified": "Fri, 27 Sep 2024 14:43:26 GMT",
+      "etag": "\"1d9a16-6231ae0afbf80\"",
+      "inScope": false
+    }
+  ]
+}
