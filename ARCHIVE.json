@@ -1,0 +1,398 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-10-26T21:56:09.998143+00:00",
+  "status": "published",
+  "dataset": {
+    "id": "eleitorado-2012",
+    "title": "Eleitorado - 2012",
+    "groups": [
+      "eleitorado"
+    ],
+    "family": "eleitorado",
+    "years": [
+      2012
+    ],
+    "license": "cc-by",
+    "source": "https://dadosabertos.tse.jus.br/dataset/eleitorado-2012",
+    "branch": "archive/eleitorado-2012",
+    "tag": "data-eleitorado-2012",
+    "releaseUrl": "https://github.com/brauliobo/brazil-audit/releases/tag/data-eleitorado-2012",
+    "normalized": false,
+    "status": "catalogued",
+    "inScope": true
+  },
+  "resources": [
+    {
+      "id": "4875dc11-49f2-4e81-a5ac-f187ea2adf48",
+      "name": "Eleitorado - 2012",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitorado/perfil_eleitorado_2012.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitorado/perfil_eleitorado_2012.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 30583725,
+      "lastModified": "Tue, 26 Aug 2025 16:16:27 GMT",
+      "etag": "\"1d2abad-63d46fe7eecc0\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:56:04.484275+00:00",
+      "sha256": "0a1246c4e2189317cdaabed74d83095bc613a96f167a8b7adaab26700c3927fa",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "4875dc11-perfil_eleitorado_2012.zip",
+          "bytes": 30583725,
+          "sha256": "0a1246c4e2189317cdaabed74d83095bc613a96f167a8b7adaab26700c3927fa"
+        }
+      ]
+    },
+    {
+      "id": "f04140db-94cd-4cec-beae-9ba3a7150f50",
+      "name": "Perfil Eleitor com Deficiência - 2012",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_deficiente/perfil_eleitor_deficiencia_2012.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_deficiente/perfil_eleitor_deficiencia_2012.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 11522208,
+      "lastModified": "Tue, 06 Dec 2022 20:54:15 GMT",
+      "etag": "\"afd0a0-5ef2f01b9abc0\"",
+      "inScope": false
+    },
+    {
+      "id": "7eed2c42-7ae1-4acd-adcc-54c200f61d4c",
+      "name": "Eleitorado por local de votação - 2012",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/eleitorado_locais_votacao/eleitorado_local_votacao_2012.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/eleitorado_locais_votacao/eleitorado_local_votacao_2012.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 44027545,
+      "lastModified": "Wed, 20 Aug 2025 13:51:53 GMT",
+      "etag": "\"29fce99-63ccc466ff040\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:56:05.520849+00:00",
+      "sha256": "34004f61986be68191d3f539970329442b549f19c95fea78e322966a21da8e40",
+      "removedPersonalColumns": {
+        "eleitorado_local_votacao_2012.csv": [
+          "NR_TELEFONE_LOCAL"
+        ]
+      },
+      "assets": [
+        {
+          "name": "7eed2c42-eleitorado_local_votacao_2012.zip",
+          "bytes": 42851558,
+          "sha256": "aa80b87cd87104d6d875841a02670845bd81a31c5275aa8143a9cb748d66e0be"
+        }
+      ]
+    },
+    {
+      "id": "1070a2ce-0308-48d9-a0e2-3010d5932848",
+      "name": "AC - Perfil do eleitorado por seção eleitoral - 2012",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2012_AC.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2012_AC.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 1401864,
+      "lastModified": "Tue, 26 Aug 2025 16:16:23 GMT",
+      "etag": "\"156408-63d46fe41e3c0\"",
+      "inScope": false
+    },
+    {
+      "id": "851bf695-a990-4cf3-9859-ce6d8fbd522b",
+      "name": "AL - Perfil do eleitorado por seção eleitoral - 2012",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2012_AL.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2012_AL.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 6073280,
+      "lastModified": "Tue, 26 Aug 2025 16:17:31 GMT",
+      "etag": "\"5cabc0-63d47024f7cc0\"",
+      "inScope": false
+    },
+    {
+      "id": "0e4a66a6-8965-480a-ae8f-25a8bae690ab",
+      "name": "AM - Perfil do eleitorado por seção eleitoral - 2012",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2012_AM.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2012_AM.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 5231476,
+      "lastModified": "Tue, 26 Aug 2025 16:17:36 GMT",
+      "etag": "\"4fd374-63d47029bc800\"",
+      "inScope": false
+    },
+    {
+      "id": "6d222191-6551-43ae-a6d1-33bdae1020b9",
+      "name": "AP - Perfil do eleitorado por seção eleitoral - 2012",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2012_AP.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2012_AP.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 1140434,
+      "lastModified": "Tue, 26 Aug 2025 16:16:58 GMT",
+      "etag": "\"1166d2-63d470057f280\"",
+      "inScope": false
+    },
+    {
+      "id": "46847c9a-2cba-4a3a-b00f-55467fba8307",
+      "name": "BA - Perfil do eleitorado por seção eleitoral - 2012",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2012_BA.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2012_BA.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 27412029,
+      "lastModified": "Tue, 26 Aug 2025 16:16:58 GMT",
+      "etag": "\"1a2463d-63d470057f280\"",
+      "inScope": false
+    },
+    {
+      "id": "ac6b5e6b-a95c-44de-b44a-25ee9f821867",
+      "name": "CE - Perfil do eleitorado por seção eleitoral - 2012",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2012_CE.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2012_CE.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 16897134,
+      "lastModified": "Tue, 26 Aug 2025 16:17:29 GMT",
+      "etag": "\"101d46e-63d470230f840\"",
+      "inScope": false
+    },
+    {
+      "id": "ad681ee0-c19d-4aab-8b84-1036a581136f",
+      "name": "ES - Perfil do eleitorado por seção eleitoral - 2012",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2012_ES.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2012_ES.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 7561305,
+      "lastModified": "Tue, 26 Aug 2025 16:16:53 GMT",
+      "etag": "\"736059-63d47000ba740\"",
+      "inScope": false
+    },
+    {
+      "id": "04e592fa-7d81-4906-b4ab-cb93521c7c1a",
+      "name": "GO - Perfil do eleitorado por seção eleitoral - 2012",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2012_GO.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2012_GO.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 13080495,
+      "lastModified": "Tue, 26 Aug 2025 16:17:34 GMT",
+      "etag": "\"c797af-63d47027d4380\"",
+      "inScope": false
+    },
+    {
+      "id": "fee8251e-effa-4193-be7f-42eeab39b41d",
+      "name": "MA - Perfil do eleitorado por seção eleitoral  - 2012",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2012_MA.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2012_MA.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 12730693,
+      "lastModified": "Tue, 26 Aug 2025 16:16:51 GMT",
+      "etag": "\"c24145-63d46ffed22c0\"",
+      "inScope": false
+    },
+    {
+      "id": "ec541148-e4c4-41b4-9d30-085a4c155768",
+      "name": "MG - Perfil do eleitorado por seção eleitoral - 2012",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2012_MG.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2012_MG.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 43240342,
+      "lastModified": "Tue, 26 Aug 2025 16:17:27 GMT",
+      "etag": "\"293cb96-63d47021273c0\"",
+      "inScope": false
+    },
+    {
+      "id": "dbfa3b4a-1b60-4124-8c77-29fd8abcf6af",
+      "name": "MS - Perfil do eleitorado por seção eleitoral - 2012",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2012_MS.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2012_MS.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 5302469,
+      "lastModified": "Tue, 26 Aug 2025 16:16:47 GMT",
+      "etag": "\"50e8c5-63d46ffb019c0\"",
+      "inScope": false
+    },
+    {
+      "id": "9ec5fcfa-f2a5-4109-a320-6c216fa57736",
+      "name": "MT - Perfil do eleitorado por seção eleitoral - 2012",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2012_MT.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2012_MT.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 6617601,
+      "lastModified": "Tue, 26 Aug 2025 16:17:35 GMT",
+      "etag": "\"64fa01-63d47028c85c0\"",
+      "inScope": false
+    },
+    {
+      "id": "954126c0-42a6-404f-a41b-8fc437879e93",
+      "name": "PA - Perfil do eleitorado por seção eleitoral - 2012",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2012_PA.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2012_PA.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 13606879,
+      "lastModified": "Tue, 26 Aug 2025 16:16:49 GMT",
+      "etag": "\"cf9fdf-63d46ffce9e40\"",
+      "inScope": false
+    },
+    {
+      "id": "f79affce-8a86-4ffe-a53d-ace8596151ef",
+      "name": "PB - Perfil do eleitorado por seção eleitoral - 2012",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2012_PB.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2012_PB.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 8210706,
+      "lastModified": "Tue, 26 Aug 2025 16:16:45 GMT",
+      "etag": "\"7d4912-63d46ff919540\"",
+      "inScope": false
+    },
+    {
+      "id": "5cc07c32-46f7-42d8-b8d5-2c987ed90b5d",
+      "name": "PE - Perfil do eleitorado por seção eleitoral - 2012",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2012_PE.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2012_PE.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 17614874,
+      "lastModified": "Tue, 26 Aug 2025 16:17:20 GMT",
+      "etag": "\"10cc81a-63d4701a7a400\"",
+      "inScope": false
+    },
+    {
+      "id": "86bd444b-4497-4843-b577-865404f575a2",
+      "name": "PI - Perfil do eleitorado por seção eleitoral - 2012",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2012_PI.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2012_PI.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 6790182,
+      "lastModified": "Tue, 26 Aug 2025 16:17:12 GMT",
+      "etag": "\"679c26-63d47012d9200\"",
+      "inScope": false
+    },
+    {
+      "id": "8a33392d-cafd-4d74-b7e4-7d3c06f73d8e",
+      "name": "PR - Perfil do eleitorado por seção eleitoral - 2012",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2012_PR.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2012_PR.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 23628864,
+      "lastModified": "Tue, 26 Aug 2025 16:16:41 GMT",
+      "etag": "\"1688c40-63d46ff548c40\"",
+      "inScope": false
+    },
+    {
+      "id": "0db94af1-2798-4c99-897c-ce3f2ee53c5c",
+      "name": "RJ - Perfil do eleitorado por seção eleitoral - 2012",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2012_RJ.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2012_RJ.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 32960795,
+      "lastModified": "Tue, 26 Aug 2025 16:16:37 GMT",
+      "etag": "\"1f6f11b-63d46ff178340\"",
+      "inScope": false
+    },
+    {
+      "id": "6dbe3f24-7082-42e9-a0ca-61eb71e081e5",
+      "name": "RN - Perfil do eleitorado por seção eleitoral - 2012",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2012_RN.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2012_RN.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 6579633,
+      "lastModified": "Tue, 26 Aug 2025 16:17:14 GMT",
+      "etag": "\"6465b1-63d47014c1680\"",
+      "inScope": false
+    },
+    {
+      "id": "063ffdf3-d173-4c10-9827-9ffb9b8e53a4",
+      "name": "RO - Perfil do eleitorado por seção eleitoral - 2012",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2012_RO.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2012_RO.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 3431028,
+      "lastModified": "Tue, 26 Aug 2025 16:17:11 GMT",
+      "etag": "\"345a74-63d47011e4fc0\"",
+      "inScope": false
+    },
+    {
+      "id": "097b74b7-f76f-4173-9b7f-35a80b4038b2",
+      "name": "RR - Perfil do eleitorado por seção eleitoral - 2012",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2012_RR.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2012_RR.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 865149,
+      "lastModified": "Tue, 26 Aug 2025 16:16:32 GMT",
+      "etag": "\"d337d-63d46fecb3800\"",
+      "inScope": false
+    },
+    {
+      "id": "8fe1b378-9289-4092-bd60-c7fc03b5b730",
+      "name": "RS - Perfil do eleitorado por seção eleitoral - 2012",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2012_RS.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2012_RS.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 25214961,
+      "lastModified": "Tue, 26 Aug 2025 16:16:31 GMT",
+      "etag": "\"180bff1-63d46febbf5c0\"",
+      "inScope": false
+    },
+    {
+      "id": "3784ba63-ce4b-47f5-9482-7581cc719a9e",
+      "name": "SE - Perfil do eleitorado por seção eleitoral - 2012",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2012_SE.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2012_SE.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 4443733,
+      "lastModified": "Tue, 26 Aug 2025 16:16:42 GMT",
+      "etag": "\"43ce55-63d46ff63ce80\"",
+      "inScope": false
+    },
+    {
+      "id": "c7b1fbb9-d502-4dae-815f-409b18ef86e4",
+      "name": "SC - Perfil do eleitorado por seção eleitoral - 2012",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2012_SC.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2012_SC.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 13733452,
+      "lastModified": "Tue, 26 Aug 2025 16:17:17 GMT",
+      "etag": "\"d18e4c-63d470179dd40\"",
+      "inScope": false
+    },
+    {
+      "id": "e7904911-a7e9-45b4-a2a3-2c96e9a62d8d",
+      "name": "SP - Perfil do eleitorado por seção eleitoral - 2012",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2012_SP.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2012_SP.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 81544378,
+      "lastModified": "Tue, 26 Aug 2025 16:17:10 GMT",
+      "etag": "\"4dc44ba-63d47010f0d80\"",
+      "inScope": false
+    },
+    {
+      "id": "39b38ea9-4d48-433a-9c8d-94a9f19bee7d",
+      "name": "TO - Perfil do eleitorado por seção eleitoral - 2012",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2012_TO.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2012_TO.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 3174519,
+      "lastModified": "Tue, 26 Aug 2025 16:16:43 GMT",
+      "etag": "\"307077-63d46ff7310c0\"",
+      "inScope": false
+    }
+  ]
+}
