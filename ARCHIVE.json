@@ -1,0 +1,730 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-10-26T21:59:18.389780+00:00",
+  "status": "published",
+  "dataset": {
+    "id": "resultados-2014",
+    "title": "Resultados - 2014",
+    "groups": [
+      "resultados"
+    ],
+    "family": "resultados",
+    "years": [
+      2014
+    ],
+    "license": "cc-by",
+    "source": "https://dadosabertos.tse.jus.br/dataset/resultados-2014",
+    "branch": "archive/resultados-2014",
+    "tag": "data-resultados-2014",
+    "releaseUrl": "https://github.com/brauliobo/brazil-audit/releases/tag/data-resultados-2014",
+    "normalized": false,
+    "status": "catalogued",
+    "inScope": true
+  },
+  "resources": [
+    {
+      "id": "9df2487a-7d41-4e1f-8ca1-a9dbe43fdd02",
+      "name": "Votação nominal por município e zona",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_candidato_munzona/votacao_candidato_munzona_2014.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_candidato_munzona/votacao_candidato_munzona_2014.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 494100168,
+      "lastModified": "Fri, 03 Sep 2021 20:11:58 GMT",
+      "etag": "\"1d735ec8-5cb1ce958ff80\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:57:52.132950+00:00",
+      "sha256": "f41bceb427820c068b2b14b87befa69d8c333638644eea0e8337534f9b349fd3",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "9df2487a-votacao_candidato_munzona_2014.zip",
+          "bytes": 494100168,
+          "sha256": "f41bceb427820c068b2b14b87befa69d8c333638644eea0e8337534f9b349fd3"
+        }
+      ]
+    },
+    {
+      "id": "55583664-0851-493c-b441-23393a15381e",
+      "name": "Votação em partido por município e zona",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_partido_munzona/votacao_partido_munzona_2014.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_partido_munzona/votacao_partido_munzona_2014.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 12141261,
+      "lastModified": "Fri, 03 Sep 2021 20:12:24 GMT",
+      "etag": "\"b942cd-5cb1ceae5ba00\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:57:53.178471+00:00",
+      "sha256": "2743ea0b516eddedc1d92693900cbc8b53bfc8aa502419b4e4774f212c530562",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "55583664-votacao_partido_munzona_2014.zip",
+          "bytes": 12141261,
+          "sha256": "2743ea0b516eddedc1d92693900cbc8b53bfc8aa502419b4e4774f212c530562"
+        }
+      ]
+    },
+    {
+      "id": "661addf3-fd0c-4c3b-9c32-fbb680dda9e3",
+      "name": "Detalhe da apuração por município e zona",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/detalhe_votacao_munzona/detalhe_votacao_munzona_2014.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/detalhe_votacao_munzona/detalhe_votacao_munzona_2014.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 3937094,
+      "lastModified": "Fri, 08 Aug 2025 16:26:35 GMT",
+      "etag": "\"3c1346-63bdd099ab509\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:57:53.568254+00:00",
+      "sha256": "f9195f8988edabd5db03fdef31ad33b21ad0f02c75c8a8fa30c468ed5642460a",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "661addf3-detalhe_votacao_munzona_2014.zip",
+          "bytes": 3937094,
+          "sha256": "f9195f8988edabd5db03fdef31ad33b21ad0f02c75c8a8fa30c468ed5642460a"
+        }
+      ]
+    },
+    {
+      "id": "ab01a029-7e19-4585-978e-6fe4a7d31fa8",
+      "name": "Detalhe da apuração por seção eleitoral",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/detalhe_votacao_secao/detalhe_votacao_secao_2014.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/detalhe_votacao_secao/detalhe_votacao_secao_2014.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 73594893,
+      "lastModified": "Fri, 03 Sep 2021 20:11:21 GMT",
+      "etag": "\"462f80d-5cb1ce7246c40\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:57:55.577576+00:00",
+      "sha256": "a2af950c80d63a4af7e51522c327a1ce3bb0e360f1861f0080fba680f28442ec",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "ab01a029-detalhe_votacao_secao_2014.zip",
+          "bytes": 73594893,
+          "sha256": "a2af950c80d63a4af7e51522c327a1ce3bb0e360f1861f0080fba680f28442ec"
+        }
+      ]
+    },
+    {
+      "id": "28aad28a-e658-4e80-ae4f-30bebbcf6bbd",
+      "name": "Presidente - Votação por seção eleitoral - 2014",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2014_BR.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2014_BR.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 29583546,
+      "lastModified": "Fri, 03 Sep 2021 20:14:30 GMT",
+      "etag": "\"1c368ba-5cb1cf2685580\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:57:56.625730+00:00",
+      "sha256": "69dc044a47ffb9f1b0f1a0109ba49c812bc58997caccb71be5ee96c9ec797f71",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "28aad28a-votacao_secao_2014_BR.zip",
+          "bytes": 29583546,
+          "sha256": "69dc044a47ffb9f1b0f1a0109ba49c812bc58997caccb71be5ee96c9ec797f71"
+        }
+      ]
+    },
+    {
+      "id": "55f1f786-cbf8-4cec-a003-f349d1dfb77f",
+      "name": "AC - Votação por seção eleitoral - 2014",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2014_AC.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2014_AC.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 3205247,
+      "lastModified": "Fri, 03 Sep 2021 20:14:26 GMT",
+      "etag": "\"30e87f-5cb1cf22b4c80\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:57:57.062941+00:00",
+      "sha256": "4c8a6b5c15e2e1ad2d2248b68b90af219af65f04cd41a70ada89456b93bfbcdb",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "55f1f786-votacao_secao_2014_AC.zip",
+          "bytes": 3205247,
+          "sha256": "4c8a6b5c15e2e1ad2d2248b68b90af219af65f04cd41a70ada89456b93bfbcdb"
+        }
+      ]
+    },
+    {
+      "id": "94c51b07-3276-4e9a-b6c6-bc24b149e28a",
+      "name": "AL - Votação por seção eleitoral - 2014",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2014_AL.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2014_AL.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 5749556,
+      "lastModified": "Fri, 03 Sep 2021 20:14:26 GMT",
+      "etag": "\"57bb34-5cb1cf22b4c80\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:57:57.586778+00:00",
+      "sha256": "ba8da733ebebb9e11a77d5cd2e64e974aac47cdec194d2d126589021d2b656c4",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "94c51b07-votacao_secao_2014_AL.zip",
+          "bytes": 5749556,
+          "sha256": "ba8da733ebebb9e11a77d5cd2e64e974aac47cdec194d2d126589021d2b656c4"
+        }
+      ]
+    },
+    {
+      "id": "077fb949-5b49-418b-a88d-de697929dac2",
+      "name": "AP - Votação por seção eleitoral - 2014",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2014_AP.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2014_AP.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 3718219,
+      "lastModified": "Fri, 03 Sep 2021 20:14:28 GMT",
+      "etag": "\"38bc4b-5cb1cf249d100\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:57:58.118734+00:00",
+      "sha256": "febd4e175ec9ba7aa85f51c3b75405a89d3d2d655176087843d267769c1c4e7d",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "077fb949-votacao_secao_2014_AP.zip",
+          "bytes": 3718219,
+          "sha256": "febd4e175ec9ba7aa85f51c3b75405a89d3d2d655176087843d267769c1c4e7d"
+        }
+      ]
+    },
+    {
+      "id": "5187b786-8956-4cf2-aa6f-71d58f3935db",
+      "name": "AM - Votação por seção eleitoral - 2014",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2014_AM.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2014_AM.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 12139682,
+      "lastModified": "Fri, 03 Sep 2021 20:14:29 GMT",
+      "etag": "\"b93ca2-5cb1cf2591340\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:57:58.865290+00:00",
+      "sha256": "5f686d7d1cb7ecd6cf1c04302ad82292a27e852d38fa9e31b7e5a0ecde305a1b",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "5187b786-votacao_secao_2014_AM.zip",
+          "bytes": 12139682,
+          "sha256": "5f686d7d1cb7ecd6cf1c04302ad82292a27e852d38fa9e31b7e5a0ecde305a1b"
+        }
+      ]
+    },
+    {
+      "id": "8d43befc-ec85-4b92-9cb1-2e11cd29acc7",
+      "name": "BA - Votação por seção eleitoral - 2014",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2014_BA.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2014_BA.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 37413206,
+      "lastModified": "Fri, 03 Sep 2021 20:14:30 GMT",
+      "etag": "\"23ae156-5cb1cf2685580\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:58:06.667401+00:00",
+      "sha256": "8b90f92a352d7334c0a33ded402e51d36ff9f23e3dd04167af828966c3bca48d",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "8d43befc-votacao_secao_2014_BA.zip",
+          "bytes": 37413206,
+          "sha256": "8b90f92a352d7334c0a33ded402e51d36ff9f23e3dd04167af828966c3bca48d"
+        }
+      ]
+    },
+    {
+      "id": "61a973fb-ee3f-4d65-adc0-373f63498a7b",
+      "name": "CE - Votação por seção eleitoral - 2014",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2014_CE.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2014_CE.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 24323899,
+      "lastModified": "Fri, 03 Sep 2021 20:14:31 GMT",
+      "etag": "\"173273b-5cb1cf27797c0\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:58:07.345702+00:00",
+      "sha256": "c477e7c114a61c8677df446e4a818a50122b6b368db91f5213c807d7a437b582",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "61a973fb-votacao_secao_2014_CE.zip",
+          "bytes": 24323899,
+          "sha256": "c477e7c114a61c8677df446e4a818a50122b6b368db91f5213c807d7a437b582"
+        }
+      ]
+    },
+    {
+      "id": "0a6f394e-c7e5-43b7-b130-20a74f7da008",
+      "name": "DF - Votação por seção eleitoral - 2014",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2014_DF.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2014_DF.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 18393335,
+      "lastModified": "Fri, 03 Sep 2021 20:14:31 GMT",
+      "etag": "\"118a8f7-5cb1cf27797c0\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:58:08.814904+00:00",
+      "sha256": "a61122d20abf69ca839692b83299c70d672ee31fb5105a350688d0dfc3ace449",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "0a6f394e-votacao_secao_2014_DF.zip",
+          "bytes": 18393335,
+          "sha256": "a61122d20abf69ca839692b83299c70d672ee31fb5105a350688d0dfc3ace449"
+        }
+      ]
+    },
+    {
+      "id": "3f00f2cd-496c-489f-b708-93ef1689e59e",
+      "name": "ES - Votação por seção eleitoral - 2014",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2014_ES.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2014_ES.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 9843579,
+      "lastModified": "Fri, 03 Sep 2021 20:14:31 GMT",
+      "etag": "\"96337b-5cb1cf27797c0\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:58:11.422341+00:00",
+      "sha256": "12266d9d81c638b36d8da5fef0037edb135bfc7ef7c12f71c405ec28eff187db",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "3f00f2cd-votacao_secao_2014_ES.zip",
+          "bytes": 9843579,
+          "sha256": "12266d9d81c638b36d8da5fef0037edb135bfc7ef7c12f71c405ec28eff187db"
+        }
+      ]
+    },
+    {
+      "id": "10add23a-bb98-447f-a942-8bbccae998ac",
+      "name": "GO - Votação por seção eleitoral - 2014",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2014_GO.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2014_GO.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 15630208,
+      "lastModified": "Fri, 03 Sep 2021 20:14:31 GMT",
+      "etag": "\"ee7f80-5cb1cf27797c0\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:58:15.383734+00:00",
+      "sha256": "300210f636bcebe9ed38df5c6e86264f00a599a89a2912b8153dce0d781bb917",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "10add23a-votacao_secao_2014_GO.zip",
+          "bytes": 15630208,
+          "sha256": "300210f636bcebe9ed38df5c6e86264f00a599a89a2912b8153dce0d781bb917"
+        }
+      ]
+    },
+    {
+      "id": "635081d3-c7b2-470b-983c-08bba6df074e",
+      "name": "MA - Votação por seção eleitoral - 2014",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2014_MA.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2014_MA.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 15813577,
+      "lastModified": "Fri, 03 Sep 2021 20:14:32 GMT",
+      "etag": "\"f14bc9-5cb1cf286da00\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:58:16.236135+00:00",
+      "sha256": "657f2fc57a33226aac90aa0cb6b3a7520e527bed8ff237482f2e97d7247b56e8",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "635081d3-votacao_secao_2014_MA.zip",
+          "bytes": 15813577,
+          "sha256": "657f2fc57a33226aac90aa0cb6b3a7520e527bed8ff237482f2e97d7247b56e8"
+        }
+      ]
+    },
+    {
+      "id": "e8621e5b-df2a-4356-bf90-d3c8ca61fa74",
+      "name": "MT - Votação por seção eleitoral - 2014",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2014_MT.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2014_MT.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 5497115,
+      "lastModified": "Fri, 03 Sep 2021 20:14:32 GMT",
+      "etag": "\"53e11b-5cb1cf286da00\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:58:16.901793+00:00",
+      "sha256": "bfb580dc44c1b5e12e936639013fa9c6b7433c69486512c1ae76211f96c28136",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "e8621e5b-votacao_secao_2014_MT.zip",
+          "bytes": 5497115,
+          "sha256": "bfb580dc44c1b5e12e936639013fa9c6b7433c69486512c1ae76211f96c28136"
+        }
+      ]
+    },
+    {
+      "id": "451a8c4d-9972-4f72-aa30-1839aa5ea74a",
+      "name": "MS - Votação por seção eleitoral - 2014",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2014_MS.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2014_MS.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 7094149,
+      "lastModified": "Fri, 03 Sep 2021 20:14:32 GMT",
+      "etag": "\"6c3f85-5cb1cf286da00\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:58:17.536602+00:00",
+      "sha256": "40460ac70fcb38466c53aab21ffd92b89ac60cb3668fcc0dfc5b0798cc50f322",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "451a8c4d-votacao_secao_2014_MS.zip",
+          "bytes": 7094149,
+          "sha256": "40460ac70fcb38466c53aab21ffd92b89ac60cb3668fcc0dfc5b0798cc50f322"
+        }
+      ]
+    },
+    {
+      "id": "e82328ea-0e44-44b8-8831-10de1208e768",
+      "name": "MG - Votação por seção eleitoral - 2014",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2014_MG.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2014_MG.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 56542257,
+      "lastModified": "Fri, 03 Sep 2021 20:14:33 GMT",
+      "etag": "\"35ec431-5cb1cf2961c40\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:58:19.398116+00:00",
+      "sha256": "2460821ddf1e14807bc949a4838e7046d312cf002e757f0af81c629cbe12b563",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "e82328ea-votacao_secao_2014_MG.zip",
+          "bytes": 56542257,
+          "sha256": "2460821ddf1e14807bc949a4838e7046d312cf002e757f0af81c629cbe12b563"
+        }
+      ]
+    },
+    {
+      "id": "1f830ecf-d665-4d44-86f4-0d0e76c74184",
+      "name": "PA - Votação por seção eleitoral - 2014",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2014_PA.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2014_PA.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 20903037,
+      "lastModified": "Fri, 03 Sep 2021 20:14:33 GMT",
+      "etag": "\"13ef47d-5cb1cf2961c40\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:58:20.271633+00:00",
+      "sha256": "7e3ba2cf11268cd159880c16f47be0c6c50c330e9c24d40204e08796e0ca9f62",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "1f830ecf-votacao_secao_2014_PA.zip",
+          "bytes": 20903037,
+          "sha256": "7e3ba2cf11268cd159880c16f47be0c6c50c330e9c24d40204e08796e0ca9f62"
+        }
+      ]
+    },
+    {
+      "id": "c7de89d4-48c6-4413-afbf-191652fc17d7",
+      "name": "PB - Votação por seção eleitoral - 2014",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2014_PB.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2014_PB.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 8894994,
+      "lastModified": "Fri, 03 Sep 2021 20:14:34 GMT",
+      "etag": "\"87ba12-5cb1cf2a55e80\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:58:20.917298+00:00",
+      "sha256": "8820167281bf4e9dcb947ddf982422987dd0749c3fa4f6be44d630ec4234ed4a",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "c7de89d4-votacao_secao_2014_PB.zip",
+          "bytes": 8894994,
+          "sha256": "8820167281bf4e9dcb947ddf982422987dd0749c3fa4f6be44d630ec4234ed4a"
+        }
+      ]
+    },
+    {
+      "id": "4591b2c2-b2bf-4282-82a6-05a8da76b71e",
+      "name": "PR - Votação por seção eleitoral - 2014",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2014_PR.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2014_PR.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 29882864,
+      "lastModified": "Fri, 03 Sep 2021 20:14:35 GMT",
+      "etag": "\"1c7f9f0-5cb1cf2b4a0c0\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:58:22.219814+00:00",
+      "sha256": "a070c7504e8f6ae66b6a177fa757bbff525527174118a08f7cf8f85de5399cf1",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "4591b2c2-votacao_secao_2014_PR.zip",
+          "bytes": 29882864,
+          "sha256": "a070c7504e8f6ae66b6a177fa757bbff525527174118a08f7cf8f85de5399cf1"
+        }
+      ]
+    },
+    {
+      "id": "de6c2841-3ed8-44c5-ade6-38bd5ade4caf",
+      "name": "PE - Votação por seção eleitoral - 2014",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2014_PE.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2014_PE.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 20966549,
+      "lastModified": "Fri, 03 Sep 2021 20:14:34 GMT",
+      "etag": "\"13fec95-5cb1cf2a55e80\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:58:23.167406+00:00",
+      "sha256": "e75c9a70d9d49c3ce9b508f57e01e34466462e0d6df39822ca35fa92e8cabac0",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "de6c2841-votacao_secao_2014_PE.zip",
+          "bytes": 20966549,
+          "sha256": "e75c9a70d9d49c3ce9b508f57e01e34466462e0d6df39822ca35fa92e8cabac0"
+        }
+      ]
+    },
+    {
+      "id": "022f5862-30f0-43d3-b2f0-bee7f6d84dd1",
+      "name": "PI - Votação por seção eleitoral - 2014",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2014_PI.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2014_PI.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 5905929,
+      "lastModified": "Fri, 03 Sep 2021 20:14:34 GMT",
+      "etag": "\"5a1e09-5cb1cf2a55e80\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:58:23.721325+00:00",
+      "sha256": "19566d2c50ac3d34d7dbdb0cb66893414794971e0b486f572cb00ef3df1b970d",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "022f5862-votacao_secao_2014_PI.zip",
+          "bytes": 5905929,
+          "sha256": "19566d2c50ac3d34d7dbdb0cb66893414794971e0b486f572cb00ef3df1b970d"
+        }
+      ]
+    },
+    {
+      "id": "7c3c60f0-d5f4-4924-916a-3b8cb0650901",
+      "name": "RJ - Votação por seção eleitoral - 2014",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2014_RJ.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2014_RJ.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 80369773,
+      "lastModified": "Fri, 03 Sep 2021 20:14:37 GMT",
+      "etag": "\"4ca586d-5cb1cf2d32540\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:58:26.235460+00:00",
+      "sha256": "de3224652e43906e85d54e815d7788e6343691f822da53ed2cc11cee2ce2f11c",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "7c3c60f0-votacao_secao_2014_RJ.zip",
+          "bytes": 80369773,
+          "sha256": "de3224652e43906e85d54e815d7788e6343691f822da53ed2cc11cee2ce2f11c"
+        }
+      ]
+    },
+    {
+      "id": "30aa77f2-51a8-450e-96c3-a2b2ebecc600",
+      "name": "RN - Votação por seção eleitoral - 2014",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2014_RN.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2014_RN.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 5974034,
+      "lastModified": "Fri, 03 Sep 2021 20:14:36 GMT",
+      "etag": "\"5b2812-5cb1cf2c3e300\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:58:26.833009+00:00",
+      "sha256": "3011a635bab5f14fdc6adb0e88fc40034963308819e5029ae74058c0616ef778",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "30aa77f2-votacao_secao_2014_RN.zip",
+          "bytes": 5974034,
+          "sha256": "3011a635bab5f14fdc6adb0e88fc40034963308819e5029ae74058c0616ef778"
+        }
+      ]
+    },
+    {
+      "id": "acccad00-f67e-494c-934a-9fa3d9b55a86",
+      "name": "RS - Votação por seção eleitoral - 2014",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2014_RS.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2014_RS.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 38042909,
+      "lastModified": "Fri, 03 Sep 2021 20:14:37 GMT",
+      "etag": "\"2447d1d-5cb1cf2d32540\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:58:29.014556+00:00",
+      "sha256": "890e29b91690f7c0255b18c44490852ecc9a841efcd4a4cf39ee269cc873569c",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "acccad00-votacao_secao_2014_RS.zip",
+          "bytes": 38042909,
+          "sha256": "890e29b91690f7c0255b18c44490852ecc9a841efcd4a4cf39ee269cc873569c"
+        }
+      ]
+    },
+    {
+      "id": "32d85306-5250-4c94-be08-6f3bcd701801",
+      "name": "RO - Votação por seção eleitoral - 2014",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2014_RO.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2014_RO.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 4680777,
+      "lastModified": "Fri, 03 Sep 2021 20:14:36 GMT",
+      "etag": "\"476c49-5cb1cf2c3e300\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:58:30.288468+00:00",
+      "sha256": "9b7330da1e0490974daf4234f9e951a0b6d8514661851147d8d85cee8fb6ac83",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "32d85306-votacao_secao_2014_RO.zip",
+          "bytes": 4680777,
+          "sha256": "9b7330da1e0490974daf4234f9e951a0b6d8514661851147d8d85cee8fb6ac83"
+        }
+      ]
+    },
+    {
+      "id": "f2299a35-1d3d-4497-8523-89f6f46892b5",
+      "name": "RR - Votação por seção eleitoral - 2014",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2014_RR.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2014_RR.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 2320126,
+      "lastModified": "Fri, 03 Sep 2021 20:14:36 GMT",
+      "etag": "\"2366fe-5cb1cf2c3e300\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:58:30.918586+00:00",
+      "sha256": "077495b0c24e479116c9ece68875ff2da838fa85f6dc1d2526d9eb3e25e2b97c",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "f2299a35-votacao_secao_2014_RR.zip",
+          "bytes": 2320126,
+          "sha256": "077495b0c24e479116c9ece68875ff2da838fa85f6dc1d2526d9eb3e25e2b97c"
+        }
+      ]
+    },
+    {
+      "id": "d8757617-6360-4cbf-8de1-a46aa950aba9",
+      "name": "SC - Votação por seção eleitoral - 2014",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2014_SC.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2014_SC.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 14520248,
+      "lastModified": "Fri, 03 Sep 2021 20:14:37 GMT",
+      "etag": "\"dd8fb8-5cb1cf2d32540\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:58:31.589488+00:00",
+      "sha256": "c94aaa83b70b748a34eb183e1764597a412da5539a7c923ea992b7a1a49c6fce",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "d8757617-votacao_secao_2014_SC.zip",
+          "bytes": 14520248,
+          "sha256": "c94aaa83b70b748a34eb183e1764597a412da5539a7c923ea992b7a1a49c6fce"
+        }
+      ]
+    },
+    {
+      "id": "2761d727-cb9b-43e7-ae5d-a6a43f46616a",
+      "name": "SP - Votação por seção eleitoral - 2014",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2014_SP.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2014_SP.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 176319707,
+      "lastModified": "Fri, 03 Sep 2021 20:14:41 GMT",
+      "etag": "\"a826cdb-5cb1cf3102e40\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:59:16.067164+00:00",
+      "sha256": "075b939db765dbecb5c9f6db5837272ea1f51d657e30666c099f742e8ecb4d48",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "2761d727-votacao_secao_2014_SP.zip",
+          "bytes": 176319707,
+          "sha256": "075b939db765dbecb5c9f6db5837272ea1f51d657e30666c099f742e8ecb4d48"
+        }
+      ]
+    },
+    {
+      "id": "3ef06875-506c-4368-8bf8-56abd18e56a6",
+      "name": "SE - Votação por seção eleitoral - 2014",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2014_SE.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2014_SE.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 3645456,
+      "lastModified": "Fri, 03 Sep 2021 20:14:38 GMT",
+      "etag": "\"37a010-5cb1cf2e26780\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:59:17.329938+00:00",
+      "sha256": "185501d5f479cf134d6b8e97993f1b3c3c926e078017b90791aef208e15e5eba",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "3ef06875-votacao_secao_2014_SE.zip",
+          "bytes": 3645456,
+          "sha256": "185501d5f479cf134d6b8e97993f1b3c3c926e078017b90791aef208e15e5eba"
+        }
+      ]
+    },
+    {
+      "id": "8b39f61f-a679-4d57-9097-a7c1903a1218",
+      "name": "TO - Votação por seção eleitoral - 2014",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2014_TO.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2014_TO.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 2827566,
+      "lastModified": "Fri, 03 Sep 2021 20:14:38 GMT",
+      "etag": "\"2b252e-5cb1cf2e26780\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:59:18.386909+00:00",
+      "sha256": "49f52ba901b6c38bd84cef6367dfb821f09321dcdbab8641ddd222c080d1f187",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "8b39f61f-votacao_secao_2014_TO.zip",
+          "bytes": 2827566,
+          "sha256": "49f52ba901b6c38bd84cef6367dfb821f09321dcdbab8641ddd222c080d1f187"
+        }
+      ]
+    }
+  ]
+}
