@@ -1090,6 +1090,47 @@ navGroups:
   sections: Ferramentas da área
 
 compare:
+  unknownParty: Partido não informado na fonte
+  unknownOffice: Cargo não informado na fonte
+  mode: "Tipo de comparação"
+  historyMode: "Série histórica oficial"
+  flowMode: "Migração estimada"
+  historyNote: "Dados oficiais normalizados desde 1933. Cargos históricos mantêm a identidade original. Os totais somam apenas unidades com o indicador conhecido; UFs, municípios e zonas têm coberturas diferentes e não constituem um painel territorial constante. Campos ausentes não são zeros."
+  historyGrain: "Granularidade"
+  historyKnown: "Unidades conhecidas"
+  historyTotal: "Unidades na fonte"
+  historyStates: "UFs incluídas"
+  historyState: "UF (vazio: todas)"
+  flowFrom: "Origem no 1º turno"
+  flowTo: "Destino no 2º turno"
+  flowEstimate: "Eleitores estimados"
+  flowShare: "% da origem"
+  flowInterval: "Intervalo bootstrap condicional (95%)"
+  flowBounds: "Limites possíveis pelas margens"
+  flowNote: "Estimativa ecológica agregada: não acompanha votos individuais. O modelo supõe comportamento homogêneo entre territórios; os intervalos são de bootstrap territorial condicional, não probabilidades posteriores. Os limites pelas margens independem do modelo. Só participam localidades com eleitorado compatível nos dois turnos."
+  flowPending: "Estimativas ainda em preparação."
+  flowCoverage: "Cobertura: {units} de {total} localidades; {electorate} de {all} eleitores."
+  flowDiagnostics: "Método e diagnóstico"
+  modes:
+    indicators: Indicadores detalhados
+    history: Histórico desde 1933
+    flows: Migração estimada
+  flowStatus:
+    estimated: Estimativa condicional disponível
+    inconclusive: "Inconclusivo: consulte limites possíveis"
+    not_applicable: Não aplicável
+  flowReasons:
+    no_second_round: "Sem segundo turno."
+    missing_candidate_data: "Resultados por candidato indisponíveis."
+    missing_turnout_data: "Comparecimento indisponível."
+    population_changed: "Eleitorado mudou entre turnos."
+    inconsistent_margins: "Margens incompatíveis."
+    no_matched_units: "Sem localidades comparáveis."
+    insufficient_units: "Localidades insuficientes."
+    rank_deficient: "Dados insuficientes para identificar o modelo."
+    model_fit_failed: "Ajuste não convergiu."
+    heterogeneous_behavior: "Comportamento incompatível com o modelo homogêneo."
+    unstable_estimates: "Estimativas instáveis."
   title: Comparar eleições
   intro: "O mesmo indicador, território e definição em todas as eleições disponíveis. Os totais usam os arquivos completos, independentemente das UFs já carregadas."
   indicator: Indicador
@@ -1113,6 +1154,9 @@ compare:
     results: Resultados
     operation: Operação da votação
     representation: Representação
+    competition: Candidatos e partidos
+    statistical: Distribuições e Benford
+    signals: Sinais detalhados
   sources:
     turnout: Totais oficiais de comparecimento
     sgz: Dados oficiais por seção agregados
@@ -1120,7 +1164,33 @@ compare:
     totx: Votos das seções e complemento oficial
     vtc: Eventos dos logs disponíveis
     seats: Composição oficial por partido ou federação
+    res: Resultados agregados das seções disponíveis
+    resx: Resultados e complemento oficial
+    sgf: Critérios estatísticos por seção
+    section_stats: Estatísticas por seção dos logs
+    benford: Histogramas e simulações de Benford
+  target: Alvo nesta eleição
+  baseline: MAD simulado (média e intervalo)
+  targets: Escolher candidato ou partido em cada eleição
+  targetNote: "A identidade é escolhida separadamente em cada eleição; números iguais em anos diferentes não identificam a mesma pessoa. Sem escolha, usa-se o primeiro colocado ou os votos nominais, conforme a análise."
+  leaderTarget: Primeiro colocado nesta eleição
+  nominalTarget: Total de votos nominais
+  digit: Posição do dígito
+  unit: Unidade da distribuição
+  sectionUnit: Seções
+  cityUnit: Municípios
+  belowPrecision: Abaixo da precisão numérica
+  digits:
+    d1: Primeiro dígito
+    d2: Segundo dígito
+    d12: Dois primeiros dígitos
+    d_last: Último dígito
   notes:
+    register: "Totais oficiais do cadastro e das seções não instaladas, separados do denominador de comparecimento."
+    competition: "Os alvos são específicos de cada eleição. Candidatos, partidos, alianças e federações mudam; a concentração compara distribuições, sem presumir identidade entre números de candidatura."
+    section_stats: "Cada seção tem peso igual. As medianas de medianas e de p10/p90 descrevem as seções; não são os percentis do conjunto de eleitores. Horários usam o fuso estimado por município."
+    benford: "Compare a mesma posição de dígito, unidade e alvo. N é o número de unidades com dígitos observados. O valor-p teórico não corrige múltiplas comparações e não comprova irregularidade; o envelope simulado só aparece quando foi gerado para o mesmo escopo."
+    signal_detail: "Fração de seções que atendem ao critério, calculada com todas as seções analisadas como denominador. Critérios dependentes de logs só se aplicam aos períodos com esse insumo."
     participation: "Eleitorado aqui é o das seções instaladas ou o informado no detalhe por seção, conforme a fonte. A abstenção usa esse denominador, sem incluir seções não instaladas."
     results: "Cada cargo tem seus próprios votos válidos, brancos e nulos. No Senado, dois votos por eleitor não equivalem a dois eleitores."
     time: "Eventos são confirmações de voto para presidente nos logs. Após as 17h significa horário de Brasília estimado por município; a prorrogação de 2026 altera o contexto dessa medida."
@@ -1128,12 +1198,14 @@ compare:
     signals: "Sinais são critérios estatísticos sobre as seções com insumos disponíveis; não são prova de irregularidade."
     seats: "As regras, alianças e federações mudam entre eleições. Cadeiras representam o resultado oficial de cada período, não uma simulação com a mesma regra."
   metrics:
+    historical_valid: Votos válidos oficiais
+    historical_sections: Seções na fonte histórica
     abstention_rate: Abstenção (%)
     attendance_rate: Comparecimento (%)
     absent: Eleitores ausentes
     present: Eleitores presentes
     electorate: Eleitorado da base de comparecimento
-    valid_votes: Votos nominais ou válidos na fonte
+    nominal_votes: Votos nominais na fonte
     blank_votes: Votos brancos
     null_votes: Votos nulos
     ballot_votes: Total de votos no cargo
@@ -1146,6 +1218,41 @@ compare:
     flagged_rate: Seções com sinal estatístico (%)
     seats: Cadeiras atribuídas
     parties: Partidos ou federações com cadeira
+    registered_electorate: "Eleitorado total registrado (fonte oficial)"
+    not_installed: "Eleitores em seções não instaladas"
+    candidate_votes: "Votos do candidato selecionado"
+    candidate_share: "Participação do candidato selecionado (%)"
+    candidate_rank: "Posição do candidato selecionado"
+    winner_rate: "Participação do primeiro colocado (%)"
+    lead_margin: "Margem entre os dois primeiros (%)"
+    effective_candidates: "Número efetivo de candidatos"
+    candidate_hhi: "Concentração dos votos (HHI)"
+    candidate_count: "Candidatos com votos"
+    party_votes: "Votos do partido selecionado"
+    party_share: "Participação do partido selecionado (%)"
+    party_count: "Partidos com votos"
+    section_median_gap: "Mediana das medianas por seção (s)"
+    section_p10_gap: "Mediana dos p10 por seção (s)"
+    section_p90_gap: "Mediana dos p90 por seção (s)"
+    longest_pause: "Maior pausa registrada (s)"
+    earliest_event: "Primeiro evento (Brasília estimada)"
+    latest_event: "Último evento (Brasília estimada)"
+    benford_mad: "Benford: desvio absoluto médio (MAD)"
+    benford_chi2: "Benford: qui-quadrado"
+    benford_p: "Benford: valor-p teórico"
+    benford_index: "Benford: posição no envelope simulado"
+    signal_abstention: "Abstenção muito baixa (%)"
+    signal_late: "Votação tardia (%)"
+    signal_manual: "Liberação manual (%)"
+    signal_late10: "10% dos votos após 17h (%)"
+    signal_lateNoFp: "Voto tardio sem biometria (%)"
+    signal_turnout: "Comparecimento divergente do log (%)"
+    signal_noFp: "Sem biometria (%)"
+    signal_streak: "Sequência manual (%)"
+    signal_schoolNoFp: "Sem biometria frente à escola (%)"
+    signal_later: "Voto mais tardio que a escola (%)"
+    signal_fast: "Ritmo muito rápido (%)"
+    signal_idle: "Pausa longa (%)"
 
 history:
   title: Acervo histórico do TSE

@@ -2,20 +2,30 @@
 const metric = (id, family, source, rate = false) => ({ id, family, source, rate })
 export const METRICS = [
   ...['abstention_rate','attendance_rate','absent','present','electorate'].map((id) => metric(id, 'participation', 'participation', id.endsWith('_rate'))),
-  ...['valid_votes','blank_votes','null_votes','ballot_votes','blank_rate','null_rate'].map((id) => metric(id, 'results', 'results', id.endsWith('_rate'))),
+  metric('registered_electorate', 'participation', 'register'), metric('not_installed', 'participation', 'register'),
+  ...['nominal_votes','blank_votes','null_votes','ballot_votes','blank_rate','null_rate'].map((id) => metric(id, 'results', 'results', id.endsWith('_rate'))),
   metric('events', 'operation', 'time'), metric('late_rate', 'operation', 'time', true),
   metric('manual_rate', 'operation', 'identification', true), metric('nonbiometric_rate', 'operation', 'identification', true),
   metric('flagged_rate', 'operation', 'signals', true),
+  ...['candidate_votes','candidate_share','candidate_rank','winner_rate','lead_margin','effective_candidates','candidate_hhi','candidate_count','party_votes','party_share','party_count'].map((id) => ({ ...metric(id, 'competition', 'competition', id.endsWith('_share') || id.endsWith('_rate') || id === 'lead_margin'), decimal: ['effective_candidates','candidate_hhi'].includes(id) })),
+  ...['section_median_gap','section_p10_gap','section_p90_gap','longest_pause','earliest_event','latest_event'].map((id) => ({ ...metric(id, 'operation', 'section_stats'), seconds: !id.endsWith('_event'), clock: id.endsWith('_event') })),
+  ...['benford_mad','benford_chi2','benford_p','benford_index'].map((id) => ({ ...metric(id, 'statistical', 'benford'), decimal: true })),
+  ...['abstention','late','manual','late10','lateNoFp','turnout','noFp','streak','schoolNoFp','later','fast','idle'].map((id) => metric(`signal_${id}`, 'signals', 'signal_detail', true)),
   metric('seats', 'representation', 'seats'), metric('parties', 'representation', 'seats'),
 ]
 export const metricOf = (id) => METRICS.find((m) => m.id === id)
 
 export function metricSource(id, election, available) {
   const { source } = metricOf(id)
+  if (source === 'register') return election.hasTurnout && available.has('turnout') ? 'turnout' : null
   if (source === 'participation') {
     if (election.hasTurnout && available.has('turnout')) return 'turnout'
     return election.hasSignals && available.has('sgz') ? 'sgz' : null
   }
+  if (source === 'competition') return available.has('res') ? (election.hasResidual ? 'resx' : 'res') : null
+  if (source === 'section_stats') return election.hasTimes && available.has('vt') ? 'section_stats' : null
+  if (source === 'benford') return available.has('benford_hist') ? 'benford' : null
+  if (source === 'signal_detail') return election.hasSignals && available.has('sgf') ? 'sgf' : null
   if (source === 'results') return available.has('tot') ? (election.hasResidual ? 'totx' : 'tot') : null
   if (source === 'time') return election.hasTimes && available.has('vtc') ? 'vtc' : null
   if (source === 'identification') return election.hasTimes && election.hasSignals && available.has('sgz') ? 'sgz' : null
@@ -39,17 +49,21 @@ export function comparisonQuery(id, election, source) {
     const official = source === 'turnout'
     const present = official ? 'present' : 'comp'
     const electorate = official ? 'installed' : 'aptos'
-    numerator = id === 'electorate' ? `sum(${electorate})` : ['present','attendance_rate'].includes(id) ? `sum(${present})` : `sum(${official ? 'absent' : 'aptos - comp'})`
+    numerator = id === 'registered_electorate' ? 'sum(electorate)' : id === 'not_installed' ? 'sum(not_installed)' : id === 'electorate' ? `sum(${electorate})` : ['present','attendance_rate'].includes(id) ? `sum(${present})` : `sum(${official ? 'absent' : 'aptos - comp'})`
     denominator = `sum(${electorate})`
     if (official) filter = `scope = case when $2::text <> '' then 'city' when $1::text <> '' then 'uf' else 'br' end and state = case when $1::text = '' then 'br' else $1 end and city is not distinct from nullif($2::text, '')`
   } else if (source === 'tot' || source === 'totx') {
     const total = 'nominal + blank + nul'
-    numerator = `sum(${id.startsWith('blank') ? 'blank' : id.startsWith('null') ? 'nul' : id === 'valid_votes' ? 'nominal' : total})`
+    numerator = `sum(${id.startsWith('blank') ? 'blank' : id.startsWith('null') ? 'nul' : id === 'nominal_votes' ? 'nominal' : total})`
     denominator = `sum(${total})`
     filter += ' and office = $3'
   } else if (source === 'vtc') {
     numerator = id === 'events' ? 'sum(n)' : `(select coalesce(sum(v), 0) from vtc x, unnest(x.b) with ordinality bins(v, ord) where x.election = ${election.year} and x.turn = ${election.turn} and ($1::text = '' or x.state = $1) and ($2::text = '' or x.city = $2) and 18000 + 600 * (ord - 1 - 6 * x.tz) >= 61200)`
     denominator = 'sum(n)'
+  } else if (source === 'sgf') {
+    const signals = ['abstention','late','manual','late10','lateNoFp','turnout','noFp','streak','schoolNoFp','later','fast','idle']
+    numerator = `count(*) filter (where (fl & ${1 << signals.indexOf(id.slice(7))}) > 0)`
+    denominator = `(select sum(sections) from sgz where ${where} and ${scope})`
   } else if (source === 'sgz') {
     numerator = id === 'flagged_rate' ? 'sum(flagged)' : id === 'manual_rate' ? 'sum(man)' : 'sum(man + nor)'
     denominator = id === 'flagged_rate' ? 'sum(sections)' : 'sum(v)'

@@ -22,6 +22,7 @@
     "benford": "node scripts/build-benford.mjs",
     "verify:seats": "node scripts/verify-seats.mjs",
     "data": "node scripts/build-data.mjs",
+    "data:comparison": "node scripts/build-comparison-stats.mjs",
     "logpack:index": "node scripts/build-logpack-index.mjs",
     "lint:tokens": "node scripts/lint-tokens.mjs",
     "check:elections": "node scripts/check-elections.mjs",

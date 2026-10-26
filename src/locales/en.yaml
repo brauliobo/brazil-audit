@@ -1089,6 +1089,47 @@ navGroups:
   sections: Tools in this area
 
 compare:
+  unknownParty: Party unspecified in source
+  unknownOffice: Office unspecified in source
+  mode: "Comparison type"
+  historyMode: "Official historical series"
+  flowMode: "Estimated transfers"
+  historyNote: "Normalized official data since 1933. Historical offices retain their original identities. Totals include only units with known values; states, municipalities and zones have different coverage and do not form a constant territorial panel. Missing fields are not zero."
+  historyGrain: "Grain"
+  historyKnown: "Known units"
+  historyTotal: "Source units"
+  historyStates: "Included states"
+  historyState: "State (empty: all)"
+  flowFrom: "First-round origin"
+  flowTo: "Second-round destination"
+  flowEstimate: "Estimated voters"
+  flowShare: "% of origin"
+  flowInterval: "Conditional bootstrap interval (95%)"
+  flowBounds: "Feasible margin bounds"
+  flowNote: "Aggregate ecological estimate: does not track individual votes. The model assumes homogeneous behavior across territories; intervals use conditional territorial bootstrap, not posterior probabilities. Margin bounds are independent of the model. Only localities with compatible electorates in both rounds are included."
+  flowPending: "Estimates are being prepared."
+  flowCoverage: "Coverage: {units} of {total} localities; {electorate} of {all} voters."
+  flowDiagnostics: "Method and diagnostics"
+  modes:
+    indicators: Detailed indicators
+    history: History since 1933
+    flows: Estimated transfers
+  flowStatus:
+    estimated: Conditional estimate available
+    inconclusive: "Inconclusive: inspect feasible bounds"
+    not_applicable: Not applicable
+  flowReasons:
+    no_second_round: "No second round."
+    missing_candidate_data: "Candidate results unavailable."
+    missing_turnout_data: "Turnout unavailable."
+    population_changed: "Electorate changed between rounds."
+    inconsistent_margins: "Inconsistent margins."
+    no_matched_units: "No matched localities."
+    insufficient_units: "Insufficient localities."
+    rank_deficient: "Insufficient variation to identify the model."
+    model_fit_failed: "Model fit failed."
+    heterogeneous_behavior: "Behavior is incompatible with the homogeneous model."
+    unstable_estimates: "Unstable estimates."
   title: Compare elections
   intro: "The same indicator, territory and definition across all available elections. Totals use complete files, independently of the states already loaded."
   indicator: Indicator
@@ -1112,6 +1153,9 @@ compare:
     results: Results
     operation: Voting operations
     representation: Representation
+    competition: Candidates and parties
+    statistical: Distributions and Benford
+    signals: Detailed signals
   sources:
     turnout: Official turnout totals
     sgz: Aggregated official section data
@@ -1119,7 +1163,33 @@ compare:
     totx: Section votes and official supplement
     vtc: Events from available logs
     seats: Official party or federation composition
+    res: Aggregated results of available sections
+    resx: Results and official supplement
+    sgf: Statistical section criteria
+    section_stats: Section statistics from logs
+    benford: Benford histograms and simulations
+  target: Target in this election
+  baseline: Simulated MAD (mean and interval)
+  targets: Select a candidate or party in each election
+  targetNote: "Identity is selected separately for each election; equal candidate numbers across years do not identify the same person. Without a selection, the leading candidate or nominal votes are used, depending on the analysis."
+  leaderTarget: Leader in this election
+  nominalTarget: Total nominal votes
+  digit: Digit position
+  unit: Distribution unit
+  sectionUnit: Sections
+  cityUnit: Municipalities
+  belowPrecision: Below numerical precision
+  digits:
+    d1: First digit
+    d2: Second digit
+    d12: First two digits
+    d_last: Last digit
   notes:
+    register: "Official register totals and voters in uninstalled sections, separate from the turnout denominator."
+    competition: "Targets belong to each election. Candidates, parties, alliances and federations change; concentration compares distributions without assuming identity between candidate numbers."
+    section_stats: "Each section has equal weight. Medians of section medians and p10/p90 values describe sections; they are not voter-level percentiles. Times use the estimated municipal time zone."
+    benford: "Compare the same digit position, unit and target. N is the number of units with observed digits. The theoretical p-value is not adjusted for multiple comparisons and is not evidence of irregularity; simulated envelopes appear only when generated for the same scope."
+    signal_detail: "Fraction of sections meeting the criterion, using all analyzed sections as denominator. Log-dependent criteria apply only to periods with that input."
     participation: "Electorate here means voters in installed sections or in the section detail, depending on the source. Abstention uses this denominator, excluding uninstalled sections."
     results: "Each office has its own valid, blank and null votes. For Senate elections, two votes per voter do not mean two voters."
     time: "Events are presidential vote confirmations in machine logs. After 17:00 uses Brasília time estimated per municipality; the 2026 extension changes the context of this measure."
@@ -1127,12 +1197,14 @@ compare:
     signals: "Signals are statistical criteria over sections with available inputs; they are not proof of irregularity."
     seats: "Rules, alliances and federations change across elections. Seats represent each period's official result, not a simulation under the same rule."
   metrics:
+    historical_valid: Official valid votes
+    historical_sections: Sections in historical source
     abstention_rate: Abstention (%)
     attendance_rate: Turnout (%)
     absent: Absent voters
     present: Voters present
     electorate: Electorate in the turnout source
-    valid_votes: Nominal or valid votes in the source
+    nominal_votes: Nominal votes in the source
     blank_votes: Blank votes
     null_votes: Null votes
     ballot_votes: Total votes for the office
@@ -1145,6 +1217,41 @@ compare:
     flagged_rate: Sections with a statistical signal (%)
     seats: Seats assigned
     parties: Parties or federations with a seat
+    registered_electorate: "Total registered electorate (official source)"
+    not_installed: "Voters in uninstalled sections"
+    candidate_votes: "Selected candidate votes"
+    candidate_share: "Selected candidate share (%)"
+    candidate_rank: "Selected candidate rank"
+    winner_rate: "Leading candidate share (%)"
+    lead_margin: "Margin between the two leaders (%)"
+    effective_candidates: "Effective number of candidates"
+    candidate_hhi: "Vote concentration (HHI)"
+    candidate_count: "Candidates receiving votes"
+    party_votes: "Selected party votes"
+    party_share: "Selected party share (%)"
+    party_count: "Parties receiving votes"
+    section_median_gap: "Median of section medians (s)"
+    section_p10_gap: "Median of section p10 values (s)"
+    section_p90_gap: "Median of section p90 values (s)"
+    longest_pause: "Longest recorded pause (s)"
+    earliest_event: "First event (estimated Brasília time)"
+    latest_event: "Last event (estimated Brasília time)"
+    benford_mad: "Benford: mean absolute deviation (MAD)"
+    benford_chi2: "Benford: chi-square"
+    benford_p: "Benford: theoretical p-value"
+    benford_index: "Benford: position in simulated envelope"
+    signal_abstention: "Unusually low abstention (%)"
+    signal_late: "Late voting (%)"
+    signal_manual: "Manual release (%)"
+    signal_late10: "10% of votes after 17:00 (%)"
+    signal_lateNoFp: "Late votes without biometrics (%)"
+    signal_turnout: "Log turnout mismatch (%)"
+    signal_noFp: "Without biometrics (%)"
+    signal_streak: "Manual streak (%)"
+    signal_schoolNoFp: "Without biometrics vs school (%)"
+    signal_later: "Later than the school (%)"
+    signal_fast: "Very fast pace (%)"
+    signal_idle: "Long pause (%)"
 
 history:
   title: TSE historical archive

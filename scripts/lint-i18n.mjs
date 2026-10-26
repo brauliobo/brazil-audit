@@ -1,3 +1,4 @@
+import { METRICS } from '../src/comparison.js'
 // Checks the locale files and the code that uses them (run by `npm run lint:i18n` and by the Pages workflow):
 //   1. pt-BR.yaml and en.yaml have the same keys and the same {placeholders}; plural keys come as `_one` + `_other`
 //   2. every key used in code (t('a.b'), t(`a.${x}`), or a string that is a key) exists; every key is used
@@ -53,12 +54,16 @@ const isNamespace = (key) => [...defined].some((k) => k.startsWith(`${key}.`))
 // ---- dynamic key families: prefix -> member ids (each `prefix + id` must exist) --------------------------------------------
 const officeIds = [...new Set(Object.values(ELECTIONS).flatMap((e) => e.offices))]
 const FAMILIES = {
+  'compare.digits.': ['d1','d2','d12','d_last'],
   'history.status.': ['catalogued','downloaded','published','blocked','downloading','unavailable','partial','privacy-review-required','excluded'],
   'navGroups.': ['summary', 'explore', 'compare', 'investigate'],
-  'compare.families.': ['participation', 'results', 'operation', 'representation'],
-  'compare.metrics.': ['abstention_rate','attendance_rate','absent','present','electorate','valid_votes','blank_votes','null_votes','ballot_votes','blank_rate','null_rate','events','late_rate','manual_rate','nonbiometric_rate','flagged_rate','seats','parties'],
-  'compare.sources.': ['turnout','sgz','tot','totx','vtc','seats'],
-  'compare.notes.': ['participation','results','time','identification','signals','seats'],
+  'compare.families.': [...new Set(METRICS.map((m) => m.family))],
+  'compare.metrics.': [...METRICS.map((m) => m.id),'historical_valid','historical_sections'],
+  'compare.modes.': ['indicators','history','flows'],
+  'compare.flowStatus.': ['estimated','inconclusive','not_applicable'],
+  'compare.flowReasons.': ['no_second_round','missing_candidate_data','missing_turnout_data','population_changed','inconsistent_margins','no_matched_units','insufficient_units','rank_deficient','model_fit_failed','heterogeneous_behavior','unstable_estimates'],
+  'compare.sources.': ['turnout','sgz','tot','totx','vtc','seats','res','resx','sgf','section_stats','benford'],
+  'compare.notes.': [...new Set(METRICS.map((m) => m.source))],
   'nav.': [...VIEWS_NAV, ...HIDDEN_VIEWS],
   'states.': UFS,
   'regions.': REGION_IDS,
