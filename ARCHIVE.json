@@ -1,0 +1,60 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-10-26T21:55:43.515190+00:00",
+  "status": "published",
+  "dataset": {
+    "id": "comparecimento-e-abstencao-2012",
+    "title": "Comparecimento e Abstenção - 2012",
+    "groups": [
+      "comparecimento-e-abstencao"
+    ],
+    "family": "comparecimento-e-abstencao",
+    "years": [
+      2012
+    ],
+    "license": "cc-by",
+    "source": "https://dadosabertos.tse.jus.br/dataset/comparecimento-e-abstencao-2012",
+    "branch": "archive/comparecimento-e-abstencao-2012",
+    "tag": "data-comparecimento-e-abstencao-2012",
+    "releaseUrl": "https://github.com/brauliobo/brazil-audit/releases/tag/data-comparecimento-e-abstencao-2012",
+    "normalized": false,
+    "status": "catalogued",
+    "inScope": true
+  },
+  "resources": [
+    {
+      "id": "f21b225e-545e-4e49-9237-34ae54c0dc10",
+      "name": "Comparecimento e Abstenção",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_comparecimento_abstencao/perfil_comparecimento_abstencao_2012.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_comparecimento_abstencao/perfil_comparecimento_abstencao_2012.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 94675062,
+      "lastModified": "Wed, 30 Apr 2025 19:50:55 GMT",
+      "etag": "\"5a4a076-634043c3c9a09\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:55:43.425482+00:00",
+      "sha256": "2f2033d715263d6abcecdbc7e88b274832fb649ac79a3f96d79d8ff17d04a514",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "f21b225e-perfil_comparecimento_abstencao_2012.zip",
+          "bytes": 94675062,
+          "sha256": "2f2033d715263d6abcecdbc7e88b274832fb649ac79a3f96d79d8ff17d04a514"
+        }
+      ]
+    },
+    {
+      "id": "70dc05f0-a879-47c3-b1e3-1274f210b052",
+      "name": "Pessoas com deficiência",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_comparecimento_abstencao_eleitor_deficiente/perfil_comparecimento_abstencao_eleitor_deficiente_2012.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_comparecimento_abstencao_eleitor_deficiente/perfil_comparecimento_abstencao_eleitor_deficiente_2012.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 11539169,
+      "lastModified": "Wed, 30 Apr 2025 18:37:30 GMT",
+      "etag": "\"b012e1-6340335b1c9b4\"",
+      "inScope": false
+    }
+  ]
+}
