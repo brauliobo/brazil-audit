@@ -1,0 +1,730 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-10-26T22:02:38.407734+00:00",
+  "status": "published",
+  "dataset": {
+    "id": "resultados-2018",
+    "title": "Resultados - 2018",
+    "groups": [
+      "resultados"
+    ],
+    "family": "resultados",
+    "years": [
+      2018
+    ],
+    "license": "cc-by",
+    "source": "https://dadosabertos.tse.jus.br/dataset/resultados-2018",
+    "branch": "archive/resultados-2018",
+    "tag": "data-resultados-2018",
+    "releaseUrl": "https://github.com/brauliobo/brazil-audit/releases/tag/data-resultados-2018",
+    "normalized": false,
+    "status": "catalogued",
+    "inScope": true
+  },
+  "resources": [
+    {
+      "id": "e1dae37e-c2d6-493c-bf66-437f3788af89",
+      "name": "Votação nominal por município e zona",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_candidato_munzona/votacao_candidato_munzona_2018.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_candidato_munzona/votacao_candidato_munzona_2018.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 395389280,
+      "lastModified": "Wed, 13 Nov 2024 16:25:44 GMT",
+      "etag": "\"17912960-626cdc9223858\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:59:21.096714+00:00",
+      "sha256": "f880848ef4ba340b15cb91ff0754aa370d34ca7b7e605d6607c0f2a75009adc8",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "e1dae37e-votacao_candidato_munzona_2018.zip",
+          "bytes": 395389280,
+          "sha256": "f880848ef4ba340b15cb91ff0754aa370d34ca7b7e605d6607c0f2a75009adc8"
+        }
+      ]
+    },
+    {
+      "id": "df668b98-07ad-420e-8b90-f9525060d6b6",
+      "name": "Votação em partido por município e zona",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_partido_munzona/votacao_partido_munzona_2018.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_partido_munzona/votacao_partido_munzona_2018.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 27920768,
+      "lastModified": "Thu, 25 Jul 2024 01:01:27 GMT",
+      "etag": "\"1aa0980-61e07ef3c7356\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:59:23.427247+00:00",
+      "sha256": "c3ab9e78efd8d11033d650451252cb5c019a699e79bec7e04371a3a4022143df",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "df668b98-votacao_partido_munzona_2018.zip",
+          "bytes": 27920768,
+          "sha256": "c3ab9e78efd8d11033d650451252cb5c019a699e79bec7e04371a3a4022143df"
+        }
+      ]
+    },
+    {
+      "id": "a96bfc8e-1e57-4eec-afcd-f98525d5cf51",
+      "name": "Detalhe da apuração por município e zona",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/detalhe_votacao_munzona/detalhe_votacao_munzona_2018.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/detalhe_votacao_munzona/detalhe_votacao_munzona_2018.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 4269741,
+      "lastModified": "Tue, 29 Jul 2025 16:29:08 GMT",
+      "etag": "\"4126ad-63b13e8577a7f\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:59:24.536508+00:00",
+      "sha256": "df68c258a2261dff37b379f65ea5f2e8de7b3d824bb2340d8f4830274a3fabb5",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "a96bfc8e-detalhe_votacao_munzona_2018.zip",
+          "bytes": 4269741,
+          "sha256": "df68c258a2261dff37b379f65ea5f2e8de7b3d824bb2340d8f4830274a3fabb5"
+        }
+      ]
+    },
+    {
+      "id": "7f6271bc-555e-47a5-aace-7009dc01c341",
+      "name": "Detalhe da apuração por seção eleitoral",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/detalhe_votacao_secao/detalhe_votacao_secao_2018.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/detalhe_votacao_secao/detalhe_votacao_secao_2018.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 256133172,
+      "lastModified": "Thu, 09 Apr 2026 16:48:22 GMT",
+      "etag": "\"f444834-64f09c8d4cf8f\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:59:48.045647+00:00",
+      "sha256": "de35b08db427ee0c3089d88317e6166ea5dea33630f5b1dabdccf3304de48f70",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "7f6271bc-detalhe_votacao_secao_2018.zip",
+          "bytes": 256133172,
+          "sha256": "de35b08db427ee0c3089d88317e6166ea5dea33630f5b1dabdccf3304de48f70"
+        }
+      ]
+    },
+    {
+      "id": "6bba2a01-5b6f-4f0a-99d7-4ef3db782f62",
+      "name": "AC - Votação por seção eleitoral - 2018",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2018_AC.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2018_AC.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 5867939,
+      "lastModified": "Wed, 24 Apr 2024 17:19:40 GMT",
+      "etag": "\"5989a3-616dae02e21bd\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:59:48.977798+00:00",
+      "sha256": "abc157088d24df28ac06c063f46f808305b64ca5d434074b28ff39e7accaae3e",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "6bba2a01-votacao_secao_2018_AC.zip",
+          "bytes": 5867939,
+          "sha256": "abc157088d24df28ac06c063f46f808305b64ca5d434074b28ff39e7accaae3e"
+        }
+      ]
+    },
+    {
+      "id": "f6feee37-4913-4d83-b73b-dc25ba51e2e6",
+      "name": "Presidente - Votação por seção eleitoral - 2018",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2018_BR.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2018_BR.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 250985147,
+      "lastModified": "Fri, 15 Aug 2025 14:15:53 GMT",
+      "etag": "\"ef5babb-63c68071041ac\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T22:00:08.211668+00:00",
+      "sha256": "dde2250058a7efa3b7ee336520556905456cb75d7debf99ea4badfc4d598a48c",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "f6feee37-votacao_secao_2018_BR.zip",
+          "bytes": 250985147,
+          "sha256": "dde2250058a7efa3b7ee336520556905456cb75d7debf99ea4badfc4d598a48c"
+        }
+      ]
+    },
+    {
+      "id": "d98aaf7a-61b3-4b19-9428-c5b5f22fce6a",
+      "name": "AL - Votação por seção eleitoral - 2018",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2018_AL.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2018_AL.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 15602679,
+      "lastModified": "Wed, 24 Apr 2024 17:19:33 GMT",
+      "etag": "\"ee13f7-616dadfcdcd25\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T22:00:09.438908+00:00",
+      "sha256": "3aef92c97cdbfa4e21e6514a721703e70ff779e4141a63378ded37a7b047486b",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "d98aaf7a-votacao_secao_2018_AL.zip",
+          "bytes": 15602679,
+          "sha256": "3aef92c97cdbfa4e21e6514a721703e70ff779e4141a63378ded37a7b047486b"
+        }
+      ]
+    },
+    {
+      "id": "0a70cdd4-2647-415e-a986-fd8c84711eb2",
+      "name": "AP - Votação por seção eleitoral - 2018",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2018_AP.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2018_AP.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 7653995,
+      "lastModified": "Wed, 24 Apr 2024 17:19:15 GMT",
+      "etag": "\"74ca6b-616dadeba5845\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T22:00:10.187817+00:00",
+      "sha256": "1fefc474b741e2fcbc9deea1773864569bf09a179ff027e6038b0e92d9c7274d",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "0a70cdd4-votacao_secao_2018_AP.zip",
+          "bytes": 7653995,
+          "sha256": "1fefc474b741e2fcbc9deea1773864569bf09a179ff027e6038b0e92d9c7274d"
+        }
+      ]
+    },
+    {
+      "id": "e8ae54a3-86fd-4189-893d-f59e551a4b45",
+      "name": "AM - Votação por seção eleitoral - 2018",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2018_AM.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2018_AM.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 26048634,
+      "lastModified": "Wed, 24 Apr 2024 17:19:05 GMT",
+      "etag": "\"18d787a-616dade23b515\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T22:00:11.138459+00:00",
+      "sha256": "21a1268d6e29cfe7a08f1552ec1fe75e965701c1981a95ea6103a2ad6d6326c7",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "e8ae54a3-votacao_secao_2018_AM.zip",
+          "bytes": 26048634,
+          "sha256": "21a1268d6e29cfe7a08f1552ec1fe75e965701c1981a95ea6103a2ad6d6326c7"
+        }
+      ]
+    },
+    {
+      "id": "a808ced7-cb39-4aa5-9e46-96f1dafe0142",
+      "name": "BA - Votação por seção eleitoral - 2018",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2018_BA.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2018_BA.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 96596420,
+      "lastModified": "Wed, 24 Apr 2024 17:27:36 GMT",
+      "etag": "\"5c1f1c4-616dafc940946\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T22:00:15.866279+00:00",
+      "sha256": "deb5930e8b1aa6b890af600d9adbb72c5e53e9bdede48e54596f360683f43a68",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "a808ced7-votacao_secao_2018_BA.zip",
+          "bytes": 96596420,
+          "sha256": "deb5930e8b1aa6b890af600d9adbb72c5e53e9bdede48e54596f360683f43a68"
+        }
+      ]
+    },
+    {
+      "id": "d413b9b9-a516-45ea-98a5-f33d07637c1f",
+      "name": "CE - Votação por seção eleitoral - 2018",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2018_CE.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2018_CE.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 60036449,
+      "lastModified": "Wed, 24 Apr 2024 17:20:31 GMT",
+      "etag": "\"3941561-616dae3411659\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T22:00:19.891480+00:00",
+      "sha256": "344e21c65ef4ffd369f36fee4e0ec821ca39d8cd8c3f12057e66d025bf1dc36c",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "d413b9b9-votacao_secao_2018_CE.zip",
+          "bytes": 60036449,
+          "sha256": "344e21c65ef4ffd369f36fee4e0ec821ca39d8cd8c3f12057e66d025bf1dc36c"
+        }
+      ]
+    },
+    {
+      "id": "9d270cc1-180b-4694-93d1-1aa94a9c3479",
+      "name": "DF - Votação por seção eleitoral - 2018",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2018_DF.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2018_DF.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 37108246,
+      "lastModified": "Fri, 15 Aug 2025 13:52:26 GMT",
+      "etag": "\"2363a16-63c67b335de76\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T22:00:23.866276+00:00",
+      "sha256": "c5f236229fd89ffc80c73dae3af44882ca157b16bae2094eb464108340183b67",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "9d270cc1-votacao_secao_2018_DF.zip",
+          "bytes": 37108246,
+          "sha256": "c5f236229fd89ffc80c73dae3af44882ca157b16bae2094eb464108340183b67"
+        }
+      ]
+    },
+    {
+      "id": "c3fe8062-9eba-456d-99ab-610fba4fc7f4",
+      "name": "ES - Votação por seção eleitoral - 2018",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2018_ES.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2018_ES.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 28388000,
+      "lastModified": "Wed, 24 Apr 2024 17:19:38 GMT",
+      "etag": "\"1b12aa0-616dae01682c2\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T22:00:25.046959+00:00",
+      "sha256": "9b823ce019a7c1b565d047b257fd38df5aace43f48755d3294e2e7400f2e4100",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "c3fe8062-votacao_secao_2018_ES.zip",
+          "bytes": 28388000,
+          "sha256": "9b823ce019a7c1b565d047b257fd38df5aace43f48755d3294e2e7400f2e4100"
+        }
+      ]
+    },
+    {
+      "id": "4b6289e6-3133-4b0b-b264-ad12fead5318",
+      "name": "GO - Votação por seção eleitoral - 2018",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2018_GO.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2018_GO.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 49080024,
+      "lastModified": "Wed, 24 Apr 2024 17:19:06 GMT",
+      "etag": "\"2ece6d8-616dade272401\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T22:00:26.719890+00:00",
+      "sha256": "1a2a77c321c03fbfbbfc381056fc802b76fc2d13c04624a6baafdc7ef2dc18a5",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "4b6289e6-votacao_secao_2018_GO.zip",
+          "bytes": 49080024,
+          "sha256": "1a2a77c321c03fbfbbfc381056fc802b76fc2d13c04624a6baafdc7ef2dc18a5"
+        }
+      ]
+    },
+    {
+      "id": "b651eccf-94e7-47d9-85f0-a497004a2b86",
+      "name": "MA - Votação por seção eleitoral - 2018",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2018_MA.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2018_MA.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 40465541,
+      "lastModified": "Wed, 24 Apr 2024 17:20:58 GMT",
+      "etag": "\"2697485-616dae4d7c592\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T22:00:28.513173+00:00",
+      "sha256": "b41a2cf2bcefb24b347a87d68a0d5c4637c1e94b9cc3de2f6cecdee7b220f773",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "b651eccf-votacao_secao_2018_MA.zip",
+          "bytes": 40465541,
+          "sha256": "b41a2cf2bcefb24b347a87d68a0d5c4637c1e94b9cc3de2f6cecdee7b220f773"
+        }
+      ]
+    },
+    {
+      "id": "f3aebc7e-3626-492a-8783-4c40086453cf",
+      "name": "MT - Votação por seção eleitoral - 2018",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2018_MT.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2018_MT.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 23166003,
+      "lastModified": "Wed, 24 Apr 2024 17:19:40 GMT",
+      "etag": "\"1617c33-616dae0367697\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T22:00:29.626564+00:00",
+      "sha256": "16342cf83dec151b732cb25c35b133ea09865f0fbd4a0a03a9ae3140daf9bccb",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "f3aebc7e-votacao_secao_2018_MT.zip",
+          "bytes": 23166003,
+          "sha256": "16342cf83dec151b732cb25c35b133ea09865f0fbd4a0a03a9ae3140daf9bccb"
+        }
+      ]
+    },
+    {
+      "id": "97550028-3376-4a0e-a45d-a4e7ffdb72e4",
+      "name": "MS - Votação por seção eleitoral - 2018",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2018_MS.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2018_MS.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 19603873,
+      "lastModified": "Wed, 24 Apr 2024 17:19:10 GMT",
+      "etag": "\"12b21a1-616dade6a111f\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T22:00:30.356294+00:00",
+      "sha256": "67ee17393cd46bc84a88ace2455c9681ed6a3759f2182f0bf51d43d1bd1619b6",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "97550028-votacao_secao_2018_MS.zip",
+          "bytes": 19603873,
+          "sha256": "67ee17393cd46bc84a88ace2455c9681ed6a3759f2182f0bf51d43d1bd1619b6"
+        }
+      ]
+    },
+    {
+      "id": "555c17ed-9e36-407d-b9c5-078ab370bdee",
+      "name": "MG - Votação por seção eleitoral - 2018",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2018_MG.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2018_MG.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 192869746,
+      "lastModified": "Wed, 24 Apr 2024 17:37:54 GMT",
+      "etag": "\"b7ef572-616db2167f02f\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T22:00:57.415967+00:00",
+      "sha256": "d549941f4c4362fff39d18df0f97352c0c4747051ec9023b3e68e0d2e20b2df9",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "555c17ed-votacao_secao_2018_MG.zip",
+          "bytes": 192869746,
+          "sha256": "d549941f4c4362fff39d18df0f97352c0c4747051ec9023b3e68e0d2e20b2df9"
+        }
+      ]
+    },
+    {
+      "id": "53c22412-e411-423d-a57a-9027fd84fa20",
+      "name": "PA - Votação por seção eleitoral - 2018",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2018_PA.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2018_PA.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 55889161,
+      "lastModified": "Wed, 24 Apr 2024 17:19:26 GMT",
+      "etag": "\"354cd09-616dadf585e1c\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T22:00:59.829250+00:00",
+      "sha256": "9c1c9ce624baa172351fbbd640940cf6bf2da72314661dab3099f2712897d55f",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "53c22412-votacao_secao_2018_PA.zip",
+          "bytes": 55889161,
+          "sha256": "9c1c9ce624baa172351fbbd640940cf6bf2da72314661dab3099f2712897d55f"
+        }
+      ]
+    },
+    {
+      "id": "0418cb0a-94a1-4e67-89fb-a3a9fe55af76",
+      "name": "PB - Votação por seção eleitoral - 2018",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2018_PB.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2018_PB.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 25223817,
+      "lastModified": "Wed, 24 Apr 2024 17:19:29 GMT",
+      "etag": "\"180e289-616dadf8f450c\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T22:01:02.500125+00:00",
+      "sha256": "6608d0af9713deb9ca86dabd923b3342d3bfd2aa44067e19537ae766791c5625",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "0418cb0a-votacao_secao_2018_PB.zip",
+          "bytes": 25223817,
+          "sha256": "6608d0af9713deb9ca86dabd923b3342d3bfd2aa44067e19537ae766791c5625"
+        }
+      ]
+    },
+    {
+      "id": "8be6687e-7105-4520-8879-346455f1e7e6",
+      "name": "PR - Votação por seção eleitoral - 2018",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2018_PR.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2018_PR.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 95099945,
+      "lastModified": "Wed, 24 Apr 2024 17:19:23 GMT",
+      "etag": "\"5ab1c29-616dadf3253a8\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T22:01:12.604221+00:00",
+      "sha256": "1244cb0bddc95857c4f65587a16a2d8a0d7ed18311c4ec8af11f4f62b0d70037",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "8be6687e-votacao_secao_2018_PR.zip",
+          "bytes": 95099945,
+          "sha256": "1244cb0bddc95857c4f65587a16a2d8a0d7ed18311c4ec8af11f4f62b0d70037"
+        }
+      ]
+    },
+    {
+      "id": "10f1c33e-7562-450d-9c84-855a404c5221",
+      "name": "PE - Votação por seção eleitoral - 2018",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2018_PE.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2018_PE.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 64237552,
+      "lastModified": "Wed, 24 Apr 2024 17:19:11 GMT",
+      "etag": "\"3d42ff0-616dade74a04c\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T22:01:19.687947+00:00",
+      "sha256": "f8c82a1052619e1dc173a6f1ed2c1ea715b2451dfa35377b079227ae262cc0f1",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "10f1c33e-votacao_secao_2018_PE.zip",
+          "bytes": 64237552,
+          "sha256": "f8c82a1052619e1dc173a6f1ed2c1ea715b2451dfa35377b079227ae262cc0f1"
+        }
+      ]
+    },
+    {
+      "id": "dd6b9a3b-44e0-4de7-82a7-63bd546f5450",
+      "name": "PI - Votação por seção eleitoral - 2018",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2018_PI.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2018_PI.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 20279700,
+      "lastModified": "Wed, 24 Apr 2024 17:18:55 GMT",
+      "etag": "\"1357194-616dadd7f2756\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T22:01:21.450613+00:00",
+      "sha256": "c3c92426efb79c1c10438cdc0c937f8e8349735fb305aeac2955d6a6cb7f95e3",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "dd6b9a3b-votacao_secao_2018_PI.zip",
+          "bytes": 20279700,
+          "sha256": "c3c92426efb79c1c10438cdc0c937f8e8349735fb305aeac2955d6a6cb7f95e3"
+        }
+      ]
+    },
+    {
+      "id": "7baf8629-69d7-4796-bb64-251a92ee38b0",
+      "name": "RJ - Votação por seção eleitoral - 2018",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2018_RJ.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2018_RJ.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 204050711,
+      "lastModified": "Wed, 24 Apr 2024 17:32:18 GMT",
+      "etag": "\"c299117-616db0d663ff6\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T22:01:38.454440+00:00",
+      "sha256": "13760090b758e31e7b30830e62af306b394ee5885ccadbe97229bf0cdcb2dfae",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "7baf8629-votacao_secao_2018_RJ.zip",
+          "bytes": 204050711,
+          "sha256": "13760090b758e31e7b30830e62af306b394ee5885ccadbe97229bf0cdcb2dfae"
+        }
+      ]
+    },
+    {
+      "id": "85bb9c2a-8270-46e2-a9f5-0989ae7bc4ff",
+      "name": "RN - Votação por seção eleitoral - 2018",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2018_RN.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2018_RN.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 22815737,
+      "lastModified": "Wed, 24 Apr 2024 17:19:00 GMT",
+      "etag": "\"15c23f9-616daddd28f47\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T22:01:43.878651+00:00",
+      "sha256": "a51dfc2c4276dadc4b9d686ecc20c26a46662126201da52ad27830880265479d",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "85bb9c2a-votacao_secao_2018_RN.zip",
+          "bytes": 22815737,
+          "sha256": "a51dfc2c4276dadc4b9d686ecc20c26a46662126201da52ad27830880265479d"
+        }
+      ]
+    },
+    {
+      "id": "a0e042c9-dc36-4a6a-95ba-f71b2a8ef9ea",
+      "name": "RS - Votação por seção eleitoral - 2018",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2018_RS.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2018_RS.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 183466885,
+      "lastModified": "Wed, 24 Apr 2024 17:25:31 GMT",
+      "etag": "\"aef7b85-616daf51b7735\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T22:01:57.683064+00:00",
+      "sha256": "a851d28fa9a9edfd0c86bd1100477583b0fd71482d130a2476b9df14d4ebbdd6",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "a0e042c9-votacao_secao_2018_RS.zip",
+          "bytes": 183466885,
+          "sha256": "a851d28fa9a9edfd0c86bd1100477583b0fd71482d130a2476b9df14d4ebbdd6"
+        }
+      ]
+    },
+    {
+      "id": "d9e10559-3be9-4c80-83d9-d1cf3c234b42",
+      "name": "RO - Votação por seção eleitoral - 2018",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2018_RO.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2018_RO.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 17325762,
+      "lastModified": "Wed, 24 Apr 2024 17:19:15 GMT",
+      "etag": "\"1085ec2-616dadeb9d75c\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T22:01:58.906538+00:00",
+      "sha256": "628dc214a175918d35a4b0cc3dee47ee8dfedb75d1f33378dae01d8d1a7fd6e5",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "d9e10559-votacao_secao_2018_RO.zip",
+          "bytes": 17325762,
+          "sha256": "628dc214a175918d35a4b0cc3dee47ee8dfedb75d1f33378dae01d8d1a7fd6e5"
+        }
+      ]
+    },
+    {
+      "id": "4cf48022-973f-40d6-b1ec-ee5eecce40fc",
+      "name": "RR - Votação por seção eleitoral - 2018",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2018_RR.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2018_RR.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 6242815,
+      "lastModified": "Wed, 24 Apr 2024 17:19:20 GMT",
+      "etag": "\"5f41ff-616dadf02a469\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T22:01:59.645078+00:00",
+      "sha256": "65913fe1cec6dc2fe867f3de2d481b2804098794dfb1a212135cc8bc8fcd0867",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "4cf48022-votacao_secao_2018_RR.zip",
+          "bytes": 6242815,
+          "sha256": "65913fe1cec6dc2fe867f3de2d481b2804098794dfb1a212135cc8bc8fcd0867"
+        }
+      ]
+    },
+    {
+      "id": "f9687ae9-e282-4e38-b827-fbf634b91352",
+      "name": "SC - Votação por seção eleitoral - 2018",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2018_SC.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2018_SC.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 90446538,
+      "lastModified": "Wed, 24 Apr 2024 17:18:53 GMT",
+      "etag": "\"5641aca-616dadd621d9c\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T22:02:03.137645+00:00",
+      "sha256": "c5c6b6432507ec5092e24dc5475be5c6c918c570b9f3f622cd7ec7bd78c4c147",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "f9687ae9-votacao_secao_2018_SC.zip",
+          "bytes": 90446538,
+          "sha256": "c5c6b6432507ec5092e24dc5475be5c6c918c570b9f3f622cd7ec7bd78c4c147"
+        }
+      ]
+    },
+    {
+      "id": "459d3040-12a2-4b59-9d90-31bec1e3e40d",
+      "name": "SP - Votação por seção eleitoral - 2018",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2018_SP.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2018_SP.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 495073028,
+      "lastModified": "Wed, 24 Apr 2024 18:04:13 GMT",
+      "etag": "\"1d823704-616db7f8382ab\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T22:02:36.578714+00:00",
+      "sha256": "59e0fa455d8b53098b4363f0970f08b11916a9088aa50591f418158cf0ec9544",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "459d3040-votacao_secao_2018_SP.zip",
+          "bytes": 495073028,
+          "sha256": "59e0fa455d8b53098b4363f0970f08b11916a9088aa50591f418158cf0ec9544"
+        }
+      ]
+    },
+    {
+      "id": "ed615fe7-eb5a-411f-a8b4-67ed42b91823",
+      "name": "SE - Votação por seção eleitoral - 2018",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2018_SE.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2018_SE.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 15065673,
+      "lastModified": "Wed, 24 Apr 2024 17:19:43 GMT",
+      "etag": "\"e5e249-616dae05bd52a\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T22:02:37.653205+00:00",
+      "sha256": "eaa409a340fc8425ac87c0efec57645a79d2aa67573b8121a42935a073374647",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "ed615fe7-votacao_secao_2018_SE.zip",
+          "bytes": 15065673,
+          "sha256": "eaa409a340fc8425ac87c0efec57645a79d2aa67573b8121a42935a073374647"
+        }
+      ]
+    },
+    {
+      "id": "45657cd3-6e93-402a-ab59-da76b0aeda0a",
+      "name": "TO - Votação por seção eleitoral - 2018",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2018_TO.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2018_TO.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 8689897,
+      "lastModified": "Wed, 24 Apr 2024 17:19:35 GMT",
+      "etag": "\"8498e9-616dadfeb82c0\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T22:02:38.399498+00:00",
+      "sha256": "7a8ec34f827dd71a535691d60b71809773afb3b2f82aa806d11e0408965fceb8",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "45657cd3-votacao_secao_2018_TO.zip",
+          "bytes": 8689897,
+          "sha256": "7a8ec34f827dd71a535691d60b71809773afb3b2f82aa806d11e0408965fceb8"
+        }
+      ]
+    }
+  ]
+}
