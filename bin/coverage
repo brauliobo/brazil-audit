@@ -26,7 +26,8 @@ STATES.sort.each do |state|
 end
 
 FileUtils.mkdir_p 'coverage'
-write = ->(name, header, data){ File.write "coverage/#{name}-#{YEAR}.tsv", ([header] + data).map{ |r| r.join("\t") }.join("\n") << "\n" }
+election = LEGACY ? YEAR : DATA_DIR
+write = ->(name, header, data){ File.write "coverage/#{name}-#{election}.tsv", ([header] + data).map{ |r| r.join("\t") }.join("\n") << "\n" }
 write.('missing', %w[state city_code city zone section reason], missing)
 write.('summary', %w[state own_sections stored missing no_info no_files], summary)
-puts "#{YEAR}: #{missing.size} of #{summary.sum{ |r| r[1] }} sections missing (#{missing.count{ |r| r[5] == 'no-info' }} without info file, #{missing.count{ |r| r[5] == 'no-files' }} without vote files)"
+puts "#{election}: #{missing.size} of #{summary.sum{ |r| r[1] }} sections missing (#{missing.count{ |r| r[5] == 'no-info' }} without info file, #{missing.count{ |r| r[5] == 'no-files' }} without vote files)"
