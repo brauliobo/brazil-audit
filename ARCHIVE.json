@@ -1,0 +1,730 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-10-26T21:51:20.661520+00:00",
+  "status": "published",
+  "dataset": {
+    "id": "resultados-2002",
+    "title": "Resultados - 2002",
+    "groups": [
+      "resultados"
+    ],
+    "family": "resultados",
+    "years": [
+      2002
+    ],
+    "license": "cc-by",
+    "source": "https://dadosabertos.tse.jus.br/dataset/resultados-2002",
+    "branch": "archive/resultados-2002",
+    "tag": "data-resultados-2002",
+    "releaseUrl": "https://github.com/brauliobo/brazil-audit/releases/tag/data-resultados-2002",
+    "normalized": false,
+    "status": "catalogued",
+    "inScope": true
+  },
+  "resources": [
+    {
+      "id": "74f56efd-b15c-427a-895f-e999d839566b",
+      "name": "Votação nominal por município e zona",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_candidato_munzona/votacao_candidato_munzona_2002.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_candidato_munzona/votacao_candidato_munzona_2002.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 120264128,
+      "lastModified": "Fri, 18 Mar 2022 15:55:50 GMT",
+      "etag": "\"72b15c0-5da802e3d6d80\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:50:49.045510+00:00",
+      "sha256": "c1b7eabc9415ad853e10b11958c3e22ad6f248afbc6acb6a0cab38f4b25635ee",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "74f56efd-votacao_candidato_munzona_2002.zip",
+          "bytes": 120264128,
+          "sha256": "c1b7eabc9415ad853e10b11958c3e22ad6f248afbc6acb6a0cab38f4b25635ee"
+        }
+      ]
+    },
+    {
+      "id": "329f74f1-aab3-4f3d-9e12-612a586b6a3c",
+      "name": "Votação em partido por município e zona",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_partido_munzona/votacao_partido_munzona_2002.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_partido_munzona/votacao_partido_munzona_2002.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 8391346,
+      "lastModified": "Thu, 17 Mar 2022 19:57:02 GMT",
+      "etag": "\"800ab2-5da6f6eff3f80\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:50:49.729253+00:00",
+      "sha256": "da223bcdaba465f39823a97929118d80c92267cce4bb34ea62d6452bae7d76cb",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "329f74f1-votacao_partido_munzona_2002.zip",
+          "bytes": 8391346,
+          "sha256": "da223bcdaba465f39823a97929118d80c92267cce4bb34ea62d6452bae7d76cb"
+        }
+      ]
+    },
+    {
+      "id": "18c46d8e-2027-44ad-992f-e8ffa943580c",
+      "name": "Detalhe da apuração por município e zona",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/detalhe_votacao_munzona/detalhe_votacao_munzona_2002.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/detalhe_votacao_munzona/detalhe_votacao_munzona_2002.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 3625552,
+      "lastModified": "Fri, 08 Aug 2025 16:31:06 GMT",
+      "etag": "\"375250-63bdd19c92a8e\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:50:50.103481+00:00",
+      "sha256": "2b4d6a6f5af47e031769e6f0fa15b24759cfd3d9e8622730d8c59e311cdf276a",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "18c46d8e-detalhe_votacao_munzona_2002.zip",
+          "bytes": 3625552,
+          "sha256": "2b4d6a6f5af47e031769e6f0fa15b24759cfd3d9e8622730d8c59e311cdf276a"
+        }
+      ]
+    },
+    {
+      "id": "5f5cb153-66c1-4e08-9f74-7f94a2aed5c9",
+      "name": "Detalhe da apuração por seção eleitoral",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/detalhe_votacao_secao/detalhe_votacao_secao_2002.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/detalhe_votacao_secao/detalhe_votacao_secao_2002.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 58040971,
+      "lastModified": "Wed, 08 Dec 2021 18:32:42 GMT",
+      "etag": "\"375a28b-5d2a6b71ba680\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:50:52.029790+00:00",
+      "sha256": "5a4bb64e7e332a3318f09f11a875034ae70f0be7f090e3a862a426ddcfa49764",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "5f5cb153-detalhe_votacao_secao_2002.zip",
+          "bytes": 58040971,
+          "sha256": "5a4bb64e7e332a3318f09f11a875034ae70f0be7f090e3a862a426ddcfa49764"
+        }
+      ]
+    },
+    {
+      "id": "13ab12b1-c7d9-4402-82b6-5bec0f30de6d",
+      "name": "Presidente - Votação por seção eleitoral - 2002",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2002_BR.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2002_BR.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 19858557,
+      "lastModified": "Thu, 09 Dec 2021 17:09:18 GMT",
+      "etag": "\"12f047d-5d2b9aab00b80\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:50:53.041467+00:00",
+      "sha256": "1bc418f727736ba45e0ca79d550a58b08cc91883444ad6f71c3daf5b2e09fb6f",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "13ab12b1-votacao_secao_2002_BR.zip",
+          "bytes": 19858557,
+          "sha256": "1bc418f727736ba45e0ca79d550a58b08cc91883444ad6f71c3daf5b2e09fb6f"
+        }
+      ]
+    },
+    {
+      "id": "28264f5f-62b4-4dd3-8800-c421e72fa813",
+      "name": "AC - Votação por seção eleitoral - 2002",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2002_AC.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2002_AC.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 2192674,
+      "lastModified": "Thu, 09 Dec 2021 17:10:09 GMT",
+      "etag": "\"217522-5d2b9adba3e40\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:50:53.544804+00:00",
+      "sha256": "c96121e86ff285b571aedd79ea0d490e24f4249b2927d8bf5381fad3e43577e5",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "28264f5f-votacao_secao_2002_AC.zip",
+          "bytes": 2192674,
+          "sha256": "c96121e86ff285b571aedd79ea0d490e24f4249b2927d8bf5381fad3e43577e5"
+        }
+      ]
+    },
+    {
+      "id": "292a2ab5-9ac7-4b6a-98fb-e33d03b096f6",
+      "name": "AL - Votação por seção eleitoral - 2002",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2002_AL.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2002_AL.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 4979618,
+      "lastModified": "Thu, 09 Dec 2021 17:09:50 GMT",
+      "etag": "\"4bfba2-5d2b9ac985380\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:50:53.951512+00:00",
+      "sha256": "c927777c2ec5bfaf6950163c887fc9875cc3872c59e879e5610612ef0efec234",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "292a2ab5-votacao_secao_2002_AL.zip",
+          "bytes": 4979618,
+          "sha256": "c927777c2ec5bfaf6950163c887fc9875cc3872c59e879e5610612ef0efec234"
+        }
+      ]
+    },
+    {
+      "id": "cab8dbf9-5469-4a1b-9c51-32ccf82045f1",
+      "name": "AP - Votação por seção eleitoral - 2002",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2002_AP.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2002_AP.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 1947807,
+      "lastModified": "Thu, 09 Dec 2021 17:09:45 GMT",
+      "etag": "\"1db89f-5d2b9ac4c0840\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:50:54.303086+00:00",
+      "sha256": "bba7a2a7739bc78e72c8d067168bae7ff735d2750264d4086c8637a9e9c98139",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "cab8dbf9-votacao_secao_2002_AP.zip",
+          "bytes": 1947807,
+          "sha256": "bba7a2a7739bc78e72c8d067168bae7ff735d2750264d4086c8637a9e9c98139"
+        }
+      ]
+    },
+    {
+      "id": "ca47a73b-07cf-43ed-a222-e0dfccd335ad",
+      "name": "AM - Votação por seção eleitoral - 2002",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2002_AM.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2002_AM.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 6581139,
+      "lastModified": "Thu, 09 Dec 2021 17:05:10 GMT",
+      "etag": "\"646b93-5d2b99be7dd80\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:50:54.815686+00:00",
+      "sha256": "30b36fd67bea5e4f41d4c8288364640f730bcf573f4a192d608ef5bc55235af9",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "ca47a73b-votacao_secao_2002_AM.zip",
+          "bytes": 6581139,
+          "sha256": "30b36fd67bea5e4f41d4c8288364640f730bcf573f4a192d608ef5bc55235af9"
+        }
+      ]
+    },
+    {
+      "id": "f4d38a9d-ff8b-444d-ae0e-5decaed1b970",
+      "name": "BA - Votação por seção eleitoral - 2002",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2002_BA.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2002_BA.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 26990540,
+      "lastModified": "Thu, 09 Dec 2021 17:10:28 GMT",
+      "etag": "\"19bd7cc-5d2b9aedc2900\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:50:56.049732+00:00",
+      "sha256": "c0574ecf7a192215f44eec153a744488c1154b6e56847f77734b2d947c4c4a0b",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "f4d38a9d-votacao_secao_2002_BA.zip",
+          "bytes": 26990540,
+          "sha256": "c0574ecf7a192215f44eec153a744488c1154b6e56847f77734b2d947c4c4a0b"
+        }
+      ]
+    },
+    {
+      "id": "67a057b8-e05a-4ac1-9a7f-7dba68b10ddf",
+      "name": "CE - Votação por seção eleitoral - 2002",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2002_CE.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2002_CE.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 17402987,
+      "lastModified": "Thu, 09 Dec 2021 17:09:09 GMT",
+      "etag": "\"1098c6b-5d2b9aa26b740\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:50:56.911052+00:00",
+      "sha256": "505edd3a6c83aee9f807ae512457d5ed002847db9333e034eff083727397a4f6",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "67a057b8-votacao_secao_2002_CE.zip",
+          "bytes": 17402987,
+          "sha256": "505edd3a6c83aee9f807ae512457d5ed002847db9333e034eff083727397a4f6"
+        }
+      ]
+    },
+    {
+      "id": "ae7fff86-f017-433f-a2eb-956f94cb9722",
+      "name": "DF - Votação por seção eleitoral - 2002",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2002_DF.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2002_DF.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 11344510,
+      "lastModified": "Thu, 09 Dec 2021 17:08:55 GMT",
+      "etag": "\"ad1a7e-5d2b9a95117c0\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:50:57.496908+00:00",
+      "sha256": "c85ac59265c2c61e73e27856830ab44fb625b42dd42f024a5efcf469016d2123",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "ae7fff86-votacao_secao_2002_DF.zip",
+          "bytes": 11344510,
+          "sha256": "c85ac59265c2c61e73e27856830ab44fb625b42dd42f024a5efcf469016d2123"
+        }
+      ]
+    },
+    {
+      "id": "b9325a6e-d82e-46dc-b94b-790627592bed",
+      "name": "ES - Votação por seção eleitoral - 2002",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2002_ES.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2002_ES.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 8037490,
+      "lastModified": "Thu, 09 Dec 2021 17:08:45 GMT",
+      "etag": "\"7aa472-5d2b9a8b88140\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:50:58.083252+00:00",
+      "sha256": "19e7467bf6a948a2cb904d47e70861c69093a68633a452885f5fcf24ac3a2d18",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "b9325a6e-votacao_secao_2002_ES.zip",
+          "bytes": 8037490,
+          "sha256": "19e7467bf6a948a2cb904d47e70861c69093a68633a452885f5fcf24ac3a2d18"
+        }
+      ]
+    },
+    {
+      "id": "13b307a5-b48d-451b-968c-bea319c7773b",
+      "name": "GO - Votação por seção eleitoral - 2002",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2002_GO.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2002_GO.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 13202569,
+      "lastModified": "Thu, 09 Dec 2021 17:08:12 GMT",
+      "etag": "\"c97489-5d2b9a6c0f700\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:50:58.671962+00:00",
+      "sha256": "518fd90a8d82a47b6f55fc9b0834506c8c928a325115b17731dc46d2a1601dcd",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "13b307a5-votacao_secao_2002_GO.zip",
+          "bytes": 13202569,
+          "sha256": "518fd90a8d82a47b6f55fc9b0834506c8c928a325115b17731dc46d2a1601dcd"
+        }
+      ]
+    },
+    {
+      "id": "59881314-a6fa-43a3-b2d8-be978c76ac56",
+      "name": "MA - Votação por seção eleitoral - 2002",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2002_MA.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2002_MA.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 10982051,
+      "lastModified": "Thu, 09 Dec 2021 17:03:14 GMT",
+      "etag": "\"a792a3-5d2b994fdd880\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:50:59.244148+00:00",
+      "sha256": "ada5aa57869b6110f4e50818dafcc96ab1bdfd1d4ff88afd21ae91ab674f14ab",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "59881314-votacao_secao_2002_MA.zip",
+          "bytes": 10982051,
+          "sha256": "ada5aa57869b6110f4e50818dafcc96ab1bdfd1d4ff88afd21ae91ab674f14ab"
+        }
+      ]
+    },
+    {
+      "id": "f9c888d5-81f9-45be-910b-3dafdc930ba9",
+      "name": "MT - Votação por seção eleitoral - 2002",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2002_MT.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2002_MT.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 4042387,
+      "lastModified": "Thu, 09 Dec 2021 17:07:39 GMT",
+      "etag": "\"3dae93-5d2b9a4c96cc0\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:50:59.667927+00:00",
+      "sha256": "a18d15420362ce7f5b6da34ce36ee34b908ab25b80b5982a284607b78a5fdde3",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "f9c888d5-votacao_secao_2002_MT.zip",
+          "bytes": 4042387,
+          "sha256": "a18d15420362ce7f5b6da34ce36ee34b908ab25b80b5982a284607b78a5fdde3"
+        }
+      ]
+    },
+    {
+      "id": "d4108b46-b0b4-4188-bcf0-c089ccdd21f7",
+      "name": "MS - Votação por seção eleitoral - 2002",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2002_MS.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2002_MS.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 4801792,
+      "lastModified": "Thu, 09 Dec 2021 17:08:03 GMT",
+      "etag": "\"494500-5d2b9a637a2c0\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:51:00.124775+00:00",
+      "sha256": "220d7939b55717f4cb9df428475a711b1d6b0935c49a113dc8de138b8df2c536",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "d4108b46-votacao_secao_2002_MS.zip",
+          "bytes": 4801792,
+          "sha256": "220d7939b55717f4cb9df428475a711b1d6b0935c49a113dc8de138b8df2c536"
+        }
+      ]
+    },
+    {
+      "id": "6d51faee-fbb0-47ce-9bda-23df6c1cfeb2",
+      "name": "MG - Votação por seção eleitoral - 2002",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2002_MG.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2002_MG.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 46912457,
+      "lastModified": "Thu, 09 Dec 2021 17:06:39 GMT",
+      "etag": "\"2cbd3c9-5d2b9a135e5c0\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:51:01.625331+00:00",
+      "sha256": "853872f6d81f0dd8ac4ec1efec2ad3ff9a5298ab741814b73c9fc3f83ee10ea8",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "6d51faee-votacao_secao_2002_MG.zip",
+          "bytes": 46912457,
+          "sha256": "853872f6d81f0dd8ac4ec1efec2ad3ff9a5298ab741814b73c9fc3f83ee10ea8"
+        }
+      ]
+    },
+    {
+      "id": "6d589d3c-2863-4153-98b6-c2b48a527983",
+      "name": "PA - Votação por seção eleitoral - 2002",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2002_PA.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2002_PA.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 14062316,
+      "lastModified": "Thu, 09 Dec 2021 17:07:32 GMT",
+      "etag": "\"d692ec-5d2b9a45e9d00\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:51:02.300725+00:00",
+      "sha256": "cfeed2d2594f9b448fa754c0d24bce202a61d157bf083e30de983d594050dab6",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "6d589d3c-votacao_secao_2002_PA.zip",
+          "bytes": 14062316,
+          "sha256": "cfeed2d2594f9b448fa754c0d24bce202a61d157bf083e30de983d594050dab6"
+        }
+      ]
+    },
+    {
+      "id": "663f8a41-8da0-4c59-8600-db9ec15a6536",
+      "name": "PB - Votação por seção eleitoral - 2002",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2002_PB.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2002_PB.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 7093605,
+      "lastModified": "Thu, 09 Dec 2021 17:07:08 GMT",
+      "etag": "\"6c3d65-5d2b9a2f06700\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:51:02.863236+00:00",
+      "sha256": "50b64e7374a72ea65c24ae6c0887013faa2d8f9e09998e896e7b128ce978f507",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "663f8a41-votacao_secao_2002_PB.zip",
+          "bytes": 7093605,
+          "sha256": "50b64e7374a72ea65c24ae6c0887013faa2d8f9e09998e896e7b128ce978f507"
+        }
+      ]
+    },
+    {
+      "id": "537d2625-5c58-48f0-b4be-159699a3d36b",
+      "name": "PR - Votação por seção eleitoral - 2002",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2002_PR.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2002_PR.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 25408005,
+      "lastModified": "Thu, 09 Dec 2021 17:06:43 GMT",
+      "etag": "\"183b205-5d2b9a172eec0\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:51:03.849143+00:00",
+      "sha256": "1d1f52423f030fbd333eeebad5c7ec9053c9c5751a680fa1e15c068f7ef3dc6b",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "537d2625-votacao_secao_2002_PR.zip",
+          "bytes": 25408005,
+          "sha256": "1d1f52423f030fbd333eeebad5c7ec9053c9c5751a680fa1e15c068f7ef3dc6b"
+        }
+      ]
+    },
+    {
+      "id": "83b0109d-563c-4e7d-8cb2-8946ce6fb464",
+      "name": "PE - Votação por seção eleitoral - 2002",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2002_PE.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2002_PE.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 22150387,
+      "lastModified": "Thu, 09 Dec 2021 17:08:25 GMT",
+      "etag": "\"151fcf3-5d2b9a7875440\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:51:04.778728+00:00",
+      "sha256": "389b736c20023ea3f7e6ceca0e615ef324d6feac89dc455a209299dfbaf39e75",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "83b0109d-votacao_secao_2002_PE.zip",
+          "bytes": 22150387,
+          "sha256": "389b736c20023ea3f7e6ceca0e615ef324d6feac89dc455a209299dfbaf39e75"
+        }
+      ]
+    },
+    {
+      "id": "b7c6b6e8-3571-43c5-8f17-a0391bbbf0a2",
+      "name": "PI - Votação por seção eleitoral - 2002",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2002_PI.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2002_PI.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 5336785,
+      "lastModified": "Thu, 09 Dec 2021 17:07:02 GMT",
+      "etag": "\"516ed1-5d2b9a294d980\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:51:05.221462+00:00",
+      "sha256": "d51f20d22a66c5ce9c99bfcf3488ffb6ef878656a33d2b03d280f2a9817b1159",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "b7c6b6e8-votacao_secao_2002_PI.zip",
+          "bytes": 5336785,
+          "sha256": "d51f20d22a66c5ce9c99bfcf3488ffb6ef878656a33d2b03d280f2a9817b1159"
+        }
+      ]
+    },
+    {
+      "id": "217e1b6d-f222-46e7-8217-9a88dfdc6e55",
+      "name": "RJ - Votação por seção eleitoral - 2002",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2002_RJ.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2002_RJ.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 81394499,
+      "lastModified": "Thu, 09 Dec 2021 17:08:38 GMT",
+      "etag": "\"4d9fb43-5d2b9a84db180\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:51:07.789378+00:00",
+      "sha256": "0a6334b1b14cd2fd73b6409c58edc43e06c23a4e50fef2bf11db3fae64dbe05c",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "217e1b6d-votacao_secao_2002_RJ.zip",
+          "bytes": 81394499,
+          "sha256": "0a6334b1b14cd2fd73b6409c58edc43e06c23a4e50fef2bf11db3fae64dbe05c"
+        }
+      ]
+    },
+    {
+      "id": "7caa078f-f60a-4ead-9591-e486a9c1d60e",
+      "name": "RN - Votação por seção eleitoral - 2002",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2002_RN.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2002_RN.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 5415335,
+      "lastModified": "Thu, 09 Dec 2021 17:06:17 GMT",
+      "etag": "\"52a1a7-5d2b99fe63440\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:51:08.282846+00:00",
+      "sha256": "61e63faa951f89a424ad69e4b3cd09a13f16da1fc6378085de87d7764822487a",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "7caa078f-votacao_secao_2002_RN.zip",
+          "bytes": 5415335,
+          "sha256": "61e63faa951f89a424ad69e4b3cd09a13f16da1fc6378085de87d7764822487a"
+        }
+      ]
+    },
+    {
+      "id": "538a186a-4178-4b05-bc29-2ef039fbb001",
+      "name": "RS - Votação por seção eleitoral - 2002",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2002_RS.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2002_RS.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 33908875,
+      "lastModified": "Thu, 09 Dec 2021 17:07:49 GMT",
+      "etag": "\"205688b-5d2b9a5620340\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:51:09.653865+00:00",
+      "sha256": "3857f70f3c41f519a20a093eb1cc9398766a4f8a6e73b4645c3c2c2544e0c57e",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "538a186a-votacao_secao_2002_RS.zip",
+          "bytes": 33908875,
+          "sha256": "3857f70f3c41f519a20a093eb1cc9398766a4f8a6e73b4645c3c2c2544e0c57e"
+        }
+      ]
+    },
+    {
+      "id": "aa873f2e-ac58-4bc8-a6dd-1fcaf8cebed1",
+      "name": "RO - Votação por seção eleitoral - 2002",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2002_RO.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2002_RO.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 3810063,
+      "lastModified": "Thu, 09 Dec 2021 17:05:48 GMT",
+      "etag": "\"3a230f-5d2b99e2bb300\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:51:10.218878+00:00",
+      "sha256": "74956a244afaa798286d6635a50dba845db302385bceec7e82efc9c724831b11",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "aa873f2e-votacao_secao_2002_RO.zip",
+          "bytes": 3810063,
+          "sha256": "74956a244afaa798286d6635a50dba845db302385bceec7e82efc9c724831b11"
+        }
+      ]
+    },
+    {
+      "id": "bb9a3aab-83fb-4a03-adcc-b8fa296fca18",
+      "name": "RR - Votação por seção eleitoral - 2002",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2002_RR.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2002_RR.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 1866193,
+      "lastModified": "Thu, 09 Dec 2021 17:05:42 GMT",
+      "etag": "\"1c79d1-5d2b99dd02580\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:51:10.533951+00:00",
+      "sha256": "b048bdb8a91c93813a54ed8a7ade5954cb83578f8a9e9d6c3896ed81b63aa9b2",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "bb9a3aab-votacao_secao_2002_RR.zip",
+          "bytes": 1866193,
+          "sha256": "b048bdb8a91c93813a54ed8a7ade5954cb83578f8a9e9d6c3896ed81b63aa9b2"
+        }
+      ]
+    },
+    {
+      "id": "5e3fe95b-9e48-4e72-a6d8-7e4d1d8cbcc4",
+      "name": "SC - Votação por seção eleitoral - 2002",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2002_SC.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2002_SC.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 11025397,
+      "lastModified": "Thu, 09 Dec 2021 17:05:07 GMT",
+      "etag": "\"a83bf5-5d2b99bba16c0\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:51:11.566177+00:00",
+      "sha256": "675a6e7a12ca878bf524b52e133f1a433ca497d3ac5fc418611c2cd81ca3ec8b",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "5e3fe95b-votacao_secao_2002_SC.zip",
+          "bytes": 11025397,
+          "sha256": "675a6e7a12ca878bf524b52e133f1a433ca497d3ac5fc418611c2cd81ca3ec8b"
+        }
+      ]
+    },
+    {
+      "id": "502780c8-946a-46e7-980b-18b68c9bdd9f",
+      "name": "SP - Votação por seção eleitoral - 2002",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2002_SP.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2002_SP.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 149143307,
+      "lastModified": "Thu, 09 Dec 2021 17:04:40 GMT",
+      "etag": "\"8e3bf0b-5d2b99a1e1a00\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:51:19.763603+00:00",
+      "sha256": "fdf9186fb23ea9fb794f4d4b7e395f3f0aeccaa4fba1bcd41c123effa443003a",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "502780c8-votacao_secao_2002_SP.zip",
+          "bytes": 149143307,
+          "sha256": "fdf9186fb23ea9fb794f4d4b7e395f3f0aeccaa4fba1bcd41c123effa443003a"
+        }
+      ]
+    },
+    {
+      "id": "ff4d45f3-5d1c-458d-a50d-5ef805df9507",
+      "name": "SE - Votação por seção eleitoral - 2002",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2002_SE.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2002_SE.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 4265837,
+      "lastModified": "Thu, 09 Dec 2021 17:03:50 GMT",
+      "etag": "\"41176d-5d2b997232980\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:51:20.147029+00:00",
+      "sha256": "fe91200c57cd9f7fec9ffd929147d3769d988563f84887d72187967fa8869f45",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "ff4d45f3-votacao_secao_2002_SE.zip",
+          "bytes": 4265837,
+          "sha256": "fe91200c57cd9f7fec9ffd929147d3769d988563f84887d72187967fa8869f45"
+        }
+      ]
+    },
+    {
+      "id": "858660c6-9f3f-413a-9e9d-de13d85cfd68",
+      "name": "TO - Votação por seção eleitoral - 2002",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2002_TO.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2002_TO.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 2147579,
+      "lastModified": "Thu, 09 Dec 2021 17:04:12 GMT",
+      "etag": "\"20c4fb-5d2b99872db00\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:51:20.659240+00:00",
+      "sha256": "8a96850e7d8ffa8d8d49e178c5d47ca13a7cda78ff48b2eed7782bd829050279",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "858660c6-votacao_secao_2002_TO.zip",
+          "bytes": 2147579,
+          "sha256": "8a96850e7d8ffa8d8d49e178c5d47ca13a7cda78ff48b2eed7782bd829050279"
+        }
+      ]
+    }
+  ]
+}
