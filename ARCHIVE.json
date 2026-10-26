@@ -1,0 +1,586 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-10-26T21:52:28.320296+00:00",
+  "status": "published",
+  "dataset": {
+    "id": "candidatos-2006",
+    "title": "Candidatos - 2006",
+    "groups": [
+      "candidatos"
+    ],
+    "family": "candidatos",
+    "years": [
+      2006
+    ],
+    "license": "cc-by",
+    "source": "https://dadosabertos.tse.jus.br/dataset/candidatos-2006",
+    "branch": "archive/candidatos-2006",
+    "tag": "data-candidatos-2006",
+    "releaseUrl": "https://github.com/brauliobo/brazil-audit/releases/tag/data-candidatos-2006",
+    "normalized": false,
+    "status": "catalogued",
+    "inScope": true
+  },
+  "resources": [
+    {
+      "id": "e491e459-cf49-4a2d-9ccf-f086b498344b",
+      "name": "Candidatos",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_cand/consulta_cand_2006.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_cand/consulta_cand_2006.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 4044252,
+      "lastModified": "Wed, 01 Sep 2021 14:02:27 GMT",
+      "etag": "\"3db5dc-5caef842ba2c0\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:52:27.382306+00:00",
+      "sha256": "6f5c0cf7ae8087782824dc4fcd447ee284daecfe2cd1402dec3670bcca739b8a",
+      "removedPersonalColumns": {
+        "consulta_cand_2006_MT.csv": [
+          "NR_CPF_CANDIDATO",
+          "NM_EMAIL",
+          "NR_TITULO_ELEITORAL_CANDIDATO"
+        ],
+        "consulta_cand_2006_PR.csv": [
+          "NR_CPF_CANDIDATO",
+          "NM_EMAIL",
+          "NR_TITULO_ELEITORAL_CANDIDATO"
+        ],
+        "consulta_cand_2006_AL.csv": [
+          "NR_CPF_CANDIDATO",
+          "NM_EMAIL",
+          "NR_TITULO_ELEITORAL_CANDIDATO"
+        ],
+        "consulta_cand_2006_SE.csv": [
+          "NR_CPF_CANDIDATO",
+          "NM_EMAIL",
+          "NR_TITULO_ELEITORAL_CANDIDATO"
+        ],
+        "consulta_cand_2006_MS.csv": [
+          "NR_CPF_CANDIDATO",
+          "NM_EMAIL",
+          "NR_TITULO_ELEITORAL_CANDIDATO"
+        ],
+        "consulta_cand_2006_RR.csv": [
+          "NR_CPF_CANDIDATO",
+          "NM_EMAIL",
+          "NR_TITULO_ELEITORAL_CANDIDATO"
+        ],
+        "consulta_cand_2006_AC.csv": [
+          "NR_CPF_CANDIDATO",
+          "NM_EMAIL",
+          "NR_TITULO_ELEITORAL_CANDIDATO"
+        ],
+        "consulta_cand_2006_RN.csv": [
+          "NR_CPF_CANDIDATO",
+          "NM_EMAIL",
+          "NR_TITULO_ELEITORAL_CANDIDATO"
+        ],
+        "consulta_cand_2006_PE.csv": [
+          "NR_CPF_CANDIDATO",
+          "NM_EMAIL",
+          "NR_TITULO_ELEITORAL_CANDIDATO"
+        ],
+        "consulta_cand_2006_MA.csv": [
+          "NR_CPF_CANDIDATO",
+          "NM_EMAIL",
+          "NR_TITULO_ELEITORAL_CANDIDATO"
+        ],
+        "consulta_cand_2006_BR.csv": [
+          "NR_CPF_CANDIDATO",
+          "NM_EMAIL",
+          "NR_TITULO_ELEITORAL_CANDIDATO"
+        ],
+        "consulta_cand_2006_SP.csv": [
+          "NR_CPF_CANDIDATO",
+          "NM_EMAIL",
+          "NR_TITULO_ELEITORAL_CANDIDATO"
+        ],
+        "consulta_cand_2006_AP.csv": [
+          "NR_CPF_CANDIDATO",
+          "NM_EMAIL",
+          "NR_TITULO_ELEITORAL_CANDIDATO"
+        ],
+        "consulta_cand_2006_PI.csv": [
+          "NR_CPF_CANDIDATO",
+          "NM_EMAIL",
+          "NR_TITULO_ELEITORAL_CANDIDATO"
+        ],
+        "consulta_cand_2006_RS.csv": [
+          "NR_CPF_CANDIDATO",
+          "NM_EMAIL",
+          "NR_TITULO_ELEITORAL_CANDIDATO"
+        ],
+        "consulta_cand_2006_TO.csv": [
+          "NR_CPF_CANDIDATO",
+          "NM_EMAIL",
+          "NR_TITULO_ELEITORAL_CANDIDATO"
+        ],
+        "consulta_cand_2006_PA.csv": [
+          "NR_CPF_CANDIDATO",
+          "NM_EMAIL",
+          "NR_TITULO_ELEITORAL_CANDIDATO"
+        ],
+        "consulta_cand_2006_RO.csv": [
+          "NR_CPF_CANDIDATO",
+          "NM_EMAIL",
+          "NR_TITULO_ELEITORAL_CANDIDATO"
+        ],
+        "consulta_cand_2006_ES.csv": [
+          "NR_CPF_CANDIDATO",
+          "NM_EMAIL",
+          "NR_TITULO_ELEITORAL_CANDIDATO"
+        ],
+        "consulta_cand_2006_RJ.csv": [
+          "NR_CPF_CANDIDATO",
+          "NM_EMAIL",
+          "NR_TITULO_ELEITORAL_CANDIDATO"
+        ],
+        "consulta_cand_2006_PB.csv": [
+          "NR_CPF_CANDIDATO",
+          "NM_EMAIL",
+          "NR_TITULO_ELEITORAL_CANDIDATO"
+        ],
+        "consulta_cand_2006_AM.csv": [
+          "NR_CPF_CANDIDATO",
+          "NM_EMAIL",
+          "NR_TITULO_ELEITORAL_CANDIDATO"
+        ],
+        "consulta_cand_2006_MG.csv": [
+          "NR_CPF_CANDIDATO",
+          "NM_EMAIL",
+          "NR_TITULO_ELEITORAL_CANDIDATO"
+        ],
+        "consulta_cand_2006_DF.csv": [
+          "NR_CPF_CANDIDATO",
+          "NM_EMAIL",
+          "NR_TITULO_ELEITORAL_CANDIDATO"
+        ],
+        "consulta_cand_2006_CE.csv": [
+          "NR_CPF_CANDIDATO",
+          "NM_EMAIL",
+          "NR_TITULO_ELEITORAL_CANDIDATO"
+        ],
+        "consulta_cand_2006_SC.csv": [
+          "NR_CPF_CANDIDATO",
+          "NM_EMAIL",
+          "NR_TITULO_ELEITORAL_CANDIDATO"
+        ],
+        "consulta_cand_2006_GO.csv": [
+          "NR_CPF_CANDIDATO",
+          "NM_EMAIL",
+          "NR_TITULO_ELEITORAL_CANDIDATO"
+        ],
+        "consulta_cand_2006_BA.csv": [
+          "NR_CPF_CANDIDATO",
+          "NM_EMAIL",
+          "NR_TITULO_ELEITORAL_CANDIDATO"
+        ],
+        "consulta_cand_2006_BRASIL.csv": [
+          "NR_CPF_CANDIDATO",
+          "NM_EMAIL",
+          "NR_TITULO_ELEITORAL_CANDIDATO"
+        ]
+      },
+      "assets": [
+        {
+          "name": "e491e459-consulta_cand_2006.zip",
+          "bytes": 3201920,
+          "sha256": "6efa0850fc0650b005aec141477eecccaf50d97bff9f327933db862b02d9fd70"
+        }
+      ]
+    },
+    {
+      "id": "5b81c3b3-bbc4-4c64-a9c7-870039f91b6d",
+      "name": "Bens de candidatos",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/bem_candidato/bem_candidato_2006.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/bem_candidato/bem_candidato_2006.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 4779461,
+      "lastModified": "Wed, 01 Sep 2021 14:11:39 GMT",
+      "etag": "\"48edc5-5caefa5127cc0\"",
+      "inScope": false
+    },
+    {
+      "id": "c8583ebe-04cd-4284-9bb9-c69247701323",
+      "name": "Coligações",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_coligacao/consulta_coligacao_2006.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_coligacao/consulta_coligacao_2006.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 474594,
+      "lastModified": "Wed, 01 Sep 2021 14:44:23 GMT",
+      "etag": "\"73de2-5caf01a22bfc0\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:52:28.100220+00:00",
+      "sha256": "88693bff6c39a7e125bbe07b7a0721b6470610620de25d45ac887caf61761b17",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "c8583ebe-consulta_coligacao_2006.zip",
+          "bytes": 474594,
+          "sha256": "88693bff6c39a7e125bbe07b7a0721b6470610620de25d45ac887caf61761b17"
+        }
+      ]
+    },
+    {
+      "id": "e62c1838-5c4e-4ef6-96f4-81ff839f86d1",
+      "name": "Vagas",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_vagas/consulta_vagas_2006.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_vagas/consulta_vagas_2006.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 181468,
+      "lastModified": "Wed, 01 Sep 2021 15:04:21 GMT",
+      "etag": "\"2c4dc-5caf0618ac740\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:52:28.319188+00:00",
+      "sha256": "c27bbbfe2a650a1a26dc8fc23db0cc5489633a9b08ea6e80f7505defc4bbd617",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "e62c1838-consulta_vagas_2006.zip",
+          "bytes": 181468,
+          "sha256": "c27bbbfe2a650a1a26dc8fc23db0cc5489633a9b08ea6e80f7505defc4bbd617"
+        }
+      ]
+    },
+    {
+      "id": "a038cf8b-ef65-4f03-a5b4-b9e7b9c69a37",
+      "name": "AC - Fotos de candidatos",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2006/fotos/foto_cand2006_AC_div.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2006/fotos/foto_cand2006_AC_div.zip",
+      "format": "JPEG",
+      "status": "excluded",
+      "bytes": 1833104,
+      "lastModified": "Mon, 28 Oct 2024 17:12:27 GMT",
+      "etag": "\"1bf890-6258c92b134c0\"",
+      "inScope": false
+    },
+    {
+      "id": "31b6713c-f001-4001-af8d-8b0580adc109",
+      "name": "AL - Fotos de candidatos",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2006/fotos/foto_cand2006_AL_div.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2006/fotos/foto_cand2006_AL_div.zip",
+      "format": "JPEG",
+      "status": "excluded",
+      "bytes": 1592218,
+      "lastModified": "Mon, 28 Oct 2024 16:55:21 GMT",
+      "etag": "\"184b9a-6258c5589b040\"",
+      "inScope": false
+    },
+    {
+      "id": "77ee92be-2ec3-4ece-9cd8-e609c734dc75",
+      "name": "AM - Fotos de candidatos",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2006/fotos/foto_cand2006_AM_div.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2006/fotos/foto_cand2006_AM_div.zip",
+      "format": "JPEG",
+      "status": "excluded",
+      "bytes": 1911521,
+      "lastModified": "Mon, 28 Oct 2024 16:57:45 GMT",
+      "etag": "\"1d2ae1-6258c5e1ef440\"",
+      "inScope": false
+    },
+    {
+      "id": "dff04c08-a217-4da0-8114-eafbc64e11ac",
+      "name": "AP - Fotos de candidatos",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2006/fotos/foto_cand2006_AP_div.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2006/fotos/foto_cand2006_AP_div.zip",
+      "format": "JPEG",
+      "status": "excluded",
+      "bytes": 1509007,
+      "lastModified": "Mon, 28 Oct 2024 17:11:31 GMT",
+      "etag": "\"17068f-6258c8f5ab6c0\"",
+      "inScope": false
+    },
+    {
+      "id": "c27777c6-a872-478c-a218-8f8ff2fbcac7",
+      "name": "BA - Fotos de candidatos",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2006/fotos/foto_cand2006_BA_div.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2006/fotos/foto_cand2006_BA_div.zip",
+      "format": "JPEG",
+      "status": "excluded",
+      "bytes": 3620319,
+      "lastModified": "Mon, 28 Oct 2024 16:55:24 GMT",
+      "etag": "\"373ddf-6258c55b77700\"",
+      "inScope": false
+    },
+    {
+      "id": "f7c04b98-5121-4ccc-8b3a-add95b82b13b",
+      "name": "BR - Fotos de candidatos",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2006/fotos/foto_cand2006_BR_div.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2006/fotos/foto_cand2006_BR_div.zip",
+      "format": "JPEG",
+      "status": "excluded",
+      "bytes": 191350,
+      "lastModified": "Mon, 28 Oct 2024 16:55:19 GMT",
+      "etag": "\"2eb76-6258c556b2bc0\"",
+      "inScope": false
+    },
+    {
+      "id": "e6861c47-a928-4ef3-b0e8-8fbe46c9b5b8",
+      "name": "CE - Fotos de candidatos",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2006/fotos/foto_cand2006_CE_div.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2006/fotos/foto_cand2006_CE_div.zip",
+      "format": "JPEG",
+      "status": "excluded",
+      "bytes": 3048200,
+      "lastModified": "Mon, 28 Oct 2024 17:11:32 GMT",
+      "etag": "\"2e8308-6258c8f69f900\"",
+      "inScope": false
+    },
+    {
+      "id": "3ee48513-7e52-4ff7-9371-201333972043",
+      "name": "DF - Fotos de candidatos",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2006/fotos/foto_cand2006_DF_div.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2006/fotos/foto_cand2006_DF_div.zip",
+      "format": "JPEG",
+      "status": "excluded",
+      "bytes": 3239718,
+      "lastModified": "Mon, 28 Oct 2024 16:56:45 GMT",
+      "etag": "\"316f26-6258c5a8b6d40\"",
+      "inScope": false
+    },
+    {
+      "id": "c0fef6ce-33cd-485d-9a82-5a65cc6f94af",
+      "name": "ES - Fotos de candidatos",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2006/fotos/foto_cand2006_ES_div.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2006/fotos/foto_cand2006_ES_div.zip",
+      "format": "JPEG",
+      "status": "excluded",
+      "bytes": 1898369,
+      "lastModified": "Mon, 28 Oct 2024 16:55:22 GMT",
+      "etag": "\"1cf781-6258c5598f280\"",
+      "inScope": false
+    },
+    {
+      "id": "dd8f1a3b-fe0b-4f0a-a335-761412987fc4",
+      "name": "GO - Fotos de candidatos",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2006/fotos/foto_cand2006_GO_div.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2006/fotos/foto_cand2006_GO_div.zip",
+      "format": "JPEG",
+      "status": "excluded",
+      "bytes": 2473315,
+      "lastModified": "Mon, 28 Oct 2024 16:56:33 GMT",
+      "etag": "\"25bd63-6258c59d45240\"",
+      "inScope": false
+    },
+    {
+      "id": "4c47a336-9168-40a9-8829-650fb027fcd6",
+      "name": "MA - Fotos de candidatos",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2006/fotos/foto_cand2006_MA_div.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2006/fotos/foto_cand2006_MA_div.zip",
+      "format": "JPEG",
+      "status": "excluded",
+      "bytes": 2343933,
+      "lastModified": "Mon, 28 Oct 2024 16:56:32 GMT",
+      "etag": "\"23c3fd-6258c59c51000\"",
+      "inScope": false
+    },
+    {
+      "id": "46a17170-f02d-437b-955a-c80913ddaa55",
+      "name": "MG - Fotos de candidatos",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2006/fotos/foto_cand2006_MG_div.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2006/fotos/foto_cand2006_MG_div.zip",
+      "format": "JPEG",
+      "status": "excluded",
+      "bytes": 5537940,
+      "lastModified": "Mon, 28 Oct 2024 16:56:27 GMT",
+      "etag": "\"548094-6258c5978c4c0\"",
+      "inScope": false
+    },
+    {
+      "id": "28818a11-fc29-4d91-9a5c-15db4457c39c",
+      "name": "MS - Fotos de candidatos",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2006/fotos/foto_cand2006_MS_div.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2006/fotos/foto_cand2006_MS_div.zip",
+      "format": "JPEG",
+      "status": "excluded",
+      "bytes": 1296164,
+      "lastModified": "Mon, 28 Oct 2024 17:11:30 GMT",
+      "etag": "\"13c724-6258c8f4b7480\"",
+      "inScope": false
+    },
+    {
+      "id": "54da2214-a31c-4ec7-aa9b-daed6e5fa85c",
+      "name": "MT - Fotos de candidatos",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2006/fotos/foto_cand2006_MT_div.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2006/fotos/foto_cand2006_MT_div.zip",
+      "format": "JPEG",
+      "status": "excluded",
+      "bytes": 1333553,
+      "lastModified": "Mon, 28 Oct 2024 16:56:41 GMT",
+      "etag": "\"145931-6258c5a4e6440\"",
+      "inScope": false
+    },
+    {
+      "id": "0a470ba0-5c2c-44bc-83bb-4cc059ab4976",
+      "name": "PA - Fotos de candidatos",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2006/fotos/foto_cand2006_PA_div.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2006/fotos/foto_cand2006_PA_div.zip",
+      "format": "JPEG",
+      "status": "excluded",
+      "bytes": 2299147,
+      "lastModified": "Mon, 28 Oct 2024 17:11:31 GMT",
+      "etag": "\"23150b-6258c8f5ab6c0\"",
+      "inScope": false
+    },
+    {
+      "id": "73875dfa-8894-46dd-8405-9cc2a733f9b7",
+      "name": "PB - Fotos de candidatos",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2006/fotos/foto_cand2006_PB_div.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2006/fotos/foto_cand2006_PB_div.zip",
+      "format": "JPEG",
+      "status": "excluded",
+      "bytes": 1563078,
+      "lastModified": "Mon, 28 Oct 2024 17:11:35 GMT",
+      "etag": "\"17d9c6-6258c8f97bfc0\"",
+      "inScope": false
+    },
+    {
+      "id": "79cc3f70-6950-45e1-9c9a-88dc4099f61b",
+      "name": "PE - Fotos de candidatos",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2006/fotos/foto_cand2006_PE_div.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2006/fotos/foto_cand2006_PE_div.zip",
+      "format": "JPEG",
+      "status": "excluded",
+      "bytes": 2972377,
+      "lastModified": "Mon, 28 Oct 2024 17:11:37 GMT",
+      "etag": "\"2d5ad9-6258c8fb64440\"",
+      "inScope": false
+    },
+    {
+      "id": "e60d2ac2-2b42-49fc-ad78-6773f999b3d7",
+      "name": "PI - Fotos de candidatos",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2006/fotos/foto_cand2006_PI_div.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2006/fotos/foto_cand2006_PI_div.zip",
+      "format": "JPEG",
+      "status": "excluded",
+      "bytes": 1392706,
+      "lastModified": "Mon, 28 Oct 2024 17:11:35 GMT",
+      "etag": "\"154042-6258c8f97bfc0\"",
+      "inScope": false
+    },
+    {
+      "id": "0df79fa3-090c-42c3-a99f-fc92f750a811",
+      "name": "PR - Fotos de candidatos",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2006/fotos/foto_cand2006_PR_div.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2006/fotos/foto_cand2006_PR_div.zip",
+      "format": "JPEG",
+      "status": "excluded",
+      "bytes": 3895513,
+      "lastModified": "Mon, 28 Oct 2024 17:11:44 GMT",
+      "etag": "\"3b70d9-6258c90211400\"",
+      "inScope": false
+    },
+    {
+      "id": "4fbe8560-6494-425e-a621-205752aae544",
+      "name": "RJ - Fotos de candidatos",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2006/fotos/foto_cand2006_RJ_div.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2006/fotos/foto_cand2006_RJ_div.zip",
+      "format": "JPEG",
+      "status": "excluded",
+      "bytes": 7881155,
+      "lastModified": "Mon, 28 Oct 2024 17:11:46 GMT",
+      "etag": "\"7841c3-6258c903f9880\"",
+      "inScope": false
+    },
+    {
+      "id": "b1d33a70-77d0-4e1d-8e95-d1f519095fa7",
+      "name": "RN - Fotos de candidatos",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2006/fotos/foto_cand2006_RN_div.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2006/fotos/foto_cand2006_RN_div.zip",
+      "format": "JPEG",
+      "status": "excluded",
+      "bytes": 1252673,
+      "lastModified": "Mon, 28 Oct 2024 17:11:30 GMT",
+      "etag": "\"131d41-6258c8f4b7480\"",
+      "inScope": false
+    },
+    {
+      "id": "4e4e9ae3-d628-40d3-ba43-18e242e418fd",
+      "name": "RO - Fotos de candidatos",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2006/fotos/foto_cand2006_RO_div.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2006/fotos/foto_cand2006_RO_div.zip",
+      "format": "JPEG",
+      "status": "excluded",
+      "bytes": 2014159,
+      "lastModified": "Mon, 28 Oct 2024 17:11:37 GMT",
+      "etag": "\"1ebbcf-6258c8fb64440\"",
+      "inScope": false
+    },
+    {
+      "id": "984ad23b-7b03-4537-8510-0939166367a3",
+      "name": "RR - Fotos de candidatos",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2006/fotos/foto_cand2006_RR_div.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2006/fotos/foto_cand2006_RR_div.zip",
+      "format": "JPEG",
+      "status": "excluded",
+      "bytes": 1848698,
+      "lastModified": "Mon, 28 Oct 2024 17:11:37 GMT",
+      "etag": "\"1c357a-6258c8fb64440\"",
+      "inScope": false
+    },
+    {
+      "id": "d0e41ffc-1aee-481d-8115-a3a92fc51f25",
+      "name": "RS - Fotos de candidatos",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2006/fotos/foto_cand2006_RS_div.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2006/fotos/foto_cand2006_RS_div.zip",
+      "format": "JPEG",
+      "status": "excluded",
+      "bytes": 3217794,
+      "lastModified": "Mon, 28 Oct 2024 17:11:41 GMT",
+      "etag": "\"311982-6258c8ff34d40\"",
+      "inScope": false
+    },
+    {
+      "id": "4b27d529-89c3-431c-bcba-c06b7294cbb2",
+      "name": "SC - Fotos de candidatos",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2006/fotos/foto_cand2006_SC_div.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2006/fotos/foto_cand2006_SC_div.zip",
+      "format": "JPEG",
+      "status": "excluded",
+      "bytes": 1981691,
+      "lastModified": "Mon, 28 Oct 2024 16:55:22 GMT",
+      "etag": "\"1e3cfb-6258c5598f280\"",
+      "inScope": false
+    },
+    {
+      "id": "b961a04a-f909-4509-ab61-7a69f68057f5",
+      "name": "SE - Fotos de candidatos",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2006/fotos/foto_cand2006_SE_div.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2006/fotos/foto_cand2006_SE_div.zip",
+      "format": "JPEG",
+      "status": "excluded",
+      "bytes": 1105136,
+      "lastModified": "Mon, 28 Oct 2024 16:57:25 GMT",
+      "etag": "\"10dcf0-6258c5cedc740\"",
+      "inScope": false
+    },
+    {
+      "id": "1c89498a-6556-42fa-912a-ae4d63e4ed3e",
+      "name": "SP - Fotos de candidatos",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2006/fotos/foto_cand2006_SP_div.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2006/fotos/foto_cand2006_SP_div.zip",
+      "format": "JPEG",
+      "status": "excluded",
+      "bytes": 11447953,
+      "lastModified": "Mon, 28 Oct 2024 17:11:50 GMT",
+      "etag": "\"aeae91-6258c907ca180\"",
+      "inScope": false
+    },
+    {
+      "id": "30e5f3ff-6035-48e0-8843-e6b1038caac5",
+      "name": "TO - Fotos de candidatos",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2006/fotos/foto_cand2006_TO_div.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2006/fotos/foto_cand2006_TO_div.zip",
+      "format": "JPEG",
+      "status": "excluded",
+      "bytes": 1845625,
+      "lastModified": "Mon, 28 Oct 2024 16:57:36 GMT",
+      "etag": "\"1c2979-6258c5d95a000\"",
+      "inScope": false
+    }
+  ]
+}
