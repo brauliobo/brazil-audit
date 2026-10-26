@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-26T23:12:07.246029+00:00",
+  "generatedAt": "2026-10-26T23:28:22.175995+00:00",
   "status": "published",
   "dataset": {
     "id": "rdv-resultados-2022-arquivos-transmitidos-para-totalizacao",
@@ -83,7 +83,8 @@
           "sha256": "344b0e76055f70997fcea43b64a095a9f684e416465c9005ae54ae49410da17e"
         }
       ],
-      "selectionVersion": 2
+      "selectionVersion": 2,
+      "inventoryVerified": true
     },
     {
       "id": "da36e0a0-3332-417c-bcc1-bf2bf2118615",
@@ -105,7 +106,8 @@
       "requests": 2,
       "elapsedSeconds": 0.71,
       "assets": [],
-      "selectionVersion": 2
+      "selectionVersion": 2,
+      "inventoryVerified": true
     },
     {
       "id": "ef1aa7eb-52ca-4ea1-85f5-1d991dbe7e86",
@@ -168,7 +170,8 @@
           "sha256": "2d0325f020219dbd11919df1f7ff28c5eba0c6010f2e2a03b2ec53dbc282b2c6"
         }
       ],
-      "selectionVersion": 2
+      "selectionVersion": 2,
+      "inventoryVerified": true
     },
     {
       "id": "e40162db-e247-4e5d-94e7-0d5cedb1d68e",
@@ -190,7 +193,8 @@
       "requests": 2,
       "elapsedSeconds": 1.39,
       "assets": [],
-      "selectionVersion": 2
+      "selectionVersion": 2,
+      "inventoryVerified": true
     },
     {
       "id": "13f9d9d8-f435-43fe-a669-595ae1ad7b26",
@@ -253,7 +257,8 @@
           "sha256": "074771f7d700a4e9fe8bb0f6457c4465e3ed7db1af68d9da81c3672c21cb3dbd"
         }
       ],
-      "selectionVersion": 2
+      "selectionVersion": 2,
+      "inventoryVerified": true
     },
     {
       "id": "bbb9dc75-0188-4dca-b52f-f79ab58e26c7",
@@ -275,7 +280,8 @@
       "requests": 2,
       "elapsedSeconds": 1.59,
       "assets": [],
-      "selectionVersion": 2
+      "selectionVersion": 2,
+      "inventoryVerified": true
     },
     {
       "id": "10bac612-320c-4c47-91c0-43c3ac8f2e9b",
@@ -338,7 +344,8 @@
           "sha256": "5cfc2944d43a8ca92bb95f673978d8cbc086ecd49ec081dcb2bc0c4f8dbb869a"
         }
       ],
-      "selectionVersion": 2
+      "selectionVersion": 2,
+      "inventoryVerified": true
     },
     {
       "id": "b859a2b5-1226-4f96-93f4-59e64a1572fc",
@@ -360,7 +367,8 @@
       "requests": 2,
       "elapsedSeconds": 0.38,
       "assets": [],
-      "selectionVersion": 2
+      "selectionVersion": 2,
+      "inventoryVerified": true
     },
     {
       "id": "314f78c7-3d33-498a-bbec-33cacc79ca47",
@@ -423,7 +431,8 @@
           "sha256": "1f778828660a875233fa0838f2e1ce32ac510dbf8d034457d32c6c3f7859d473"
         }
       ],
-      "selectionVersion": 2
+      "selectionVersion": 2,
+      "inventoryVerified": true
     },
     {
       "id": "7b6e7ebb-f701-41cc-aef0-04c15ed64968",
@@ -445,7 +454,8 @@
       "requests": 2,
       "elapsedSeconds": 5.54,
       "assets": [],
-      "selectionVersion": 2
+      "selectionVersion": 2,
+      "inventoryVerified": true
     },
     {
       "id": "f64e6111-9ed2-42c7-94b1-eb660a160927",
@@ -508,7 +518,8 @@
           "sha256": "b1cc062dfe6319b13285bb76cd4f573d596d509de46b511b1a394c9ff0a891e8"
         }
       ],
-      "selectionVersion": 2
+      "selectionVersion": 2,
+      "inventoryVerified": true
     },
     {
       "id": "8e2d123d-a004-4e77-87e4-ba2a6255c36c",
@@ -530,7 +541,8 @@
       "requests": 2,
       "elapsedSeconds": 1.36,
       "assets": [],
-      "selectionVersion": 2
+      "selectionVersion": 2,
+      "inventoryVerified": true
     },
     {
       "id": "684df1d0-a55c-4d24-9534-b7f6df96a184",
@@ -593,7 +605,8 @@
           "sha256": "4fad49ba29ecc0c3d4649b48036ae523ce2dd38bd67f89cedd60d2c71eb264ce"
         }
       ],
-      "selectionVersion": 2
+      "selectionVersion": 2,
+      "inventoryVerified": true
     },
     {
       "id": "9d89be44-7931-4391-967a-b6fd3103ef74",
@@ -615,7 +628,8 @@
       "requests": 2,
       "elapsedSeconds": 2.01,
       "assets": [],
-      "selectionVersion": 2
+      "selectionVersion": 2,
+      "inventoryVerified": true
     },
     {
       "id": "f31e486f-3191-4775-8484-7e743d7a3c93",
@@ -678,7 +692,8 @@
           "sha256": "0fddb373e1ea81279521ecf93e18ff3472dd0f76e07437cf38e614dd01689b2d"
         }
       ],
-      "selectionVersion": 2
+      "selectionVersion": 2,
+      "inventoryVerified": true
     },
     {
       "id": "1aa4cbc7-193a-4e89-8224-5ad00968313b",
@@ -700,7 +715,8 @@
       "requests": 3,
       "elapsedSeconds": 1.41,
       "assets": [],
-      "selectionVersion": 2
+      "selectionVersion": 2,
+      "inventoryVerified": true
     },
     {
       "id": "c511e19b-bffd-4dbd-8ca7-78cbf51c8e8f",
@@ -763,7 +779,8 @@
           "sha256": "7f795d9555f678f8900b472c940f1e55a4db50d9cbf8af0f83cbff19c1bf8b00"
         }
       ],
-      "selectionVersion": 2
+      "selectionVersion": 2,
+      "inventoryVerified": true
     },
     {
       "id": "6690ae5c-6e45-4111-84e1-f4cdbf81117b",
@@ -785,7 +802,8 @@
       "requests": 2,
       "elapsedSeconds": 1.57,
       "assets": [],
-      "selectionVersion": 2
+      "selectionVersion": 2,
+      "inventoryVerified": true
     },
     {
       "id": "9fba137b-4caf-4c6d-80ec-45623c7ec0fd",
@@ -848,7 +866,8 @@
           "sha256": "876c66b120755c5b28e63eca5c3bfa873e8fa10c44074630a8ced25e59aba0a7"
         }
       ],
-      "selectionVersion": 2
+      "selectionVersion": 2,
+      "inventoryVerified": true
     },
     {
       "id": "793869db-fa64-4f69-9d7b-e3d9abfaf763",
@@ -870,7 +889,8 @@
       "requests": 2,
       "elapsedSeconds": 1.2,
       "assets": [],
-      "selectionVersion": 2
+      "selectionVersion": 2,
+      "inventoryVerified": true
     },
     {
       "id": "a79a2b6f-1faf-4d9c-b3e7-9eed21d6636c",
@@ -933,7 +953,8 @@
           "bytes": 6476848,
           "sha256": "85b70c1c7f9a648564c6df11dfc92a7c879508af6ee04eccde9281f90433900c"
         }
-      ]
+      ],
+      "inventoryVerified": true
     },
     {
       "id": "e16c310c-f839-4c66-91ca-d395fafda476",
@@ -955,7 +976,8 @@
       "requests": 2,
       "elapsedSeconds": 2.57,
       "assets": [],
-      "selectionVersion": 2
+      "selectionVersion": 2,
+      "inventoryVerified": true
     },
     {
       "id": "f4ba8133-5ca9-4704-9d9b-5c4f2bdcd04f",
@@ -1018,7 +1040,8 @@
           "sha256": "24f2b9fab977af539f01026e4e030c5f586389ebfdf7d00ebede85db62940b95"
         }
       ],
-      "selectionVersion": 2
+      "selectionVersion": 2,
+      "inventoryVerified": true
     },
     {
       "id": "7567f830-9af1-41e5-a48e-5f4fe514ac61",
@@ -1040,7 +1063,8 @@
       "requests": 2,
       "elapsedSeconds": 0.7,
       "assets": [],
-      "selectionVersion": 2
+      "selectionVersion": 2,
+      "inventoryVerified": true
     },
     {
       "id": "f15e4d73-0de9-499c-bf2b-b218129322d4",
@@ -1103,7 +1127,8 @@
           "sha256": "9d13310750dae31f8920a5131ffcbda95f4cbe8be328dc069f244b8946ad4828"
         }
       ],
-      "selectionVersion": 2
+      "selectionVersion": 2,
+      "inventoryVerified": true
     },
     {
       "id": "5df0759c-c8dd-46ac-b2b2-b407e06f1bb1",
@@ -1125,7 +1150,8 @@
       "requests": 2,
       "elapsedSeconds": 0.89,
       "assets": [],
-      "selectionVersion": 2
+      "selectionVersion": 2,
+      "inventoryVerified": true
     },
     {
       "id": "e5b6d604-a8c0-4f2c-9f37-76232c1fc572",
@@ -1188,7 +1214,8 @@
           "sha256": "113b54f9795a436842a22b6c5e23936838d690d26be1086ba521fea67399b139"
         }
       ],
-      "selectionVersion": 2
+      "selectionVersion": 2,
+      "inventoryVerified": true
     },
     {
       "id": "41955ea4-e532-4ff8-bd70-14f9f565245f",
@@ -1210,7 +1237,8 @@
       "requests": 2,
       "elapsedSeconds": 0.96,
       "assets": [],
-      "selectionVersion": 2
+      "selectionVersion": 2,
+      "inventoryVerified": true
     },
     {
       "id": "097a8415-c409-4cd6-bca8-35b066d71a58",
@@ -1273,7 +1301,8 @@
           "sha256": "b5753b35f361330215786d000581baf7ed73eb72e905ed461ddec86afa1c3f58"
         }
       ],
-      "selectionVersion": 2
+      "selectionVersion": 2,
+      "inventoryVerified": true
     },
     {
       "id": "c850985c-623a-4447-aa2c-53cf09971c9d",
@@ -1295,7 +1324,8 @@
       "requests": 2,
       "elapsedSeconds": 1.18,
       "assets": [],
-      "selectionVersion": 2
+      "selectionVersion": 2,
+      "inventoryVerified": true
     },
     {
       "id": "aa0b1eda-774d-4068-9811-390b9fbaafab",
@@ -1358,7 +1388,8 @@
           "sha256": "335e7e24210595dfdcb0e1bb8fcc19d3f0377bfc345d1b29b107f4de5d0c55df"
         }
       ],
-      "selectionVersion": 2
+      "selectionVersion": 2,
+      "inventoryVerified": true
     },
     {
       "id": "6ee082fe-c762-4c3c-bc1f-56037e2e438d",
@@ -1380,7 +1411,8 @@
       "requests": 2,
       "elapsedSeconds": 1.62,
       "assets": [],
-      "selectionVersion": 2
+      "selectionVersion": 2,
+      "inventoryVerified": true
     },
     {
       "id": "c9a4fcdc-9d07-45d6-8fe1-a7d762e60e88",
@@ -1443,7 +1475,8 @@
           "sha256": "3b4e296ad0be0dc872926a3da8634589e6ae9351fca9d9b84a351b26fafe11e4"
         }
       ],
-      "selectionVersion": 2
+      "selectionVersion": 2,
+      "inventoryVerified": true
     },
     {
       "id": "6d4578c2-7c42-4581-b6fe-1454827f0945",
@@ -1465,7 +1498,8 @@
       "requests": 2,
       "elapsedSeconds": 1.16,
       "assets": [],
-      "selectionVersion": 2
+      "selectionVersion": 2,
+      "inventoryVerified": true
     },
     {
       "id": "49bb36a0-6248-420f-a1dd-1340b9381c0a",
@@ -1528,7 +1562,8 @@
           "sha256": "5aa588d56c7f825fc90c84d7b91f1957e7a77146c92a9260dc5e64656ff48f04"
         }
       ],
-      "selectionVersion": 2
+      "selectionVersion": 2,
+      "inventoryVerified": true
     },
     {
       "id": "631d43f1-6454-4743-836a-645bfd3f539e",
@@ -1550,7 +1585,8 @@
       "requests": 2,
       "elapsedSeconds": 2.28,
       "assets": [],
-      "selectionVersion": 2
+      "selectionVersion": 2,
+      "inventoryVerified": true
     },
     {
       "id": "aeaa4840-1b59-4ce4-96ac-b345858ac540",
@@ -1613,7 +1649,8 @@
           "sha256": "14c9496d14fb5167500dd156979ee3db67b95692dad0c0965ce3012c1d18478d"
         }
       ],
-      "selectionVersion": 2
+      "selectionVersion": 2,
+      "inventoryVerified": true
     },
     {
       "id": "53874a1f-349a-424e-9963-1c88eb793ec3",
@@ -1635,7 +1672,8 @@
       "requests": 2,
       "elapsedSeconds": 3.1,
       "assets": [],
-      "selectionVersion": 2
+      "selectionVersion": 2,
+      "inventoryVerified": true
     },
     {
       "id": "49b3269c-bb7a-43a1-bc98-4a48f83647e7",
@@ -1698,7 +1736,8 @@
           "sha256": "dded07ae1e75f6775a813e2126af116bc8377366c827834d233de270eabbfde7"
         }
       ],
-      "selectionVersion": 2
+      "selectionVersion": 2,
+      "inventoryVerified": true
     },
     {
       "id": "aa262298-0e9e-4c28-ace6-5a84e423d421",
@@ -1720,7 +1759,8 @@
       "requests": 2,
       "elapsedSeconds": 0.86,
       "assets": [],
-      "selectionVersion": 2
+      "selectionVersion": 2,
+      "inventoryVerified": true
     },
     {
       "id": "0ad0b696-458e-4c4c-bef7-9fb1990bb694",
@@ -1783,7 +1823,8 @@
           "sha256": "dce64dd94180bb5592cc35aa2694f453d21e91f86f5f39a3c9a8e16802a94baf"
         }
       ],
-      "selectionVersion": 2
+      "selectionVersion": 2,
+      "inventoryVerified": true
     },
     {
       "id": "bd8267f3-d3f1-47a7-9b72-66c39d91c11d",
@@ -1805,7 +1846,8 @@
       "requests": 2,
       "elapsedSeconds": 0.56,
       "assets": [],
-      "selectionVersion": 2
+      "selectionVersion": 2,
+      "inventoryVerified": true
     },
     {
       "id": "304e8d5a-4251-4957-a7b3-18a5683d6cd6",
@@ -1868,7 +1910,8 @@
           "bytes": 169692,
           "sha256": "f595e8ebc21eecd58b23187ef2ed507ee42a06e4bd383db685fc48a1e1cf2c8d"
         }
-      ]
+      ],
+      "inventoryVerified": true
     },
     {
       "id": "d9cdc533-d3dc-4643-abf9-787156619fb6",
@@ -1890,7 +1933,8 @@
       "networkBytes": 607345,
       "requests": 2,
       "elapsedSeconds": 0.71,
-      "assets": []
+      "assets": [],
+      "inventoryVerified": true
     },
     {
       "id": "74de2543-176f-4c85-9187-8272f6ac49cd",
@@ -1953,7 +1997,8 @@
           "bytes": 3515770,
           "sha256": "27d8bc651a8674b6fe6350c9c27c5944fbf2ec87f825f5059af0e6f4c7d95e0d"
         }
-      ]
+      ],
+      "inventoryVerified": true
     },
     {
       "id": "fcce49a0-f5f5-4d76-845c-fb46a9f7085c",
@@ -1975,7 +2020,8 @@
       "networkBytes": 13308101,
       "requests": 2,
       "elapsedSeconds": 2.49,
-      "assets": []
+      "assets": [],
+      "inventoryVerified": true
     },
     {
       "id": "983f531f-eb79-4d5f-ab61-0cef0a5c8c29",
@@ -2038,7 +2084,8 @@
           "bytes": 2113639,
           "sha256": "e7735287e2030e241c06120d43d3015f80739a8d17e0b90db5191a90d20fbd3a"
         }
-      ]
+      ],
+      "inventoryVerified": true
     },
     {
       "id": "5fe6b373-dde6-4eb1-bee5-40397afad587",
@@ -2060,7 +2107,8 @@
       "networkBytes": 7732145,
       "requests": 2,
       "elapsedSeconds": 1.79,
-      "assets": []
+      "assets": [],
+      "inventoryVerified": true
     },
     {
       "id": "5617e4f7-a754-4860-ac9f-aca2d5bac639",
@@ -2123,7 +2171,8 @@
           "bytes": 684174,
           "sha256": "05cc8b69bd4b8594eef90ab152f5c15d689af506c5a2c50f99c2c9c2cd41d6a0"
         }
-      ]
+      ],
+      "inventoryVerified": true
     },
     {
       "id": "446566eb-13a7-4319-bb1d-7483834d88bb",
@@ -2145,7 +2194,8 @@
       "networkBytes": 2619410,
       "requests": 2,
       "elapsedSeconds": 0.49,
-      "assets": []
+      "assets": [],
+      "inventoryVerified": true
     },
     {
       "id": "2bd7b409-8092-493d-8554-ab38280ff2f1",
@@ -2208,7 +2258,8 @@
           "bytes": 15254857,
           "sha256": "fed1fea28d0b0db39c8d7ca201c0b0973e7c395d721d67b78ccd9ab90478c88e"
         }
-      ]
+      ],
+      "inventoryVerified": true
     },
     {
       "id": "9b48989b-534c-4a02-be81-e7259b60f4d6",
@@ -2230,7 +2281,8 @@
       "networkBytes": 52863635,
       "requests": 2,
       "elapsedSeconds": 6.41,
-      "assets": []
+      "assets": [],
+      "inventoryVerified": true
     },
     {
       "id": "dca29ab7-5f0d-4427-9132-930c37118875",
@@ -2293,7 +2345,8 @@
           "bytes": 462277,
           "sha256": "6eddda271df147270360ef14d4c372ca7452b2f1d6c6ec1d1a4052e3f9477a28"
         }
-      ]
+      ],
+      "inventoryVerified": true
     },
     {
       "id": "1fdc4e60-4a43-4ca9-b5d2-b210b67834c3",
@@ -2315,7 +2368,8 @@
       "networkBytes": 1887457,
       "requests": 2,
       "elapsedSeconds": 0.81,
-      "assets": []
+      "assets": [],
+      "inventoryVerified": true
     },
     {
       "id": "208f4207-341d-47e5-b3a5-db03e0067056",
@@ -2378,7 +2432,8 @@
           "bytes": 45109,
           "sha256": "ec7ae3f3aa27c386e0f8aaef5a6d94c936263e8842bc344d62144ee196ec0705"
         }
-      ]
+      ],
+      "inventoryVerified": true
     },
     {
       "id": "ec5a705d-8851-4051-99f7-0cf3c48e0635",
@@ -2400,7 +2455,8 @@
       "networkBytes": 484705,
       "requests": 2,
       "elapsedSeconds": 0.65,
-      "assets": []
+      "assets": [],
+      "inventoryVerified": true
     }
   ]
 }
