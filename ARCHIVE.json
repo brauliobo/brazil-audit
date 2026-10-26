@@ -1,0 +1,1326 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-10-26T22:08:44.247171+00:00",
+  "status": "published",
+  "dataset": {
+    "id": "candidatos-2026",
+    "title": "Candidatos - 2026",
+    "groups": [
+      "candidatos"
+    ],
+    "family": "candidatos",
+    "years": [
+      2026
+    ],
+    "license": "cc-by",
+    "source": "https://dadosabertos.tse.jus.br/dataset/candidatos-2026",
+    "branch": "archive/candidatos-2026",
+    "tag": "data-candidatos-2026",
+    "releaseUrl": "https://github.com/brauliobo/brazil-audit/releases/tag/data-candidatos-2026",
+    "normalized": false,
+    "status": "catalogued",
+    "inScope": true
+  },
+  "resources": [
+    {
+      "id": "7748de82-a23b-47c4-9ec1-35535d945e5b",
+      "name": "Candidatos",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_cand/consulta_cand_2026.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_cand/consulta_cand_2026.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 3240701,
+      "lastModified": "Sun, 25 Oct 2026 15:37:01 GMT",
+      "etag": "\"3172fd-65eabfc0ba87c\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T22:08:42.701108+00:00",
+      "sha256": "c017f3200d33c23b43a8e7ba32af5b3f642903e53718bdf9e84bfd939084bc8c",
+      "removedPersonalColumns": {
+        "consulta_cand_2026_AM.csv": [
+          "NR_CPF_CANDIDATO",
+          "DS_EMAIL",
+          "NR_TITULO_ELEITORAL_CANDIDATO"
+        ],
+        "consulta_cand_2026_TO.csv": [
+          "NR_CPF_CANDIDATO",
+          "DS_EMAIL",
+          "NR_TITULO_ELEITORAL_CANDIDATO"
+        ],
+        "consulta_cand_2026_PR.csv": [
+          "NR_CPF_CANDIDATO",
+          "DS_EMAIL",
+          "NR_TITULO_ELEITORAL_CANDIDATO"
+        ],
+        "consulta_cand_2026_BA.csv": [
+          "NR_CPF_CANDIDATO",
+          "DS_EMAIL",
+          "NR_TITULO_ELEITORAL_CANDIDATO"
+        ],
+        "consulta_cand_2026_CE.csv": [
+          "NR_CPF_CANDIDATO",
+          "DS_EMAIL",
+          "NR_TITULO_ELEITORAL_CANDIDATO"
+        ],
+        "consulta_cand_2026_RR.csv": [
+          "NR_CPF_CANDIDATO",
+          "DS_EMAIL",
+          "NR_TITULO_ELEITORAL_CANDIDATO"
+        ],
+        "consulta_cand_2026_RS.csv": [
+          "NR_CPF_CANDIDATO",
+          "DS_EMAIL",
+          "NR_TITULO_ELEITORAL_CANDIDATO"
+        ],
+        "consulta_cand_2026_BR.csv": [
+          "NR_CPF_CANDIDATO",
+          "DS_EMAIL",
+          "NR_TITULO_ELEITORAL_CANDIDATO"
+        ],
+        "consulta_cand_2026_BRASIL.csv": [
+          "NR_CPF_CANDIDATO",
+          "DS_EMAIL",
+          "NR_TITULO_ELEITORAL_CANDIDATO"
+        ],
+        "consulta_cand_2026_DF.csv": [
+          "NR_CPF_CANDIDATO",
+          "DS_EMAIL",
+          "NR_TITULO_ELEITORAL_CANDIDATO"
+        ],
+        "consulta_cand_2026_ES.csv": [
+          "NR_CPF_CANDIDATO",
+          "DS_EMAIL",
+          "NR_TITULO_ELEITORAL_CANDIDATO"
+        ],
+        "consulta_cand_2026_GO.csv": [
+          "NR_CPF_CANDIDATO",
+          "DS_EMAIL",
+          "NR_TITULO_ELEITORAL_CANDIDATO"
+        ],
+        "consulta_cand_2026_AC.csv": [
+          "NR_CPF_CANDIDATO",
+          "DS_EMAIL",
+          "NR_TITULO_ELEITORAL_CANDIDATO"
+        ],
+        "consulta_cand_2026_AL.csv": [
+          "NR_CPF_CANDIDATO",
+          "DS_EMAIL",
+          "NR_TITULO_ELEITORAL_CANDIDATO"
+        ],
+        "consulta_cand_2026_AP.csv": [
+          "NR_CPF_CANDIDATO",
+          "DS_EMAIL",
+          "NR_TITULO_ELEITORAL_CANDIDATO"
+        ],
+        "consulta_cand_2026_MA.csv": [
+          "NR_CPF_CANDIDATO",
+          "DS_EMAIL",
+          "NR_TITULO_ELEITORAL_CANDIDATO"
+        ],
+        "consulta_cand_2026_MG.csv": [
+          "NR_CPF_CANDIDATO",
+          "DS_EMAIL",
+          "NR_TITULO_ELEITORAL_CANDIDATO"
+        ],
+        "consulta_cand_2026_PB.csv": [
+          "NR_CPF_CANDIDATO",
+          "DS_EMAIL",
+          "NR_TITULO_ELEITORAL_CANDIDATO"
+        ],
+        "consulta_cand_2026_MT.csv": [
+          "NR_CPF_CANDIDATO",
+          "DS_EMAIL",
+          "NR_TITULO_ELEITORAL_CANDIDATO"
+        ],
+        "consulta_cand_2026_MS.csv": [
+          "NR_CPF_CANDIDATO",
+          "DS_EMAIL",
+          "NR_TITULO_ELEITORAL_CANDIDATO"
+        ],
+        "consulta_cand_2026_PA.csv": [
+          "NR_CPF_CANDIDATO",
+          "DS_EMAIL",
+          "NR_TITULO_ELEITORAL_CANDIDATO"
+        ],
+        "consulta_cand_2026_PE.csv": [
+          "NR_CPF_CANDIDATO",
+          "DS_EMAIL",
+          "NR_TITULO_ELEITORAL_CANDIDATO"
+        ],
+        "consulta_cand_2026_PI.csv": [
+          "NR_CPF_CANDIDATO",
+          "DS_EMAIL",
+          "NR_TITULO_ELEITORAL_CANDIDATO"
+        ],
+        "consulta_cand_2026_RN.csv": [
+          "NR_CPF_CANDIDATO",
+          "DS_EMAIL",
+          "NR_TITULO_ELEITORAL_CANDIDATO"
+        ],
+        "consulta_cand_2026_RJ.csv": [
+          "NR_CPF_CANDIDATO",
+          "DS_EMAIL",
+          "NR_TITULO_ELEITORAL_CANDIDATO"
+        ],
+        "consulta_cand_2026_SE.csv": [
+          "NR_CPF_CANDIDATO",
+          "DS_EMAIL",
+          "NR_TITULO_ELEITORAL_CANDIDATO"
+        ],
+        "consulta_cand_2026_SC.csv": [
+          "NR_CPF_CANDIDATO",
+          "DS_EMAIL",
+          "NR_TITULO_ELEITORAL_CANDIDATO"
+        ],
+        "consulta_cand_2026_RO.csv": [
+          "NR_CPF_CANDIDATO",
+          "DS_EMAIL",
+          "NR_TITULO_ELEITORAL_CANDIDATO"
+        ],
+        "consulta_cand_2026_SP.csv": [
+          "NR_CPF_CANDIDATO",
+          "DS_EMAIL",
+          "NR_TITULO_ELEITORAL_CANDIDATO"
+        ]
+      },
+      "assets": [
+        {
+          "name": "7748de82-consulta_cand_2026.zip",
+          "bytes": 2519360,
+          "sha256": "0c9601424e6f13d92ce57c4111b327b3cd847407194b13854ebf5bc8203de6bd"
+        }
+      ]
+    },
+    {
+      "id": "d58fc30b-4eea-4286-a330-15511029e00e",
+      "name": "Candidatos - Informações complementares",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_cand_complementar/consulta_cand_complementar_2026.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_cand_complementar/consulta_cand_complementar_2026.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 1359797,
+      "lastModified": "Sun, 25 Oct 2026 15:37:01 GMT",
+      "etag": "\"14bfb5-65eabfc096a46\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T22:08:43.402548+00:00",
+      "sha256": "dd20aa6c325c3dfa68f77248f7254541b95bfdadd865f5faf418aad8dffb3428",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "d58fc30b-consulta_cand_complementar_2026.zip",
+          "bytes": 1359797,
+          "sha256": "dd20aa6c325c3dfa68f77248f7254541b95bfdadd865f5faf418aad8dffb3428"
+        }
+      ]
+    },
+    {
+      "id": "33fbda56-eb41-46f5-a8a0-8b499c285a1d",
+      "name": "Bens de candidatos",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/bem_candidato/bem_candidato_2026.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/bem_candidato/bem_candidato_2026.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 3761848,
+      "lastModified": "Sun, 25 Oct 2026 15:34:46 GMT",
+      "etag": "\"3966b8-65eabf3ff7c63\"",
+      "inScope": false
+    },
+    {
+      "id": "c54b34b3-c7c6-4d95-8b54-ff8bae7dff4d",
+      "name": "Coligações",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_coligacao/consulta_coligacao_2026.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_coligacao/consulta_coligacao_2026.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 349256,
+      "lastModified": "Sun, 25 Oct 2026 15:34:44 GMT",
+      "etag": "\"55448-65eabf3de3cc4\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T22:08:43.669700+00:00",
+      "sha256": "fc41fc199c4115f80294d2ff33cde73520cc7d6562219057ea657a5228656d3d",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "c54b34b3-consulta_coligacao_2026.zip",
+          "bytes": 349256,
+          "sha256": "fc41fc199c4115f80294d2ff33cde73520cc7d6562219057ea657a5228656d3d"
+        }
+      ]
+    },
+    {
+      "id": "dce5529d-d0c8-4c4d-8666-a55809333b60",
+      "name": "Vagas",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_vagas/consulta_vagas_2026.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_vagas/consulta_vagas_2026.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 184008,
+      "lastModified": "Sun, 25 Oct 2026 15:34:45 GMT",
+      "etag": "\"2cec8-65eabf3fa7b27\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T22:08:43.859099+00:00",
+      "sha256": "9d41be346c219855ad82765019bd4801cc1d30fc259a96afc6942e92941875d6",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "dce5529d-consulta_vagas_2026.zip",
+          "bytes": 184008,
+          "sha256": "9d41be346c219855ad82765019bd4801cc1d30fc259a96afc6942e92941875d6"
+        }
+      ]
+    },
+    {
+      "id": "275590ba-e53f-467b-a0e9-b2a5960d89d5",
+      "name": "Motivo da Cassação",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/motivo_cassacao/motivo_cassacao_2026.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/motivo_cassacao/motivo_cassacao_2026.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 131164,
+      "lastModified": "Sun, 25 Oct 2026 15:37:01 GMT",
+      "etag": "\"2005c-65eabfc09e35d\"",
+      "inScope": false
+    },
+    {
+      "id": "7c480cbf-7415-4237-8db7-8c8167542da9",
+      "name": "Redes sociais de candidatos",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_cand/rede_social_candidato_2026.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_cand/rede_social_candidato_2026.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 3002505,
+      "lastModified": "Sun, 25 Oct 2026 15:34:49 GMT",
+      "etag": "\"2dd089-65eabf432349d\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T22:08:44.243833+00:00",
+      "sha256": "5666f25c4d42740d96bc158708dcc074d7c23868c0f6f286524e8eb52dae31e8",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "7c480cbf-rede_social_candidato_2026.zip",
+          "bytes": 3002505,
+          "sha256": "5666f25c4d42740d96bc158708dcc074d7c23868c0f6f286524e8eb52dae31e8"
+        }
+      ]
+    },
+    {
+      "id": "6c3a8826-32da-460f-b306-97474b580efb",
+      "name": "Histórico de candidaturas",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/historico_candidatura/historico_candidatura_2026.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/historico_candidatura/historico_candidatura_2026.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 4413409,
+      "lastModified": "Sun, 25 Oct 2026 15:37:08 GMT",
+      "etag": "\"4357e1-65eabfc7654c4\"",
+      "inScope": false
+    },
+    {
+      "id": "1e093ea7-d2de-4e4c-92f6-77184b5f3c10",
+      "name": "AC - Fotos de candidatos",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2026/fotos/foto_cand2026_AC_div.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2026/fotos/foto_cand2026_AC_div.zip",
+      "format": "JPEG",
+      "status": "excluded",
+      "bytes": 2332173,
+      "lastModified": "Mon, 26 Oct 2026 06:41:12 GMT",
+      "etag": "\"23960d-65eb89da46efc\"",
+      "inScope": false
+    },
+    {
+      "id": "482f76a3-c275-4d8e-b617-5d26f80f78bb",
+      "name": "AL - Fotos de candidatos",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2026/fotos/foto_cand2026_AL_div.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2026/fotos/foto_cand2026_AL_div.zip",
+      "format": "JPEG",
+      "status": "excluded",
+      "bytes": 1794615,
+      "lastModified": "Mon, 26 Oct 2026 06:41:12 GMT",
+      "etag": "\"1b6237-65eb89da4d48b\"",
+      "inScope": false
+    },
+    {
+      "id": "112dd3c5-1f6d-498d-9c85-41f7b2667c27",
+      "name": "AM - Fotos de candidatos",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2026/fotos/foto_cand2026_AM_div.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2026/fotos/foto_cand2026_AM_div.zip",
+      "format": "JPEG",
+      "status": "excluded",
+      "bytes": 2905893,
+      "lastModified": "Mon, 26 Oct 2026 06:41:12 GMT",
+      "etag": "\"2c5725-65eb89da51ec3\"",
+      "inScope": false
+    },
+    {
+      "id": "64543bbb-d561-4678-8068-ebb188d9c2b0",
+      "name": "AP - Fotos de candidatos",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2026/fotos/foto_cand2026_AP_div.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2026/fotos/foto_cand2026_AP_div.zip",
+      "format": "JPEG",
+      "status": "excluded",
+      "bytes": 1989715,
+      "lastModified": "Mon, 26 Oct 2026 06:41:12 GMT",
+      "etag": "\"1e5c53-65eb89da5612b\"",
+      "inScope": false
+    },
+    {
+      "id": "383b7b3a-fdd6-4521-a3a3-b6fe25a0ed39",
+      "name": "BA - Fotos de candidatos",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2026/fotos/foto_cand2026_BA_div.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2026/fotos/foto_cand2026_BA_div.zip",
+      "format": "JPEG",
+      "status": "excluded",
+      "bytes": 7287336,
+      "lastModified": "Mon, 26 Oct 2026 06:41:12 GMT",
+      "etag": "\"6f3228-65eb89da5f982\"",
+      "inScope": false
+    },
+    {
+      "id": "e8f0a648-b438-4117-814a-f32f4c4977c8",
+      "name": "BR - Fotos de candidatos",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2026/fotos/foto_cand2026_BR_div.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2026/fotos/foto_cand2026_BR_div.zip",
+      "format": "JPEG",
+      "status": "excluded",
+      "bytes": 293950,
+      "lastModified": "Mon, 26 Oct 2026 06:41:12 GMT",
+      "etag": "\"47c3e-65eb89da618c2\"",
+      "inScope": false
+    },
+    {
+      "id": "be039588-268d-441d-ad98-fab9e7839ceb",
+      "name": "CE - Fotos de candidatos",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2026/fotos/foto_cand2026_CE_div.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2026/fotos/foto_cand2026_CE_div.zip",
+      "format": "JPEG",
+      "status": "excluded",
+      "bytes": 4226756,
+      "lastModified": "Mon, 26 Oct 2026 06:41:12 GMT",
+      "etag": "\"407ec4-65eb89da68622\"",
+      "inScope": false
+    },
+    {
+      "id": "72b5832c-a4fe-49aa-b0e4-791901a99ef8",
+      "name": "DF - Fotos de candidatos",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2026/fotos/foto_cand2026_DF_div.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2026/fotos/foto_cand2026_DF_div.zip",
+      "format": "JPEG",
+      "status": "excluded",
+      "bytes": 3978825,
+      "lastModified": "Mon, 26 Oct 2026 06:41:12 GMT",
+      "etag": "\"3cb649-65eb89da6ebb2\"",
+      "inScope": false
+    },
+    {
+      "id": "892b8391-89ba-44f0-824d-b2d49c61cc5a",
+      "name": "ES - Fotos de candidatos",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2026/fotos/foto_cand2026_ES_div.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2026/fotos/foto_cand2026_ES_div.zip",
+      "format": "JPEG",
+      "status": "excluded",
+      "bytes": 3521082,
+      "lastModified": "Mon, 26 Oct 2026 06:41:12 GMT",
+      "etag": "\"35ba3a-65eb89da74589\"",
+      "inScope": false
+    },
+    {
+      "id": "160c5b78-9817-45a8-9c67-1ff664e47252",
+      "name": "GO - Fotos de candidatos",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2026/fotos/foto_cand2026_GO_div.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2026/fotos/foto_cand2026_GO_div.zip",
+      "format": "JPEG",
+      "status": "excluded",
+      "bytes": 5388916,
+      "lastModified": "Mon, 26 Oct 2026 06:41:12 GMT",
+      "etag": "\"523a74-65eb89da7bea1\"",
+      "inScope": false
+    },
+    {
+      "id": "d1b0b207-2510-4498-967c-9cf11d218c78",
+      "name": "MA - Fotos de candidatos",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2026/fotos/foto_cand2026_MA_div.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2026/fotos/foto_cand2026_MA_div.zip",
+      "format": "JPEG",
+      "status": "excluded",
+      "bytes": 3637845,
+      "lastModified": "Mon, 26 Oct 2026 06:41:12 GMT",
+      "etag": "\"378255-65eb89da81c61\"",
+      "inScope": false
+    },
+    {
+      "id": "7a919286-5e8b-4ca2-b655-eaf16ee86630",
+      "name": "MG - Fotos de candidatos",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2026/fotos/foto_cand2026_MG_div.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2026/fotos/foto_cand2026_MG_div.zip",
+      "format": "JPEG",
+      "status": "excluded",
+      "bytes": 10875711,
+      "lastModified": "Mon, 26 Oct 2026 06:41:12 GMT",
+      "etag": "\"a5f33f-65eb89da8ef50\"",
+      "inScope": false
+    },
+    {
+      "id": "af942fcc-8dd5-4338-b19a-c35ebed7cec1",
+      "name": "MS - Fotos de candidatos",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2026/fotos/foto_cand2026_MS_div.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2026/fotos/foto_cand2026_MS_div.zip",
+      "format": "JPEG",
+      "status": "excluded",
+      "bytes": 2599345,
+      "lastModified": "Mon, 26 Oct 2026 06:41:12 GMT",
+      "etag": "\"27a9b1-65eb89da94928\"",
+      "inScope": false
+    },
+    {
+      "id": "ce184315-269e-49fa-a0d7-fab95286e0f3",
+      "name": "MT - Fotos de candidatos",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2026/fotos/foto_cand2026_MT_div.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2026/fotos/foto_cand2026_MT_div.zip",
+      "format": "JPEG",
+      "status": "excluded",
+      "bytes": 2730602,
+      "lastModified": "Mon, 26 Oct 2026 06:41:12 GMT",
+      "etag": "\"29aa6a-65eb89da99b30\"",
+      "inScope": false
+    },
+    {
+      "id": "ec8cb889-cdde-4e18-b6ff-3be71080760c",
+      "name": "PA - Fotos de candidatos",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2026/fotos/foto_cand2026_PA_div.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2026/fotos/foto_cand2026_PA_div.zip",
+      "format": "JPEG",
+      "status": "excluded",
+      "bytes": 4362833,
+      "lastModified": "Mon, 26 Oct 2026 06:41:12 GMT",
+      "etag": "\"429251-65eb89daa00bf\"",
+      "inScope": false
+    },
+    {
+      "id": "f3fd6ec8-70a9-4b99-b9de-fb628e7dd14b",
+      "name": "PB - Fotos de candidatos",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2026/fotos/foto_cand2026_PB_div.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2026/fotos/foto_cand2026_PB_div.zip",
+      "format": "JPEG",
+      "status": "excluded",
+      "bytes": 2603266,
+      "lastModified": "Mon, 26 Oct 2026 06:41:12 GMT",
+      "etag": "\"27b902-65eb89daa5e7f\"",
+      "inScope": false
+    },
+    {
+      "id": "6a3b9da4-ce96-41b5-b821-c58f521f51fd",
+      "name": "PE - Fotos de candidatos",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2026/fotos/foto_cand2026_PE_div.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2026/fotos/foto_cand2026_PE_div.zip",
+      "format": "JPEG",
+      "status": "excluded",
+      "bytes": 5587706,
+      "lastModified": "Mon, 26 Oct 2026 06:41:12 GMT",
+      "etag": "\"5542fa-65eb89dab19ff\"",
+      "inScope": false
+    },
+    {
+      "id": "7cc99120-3eb6-4a5c-bde3-61fb22eab585",
+      "name": "PI - Fotos de candidatos",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2026/fotos/foto_cand2026_PI_div.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2026/fotos/foto_cand2026_PI_div.zip",
+      "format": "JPEG",
+      "status": "excluded",
+      "bytes": 2324481,
+      "lastModified": "Mon, 26 Oct 2026 06:41:12 GMT",
+      "etag": "\"237801-65eb89dab6fee\"",
+      "inScope": false
+    },
+    {
+      "id": "2e0edc7d-8bf0-4ec9-b54a-6fbe5bb6f430",
+      "name": "PR - Fotos de candidatos",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2026/fotos/foto_cand2026_PR_div.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2026/fotos/foto_cand2026_PR_div.zip",
+      "format": "JPEG",
+      "status": "excluded",
+      "bytes": 6421385,
+      "lastModified": "Mon, 26 Oct 2026 06:41:12 GMT",
+      "etag": "\"61fb89-65eb89dac798e\"",
+      "inScope": false
+    },
+    {
+      "id": "07098d12-a29a-4b5a-96a0-52984465b1d6",
+      "name": "RJ - Fotos de candidatos",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2026/fotos/foto_cand2026_RJ_div.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2026/fotos/foto_cand2026_RJ_div.zip",
+      "format": "JPEG",
+      "status": "excluded",
+      "bytes": 12139917,
+      "lastModified": "Mon, 26 Oct 2026 06:41:12 GMT",
+      "etag": "\"b93d8d-65eb89dadae25\"",
+      "inScope": false
+    },
+    {
+      "id": "7a697c44-7801-43f5-8950-9ac6341c0eba",
+      "name": "RN - Fotos de candidatos",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2026/fotos/foto_cand2026_RN_div.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2026/fotos/foto_cand2026_RN_div.zip",
+      "format": "JPEG",
+      "status": "excluded",
+      "bytes": 1953678,
+      "lastModified": "Mon, 26 Oct 2026 06:41:12 GMT",
+      "etag": "\"1dcf8e-65eb89dadf85c\"",
+      "inScope": false
+    },
+    {
+      "id": "b9e35c4a-0912-4ad4-8086-7db9eba67b29",
+      "name": "RO - Fotos de candidatos",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2026/fotos/foto_cand2026_RO_div.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2026/fotos/foto_cand2026_RO_div.zip",
+      "format": "JPEG",
+      "status": "excluded",
+      "bytes": 2671485,
+      "lastModified": "Mon, 26 Oct 2026 06:41:12 GMT",
+      "etag": "\"28c37d-65eb89dae5234\"",
+      "inScope": false
+    },
+    {
+      "id": "75331bb4-c14b-4817-a3c3-c1ab64bae702",
+      "name": "RR - Fotos de candidatos",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2026/fotos/foto_cand2026_RR_div.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2026/fotos/foto_cand2026_RR_div.zip",
+      "format": "JPEG",
+      "status": "excluded",
+      "bytes": 2504652,
+      "lastModified": "Mon, 26 Oct 2026 06:41:12 GMT",
+      "etag": "\"2637cc-65eb89daf82e3\"",
+      "inScope": false
+    },
+    {
+      "id": "04dfe503-a4d2-488e-bded-e5368025bcbb",
+      "name": "RS - Fotos de candidatos",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2026/fotos/foto_cand2026_RS_div.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2026/fotos/foto_cand2026_RS_div.zip",
+      "format": "JPEG",
+      "status": "excluded",
+      "bytes": 6172819,
+      "lastModified": "Mon, 26 Oct 2026 06:41:12 GMT",
+      "etag": "\"5e3093-65eb89db0d2d2\"",
+      "inScope": false
+    },
+    {
+      "id": "893ddc5a-bf4a-4c90-890d-7eae2a4527fb",
+      "name": "SC - Fotos de candidatos",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2026/fotos/foto_cand2026_SC_div.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2026/fotos/foto_cand2026_SC_div.zip",
+      "format": "JPEG",
+      "status": "excluded",
+      "bytes": 4250218,
+      "lastModified": "Mon, 26 Oct 2026 06:41:12 GMT",
+      "etag": "\"40da6a-65eb89db1ad92\"",
+      "inScope": false
+    },
+    {
+      "id": "a76928e8-fed7-4361-a592-0c40824ac6ed",
+      "name": "SE - Fotos de candidatos",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2026/fotos/foto_cand2026_SE_div.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2026/fotos/foto_cand2026_SE_div.zip",
+      "format": "JPEG",
+      "status": "excluded",
+      "bytes": 2453040,
+      "lastModified": "Mon, 26 Oct 2026 06:41:12 GMT",
+      "etag": "\"256e30-65eb89db20381\"",
+      "inScope": false
+    },
+    {
+      "id": "a2e40197-4d32-4282-87a5-59023a7ea3cd",
+      "name": "SP - Fotos de candidatos",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2026/fotos/foto_cand2026_SP_div.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2026/fotos/foto_cand2026_SP_div.zip",
+      "format": "JPEG",
+      "status": "excluded",
+      "bytes": 15607560,
+      "lastModified": "Mon, 26 Oct 2026 06:41:13 GMT",
+      "etag": "\"ee2708-65eb89db347b8\"",
+      "inScope": false
+    },
+    {
+      "id": "50c99af8-c12e-4e87-a966-a60b0ac21c8b",
+      "name": "TO - Fotos de candidatos",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2026/fotos/foto_cand2026_TO_div.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2026/fotos/foto_cand2026_TO_div.zip",
+      "format": "JPEG",
+      "status": "excluded",
+      "bytes": 2206824,
+      "lastModified": "Mon, 26 Oct 2026 06:41:13 GMT",
+      "etag": "\"21ac68-65eb89db399c0\"",
+      "inScope": false
+    },
+    {
+      "id": "892e69b3-5fee-4c88-8492-489c8971f560",
+      "name": "AC - Proposta de governo",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2026_AC.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2026_AC.zip",
+      "format": "PDF",
+      "status": "excluded",
+      "bytes": 8122316,
+      "lastModified": "Mon, 26 Oct 2026 07:38:37 GMT",
+      "etag": "\"7befcc-65eb96b092d64\"",
+      "inScope": false
+    },
+    {
+      "id": "24b68abf-0223-4e8d-b5c6-233b17ebf1df",
+      "name": "AL - Proposta de governo",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2026_AL.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2026_AL.zip",
+      "format": "PDF",
+      "status": "excluded",
+      "bytes": 6148423,
+      "lastModified": "Mon, 26 Oct 2026 07:38:38 GMT",
+      "etag": "\"5dd147-65eb96b0a331c\"",
+      "inScope": false
+    },
+    {
+      "id": "d1f51a6d-173f-45e4-a895-3ba71569d8c7",
+      "name": "AM - Proposta de governo",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2026_AM.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2026_AM.zip",
+      "format": "PDF",
+      "status": "excluded",
+      "bytes": 77038196,
+      "lastModified": "Mon, 26 Oct 2026 07:38:38 GMT",
+      "etag": "\"4978274-65eb96b11534e\"",
+      "inScope": false
+    },
+    {
+      "id": "d3a6d8f2-05b4-4f4f-bef0-cf43578eca18",
+      "name": "AP - Proposta de governo",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2026_AP.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2026_AP.zip",
+      "format": "PDF",
+      "status": "excluded",
+      "bytes": 7675343,
+      "lastModified": "Mon, 26 Oct 2026 07:38:38 GMT",
+      "etag": "\"751dcf-65eb96b12f545\"",
+      "inScope": false
+    },
+    {
+      "id": "83c4812f-6c19-4901-a933-e826a38ee5c4",
+      "name": "BA - Proposta de governo",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2026_BA.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2026_BA.zip",
+      "format": "PDF",
+      "status": "excluded",
+      "bytes": 14164200,
+      "lastModified": "Mon, 26 Oct 2026 07:38:38 GMT",
+      "etag": "\"d820e8-65eb96b14d5bc\"",
+      "inScope": false
+    },
+    {
+      "id": "433ac1f4-07dc-44a2-bcbe-c87a2073721a",
+      "name": "BR - Proposta de governo",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2026_BR.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2026_BR.zip",
+      "format": "PDF",
+      "status": "excluded",
+      "bytes": 18275613,
+      "lastModified": "Mon, 26 Oct 2026 07:38:38 GMT",
+      "etag": "\"116dd1d-65eb96b169ada\"",
+      "inScope": false
+    },
+    {
+      "id": "46fb7c9b-6e64-4577-a847-f1545ccb860b",
+      "name": "CE - Proposta de governo",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2026_CE.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2026_CE.zip",
+      "format": "PDF",
+      "status": "excluded",
+      "bytes": 5480787,
+      "lastModified": "Mon, 26 Oct 2026 07:38:38 GMT",
+      "etag": "\"53a153-65eb96b172b62\"",
+      "inScope": false
+    },
+    {
+      "id": "2ed2713f-62aa-4b4a-b663-ee2d9727d8a6",
+      "name": "DF - Proposta de governo",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2026_DF.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2026_DF.zip",
+      "format": "PDF",
+      "status": "excluded",
+      "bytes": 10994146,
+      "lastModified": "Mon, 26 Oct 2026 07:38:38 GMT",
+      "etag": "\"a7c1e2-65eb96b1867c9\"",
+      "inScope": false
+    },
+    {
+      "id": "c1df9a86-90df-4f1f-a604-a0b55a1ffcae",
+      "name": "ES - Proposta de governo",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2026_ES.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2026_ES.zip",
+      "format": "PDF",
+      "status": "excluded",
+      "bytes": 8397110,
+      "lastModified": "Mon, 26 Oct 2026 07:38:39 GMT",
+      "etag": "\"802136-65eb96b1959f8\"",
+      "inScope": false
+    },
+    {
+      "id": "c73b0699-89fc-4427-b1bb-71c0c2b30255",
+      "name": "GO - Proposta de governo",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2026_GO.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2026_GO.zip",
+      "format": "PDF",
+      "status": "excluded",
+      "bytes": 5664235,
+      "lastModified": "Mon, 26 Oct 2026 07:38:39 GMT",
+      "etag": "\"566deb-65eb96b19f638\"",
+      "inScope": false
+    },
+    {
+      "id": "2533babc-f5ac-4097-81aa-0c3507c34ff2",
+      "name": "MA - Proposta de governo",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2026_MA.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2026_MA.zip",
+      "format": "PDF",
+      "status": "excluded",
+      "bytes": 7671603,
+      "lastModified": "Mon, 26 Oct 2026 07:38:39 GMT",
+      "etag": "\"750f33-65eb96b1b4a0f\"",
+      "inScope": false
+    },
+    {
+      "id": "72831fd0-1ace-4834-8d7e-746d190baeb0",
+      "name": "MG - Proposta de governo",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2026_MG.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2026_MG.zip",
+      "format": "PDF",
+      "status": "excluded",
+      "bytes": 19972034,
+      "lastModified": "Mon, 26 Oct 2026 07:38:39 GMT",
+      "etag": "\"130bfc2-65eb96b1e99b4\"",
+      "inScope": false
+    },
+    {
+      "id": "7e96e31d-8b9e-419d-8689-f6394d77a003",
+      "name": "MS - Proposta de governo",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2026_MS.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2026_MS.zip",
+      "format": "PDF",
+      "status": "excluded",
+      "bytes": 4363086,
+      "lastModified": "Mon, 26 Oct 2026 07:38:39 GMT",
+      "etag": "\"42934e-65eb96b1f591c\"",
+      "inScope": false
+    },
+    {
+      "id": "dcd10ffa-2e30-4cfd-9747-b7e06f3d2376",
+      "name": "MT - Proposta de governo",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2026_MT.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2026_MT.zip",
+      "format": "PDF",
+      "status": "excluded",
+      "bytes": 4780433,
+      "lastModified": "Mon, 26 Oct 2026 07:38:39 GMT",
+      "etag": "\"48f191-65eb96b201883\"",
+      "inScope": false
+    },
+    {
+      "id": "a17ef84d-7f22-4a5f-8ce9-b8e5f78a9957",
+      "name": "PA - Proposta de governo",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2026_PA.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2026_PA.zip",
+      "format": "PDF",
+      "status": "excluded",
+      "bytes": 4075793,
+      "lastModified": "Mon, 26 Oct 2026 07:38:39 GMT",
+      "etag": "\"3e3111-65eb96b20ef5a\"",
+      "inScope": false
+    },
+    {
+      "id": "e0602f94-5fe6-40f1-b3f6-023790f42cb3",
+      "name": "PB - Proposta de governo",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2026_PB.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2026_PB.zip",
+      "format": "PDF",
+      "status": "excluded",
+      "bytes": 3130318,
+      "lastModified": "Mon, 26 Oct 2026 07:38:39 GMT",
+      "etag": "\"2fc3ce-65eb96b21936a\"",
+      "inScope": false
+    },
+    {
+      "id": "0be7c0ed-7e5f-406a-a676-5cafc31f4c70",
+      "name": "PE - Proposta de governo",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2026_PE.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2026_PE.zip",
+      "format": "PDF",
+      "status": "excluded",
+      "bytes": 10343974,
+      "lastModified": "Mon, 26 Oct 2026 07:38:39 GMT",
+      "etag": "\"9dd626-65eb96b230681\"",
+      "inScope": false
+    },
+    {
+      "id": "27a69a77-5fae-485f-bd88-d4c8bbd5414c",
+      "name": "PI - Proposta de governo",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2026_PI.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2026_PI.zip",
+      "format": "PDF",
+      "status": "excluded",
+      "bytes": 6188874,
+      "lastModified": "Mon, 26 Oct 2026 07:38:39 GMT",
+      "etag": "\"5e6f4a-65eb96b247998\"",
+      "inScope": false
+    },
+    {
+      "id": "9d178584-c623-463d-a8e7-241437a9d473",
+      "name": "PR - Proposta de governo",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2026_PR.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2026_PR.zip",
+      "format": "PDF",
+      "status": "excluded",
+      "bytes": 11489754,
+      "lastModified": "Mon, 26 Oct 2026 07:38:39 GMT",
+      "etag": "\"af51da-65eb96b25f097\"",
+      "inScope": false
+    },
+    {
+      "id": "fe53384a-b57e-4dc5-bd87-04b0bb8d0941",
+      "name": "RJ - Proposta de governo",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2026_RJ.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2026_RJ.zip",
+      "format": "PDF",
+      "status": "excluded",
+      "bytes": 19036179,
+      "lastModified": "Mon, 26 Oct 2026 07:38:40 GMT",
+      "etag": "\"1227813-65eb96b28f604\"",
+      "inScope": false
+    },
+    {
+      "id": "c86c1bca-0f59-438f-bf8a-803f289698a1",
+      "name": "RN - Proposta de governo",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2026_RN.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2026_RN.zip",
+      "format": "PDF",
+      "status": "excluded",
+      "bytes": 6584538,
+      "lastModified": "Mon, 26 Oct 2026 07:38:40 GMT",
+      "etag": "\"6478da-65eb96b2a26b4\"",
+      "inScope": false
+    },
+    {
+      "id": "1f306c5c-6eb7-4a03-8f60-315bb45a39cc",
+      "name": "RO - Proposta de governo",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2026_RO.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2026_RO.zip",
+      "format": "PDF",
+      "status": "excluded",
+      "bytes": 7180969,
+      "lastModified": "Mon, 26 Oct 2026 07:38:40 GMT",
+      "etag": "\"6d92a9-65eb96b2b2c6b\"",
+      "inScope": false
+    },
+    {
+      "id": "931ddc42-6831-45e2-b84f-b673a8386dab",
+      "name": "RR - Proposta de governo",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2026_RR.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2026_RR.zip",
+      "format": "PDF",
+      "status": "excluded",
+      "bytes": 3556340,
+      "lastModified": "Mon, 26 Oct 2026 07:38:40 GMT",
+      "etag": "\"3643f4-65eb96b2bc8aa\"",
+      "inScope": false
+    },
+    {
+      "id": "8b8cb7e4-e05c-4fb2-bde7-a9ff8d8baf1f",
+      "name": "RS - Proposta de governo",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2026_RS.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2026_RS.zip",
+      "format": "PDF",
+      "status": "excluded",
+      "bytes": 6797076,
+      "lastModified": "Mon, 26 Oct 2026 07:38:40 GMT",
+      "etag": "\"67b714-65eb96b2caf22\"",
+      "inScope": false
+    },
+    {
+      "id": "a9f5e145-0cc2-4c20-a010-893b10b22547",
+      "name": "SC - Proposta de governo",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2026_SC.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2026_SC.zip",
+      "format": "PDF",
+      "status": "excluded",
+      "bytes": 5991414,
+      "lastModified": "Mon, 26 Oct 2026 07:38:40 GMT",
+      "etag": "\"5b6bf6-65eb96b2d7a41\"",
+      "inScope": false
+    },
+    {
+      "id": "4a15fa3e-c06b-4fca-b7eb-90e46dbe0eff",
+      "name": "SE - Proposta de governo",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2026_SE.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2026_SE.zip",
+      "format": "PDF",
+      "status": "excluded",
+      "bytes": 9465018,
+      "lastModified": "Mon, 26 Oct 2026 07:38:40 GMT",
+      "etag": "\"906cba-65eb96b2f04c8\"",
+      "inScope": false
+    },
+    {
+      "id": "c8f84a67-6683-4d69-b1b3-64c24d0c797b",
+      "name": "SP - Proposta de governo",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2026_SP.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2026_SP.zip",
+      "format": "PDF",
+      "status": "excluded",
+      "bytes": 13649958,
+      "lastModified": "Mon, 26 Oct 2026 07:38:40 GMT",
+      "etag": "\"d04826-65eb96b30a2d7\"",
+      "inScope": false
+    },
+    {
+      "id": "61da85ce-ef67-42fd-ae2a-8e6bd6765901",
+      "name": "TO - Proposta de governo",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2026_TO.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2026_TO.zip",
+      "format": "PDF",
+      "status": "excluded",
+      "bytes": 7994276,
+      "lastModified": "Mon, 26 Oct 2026 07:38:40 GMT",
+      "etag": "\"79fba4-65eb96b31817e\"",
+      "inScope": false
+    },
+    {
+      "id": "cf315941-3e60-4854-9b8a-9aeccf3e059e",
+      "name": "AC - Certidões criminais",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/certidao_criminal/certidao_criminal_2026_AC.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/certidao_criminal/certidao_criminal_2026_AC.zip",
+      "format": "PDF",
+      "status": "excluded",
+      "bytes": 173132636,
+      "lastModified": "Sat, 24 Oct 2026 13:47:59 GMT",
+      "etag": "\"a51cb5c-65e96584af3da\"",
+      "inScope": false
+    },
+    {
+      "id": "f1eb25a5-66c5-4346-88d0-ca7ebf483786",
+      "name": "AL - Certidões criminais",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/certidao_criminal/certidao_criminal_2026_AL.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/certidao_criminal/certidao_criminal_2026_AL.zip",
+      "format": "PDF",
+      "status": "excluded",
+      "bytes": 136157396,
+      "lastModified": "Sat, 24 Oct 2026 13:48:00 GMT",
+      "etag": "\"81d98d4-65e965857b570\"",
+      "inScope": false
+    },
+    {
+      "id": "b1cad4b3-a31e-482b-bebd-c2cfdc69425d",
+      "name": "AM - Certidões criminais",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/certidao_criminal/certidao_criminal_2026_AM.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/certidao_criminal/certidao_criminal_2026_AM.zip",
+      "format": "PDF",
+      "status": "excluded",
+      "bytes": 231825332,
+      "lastModified": "Sat, 24 Oct 2026 13:48:01 GMT",
+      "etag": "\"dd15fb4-65e96586de8f8\"",
+      "inScope": false
+    },
+    {
+      "id": "9768f310-a996-487e-b461-8f26ab8b8fc0",
+      "name": "AP - Certidões criminais",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/certidao_criminal/certidao_criminal_2026_AP.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/certidao_criminal/certidao_criminal_2026_AP.zip",
+      "format": "PDF",
+      "status": "excluded",
+      "bytes": 145446477,
+      "lastModified": "Sat, 24 Oct 2026 13:48:03 GMT",
+      "etag": "\"8ab564d-65e96587e7f04\"",
+      "inScope": false
+    },
+    {
+      "id": "e4f008c8-a09c-4b4d-ac9c-bad30eea738d",
+      "name": "BA - Certidões criminais",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/certidao_criminal/certidao_criminal_2026_BA.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/certidao_criminal/certidao_criminal_2026_BA.zip",
+      "format": "PDF",
+      "status": "excluded",
+      "bytes": 664337119,
+      "lastModified": "Sat, 24 Oct 2026 13:48:08 GMT",
+      "etag": "\"2798fadf-65e9658d30766\"",
+      "inScope": false
+    },
+    {
+      "id": "b9f8054d-7cb5-49f9-b333-290aa33ee54b",
+      "name": "BR - Certidões criminais",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/certidao_criminal/certidao_criminal_2026_BR.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/certidao_criminal/certidao_criminal_2026_BR.zip",
+      "format": "PDF",
+      "status": "excluded",
+      "bytes": 69052645,
+      "lastModified": "Sat, 24 Oct 2026 13:48:09 GMT",
+      "etag": "\"41da8e5-65e9658dc003f\"",
+      "inScope": false
+    },
+    {
+      "id": "565bf98d-310e-4946-96c9-f44c44904740",
+      "name": "CE - Certidões criminais",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/certidao_criminal/certidao_criminal_2026_CE.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/certidao_criminal/certidao_criminal_2026_CE.zip",
+      "format": "PDF",
+      "status": "excluded",
+      "bytes": 236756800,
+      "lastModified": "Sat, 24 Oct 2026 13:48:11 GMT",
+      "etag": "\"e1c9f40-65e9658f9a219\"",
+      "inScope": false
+    },
+    {
+      "id": "cf6b00cd-a0db-48ee-82e9-cd16259cada1",
+      "name": "DF - Certidões criminais",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/certidao_criminal/certidao_criminal_2026_DF.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/certidao_criminal/certidao_criminal_2026_DF.zip",
+      "format": "PDF",
+      "status": "excluded",
+      "bytes": 292364197,
+      "lastModified": "Sat, 24 Oct 2026 13:48:13 GMT",
+      "etag": "\"116d1fa5-65e96591fb7fd\"",
+      "inScope": false
+    },
+    {
+      "id": "1aba030a-1291-4313-808c-2efd0fa95045",
+      "name": "ES - Certidões criminais",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/certidao_criminal/certidao_criminal_2026_ES.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/certidao_criminal/certidao_criminal_2026_ES.zip",
+      "format": "PDF",
+      "status": "excluded",
+      "bytes": 405956284,
+      "lastModified": "Sat, 24 Oct 2026 13:48:18 GMT",
+      "etag": "\"183266bc-65e965969305f\"",
+      "inScope": false
+    },
+    {
+      "id": "4b6e5588-c4cc-41cc-94f3-5620428d6930",
+      "name": "GO - Certidões criminais",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/certidao_criminal/certidao_criminal_2026_GO.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/certidao_criminal/certidao_criminal_2026_GO.zip",
+      "format": "PDF",
+      "status": "excluded",
+      "bytes": 573335923,
+      "lastModified": "Sat, 24 Oct 2026 13:48:22 GMT",
+      "etag": "\"222c6973-65e9659acf7be\"",
+      "inScope": false
+    },
+    {
+      "id": "4dc54b6e-a167-49c6-a2a6-862162eecb1a",
+      "name": "MA - Certidões criminais",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/certidao_criminal/certidao_criminal_2026_MA.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/certidao_criminal/certidao_criminal_2026_MA.zip",
+      "format": "PDF",
+      "status": "excluded",
+      "bytes": 450545032,
+      "lastModified": "Sat, 24 Oct 2026 13:48:26 GMT",
+      "etag": "\"1adac588-65e9659de6009\"",
+      "inScope": false
+    },
+    {
+      "id": "6aeeb5d7-b2b5-4491-8f83-103392b1c840",
+      "name": "MG - Certidões criminais",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/certidao_criminal/certidao_criminal_2026_MG.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/certidao_criminal/certidao_criminal_2026_MG.zip",
+      "format": "PDF",
+      "status": "excluded",
+      "bytes": 1352809607,
+      "lastModified": "Sat, 24 Oct 2026 13:48:35 GMT",
+      "etag": "\"50a23c87-65e965a69a013\"",
+      "inScope": false
+    },
+    {
+      "id": "fcf2944d-bf88-424a-9b7d-aea3dcca7cba",
+      "name": "MS - Certidões criminais",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/certidao_criminal/certidao_criminal_2026_MS.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/certidao_criminal/certidao_criminal_2026_MS.zip",
+      "format": "PDF",
+      "status": "excluded",
+      "bytes": 209023687,
+      "lastModified": "Sat, 24 Oct 2026 13:48:36 GMT",
+      "etag": "\"c7572c7-65e965a810c1a\"",
+      "inScope": false
+    },
+    {
+      "id": "d58858a2-a5ca-4571-a424-e1815d41698b",
+      "name": "MT - Certidões criminais",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/certidao_criminal/certidao_criminal_2026_MT.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/certidao_criminal/certidao_criminal_2026_MT.zip",
+      "format": "PDF",
+      "status": "excluded",
+      "bytes": 250950697,
+      "lastModified": "Sat, 24 Oct 2026 13:48:38 GMT",
+      "etag": "\"ef53429-65e965aa2dc41\"",
+      "inScope": false
+    },
+    {
+      "id": "b32ac92f-954d-403f-bc1e-944a70e3e569",
+      "name": "PA - Certidões criminais",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/certidao_criminal/certidao_criminal_2026_PA.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/certidao_criminal/certidao_criminal_2026_PA.zip",
+      "format": "PDF",
+      "status": "excluded",
+      "bytes": 272699042,
+      "lastModified": "Sat, 24 Oct 2026 13:48:42 GMT",
+      "etag": "\"10410ea2-65e965ad77cc2\"",
+      "inScope": false
+    },
+    {
+      "id": "23e02a80-d773-423c-b1b7-f4f6df376062",
+      "name": "PB - Certidões criminais",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/certidao_criminal/certidao_criminal_2026_PB.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/certidao_criminal/certidao_criminal_2026_PB.zip",
+      "format": "PDF",
+      "status": "excluded",
+      "bytes": 122584072,
+      "lastModified": "Sat, 24 Oct 2026 13:48:43 GMT",
+      "etag": "\"74e7c08-65e965ae3733a\"",
+      "inScope": false
+    },
+    {
+      "id": "c9f8aa1a-6572-4e3a-b51e-077c02763730",
+      "name": "PE - Certidões criminais",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/certidao_criminal/certidao_criminal_2026_PE.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/certidao_criminal/certidao_criminal_2026_PE.zip",
+      "format": "PDF",
+      "status": "excluded",
+      "bytes": 347264077,
+      "lastModified": "Sat, 24 Oct 2026 13:48:45 GMT",
+      "etag": "\"14b2d44d-65e965b0a831d\"",
+      "inScope": false
+    },
+    {
+      "id": "80106e03-90fd-4375-b66e-23947cf180e8",
+      "name": "PI - Certidões criminais",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/certidao_criminal/certidao_criminal_2026_PI.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/certidao_criminal/certidao_criminal_2026_PI.zip",
+      "format": "PDF",
+      "status": "excluded",
+      "bytes": 350925203,
+      "lastModified": "Sat, 24 Oct 2026 13:48:48 GMT",
+      "etag": "\"14eab193-65e965b308d49\"",
+      "inScope": false
+    },
+    {
+      "id": "82ea27d8-5790-4bf4-a7cf-1491c6ec0ca1",
+      "name": "PR - Certidões criminais",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/certidao_criminal/certidao_criminal_2026_PR.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/certidao_criminal/certidao_criminal_2026_PR.zip",
+      "format": "PDF",
+      "status": "excluded",
+      "bytes": 899998223,
+      "lastModified": "Sat, 24 Oct 2026 13:48:54 GMT",
+      "etag": "\"35a4e20f-65e965b96440e\"",
+      "inScope": false
+    },
+    {
+      "id": "4bd0fdad-db58-4fd2-a3ea-175d4d62c14b",
+      "name": "RJ - Certidões criminais",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/certidao_criminal/certidao_criminal_2026_RJ.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/certidao_criminal/certidao_criminal_2026_RJ.zip",
+      "format": "PDF",
+      "status": "excluded",
+      "bytes": 1662875630,
+      "lastModified": "Sat, 24 Oct 2026 13:49:06 GMT",
+      "etag": "\"631d77ee-65e965c41ba18\"",
+      "inScope": false
+    },
+    {
+      "id": "cf5d0181-08fc-489a-9b14-7cc837daf2ca",
+      "name": "RN - Certidões criminais",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/certidao_criminal/certidao_criminal_2026_RN.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/certidao_criminal/certidao_criminal_2026_RN.zip",
+      "format": "PDF",
+      "status": "excluded",
+      "bytes": 152608755,
+      "lastModified": "Sat, 24 Oct 2026 13:49:07 GMT",
+      "etag": "\"9189ff3-65e965c522cfc\"",
+      "inScope": false
+    },
+    {
+      "id": "222f0df5-5030-4d38-970a-49525a7cf8a4",
+      "name": "RO - Certidões criminais",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/certidao_criminal/certidao_criminal_2026_RO.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/certidao_criminal/certidao_criminal_2026_RO.zip",
+      "format": "PDF",
+      "status": "excluded",
+      "bytes": 260520017,
+      "lastModified": "Sat, 24 Oct 2026 13:49:09 GMT",
+      "etag": "\"f873851-65e965c6d32e0\"",
+      "inScope": false
+    },
+    {
+      "id": "b8810f05-3aa4-4651-aeb3-083b2f36b5ca",
+      "name": "RR - Certidões criminais",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/certidao_criminal/certidao_criminal_2026_RR.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/certidao_criminal/certidao_criminal_2026_RR.zip",
+      "format": "PDF",
+      "status": "excluded",
+      "bytes": 141213433,
+      "lastModified": "Sat, 24 Oct 2026 13:49:10 GMT",
+      "etag": "\"86abef9-65e965c7d3c4d\"",
+      "inScope": false
+    },
+    {
+      "id": "8b228ca0-839c-4d9c-a0f2-58ee9516f27e",
+      "name": "RS - Certidões criminais",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/certidao_criminal/certidao_criminal_2026_RS.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/certidao_criminal/certidao_criminal_2026_RS.zip",
+      "format": "PDF",
+      "status": "excluded",
+      "bytes": 549694552,
+      "lastModified": "Sat, 24 Oct 2026 13:49:14 GMT",
+      "etag": "\"20c3ac58-65e965cc0405b\"",
+      "inScope": false
+    },
+    {
+      "id": "383e1b2a-bc49-4c5d-96a7-6cf359bb01b5",
+      "name": "SC - Certidões criminais",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/certidao_criminal/certidao_criminal_2026_SC.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/certidao_criminal/certidao_criminal_2026_SC.zip",
+      "format": "PDF",
+      "status": "excluded",
+      "bytes": 875512450,
+      "lastModified": "Sat, 24 Oct 2026 13:49:20 GMT",
+      "etag": "\"342f4282-65e965d1c2b58\"",
+      "inScope": false
+    },
+    {
+      "id": "2b6cfebd-1be7-49f0-8a8f-8aa3221f4990",
+      "name": "SE - Certidões criminais",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/certidao_criminal/certidao_criminal_2026_SE.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/certidao_criminal/certidao_criminal_2026_SE.zip",
+      "format": "PDF",
+      "status": "excluded",
+      "bytes": 152159613,
+      "lastModified": "Sat, 24 Oct 2026 13:49:21 GMT",
+      "etag": "\"911c57d-65e965d2cf044\"",
+      "inScope": false
+    },
+    {
+      "id": "99881d8b-555a-4c32-a3aa-4a986422f423",
+      "name": "SP - Certidões criminais",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/certidao_criminal/certidao_criminal_2026_SP.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/certidao_criminal/certidao_criminal_2026_SP.zip",
+      "format": "PDF",
+      "status": "excluded",
+      "bytes": 2431486033,
+      "lastModified": "Sat, 24 Oct 2026 13:49:38 GMT",
+      "etag": "\"90ed8851-65e965e2be8f8\"",
+      "inScope": false
+    },
+    {
+      "id": "30872049-3adb-49d8-adbe-1c4825d3bbaf",
+      "name": "TO - Certidões criminais",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/certidao_criminal/certidao_criminal_2026_TO.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/certidao_criminal/certidao_criminal_2026_TO.zip",
+      "format": "PDF",
+      "status": "excluded",
+      "bytes": 266736316,
+      "lastModified": "Sat, 24 Oct 2026 13:49:40 GMT",
+      "etag": "\"fe612bc-65e965e4740e4\"",
+      "inScope": false
+    }
+  ]
+}
