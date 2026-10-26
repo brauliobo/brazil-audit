@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-26T22:34:43.214422+00:00",
+  "generatedAt": "2026-10-26T22:37:19.473833+00:00",
   "status": "published",
   "dataset": {
     "id": "rdv-resultados-2020-suplementares",
@@ -8,7 +8,7 @@
     "groups": [
       "resultados"
     ],
-    "family": "resultados",
+    "family": "rdv",
     "years": [
       2020
     ],
@@ -16,9 +16,9 @@
     "source": "https://dadosabertos.tse.jus.br/dataset/resultados-2020-suplementares",
     "branch": "archive/rdv-resultados-2020-suplementares",
     "tag": "data-rdv-resultados-2020-suplementares",
-    "releaseUrl": "https://github.com/brauliobo/brazil-audit/releases/tag/data-resultados-2020-suplementares",
+    "releaseUrl": "https://github.com/brauliobo/brazil-audit/releases/tag/data-rdv-resultados-2020-suplementares",
     "normalized": false,
-    "status": "excluded",
+    "status": "downloading",
     "inScope": true
   },
   "resources": [
