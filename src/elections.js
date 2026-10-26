@@ -22,10 +22,11 @@
 //             'open' = the TSE open-data collector (rdv_votes per round, section_detail, candidates, elected; no voting times)
 export const REPO = 'brauliobo/brazil-audit'
 const FULL = [1, 3, 5, 6, 7, 8]
+const DAYS = { 2018: ['2018-10-07', '2018-10-28'], 2022: ['2022-10-02', '2022-10-30'] }
 const RUNOFF = [1, 3] // the second round only elects president and governors
 
 const open = (year, turn, seatRule) => ({
-  key: turn === 1 ? `${year}` : `${year}-${turn}`, year, turn, offices: turn === 1 ? FULL : RUNOFF,
+  key: turn === 1 ? `${year}` : `${year}-${turn}`, year, turn, date: DAYS[year][turn - 1], offices: turn === 1 ? FULL : RUNOFF,
   hasBlank: true, hasTimes: false, hasResidual: false, hasSeats: turn === 1, hasCoverage: false, hasSignals: true, seatRule,
   sources: { logs: false, rdv: false, open: true, official: ['check'], pending: [], differences: {} }, // 2018: the TSE published neither RDV nor logs
   raw: { branch: '2018', code: [] },
@@ -45,7 +46,7 @@ const elections = [
   // the runoff of 2022 also has its RDV, logs and aux files (release data-2022)
   { ...machine(2, { secondUrnNoRdv: 4 }), raw: { tag: 'data-2022', indexDir: 'meta-2022', branch: '2022', code: ['script.rb'] } },
   {
-    key: '2026', year: 2026, turn: 1, offices: FULL,
+    key: '2026', year: 2026, turn: 1, date: '2026-10-04', offices: FULL,
     hasBlank: true, hasTimes: true, hasResidual: true, hasSeats: true, hasCoverage: true, hasSignals: true, seatRule: 'stf2024',
     sources: { logs: true, rdv: true, open: false, official: ['residual', 'check'], pending: [], differences: {} },
     raw: {
@@ -56,7 +57,7 @@ const elections = [
     official: { events: { 1: 6257, 3: 6259, 5: 6259, 6: 6259, 7: 6259, 8: 6259 } },
   },
   {
-    key: '2026-2', year: 2026, turn: 2, offices: RUNOFF,
+    key: '2026-2', year: 2026, turn: 2, date: '2026-10-25', offices: RUNOFF,
     hasBlank: true, hasTimes: true, hasResidual: true, hasSeats: false, hasCoverage: true, hasSignals: false,
     sources: { logs: true, rdv: true, open: false, official: ['residual', 'check'], pending: [], differences: {} },
     raw: {

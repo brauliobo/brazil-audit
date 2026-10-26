@@ -10,6 +10,7 @@ import { RULES } from '../src/seats/rules.js'
 
 const chronological = [...ELECTION_LIST].sort((a, b) => a.year - b.year || a.turn - b.turn)
 assert.deepEqual(ELECTION_LIST.map((e) => e.key), chronological.map((e) => e.key), 'ELECTION_LIST must be chronological')
+for (const e of ELECTION_LIST) assert.match(e.date, /^\d{4}-\d{2}-\d{2}$/, `polling day of ${e.key}`)
 for (const e of ELECTION_LIST) assert.equal(typeof e.hasSignals, 'boolean', `signals availability of ${e.key}`)
 for (const e of ELECTION_LIST) assert.equal(e.key, e.turn === 1 ? `${e.year}` : `${e.year}-${e.turn}`, `key of ${e.key}`)
 assert.equal(new Set(ELECTION_LIST.map((e) => e.key)).size, ELECTION_LIST.length, 'duplicate election keys')
