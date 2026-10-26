@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-26T21:46:02.451361+00:00",
+  "generatedAt": "2026-10-26T21:48:12.548762+00:00",
   "status": "published",
   "dataset": {
     "id": "candidatos-1954",
@@ -18,7 +18,8 @@
     "tag": "data-candidatos-1954",
     "releaseUrl": "https://github.com/brauliobo/brazil-audit/releases/tag/data-candidatos-1954",
     "normalized": false,
-    "status": "catalogued"
+    "status": "catalogued",
+    "inScope": true
   },
   "resources": [
     {
@@ -31,6 +32,7 @@
       "bytes": 293566,
       "lastModified": "Thu, 16 Apr 2015 19:35:42 GMT",
       "etag": "\"47abe-513dc91b75f80\"",
+      "inScope": true,
       "downloadedAt": "2026-10-26T21:46:02.137476+00:00",
       "sha256": "7b5e5fc8353f8d6917a012dd4a72ddd8c9321a129c8044eeae7715990e107468",
       "removedPersonalColumns": {},
@@ -52,6 +54,7 @@
       "bytes": 286351,
       "lastModified": "Thu, 16 Apr 2015 19:35:54 GMT",
       "etag": "\"45e8f-513dc926e7a80\"",
+      "inScope": true,
       "downloadedAt": "2026-10-26T21:46:02.450380+00:00",
       "sha256": "fad142ebd361b31ba3ade04bcd3a3bfea7cecd14449500dc613c843a82c61293",
       "removedPersonalColumns": {},
