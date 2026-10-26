@@ -1,0 +1,686 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-10-26T22:03:31.707926+00:00",
+  "status": "published",
+  "dataset": {
+    "id": "resultados-2016",
+    "title": "Resultados - 2016",
+    "groups": [
+      "resultados"
+    ],
+    "family": "resultados",
+    "years": [
+      2016
+    ],
+    "license": "cc-by",
+    "source": "https://dadosabertos.tse.jus.br/dataset/resultados-2016",
+    "branch": "archive/resultados-2016",
+    "tag": "data-resultados-2016",
+    "releaseUrl": "https://github.com/brauliobo/brazil-audit/releases/tag/data-resultados-2016",
+    "normalized": false,
+    "status": "catalogued",
+    "inScope": true
+  },
+  "resources": [
+    {
+      "id": "ccd2564b-a576-4c17-a603-31e49f980667",
+      "name": "Votação nominal por município e zona",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_candidato_munzona/votacao_candidato_munzona_2016.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_candidato_munzona/votacao_candidato_munzona_2016.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 60594613,
+      "lastModified": "Mon, 19 Jan 2026 17:11:48 GMT",
+      "etag": "\"39c99b5-648c0c9537402\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:58:14.749174+00:00",
+      "sha256": "1be9bad725bf2869470cc8553727c19fc09a305c40cb1c0240056f24fbf1cdd1",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "ccd2564b-votacao_candidato_munzona_2016.zip",
+          "bytes": 60594613,
+          "sha256": "1be9bad725bf2869470cc8553727c19fc09a305c40cb1c0240056f24fbf1cdd1"
+        }
+      ]
+    },
+    {
+      "id": "daf965d9-38f8-4d92-b11f-90dcf0f248bb",
+      "name": "Votação em partido por município e zona",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_partido_munzona/votacao_partido_munzona_2016.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_partido_munzona/votacao_partido_munzona_2016.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 11391563,
+      "lastModified": "Mon, 19 Jan 2026 17:07:49 GMT",
+      "etag": "\"add24b-648c0bb141f9c\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:58:17.686287+00:00",
+      "sha256": "7cf2353594ee332b2cc8e2f2edb6c25e1da06f22d8125a2a9278967e264fa8d5",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "daf965d9-votacao_partido_munzona_2016.zip",
+          "bytes": 11391563,
+          "sha256": "7cf2353594ee332b2cc8e2f2edb6c25e1da06f22d8125a2a9278967e264fa8d5"
+        }
+      ]
+    },
+    {
+      "id": "aa8ea2f2-c765-46ec-bd87-ce20cafd1297",
+      "name": "Detalhe da apuração por município e zona",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/detalhe_votacao_munzona/detalhe_votacao_munzona_2016.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/detalhe_votacao_munzona/detalhe_votacao_munzona_2016.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 1553165,
+      "lastModified": "Mon, 19 Jan 2026 17:07:45 GMT",
+      "etag": "\"17b30d-648c0bad4481b\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:58:18.206000+00:00",
+      "sha256": "2b6fa4b50d2cde9bb5f8668c4affe428bb3eaff721e5fd5c614586649e63d854",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "aa8ea2f2-detalhe_votacao_munzona_2016.zip",
+          "bytes": 1553165,
+          "sha256": "2b6fa4b50d2cde9bb5f8668c4affe428bb3eaff721e5fd5c614586649e63d854"
+        }
+      ]
+    },
+    {
+      "id": "7d273bf4-87e1-4ab4-bdc9-53a8afcd9833",
+      "name": "Detalhe da apuração por seção eleitoral",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/detalhe_votacao_secao/detalhe_votacao_secao_2016.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/detalhe_votacao_secao/detalhe_votacao_secao_2016.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 86635611,
+      "lastModified": "Tue, 16 Jun 2026 20:53:55 GMT",
+      "etag": "\"529f45b-65465243097cf\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:58:34.892325+00:00",
+      "sha256": "7d000622e08b9295cf437ad8f868bd53a496e64c0443f31e42792ef2ac2ea7bc",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "7d273bf4-detalhe_votacao_secao_2016.zip",
+          "bytes": 86635611,
+          "sha256": "7d000622e08b9295cf437ad8f868bd53a496e64c0443f31e42792ef2ac2ea7bc"
+        }
+      ]
+    },
+    {
+      "id": "12491848-80ea-4ece-83a7-e427ac7d4718",
+      "name": "AC - Votação por seção eleitoral - 2016",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2016_AC.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2016_AC.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 3406402,
+      "lastModified": "Mon, 11 Dec 2023 14:55:35 GMT",
+      "etag": "\"33fa42-60c3d205147c0\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:58:35.947310+00:00",
+      "sha256": "da7fd81674206389b1e6bbced3d9eaf77fbb37fa29769063d5dfdbc701eb5892",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "12491848-votacao_secao_2016_AC.zip",
+          "bytes": 3406402,
+          "sha256": "da7fd81674206389b1e6bbced3d9eaf77fbb37fa29769063d5dfdbc701eb5892"
+        }
+      ]
+    },
+    {
+      "id": "511fd258-eec8-4663-b095-eec991ef4355",
+      "name": "AL - Votação por seção eleitoral - 2016",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2016_AL.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2016_AL.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 9844365,
+      "lastModified": "Mon, 11 Dec 2023 14:55:36 GMT",
+      "etag": "\"96368d-60c3d20608a00\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:58:38.020584+00:00",
+      "sha256": "e5dc1529dc449c60ee75afe77f1c80dd6e3417c5bd3540d092dd3bed1b3da5b4",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "511fd258-votacao_secao_2016_AL.zip",
+          "bytes": 9844365,
+          "sha256": "e5dc1529dc449c60ee75afe77f1c80dd6e3417c5bd3540d092dd3bed1b3da5b4"
+        }
+      ]
+    },
+    {
+      "id": "c828b6b0-a0a5-40c6-85d7-cec7be84bcc7",
+      "name": "AP - Votação por seção eleitoral - 2016",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2016_AP.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2016_AP.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 3459486,
+      "lastModified": "Mon, 11 Dec 2023 14:55:38 GMT",
+      "etag": "\"34c99e-60c3d207f0e80\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:58:38.953367+00:00",
+      "sha256": "35aef04927b33a6d78c5f97fc7a35eac0c4fb79c288d07f5004f910035d52d87",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "c828b6b0-votacao_secao_2016_AP.zip",
+          "bytes": 3459486,
+          "sha256": "35aef04927b33a6d78c5f97fc7a35eac0c4fb79c288d07f5004f910035d52d87"
+        }
+      ]
+    },
+    {
+      "id": "7ed6fe10-5330-4ea8-8717-0d08adc93781",
+      "name": "AM - Votação por seção eleitoral - 2016",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2016_AM.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2016_AM.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 18714217,
+      "lastModified": "Mon, 11 Dec 2023 14:55:38 GMT",
+      "etag": "\"11d8e69-60c3d207f0e80\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:58:43.500311+00:00",
+      "sha256": "08072595b417b65d8ff448abb6ab5bc24d19a77d73d582a2d349e99b44b4d198",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "7ed6fe10-votacao_secao_2016_AM.zip",
+          "bytes": 18714217,
+          "sha256": "08072595b417b65d8ff448abb6ab5bc24d19a77d73d582a2d349e99b44b4d198"
+        }
+      ]
+    },
+    {
+      "id": "fe1ade58-ebcf-4c61-a59a-1135aa488a4c",
+      "name": "BA - Votação por seção eleitoral - 2016",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2016_BA.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2016_BA.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 69088265,
+      "lastModified": "Mon, 11 Dec 2023 14:55:44 GMT",
+      "etag": "\"41e3409-60c3d20da9c00\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:58:50.145123+00:00",
+      "sha256": "80315a1c99bf7a03b630d4b093a4a835b5111281f9683e75efe090622d3a2043",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "fe1ade58-votacao_secao_2016_BA.zip",
+          "bytes": 69088265,
+          "sha256": "80315a1c99bf7a03b630d4b093a4a835b5111281f9683e75efe090622d3a2043"
+        }
+      ]
+    },
+    {
+      "id": "dc378b1a-d21d-48aa-9c69-0d8397d779c3",
+      "name": "CE - Votação por seção eleitoral - 2016",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2016_CE.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2016_CE.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 38007041,
+      "lastModified": "Mon, 11 Dec 2023 14:55:48 GMT",
+      "etag": "\"243f101-60c3d2117a500\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:58:59.075975+00:00",
+      "sha256": "9a606beb8c60b5a3eb6980bc255d3f979cac93b5a9d11e1620c8379ae1fff71f",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "dc378b1a-votacao_secao_2016_CE.zip",
+          "bytes": 38007041,
+          "sha256": "9a606beb8c60b5a3eb6980bc255d3f979cac93b5a9d11e1620c8379ae1fff71f"
+        }
+      ]
+    },
+    {
+      "id": "58b51037-8dd4-4036-841e-f88efa8f87f7",
+      "name": "ES - Votação por seção eleitoral - 2016",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2016_ES.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2016_ES.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 17550928,
+      "lastModified": "Mon, 11 Dec 2023 14:55:49 GMT",
+      "etag": "\"10bce50-60c3d2126e740\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:59:02.564588+00:00",
+      "sha256": "1d1cec72f884a5ae8599626fdd52545392388682716727660fffe3896cb24d8b",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "58b51037-votacao_secao_2016_ES.zip",
+          "bytes": 17550928,
+          "sha256": "1d1cec72f884a5ae8599626fdd52545392388682716727660fffe3896cb24d8b"
+        }
+      ]
+    },
+    {
+      "id": "f9a3e149-cc46-4cce-85e1-53aad0d61b00",
+      "name": "GO - Votação por seção eleitoral - 2016",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2016_GO.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2016_GO.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 31351875,
+      "lastModified": "Mon, 11 Dec 2023 14:55:53 GMT",
+      "etag": "\"1de6443-60c3d2163f040\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:59:09.620242+00:00",
+      "sha256": "c0a7a376e8657d55bb9e067d04034795896e9a4449c2c9499a07d17e5fcdca01",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "f9a3e149-votacao_secao_2016_GO.zip",
+          "bytes": 31351875,
+          "sha256": "c0a7a376e8657d55bb9e067d04034795896e9a4449c2c9499a07d17e5fcdca01"
+        }
+      ]
+    },
+    {
+      "id": "a143da87-c13b-4373-8f79-79e2aacd5ff0",
+      "name": "MA - Votação por seção eleitoral - 2016",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2016_MA.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2016_MA.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 27775644,
+      "lastModified": "Mon, 11 Dec 2023 14:55:56 GMT",
+      "etag": "\"1a7d29c-60c3d2191b700\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:59:15.489847+00:00",
+      "sha256": "71e56aaa71cbe5b41d61b0725879986112deac1ca829a10e8660b966267b7e06",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "a143da87-votacao_secao_2016_MA.zip",
+          "bytes": 27775644,
+          "sha256": "71e56aaa71cbe5b41d61b0725879986112deac1ca829a10e8660b966267b7e06"
+        }
+      ]
+    },
+    {
+      "id": "a9d9e8f5-5667-4a27-87a6-64c943c4f7e3",
+      "name": "MT - Votação por seção eleitoral - 2016",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2016_MT.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2016_MT.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 13091945,
+      "lastModified": "Mon, 11 Dec 2023 14:56:11 GMT",
+      "etag": "\"c7c469-60c3d227698c0\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:59:18.330238+00:00",
+      "sha256": "48784d8c91d366dd63c58e3f4452ca69c5b08375a573513fe57a864731ac0f82",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "a9d9e8f5-votacao_secao_2016_MT.zip",
+          "bytes": 13091945,
+          "sha256": "48784d8c91d366dd63c58e3f4452ca69c5b08375a573513fe57a864731ac0f82"
+        }
+      ]
+    },
+    {
+      "id": "cd9cfb76-943d-4483-a4c5-ec68cf2c018e",
+      "name": "MS - Votação por seção eleitoral - 2016",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2016_MS.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2016_MS.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 12781654,
+      "lastModified": "Mon, 11 Dec 2023 14:56:10 GMT",
+      "etag": "\"c30856-60c3d22675680\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:59:20.863210+00:00",
+      "sha256": "2ea07d5f05cbc9224d25388764eceaf9886552240475a0a39683fd61ec302a01",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "cd9cfb76-votacao_secao_2016_MS.zip",
+          "bytes": 12781654,
+          "sha256": "2ea07d5f05cbc9224d25388764eceaf9886552240475a0a39683fd61ec302a01"
+        }
+      ]
+    },
+    {
+      "id": "d8143ce4-02bc-4968-91fe-e50fe8e0762b",
+      "name": "MG - Votação por seção eleitoral - 2016",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2016_MG.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2016_MG.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 138581779,
+      "lastModified": "Mon, 11 Dec 2023 14:56:09 GMT",
+      "etag": "\"8429713-60c3d22581440\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:59:56.359822+00:00",
+      "sha256": "48dc7ce890ad5d226bfbfe74e071461a33e69c58dff6ea46a6683efa42dda31e",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "d8143ce4-votacao_secao_2016_MG.zip",
+          "bytes": 138581779,
+          "sha256": "48dc7ce890ad5d226bfbfe74e071461a33e69c58dff6ea46a6683efa42dda31e"
+        }
+      ]
+    },
+    {
+      "id": "61d95419-f915-41a5-b830-fec035e0c89e",
+      "name": "PA - Votação por seção eleitoral - 2016",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2016_PA.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2016_PA.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 56812256,
+      "lastModified": "Mon, 11 Dec 2023 14:56:16 GMT",
+      "etag": "\"362e2e0-60c3d22c2e400\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T22:00:10.614414+00:00",
+      "sha256": "fc404b99c6fecb981e7a1b14f093bf42418ca47154d90e8bdcaef7dbd3949fba",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "61d95419-votacao_secao_2016_PA.zip",
+          "bytes": 56812256,
+          "sha256": "fc404b99c6fecb981e7a1b14f093bf42418ca47154d90e8bdcaef7dbd3949fba"
+        }
+      ]
+    },
+    {
+      "id": "d4ad854f-ea5b-46c9-9ae8-d0c1c93e00ee",
+      "name": "PB - Votação por seção eleitoral - 2016",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2016_PB.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2016_PB.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 22648950,
+      "lastModified": "Mon, 11 Dec 2023 14:56:18 GMT",
+      "etag": "\"1599876-60c3d22e16880\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T22:00:11.916886+00:00",
+      "sha256": "f4c642db3f86725a30bdf766bd2e1c83a73b8b1dd7b20bbe466bc7129c0c136c",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "d4ad854f-votacao_secao_2016_PB.zip",
+          "bytes": 22648950,
+          "sha256": "f4c642db3f86725a30bdf766bd2e1c83a73b8b1dd7b20bbe466bc7129c0c136c"
+        }
+      ]
+    },
+    {
+      "id": "9624dc52-c99b-4263-8d9b-c19ab4f8eaf0",
+      "name": "PR - Votação por seção eleitoral - 2016",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2016_PR.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2016_PR.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 90946617,
+      "lastModified": "Mon, 11 Dec 2023 14:56:31 GMT",
+      "etag": "\"56bbc39-60c3d23a7c5c0\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T22:00:15.872414+00:00",
+      "sha256": "0f762a711973604a5420b22e4c380e9edf636994617b70c9d6032af5e3f66970",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "9624dc52-votacao_secao_2016_PR.zip",
+          "bytes": 90946617,
+          "sha256": "0f762a711973604a5420b22e4c380e9edf636994617b70c9d6032af5e3f66970"
+        }
+      ]
+    },
+    {
+      "id": "888ff43d-9e07-45a0-80cb-9814a38ff74b",
+      "name": "PE - Votação por seção eleitoral - 2016",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2016_PE.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2016_PE.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 61823360,
+      "lastModified": "Mon, 11 Dec 2023 14:56:23 GMT",
+      "etag": "\"3af5980-60c3d232db3c0\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T22:00:18.284326+00:00",
+      "sha256": "1fc0040bc42f212a1dc3263519f159a4363a861bb5261643ccd576c9f5087aad",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "888ff43d-votacao_secao_2016_PE.zip",
+          "bytes": 61823360,
+          "sha256": "1fc0040bc42f212a1dc3263519f159a4363a861bb5261643ccd576c9f5087aad"
+        }
+      ]
+    },
+    {
+      "id": "69f12cbc-5bf7-488d-a9b2-f1d1ed59e39d",
+      "name": "PI - Votação por seção eleitoral - 2016",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2016_PI.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2016_PI.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 15980655,
+      "lastModified": "Mon, 11 Dec 2023 14:56:24 GMT",
+      "etag": "\"f3d86f-60c3d233cf600\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T22:00:19.390099+00:00",
+      "sha256": "c8678969fba90cf703a88d997fef8da28bfea2bba138adbcbe53b9cedc4b1302",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "69f12cbc-votacao_secao_2016_PI.zip",
+          "bytes": 15980655,
+          "sha256": "c8678969fba90cf703a88d997fef8da28bfea2bba138adbcbe53b9cedc4b1302"
+        }
+      ]
+    },
+    {
+      "id": "9c89aa7c-3ebc-4e40-a9a9-cea0bf56c8f6",
+      "name": "RJ - Votação por seção eleitoral - 2016",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2016_RJ.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2016_RJ.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 147719152,
+      "lastModified": "Mon, 11 Dec 2023 14:56:44 GMT",
+      "etag": "\"8ce03f0-60c3d246e2300\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T22:01:17.499433+00:00",
+      "sha256": "5e9dbbc3cb23f0454a32f560cc880adb30125e3df5f2fa87dbb07f443ef7d089",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "9c89aa7c-votacao_secao_2016_RJ.zip",
+          "bytes": 147719152,
+          "sha256": "5e9dbbc3cb23f0454a32f560cc880adb30125e3df5f2fa87dbb07f443ef7d089"
+        }
+      ]
+    },
+    {
+      "id": "c702713e-c865-4d66-b848-f0a619e00e69",
+      "name": "RN - Votação por seção eleitoral - 2016",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2016_RN.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2016_RN.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 15898464,
+      "lastModified": "Mon, 11 Dec 2023 14:56:46 GMT",
+      "etag": "\"f29760-60c3d248ca780\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T22:01:18.783140+00:00",
+      "sha256": "37729acd48d41c7d70dd7c86c1de1cfddf8ee622d60adf2253a053e02ca1c4ec",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "c702713e-votacao_secao_2016_RN.zip",
+          "bytes": 15898464,
+          "sha256": "37729acd48d41c7d70dd7c86c1de1cfddf8ee622d60adf2253a053e02ca1c4ec"
+        }
+      ]
+    },
+    {
+      "id": "a8506c3c-3b5f-4872-812b-d325377dc587",
+      "name": "RS - Votação por seção eleitoral - 2016",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2016_RS.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2016_RS.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 89206909,
+      "lastModified": "Mon, 11 Dec 2023 14:56:54 GMT",
+      "etag": "\"551307d-60c3d2506b980\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T22:01:21.371449+00:00",
+      "sha256": "59dc4d6f6f168f13545b4edc06e437e11016da0e4db1323aafdbf9c8e54425e4",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "a8506c3c-votacao_secao_2016_RS.zip",
+          "bytes": 89206909,
+          "sha256": "59dc4d6f6f168f13545b4edc06e437e11016da0e4db1323aafdbf9c8e54425e4"
+        }
+      ]
+    },
+    {
+      "id": "c3e115d4-7053-4f84-84b0-0627b8e6338b",
+      "name": "RO - Votação por seção eleitoral - 2016",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2016_RO.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2016_RO.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 9492638,
+      "lastModified": "Mon, 11 Dec 2023 14:56:47 GMT",
+      "etag": "\"90d89e-60c3d249be9c0\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T22:01:26.879890+00:00",
+      "sha256": "2dd0d95ced8da5fb1cee40edad7457ba06864678d022a5b3342bc23b55b6f5f8",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "c3e115d4-votacao_secao_2016_RO.zip",
+          "bytes": 9492638,
+          "sha256": "2dd0d95ced8da5fb1cee40edad7457ba06864678d022a5b3342bc23b55b6f5f8"
+        }
+      ]
+    },
+    {
+      "id": "c6fe0203-f963-40fd-9078-0179aa0c3956",
+      "name": "RR - Votação por seção eleitoral - 2016",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2016_RR.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2016_RR.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 2717009,
+      "lastModified": "Mon, 11 Dec 2023 14:56:47 GMT",
+      "etag": "\"297551-60c3d249be9c0\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T22:01:28.245686+00:00",
+      "sha256": "b75ff74b1385690ae511dae0b48e3af982c6d9b9d4e6e90afdd6f0deabce5142",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "c6fe0203-votacao_secao_2016_RR.zip",
+          "bytes": 2717009,
+          "sha256": "b75ff74b1385690ae511dae0b48e3af982c6d9b9d4e6e90afdd6f0deabce5142"
+        }
+      ]
+    },
+    {
+      "id": "df89920e-0731-4dee-8b6f-10e7b1b469d4",
+      "name": "SC - Votação por seção eleitoral - 2016",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2016_SC.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2016_SC.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 42041658,
+      "lastModified": "Mon, 11 Dec 2023 14:56:58 GMT",
+      "etag": "\"281813a-60c3d2543c280\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T22:01:37.575500+00:00",
+      "sha256": "12e5b36b630b3c418643242f8cbca5431d3274d99b91a6d321182723c52a10ea",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "df89920e-votacao_secao_2016_SC.zip",
+          "bytes": 42041658,
+          "sha256": "12e5b36b630b3c418643242f8cbca5431d3274d99b91a6d321182723c52a10ea"
+        }
+      ]
+    },
+    {
+      "id": "e32f78e4-b99c-4697-ae44-cbe7f4c81ad7",
+      "name": "SP - Votação por seção eleitoral - 2016",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2016_SP.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2016_SP.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 445592010,
+      "lastModified": "Mon, 11 Dec 2023 14:57:33 GMT",
+      "etag": "\"1a8f31ca-60c3d2759d140\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T22:03:30.287888+00:00",
+      "sha256": "0eae5ebd5dc72ed28772dc8d3c3fd7b77789068d5955601f10a80e10cbe57fe9",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "e32f78e4-votacao_secao_2016_SP.zip",
+          "bytes": 445592010,
+          "sha256": "0eae5ebd5dc72ed28772dc8d3c3fd7b77789068d5955601f10a80e10cbe57fe9"
+        }
+      ]
+    },
+    {
+      "id": "c6948137-112a-45af-b8f0-15cf559f7f24",
+      "name": "SE - Votação por seção eleitoral - 2016",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2016_SE.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2016_SE.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 10445718,
+      "lastModified": "Mon, 11 Dec 2023 14:56:59 GMT",
+      "etag": "\"9f6396-60c3d255304c0\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T22:03:31.242239+00:00",
+      "sha256": "2625e98ac3d303505baab592ffb906d3dabf766a8a4732b316f55bd5d8a064d4",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "c6948137-votacao_secao_2016_SE.zip",
+          "bytes": 10445718,
+          "sha256": "2625e98ac3d303505baab592ffb906d3dabf766a8a4732b316f55bd5d8a064d4"
+        }
+      ]
+    },
+    {
+      "id": "625023be-fe2b-4046-86f2-459520a5fb84",
+      "name": "TO - Votação por seção eleitoral - 2016",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2016_TO.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2016_TO.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 7411670,
+      "lastModified": "Mon, 11 Dec 2023 14:57:33 GMT",
+      "etag": "\"7117d6-60c3d2759d140\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T22:03:31.701149+00:00",
+      "sha256": "41b5b0433056ca7669cb0bbe1876f495e9a9cfa8ef8868395afcb7ded313ca74",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "625023be-votacao_secao_2016_TO.zip",
+          "bytes": 7411670,
+          "sha256": "41b5b0433056ca7669cb0bbe1876f495e9a9cfa8ef8868395afcb7ded313ca74"
+        }
+      ]
+    }
+  ]
+}
