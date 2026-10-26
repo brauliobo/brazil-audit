@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-26T22:17:07.489350+00:00",
+  "generatedAt": "2026-10-26T23:03:07.176588+00:00",
   "status": "published",
   "dataset": {
     "id": "rdv-resultados-2022-arquivos-transmitidos-para-totalizacao",
@@ -8,7 +8,7 @@
     "groups": [
       "resultados"
     ],
-    "family": "resultados",
+    "family": "rdv",
     "years": [
       2022
     ],
@@ -16,9 +16,9 @@
     "source": "https://dadosabertos.tse.jus.br/dataset/resultados-2022-arquivos-transmitidos-para-totalizacao",
     "branch": "archive/rdv-resultados-2022-arquivos-transmitidos-para-totalizacao",
     "tag": "data-rdv-resultados-2022-arquivos-transmitidos-para-totalizacao",
-    "releaseUrl": "https://github.com/brauliobo/brazil-audit/releases/tag/data-resultados-2022-arquivos-transmitidos-para-totalizacao",
+    "releaseUrl": "https://github.com/brauliobo/brazil-audit/releases/tag/data-rdv-resultados-2022-arquivos-transmitidos-para-totalizacao",
     "normalized": false,
-    "status": "excluded",
+    "status": "downloading",
     "inScope": true
   },
   "resources": [
@@ -32,16 +32,58 @@
       "bytes": 310996888,
       "lastModified": "Thu, 06 Oct 2022 20:00:41 GMT",
       "etag": "\"12896f98-5ea6325d84754\"",
-      "inScope": false,
+      "inScope": true,
       "sourceBytes": 310996888,
-      "retrievedAt": "2026-10-26T22:16:39.694687+00:00",
-      "membersAvailable": 0,
-      "membersExtracted": 0,
+      "retrievedAt": "2026-10-26T22:17:55.834637+00:00",
+      "membersAvailable": 2124,
+      "membersExtracted": 2124,
       "membersReused": 0,
-      "networkBytes": 1015096,
-      "requests": 2,
-      "elapsedSeconds": 0.5,
-      "assets": []
+      "networkBytes": 19842808,
+      "requests": 2632,
+      "elapsedSeconds": 16.6,
+      "assets": [
+        {
+          "name": "2ff7eff2-rdv-00.zip",
+          "bytes": 267990,
+          "sha256": "e5a619b8fa4649ffa09b6a4e386385a2e3762eeed555726bf6320ba511e2460f"
+        },
+        {
+          "name": "2ff7eff2-rdv-01.zip",
+          "bytes": 266715,
+          "sha256": "a2ce13536ac325f61ade9eb4c371409ae9afffcb28e2b91d44d1a2f5ec2fd6af"
+        },
+        {
+          "name": "2ff7eff2-rdv-02.zip",
+          "bytes": 265013,
+          "sha256": "4f1a7b058a81362dff3a24fe09ed296e752f05a6bce7ebaf2358824a5fee5682"
+        },
+        {
+          "name": "2ff7eff2-rdv-03.zip",
+          "bytes": 269587,
+          "sha256": "66509ed1c6e78f533e9841282485e39e83fedcc852ac6464da64fbb7054808a8"
+        },
+        {
+          "name": "2ff7eff2-rdv-04.zip",
+          "bytes": 267757,
+          "sha256": "3dc89c360e931a30bc40ab1ac6fd41dfd29d37c08ed43111758b3b5dd537ad52"
+        },
+        {
+          "name": "2ff7eff2-rdv-05.zip",
+          "bytes": 269154,
+          "sha256": "5e1fe78cdb14a2b639686d030ff04fe4cd5d9bb438fa02b357017c7b2d227e2f"
+        },
+        {
+          "name": "2ff7eff2-rdv-06.zip",
+          "bytes": 267989,
+          "sha256": "9e5a04ace2f6c33b88a440eb2ab79c4c5f2fc7642ecb225298973431857e227c"
+        },
+        {
+          "name": "2ff7eff2-rdv-07.zip",
+          "bytes": 267027,
+          "sha256": "344b0e76055f70997fcea43b64a095a9f684e416465c9005ae54ae49410da17e"
+        }
+      ],
+      "selectionVersion": 2
     },
     {
       "id": "da36e0a0-3332-417c-bcc1-bf2bf2118615",
@@ -53,16 +95,17 @@
       "bytes": 366838382,
       "lastModified": "Wed, 02 Nov 2022 21:41:12 GMT",
       "etag": "\"15dd826e-5ec83b30c26dc\"",
-      "inScope": false,
+      "inScope": true,
       "sourceBytes": 366838382,
-      "retrievedAt": "2026-10-26T22:16:39.763024+00:00",
-      "membersAvailable": 0,
+      "retrievedAt": "2026-10-26T22:17:39.940765+00:00",
+      "membersAvailable": 2124,
       "membersExtracted": 0,
-      "membersReused": 0,
+      "membersReused": 2124,
       "networkBytes": 1011726,
       "requests": 2,
-      "elapsedSeconds": 0.56,
-      "assets": []
+      "elapsedSeconds": 0.71,
+      "assets": [],
+      "selectionVersion": 2
     },
     {
       "id": "ef1aa7eb-52ca-4ea1-85f5-1d991dbe7e86",
@@ -74,16 +117,58 @@
       "bytes": 1085149042,
       "lastModified": "Thu, 06 Oct 2022 20:01:58 GMT",
       "etag": "\"40ae0f72-5ea632a74ceec\"",
-      "inScope": false,
+      "inScope": true,
       "sourceBytes": 1085149042,
-      "retrievedAt": "2026-10-26T22:16:43.361421+00:00",
-      "membersAvailable": 0,
-      "membersExtracted": 0,
+      "retrievedAt": "2026-10-26T22:19:14.503116+00:00",
+      "membersAvailable": 6626,
+      "membersExtracted": 6626,
       "membersReused": 0,
-      "networkBytes": 3158010,
-      "requests": 2,
-      "elapsedSeconds": 4.16,
-      "assets": []
+      "networkBytes": 61784010,
+      "requests": 8163,
+      "elapsedSeconds": 95.27,
+      "assets": [
+        {
+          "name": "ef1aa7eb-rdv-00.zip",
+          "bytes": 831017,
+          "sha256": "dce2078dabc2dfb09b4c58e2c704bc9da3fc0bd61fe4bdd62514b6ec07f11169"
+        },
+        {
+          "name": "ef1aa7eb-rdv-01.zip",
+          "bytes": 830795,
+          "sha256": "720fb6e81c5d8b264ea508264c4a63b7b301a0eb49404c3ddd0907044a75d795"
+        },
+        {
+          "name": "ef1aa7eb-rdv-02.zip",
+          "bytes": 832980,
+          "sha256": "9e198c77dc6455b658a0973056593e3df65587457c71ffe5340d1911a24715d8"
+        },
+        {
+          "name": "ef1aa7eb-rdv-03.zip",
+          "bytes": 827616,
+          "sha256": "ecab438f3586c69a1a96a4f8e677023b66fc5f6b1a0d3dc777289036a72fe183"
+        },
+        {
+          "name": "ef1aa7eb-rdv-04.zip",
+          "bytes": 833184,
+          "sha256": "5d02fa3659c6e4b45ac81e9a65335e46335bb3eda900296ca1c4c86b5603b147"
+        },
+        {
+          "name": "ef1aa7eb-rdv-05.zip",
+          "bytes": 835748,
+          "sha256": "cfbe508a69a8fa39dbe6072f415aa75d151ceaf7d15e080cb03f983ff0ebe8e4"
+        },
+        {
+          "name": "ef1aa7eb-rdv-06.zip",
+          "bytes": 830631,
+          "sha256": "3694fffe6d7c2082e6f5ae4e50e5025837f99d844e39a633d9d1ecfd6ce756e2"
+        },
+        {
+          "name": "ef1aa7eb-rdv-07.zip",
+          "bytes": 825855,
+          "sha256": "2d0325f020219dbd11919df1f7ff28c5eba0c6010f2e2a03b2ec53dbc282b2c6"
+        }
+      ],
+      "selectionVersion": 2
     },
     {
       "id": "e40162db-e247-4e5d-94e7-0d5cedb1d68e",
@@ -95,16 +180,17 @@
       "bytes": 1428848316,
       "lastModified": "Wed, 02 Nov 2022 21:41:16 GMT",
       "etag": "\"552a7ebc-5ec83b34fcb88\"",
-      "inScope": false,
+      "inScope": true,
       "sourceBytes": 1428848316,
-      "retrievedAt": "2026-10-26T22:16:40.114532+00:00",
-      "membersAvailable": 0,
+      "retrievedAt": "2026-10-26T22:17:40.625804+00:00",
+      "membersAvailable": 6626,
       "membersExtracted": 0,
-      "membersReused": 0,
+      "membersReused": 6626,
       "networkBytes": 3157828,
       "requests": 2,
-      "elapsedSeconds": 0.91,
-      "assets": []
+      "elapsedSeconds": 1.39,
+      "assets": [],
+      "selectionVersion": 2
     },
     {
       "id": "13f9d9d8-f435-43fe-a669-595ae1ad7b26",
@@ -116,16 +202,58 @@
       "bytes": 1215249765,
       "lastModified": "Thu, 06 Oct 2022 20:02:59 GMT",
       "etag": "\"486f3d65-5ea632e1d54b6\"",
-      "inScope": false,
+      "inScope": true,
       "sourceBytes": 1215249765,
-      "retrievedAt": "2026-10-26T22:16:41.450069+00:00",
-      "membersAvailable": 0,
-      "membersExtracted": 0,
+      "retrievedAt": "2026-10-26T22:19:12.317596+00:00",
+      "membersAvailable": 7453,
+      "membersExtracted": 7453,
       "membersReused": 0,
-      "networkBytes": 3551355,
-      "requests": 2,
-      "elapsedSeconds": 1.75,
-      "assets": []
+      "networkBytes": 69723219,
+      "requests": 9237,
+      "elapsedSeconds": 92.37,
+      "assets": [
+        {
+          "name": "13f9d9d8-rdv-00.zip",
+          "bytes": 1002573,
+          "sha256": "fe82f8f53ebbfab2484ab0e6c9ca496a6d280d77a47fa1fb3682ec412bb851e2"
+        },
+        {
+          "name": "13f9d9d8-rdv-01.zip",
+          "bytes": 1000655,
+          "sha256": "9c309dd2f318c0c2eaa6846ce4b27090fc4facf693a740d74089aff6679edebb"
+        },
+        {
+          "name": "13f9d9d8-rdv-02.zip",
+          "bytes": 998361,
+          "sha256": "16a80f8312949747afe63c22e15c5f6f1a8d5a9aa2a7ae06095328a7eae409fd"
+        },
+        {
+          "name": "13f9d9d8-rdv-03.zip",
+          "bytes": 998080,
+          "sha256": "d69df1567499c8b1c24f5dd727b13b833445d0b4272516d1054e3a9793bd73bd"
+        },
+        {
+          "name": "13f9d9d8-rdv-04.zip",
+          "bytes": 1001095,
+          "sha256": "39fe940d3c20ada9b9044133676290e0c7b18d40affe30da18f79fc4cdc1d79f"
+        },
+        {
+          "name": "13f9d9d8-rdv-05.zip",
+          "bytes": 998550,
+          "sha256": "fb72d1e79df2158c30f0a39cf07ece9a4ac1b645a28baa8ce49d0a3e508400d0"
+        },
+        {
+          "name": "13f9d9d8-rdv-06.zip",
+          "bytes": 1012157,
+          "sha256": "e5e7b1d3026b35e16b4d44fab7c6dc99215811778979ad63950baa1b857309ed"
+        },
+        {
+          "name": "13f9d9d8-rdv-07.zip",
+          "bytes": 1002390,
+          "sha256": "074771f7d700a4e9fe8bb0f6457c4465e3ed7db1af68d9da81c3672c21cb3dbd"
+        }
+      ],
+      "selectionVersion": 2
     },
     {
       "id": "bbb9dc75-0188-4dca-b52f-f79ab58e26c7",
@@ -137,16 +265,17 @@
       "bytes": 1546345029,
       "lastModified": "Wed, 02 Nov 2022 21:41:23 GMT",
       "etag": "\"5c2b5a45-5ec83b3ba517b\"",
-      "inScope": false,
+      "inScope": true,
       "sourceBytes": 1546345029,
-      "retrievedAt": "2026-10-26T22:16:40.541584+00:00",
-      "membersAvailable": 0,
+      "retrievedAt": "2026-10-26T22:17:42.228895+00:00",
+      "membersAvailable": 7453,
       "membersExtracted": 0,
-      "membersReused": 0,
+      "membersReused": 7453,
       "networkBytes": 3550337,
       "requests": 2,
-      "elapsedSeconds": 0.77,
-      "assets": []
+      "elapsedSeconds": 1.59,
+      "assets": [],
+      "selectionVersion": 2
     },
     {
       "id": "10bac612-320c-4c47-91c0-43c3ac8f2e9b",
@@ -158,16 +287,58 @@
       "bytes": 272963840,
       "lastModified": "Thu, 06 Oct 2022 20:04:55 GMT",
       "etag": "\"10451900-5ea63350637d1\"",
-      "inScope": false,
+      "inScope": true,
       "sourceBytes": 272963840,
-      "retrievedAt": "2026-10-26T22:16:41.023568+00:00",
-      "membersAvailable": 0,
-      "membersExtracted": 0,
+      "retrievedAt": "2026-10-26T22:17:54.697844+00:00",
+      "membersAvailable": 1740,
+      "membersExtracted": 1740,
       "membersReused": 0,
-      "networkBytes": 830624,
-      "requests": 2,
-      "elapsedSeconds": 0.9,
-      "assets": []
+      "networkBytes": 16359840,
+      "requests": 2187,
+      "elapsedSeconds": 12.31,
+      "assets": [
+        {
+          "name": "10bac612-rdv-00.zip",
+          "bytes": 248039,
+          "sha256": "2c7f37bbf4eb84f700d61b153d5deac91acdd2ae161921121c0c120dba30ec66"
+        },
+        {
+          "name": "10bac612-rdv-01.zip",
+          "bytes": 244569,
+          "sha256": "f0c1a771e207c2eeb4f6922c11090a8db7824193561ed74fe948c62446641725"
+        },
+        {
+          "name": "10bac612-rdv-02.zip",
+          "bytes": 248542,
+          "sha256": "df266c7bcf54dba356b8d6233c52ace68c6027e4c28d0643c7699f22d379c076"
+        },
+        {
+          "name": "10bac612-rdv-03.zip",
+          "bytes": 247344,
+          "sha256": "4500cb5cf5acaa791fb19c688e8d787e29e2539803ab20452f490f58b238decc"
+        },
+        {
+          "name": "10bac612-rdv-04.zip",
+          "bytes": 246102,
+          "sha256": "3fd494b86ab05027c7fccd59425654e95af2eca503e64374ec5cd41622df2701"
+        },
+        {
+          "name": "10bac612-rdv-05.zip",
+          "bytes": 241154,
+          "sha256": "1508a9720244837930df942bb3bd33bc0acbe6173cc0e619d547c741c9deb331"
+        },
+        {
+          "name": "10bac612-rdv-06.zip",
+          "bytes": 247632,
+          "sha256": "5dce0f8df09c4fecc1876eb4a109fb5108f050aedadb15a3fda8a1eb9159fbde"
+        },
+        {
+          "name": "10bac612-rdv-07.zip",
+          "bytes": 243950,
+          "sha256": "5cfc2944d43a8ca92bb95f673978d8cbc086ecd49ec081dcb2bc0c4f8dbb869a"
+        }
+      ],
+      "selectionVersion": 2
     },
     {
       "id": "b859a2b5-1226-4f96-93f4-59e64a1572fc",
@@ -179,16 +350,17 @@
       "bytes": 317960943,
       "lastModified": "Wed, 02 Nov 2022 21:41:25 GMT",
       "etag": "\"12f3b2ef-5ec83b3d791e1\"",
-      "inScope": false,
+      "inScope": true,
       "sourceBytes": 317960943,
-      "retrievedAt": "2026-10-26T22:16:41.249178+00:00",
-      "membersAvailable": 0,
+      "retrievedAt": "2026-10-26T22:17:55.082421+00:00",
+      "membersAvailable": 1740,
       "membersExtracted": 0,
-      "membersReused": 0,
+      "membersReused": 1740,
       "networkBytes": 829071,
       "requests": 2,
-      "elapsedSeconds": 0.7,
-      "assets": []
+      "elapsedSeconds": 0.38,
+      "assets": [],
+      "selectionVersion": 2
     },
     {
       "id": "314f78c7-3d33-498a-bbec-33cacc79ca47",
@@ -200,16 +372,58 @@
       "bytes": 5639766364,
       "lastModified": "Thu, 06 Oct 2022 20:45:11 GMT",
       "etag": "\"15028015c-5ea63c509bda0\"",
-      "inScope": false,
+      "inScope": true,
       "sourceBytes": 5639766364,
-      "retrievedAt": "2026-10-26T22:16:42.583579+00:00",
-      "membersAvailable": 0,
-      "membersExtracted": 0,
+      "retrievedAt": "2026-10-26T22:24:11.160636+00:00",
+      "membersAvailable": 34423,
+      "membersExtracted": 34423,
       "membersReused": 0,
-      "networkBytes": 16874121,
-      "requests": 2,
-      "elapsedSeconds": 1.56,
-      "assets": []
+      "networkBytes": 325766865,
+      "requests": 42474,
+      "elapsedSeconds": 376.07,
+      "assets": [
+        {
+          "name": "314f78c7-rdv-00.zip",
+          "bytes": 4449811,
+          "sha256": "2405cf2633017c5c8824fb1c452ecd2ef17035d9c5dfabd4a058e256b1925e3f"
+        },
+        {
+          "name": "314f78c7-rdv-01.zip",
+          "bytes": 4458787,
+          "sha256": "82eccbafa6c1e31b2dc0fe5a4cdbd691ce885105bf767118adb8abcbd89dd22b"
+        },
+        {
+          "name": "314f78c7-rdv-02.zip",
+          "bytes": 4439608,
+          "sha256": "029e5c46721b2f730ec83ff84714b0afaf22ca29d3228fe3894953972d365658"
+        },
+        {
+          "name": "314f78c7-rdv-03.zip",
+          "bytes": 4468627,
+          "sha256": "c718284e3a99777a7645ae7858f681fadf40cdb4c613e6d71c5440b265fdb5ec"
+        },
+        {
+          "name": "314f78c7-rdv-04.zip",
+          "bytes": 4451254,
+          "sha256": "06e8777e7f2f944ba12d89633777a4d71a1d9961fc905193e948d86742c859fa"
+        },
+        {
+          "name": "314f78c7-rdv-05.zip",
+          "bytes": 4469454,
+          "sha256": "9d16c48dcad5ac5a9d01ae2e3752dfe1a9bfd43957090c468b06b8545a4949ba"
+        },
+        {
+          "name": "314f78c7-rdv-06.zip",
+          "bytes": 4449847,
+          "sha256": "bbb2934f004d5b97db8dcd883d78f7c248e28d00629b23ed41bc2a2fb9cb5ea5"
+        },
+        {
+          "name": "314f78c7-rdv-07.zip",
+          "bytes": 4468220,
+          "sha256": "1f778828660a875233fa0838f2e1ce32ac510dbf8d034457d32c6c3f7859d473"
+        }
+      ],
+      "selectionVersion": 2
     },
     {
       "id": "7b6e7ebb-f701-41cc-aef0-04c15ed64968",
@@ -221,16 +435,17 @@
       "bytes": 7291826966,
       "lastModified": "Wed, 02 Nov 2022 21:42:05 GMT",
       "etag": "\"1b2a07316-5ec83b63a4c09\"",
-      "inScope": false,
+      "inScope": true,
       "sourceBytes": 7291826966,
-      "retrievedAt": "2026-10-26T22:16:43.021209+00:00",
-      "membersAvailable": 0,
+      "retrievedAt": "2026-10-26T22:18:01.380887+00:00",
+      "membersAvailable": 34424,
       "membersExtracted": 0,
-      "membersReused": 0,
+      "membersReused": 34424,
       "networkBytes": 17243897,
       "requests": 2,
-      "elapsedSeconds": 1.77,
-      "assets": []
+      "elapsedSeconds": 5.54,
+      "assets": [],
+      "selectionVersion": 2
     },
     {
       "id": "f64e6111-9ed2-42c7-94b1-eb660a160927",
@@ -242,16 +457,58 @@
       "bytes": 3536315781,
       "lastModified": "Thu, 06 Oct 2022 21:10:26 GMT",
       "etag": "\"d2c7e585-5ea641f491fa5\"",
-      "inScope": false,
+      "inScope": true,
       "sourceBytes": 3536315781,
-      "retrievedAt": "2026-10-26T22:16:43.423708+00:00",
-      "membersAvailable": 0,
-      "membersExtracted": 0,
+      "retrievedAt": "2026-10-26T22:22:54.065303+00:00",
+      "membersAvailable": 22796,
+      "membersExtracted": 22796,
       "membersReused": 0,
-      "networkBytes": 10852498,
-      "requests": 2,
-      "elapsedSeconds": 1.96,
-      "assets": []
+      "networkBytes": 211504418,
+      "requests": 27809,
+      "elapsedSeconds": 292.53,
+      "assets": [
+        {
+          "name": "f64e6111-rdv-00.zip",
+          "bytes": 2782275,
+          "sha256": "50e8ba3744e1fd11a207f532eb3bbb80498a86c35a8c96812d48d4b6981e8a82"
+        },
+        {
+          "name": "f64e6111-rdv-01.zip",
+          "bytes": 2780773,
+          "sha256": "7b0e3e85ec6eb58b3c619d46b3b0d94f06a57279fbaf248817d9adead29ae192"
+        },
+        {
+          "name": "f64e6111-rdv-02.zip",
+          "bytes": 2785393,
+          "sha256": "c2e17e8dc9d3b1c7cbc0ad6978742635595aef6d1f6cf9940aabcc4a4a273d11"
+        },
+        {
+          "name": "f64e6111-rdv-03.zip",
+          "bytes": 2786434,
+          "sha256": "d38c61964e554592a27aae24736af3db40b7469507c492b42db5febda6518cb2"
+        },
+        {
+          "name": "f64e6111-rdv-04.zip",
+          "bytes": 2778817,
+          "sha256": "0a733c60345d1102f31bc2568cf289f8fdd6acc81deb0980e25f0ef418619318"
+        },
+        {
+          "name": "f64e6111-rdv-05.zip",
+          "bytes": 2786142,
+          "sha256": "1f35dc0a89a8b524fe26b9ded5056290d8424e001a7e0063ccdef04e7594caad"
+        },
+        {
+          "name": "f64e6111-rdv-06.zip",
+          "bytes": 2786604,
+          "sha256": "72daad76d6bbe42acc1fd2cd11f0184e0e6e1d8548e0313efcaa5e3d1cfa6b18"
+        },
+        {
+          "name": "f64e6111-rdv-07.zip",
+          "bytes": 2787532,
+          "sha256": "b1cc062dfe6319b13285bb76cd4f573d596d509de46b511b1a394c9ff0a891e8"
+        }
+      ],
+      "selectionVersion": 2
     },
     {
       "id": "8e2d123d-a004-4e77-87e4-ba2a6255c36c",
@@ -263,16 +520,17 @@
       "bytes": 4420789575,
       "lastModified": "Wed, 02 Nov 2022 21:42:22 GMT",
       "etag": "\"1077fe547-5ec83b73b03cc\"",
-      "inScope": false,
+      "inScope": true,
       "sourceBytes": 4420789575,
-      "retrievedAt": "2026-10-26T22:16:47.070497+00:00",
-      "membersAvailable": 0,
+      "retrievedAt": "2026-10-26T22:19:13.699044+00:00",
+      "membersAvailable": 22796,
       "membersExtracted": 0,
-      "membersReused": 0,
+      "membersReused": 22796,
       "networkBytes": 10889863,
       "requests": 2,
-      "elapsedSeconds": 4.45,
-      "assets": []
+      "elapsedSeconds": 1.36,
+      "assets": [],
+      "selectionVersion": 2
     },
     {
       "id": "684df1d0-a55c-4d24-9534-b7f6df96a184",
@@ -284,16 +542,58 @@
       "bytes": 1074259776,
       "lastModified": "Fri, 07 Oct 2022 05:22:59 GMT",
       "etag": "\"4007e740-5ea6b00d3c2e0\"",
-      "inScope": false,
+      "inScope": true,
       "sourceBytes": 1074259776,
-      "retrievedAt": "2026-10-26T22:16:43.854975+00:00",
-      "membersAvailable": 0,
-      "membersExtracted": 0,
+      "retrievedAt": "2026-10-26T22:20:01.943021+00:00",
+      "membersAvailable": 6748,
+      "membersExtracted": 6748,
       "membersReused": 0,
-      "networkBytes": 3213984,
-      "requests": 2,
-      "elapsedSeconds": 0.8,
-      "assets": []
+      "networkBytes": 63983520,
+      "requests": 8577,
+      "elapsedSeconds": 48.18,
+      "assets": [
+        {
+          "name": "684df1d0-rdv-00.zip",
+          "bytes": 1001014,
+          "sha256": "de255a0d6cdafb93d2d88725c600eb8b607d44c6e87ab4eb237333526daad16f"
+        },
+        {
+          "name": "684df1d0-rdv-01.zip",
+          "bytes": 1000817,
+          "sha256": "4c52510bc31e5abffc9139a0cbc3c0976c7a007056f4045591b6da7a824536de"
+        },
+        {
+          "name": "684df1d0-rdv-02.zip",
+          "bytes": 1002163,
+          "sha256": "f65796387a0a2d055a06ce64d52f70dad2d8a5f406ef9e692d4fec5a64e7a554"
+        },
+        {
+          "name": "684df1d0-rdv-03.zip",
+          "bytes": 998762,
+          "sha256": "7c352797dadddca4527fdb087bff3a0b60ba1a80cfd2c903f9a029589ec5c36e"
+        },
+        {
+          "name": "684df1d0-rdv-04.zip",
+          "bytes": 995735,
+          "sha256": "a2a2b42bf290ca60130cbf8f43ab3c8ce5502880adfb113f0445bcfed29ff2e1"
+        },
+        {
+          "name": "684df1d0-rdv-05.zip",
+          "bytes": 999553,
+          "sha256": "5fd93a877db4e497540298d0e6d9e3af294a0ac9c122be531bddc38f51bd0cb6"
+        },
+        {
+          "name": "684df1d0-rdv-06.zip",
+          "bytes": 999272,
+          "sha256": "8bee61be8be1450669c023494fbfd15bf7b86e6e818f0eb996d6a43d4bd2c10b"
+        },
+        {
+          "name": "684df1d0-rdv-07.zip",
+          "bytes": 1001025,
+          "sha256": "4fad49ba29ecc0c3d4649b48036ae523ce2dd38bd67f89cedd60d2c71eb264ce"
+        }
+      ],
+      "selectionVersion": 2
     },
     {
       "id": "9d89be44-7931-4391-967a-b6fd3103ef74",
@@ -305,16 +605,17 @@
       "bytes": 1281847489,
       "lastModified": "Wed, 02 Nov 2022 21:48:36 GMT",
       "etag": "\"4c6770c1-5ec83cd8bd355\"",
-      "inScope": false,
+      "inScope": true,
       "sourceBytes": 1281847489,
-      "retrievedAt": "2026-10-26T22:16:44.484424+00:00",
-      "membersAvailable": 0,
+      "retrievedAt": "2026-10-26T22:19:16.531360+00:00",
+      "membersAvailable": 6748,
       "membersExtracted": 0,
-      "membersReused": 0,
+      "membersReused": 6748,
       "networkBytes": 3212424,
       "requests": 2,
-      "elapsedSeconds": 1.06,
-      "assets": []
+      "elapsedSeconds": 2.01,
+      "assets": [],
+      "selectionVersion": 2
     },
     {
       "id": "f31e486f-3191-4775-8484-7e743d7a3c93",
@@ -326,16 +627,58 @@
       "bytes": 1266279072,
       "lastModified": "Thu, 06 Oct 2022 21:20:18 GMT",
       "etag": "\"4b79e2a0-5ea644299d642\"",
-      "inScope": false,
+      "inScope": true,
       "sourceBytes": 1266279072,
-      "retrievedAt": "2026-10-26T22:16:44.035991+00:00",
-      "membersAvailable": 0,
-      "membersExtracted": 0,
+      "retrievedAt": "2026-10-26T22:20:28.341338+00:00",
+      "membersAvailable": 9239,
+      "membersExtracted": 9239,
       "membersReused": 0,
-      "networkBytes": 4398516,
-      "requests": 2,
-      "elapsedSeconds": 0.59,
-      "assets": []
+      "networkBytes": 85818196,
+      "requests": 11305,
+      "elapsedSeconds": 71.79,
+      "assets": [
+        {
+          "name": "f31e486f-rdv-00.zip",
+          "bytes": 1167431,
+          "sha256": "01d9c1629a3ed5378efbcf0db64273680a2e68fd3e605625acdf54e15692623a"
+        },
+        {
+          "name": "f31e486f-rdv-01.zip",
+          "bytes": 1170777,
+          "sha256": "dc0c44edd8df914292e450592b6c88236709d870d04b455bbbec6f008d0631fd"
+        },
+        {
+          "name": "f31e486f-rdv-02.zip",
+          "bytes": 1168136,
+          "sha256": "55a9e0c9b3ac9d5a5a687703464e351c4e68097b929b549243d6e8d5ac61acc7"
+        },
+        {
+          "name": "f31e486f-rdv-03.zip",
+          "bytes": 1173183,
+          "sha256": "950228b34cc4b08ea136ba53889bb27e2a85fd49314ffa45c0a4e4df4c553950"
+        },
+        {
+          "name": "f31e486f-rdv-04.zip",
+          "bytes": 1167947,
+          "sha256": "dbd9dbdd90d5239f5232537a8ed6666f3c54e1082836521e827920f167c687a1"
+        },
+        {
+          "name": "f31e486f-rdv-05.zip",
+          "bytes": 1166484,
+          "sha256": "8707b93116519f316b1405490dc12504e324e85ecf1aae4373c951196ab7a9c1"
+        },
+        {
+          "name": "f31e486f-rdv-06.zip",
+          "bytes": 1174398,
+          "sha256": "2b7d5f17555c95d46790cdaab2d2697394ee2dffce43c69d334a64a53b475330"
+        },
+        {
+          "name": "f31e486f-rdv-07.zip",
+          "bytes": 1169366,
+          "sha256": "0fddb373e1ea81279521ecf93e18ff3472dd0f76e07437cf38e614dd01689b2d"
+        }
+      ],
+      "selectionVersion": 2
     },
     {
       "id": "1aa4cbc7-193a-4e89-8224-5ad00968313b",
@@ -347,16 +690,17 @@
       "bytes": 1539711010,
       "lastModified": "Wed, 02 Nov 2022 21:42:30 GMT",
       "etag": "\"5bc62022-5ec83b7b408be\"",
-      "inScope": false,
+      "inScope": true,
       "sourceBytes": 1539711010,
-      "retrievedAt": "2026-10-26T22:16:45.224952+00:00",
-      "membersAvailable": 0,
+      "retrievedAt": "2026-10-26T22:20:03.377178+00:00",
+      "membersAvailable": 9239,
       "membersExtracted": 0,
-      "membersReused": 0,
+      "membersReused": 9239,
       "networkBytes": 4401974,
       "requests": 3,
-      "elapsedSeconds": 1.36,
-      "assets": []
+      "elapsedSeconds": 1.41,
+      "assets": [],
+      "selectionVersion": 2
     },
     {
       "id": "c511e19b-bffd-4dbd-8ca7-78cbf51c8e8f",
@@ -368,16 +712,58 @@
       "bytes": 2353333043,
       "lastModified": "Thu, 06 Oct 2022 21:37:49 GMT",
       "etag": "\"8c450333-5ea648140d119\"",
-      "inScope": false,
+      "inScope": true,
       "sourceBytes": 2353333043,
-      "retrievedAt": "2026-10-26T22:16:45.109763+00:00",
-      "membersAvailable": 0,
-      "membersExtracted": 0,
+      "retrievedAt": "2026-10-26T22:23:04.443492+00:00",
+      "membersAvailable": 14620,
+      "membersExtracted": 14620,
       "membersReused": 0,
-      "networkBytes": 6960019,
-      "requests": 2,
-      "elapsedSeconds": 1.06,
-      "assets": []
+      "networkBytes": 137072683,
+      "requests": 18190,
+      "elapsedSeconds": 181.04,
+      "assets": [
+        {
+          "name": "c511e19b-rdv-00.zip",
+          "bytes": 1988060,
+          "sha256": "a3592e8cfcdf8183cc4e564e1f71bfc3c8364b32093c3b01c54cbdb3e621df5c"
+        },
+        {
+          "name": "c511e19b-rdv-01.zip",
+          "bytes": 2000998,
+          "sha256": "e11b77f6ce6c9e5c4cf12b7975e10603c7570c0cad8285d74e067e986857fd26"
+        },
+        {
+          "name": "c511e19b-rdv-02.zip",
+          "bytes": 1986446,
+          "sha256": "89c5a09b782864005886977a986c36dee18f3d62dca265a483101ccd0ca81625"
+        },
+        {
+          "name": "c511e19b-rdv-03.zip",
+          "bytes": 1991550,
+          "sha256": "a8f614d6eedfa3bce687d67bc5755a602345b38a0965c019223a08fdb1e4867d"
+        },
+        {
+          "name": "c511e19b-rdv-04.zip",
+          "bytes": 1994062,
+          "sha256": "30504218228aa9ce983454c43e93586a3873cd91b96f3a88caa9845239bdb410"
+        },
+        {
+          "name": "c511e19b-rdv-05.zip",
+          "bytes": 1972051,
+          "sha256": "3e20c3cad0a3995f87cf37f82981335253eeffed670db2313c556e4b096ac7a2"
+        },
+        {
+          "name": "c511e19b-rdv-06.zip",
+          "bytes": 1976555,
+          "sha256": "d26b349ceb11904da21985699362f137a12a8e2f56cc7f8310b6ff840816f4d8"
+        },
+        {
+          "name": "c511e19b-rdv-07.zip",
+          "bytes": 1992370,
+          "sha256": "7f795d9555f678f8900b472c940f1e55a4db50d9cbf8af0f83cbff19c1bf8b00"
+        }
+      ],
+      "selectionVersion": 2
     },
     {
       "id": "6690ae5c-6e45-4111-84e1-f4cdbf81117b",
@@ -389,16 +775,17 @@
       "bytes": 2912612557,
       "lastModified": "Wed, 02 Nov 2022 21:42:42 GMT",
       "etag": "\"ad9af0cd-5ec83b8716225\"",
-      "inScope": false,
+      "inScope": true,
       "sourceBytes": 2912612557,
-      "retrievedAt": "2026-10-26T22:16:47.543893+00:00",
-      "membersAvailable": 0,
+      "retrievedAt": "2026-10-26T22:20:29.935829+00:00",
+      "membersAvailable": 14620,
       "membersExtracted": 0,
-      "membersReused": 0,
+      "membersReused": 14620,
       "networkBytes": 6959411,
       "requests": 2,
-      "elapsedSeconds": 3.05,
-      "assets": []
+      "elapsedSeconds": 1.57,
+      "assets": [],
+      "selectionVersion": 2
     },
     {
       "id": "9fba137b-4caf-4c6d-80ec-45623c7ec0fd",
@@ -410,16 +797,58 @@
       "bytes": 2485593883,
       "lastModified": "Thu, 06 Oct 2022 21:56:58 GMT",
       "etag": "\"9427271b-5ea64c5bcc7b0\"",
-      "inScope": false,
+      "inScope": true,
       "sourceBytes": 2485593883,
-      "retrievedAt": "2026-10-26T22:16:46.055939+00:00",
-      "membersAvailable": 0,
-      "membersExtracted": 0,
+      "retrievedAt": "2026-10-26T22:23:38.585003+00:00",
+      "membersAvailable": 16422,
+      "membersExtracted": 16422,
       "membersReused": 0,
-      "networkBytes": 7819057,
-      "requests": 2,
-      "elapsedSeconds": 0.93,
-      "assets": []
+      "networkBytes": 152078521,
+      "requests": 19966,
+      "elapsedSeconds": 188.6,
+      "assets": [
+        {
+          "name": "9fba137b-rdv-00.zip",
+          "bytes": 1967108,
+          "sha256": "9c0069dc13a4974b7c40d0472802b53582ad2b9fef7219702998fb48842da6b5"
+        },
+        {
+          "name": "9fba137b-rdv-01.zip",
+          "bytes": 1954077,
+          "sha256": "2b5469b1933136300fbe0843602b3882fe764f5c72a9040cbd2cf41448c6e3dc"
+        },
+        {
+          "name": "9fba137b-rdv-02.zip",
+          "bytes": 1950666,
+          "sha256": "7e590e6893da5371e6a99f4fcdd5df8ee567df6fe0b9d88b093db459ec5bf7ae"
+        },
+        {
+          "name": "9fba137b-rdv-03.zip",
+          "bytes": 1947816,
+          "sha256": "902d34b0a0f86d1a1935a03f401140734e0b44cc4ae350e93aecff32d4b42abf"
+        },
+        {
+          "name": "9fba137b-rdv-04.zip",
+          "bytes": 1970075,
+          "sha256": "b1e3719f77dccf652658d36e346bd7af9e208c84c6ad8cd77b35494bd7f84d4c"
+        },
+        {
+          "name": "9fba137b-rdv-05.zip",
+          "bytes": 1959557,
+          "sha256": "0f01bd298640c5406f903e54ead9efd6050cea730312fd5fbe0ee0b93a1a99d7"
+        },
+        {
+          "name": "9fba137b-rdv-06.zip",
+          "bytes": 1967782,
+          "sha256": "1b39d7af93c665a79a49c2d103210e1a8adb5701f79146e31dc98cba2db56a55"
+        },
+        {
+          "name": "9fba137b-rdv-07.zip",
+          "bytes": 1965528,
+          "sha256": "876c66b120755c5b28e63eca5c3bfa873e8fa10c44074630a8ced25e59aba0a7"
+        }
+      ],
+      "selectionVersion": 2
     },
     {
       "id": "793869db-fa64-4f69-9d7b-e3d9abfaf763",
@@ -431,16 +860,17 @@
       "bytes": 3084344966,
       "lastModified": "Wed, 02 Nov 2022 21:42:56 GMT",
       "etag": "\"b7d75e86-5ec83b93a312f\"",
-      "inScope": false,
+      "inScope": true,
       "sourceBytes": 3084344966,
-      "retrievedAt": "2026-10-26T22:16:46.585047+00:00",
-      "membersAvailable": 0,
+      "retrievedAt": "2026-10-26T22:22:55.324386+00:00",
+      "membersAvailable": 16423,
       "membersExtracted": 0,
-      "membersReused": 0,
+      "membersReused": 16423,
       "networkBytes": 7821146,
       "requests": 2,
-      "elapsedSeconds": 1.35,
-      "assets": []
+      "elapsedSeconds": 1.2,
+      "assets": [],
+      "selectionVersion": 2
     },
     {
       "id": "a79a2b6f-1faf-4d9c-b3e7-9eed21d6636c",
@@ -452,16 +882,58 @@
       "bytes": 7639923232,
       "lastModified": "Thu, 06 Oct 2022 22:58:37 GMT",
       "etag": "\"1c75ffa20-5ea65a23b4e44\"",
-      "inScope": false,
+      "inScope": true,
       "sourceBytes": 7639923232,
-      "retrievedAt": "2026-10-26T22:16:48.255472+00:00",
-      "membersAvailable": 0,
-      "membersExtracted": 0,
+      "retrievedAt": "2026-10-26T22:48:09.464038+00:00",
+      "selectionVersion": 2,
+      "membersAvailable": 49981,
+      "membersExtracted": 49981,
       "membersReused": 0,
-      "networkBytes": 25101339,
-      "requests": 2,
-      "elapsedSeconds": 2.18,
-      "assets": []
+      "networkBytes": 477902067,
+      "requests": 61539,
+      "elapsedSeconds": 631.91,
+      "assets": [
+        {
+          "name": "a79a2b6f-rdv-00.zip",
+          "bytes": 6513208,
+          "sha256": "b790199f7a92e7d73da7d7c159aaa168c4e8aa82c55f42b92d94403521766cc5"
+        },
+        {
+          "name": "a79a2b6f-rdv-01.zip",
+          "bytes": 6490744,
+          "sha256": "405b3456af147b68405c7915ef79d2e69537cfcf78e296f681e4da68c1b6de10"
+        },
+        {
+          "name": "a79a2b6f-rdv-02.zip",
+          "bytes": 6496640,
+          "sha256": "3c6389a1759b5a03cdf89081fb64e4a134d9ed1c3496b183b6a43aef2e0a70a9"
+        },
+        {
+          "name": "a79a2b6f-rdv-03.zip",
+          "bytes": 6474758,
+          "sha256": "d4c4b3eef77d9c246473f7ec6c2cf0f38e821595d4ed9272451e08322a77fe42"
+        },
+        {
+          "name": "a79a2b6f-rdv-04.zip",
+          "bytes": 6510687,
+          "sha256": "13fc1f07c77f09605f8443f6da9a71dd8ac51524d5679263b79a1d6ddd4bc45d"
+        },
+        {
+          "name": "a79a2b6f-rdv-05.zip",
+          "bytes": 6472201,
+          "sha256": "6ac47c225f3489354ce978895c82f9630adfce9f5e1e84e30bd2368532a844ac"
+        },
+        {
+          "name": "a79a2b6f-rdv-06.zip",
+          "bytes": 6460191,
+          "sha256": "df842c33117ca377990f8c998df7d38994298b387e54ff033eb7c59796ae6bc8"
+        },
+        {
+          "name": "a79a2b6f-rdv-07.zip",
+          "bytes": 6476848,
+          "sha256": "85b70c1c7f9a648564c6df11dfc92a7c879508af6ee04eccde9281f90433900c"
+        }
+      ]
     },
     {
       "id": "e16c310c-f839-4c66-91ca-d395fafda476",
@@ -473,16 +945,17 @@
       "bytes": 9270602346,
       "lastModified": "Wed, 02 Nov 2022 21:43:43 GMT",
       "etag": "\"228922a6a-5ec83bc1340c6\"",
-      "inScope": false,
+      "inScope": true,
       "sourceBytes": 9270602346,
-      "retrievedAt": "2026-10-26T22:16:51.228606+00:00",
-      "membersAvailable": 0,
+      "retrievedAt": "2026-10-26T22:23:07.061004+00:00",
+      "membersAvailable": 49981,
       "membersExtracted": 0,
-      "membersReused": 0,
+      "membersReused": 49981,
       "networkBytes": 25413210,
       "requests": 2,
-      "elapsedSeconds": 4.55,
-      "assets": []
+      "elapsedSeconds": 2.57,
+      "assets": [],
+      "selectionVersion": 2
     },
     {
       "id": "f4ba8133-5ca9-4704-9d9b-5c4f2bdcd04f",
@@ -494,16 +967,58 @@
       "bytes": 1026760783,
       "lastModified": "Thu, 06 Oct 2022 23:06:47 GMT",
       "etag": "\"3d33204f-5ea65bf6a23ef\"",
-      "inScope": false,
+      "inScope": true,
       "sourceBytes": 1026760783,
-      "retrievedAt": "2026-10-26T22:16:48.453595+00:00",
-      "membersAvailable": 0,
-      "membersExtracted": 0,
+      "retrievedAt": "2026-10-26T22:24:01.211575+00:00",
+      "membersAvailable": 6912,
+      "membersExtracted": 6912,
       "membersReused": 0,
-      "networkBytes": 3290374,
-      "requests": 2,
-      "elapsedSeconds": 1.36,
-      "assets": []
+      "networkBytes": 64290102,
+      "requests": 8484,
+      "elapsedSeconds": 54.0,
+      "assets": [
+        {
+          "name": "f4ba8133-rdv-00.zip",
+          "bytes": 865126,
+          "sha256": "c7aa8f6c4fa4ce7771cab002fc21347c4cd217a421d7e33dbc3e9261cd3e4475"
+        },
+        {
+          "name": "f4ba8133-rdv-01.zip",
+          "bytes": 867953,
+          "sha256": "28b89c363a8ea4a566fa91c6e1d9f58a48ac6b0d1dbbb8678c7958d9326b64ae"
+        },
+        {
+          "name": "f4ba8133-rdv-02.zip",
+          "bytes": 863189,
+          "sha256": "beb9031597635e0ddd7a68368f2748d4c1affec152920589a192e79416f6fa61"
+        },
+        {
+          "name": "f4ba8133-rdv-03.zip",
+          "bytes": 860845,
+          "sha256": "8584d54bde9d3931029721ff27eebb9d113790a0de6f93d7666dbe4cc794fa94"
+        },
+        {
+          "name": "f4ba8133-rdv-04.zip",
+          "bytes": 864766,
+          "sha256": "da4f3d73db1b4d19d98aa9b6c8c55d5c2144697e62d1c8fa658382c34f8bb9f8"
+        },
+        {
+          "name": "f4ba8133-rdv-05.zip",
+          "bytes": 863698,
+          "sha256": "9788448cbf78177d04ea10accf67281a6c228196305bb1c9345d9d46163c3194"
+        },
+        {
+          "name": "f4ba8133-rdv-06.zip",
+          "bytes": 866620,
+          "sha256": "4bc30051e70aba59fca20b786f0ece082ad30f185f800475428dd268145fa2d8"
+        },
+        {
+          "name": "f4ba8133-rdv-07.zip",
+          "bytes": 858711,
+          "sha256": "24f2b9fab977af539f01026e4e030c5f586389ebfdf7d00ebede85db62940b95"
+        }
+      ],
+      "selectionVersion": 2
     },
     {
       "id": "7567f830-9af1-41e5-a48e-5f4fe514ac61",
@@ -515,16 +1030,17 @@
       "bytes": 1279234899,
       "lastModified": "Wed, 02 Nov 2022 21:43:50 GMT",
       "etag": "\"4c3f9353-5ec83bc71ff0e\"",
-      "inScope": false,
+      "inScope": true,
       "sourceBytes": 1279234899,
-      "retrievedAt": "2026-10-26T22:16:48.716025+00:00",
-      "membersAvailable": 0,
+      "retrievedAt": "2026-10-26T22:23:39.334004+00:00",
+      "membersAvailable": 6912,
       "membersExtracted": 0,
-      "membersReused": 0,
+      "membersReused": 6912,
       "networkBytes": 3291043,
       "requests": 2,
-      "elapsedSeconds": 1.15,
-      "assets": []
+      "elapsedSeconds": 0.7,
+      "assets": [],
+      "selectionVersion": 2
     },
     {
       "id": "f15e4d73-0de9-499c-bf2b-b218129322d4",
@@ -536,16 +1052,58 @@
       "bytes": 1129937176,
       "lastModified": "Thu, 06 Oct 2022 23:15:44 GMT",
       "etag": "\"43597918-5ea65df65df5e\"",
-      "inScope": false,
+      "inScope": true,
       "sourceBytes": 1129937176,
-      "retrievedAt": "2026-10-26T22:16:49.272800+00:00",
-      "membersAvailable": 0,
-      "membersExtracted": 0,
+      "retrievedAt": "2026-10-26T22:25:04.166268+00:00",
+      "membersAvailable": 7652,
+      "membersExtracted": 7652,
       "membersReused": 0,
-      "networkBytes": 3644766,
-      "requests": 2,
-      "elapsedSeconds": 0.97,
-      "assets": []
+      "networkBytes": 70883406,
+      "requests": 9315,
+      "elapsedSeconds": 84.81,
+      "assets": [
+        {
+          "name": "f15e4d73-rdv-00.zip",
+          "bytes": 915861,
+          "sha256": "a2a1a2da76b7bf216981221c5898aa544dea578db9e7d407355ed80c116c63ac"
+        },
+        {
+          "name": "f15e4d73-rdv-01.zip",
+          "bytes": 919393,
+          "sha256": "36c20c62102dbd89a980d12ef13804fd18a6871eb2af5061b23081e78330ad78"
+        },
+        {
+          "name": "f15e4d73-rdv-02.zip",
+          "bytes": 923564,
+          "sha256": "cc1a224ea3b18f9fcf97d869fce0bd9ae6edea9b50cd21e5e43ebe0a7ea244a3"
+        },
+        {
+          "name": "f15e4d73-rdv-03.zip",
+          "bytes": 914452,
+          "sha256": "dcc78357acf3cc393df1f3dfe29fdec7ca3e0370e64a6f7fb74173d9b555a2ed"
+        },
+        {
+          "name": "f15e4d73-rdv-04.zip",
+          "bytes": 918845,
+          "sha256": "6d2796aa0bfd7515ee6e5f803ca4bb8c61464a98dfaedda20e122af0110b2419"
+        },
+        {
+          "name": "f15e4d73-rdv-05.zip",
+          "bytes": 919231,
+          "sha256": "c4216e82e8e5697bfe44fcd6c8172a8fd6330ec13cbf681fbe2b3106175662a4"
+        },
+        {
+          "name": "f15e4d73-rdv-06.zip",
+          "bytes": 917550,
+          "sha256": "1851dadca96efd81b67f3e7182c373b1d15a160357742419ea4d3b3e81779c70"
+        },
+        {
+          "name": "f15e4d73-rdv-07.zip",
+          "bytes": 915426,
+          "sha256": "9d13310750dae31f8920a5131ffcbda95f4cbe8be328dc069f244b8946ad4828"
+        }
+      ],
+      "selectionVersion": 2
     },
     {
       "id": "5df0759c-c8dd-46ac-b2b2-b407e06f1bb1",
@@ -557,16 +1115,17 @@
       "bytes": 1405328655,
       "lastModified": "Wed, 02 Nov 2022 21:43:56 GMT",
       "etag": "\"53c39d0f-5ec83bcd27e8f\"",
-      "inScope": false,
+      "inScope": true,
       "sourceBytes": 1405328655,
-      "retrievedAt": "2026-10-26T22:16:49.443998+00:00",
-      "membersAvailable": 0,
+      "retrievedAt": "2026-10-26T22:24:02.134378+00:00",
+      "membersAvailable": 7652,
       "membersExtracted": 0,
-      "membersReused": 0,
+      "membersReused": 7652,
       "networkBytes": 3645775,
       "requests": 2,
-      "elapsedSeconds": 0.98,
-      "assets": []
+      "elapsedSeconds": 0.89,
+      "assets": [],
+      "selectionVersion": 2
     },
     {
       "id": "e5b6d604-a8c0-4f2c-9f37-76232c1fc572",
@@ -578,16 +1137,58 @@
       "bytes": 2857749950,
       "lastModified": "Thu, 06 Oct 2022 23:37:25 GMT",
       "etag": "\"aa55cdbe-5ea662cf01eee\"",
-      "inScope": false,
+      "inScope": true,
       "sourceBytes": 2857749950,
-      "retrievedAt": "2026-10-26T22:16:50.126018+00:00",
-      "membersAvailable": 0,
-      "membersExtracted": 0,
+      "retrievedAt": "2026-10-26T22:26:32.471364+00:00",
+      "membersAvailable": 18235,
+      "membersExtracted": 18235,
       "membersReused": 0,
-      "networkBytes": 8683458,
-      "requests": 2,
-      "elapsedSeconds": 1.4,
-      "assets": []
+      "networkBytes": 169287122,
+      "requests": 22268,
+      "elapsedSeconds": 150.31,
+      "assets": [
+        {
+          "name": "e5b6d604-rdv-00.zip",
+          "bytes": 2249197,
+          "sha256": "0ca712bca85387729b2735ade2ca461caa63a61a71537499106d379b5053afc2"
+        },
+        {
+          "name": "e5b6d604-rdv-01.zip",
+          "bytes": 2258544,
+          "sha256": "5929554989663468b67a0eb39c878ae60e72e7bdf0523d42c504e5983134ec71"
+        },
+        {
+          "name": "e5b6d604-rdv-02.zip",
+          "bytes": 2260645,
+          "sha256": "90f58dcc31c10a43b2e29c77e77a016d3b554dd6929217c5e21005c1683b21d7"
+        },
+        {
+          "name": "e5b6d604-rdv-03.zip",
+          "bytes": 2249720,
+          "sha256": "e7db71d3919d29f454cc091d2f45752810203c62816ee5f79f02949394db9b59"
+        },
+        {
+          "name": "e5b6d604-rdv-04.zip",
+          "bytes": 2251853,
+          "sha256": "c2269a48a0b058b4ea100599a278b878f8308ae30c89dbf3ede91eb799353e00"
+        },
+        {
+          "name": "e5b6d604-rdv-05.zip",
+          "bytes": 2252744,
+          "sha256": "05cc7624cd9f10ee5a7274331362849ffdc1d937898a9aa3d54ca4ec343f0ceb"
+        },
+        {
+          "name": "e5b6d604-rdv-06.zip",
+          "bytes": 2251864,
+          "sha256": "42fb61f3d3b51d2bcb4187a8c55fb8dda7fdf2075a6a943b907ddab7192a105e"
+        },
+        {
+          "name": "e5b6d604-rdv-07.zip",
+          "bytes": 2252164,
+          "sha256": "113b54f9795a436842a22b6c5e23936838d690d26be1086ba521fea67399b139"
+        }
+      ],
+      "selectionVersion": 2
     },
     {
       "id": "41955ea4-e532-4ff8-bd70-14f9f565245f",
@@ -599,16 +1200,17 @@
       "bytes": 3541640253,
       "lastModified": "Wed, 02 Nov 2022 21:44:11 GMT",
       "etag": "\"d319243d-5ec83bdb44c23\"",
-      "inScope": false,
+      "inScope": true,
       "sourceBytes": 3541640253,
-      "retrievedAt": "2026-10-26T22:16:50.342770+00:00",
-      "membersAvailable": 0,
+      "retrievedAt": "2026-10-26T22:24:12.217497+00:00",
+      "membersAvailable": 18235,
       "membersExtracted": 0,
-      "membersReused": 0,
+      "membersReused": 18235,
       "networkBytes": 8680564,
       "requests": 2,
-      "elapsedSeconds": 1.06,
-      "assets": []
+      "elapsedSeconds": 0.96,
+      "assets": [],
+      "selectionVersion": 2
     },
     {
       "id": "097a8415-c409-4cd6-bca8-35b066d71a58",
@@ -620,16 +1222,58 @@
       "bytes": 1520479789,
       "lastModified": "Thu, 06 Oct 2022 23:48:55 GMT",
       "etag": "\"5aa0ae2d-5ea6656124038\"",
-      "inScope": false,
+      "inScope": true,
       "sourceBytes": 1520479789,
-      "retrievedAt": "2026-10-26T22:16:52.078282+00:00",
-      "membersAvailable": 0,
-      "membersExtracted": 0,
+      "retrievedAt": "2026-10-26T22:25:38.421708+00:00",
+      "membersAvailable": 9602,
+      "membersExtracted": 9602,
       "membersReused": 0,
-      "networkBytes": 4574261,
-      "requests": 2,
-      "elapsedSeconds": 2.62,
-      "assets": []
+      "networkBytes": 89132509,
+      "requests": 11728,
+      "elapsedSeconds": 86.15,
+      "assets": [
+        {
+          "name": "097a8415-rdv-00.zip",
+          "bytes": 1205661,
+          "sha256": "f1fbadc259b2c581b39a75b5ee52fa8adc12adc9901a151df130804a2c662be4"
+        },
+        {
+          "name": "097a8415-rdv-01.zip",
+          "bytes": 1198210,
+          "sha256": "94eb05fe4e84f3176e7ec809ac6cfed24f9e0510dee89ce88411870a553b4520"
+        },
+        {
+          "name": "097a8415-rdv-02.zip",
+          "bytes": 1193449,
+          "sha256": "9dd8720826a3572563581823b7b04a3f9f9465bc6b02918a1eb0cd06f4b6e7ca"
+        },
+        {
+          "name": "097a8415-rdv-03.zip",
+          "bytes": 1203565,
+          "sha256": "6ff595260d1a26012350bf71580ab04f798824c18e4d5b92ed37cf109574fdc5"
+        },
+        {
+          "name": "097a8415-rdv-04.zip",
+          "bytes": 1196847,
+          "sha256": "3af6875f8ae4623bec2d2ff247c31d4aa49957a4b7906c5139f327620e888305"
+        },
+        {
+          "name": "097a8415-rdv-05.zip",
+          "bytes": 1193342,
+          "sha256": "0f91efc6673c374a009c27d69d45f29932426e85c77ad3662588410883f92799"
+        },
+        {
+          "name": "097a8415-rdv-06.zip",
+          "bytes": 1202364,
+          "sha256": "f1f992ebe76de66fc566573e7c23c632315042eb08445f4cfced783324b5f190"
+        },
+        {
+          "name": "097a8415-rdv-07.zip",
+          "bytes": 1206998,
+          "sha256": "b5753b35f361330215786d000581baf7ed73eb72e905ed461ddec86afa1c3f58"
+        }
+      ],
+      "selectionVersion": 2
     },
     {
       "id": "c850985c-623a-4447-aa2c-53cf09971c9d",
@@ -641,16 +1285,17 @@
       "bytes": 1978205566,
       "lastModified": "Wed, 02 Nov 2022 21:44:19 GMT",
       "etag": "\"75e9057e-5ec83be30d771\"",
-      "inScope": false,
+      "inScope": true,
       "sourceBytes": 1978205566,
-      "retrievedAt": "2026-10-26T22:16:51.551986+00:00",
-      "membersAvailable": 0,
+      "retrievedAt": "2026-10-26T22:25:05.375754+00:00",
+      "membersAvailable": 9602,
       "membersExtracted": 0,
-      "membersReused": 0,
+      "membersReused": 9602,
       "networkBytes": 4572038,
       "requests": 2,
-      "elapsedSeconds": 1.4,
-      "assets": []
+      "elapsedSeconds": 1.18,
+      "assets": [],
+      "selectionVersion": 2
     },
     {
       "id": "aa0b1eda-774d-4068-9811-390b9fbaafab",
@@ -662,16 +1307,58 @@
       "bytes": 3357746046,
       "lastModified": "Fri, 07 Oct 2022 00:14:29 GMT",
       "etag": "\"c823237e-5ea66b188d75e\"",
-      "inScope": false,
+      "inScope": true,
       "sourceBytes": 3357746046,
-      "retrievedAt": "2026-10-26T22:16:52.353388+00:00",
-      "membersAvailable": 0,
-      "membersExtracted": 0,
+      "retrievedAt": "2026-10-26T22:29:28.147929+00:00",
+      "membersAvailable": 20572,
+      "membersExtracted": 20572,
       "membersReused": 0,
-      "networkBytes": 9793252,
-      "requests": 2,
-      "elapsedSeconds": 1.98,
-      "assets": []
+      "networkBytes": 193074692,
+      "requests": 25637,
+      "elapsedSeconds": 262.74,
+      "assets": [
+        {
+          "name": "aa0b1eda-rdv-00.zip",
+          "bytes": 2778650,
+          "sha256": "7c65666c7712f75cdcf0254cb3e3225566d0511dbaa90a91b54954aa1ace5678"
+        },
+        {
+          "name": "aa0b1eda-rdv-01.zip",
+          "bytes": 2765142,
+          "sha256": "c289d60cdce44bee693a356aa66d02f6148a0a65b8cf7a1bd9c377a104b61825"
+        },
+        {
+          "name": "aa0b1eda-rdv-02.zip",
+          "bytes": 2760714,
+          "sha256": "9f0886168d0d714bac503b0bee3c917f780ff13973b3df90452d77c3a5f6c61d"
+        },
+        {
+          "name": "aa0b1eda-rdv-03.zip",
+          "bytes": 2769030,
+          "sha256": "980c8c14635ac045d506d49df3f54b417cb819f46917652f1606280605ce1ba0"
+        },
+        {
+          "name": "aa0b1eda-rdv-04.zip",
+          "bytes": 2756108,
+          "sha256": "7029720131a7d015d129d3329d6683d9d4817132d67d75d49d10143949dd1a4a"
+        },
+        {
+          "name": "aa0b1eda-rdv-05.zip",
+          "bytes": 2756975,
+          "sha256": "e6c2db2a3aed05bd97177c125a2ae140e8b9fe269930644e130807247208325a"
+        },
+        {
+          "name": "aa0b1eda-rdv-06.zip",
+          "bytes": 2782619,
+          "sha256": "65b3c6831b00d6820a580c7fd75fa369d680c66465415a1135523d8492ab7a5d"
+        },
+        {
+          "name": "aa0b1eda-rdv-07.zip",
+          "bytes": 2772717,
+          "sha256": "335e7e24210595dfdcb0e1bb8fcc19d3f0377bfc345d1b29b107f4de5d0c55df"
+        }
+      ],
+      "selectionVersion": 2
     },
     {
       "id": "6ee082fe-c762-4c3c-bc1f-56037e2e438d",
@@ -683,16 +1370,17 @@
       "bytes": 4295021492,
       "lastModified": "Wed, 02 Nov 2022 21:44:39 GMT",
       "etag": "\"10000d3b4-5ec83bf5f794a\"",
-      "inScope": false,
+      "inScope": true,
       "sourceBytes": 4295021492,
-      "retrievedAt": "2026-10-26T22:16:52.921939+00:00",
-      "membersAvailable": 0,
+      "retrievedAt": "2026-10-26T22:25:40.077718+00:00",
+      "membersAvailable": 20572,
       "membersExtracted": 0,
-      "membersReused": 0,
+      "membersReused": 20572,
       "networkBytes": 9793306,
       "requests": 2,
-      "elapsedSeconds": 1.64,
-      "assets": []
+      "elapsedSeconds": 1.62,
+      "assets": [],
+      "selectionVersion": 2
     },
     {
       "id": "c9a4fcdc-9d07-45d6-8fe1-a7d762e60e88",
@@ -704,16 +1392,58 @@
       "bytes": 1358091517,
       "lastModified": "Fri, 07 Oct 2022 00:25:07 GMT",
       "etag": "\"50f2d4fd-5ea66d78b17f6\"",
-      "inScope": false,
+      "inScope": true,
       "sourceBytes": 1358091517,
-      "retrievedAt": "2026-10-26T22:16:52.435637+00:00",
-      "membersAvailable": 0,
-      "membersExtracted": 0,
+      "retrievedAt": "2026-10-26T22:27:44.013089+00:00",
+      "membersAvailable": 8963,
+      "membersExtracted": 8963,
       "membersReused": 0,
-      "networkBytes": 4267745,
-      "requests": 2,
-      "elapsedSeconds": 0.87,
-      "assets": []
+      "networkBytes": 82314729,
+      "requests": 10737,
+      "elapsedSeconds": 123.87,
+      "assets": [
+        {
+          "name": "c9a4fcdc-rdv-00.zip",
+          "bytes": 1008247,
+          "sha256": "e6553ce877858afbbabddab1f3a50770c17492265728971f934597b6835587cf"
+        },
+        {
+          "name": "c9a4fcdc-rdv-01.zip",
+          "bytes": 997745,
+          "sha256": "1388adac05b5a36805aa87a48bfcec65210a177658c7aed2d39920bcb5d54932"
+        },
+        {
+          "name": "c9a4fcdc-rdv-02.zip",
+          "bytes": 1005625,
+          "sha256": "723f73dabe2655d3d452d0e6a381d59bd68ccd4ff416da29fffe9a4253b6b2be"
+        },
+        {
+          "name": "c9a4fcdc-rdv-03.zip",
+          "bytes": 1014291,
+          "sha256": "8b38d811391d9f37a82c25614648220f6ff4cce3c32db6d78173c624a165cdc3"
+        },
+        {
+          "name": "c9a4fcdc-rdv-04.zip",
+          "bytes": 1006897,
+          "sha256": "2ece15d41dda06952c5feb9fd2c75287d0f1831f0f7ea5dc9633cb89406510a3"
+        },
+        {
+          "name": "c9a4fcdc-rdv-05.zip",
+          "bytes": 1020243,
+          "sha256": "1b40c5539b140c4c25ec6b9114de7f83159799d764db3dedd3b8cbf9fe15bb2c"
+        },
+        {
+          "name": "c9a4fcdc-rdv-06.zip",
+          "bytes": 1018215,
+          "sha256": "573a6dcaaa121d1ea75bd4bf350657ad068f477c1ee3ec108ce4cc92272c9260"
+        },
+        {
+          "name": "c9a4fcdc-rdv-07.zip",
+          "bytes": 1012311,
+          "sha256": "3b4e296ad0be0dc872926a3da8634589e6ae9351fca9d9b84a351b26fafe11e4"
+        }
+      ],
+      "selectionVersion": 2
     },
     {
       "id": "6d4578c2-7c42-4581-b6fe-1454827f0945",
@@ -725,16 +1455,17 @@
       "bytes": 1722528696,
       "lastModified": "Wed, 02 Nov 2022 21:44:47 GMT",
       "etag": "\"66abb3b8-5ec83bfdb7027\"",
-      "inScope": false,
+      "inScope": true,
       "sourceBytes": 1722528696,
-      "retrievedAt": "2026-10-26T22:16:53.091872+00:00",
-      "membersAvailable": 0,
+      "retrievedAt": "2026-10-26T22:26:33.696478+00:00",
+      "membersAvailable": 8963,
       "membersExtracted": 0,
-      "membersReused": 0,
+      "membersReused": 8963,
       "networkBytes": 4267420,
       "requests": 2,
-      "elapsedSeconds": 1.0,
-      "assets": []
+      "elapsedSeconds": 1.16,
+      "assets": [],
+      "selectionVersion": 2
     },
     {
       "id": "49bb36a0-6248-420f-a1dd-1340b9381c0a",
@@ -746,16 +1477,58 @@
       "bytes": 4119095578,
       "lastModified": "Fri, 07 Oct 2022 00:55:22 GMT",
       "etag": "\"f584691a-5ea6743c1f127\"",
-      "inScope": false,
+      "inScope": true,
       "sourceBytes": 4119095578,
-      "retrievedAt": "2026-10-26T22:16:53.938263+00:00",
-      "membersAvailable": 0,
-      "membersExtracted": 0,
+      "retrievedAt": "2026-10-26T22:32:00.607996+00:00",
+      "membersAvailable": 25721,
+      "membersExtracted": 25721,
       "membersReused": 0,
-      "networkBytes": 12245612,
-      "requests": 2,
-      "elapsedSeconds": 1.5,
-      "assets": []
+      "networkBytes": 240819660,
+      "requests": 31905,
+      "elapsedSeconds": 326.88,
+      "assets": [
+        {
+          "name": "49bb36a0-rdv-00.zip",
+          "bytes": 3383009,
+          "sha256": "128682ce5b5d93b11aad573b019205f8ecac72748bf5ce1fb9394d917ff5d81f"
+        },
+        {
+          "name": "49bb36a0-rdv-01.zip",
+          "bytes": 3377878,
+          "sha256": "73ce09e8c43b4663cb410c4a5007f4bd559eb727c54dc8e8c383591b7752997f"
+        },
+        {
+          "name": "49bb36a0-rdv-02.zip",
+          "bytes": 3387845,
+          "sha256": "bb10d1fc9296da1469f1041eb956b0d8bc2a9cd9a13eca0e1fecef18a11a8491"
+        },
+        {
+          "name": "49bb36a0-rdv-03.zip",
+          "bytes": 3399292,
+          "sha256": "2a0c6adb042f628dc057e3427407dbb7428cf889ee05e0ea7612732629d19497"
+        },
+        {
+          "name": "49bb36a0-rdv-04.zip",
+          "bytes": 3390036,
+          "sha256": "07620b1d50bbf17bb87dc3bdd1c11885552f82d5f19cfcdbe0e11b530853f385"
+        },
+        {
+          "name": "49bb36a0-rdv-05.zip",
+          "bytes": 3374664,
+          "sha256": "b17b9615957edb0cda99e7c11b40599876ede9dcb7e6b2c80a6c257277e3b7cc"
+        },
+        {
+          "name": "49bb36a0-rdv-06.zip",
+          "bytes": 3382858,
+          "sha256": "cb39a175187bc305e4c0f7671f74b98b0e772198cd481707869b70f3e3cf5323"
+        },
+        {
+          "name": "49bb36a0-rdv-07.zip",
+          "bytes": 3386434,
+          "sha256": "5aa588d56c7f825fc90c84d7b91f1957e7a77146c92a9260dc5e64656ff48f04"
+        }
+      ],
+      "selectionVersion": 2
     },
     {
       "id": "631d43f1-6454-4743-836a-645bfd3f539e",
@@ -767,16 +1540,17 @@
       "bytes": 5104981100,
       "lastModified": "Wed, 02 Nov 2022 21:45:11 GMT",
       "etag": "\"13047d46c-5ec83c14c2c23\"",
-      "inScope": false,
+      "inScope": true,
       "sourceBytes": 5104981100,
-      "retrievedAt": "2026-10-26T22:16:56.591588+00:00",
-      "membersAvailable": 0,
+      "retrievedAt": "2026-10-26T22:27:46.327391+00:00",
+      "membersAvailable": 25721,
       "membersExtracted": 0,
-      "membersReused": 0,
+      "membersReused": 25721,
       "networkBytes": 12484672,
       "requests": 2,
-      "elapsedSeconds": 4.15,
-      "assets": []
+      "elapsedSeconds": 2.28,
+      "assets": [],
+      "selectionVersion": 2
     },
     {
       "id": "aeaa4840-1b59-4ce4-96ac-b345858ac540",
@@ -788,16 +1562,58 @@
       "bytes": 5826912793,
       "lastModified": "Fri, 07 Oct 2022 01:39:18 GMT",
       "etag": "\"15b4fa219-5ea67e0d93466\"",
-      "inScope": false,
+      "inScope": true,
       "sourceBytes": 5826912793,
-      "retrievedAt": "2026-10-26T22:16:57.166151+00:00",
-      "membersAvailable": 0,
-      "membersExtracted": 0,
+      "retrievedAt": "2026-10-26T22:35:15.867095+00:00",
+      "membersAvailable": 34068,
+      "membersExtracted": 34068,
       "membersReused": 0,
-      "networkBytes": 16750577,
-      "requests": 2,
-      "elapsedSeconds": 4.22,
-      "assets": []
+      "networkBytes": 330667897,
+      "requests": 43942,
+      "elapsedSeconds": 449.45,
+      "assets": [
+        {
+          "name": "aeaa4840-rdv-00.zip",
+          "bytes": 5467758,
+          "sha256": "282431ab5e5c91409298bdcf254f28d5e87ef0d385b7e833df3d76f294482f16"
+        },
+        {
+          "name": "aeaa4840-rdv-01.zip",
+          "bytes": 5441645,
+          "sha256": "9a4feb69e47a474903782cdae677eeba3c23ab2b86638f784779b2ffbd40dbda"
+        },
+        {
+          "name": "aeaa4840-rdv-02.zip",
+          "bytes": 5467458,
+          "sha256": "6148bafd01fd7df8c58b6cb9dd15518ac4fdea6b3f8cfc83d9e80c594c0a817d"
+        },
+        {
+          "name": "aeaa4840-rdv-03.zip",
+          "bytes": 5438156,
+          "sha256": "1f17dfd21aec493145c9c873759d11c30d236e9785e8a206eb417b77d87e83ef"
+        },
+        {
+          "name": "aeaa4840-rdv-04.zip",
+          "bytes": 5450983,
+          "sha256": "78bb015b0c8c80be7277f17c5ce5ae700259264e819344b11c906800a085fde2"
+        },
+        {
+          "name": "aeaa4840-rdv-05.zip",
+          "bytes": 5473616,
+          "sha256": "0bcfcb73c37d334791cf1bd9405ce5a699dac13ddb76d44adb3556f268df42df"
+        },
+        {
+          "name": "aeaa4840-rdv-06.zip",
+          "bytes": 5449999,
+          "sha256": "1ce88e3b2644286c3e4f3417ee0bfd1e6612eba5445b69ef04428409f8b270e6"
+        },
+        {
+          "name": "aeaa4840-rdv-07.zip",
+          "bytes": 5443344,
+          "sha256": "14c9496d14fb5167500dd156979ee3db67b95692dad0c0965ce3012c1d18478d"
+        }
+      ],
+      "selectionVersion": 2
     },
     {
       "id": "53874a1f-349a-424e-9963-1c88eb793ec3",
@@ -809,16 +1625,17 @@
       "bytes": 7020672778,
       "lastModified": "Wed, 02 Nov 2022 21:45:45 GMT",
       "etag": "\"1a276f70a-5ec83c3593c44\"",
-      "inScope": false,
+      "inScope": true,
       "sourceBytes": 7020672778,
-      "retrievedAt": "2026-10-26T22:16:54.691100+00:00",
-      "membersAvailable": 0,
+      "retrievedAt": "2026-10-26T22:29:31.319452+00:00",
+      "membersAvailable": 34068,
       "membersExtracted": 0,
-      "membersReused": 0,
+      "membersReused": 34068,
       "networkBytes": 16992826,
       "requests": 2,
-      "elapsedSeconds": 1.58,
-      "assets": []
+      "elapsedSeconds": 3.1,
+      "assets": [],
+      "selectionVersion": 2
     },
     {
       "id": "49b3269c-bb7a-43a1-bc98-4a48f83647e7",
@@ -830,16 +1647,58 @@
       "bytes": 1253894657,
       "lastModified": "Fri, 07 Oct 2022 01:48:45 GMT",
       "etag": "\"4abcea01-5ea6802a2b89b\"",
-      "inScope": false,
+      "inScope": true,
       "sourceBytes": 1253894657,
-      "retrievedAt": "2026-10-26T22:16:55.273516+00:00",
-      "membersAvailable": 0,
-      "membersExtracted": 0,
+      "retrievedAt": "2026-10-26T22:31:12.906354+00:00",
+      "membersAvailable": 7674,
+      "membersExtracted": 7674,
       "membersReused": 0,
-      "networkBytes": 3655374,
-      "requests": 2,
-      "elapsedSeconds": 1.3,
-      "assets": []
+      "networkBytes": 71134526,
+      "requests": 9353,
+      "elapsedSeconds": 101.46,
+      "assets": [
+        {
+          "name": "49b3269c-rdv-00.zip",
+          "bytes": 960192,
+          "sha256": "5267f5aa5c3135ed59459abe962491537523020df86f9057280d83885dc69dc1"
+        },
+        {
+          "name": "49b3269c-rdv-01.zip",
+          "bytes": 960665,
+          "sha256": "115bd594cdf1c0264c8834be254e0fc62337dd7bfea6b96c5b09b42c67dd5b17"
+        },
+        {
+          "name": "49b3269c-rdv-02.zip",
+          "bytes": 960715,
+          "sha256": "696fb4d92db18b93baecbc92318196951972798b2fede23b91c6e6d918709fcd"
+        },
+        {
+          "name": "49b3269c-rdv-03.zip",
+          "bytes": 960638,
+          "sha256": "f57a0a8ceebb1f806c72e788d679e3f5fda49a360da824899b8ef6bd167ba991"
+        },
+        {
+          "name": "49b3269c-rdv-04.zip",
+          "bytes": 959032,
+          "sha256": "a51ff0073b64a472c8c66ade46746d419e6f04cb134a922678867d3cac53d7b7"
+        },
+        {
+          "name": "49b3269c-rdv-05.zip",
+          "bytes": 957932,
+          "sha256": "476686df0b1a919b0089c0957d524fdac2bbf772608913e76536aa1fd945eebc"
+        },
+        {
+          "name": "49b3269c-rdv-06.zip",
+          "bytes": 958176,
+          "sha256": "318015a50cb5a92827b606ab4c2e1e8be733e2909ddd14ee3d3ad84ce49a6c32"
+        },
+        {
+          "name": "49b3269c-rdv-07.zip",
+          "bytes": 958276,
+          "sha256": "dded07ae1e75f6775a813e2126af116bc8377366c827834d233de270eabbfde7"
+        }
+      ],
+      "selectionVersion": 2
     },
     {
       "id": "aa262298-0e9e-4c28-ace6-5a84e423d421",
@@ -851,16 +1710,17 @@
       "bytes": 1600633341,
       "lastModified": "Wed, 02 Nov 2022 21:45:51 GMT",
       "etag": "\"5f67b9fd-5ec83c3a86e04\"",
-      "inScope": false,
+      "inScope": true,
       "sourceBytes": 1600633341,
-      "retrievedAt": "2026-10-26T22:16:55.554343+00:00",
-      "membersAvailable": 0,
+      "retrievedAt": "2026-10-26T22:31:13.795614+00:00",
+      "membersAvailable": 7674,
       "membersExtracted": 0,
-      "membersReused": 0,
+      "membersReused": 7674,
       "networkBytes": 3655365,
       "requests": 2,
-      "elapsedSeconds": 0.83,
-      "assets": []
+      "elapsedSeconds": 0.86,
+      "assets": [],
+      "selectionVersion": 2
     },
     {
       "id": "0ad0b696-458e-4c4c-bef7-9fb1990bb694",
@@ -872,16 +1732,58 @@
       "bytes": 625901627,
       "lastModified": "Fri, 07 Oct 2022 01:53:35 GMT",
       "etag": "\"254e803b-5ea6813f4b422\"",
-      "inScope": false,
+      "inScope": true,
       "sourceBytes": 625901627,
-      "retrievedAt": "2026-10-26T22:16:57.276650+00:00",
-      "membersAvailable": 0,
-      "membersExtracted": 0,
+      "retrievedAt": "2026-10-26T22:31:56.717786+00:00",
+      "membersAvailable": 4198,
+      "membersExtracted": 4198,
       "membersReused": 0,
-      "networkBytes": 1998387,
-      "requests": 2,
-      "elapsedSeconds": 1.97,
-      "assets": []
+      "networkBytes": 38911947,
+      "requests": 5127,
+      "elapsedSeconds": 42.89,
+      "assets": [
+        {
+          "name": "0ad0b696-rdv-00.zip",
+          "bytes": 506189,
+          "sha256": "7ebc925039e72cb01c4bd7281c450d7b6b22227ff3c4e192f86bbc76e46f91a5"
+        },
+        {
+          "name": "0ad0b696-rdv-01.zip",
+          "bytes": 509179,
+          "sha256": "75efe478d6b86961682963ded2c7cb06fb516961aac1739f6db81982d6f3175c"
+        },
+        {
+          "name": "0ad0b696-rdv-02.zip",
+          "bytes": 512160,
+          "sha256": "d0e1bdd42bfefa6287cd1ee4fecd0b1a7b03f6da2e15e9d564a4c9db7a0f1eb6"
+        },
+        {
+          "name": "0ad0b696-rdv-03.zip",
+          "bytes": 509177,
+          "sha256": "635c39e6e070dbf8477cf045946b80261b228a5b24806dfc0d6f2e3910cdd802"
+        },
+        {
+          "name": "0ad0b696-rdv-04.zip",
+          "bytes": 504753,
+          "sha256": "c39619c0121c560aa2b64224949e7b21356ceab046fefc54435c08167d32dbcb"
+        },
+        {
+          "name": "0ad0b696-rdv-05.zip",
+          "bytes": 504117,
+          "sha256": "91f08a5e1cb07db4eda0b01ed1ab22c03253f5e8d437b788a44aecdaff581098"
+        },
+        {
+          "name": "0ad0b696-rdv-06.zip",
+          "bytes": 506452,
+          "sha256": "64c0f665f1ee3242467cb67bd845939fefe60d0b07f2a65a838cf160fff0075f"
+        },
+        {
+          "name": "0ad0b696-rdv-07.zip",
+          "bytes": 506412,
+          "sha256": "dce64dd94180bb5592cc35aa2694f453d21e91f86f5f39a3c9a8e16802a94baf"
+        }
+      ],
+      "selectionVersion": 2
     },
     {
       "id": "bd8267f3-d3f1-47a7-9b72-66c39d91c11d",
@@ -893,16 +1795,17 @@
       "bytes": 790535121,
       "lastModified": "Wed, 02 Nov 2022 21:45:55 GMT",
       "etag": "\"2f1e9bd1-5ec83c3f240be\"",
-      "inScope": false,
+      "inScope": true,
       "sourceBytes": 790535121,
-      "retrievedAt": "2026-10-26T22:16:57.367337+00:00",
-      "membersAvailable": 0,
+      "retrievedAt": "2026-10-26T22:31:39.385271+00:00",
+      "membersAvailable": 4198,
       "membersExtracted": 0,
-      "membersReused": 0,
+      "membersReused": 4198,
       "networkBytes": 2001353,
       "requests": 2,
-      "elapsedSeconds": 1.77,
-      "assets": []
+      "elapsedSeconds": 0.56,
+      "assets": [],
+      "selectionVersion": 2
     },
     {
       "id": "304e8d5a-4251-4957-a7b3-18a5683d6cd6",
@@ -914,16 +1817,58 @@
       "bytes": 186424685,
       "lastModified": "Fri, 07 Oct 2022 01:55:01 GMT",
       "etag": "\"b1c9d6d-5ea68190abdae\"",
-      "inScope": false,
+      "inScope": true,
       "sourceBytes": 186424685,
-      "retrievedAt": "2026-10-26T22:16:57.401221+00:00",
-      "membersAvailable": 0,
-      "membersExtracted": 0,
+      "retrievedAt": "2026-10-26T22:38:19.561093+00:00",
+      "selectionVersion": 2,
+      "membersAvailable": 1268,
+      "membersExtracted": 1268,
       "membersReused": 0,
-      "networkBytes": 607085,
-      "requests": 2,
-      "elapsedSeconds": 0.76,
-      "assets": []
+      "networkBytes": 11968213,
+      "requests": 1606,
+      "elapsedSeconds": 22.59,
+      "assets": [
+        {
+          "name": "304e8d5a-rdv-00.zip",
+          "bytes": 173733,
+          "sha256": "7754f9257e296540ff02bb8764695b95dd95677b683c04aab414a75026bf7711"
+        },
+        {
+          "name": "304e8d5a-rdv-01.zip",
+          "bytes": 167284,
+          "sha256": "f288e7c8bbf14e8bb4ea26111eb4787375b2d06dc0ecdd42ec9c49c7f504d0c5"
+        },
+        {
+          "name": "304e8d5a-rdv-02.zip",
+          "bytes": 169884,
+          "sha256": "f93289956746ab2dcf7d875f25877da975365fe462cf380ecf31ab22a48a36e6"
+        },
+        {
+          "name": "304e8d5a-rdv-03.zip",
+          "bytes": 174430,
+          "sha256": "26930d0dc78f68b9bd39bfd4fa843dc4f97f0167789bdc1d4d443d304405f40e"
+        },
+        {
+          "name": "304e8d5a-rdv-04.zip",
+          "bytes": 164174,
+          "sha256": "a439616190b137fe2bc6cf88bd8667581fc8573e962e271e638db86689a15db7"
+        },
+        {
+          "name": "304e8d5a-rdv-05.zip",
+          "bytes": 169881,
+          "sha256": "2897336d9a1215c69faf902e79a3c2dbb491a75309ab190fb9f514d21325b5d9"
+        },
+        {
+          "name": "304e8d5a-rdv-06.zip",
+          "bytes": 170627,
+          "sha256": "28935eda7f6673a7fc121a803ec2a4a009bf15573708d31963995f74962ac81b"
+        },
+        {
+          "name": "304e8d5a-rdv-07.zip",
+          "bytes": 169692,
+          "sha256": "f595e8ebc21eecd58b23187ef2ed507ee42a06e4bd383db685fc48a1e1cf2c8d"
+        }
+      ]
     },
     {
       "id": "d9cdc533-d3dc-4643-abf9-787156619fb6",
@@ -935,15 +1880,16 @@
       "bytes": 214806129,
       "lastModified": "Wed, 02 Nov 2022 21:45:56 GMT",
       "etag": "\"ccdae71-5ec83c401a636\"",
-      "inScope": false,
+      "inScope": true,
       "sourceBytes": 214806129,
-      "retrievedAt": "2026-10-26T22:16:57.923768+00:00",
-      "membersAvailable": 0,
+      "retrievedAt": "2026-10-26T22:37:57.813094+00:00",
+      "selectionVersion": 2,
+      "membersAvailable": 1268,
       "membersExtracted": 0,
-      "membersReused": 0,
+      "membersReused": 1268,
       "networkBytes": 607345,
       "requests": 2,
-      "elapsedSeconds": 0.66,
+      "elapsedSeconds": 0.71,
       "assets": []
     },
     {
@@ -956,16 +1902,58 @@
       "bytes": 4335586129,
       "lastModified": "Fri, 07 Oct 2022 02:28:17 GMT",
       "etag": "\"1026bcb51-5ea6890075275\"",
-      "inScope": false,
+      "inScope": true,
       "sourceBytes": 4335586129,
-      "retrievedAt": "2026-10-26T22:17:00.277889+00:00",
-      "membersAvailable": 0,
-      "membersExtracted": 0,
+      "retrievedAt": "2026-10-26T22:43:28.382706+00:00",
+      "selectionVersion": 2,
+      "membersAvailable": 27201,
+      "membersExtracted": 27201,
       "membersReused": 0,
-      "networkBytes": 12961003,
-      "requests": 2,
-      "elapsedSeconds": 2.99,
-      "assets": []
+      "networkBytes": 253824067,
+      "requests": 33508,
+      "elapsedSeconds": 330.6,
+      "assets": [
+        {
+          "name": "74de2543-rdv-00.zip",
+          "bytes": 3492940,
+          "sha256": "0093e66f1c1996f114161aab701fa912d8ecce4a8e720d82d18fbc75aafce781"
+        },
+        {
+          "name": "74de2543-rdv-01.zip",
+          "bytes": 3504273,
+          "sha256": "ef8eb07600bcf8d86b715ab2dd06f632b8e16f491b6938c9a8c676abb5128d44"
+        },
+        {
+          "name": "74de2543-rdv-02.zip",
+          "bytes": 3502541,
+          "sha256": "2cf29562c994d098942746ae37fea0e6baba9627900c220e5ad63a6d757eaf0b"
+        },
+        {
+          "name": "74de2543-rdv-03.zip",
+          "bytes": 3502401,
+          "sha256": "06ccd4876a54e2e4c7135086d2807d30f594ec3556d941465f428434876bb54b"
+        },
+        {
+          "name": "74de2543-rdv-04.zip",
+          "bytes": 3504902,
+          "sha256": "5f3ec77f9856484872924fa9463ee34f27ff1790b04076f623ac05bba136b1d5"
+        },
+        {
+          "name": "74de2543-rdv-05.zip",
+          "bytes": 3509930,
+          "sha256": "4b504758763edbd2b8f8e54a2e20d05e3e321f5131b4c16af8b70b11b57b0f02"
+        },
+        {
+          "name": "74de2543-rdv-06.zip",
+          "bytes": 3499946,
+          "sha256": "7fddb81e7f2db4bcff3d7f1cb2cf650e098caa586a1d98408b9faf76c89be7ba"
+        },
+        {
+          "name": "74de2543-rdv-07.zip",
+          "bytes": 3515770,
+          "sha256": "27d8bc651a8674b6fe6350c9c27c5944fbf2ec87f825f5059af0e6f4c7d95e0d"
+        }
+      ]
     },
     {
       "id": "fcce49a0-f5f5-4d76-845c-fb46a9f7085c",
@@ -977,15 +1965,16 @@
       "bytes": 5514814522,
       "lastModified": "Wed, 02 Nov 2022 21:46:26 GMT",
       "etag": "\"148b5643a-5ec83c5c335eb\"",
-      "inScope": false,
+      "inScope": true,
       "sourceBytes": 5514814522,
-      "retrievedAt": "2026-10-26T22:16:59.112351+00:00",
-      "membersAvailable": 0,
+      "retrievedAt": "2026-10-26T22:38:00.310100+00:00",
+      "selectionVersion": 2,
+      "membersAvailable": 27201,
       "membersExtracted": 0,
-      "membersReused": 0,
+      "membersReused": 27201,
       "networkBytes": 13308101,
       "requests": 2,
-      "elapsedSeconds": 1.73,
+      "elapsedSeconds": 2.49,
       "assets": []
     },
     {
@@ -998,16 +1987,58 @@
       "bytes": 2631645506,
       "lastModified": "Fri, 07 Oct 2022 02:49:23 GMT",
       "etag": "\"9cdbb942-5ea68db7d0b49\"",
-      "inScope": false,
+      "inScope": true,
       "sourceBytes": 2631645506,
-      "retrievedAt": "2026-10-26T22:16:58.513656+00:00",
-      "membersAvailable": 0,
-      "membersExtracted": 0,
+      "retrievedAt": "2026-10-26T22:41:19.219881+00:00",
+      "selectionVersion": 2,
+      "membersAvailable": 16242,
+      "membersExtracted": 16242,
       "membersReused": 0,
-      "networkBytes": 7733642,
-      "requests": 2,
-      "elapsedSeconds": 1.11,
-      "assets": []
+      "networkBytes": 151686618,
+      "requests": 20058,
+      "elapsedSeconds": 198.84,
+      "assets": [
+        {
+          "name": "983f531f-rdv-00.zip",
+          "bytes": 2118436,
+          "sha256": "1937942f015f4ffdd9054e036886e3eb89c3ab84e321492d0a8d28292b70ae4d"
+        },
+        {
+          "name": "983f531f-rdv-01.zip",
+          "bytes": 2115610,
+          "sha256": "0ed7350968eef35a5acab159b2b150de9c72447b3792cf1c99b5d3d3ce6d2635"
+        },
+        {
+          "name": "983f531f-rdv-02.zip",
+          "bytes": 2124375,
+          "sha256": "8cdddc6844925c53270ae6f3aa5fba5ba85ced3fac2f862d1be90c741ef2ef50"
+        },
+        {
+          "name": "983f531f-rdv-03.zip",
+          "bytes": 2118136,
+          "sha256": "3069057a3c0a20902351ad551701a6746ea066f7ce26f14fef94c9a4d6830f70"
+        },
+        {
+          "name": "983f531f-rdv-04.zip",
+          "bytes": 2118185,
+          "sha256": "bbd6babfbe69734db61c59d1989d805e305532e386413275f475185e153b4f93"
+        },
+        {
+          "name": "983f531f-rdv-05.zip",
+          "bytes": 2124270,
+          "sha256": "111e9b070a18e073ae9e9297cdb93d0b00130835a3a087c24d2d7a79cacf8605"
+        },
+        {
+          "name": "983f531f-rdv-06.zip",
+          "bytes": 2113092,
+          "sha256": "994edff12afeee5cc1c5480284f41dadfd20e07f108f4c359e9b3d8e0ab0e56b"
+        },
+        {
+          "name": "983f531f-rdv-07.zip",
+          "bytes": 2113639,
+          "sha256": "e7735287e2030e241c06120d43d3015f80739a8d17e0b90db5191a90d20fbd3a"
+        }
+      ]
     },
     {
       "id": "5fe6b373-dde6-4eb1-bee5-40397afad587",
@@ -1019,15 +2050,16 @@
       "bytes": 3382518530,
       "lastModified": "Wed, 02 Nov 2022 21:46:39 GMT",
       "etag": "\"c99d2302-5ec83c692080c\"",
-      "inScope": false,
+      "inScope": true,
       "sourceBytes": 3382518530,
-      "retrievedAt": "2026-10-26T22:16:59.889529+00:00",
-      "membersAvailable": 0,
+      "retrievedAt": "2026-10-26T22:38:21.357268+00:00",
+      "selectionVersion": 2,
+      "membersAvailable": 16242,
       "membersExtracted": 0,
-      "membersReused": 0,
+      "membersReused": 16242,
       "networkBytes": 7732145,
       "requests": 2,
-      "elapsedSeconds": 1.96,
+      "elapsedSeconds": 1.79,
       "assets": []
     },
     {
@@ -1040,16 +2072,58 @@
       "bytes": 856029051,
       "lastModified": "Fri, 07 Oct 2022 02:56:16 GMT",
       "etag": "\"3305f77b-5ea68f4198265\"",
-      "inScope": false,
+      "inScope": true,
       "sourceBytes": 856029051,
-      "retrievedAt": "2026-10-26T22:16:59.491239+00:00",
-      "membersAvailable": 0,
-      "membersExtracted": 0,
+      "retrievedAt": "2026-10-26T22:39:33.793464+00:00",
+      "selectionVersion": 2,
+      "membersAvailable": 5498,
+      "membersExtracted": 5498,
       "membersReused": 0,
-      "networkBytes": 2619043,
-      "requests": 2,
-      "elapsedSeconds": 0.94,
-      "assets": []
+      "networkBytes": 50944955,
+      "requests": 6701,
+      "elapsedSeconds": 72.39,
+      "assets": [
+        {
+          "name": "5617e4f7-rdv-00.zip",
+          "bytes": 681016,
+          "sha256": "48be6ae8d01060a785a10b05fe9e5079178cf6f63f12299e9646d394cc592e30"
+        },
+        {
+          "name": "5617e4f7-rdv-01.zip",
+          "bytes": 686894,
+          "sha256": "d6c45e4f86aaf3a6d7eb6274ded034063ce8097030511867d13b506da09feab4"
+        },
+        {
+          "name": "5617e4f7-rdv-02.zip",
+          "bytes": 681733,
+          "sha256": "14e34ca10a643e458902137822d5e117e272fa26ac03853acd52925d29d96c36"
+        },
+        {
+          "name": "5617e4f7-rdv-03.zip",
+          "bytes": 684226,
+          "sha256": "22747c843d0fb9cf8059972c497b778b99b5f77d77b7c304e037ec1dba6d5f79"
+        },
+        {
+          "name": "5617e4f7-rdv-04.zip",
+          "bytes": 683916,
+          "sha256": "59bc408e8795a6859f82d8d9b249af1324cfb76eb608f547726c9edbeeda7cd7"
+        },
+        {
+          "name": "5617e4f7-rdv-05.zip",
+          "bytes": 679953,
+          "sha256": "3bd529cb931ff2faa96bfe78b7a4b57449e5be61758756f17618c2009ab93f3d"
+        },
+        {
+          "name": "5617e4f7-rdv-06.zip",
+          "bytes": 684849,
+          "sha256": "b08ab56f69e5bf1e2b49dac4d242e133d838c6cc5dff33efba5e2ec59a59ab64"
+        },
+        {
+          "name": "5617e4f7-rdv-07.zip",
+          "bytes": 684174,
+          "sha256": "05cc8b69bd4b8594eef90ab152f5c15d689af506c5a2c50f99c2c9c2cd41d6a0"
+        }
+      ]
     },
     {
       "id": "446566eb-13a7-4319-bb1d-7483834d88bb",
@@ -1061,15 +2135,16 @@
       "bytes": 1104959722,
       "lastModified": "Wed, 02 Nov 2022 21:46:45 GMT",
       "etag": "\"41dc58ea-5ec83c6e5c5e0\"",
-      "inScope": false,
+      "inScope": true,
       "sourceBytes": 1104959722,
-      "retrievedAt": "2026-10-26T22:17:00.393553+00:00",
-      "membersAvailable": 0,
+      "retrievedAt": "2026-10-26T22:39:34.315983+00:00",
+      "selectionVersion": 2,
+      "membersAvailable": 5498,
       "membersExtracted": 0,
-      "membersReused": 0,
+      "membersReused": 5498,
       "networkBytes": 2619410,
       "requests": 2,
-      "elapsedSeconds": 1.25,
+      "elapsedSeconds": 0.49,
       "assets": []
     },
     {
@@ -1082,16 +2157,58 @@
       "bytes": 16508051055,
       "lastModified": "Fri, 07 Oct 2022 05:10:11 GMT",
       "etag": "\"3d7f4de6f-5ea6ad304772b\"",
-      "inScope": false,
+      "inScope": true,
       "sourceBytes": 16508051055,
-      "retrievedAt": "2026-10-26T22:17:07.390344+00:00",
-      "membersAvailable": 0,
-      "membersExtracted": 0,
+      "retrievedAt": "2026-10-26T22:59:06.268903+00:00",
+      "selectionVersion": 2,
+      "membersAvailable": 101073,
+      "membersExtracted": 101073,
       "membersReused": 0,
-      "networkBytes": 52579737,
-      "requests": 2,
-      "elapsedSeconds": 7.89,
-      "assets": []
+      "networkBytes": 998832737,
+      "requests": 128342,
+      "elapsedSeconds": 1171.93,
+      "assets": [
+        {
+          "name": "2bd7b409-rdv-00.zip",
+          "bytes": 15252481,
+          "sha256": "efb83c14dd95817dd2d26870d90b35db357a6f71005a4de9e69d12ba245d1dec"
+        },
+        {
+          "name": "2bd7b409-rdv-01.zip",
+          "bytes": 15259643,
+          "sha256": "bc907f5925da25b3f8e397e2e72c9b3f152c9d68922770e8460713d714724d30"
+        },
+        {
+          "name": "2bd7b409-rdv-02.zip",
+          "bytes": 15249443,
+          "sha256": "a94f14ab95a971a241ee15af0ad903fac6ffe53f2f36981a2dc032e2bf42d89d"
+        },
+        {
+          "name": "2bd7b409-rdv-03.zip",
+          "bytes": 15247077,
+          "sha256": "2435c8ee59a000e0cd7bb88c20614e49a553a244720754f625f57d3fdd4f06d1"
+        },
+        {
+          "name": "2bd7b409-rdv-04.zip",
+          "bytes": 15236775,
+          "sha256": "379a1c7a7a095ebce4ec391bfd39419d3b28fcd16099a07fcd8b863c816800a9"
+        },
+        {
+          "name": "2bd7b409-rdv-05.zip",
+          "bytes": 15252913,
+          "sha256": "85238d40da4b418a5b1128ee937b4028352742501d6a8552080cfc7812a0ee4a"
+        },
+        {
+          "name": "2bd7b409-rdv-06.zip",
+          "bytes": 15249832,
+          "sha256": "1e157a8981b25bd16267ae312283b14f96f8e5cf62be3ba0f268b81acd0391a5"
+        },
+        {
+          "name": "2bd7b409-rdv-07.zip",
+          "bytes": 15254857,
+          "sha256": "fed1fea28d0b0db39c8d7ca201c0b0973e7c395d721d67b78ccd9ab90478c88e"
+        }
+      ]
     },
     {
       "id": "9b48989b-534c-4a02-be81-e7259b60f4d6",
@@ -1103,15 +2220,16 @@
       "bytes": 20161724599,
       "lastModified": "Wed, 02 Nov 2022 21:48:28 GMT",
       "etag": "\"4b1bb80b7-5ec83cd10d679\"",
-      "inScope": false,
+      "inScope": true,
       "sourceBytes": 20161724599,
-      "retrievedAt": "2026-10-26T22:17:05.867508+00:00",
-      "membersAvailable": 0,
+      "retrievedAt": "2026-10-26T22:41:25.671873+00:00",
+      "selectionVersion": 2,
+      "membersAvailable": 101073,
       "membersExtracted": 0,
-      "membersReused": 0,
+      "membersReused": 101073,
       "networkBytes": 52863635,
       "requests": 2,
-      "elapsedSeconds": 5.95,
+      "elapsedSeconds": 6.41,
       "assets": []
     },
     {
@@ -1124,16 +2242,58 @@
       "bytes": 585805351,
       "lastModified": "Fri, 07 Oct 2022 05:14:47 GMT",
       "etag": "\"22eaae27-5ea6ae3809fbb\"",
-      "inScope": false,
+      "inScope": true,
       "sourceBytes": 585805351,
-      "retrievedAt": "2026-10-26T22:17:01.275814+00:00",
-      "membersAvailable": 0,
-      "membersExtracted": 0,
+      "retrievedAt": "2026-10-26T22:42:00.334672+00:00",
+      "selectionVersion": 2,
+      "membersAvailable": 3957,
+      "membersExtracted": 3957,
       "membersReused": 0,
-      "networkBytes": 1887235,
-      "requests": 2,
-      "elapsedSeconds": 0.97,
-      "assets": []
+      "networkBytes": 36310043,
+      "requests": 4736,
+      "elapsedSeconds": 34.36,
+      "assets": [
+        {
+          "name": "dca29ab7-rdv-00.zip",
+          "bytes": 463012,
+          "sha256": "b901be8850309be51230f2d62c99ce87af8615739f1272535745beb850d79080"
+        },
+        {
+          "name": "dca29ab7-rdv-01.zip",
+          "bytes": 458952,
+          "sha256": "6954cf9b80802c72ca1871331cedcbc9a1ba760222319cb99cbfded691498f25"
+        },
+        {
+          "name": "dca29ab7-rdv-02.zip",
+          "bytes": 459814,
+          "sha256": "a907c8ba3ba9a891daa13322dfda4012dd250b0a4b14e5e5a201e763801308b2"
+        },
+        {
+          "name": "dca29ab7-rdv-03.zip",
+          "bytes": 462996,
+          "sha256": "e920a3f208cbc1605501cc58c7b50f7eb6dabfc1c534ad496f9e3c0fba54da3c"
+        },
+        {
+          "name": "dca29ab7-rdv-04.zip",
+          "bytes": 461262,
+          "sha256": "3f01801d23a7cb1fcc0aa55b746788dbe113a83943c4a9723cf4e6e0d2a5f925"
+        },
+        {
+          "name": "dca29ab7-rdv-05.zip",
+          "bytes": 462911,
+          "sha256": "f3b9d68862c3e5aaaf33d8f11cfdab7f15827e25951d135566d544488ea772be"
+        },
+        {
+          "name": "dca29ab7-rdv-06.zip",
+          "bytes": 462164,
+          "sha256": "9b6055ca7763f816a699b1e37faf99b26ecb037c71c0dc1838f2a13c8664804f"
+        },
+        {
+          "name": "dca29ab7-rdv-07.zip",
+          "bytes": 462277,
+          "sha256": "6eddda271df147270360ef14d4c372ca7452b2f1d6c6ec1d1a4052e3f9477a28"
+        }
+      ]
     },
     {
       "id": "1fdc4e60-4a43-4ca9-b5d2-b210b67834c3",
@@ -1145,15 +2305,16 @@
       "bytes": 720297733,
       "lastModified": "Wed, 02 Nov 2022 21:48:32 GMT",
       "etag": "\"2aeedf05-5ec83cd4121f1\"",
-      "inScope": false,
+      "inScope": true,
       "sourceBytes": 720297733,
-      "retrievedAt": "2026-10-26T22:17:01.922369+00:00",
-      "membersAvailable": 0,
+      "retrievedAt": "2026-10-26T22:42:01.155502+00:00",
+      "selectionVersion": 2,
+      "membersAvailable": 3957,
       "membersExtracted": 0,
-      "membersReused": 0,
+      "membersReused": 3957,
       "networkBytes": 1887457,
       "requests": 2,
-      "elapsedSeconds": 1.52,
+      "elapsedSeconds": 0.81,
       "assets": []
     },
     {
@@ -1166,16 +2327,58 @@
       "bytes": 79934034,
       "lastModified": "Fri, 07 Oct 2022 05:23:37 GMT",
       "etag": "\"4c3b252-5ea6b03146a4f\"",
-      "inScope": false,
+      "inScope": true,
       "sourceBytes": 79934034,
-      "retrievedAt": "2026-10-26T22:17:03.205002+00:00",
-      "membersAvailable": 0,
-      "membersExtracted": 0,
+      "retrievedAt": "2026-10-26T22:42:17.142483+00:00",
+      "selectionVersion": 2,
+      "membersAvailable": 960,
+      "membersExtracted": 960,
       "membersReused": 0,
-      "networkBytes": 468434,
-      "requests": 2,
-      "elapsedSeconds": 1.92,
-      "assets": []
+      "networkBytes": 8492130,
+      "requests": 1062,
+      "elapsedSeconds": 15.97,
+      "assets": [
+        {
+          "name": "208f4207-rdv-00.zip",
+          "bytes": 44845,
+          "sha256": "ecd8466d235040f7f74399e571c44f2c3f1ba431716141c205072e83653233ee"
+        },
+        {
+          "name": "208f4207-rdv-01.zip",
+          "bytes": 44899,
+          "sha256": "f65e0bb41d42084e201e3b9ff301d5b4c15481d0c51a7f53e4b58e0d887ee88e"
+        },
+        {
+          "name": "208f4207-rdv-02.zip",
+          "bytes": 44868,
+          "sha256": "caca63781cdd42dad5ea0b802afc90a806f4f74cc7421f73895cbb2c93c3ddc1"
+        },
+        {
+          "name": "208f4207-rdv-03.zip",
+          "bytes": 45121,
+          "sha256": "91574c279aa243573026cdb253fad7142ba5b7ce480e1f5cddbeddf40dd0c2fa"
+        },
+        {
+          "name": "208f4207-rdv-04.zip",
+          "bytes": 44660,
+          "sha256": "02c2703313efa07a311fe6643615f4357f152fd5c79537fd23be5f33b2066c2f"
+        },
+        {
+          "name": "208f4207-rdv-05.zip",
+          "bytes": 45301,
+          "sha256": "586b793bde3013d5c73b1cd218c3723804f718e4b51311a6d97166a0ce0b554d"
+        },
+        {
+          "name": "208f4207-rdv-06.zip",
+          "bytes": 44990,
+          "sha256": "fb4738025967f8eeba1942ed0a06fe636568dceb9a8c1910f8c664aa993a493c"
+        },
+        {
+          "name": "208f4207-rdv-07.zip",
+          "bytes": 45109,
+          "sha256": "ec7ae3f3aa27c386e0f8aaef5a6d94c936263e8842bc344d62144ee196ec0705"
+        }
+      ]
     },
     {
       "id": "ec5a705d-8851-4051-99f7-0cf3c48e0635",
@@ -1187,15 +2390,16 @@
       "bytes": 108474703,
       "lastModified": "Wed, 02 Nov 2022 21:48:37 GMT",
       "etag": "\"677314f-5ec83cd9c3e85\"",
-      "inScope": false,
+      "inScope": true,
       "sourceBytes": 108474703,
-      "retrievedAt": "2026-10-26T22:17:02.714371+00:00",
-      "membersAvailable": 0,
+      "retrievedAt": "2026-10-26T22:42:17.796277+00:00",
+      "selectionVersion": 2,
+      "membersAvailable": 1017,
       "membersExtracted": 0,
-      "membersReused": 0,
+      "membersReused": 1017,
       "networkBytes": 484705,
       "requests": 2,
-      "elapsedSeconds": 0.79,
+      "elapsedSeconds": 0.65,
       "assets": []
     }
   ]
