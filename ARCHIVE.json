@@ -1,0 +1,72 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-10-26T21:56:41.591345+00:00",
+  "status": "published",
+  "dataset": {
+    "id": "comparecimento-e-abstencao-2014",
+    "title": "Comparecimento e Abstenção - 2014",
+    "groups": [
+      "comparecimento-e-abstencao"
+    ],
+    "family": "comparecimento-e-abstencao",
+    "years": [
+      2014
+    ],
+    "license": "cc-by",
+    "source": "https://dadosabertos.tse.jus.br/dataset/comparecimento-e-abstencao-2014",
+    "branch": "archive/comparecimento-e-abstencao-2014",
+    "tag": "data-comparecimento-e-abstencao-2014",
+    "releaseUrl": "https://github.com/brauliobo/brazil-audit/releases/tag/data-comparecimento-e-abstencao-2014",
+    "normalized": false,
+    "status": "catalogued",
+    "inScope": true
+  },
+  "resources": [
+    {
+      "id": "50b970cb-769c-4c5a-b5eb-34fda5d9e478",
+      "name": "Comparecimento e Abstenção",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_comparecimento_abstencao/perfil_comparecimento_abstencao_2014.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_comparecimento_abstencao/perfil_comparecimento_abstencao_2014.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 179028414,
+      "lastModified": "Mon, 06 Jul 2026 14:52:13 GMT",
+      "etag": "\"aabc1be-655f26b76fdc5\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:56:41.431494+00:00",
+      "sha256": "9acd5c54959545424b41da320633b63b942c8524d5bb36eced09437af3970f33",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "50b970cb-perfil_comparecimento_abstencao_2014.zip",
+          "bytes": 179028414,
+          "sha256": "9acd5c54959545424b41da320633b63b942c8524d5bb36eced09437af3970f33"
+        }
+      ]
+    },
+    {
+      "id": "a0bf92cd-1f8b-435d-a312-05d1e4343d45",
+      "name": "Pessoas com deficiência",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_comparecimento_abstencao_eleitor_deficiente/perfil_comparecimento_abstencao_eleitor_deficiente_2014.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_comparecimento_abstencao_eleitor_deficiente/perfil_comparecimento_abstencao_eleitor_deficiente_2014.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 30960881,
+      "lastModified": "Mon, 06 Jul 2026 16:47:36 GMT",
+      "etag": "\"1d86cf1-655f40814f72b\"",
+      "inScope": false
+    },
+    {
+      "id": "115a9434-7fda-4d2e-9119-ed294f0a7bae",
+      "name": "Transferência temporária de eleitor",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_comparecimento_abstencao_eleitor_tte/perfil_comparecimento_abstencao_eleitor_tte_2014.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_comparecimento_abstencao_eleitor_tte/perfil_comparecimento_abstencao_eleitor_tte_2014.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 1623372,
+      "lastModified": "Mon, 06 Jul 2026 16:48:07 GMT",
+      "etag": "\"18c54c-655f409f67ee0\"",
+      "inScope": false
+    }
+  ]
+}
