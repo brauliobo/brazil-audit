@@ -44,6 +44,16 @@ class HistoricalSummariesTest(unittest.TestCase):
         self.assertIsNone(merged['blank'])
         self.assertIsNone(merged['null'])
 
+    def test_distinct_supplementary_dates_do_not_collapse_under_a_reused_source_code(self):
+        raw = {'ANO_ELEICAO': '2008', 'CD_ELEICAO': '32', 'NR_TURNO': '1', 'DT_ELEICAO': '01/03/2009'}
+        source = {'id': 'source', 'url': 'https://cdn.tse.jus.br/source.zip'}
+        first = history.normalize(raw, source)
+        second = history.normalize({**raw, 'DT_ELEICAO': '01/04/2012'}, source)
+        self.assertNotEqual(first['election_id'], second['election_id'])
+        self.assertEqual(first['source_election_id'], second['source_election_id'])
+        self.assertEqual(first['year'], 2008)
+        self.assertEqual(first['date'], '01/03/2009')
+
     def test_installed_electorate_requires_the_source_participation_balance(self):
         raw = {'ANO_ELEICAO': '2022', 'QT_APTOS': '11077', 'QT_COMPARECIMENTO': '2336', 'QT_ABSTENCOES': '172',
                'QT_ELEITORES_SECOES_NAO_INSTALADAS': '0'}

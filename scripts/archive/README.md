@@ -17,3 +17,11 @@ Verification:
 ```sh
 python3 -m unittest discover -s test/archive -v
 ```
+
+Election identity includes the official election code, declared year, round and actual `DT_ELEICAO` when supplied. The TSE reuses some codes for supplementary elections held on different dates. The declared base-election year and archive year remain distinct from the election date; disagreements are explicit in the index and diagnostics. Historical records without dates remain undated.
+
+`eligible` is the registered electorate. `installed` is the participation denominator, available only when the reported electorate reconciles with turnout, abstention and voters in uninstalled sections. Unexplained differences leave participation unavailable while preserving the reported electorate and original evidence.
+
+`archive_rdv.py` selects anonymous RDV members from mixed official archives using strict HTTP206 ranges, exact Content-Range, stable ETag and ZIP CRC checks. Eight streams per bundle and four bundles bound network concurrency. Newly extracted members have individual SHA-256 hashes in MEMBERS.json. Existing released RDVs are referenced only when election/section identity, size and CRC32 agree; this metadata reuse is explicitly distinguished from a cryptographic source-member SHA comparison. Both older `.rdv` and newer `-rdv.dat` source conventions retain election codes, preventing first/second-round confusion.
+
+`finalize_catalog.py` attaches only remotely verified RDV publications and the normalized-summary index. Archive publication and normalized analytical availability remain separate.

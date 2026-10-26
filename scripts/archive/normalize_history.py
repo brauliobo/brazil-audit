@@ -12,7 +12,7 @@ import unicodedata
 import zipfile
 from tse_archive import read_json, write_json, now, sha256
 
-COLUMNS = ['election_id', 'year', 'turn', 'description', 'date', 'election_type', 'scope', 'state', 'city_code', 'zone', 'office', 'office_key', 'office_name',
+COLUMNS = ['election_id', 'source_election_id', 'year', 'turn', 'description', 'date', 'election_type', 'scope', 'state', 'city_code', 'zone', 'office', 'office_key', 'office_name',
            'eligible', 'installed', 'present', 'absent', 'blank', 'null', 'valid', 'sections', 'not_installed', 'transit', 'source_url', 'source_id']
 LEGACY = ['DATA_GERACAO', 'HORA_GERACAO', 'ANO_ELEICAO', 'NUM_TURNO', 'DESC_ELEICAO', 'SIGLA_UF', 'SIGLA_UE', 'COD_CARGO',
           'DESC_CARGO', 'QTD_APTOS', 'QTD_COMPARECIMENTO', 'QTD_ABSTENCOES', 'QTD_VOTOS_LIQUIDOS', 'QTD_VOTOS_BRANCOS',
@@ -41,6 +41,10 @@ def normalize(raw, resource):
     turn = number(get('NR_TURNO', 'NUM_TURNO'))
     description = get('DS_ELEICAO', 'DESC_ELEICAO') or ''
     election = get('CD_ELEICAO') or f'legacy-{year}-{hashlib.sha256(description.encode()).hexdigest()[:10]}'
+    date = get('DT_ELEICAO') or ''
+    event_id = f'{year}:{election}:{turn if turn is not None else "na"}'
+    if date:
+        event_id += ':' + '-'.join(reversed(date.split('/')))
     city = get('CD_MUNICIPIO')
     zone = number(get('NR_ZONA'))
     city = str(int(city)).zfill(5) if number(city) is not None else ''
@@ -51,8 +55,8 @@ def normalize(raw, resource):
     # Historical "votos líquidos" is preserved in the original archive. Its meaning is not silently equated to modern valid votes.
     total, nominal, legend = [number(get(k)) for k in ['QT_TOTAL_VOTOS_VALIDOS', 'QT_VOTOS_NOMINAIS_VALIDOS', 'QT_TOTAL_VOTOS_LEG_VALIDOS']]
     valid = total if None not in [total, nominal, legend] and total == nominal + legend else None
-    result = dict(election_id=f'{year}:{election}:{turn if turn is not None else "na"}', year=year, turn=turn, description=description,
-                  date=get('DT_ELEICAO') or '', election_type=get('NM_TIPO_ELEICAO') or '',
+    result = dict(election_id=event_id, source_election_id=get('CD_ELEICAO') or '', year=year, turn=turn, description=description,
+                  date=date, election_type=get('NM_TIPO_ELEICAO') or '',
                   scope='zone' if zone and city else 'municipality' if city else 'state', state=state, city_code=city, zone=zone,
                   office=code, office_key=office_key(code, name), office_name=name,
                   eligible=number(get('QT_APTOS', 'QTD_APTOS')), present=number(get('QT_COMPARECIMENTO', 'QTD_COMPARECIMENTO')),
@@ -163,7 +167,7 @@ def build(root, out):
         encoded = body.getvalue().encode('utf8')
         with path.open('wb') as raw, gzip.GzipFile(filename='', mode='wb', fileobj=raw, mtime=0) as zipped:
             zipped.write(encoded)
-        index['elections'].append(dict(id=e['id'], year=e['year'], turn=e['turn'], description=e['description'], dates=sorted({r['date'] for r in e['rows'] if r['date']}), electionTypes=sorted({r['election_type'] for r in e['rows'] if r['election_type']}), sourceDatasetYears=sorted(e['sourceDatasetYears']), yearDateConflict=e['id'] in year_conflicts,
+        index['elections'].append(dict(id=e['id'], year=e['year'], turn=e['turn'], description=e['description'], dates=sorted({r['date'] for r in e['rows'] if r['date']}), electionTypes=sorted({r['election_type'] for r in e['rows'] if r['election_type']}), sourceElectionIds=sorted({r['source_election_id'] for r in e['rows'] if r['source_election_id']}), sourceDatasetYears=sorted(e['sourceDatasetYears']), yearDateConflict=e['id'] in year_conflicts,
             parts=[dict(url=f'history/{path.name}', rows=len(e['rows']), bytes=path.stat().st_size, rawBytes=len(encoded), sha256=sha256(path),
                         scopes=sorted({r['scope'] for r in e['rows']}))], offices=list(e['offices'].values()), sources=sorted(e['sources'])))
     write_json(out / 'indicators.json', index)

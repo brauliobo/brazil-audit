@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-26T21:43:19.177303+00:00",
+  "generatedAt": "2026-10-26T22:20:56.352695+00:00",
   "source": {
     "url": "https://dadosabertos.tse.jus.br/api/3/action/package_search",
     "license": "cc-by"
@@ -13542,7 +13542,7 @@
       "tag": "data-candidatos-2024",
       "releaseUrl": "https://github.com/brauliobo/brazil-audit/releases/tag/data-candidatos-2024",
       "normalized": false,
-      "status": "catalogued",
+      "status": "published",
       "resources": [
         {
           "id": "af76c401-0972-4ddf-8ea8-00e310ae53b4",
@@ -13550,11 +13550,156 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_cand/consulta_cand_2024.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_cand/consulta_cand_2024.zip",
           "format": "CSV",
-          "status": "catalogued",
+          "status": "published",
           "bytes": 63903658,
           "lastModified": "Sat, 24 Oct 2026 05:29:30 GMT",
           "etag": "\"3cf17aa-65e8f618a3479\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "9216ce71f42a4366dd2ee0f02c97db03ae5688cf4fdc13c2db4b13fa6c8f0576",
+          "assets": [
+            {
+              "name": "af76c401-consulta_cand_2024.zip",
+              "bytes": 56351203,
+              "sha256": "61a0df81b89f88bf5cc87fd098f19e9e5527577ec69e71324ca6096fea143491"
+            }
+          ],
+          "removedPersonalColumns": {
+            "consulta_cand_2024_AC.csv": [
+              "NR_CPF_CANDIDATO",
+              "DS_EMAIL",
+              "NR_TITULO_ELEITORAL_CANDIDATO"
+            ],
+            "consulta_cand_2024_TO.csv": [
+              "NR_CPF_CANDIDATO",
+              "DS_EMAIL",
+              "NR_TITULO_ELEITORAL_CANDIDATO"
+            ],
+            "consulta_cand_2024_SP.csv": [
+              "NR_CPF_CANDIDATO",
+              "DS_EMAIL",
+              "NR_TITULO_ELEITORAL_CANDIDATO"
+            ],
+            "consulta_cand_2024_SE.csv": [
+              "NR_CPF_CANDIDATO",
+              "DS_EMAIL",
+              "NR_TITULO_ELEITORAL_CANDIDATO"
+            ],
+            "consulta_cand_2024_SC.csv": [
+              "NR_CPF_CANDIDATO",
+              "DS_EMAIL",
+              "NR_TITULO_ELEITORAL_CANDIDATO"
+            ],
+            "consulta_cand_2024_AL.csv": [
+              "NR_CPF_CANDIDATO",
+              "DS_EMAIL",
+              "NR_TITULO_ELEITORAL_CANDIDATO"
+            ],
+            "consulta_cand_2024_AM.csv": [
+              "NR_CPF_CANDIDATO",
+              "DS_EMAIL",
+              "NR_TITULO_ELEITORAL_CANDIDATO"
+            ],
+            "consulta_cand_2024_AP.csv": [
+              "NR_CPF_CANDIDATO",
+              "DS_EMAIL",
+              "NR_TITULO_ELEITORAL_CANDIDATO"
+            ],
+            "consulta_cand_2024_BA.csv": [
+              "NR_CPF_CANDIDATO",
+              "DS_EMAIL",
+              "NR_TITULO_ELEITORAL_CANDIDATO"
+            ],
+            "consulta_cand_2024_PR.csv": [
+              "NR_CPF_CANDIDATO",
+              "DS_EMAIL",
+              "NR_TITULO_ELEITORAL_CANDIDATO"
+            ],
+            "consulta_cand_2024_PI.csv": [
+              "NR_CPF_CANDIDATO",
+              "DS_EMAIL",
+              "NR_TITULO_ELEITORAL_CANDIDATO"
+            ],
+            "consulta_cand_2024_PE.csv": [
+              "NR_CPF_CANDIDATO",
+              "DS_EMAIL",
+              "NR_TITULO_ELEITORAL_CANDIDATO"
+            ],
+            "consulta_cand_2024_PB.csv": [
+              "NR_CPF_CANDIDATO",
+              "DS_EMAIL",
+              "NR_TITULO_ELEITORAL_CANDIDATO"
+            ],
+            "consulta_cand_2024_CE.csv": [
+              "NR_CPF_CANDIDATO",
+              "DS_EMAIL",
+              "NR_TITULO_ELEITORAL_CANDIDATO"
+            ],
+            "consulta_cand_2024_ES.csv": [
+              "NR_CPF_CANDIDATO",
+              "DS_EMAIL",
+              "NR_TITULO_ELEITORAL_CANDIDATO"
+            ],
+            "consulta_cand_2024_GO.csv": [
+              "NR_CPF_CANDIDATO",
+              "DS_EMAIL",
+              "NR_TITULO_ELEITORAL_CANDIDATO"
+            ],
+            "consulta_cand_2024_RN.csv": [
+              "NR_CPF_CANDIDATO",
+              "DS_EMAIL",
+              "NR_TITULO_ELEITORAL_CANDIDATO"
+            ],
+            "consulta_cand_2024_PA.csv": [
+              "NR_CPF_CANDIDATO",
+              "DS_EMAIL",
+              "NR_TITULO_ELEITORAL_CANDIDATO"
+            ],
+            "consulta_cand_2024_RJ.csv": [
+              "NR_CPF_CANDIDATO",
+              "DS_EMAIL",
+              "NR_TITULO_ELEITORAL_CANDIDATO"
+            ],
+            "consulta_cand_2024_RO.csv": [
+              "NR_CPF_CANDIDATO",
+              "DS_EMAIL",
+              "NR_TITULO_ELEITORAL_CANDIDATO"
+            ],
+            "consulta_cand_2024_RR.csv": [
+              "NR_CPF_CANDIDATO",
+              "DS_EMAIL",
+              "NR_TITULO_ELEITORAL_CANDIDATO"
+            ],
+            "consulta_cand_2024_RS.csv": [
+              "NR_CPF_CANDIDATO",
+              "DS_EMAIL",
+              "NR_TITULO_ELEITORAL_CANDIDATO"
+            ],
+            "consulta_cand_2024_MS.csv": [
+              "NR_CPF_CANDIDATO",
+              "DS_EMAIL",
+              "NR_TITULO_ELEITORAL_CANDIDATO"
+            ],
+            "consulta_cand_2024_BRASIL.csv": [
+              "NR_CPF_CANDIDATO",
+              "DS_EMAIL",
+              "NR_TITULO_ELEITORAL_CANDIDATO"
+            ],
+            "consulta_cand_2024_MT.csv": [
+              "NR_CPF_CANDIDATO",
+              "DS_EMAIL",
+              "NR_TITULO_ELEITORAL_CANDIDATO"
+            ],
+            "consulta_cand_2024_MA.csv": [
+              "NR_CPF_CANDIDATO",
+              "DS_EMAIL",
+              "NR_TITULO_ELEITORAL_CANDIDATO"
+            ],
+            "consulta_cand_2024_MG.csv": [
+              "NR_CPF_CANDIDATO",
+              "DS_EMAIL",
+              "NR_TITULO_ELEITORAL_CANDIDATO"
+            ]
+          }
         },
         {
           "id": "7a9e61af-2425-4f7a-acf2-19338e82d12c",
@@ -13562,11 +13707,20 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_cand_complementar/consulta_cand_complementar_2024.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_cand_complementar/consulta_cand_complementar_2024.zip",
           "format": "CSV",
-          "status": "catalogued",
+          "status": "published",
           "bytes": 30835402,
           "lastModified": "Sat, 24 Oct 2026 05:29:32 GMT",
           "etag": "\"1d682ca-65e8f61a814d3\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "3f9b8a54fdd05bb5fb949e26a72e2ba536ea99be26ff474ab680f3149b501e20",
+          "assets": [
+            {
+              "name": "7a9e61af-consulta_cand_complementar_2024.zip",
+              "bytes": 30835402,
+              "sha256": "3f9b8a54fdd05bb5fb949e26a72e2ba536ea99be26ff474ab680f3149b501e20"
+            }
+          ],
+          "removedPersonalColumns": {}
         },
         {
           "id": "2d078979-116f-498f-ac5b-2e2a6fb0ff1f",
@@ -13586,11 +13740,20 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_coligacao/consulta_coligacao_2024.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_coligacao/consulta_coligacao_2024.zip",
           "format": "CSV",
-          "status": "catalogued",
+          "status": "published",
           "bytes": 11002420,
           "lastModified": "Sat, 24 Oct 2026 05:29:24 GMT",
           "etag": "\"a7e234-65e8f6138b56d\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "bfaa70443225eac9c492b877bd41b5994c745df4d92f44e10072d3f580111431",
+          "assets": [
+            {
+              "name": "faa4bfd9-consulta_coligacao_2024.zip",
+              "bytes": 11002420,
+              "sha256": "bfaa70443225eac9c492b877bd41b5994c745df4d92f44e10072d3f580111431"
+            }
+          ],
+          "removedPersonalColumns": {}
         },
         {
           "id": "7258e69e-68ac-4efc-9163-d083302407c8",
@@ -13598,11 +13761,20 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_vagas/consulta_vagas_2024.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_vagas/consulta_vagas_2024.zip",
           "format": "CSV",
-          "status": "catalogued",
+          "status": "published",
           "bytes": 578057,
           "lastModified": "Sat, 24 Oct 2026 05:29:18 GMT",
           "etag": "\"8d209-65e8f60e08b5e\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "bf285cb85fe18754d4f420eac6bd280f0afa52867c04c9ba249e1885ec2fa925",
+          "assets": [
+            {
+              "name": "7258e69e-consulta_vagas_2024.zip",
+              "bytes": 578057,
+              "sha256": "bf285cb85fe18754d4f420eac6bd280f0afa52867c04c9ba249e1885ec2fa925"
+            }
+          ],
+          "removedPersonalColumns": {}
         },
         {
           "id": "507e39aa-2eed-4b78-82cc-23d092d39a3b",
@@ -13622,11 +13794,20 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_cand/rede_social_candidato_2024.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_cand/rede_social_candidato_2024.zip",
           "format": "CSV",
-          "status": "catalogued",
+          "status": "published",
           "bytes": 20042708,
           "lastModified": "Sat, 24 Oct 2026 05:29:24 GMT",
           "etag": "\"131d3d4-65e8f6131089b\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "1a59c87aac85ba0f23d4fa8018e1701140af3f7fb16dbaaa90b4fc2169012b42",
+          "assets": [
+            {
+              "name": "95c4d681-rede_social_candidato_2024.zip",
+              "bytes": 20042708,
+              "sha256": "1a59c87aac85ba0f23d4fa8018e1701140af3f7fb16dbaaa90b4fc2169012b42"
+            }
+          ],
+          "removedPersonalColumns": {}
         },
         {
           "id": "3baaf2cf-a29d-4d73-9abc-3b16c05375f7",
@@ -14265,7 +14446,8 @@
           "inScope": false
         }
       ],
-      "inScope": true
+      "inScope": true,
+      "publicationVerifiedAt": "2026-10-26T22:19:26.636736+00:00"
     },
     {
       "id": "candidatos-2026",
@@ -14283,7 +14465,7 @@
       "tag": "data-candidatos-2026",
       "releaseUrl": "https://github.com/brauliobo/brazil-audit/releases/tag/data-candidatos-2026",
       "normalized": false,
-      "status": "catalogued",
+      "status": "published",
       "resources": [
         {
           "id": "7748de82-a23b-47c4-9ec1-35535d945e5b",
@@ -14291,11 +14473,166 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_cand/consulta_cand_2026.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_cand/consulta_cand_2026.zip",
           "format": "CSV",
-          "status": "catalogued",
+          "status": "published",
           "bytes": 3240701,
           "lastModified": "Sun, 25 Oct 2026 15:37:01 GMT",
           "etag": "\"3172fd-65eabfc0ba87c\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "c017f3200d33c23b43a8e7ba32af5b3f642903e53718bdf9e84bfd939084bc8c",
+          "assets": [
+            {
+              "name": "7748de82-consulta_cand_2026.zip",
+              "bytes": 2519360,
+              "sha256": "0c9601424e6f13d92ce57c4111b327b3cd847407194b13854ebf5bc8203de6bd"
+            }
+          ],
+          "removedPersonalColumns": {
+            "consulta_cand_2026_AM.csv": [
+              "NR_CPF_CANDIDATO",
+              "DS_EMAIL",
+              "NR_TITULO_ELEITORAL_CANDIDATO"
+            ],
+            "consulta_cand_2026_TO.csv": [
+              "NR_CPF_CANDIDATO",
+              "DS_EMAIL",
+              "NR_TITULO_ELEITORAL_CANDIDATO"
+            ],
+            "consulta_cand_2026_PR.csv": [
+              "NR_CPF_CANDIDATO",
+              "DS_EMAIL",
+              "NR_TITULO_ELEITORAL_CANDIDATO"
+            ],
+            "consulta_cand_2026_BA.csv": [
+              "NR_CPF_CANDIDATO",
+              "DS_EMAIL",
+              "NR_TITULO_ELEITORAL_CANDIDATO"
+            ],
+            "consulta_cand_2026_CE.csv": [
+              "NR_CPF_CANDIDATO",
+              "DS_EMAIL",
+              "NR_TITULO_ELEITORAL_CANDIDATO"
+            ],
+            "consulta_cand_2026_RR.csv": [
+              "NR_CPF_CANDIDATO",
+              "DS_EMAIL",
+              "NR_TITULO_ELEITORAL_CANDIDATO"
+            ],
+            "consulta_cand_2026_RS.csv": [
+              "NR_CPF_CANDIDATO",
+              "DS_EMAIL",
+              "NR_TITULO_ELEITORAL_CANDIDATO"
+            ],
+            "consulta_cand_2026_BR.csv": [
+              "NR_CPF_CANDIDATO",
+              "DS_EMAIL",
+              "NR_TITULO_ELEITORAL_CANDIDATO"
+            ],
+            "consulta_cand_2026_BRASIL.csv": [
+              "NR_CPF_CANDIDATO",
+              "DS_EMAIL",
+              "NR_TITULO_ELEITORAL_CANDIDATO"
+            ],
+            "consulta_cand_2026_DF.csv": [
+              "NR_CPF_CANDIDATO",
+              "DS_EMAIL",
+              "NR_TITULO_ELEITORAL_CANDIDATO"
+            ],
+            "consulta_cand_2026_ES.csv": [
+              "NR_CPF_CANDIDATO",
+              "DS_EMAIL",
+              "NR_TITULO_ELEITORAL_CANDIDATO"
+            ],
+            "consulta_cand_2026_GO.csv": [
+              "NR_CPF_CANDIDATO",
+              "DS_EMAIL",
+              "NR_TITULO_ELEITORAL_CANDIDATO"
+            ],
+            "consulta_cand_2026_AC.csv": [
+              "NR_CPF_CANDIDATO",
+              "DS_EMAIL",
+              "NR_TITULO_ELEITORAL_CANDIDATO"
+            ],
+            "consulta_cand_2026_AL.csv": [
+              "NR_CPF_CANDIDATO",
+              "DS_EMAIL",
+              "NR_TITULO_ELEITORAL_CANDIDATO"
+            ],
+            "consulta_cand_2026_AP.csv": [
+              "NR_CPF_CANDIDATO",
+              "DS_EMAIL",
+              "NR_TITULO_ELEITORAL_CANDIDATO"
+            ],
+            "consulta_cand_2026_MA.csv": [
+              "NR_CPF_CANDIDATO",
+              "DS_EMAIL",
+              "NR_TITULO_ELEITORAL_CANDIDATO"
+            ],
+            "consulta_cand_2026_MG.csv": [
+              "NR_CPF_CANDIDATO",
+              "DS_EMAIL",
+              "NR_TITULO_ELEITORAL_CANDIDATO"
+            ],
+            "consulta_cand_2026_PB.csv": [
+              "NR_CPF_CANDIDATO",
+              "DS_EMAIL",
+              "NR_TITULO_ELEITORAL_CANDIDATO"
+            ],
+            "consulta_cand_2026_MT.csv": [
+              "NR_CPF_CANDIDATO",
+              "DS_EMAIL",
+              "NR_TITULO_ELEITORAL_CANDIDATO"
+            ],
+            "consulta_cand_2026_MS.csv": [
+              "NR_CPF_CANDIDATO",
+              "DS_EMAIL",
+              "NR_TITULO_ELEITORAL_CANDIDATO"
+            ],
+            "consulta_cand_2026_PA.csv": [
+              "NR_CPF_CANDIDATO",
+              "DS_EMAIL",
+              "NR_TITULO_ELEITORAL_CANDIDATO"
+            ],
+            "consulta_cand_2026_PE.csv": [
+              "NR_CPF_CANDIDATO",
+              "DS_EMAIL",
+              "NR_TITULO_ELEITORAL_CANDIDATO"
+            ],
+            "consulta_cand_2026_PI.csv": [
+              "NR_CPF_CANDIDATO",
+              "DS_EMAIL",
+              "NR_TITULO_ELEITORAL_CANDIDATO"
+            ],
+            "consulta_cand_2026_RN.csv": [
+              "NR_CPF_CANDIDATO",
+              "DS_EMAIL",
+              "NR_TITULO_ELEITORAL_CANDIDATO"
+            ],
+            "consulta_cand_2026_RJ.csv": [
+              "NR_CPF_CANDIDATO",
+              "DS_EMAIL",
+              "NR_TITULO_ELEITORAL_CANDIDATO"
+            ],
+            "consulta_cand_2026_SE.csv": [
+              "NR_CPF_CANDIDATO",
+              "DS_EMAIL",
+              "NR_TITULO_ELEITORAL_CANDIDATO"
+            ],
+            "consulta_cand_2026_SC.csv": [
+              "NR_CPF_CANDIDATO",
+              "DS_EMAIL",
+              "NR_TITULO_ELEITORAL_CANDIDATO"
+            ],
+            "consulta_cand_2026_RO.csv": [
+              "NR_CPF_CANDIDATO",
+              "DS_EMAIL",
+              "NR_TITULO_ELEITORAL_CANDIDATO"
+            ],
+            "consulta_cand_2026_SP.csv": [
+              "NR_CPF_CANDIDATO",
+              "DS_EMAIL",
+              "NR_TITULO_ELEITORAL_CANDIDATO"
+            ]
+          }
         },
         {
           "id": "d58fc30b-4eea-4286-a330-15511029e00e",
@@ -14303,11 +14640,20 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_cand_complementar/consulta_cand_complementar_2026.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_cand_complementar/consulta_cand_complementar_2026.zip",
           "format": "CSV",
-          "status": "catalogued",
+          "status": "published",
           "bytes": 1359797,
           "lastModified": "Sun, 25 Oct 2026 15:37:01 GMT",
           "etag": "\"14bfb5-65eabfc096a46\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "dd20aa6c325c3dfa68f77248f7254541b95bfdadd865f5faf418aad8dffb3428",
+          "assets": [
+            {
+              "name": "d58fc30b-consulta_cand_complementar_2026.zip",
+              "bytes": 1359797,
+              "sha256": "dd20aa6c325c3dfa68f77248f7254541b95bfdadd865f5faf418aad8dffb3428"
+            }
+          ],
+          "removedPersonalColumns": {}
         },
         {
           "id": "33fbda56-eb41-46f5-a8a0-8b499c285a1d",
@@ -14327,11 +14673,20 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_coligacao/consulta_coligacao_2026.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_coligacao/consulta_coligacao_2026.zip",
           "format": "CSV",
-          "status": "catalogued",
+          "status": "published",
           "bytes": 349256,
           "lastModified": "Sun, 25 Oct 2026 15:34:44 GMT",
           "etag": "\"55448-65eabf3de3cc4\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "fc41fc199c4115f80294d2ff33cde73520cc7d6562219057ea657a5228656d3d",
+          "assets": [
+            {
+              "name": "c54b34b3-consulta_coligacao_2026.zip",
+              "bytes": 349256,
+              "sha256": "fc41fc199c4115f80294d2ff33cde73520cc7d6562219057ea657a5228656d3d"
+            }
+          ],
+          "removedPersonalColumns": {}
         },
         {
           "id": "dce5529d-d0c8-4c4d-8666-a55809333b60",
@@ -14339,11 +14694,20 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_vagas/consulta_vagas_2026.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_vagas/consulta_vagas_2026.zip",
           "format": "CSV",
-          "status": "catalogued",
+          "status": "published",
           "bytes": 184008,
           "lastModified": "Sun, 25 Oct 2026 15:34:45 GMT",
           "etag": "\"2cec8-65eabf3fa7b27\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "9d41be346c219855ad82765019bd4801cc1d30fc259a96afc6942e92941875d6",
+          "assets": [
+            {
+              "name": "dce5529d-consulta_vagas_2026.zip",
+              "bytes": 184008,
+              "sha256": "9d41be346c219855ad82765019bd4801cc1d30fc259a96afc6942e92941875d6"
+            }
+          ],
+          "removedPersonalColumns": {}
         },
         {
           "id": "275590ba-e53f-467b-a0e9-b2a5960d89d5",
@@ -14363,11 +14727,20 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_cand/rede_social_candidato_2026.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_cand/rede_social_candidato_2026.zip",
           "format": "CSV",
-          "status": "catalogued",
+          "status": "published",
           "bytes": 3002505,
           "lastModified": "Sun, 25 Oct 2026 15:34:49 GMT",
           "etag": "\"2dd089-65eabf432349d\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "5666f25c4d42740d96bc158708dcc074d7c23868c0f6f286524e8eb52dae31e8",
+          "assets": [
+            {
+              "name": "7c480cbf-rede_social_candidato_2026.zip",
+              "bytes": 3002505,
+              "sha256": "5666f25c4d42740d96bc158708dcc074d7c23868c0f6f286524e8eb52dae31e8"
+            }
+          ],
+          "removedPersonalColumns": {}
         },
         {
           "id": "6c3a8826-32da-460f-b306-97474b580efb",
@@ -15390,7 +15763,8 @@
           "inScope": false
         }
       ],
-      "inScope": true
+      "inScope": true,
+      "publicationVerifiedAt": "2026-10-26T22:20:00.427676+00:00"
     },
     {
       "id": "codigos-oficiais-de-uf-e-municipios-segundo-o-tse-e-o-ibge",
@@ -15829,7 +16203,7 @@
       "tag": "data-comparecimento-e-abstencao-2024",
       "releaseUrl": "https://github.com/brauliobo/brazil-audit/releases/tag/data-comparecimento-e-abstencao-2024",
       "normalized": false,
-      "status": "catalogued",
+      "status": "published",
       "resources": [
         {
           "id": "bdd88d12-fe79-479b-b37e-d42e7ad91c43",
@@ -15837,11 +16211,20 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_comparecimento_abstencao/perfil_comparecimento_abstencao_2024.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_comparecimento_abstencao/perfil_comparecimento_abstencao_2024.zip",
           "format": "CSV",
-          "status": "catalogued",
+          "status": "published",
           "bytes": 197126312,
           "lastModified": "Wed, 30 Apr 2025 01:23:47 GMT",
           "etag": "\"bbfe8a8-633f4c4d2f312\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "0d79bbea5b0cdce78feca66ce56ad91f50d7bb84d85e1aae049a53e2260d53df",
+          "assets": [
+            {
+              "name": "bdd88d12-perfil_comparecimento_abstencao_2024.zip",
+              "bytes": 197126312,
+              "sha256": "0d79bbea5b0cdce78feca66ce56ad91f50d7bb84d85e1aae049a53e2260d53df"
+            }
+          ],
+          "removedPersonalColumns": {}
         },
         {
           "id": "821b47bd-9fd4-4daa-940c-bbdcf2cbc554",
@@ -15868,7 +16251,8 @@
           "inScope": false
         }
       ],
-      "inScope": true
+      "inScope": true,
+      "publicationVerifiedAt": "2026-10-26T22:19:32.378554+00:00"
     },
     {
       "id": "comparecimento-e-abstencao-2026",
@@ -15886,7 +16270,7 @@
       "tag": "data-comparecimento-e-abstencao-2026",
       "releaseUrl": "https://github.com/brauliobo/brazil-audit/releases/tag/data-comparecimento-e-abstencao-2026",
       "normalized": false,
-      "status": "catalogued",
+      "status": "published",
       "resources": [
         {
           "id": "187e66a6-9515-4726-a1d0-93e6e968741c",
@@ -15894,11 +16278,20 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_comparecimento_abstencao/perfil_comparecimento_abstencao_2026.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_comparecimento_abstencao/perfil_comparecimento_abstencao_2026.zip",
           "format": "CSV",
-          "status": "catalogued",
+          "status": "published",
           "bytes": 229213668,
           "lastModified": "Wed, 21 Oct 2026 16:40:26 GMT",
           "etag": "\"da985e4-65e5c6781db46\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "abd1af8ff28a80b4e861edafd9f544a8f3f667e1c2e146911d083bf7cc34f023",
+          "assets": [
+            {
+              "name": "187e66a6-perfil_comparecimento_abstencao_2026.zip",
+              "bytes": 229213668,
+              "sha256": "abd1af8ff28a80b4e861edafd9f544a8f3f667e1c2e146911d083bf7cc34f023"
+            }
+          ],
+          "removedPersonalColumns": {}
         },
         {
           "id": "aeb949f7-a59f-475b-8991-ac1fbc36500e",
@@ -15925,7 +16318,8 @@
           "inScope": false
         }
       ],
-      "inScope": true
+      "inScope": true,
+      "publicationVerifiedAt": "2026-10-26T22:20:06.403543+00:00"
     },
     {
       "id": "correspondencia-entre-numero-interno-e-modelo-da-urna-1",
@@ -19928,7 +20322,7 @@
       "tag": "data-eleitorado-2024",
       "releaseUrl": "https://github.com/brauliobo/brazil-audit/releases/tag/data-eleitorado-2024",
       "normalized": false,
-      "status": "catalogued",
+      "status": "published",
       "resources": [
         {
           "id": "bdf4f7dc-9428-4172-ab1b-15eb55bbe640",
@@ -19936,11 +20330,20 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitorado/perfil_eleitorado_2024.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitorado/perfil_eleitorado_2024.zip",
           "format": "CSV",
-          "status": "catalogued",
+          "status": "published",
           "bytes": 333597149,
           "lastModified": "Fri, 12 Sep 2025 16:47:08 GMT",
           "etag": "\"13e249dd-63e9d6787bb00\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "fd6703bdaa89aba023b3a21fc1dccede94aa315b985d91011ad5c2e971819de6",
+          "assets": [
+            {
+              "name": "bdf4f7dc-perfil_eleitorado_2024.zip",
+              "bytes": 333597149,
+              "sha256": "fd6703bdaa89aba023b3a21fc1dccede94aa315b985d91011ad5c2e971819de6"
+            }
+          ],
+          "removedPersonalColumns": {}
         },
         {
           "id": "d7f40e71-58f8-42bc-9487-dd1128b6f36c",
@@ -19960,11 +20363,24 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/eleitorado_locais_votacao/eleitorado_local_votacao_2024.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/eleitorado_locais_votacao/eleitorado_local_votacao_2024.zip",
           "format": "CSV",
-          "status": "catalogued",
+          "status": "published",
           "bytes": 45276803,
           "lastModified": "Tue, 29 Oct 2024 18:02:29 GMT",
           "etag": "\"2b2de83-625a1638093d9\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "352ea0731f862b8a52a749f076e1b597438cfafdd03621fcc772f3076bb35aed",
+          "assets": [
+            {
+              "name": "56348b87-eleitorado_local_votacao_2024.zip",
+              "bytes": 44081947,
+              "sha256": "b4f127ff3deaace9e55163eb678cc9ef0e765ad45e16e814ddfb1bae8253d90d"
+            }
+          ],
+          "removedPersonalColumns": {
+            "eleitorado_local_votacao_2024.csv": [
+              "NR_TELEFONE_LOCAL"
+            ]
+          }
         },
         {
           "id": "b65027ad-c1a8-4a50-aa6e-54f1b1e5b3a7",
@@ -20303,7 +20719,8 @@
           "inScope": false
         }
       ],
-      "inScope": true
+      "inScope": true,
+      "publicationVerifiedAt": "2026-10-26T22:19:44.791508+00:00"
     },
     {
       "id": "eleitorado-2026",
@@ -20321,7 +20738,7 @@
       "tag": "data-eleitorado-2026",
       "releaseUrl": "https://github.com/brauliobo/brazil-audit/releases/tag/data-eleitorado-2026",
       "normalized": false,
-      "status": "catalogued",
+      "status": "published",
       "resources": [
         {
           "id": "4b4cf58f-7bff-424c-82ee-0b2768060e2e",
@@ -20329,11 +20746,20 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitorado/perfil_eleitorado_2026.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitorado/perfil_eleitorado_2026.zip",
           "format": "CSV",
-          "status": "catalogued",
+          "status": "published",
           "bytes": 408490728,
           "lastModified": "Fri, 17 Jul 2026 17:55:02 GMT",
           "etag": "\"185912e8-656d2417b8980\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "0952e9d9577be19380b444bfcc6a9a99397005e8dc839de9d5ec49914d75648b",
+          "assets": [
+            {
+              "name": "4b4cf58f-perfil_eleitorado_2026.zip",
+              "bytes": 408490728,
+              "sha256": "0952e9d9577be19380b444bfcc6a9a99397005e8dc839de9d5ec49914d75648b"
+            }
+          ],
+          "removedPersonalColumns": {}
         },
         {
           "id": "5ea397dd-ee0c-4dbb-b0a7-bbc8ea0a5fd3",
@@ -20353,11 +20779,108 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/eleitorado_locais_votacao/eleitorado_local_votacao_2026.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/eleitorado_locais_votacao/eleitorado_local_votacao_2026.zip",
           "format": "CSV",
-          "status": "catalogued",
+          "status": "published",
           "bytes": 167493511,
           "lastModified": "Sun, 25 Oct 2026 18:32:19 GMT",
           "etag": "\"9fbbf87-65eae6ef5bf91\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "771ecfe5086b65c38943df9f694831dc5b94e0addd563517cd139fbd97642981",
+          "assets": [
+            {
+              "name": "300626b4-eleitorado_local_votacao_2026.zip",
+              "bytes": 162850184,
+              "sha256": "2c2b8044569dd94929583837e97b4193dcf9b1babdaae2352112dc121af9c736"
+            }
+          ],
+          "removedPersonalColumns": {
+            "eleitorado_local_votacao_2026_AL.csv": [
+              "NR_TELEFONE_LOCAL"
+            ],
+            "eleitorado_local_votacao_2026_AP.csv": [
+              "NR_TELEFONE_LOCAL"
+            ],
+            "eleitorado_local_votacao_2026_BA.csv": [
+              "NR_TELEFONE_LOCAL"
+            ],
+            "eleitorado_local_votacao_2026_AC.csv": [
+              "NR_TELEFONE_LOCAL"
+            ],
+            "eleitorado_local_votacao_2026_BRASIL.csv": [
+              "NR_TELEFONE_LOCAL"
+            ],
+            "eleitorado_local_votacao_2026_CE.csv": [
+              "NR_TELEFONE_LOCAL"
+            ],
+            "eleitorado_local_votacao_2026_AM.csv": [
+              "NR_TELEFONE_LOCAL"
+            ],
+            "eleitorado_local_votacao_2026_DF.csv": [
+              "NR_TELEFONE_LOCAL"
+            ],
+            "eleitorado_local_votacao_2026_ES.csv": [
+              "NR_TELEFONE_LOCAL"
+            ],
+            "eleitorado_local_votacao_2026_GO.csv": [
+              "NR_TELEFONE_LOCAL"
+            ],
+            "eleitorado_local_votacao_2026_MA.csv": [
+              "NR_TELEFONE_LOCAL"
+            ],
+            "eleitorado_local_votacao_2026_MG.csv": [
+              "NR_TELEFONE_LOCAL"
+            ],
+            "eleitorado_local_votacao_2026_MS.csv": [
+              "NR_TELEFONE_LOCAL"
+            ],
+            "eleitorado_local_votacao_2026_ZZ.csv": [
+              "NR_TELEFONE_LOCAL"
+            ],
+            "eleitorado_local_votacao_2026_MT.csv": [
+              "NR_TELEFONE_LOCAL"
+            ],
+            "eleitorado_local_votacao_2026_PB.csv": [
+              "NR_TELEFONE_LOCAL"
+            ],
+            "eleitorado_local_votacao_2026_PA.csv": [
+              "NR_TELEFONE_LOCAL"
+            ],
+            "eleitorado_local_votacao_2026_PE.csv": [
+              "NR_TELEFONE_LOCAL"
+            ],
+            "eleitorado_local_votacao_2026_PI.csv": [
+              "NR_TELEFONE_LOCAL"
+            ],
+            "eleitorado_local_votacao_2026_PR.csv": [
+              "NR_TELEFONE_LOCAL"
+            ],
+            "eleitorado_local_votacao_2026_RJ.csv": [
+              "NR_TELEFONE_LOCAL"
+            ],
+            "eleitorado_local_votacao_2026_RN.csv": [
+              "NR_TELEFONE_LOCAL"
+            ],
+            "eleitorado_local_votacao_2026_RR.csv": [
+              "NR_TELEFONE_LOCAL"
+            ],
+            "eleitorado_local_votacao_2026_RO.csv": [
+              "NR_TELEFONE_LOCAL"
+            ],
+            "eleitorado_local_votacao_2026_RS.csv": [
+              "NR_TELEFONE_LOCAL"
+            ],
+            "eleitorado_local_votacao_2026_SE.csv": [
+              "NR_TELEFONE_LOCAL"
+            ],
+            "eleitorado_local_votacao_2026_SC.csv": [
+              "NR_TELEFONE_LOCAL"
+            ],
+            "eleitorado_local_votacao_2026_SP.csv": [
+              "NR_TELEFONE_LOCAL"
+            ],
+            "eleitorado_local_votacao_2026_TO.csv": [
+              "NR_TELEFONE_LOCAL"
+            ]
+          }
         },
         {
           "id": "0fd8c8e7-8dd7-4b38-bc32-161ccf21193e",
@@ -20720,7 +21243,8 @@
           "inScope": false
         }
       ],
-      "inScope": true
+      "inScope": true,
+      "publicationVerifiedAt": "2026-10-26T22:20:29.602548+00:00"
     },
     {
       "id": "eleitorado-atual",
@@ -20736,7 +21260,7 @@
       "tag": "data-eleitorado-atual",
       "releaseUrl": "https://github.com/brauliobo/brazil-audit/releases/tag/data-eleitorado-atual",
       "normalized": false,
-      "status": "catalogued",
+      "status": "published",
       "resources": [
         {
           "id": "c446ed89-829f-49c1-9203-598372833f49",
@@ -20744,11 +21268,20 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitorado/perfil_eleitorado_ATUAL.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitorado/perfil_eleitorado_ATUAL.zip",
           "format": "CSV",
-          "status": "catalogued",
+          "status": "published",
           "bytes": 84964557,
           "lastModified": "Thu, 01 Oct 2026 12:21:17 GMT",
           "etag": "\"51074cd-65cc673dfcd66\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "47f972043b7b44de1b58e93f30bfec11b7e43f4e383a39678fcd6caba32e25ad",
+          "assets": [
+            {
+              "name": "c446ed89-perfil_eleitorado_ATUAL.zip",
+              "bytes": 84964557,
+              "sha256": "47f972043b7b44de1b58e93f30bfec11b7e43f4e383a39678fcd6caba32e25ad"
+            }
+          ],
+          "removedPersonalColumns": {}
         },
         {
           "id": "5f5709f2-7db8-466c-9746-9d5447ee3cdb",
@@ -20756,11 +21289,24 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitorado/eleitorado_local_votacao_ATUAL.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitorado/eleitorado_local_votacao_ATUAL.zip",
           "format": "CSV",
-          "status": "catalogued",
+          "status": "published",
           "bytes": 46019416,
           "lastModified": "Thu, 01 Oct 2026 13:05:50 GMT",
           "etag": "\"2be3358-65cc713319176\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "4aa4cc4db3a08c5297e9ca0e3e891663c2041ed4ede0f939f8ab640d684a3305",
+          "assets": [
+            {
+              "name": "5f5709f2-eleitorado_local_votacao_ATUAL.zip",
+              "bytes": 44554552,
+              "sha256": "b5a2ea3e928996910decdd4424dfca661d0d13305eb4761fc01148506745c0e8"
+            }
+          ],
+          "removedPersonalColumns": {
+            "eleitorado_local_votacao_ATUAL.csv": [
+              "NR_TELEFONE_LOCAL"
+            ]
+          }
         },
         {
           "id": "dba9bc9a-f301-4268-93d2-874d1530f81d",
@@ -21099,7 +21645,8 @@
           "inScope": false
         }
       ],
-      "inScope": true
+      "inScope": true,
+      "publicationVerifiedAt": "2026-10-26T22:20:40.905803+00:00"
     },
     {
       "id": "frequencia-de-atualizacao-dos-arquivos",
@@ -24624,7 +25171,13 @@
           "inScope": true
         }
       ],
-      "inScope": true
+      "inScope": true,
+      "normalizedSummaries": {
+        "index": "history/indicators.json",
+        "elections": [
+          "1933:legacy-1933-f8f41fe279:na"
+        ]
+      }
     },
     {
       "id": "resultados-1934",
@@ -24709,7 +25262,13 @@
         }
       ],
       "publicationVerifiedAt": "2026-10-26T21:45:51.137782+00:00",
-      "inScope": true
+      "inScope": true,
+      "normalizedSummaries": {
+        "index": "history/indicators.json",
+        "elections": [
+          "1934:legacy-1934-e3b0c44298:1"
+        ]
+      }
     },
     {
       "id": "resultados-1945",
@@ -24794,7 +25353,13 @@
         }
       ],
       "publicationVerifiedAt": "2026-10-26T21:45:51.686076+00:00",
-      "inScope": true
+      "inScope": true,
+      "normalizedSummaries": {
+        "index": "history/indicators.json",
+        "elections": [
+          "1945:legacy-1945-98707b6998:1"
+        ]
+      }
     },
     {
       "id": "resultados-1947",
@@ -24879,7 +25444,13 @@
         }
       ],
       "publicationVerifiedAt": "2026-10-26T21:46:04.997662+00:00",
-      "inScope": true
+      "inScope": true,
+      "normalizedSummaries": {
+        "index": "history/indicators.json",
+        "elections": [
+          "1947:legacy-1947-cd65666750:1"
+        ]
+      }
     },
     {
       "id": "resultados-1950",
@@ -24964,7 +25535,13 @@
         }
       ],
       "publicationVerifiedAt": "2026-10-26T21:46:05.729133+00:00",
-      "inScope": true
+      "inScope": true,
+      "normalizedSummaries": {
+        "index": "history/indicators.json",
+        "elections": [
+          "1950:legacy-1950-220a817556:1"
+        ]
+      }
     },
     {
       "id": "resultados-1954",
@@ -25049,7 +25626,13 @@
         }
       ],
       "inScope": true,
-      "publicationVerifiedAt": "2026-10-26T21:48:24.633017+00:00"
+      "publicationVerifiedAt": "2026-10-26T21:48:24.633017+00:00",
+      "normalizedSummaries": {
+        "index": "history/indicators.json",
+        "elections": [
+          "1954:legacy-1954-f9731d58ae:1"
+        ]
+      }
     },
     {
       "id": "resultados-1955",
@@ -25134,7 +25717,13 @@
         }
       ],
       "inScope": true,
-      "publicationVerifiedAt": "2026-10-26T21:48:25.435131+00:00"
+      "publicationVerifiedAt": "2026-10-26T21:48:25.435131+00:00",
+      "normalizedSummaries": {
+        "index": "history/indicators.json",
+        "elections": [
+          "1955:legacy-1955-26d973b055:1"
+        ]
+      }
     },
     {
       "id": "resultados-1958",
@@ -25219,7 +25808,13 @@
         }
       ],
       "inScope": true,
-      "publicationVerifiedAt": "2026-10-26T21:48:37.953615+00:00"
+      "publicationVerifiedAt": "2026-10-26T21:48:37.953615+00:00",
+      "normalizedSummaries": {
+        "index": "history/indicators.json",
+        "elections": [
+          "1958:legacy-1958-6c090ec7ee:1"
+        ]
+      }
     },
     {
       "id": "resultados-1960",
@@ -25304,7 +25899,13 @@
         }
       ],
       "inScope": true,
-      "publicationVerifiedAt": "2026-10-26T21:48:38.957318+00:00"
+      "publicationVerifiedAt": "2026-10-26T21:48:38.957318+00:00",
+      "normalizedSummaries": {
+        "index": "history/indicators.json",
+        "elections": [
+          "1960:legacy-1960-97e87a9fff:1"
+        ]
+      }
     },
     {
       "id": "resultados-1962",
@@ -25389,7 +25990,13 @@
         }
       ],
       "inScope": true,
-      "publicationVerifiedAt": "2026-10-26T21:48:49.731641+00:00"
+      "publicationVerifiedAt": "2026-10-26T21:48:49.731641+00:00",
+      "normalizedSummaries": {
+        "index": "history/indicators.json",
+        "elections": [
+          "1962:legacy-1962-5c2491ac21:1"
+        ]
+      }
     },
     {
       "id": "resultados-1965",
@@ -25474,7 +26081,13 @@
         }
       ],
       "inScope": true,
-      "publicationVerifiedAt": "2026-10-26T21:48:52.565074+00:00"
+      "publicationVerifiedAt": "2026-10-26T21:48:52.565074+00:00",
+      "normalizedSummaries": {
+        "index": "history/indicators.json",
+        "elections": [
+          "1965:legacy-1965-bc0a84e313:1"
+        ]
+      }
     },
     {
       "id": "resultados-1966",
@@ -25559,7 +26172,13 @@
         }
       ],
       "inScope": true,
-      "publicationVerifiedAt": "2026-10-26T21:49:02.923196+00:00"
+      "publicationVerifiedAt": "2026-10-26T21:49:02.923196+00:00",
+      "normalizedSummaries": {
+        "index": "history/indicators.json",
+        "elections": [
+          "1966:legacy-1966-afbd32f7b8:1"
+        ]
+      }
     },
     {
       "id": "resultados-1970",
@@ -25644,7 +26263,13 @@
         }
       ],
       "inScope": true,
-      "publicationVerifiedAt": "2026-10-26T21:49:06.119535+00:00"
+      "publicationVerifiedAt": "2026-10-26T21:49:06.119535+00:00",
+      "normalizedSummaries": {
+        "index": "history/indicators.json",
+        "elections": [
+          "1970:legacy-1970-5cc92be0c9:1"
+        ]
+      }
     },
     {
       "id": "resultados-1974",
@@ -25729,7 +26354,13 @@
         }
       ],
       "inScope": true,
-      "publicationVerifiedAt": "2026-10-26T21:49:14.430408+00:00"
+      "publicationVerifiedAt": "2026-10-26T21:49:14.430408+00:00",
+      "normalizedSummaries": {
+        "index": "history/indicators.json",
+        "elections": [
+          "1974:legacy-1974-7f21278537:1"
+        ]
+      }
     },
     {
       "id": "resultados-1978",
@@ -25814,7 +26445,13 @@
         }
       ],
       "inScope": true,
-      "publicationVerifiedAt": "2026-10-26T21:49:20.530244+00:00"
+      "publicationVerifiedAt": "2026-10-26T21:49:20.530244+00:00",
+      "normalizedSummaries": {
+        "index": "history/indicators.json",
+        "elections": [
+          "1978:legacy-1978-35386c8fd0:1"
+        ]
+      }
     },
     {
       "id": "resultados-1982",
@@ -25899,7 +26536,13 @@
         }
       ],
       "inScope": true,
-      "publicationVerifiedAt": "2026-10-26T21:49:28.493370+00:00"
+      "publicationVerifiedAt": "2026-10-26T21:49:28.493370+00:00",
+      "normalizedSummaries": {
+        "index": "history/indicators.json",
+        "elections": [
+          "1982:legacy-1982-011533c3f8:1"
+        ]
+      }
     },
     {
       "id": "resultados-1986",
@@ -25984,7 +26627,13 @@
         }
       ],
       "inScope": true,
-      "publicationVerifiedAt": "2026-10-26T21:49:33.947917+00:00"
+      "publicationVerifiedAt": "2026-10-26T21:49:33.947917+00:00",
+      "normalizedSummaries": {
+        "index": "history/indicators.json",
+        "elections": [
+          "1986:legacy-1986-6506e0ca16:1"
+        ]
+      }
     },
     {
       "id": "resultados-1989",
@@ -26048,7 +26697,14 @@
         }
       ],
       "inScope": true,
-      "publicationVerifiedAt": "2026-10-26T21:49:38.328121+00:00"
+      "publicationVerifiedAt": "2026-10-26T21:49:38.328121+00:00",
+      "normalizedSummaries": {
+        "index": "history/indicators.json",
+        "elections": [
+          "1989:legacy-1989-65fbbd09a7:1",
+          "1989:legacy-1989-65fbbd09a7:2"
+        ]
+      }
     },
     {
       "id": "resultados-1990",
@@ -26133,7 +26789,14 @@
         }
       ],
       "inScope": true,
-      "publicationVerifiedAt": "2026-10-26T21:49:49.050601+00:00"
+      "publicationVerifiedAt": "2026-10-26T21:49:49.050601+00:00",
+      "normalizedSummaries": {
+        "index": "history/indicators.json",
+        "elections": [
+          "1990:legacy-1990-069b2fed63:1",
+          "1990:legacy-1990-069b2fed63:2"
+        ]
+      }
     },
     {
       "id": "resultados-1994",
@@ -26218,7 +26881,14 @@
         }
       ],
       "inScope": true,
-      "publicationVerifiedAt": "2026-10-26T21:49:59.490846+00:00"
+      "publicationVerifiedAt": "2026-10-26T21:49:59.490846+00:00",
+      "normalizedSummaries": {
+        "index": "history/indicators.json",
+        "elections": [
+          "1994:1994001:1:1994-10-03",
+          "1994:1994002:2:1994-11-15"
+        ]
+      }
     },
     {
       "id": "resultados-1996",
@@ -26303,7 +26973,14 @@
         }
       ],
       "inScope": true,
-      "publicationVerifiedAt": "2026-10-26T21:50:06.738884+00:00"
+      "publicationVerifiedAt": "2026-10-26T21:50:06.738884+00:00",
+      "normalizedSummaries": {
+        "index": "history/indicators.json",
+        "elections": [
+          "1996:1996001:1:1996-10-03",
+          "1996:1996002:2:1996-11-15"
+        ]
+      }
     },
     {
       "id": "resultados-1998",
@@ -26997,7 +27674,14 @@
         }
       ],
       "inScope": true,
-      "publicationVerifiedAt": "2026-10-26T21:53:25.009338+00:00"
+      "publicationVerifiedAt": "2026-10-26T21:53:25.009338+00:00",
+      "normalizedSummaries": {
+        "index": "history/indicators.json",
+        "elections": [
+          "1998:1998001:1:1998-10-04",
+          "1998:1998002:2:1998-10-25"
+        ]
+      }
     },
     {
       "id": "resultados-2000",
@@ -27649,7 +28333,14 @@
         }
       ],
       "inScope": true,
-      "publicationVerifiedAt": "2026-10-26T21:52:27.050568+00:00"
+      "publicationVerifiedAt": "2026-10-26T21:52:27.050568+00:00",
+      "normalizedSummaries": {
+        "index": "history/indicators.json",
+        "elections": [
+          "2000:2000001:1:2000-10-01",
+          "2000:2000002:2:2000-10-29"
+        ]
+      }
     },
     {
       "id": "resultados-2002",
@@ -28343,7 +29034,14 @@
         }
       ],
       "inScope": true,
-      "publicationVerifiedAt": "2026-10-26T21:53:47.694185+00:00"
+      "publicationVerifiedAt": "2026-10-26T21:53:47.694185+00:00",
+      "normalizedSummaries": {
+        "index": "history/indicators.json",
+        "elections": [
+          "2002:200201:1:2002-10-06",
+          "2002:200202:2:2002-10-27"
+        ]
+      }
     },
     {
       "id": "resultados-2004",
@@ -28995,7 +29693,77 @@
         }
       ],
       "inScope": true,
-      "publicationVerifiedAt": "2026-10-26T21:53:50.713280+00:00"
+      "publicationVerifiedAt": "2026-10-26T21:53:50.713280+00:00",
+      "normalizedSummaries": {
+        "index": "history/indicators.json",
+        "elections": [
+          "2004:200412:1:2004-10-03",
+          "2004:200422:2:2004-10-31",
+          "2004:402151:1:2004-12-05",
+          "2004:428835:1:2004-12-19",
+          "2004:431399:1:2004-11-28",
+          "2004:431933:1:2004-11-28",
+          "2004:492150:1:2004-12-12",
+          "2004:493599:1:2004-11-28",
+          "2004:495834:1:2004-12-19",
+          "2004:495974:1:2004-12-05",
+          "2004:505975:1:2005-07-29",
+          "2004:516659:1:2005-11-27",
+          "2004:517230:1:2005-10-16",
+          "2004:517477:1:2005-07-29",
+          "2004:531259:1:2005-11-27",
+          "2004:541432:1:2005-05-15",
+          "2004:551039:1:2005-12-04",
+          "2004:561085:1:2005-02-27",
+          "2004:562073:1:2005-05-22",
+          "2004:562235:1:2005-02-27",
+          "2004:564912:1:2005-05-22",
+          "2004:567750:1:2005-08-21",
+          "2004:571331:1:2005-02-27",
+          "2004:580845:1:2005-02-20",
+          "2004:581990:1:2005-01-09",
+          "2004:587718:1:2005-03-06",
+          "2004:587882:1:2005-10-02",
+          "2004:591022:1:2005-06-05",
+          "2004:600663:1:2006-01-22",
+          "2004:610596:1:2006-04-30",
+          "2004:616055:1:2006-01-22",
+          "2004:617434:1:2006-01-22",
+          "2004:617914:1:2006-04-23",
+          "2004:617930:1:2006-10-15",
+          "2004:619887:1:2006-07-02",
+          "2004:620770:1:2006-07-02",
+          "2004:621555:1:2006-07-02",
+          "2004:624236:1:2006-07-16",
+          "2004:625275:1:2006-06-11",
+          "2004:634452:1:2006-12-17",
+          "2004:637893:1:2006-12-17",
+          "2004:644610:1:2006-07-16",
+          "2004:653392:1:2006-02-19",
+          "2004:658190:1:2006-03-26",
+          "2004:663517:1:2006-12-17",
+          "2004:667814:1:2006-06-11",
+          "2004:669612:1:2006-03-12",
+          "2004:678450:1:2006-06-04",
+          "2004:685030:1:2006-09-10",
+          "2004:685790:1:2006-09-10",
+          "2004:689451:1:2006-09-10",
+          "2004:692932:1:2006-02-19",
+          "2004:704600:1:2007-12-02",
+          "2004:719224:1:2007-06-17",
+          "2004:722179:1:2007-07-15",
+          "2004:731518:1:2007-07-29",
+          "2004:741211:1:2007-04-01",
+          "2004:746710:1:2007-09-30",
+          "2004:756456:1:2007-01-07",
+          "2004:782953:1:2007-03-11",
+          "2004:785421:1:2007-03-25",
+          "2004:823132:1:2008-05-04",
+          "2004:846272:1:2008-04-06",
+          "2004:892894:1:2008-02-17",
+          "2004:893351:1:2008-02-17"
+        ]
+      }
     },
     {
       "id": "resultados-2006",
@@ -29689,7 +30457,14 @@
         }
       ],
       "inScope": true,
-      "publicationVerifiedAt": "2026-10-26T21:56:36.411797+00:00"
+      "publicationVerifiedAt": "2026-10-26T21:56:36.411797+00:00",
+      "normalizedSummaries": {
+        "index": "history/indicators.json",
+        "elections": [
+          "2006:2006001:1:2006-10-01",
+          "2006:2006002:2:2006-10-29"
+        ]
+      }
     },
     {
       "id": "resultados-2008",
@@ -30341,7 +31116,90 @@
         }
       ],
       "inScope": true,
-      "publicationVerifiedAt": "2026-10-26T21:56:03.024641+00:00"
+      "publicationVerifiedAt": "2026-10-26T21:56:03.024641+00:00",
+      "normalizedSummaries": {
+        "index": "history/indicators.json",
+        "elections": [
+          "2008:30:1:2008-10-05",
+          "2008:31:2:2008-10-26",
+          "2008:32:1:2008-12-14",
+          "2008:32:1:2008-12-21",
+          "2008:32:1:2009-01-25",
+          "2008:32:1:2009-02-08",
+          "2008:32:1:2009-02-15",
+          "2008:32:1:2009-03-01",
+          "2008:32:1:2009-03-08",
+          "2008:32:1:2009-03-15",
+          "2008:32:1:2009-03-22",
+          "2008:32:1:2009-03-29",
+          "2008:32:1:2009-04-19",
+          "2008:32:1:2009-04-26",
+          "2008:32:1:2009-05-17",
+          "2008:32:1:2009-05-31",
+          "2008:32:1:2009-07-05",
+          "2008:32:1:2009-07-12",
+          "2008:32:1:2009-07-26",
+          "2008:32:1:2009-09-13",
+          "2008:32:1:2009-09-20",
+          "2008:32:1:2009-10-04",
+          "2008:32:1:2009-10-11",
+          "2008:32:1:2009-10-25",
+          "2008:32:1:2009-11-01",
+          "2008:32:1:2009-11-08",
+          "2008:32:1:2009-11-15",
+          "2008:32:1:2009-11-22",
+          "2008:32:1:2009-12-06",
+          "2008:32:1:2009-12-13",
+          "2008:32:1:2009-12-27",
+          "2008:32:1:2010-02-07",
+          "2008:32:1:2010-02-28",
+          "2008:32:1:2010-03-07",
+          "2008:32:1:2010-03-28",
+          "2008:32:1:2010-04-11",
+          "2008:32:1:2010-05-02",
+          "2008:32:1:2010-05-30",
+          "2008:32:1:2010-06-06",
+          "2008:32:1:2010-06-13",
+          "2008:32:1:2010-06-20",
+          "2008:32:1:2010-07-11",
+          "2008:32:1:2010-07-18",
+          "2008:32:1:2010-08-08",
+          "2008:32:1:2010-09-05",
+          "2008:32:1:2010-11-07",
+          "2008:32:1:2010-11-14",
+          "2008:32:1:2010-12-05",
+          "2008:32:1:2010-12-19",
+          "2008:32:1:2010-12-26",
+          "2008:32:1:2011-01-23",
+          "2008:32:1:2011-01-30",
+          "2008:32:1:2011-02-06",
+          "2008:32:1:2011-02-20",
+          "2008:32:1:2011-04-03",
+          "2008:32:1:2011-05-15",
+          "2008:32:1:2011-06-05",
+          "2008:32:1:2011-07-03",
+          "2008:32:1:2011-07-17",
+          "2008:32:1:2011-07-24",
+          "2008:32:1:2011-07-31",
+          "2008:32:1:2011-08-07",
+          "2008:32:1:2011-08-14",
+          "2008:32:1:2011-09-04",
+          "2008:32:1:2011-10-02",
+          "2008:32:1:2011-10-09",
+          "2008:32:1:2011-10-30",
+          "2008:32:1:2011-11-06",
+          "2008:32:1:2011-11-13",
+          "2008:32:1:2011-11-20",
+          "2008:32:1:2011-12-11",
+          "2008:32:1:2012-01-08",
+          "2008:32:1:2012-03-04",
+          "2008:32:1:2012-04-01",
+          "2008:32:1:2012-05-06",
+          "2008:33:2:2009-03-29",
+          "2008:39:1:2010-07-18",
+          "2008:39:1:2011-02-06"
+        ]
+      }
     },
     {
       "id": "resultados-2010",
@@ -31077,7 +31935,14 @@
         }
       ],
       "inScope": true,
-      "publicationVerifiedAt": "2026-10-26T21:57:16.516513+00:00"
+      "publicationVerifiedAt": "2026-10-26T21:57:16.516513+00:00",
+      "normalizedSummaries": {
+        "index": "history/indicators.json",
+        "elections": [
+          "2010:37:1:2010-10-03",
+          "2010:38:2:2010-10-31"
+        ]
+      }
     },
     {
       "id": "resultados-2012",
@@ -31741,7 +32606,127 @@
         }
       ],
       "inScope": true,
-      "publicationVerifiedAt": "2026-10-26T21:58:11.739417+00:00"
+      "publicationVerifiedAt": "2026-10-26T21:58:11.739417+00:00",
+      "normalizedSummaries": {
+        "index": "history/indicators.json",
+        "elections": [
+          "2012:100:1:2013-07-07",
+          "2012:101:1:2013-07-07",
+          "2012:102:1:2013-07-07",
+          "2012:103:1:2013-07-07",
+          "2012:104:1:2013-07-07",
+          "2012:105:1:2013-08-04",
+          "2012:106:1:2013-08-04",
+          "2012:108:1:2013-08-04",
+          "2012:109:1:2013-08-04",
+          "2012:110:1:2013-08-04",
+          "2012:111:1:2013-08-04",
+          "2012:112:1:2013-08-04",
+          "2012:113:1:2013-09-01",
+          "2012:114:1:2013-09-01",
+          "2012:115:1:2013-09-01",
+          "2012:116:1:2013-09-01",
+          "2012:117:1:2013-09-01",
+          "2012:118:1:2013-10-06",
+          "2012:119:1:2013-10-06",
+          "2012:120:1:2013-11-03",
+          "2012:121:1:2013-11-03",
+          "2012:122:1:2013-10-06",
+          "2012:124:1:2013-10-06",
+          "2012:126:1:2013-11-03",
+          "2012:127:1:2013-11-03",
+          "2012:128:1:2013-11-03",
+          "2012:129:1:2013-11-03",
+          "2012:130:1:2013-12-01",
+          "2012:131:1:2013-12-01",
+          "2012:132:1:2013-12-01",
+          "2012:133:1:2013-12-01",
+          "2012:134:1:2013-12-01",
+          "2012:135:1:2013-12-01",
+          "2012:136:1:2013-12-01",
+          "2012:138:1:2013-12-01",
+          "2012:139:1:2013-12-01",
+          "2012:141:1:2013-12-01",
+          "2012:143:1:2014-02-02",
+          "2012:144:1:2014-04-06",
+          "2012:148:1:2014-04-06",
+          "2012:150:1:2014-04-06",
+          "2012:151:1:2014-05-04",
+          "2012:153:1:2014-05-04",
+          "2012:154:1:2014-05-04",
+          "2012:155:1:2014-06-01",
+          "2012:157:1:2014-06-01",
+          "2012:158:1:2014-08-31",
+          "2012:186:1:2014-12-07",
+          "2012:187:1:2014-12-07",
+          "2012:188:1:2014-12-07",
+          "2012:189:1:2014-12-07",
+          "2012:190:1:2014-12-07",
+          "2012:191:1:2014-12-07",
+          "2012:193:1:2014-12-07",
+          "2012:194:1:2014-12-07",
+          "2012:196:1:2014-12-07",
+          "2012:197:1:2015-01-18",
+          "2012:198:1:2015-01-18",
+          "2012:199:1:2015-03-01",
+          "2012:200:1:2015-03-01",
+          "2012:201:1:2015-04-12",
+          "2012:202:1:2015-04-12",
+          "2012:203:1:2015-05-17",
+          "2012:204:1:2015-05-17",
+          "2012:205:1:2015-05-17",
+          "2012:207:1:2015-06-14",
+          "2012:209:1:2015-06-14",
+          "2012:211:1:2015-07-05",
+          "2012:212:1:2015-07-05",
+          "2012:214:1:2015-09-13",
+          "2012:215:1:2015-10-04",
+          "2012:216:1:2015-11-08",
+          "2012:217:1:2015-11-08",
+          "2012:218:1:2015-12-06",
+          "2012:219:1:2015-12-06",
+          "2012:47:1:2012-10-07",
+          "2012:48:2:2012-10-28",
+          "2012:54:1:2013-03-03",
+          "2012:55:1:2013-03-03",
+          "2012:56:1:2013-03-03",
+          "2012:57:1:2013-03-03",
+          "2012:58:1:2013-02-03",
+          "2012:59:1:2013-03-03",
+          "2012:60:1:2013-03-03",
+          "2012:62:1:2013-03-03",
+          "2012:63:1:2013-03-03",
+          "2012:64:1:2013-03-03",
+          "2012:65:1:2013-04-07",
+          "2012:66:1:2013-04-07",
+          "2012:67:1:2013-04-07",
+          "2012:68:1:2013-04-07",
+          "2012:69:1:2013-04-07",
+          "2012:70:1:2013-04-07",
+          "2012:71:1:2013-04-07",
+          "2012:72:1:2013-04-07",
+          "2012:73:1:2013-04-07",
+          "2012:74:1:2013-04-07",
+          "2012:76:1:2013-04-07",
+          "2012:77:1:2013-04-07",
+          "2012:78:1:2013-04-07",
+          "2012:79:1:2013-04-07",
+          "2012:80:1:2013-04-07",
+          "2012:81:1:2013-04-07",
+          "2012:82:1:2013-05-05",
+          "2012:85:1:2013-06-02",
+          "2012:86:1:2013-06-02",
+          "2012:87:1:2013-06-02",
+          "2012:88:1:2013-06-02",
+          "2012:89:1:2013-06-02",
+          "2012:90:1:2013-07-07",
+          "2012:91:1:2013-07-07",
+          "2012:92:1:2013-07-07",
+          "2012:94:1:2013-07-07",
+          "2012:95:1:2013-07-07",
+          "2012:97:1:2013-08-04"
+        ]
+      }
     },
     {
       "id": "resultados-2012-boletim-de-urna-1-turno",
@@ -36098,7 +37083,18 @@
         }
       ],
       "inScope": true,
-      "publicationVerifiedAt": "2026-10-26T22:02:02.923222+00:00"
+      "publicationVerifiedAt": "2026-10-26T22:02:02.923222+00:00",
+      "normalizedSummaries": {
+        "index": "history/indicators.json",
+        "elections": [
+          "2014:143:1:2014-10-05",
+          "2014:144:2:2014-10-26",
+          "2014:268:1:2017-08-06",
+          "2014:269:2:2017-08-27",
+          "2014:304:1:2018-06-03",
+          "2014:305:2:2018-06-24"
+        ]
+      }
     },
     {
       "id": "resultados-2014-boletim-de-urna",
@@ -41553,7 +42549,7 @@
       "tag": "data-resultados-2016",
       "releaseUrl": "https://github.com/brauliobo/brazil-audit/releases/tag/data-resultados-2016",
       "normalized": false,
-      "status": "catalogued",
+      "status": "published",
       "resources": [
         {
           "id": "ccd2564b-a576-4c17-a603-31e49f980667",
@@ -41561,11 +42557,20 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_candidato_munzona/votacao_candidato_munzona_2016.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_candidato_munzona/votacao_candidato_munzona_2016.zip",
           "format": "CSV",
-          "status": "catalogued",
+          "status": "published",
           "bytes": 60594613,
           "lastModified": "Mon, 19 Jan 2026 17:11:48 GMT",
           "etag": "\"39c99b5-648c0c9537402\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "1be9bad725bf2869470cc8553727c19fc09a305c40cb1c0240056f24fbf1cdd1",
+          "assets": [
+            {
+              "name": "ccd2564b-votacao_candidato_munzona_2016.zip",
+              "bytes": 60594613,
+              "sha256": "1be9bad725bf2869470cc8553727c19fc09a305c40cb1c0240056f24fbf1cdd1"
+            }
+          ],
+          "removedPersonalColumns": {}
         },
         {
           "id": "daf965d9-38f8-4d92-b11f-90dcf0f248bb",
@@ -41573,11 +42578,20 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_partido_munzona/votacao_partido_munzona_2016.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_partido_munzona/votacao_partido_munzona_2016.zip",
           "format": "CSV",
-          "status": "catalogued",
+          "status": "published",
           "bytes": 11391563,
           "lastModified": "Mon, 19 Jan 2026 17:07:49 GMT",
           "etag": "\"add24b-648c0bb141f9c\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "7cf2353594ee332b2cc8e2f2edb6c25e1da06f22d8125a2a9278967e264fa8d5",
+          "assets": [
+            {
+              "name": "daf965d9-votacao_partido_munzona_2016.zip",
+              "bytes": 11391563,
+              "sha256": "7cf2353594ee332b2cc8e2f2edb6c25e1da06f22d8125a2a9278967e264fa8d5"
+            }
+          ],
+          "removedPersonalColumns": {}
         },
         {
           "id": "aa8ea2f2-c765-46ec-bd87-ce20cafd1297",
@@ -41585,11 +42599,20 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/detalhe_votacao_munzona/detalhe_votacao_munzona_2016.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/detalhe_votacao_munzona/detalhe_votacao_munzona_2016.zip",
           "format": "CSV",
-          "status": "catalogued",
+          "status": "published",
           "bytes": 1553165,
           "lastModified": "Mon, 19 Jan 2026 17:07:45 GMT",
           "etag": "\"17b30d-648c0bad4481b\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "2b6fa4b50d2cde9bb5f8668c4affe428bb3eaff721e5fd5c614586649e63d854",
+          "assets": [
+            {
+              "name": "aa8ea2f2-detalhe_votacao_munzona_2016.zip",
+              "bytes": 1553165,
+              "sha256": "2b6fa4b50d2cde9bb5f8668c4affe428bb3eaff721e5fd5c614586649e63d854"
+            }
+          ],
+          "removedPersonalColumns": {}
         },
         {
           "id": "7d273bf4-87e1-4ab4-bdc9-53a8afcd9833",
@@ -41597,11 +42620,20 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/detalhe_votacao_secao/detalhe_votacao_secao_2016.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/detalhe_votacao_secao/detalhe_votacao_secao_2016.zip",
           "format": "CSV",
-          "status": "catalogued",
+          "status": "published",
           "bytes": 86635611,
           "lastModified": "Tue, 16 Jun 2026 20:53:55 GMT",
           "etag": "\"529f45b-65465243097cf\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "7d000622e08b9295cf437ad8f868bd53a496e64c0443f31e42792ef2ac2ea7bc",
+          "assets": [
+            {
+              "name": "7d273bf4-detalhe_votacao_secao_2016.zip",
+              "bytes": 86635611,
+              "sha256": "7d000622e08b9295cf437ad8f868bd53a496e64c0443f31e42792ef2ac2ea7bc"
+            }
+          ],
+          "removedPersonalColumns": {}
         },
         {
           "id": "12491848-80ea-4ece-83a7-e427ac7d4718",
@@ -41609,11 +42641,20 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2016_AC.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2016_AC.zip",
           "format": "CSV",
-          "status": "catalogued",
+          "status": "published",
           "bytes": 3406402,
           "lastModified": "Mon, 11 Dec 2023 14:55:35 GMT",
           "etag": "\"33fa42-60c3d205147c0\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "da7fd81674206389b1e6bbced3d9eaf77fbb37fa29769063d5dfdbc701eb5892",
+          "assets": [
+            {
+              "name": "12491848-votacao_secao_2016_AC.zip",
+              "bytes": 3406402,
+              "sha256": "da7fd81674206389b1e6bbced3d9eaf77fbb37fa29769063d5dfdbc701eb5892"
+            }
+          ],
+          "removedPersonalColumns": {}
         },
         {
           "id": "511fd258-eec8-4663-b095-eec991ef4355",
@@ -41621,11 +42662,20 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2016_AL.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2016_AL.zip",
           "format": "CSV",
-          "status": "catalogued",
+          "status": "published",
           "bytes": 9844365,
           "lastModified": "Mon, 11 Dec 2023 14:55:36 GMT",
           "etag": "\"96368d-60c3d20608a00\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "e5dc1529dc449c60ee75afe77f1c80dd6e3417c5bd3540d092dd3bed1b3da5b4",
+          "assets": [
+            {
+              "name": "511fd258-votacao_secao_2016_AL.zip",
+              "bytes": 9844365,
+              "sha256": "e5dc1529dc449c60ee75afe77f1c80dd6e3417c5bd3540d092dd3bed1b3da5b4"
+            }
+          ],
+          "removedPersonalColumns": {}
         },
         {
           "id": "c828b6b0-a0a5-40c6-85d7-cec7be84bcc7",
@@ -41633,11 +42683,20 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2016_AP.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2016_AP.zip",
           "format": "CSV",
-          "status": "catalogued",
+          "status": "published",
           "bytes": 3459486,
           "lastModified": "Mon, 11 Dec 2023 14:55:38 GMT",
           "etag": "\"34c99e-60c3d207f0e80\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "35aef04927b33a6d78c5f97fc7a35eac0c4fb79c288d07f5004f910035d52d87",
+          "assets": [
+            {
+              "name": "c828b6b0-votacao_secao_2016_AP.zip",
+              "bytes": 3459486,
+              "sha256": "35aef04927b33a6d78c5f97fc7a35eac0c4fb79c288d07f5004f910035d52d87"
+            }
+          ],
+          "removedPersonalColumns": {}
         },
         {
           "id": "7ed6fe10-5330-4ea8-8717-0d08adc93781",
@@ -41645,11 +42704,20 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2016_AM.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2016_AM.zip",
           "format": "CSV",
-          "status": "catalogued",
+          "status": "published",
           "bytes": 18714217,
           "lastModified": "Mon, 11 Dec 2023 14:55:38 GMT",
           "etag": "\"11d8e69-60c3d207f0e80\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "08072595b417b65d8ff448abb6ab5bc24d19a77d73d582a2d349e99b44b4d198",
+          "assets": [
+            {
+              "name": "7ed6fe10-votacao_secao_2016_AM.zip",
+              "bytes": 18714217,
+              "sha256": "08072595b417b65d8ff448abb6ab5bc24d19a77d73d582a2d349e99b44b4d198"
+            }
+          ],
+          "removedPersonalColumns": {}
         },
         {
           "id": "fe1ade58-ebcf-4c61-a59a-1135aa488a4c",
@@ -41657,11 +42725,20 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2016_BA.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2016_BA.zip",
           "format": "CSV",
-          "status": "catalogued",
+          "status": "published",
           "bytes": 69088265,
           "lastModified": "Mon, 11 Dec 2023 14:55:44 GMT",
           "etag": "\"41e3409-60c3d20da9c00\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "80315a1c99bf7a03b630d4b093a4a835b5111281f9683e75efe090622d3a2043",
+          "assets": [
+            {
+              "name": "fe1ade58-votacao_secao_2016_BA.zip",
+              "bytes": 69088265,
+              "sha256": "80315a1c99bf7a03b630d4b093a4a835b5111281f9683e75efe090622d3a2043"
+            }
+          ],
+          "removedPersonalColumns": {}
         },
         {
           "id": "dc378b1a-d21d-48aa-9c69-0d8397d779c3",
@@ -41669,11 +42746,20 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2016_CE.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2016_CE.zip",
           "format": "CSV",
-          "status": "catalogued",
+          "status": "published",
           "bytes": 38007041,
           "lastModified": "Mon, 11 Dec 2023 14:55:48 GMT",
           "etag": "\"243f101-60c3d2117a500\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "9a606beb8c60b5a3eb6980bc255d3f979cac93b5a9d11e1620c8379ae1fff71f",
+          "assets": [
+            {
+              "name": "dc378b1a-votacao_secao_2016_CE.zip",
+              "bytes": 38007041,
+              "sha256": "9a606beb8c60b5a3eb6980bc255d3f979cac93b5a9d11e1620c8379ae1fff71f"
+            }
+          ],
+          "removedPersonalColumns": {}
         },
         {
           "id": "58b51037-8dd4-4036-841e-f88efa8f87f7",
@@ -41681,11 +42767,20 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2016_ES.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2016_ES.zip",
           "format": "CSV",
-          "status": "catalogued",
+          "status": "published",
           "bytes": 17550928,
           "lastModified": "Mon, 11 Dec 2023 14:55:49 GMT",
           "etag": "\"10bce50-60c3d2126e740\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "1d1cec72f884a5ae8599626fdd52545392388682716727660fffe3896cb24d8b",
+          "assets": [
+            {
+              "name": "58b51037-votacao_secao_2016_ES.zip",
+              "bytes": 17550928,
+              "sha256": "1d1cec72f884a5ae8599626fdd52545392388682716727660fffe3896cb24d8b"
+            }
+          ],
+          "removedPersonalColumns": {}
         },
         {
           "id": "f9a3e149-cc46-4cce-85e1-53aad0d61b00",
@@ -41693,11 +42788,20 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2016_GO.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2016_GO.zip",
           "format": "CSV",
-          "status": "catalogued",
+          "status": "published",
           "bytes": 31351875,
           "lastModified": "Mon, 11 Dec 2023 14:55:53 GMT",
           "etag": "\"1de6443-60c3d2163f040\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "c0a7a376e8657d55bb9e067d04034795896e9a4449c2c9499a07d17e5fcdca01",
+          "assets": [
+            {
+              "name": "f9a3e149-votacao_secao_2016_GO.zip",
+              "bytes": 31351875,
+              "sha256": "c0a7a376e8657d55bb9e067d04034795896e9a4449c2c9499a07d17e5fcdca01"
+            }
+          ],
+          "removedPersonalColumns": {}
         },
         {
           "id": "a143da87-c13b-4373-8f79-79e2aacd5ff0",
@@ -41705,11 +42809,20 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2016_MA.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2016_MA.zip",
           "format": "CSV",
-          "status": "catalogued",
+          "status": "published",
           "bytes": 27775644,
           "lastModified": "Mon, 11 Dec 2023 14:55:56 GMT",
           "etag": "\"1a7d29c-60c3d2191b700\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "71e56aaa71cbe5b41d61b0725879986112deac1ca829a10e8660b966267b7e06",
+          "assets": [
+            {
+              "name": "a143da87-votacao_secao_2016_MA.zip",
+              "bytes": 27775644,
+              "sha256": "71e56aaa71cbe5b41d61b0725879986112deac1ca829a10e8660b966267b7e06"
+            }
+          ],
+          "removedPersonalColumns": {}
         },
         {
           "id": "a9d9e8f5-5667-4a27-87a6-64c943c4f7e3",
@@ -41717,11 +42830,20 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2016_MT.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2016_MT.zip",
           "format": "CSV",
-          "status": "catalogued",
+          "status": "published",
           "bytes": 13091945,
           "lastModified": "Mon, 11 Dec 2023 14:56:11 GMT",
           "etag": "\"c7c469-60c3d227698c0\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "48784d8c91d366dd63c58e3f4452ca69c5b08375a573513fe57a864731ac0f82",
+          "assets": [
+            {
+              "name": "a9d9e8f5-votacao_secao_2016_MT.zip",
+              "bytes": 13091945,
+              "sha256": "48784d8c91d366dd63c58e3f4452ca69c5b08375a573513fe57a864731ac0f82"
+            }
+          ],
+          "removedPersonalColumns": {}
         },
         {
           "id": "cd9cfb76-943d-4483-a4c5-ec68cf2c018e",
@@ -41729,11 +42851,20 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2016_MS.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2016_MS.zip",
           "format": "CSV",
-          "status": "catalogued",
+          "status": "published",
           "bytes": 12781654,
           "lastModified": "Mon, 11 Dec 2023 14:56:10 GMT",
           "etag": "\"c30856-60c3d22675680\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "2ea07d5f05cbc9224d25388764eceaf9886552240475a0a39683fd61ec302a01",
+          "assets": [
+            {
+              "name": "cd9cfb76-votacao_secao_2016_MS.zip",
+              "bytes": 12781654,
+              "sha256": "2ea07d5f05cbc9224d25388764eceaf9886552240475a0a39683fd61ec302a01"
+            }
+          ],
+          "removedPersonalColumns": {}
         },
         {
           "id": "d8143ce4-02bc-4968-91fe-e50fe8e0762b",
@@ -41741,11 +42872,20 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2016_MG.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2016_MG.zip",
           "format": "CSV",
-          "status": "catalogued",
+          "status": "published",
           "bytes": 138581779,
           "lastModified": "Mon, 11 Dec 2023 14:56:09 GMT",
           "etag": "\"8429713-60c3d22581440\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "48dc7ce890ad5d226bfbfe74e071461a33e69c58dff6ea46a6683efa42dda31e",
+          "assets": [
+            {
+              "name": "d8143ce4-votacao_secao_2016_MG.zip",
+              "bytes": 138581779,
+              "sha256": "48dc7ce890ad5d226bfbfe74e071461a33e69c58dff6ea46a6683efa42dda31e"
+            }
+          ],
+          "removedPersonalColumns": {}
         },
         {
           "id": "61d95419-f915-41a5-b830-fec035e0c89e",
@@ -41753,11 +42893,20 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2016_PA.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2016_PA.zip",
           "format": "CSV",
-          "status": "catalogued",
+          "status": "published",
           "bytes": 56812256,
           "lastModified": "Mon, 11 Dec 2023 14:56:16 GMT",
           "etag": "\"362e2e0-60c3d22c2e400\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "fc404b99c6fecb981e7a1b14f093bf42418ca47154d90e8bdcaef7dbd3949fba",
+          "assets": [
+            {
+              "name": "61d95419-votacao_secao_2016_PA.zip",
+              "bytes": 56812256,
+              "sha256": "fc404b99c6fecb981e7a1b14f093bf42418ca47154d90e8bdcaef7dbd3949fba"
+            }
+          ],
+          "removedPersonalColumns": {}
         },
         {
           "id": "d4ad854f-ea5b-46c9-9ae8-d0c1c93e00ee",
@@ -41765,11 +42914,20 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2016_PB.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2016_PB.zip",
           "format": "CSV",
-          "status": "catalogued",
+          "status": "published",
           "bytes": 22648950,
           "lastModified": "Mon, 11 Dec 2023 14:56:18 GMT",
           "etag": "\"1599876-60c3d22e16880\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "f4c642db3f86725a30bdf766bd2e1c83a73b8b1dd7b20bbe466bc7129c0c136c",
+          "assets": [
+            {
+              "name": "d4ad854f-votacao_secao_2016_PB.zip",
+              "bytes": 22648950,
+              "sha256": "f4c642db3f86725a30bdf766bd2e1c83a73b8b1dd7b20bbe466bc7129c0c136c"
+            }
+          ],
+          "removedPersonalColumns": {}
         },
         {
           "id": "9624dc52-c99b-4263-8d9b-c19ab4f8eaf0",
@@ -41777,11 +42935,20 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2016_PR.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2016_PR.zip",
           "format": "CSV",
-          "status": "catalogued",
+          "status": "published",
           "bytes": 90946617,
           "lastModified": "Mon, 11 Dec 2023 14:56:31 GMT",
           "etag": "\"56bbc39-60c3d23a7c5c0\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "0f762a711973604a5420b22e4c380e9edf636994617b70c9d6032af5e3f66970",
+          "assets": [
+            {
+              "name": "9624dc52-votacao_secao_2016_PR.zip",
+              "bytes": 90946617,
+              "sha256": "0f762a711973604a5420b22e4c380e9edf636994617b70c9d6032af5e3f66970"
+            }
+          ],
+          "removedPersonalColumns": {}
         },
         {
           "id": "888ff43d-9e07-45a0-80cb-9814a38ff74b",
@@ -41789,11 +42956,20 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2016_PE.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2016_PE.zip",
           "format": "CSV",
-          "status": "catalogued",
+          "status": "published",
           "bytes": 61823360,
           "lastModified": "Mon, 11 Dec 2023 14:56:23 GMT",
           "etag": "\"3af5980-60c3d232db3c0\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "1fc0040bc42f212a1dc3263519f159a4363a861bb5261643ccd576c9f5087aad",
+          "assets": [
+            {
+              "name": "888ff43d-votacao_secao_2016_PE.zip",
+              "bytes": 61823360,
+              "sha256": "1fc0040bc42f212a1dc3263519f159a4363a861bb5261643ccd576c9f5087aad"
+            }
+          ],
+          "removedPersonalColumns": {}
         },
         {
           "id": "69f12cbc-5bf7-488d-a9b2-f1d1ed59e39d",
@@ -41801,11 +42977,20 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2016_PI.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2016_PI.zip",
           "format": "CSV",
-          "status": "catalogued",
+          "status": "published",
           "bytes": 15980655,
           "lastModified": "Mon, 11 Dec 2023 14:56:24 GMT",
           "etag": "\"f3d86f-60c3d233cf600\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "c8678969fba90cf703a88d997fef8da28bfea2bba138adbcbe53b9cedc4b1302",
+          "assets": [
+            {
+              "name": "69f12cbc-votacao_secao_2016_PI.zip",
+              "bytes": 15980655,
+              "sha256": "c8678969fba90cf703a88d997fef8da28bfea2bba138adbcbe53b9cedc4b1302"
+            }
+          ],
+          "removedPersonalColumns": {}
         },
         {
           "id": "9c89aa7c-3ebc-4e40-a9a9-cea0bf56c8f6",
@@ -41813,11 +42998,20 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2016_RJ.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2016_RJ.zip",
           "format": "CSV",
-          "status": "catalogued",
+          "status": "published",
           "bytes": 147719152,
           "lastModified": "Mon, 11 Dec 2023 14:56:44 GMT",
           "etag": "\"8ce03f0-60c3d246e2300\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "5e9dbbc3cb23f0454a32f560cc880adb30125e3df5f2fa87dbb07f443ef7d089",
+          "assets": [
+            {
+              "name": "9c89aa7c-votacao_secao_2016_RJ.zip",
+              "bytes": 147719152,
+              "sha256": "5e9dbbc3cb23f0454a32f560cc880adb30125e3df5f2fa87dbb07f443ef7d089"
+            }
+          ],
+          "removedPersonalColumns": {}
         },
         {
           "id": "c702713e-c865-4d66-b848-f0a619e00e69",
@@ -41825,11 +43019,20 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2016_RN.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2016_RN.zip",
           "format": "CSV",
-          "status": "catalogued",
+          "status": "published",
           "bytes": 15898464,
           "lastModified": "Mon, 11 Dec 2023 14:56:46 GMT",
           "etag": "\"f29760-60c3d248ca780\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "37729acd48d41c7d70dd7c86c1de1cfddf8ee622d60adf2253a053e02ca1c4ec",
+          "assets": [
+            {
+              "name": "c702713e-votacao_secao_2016_RN.zip",
+              "bytes": 15898464,
+              "sha256": "37729acd48d41c7d70dd7c86c1de1cfddf8ee622d60adf2253a053e02ca1c4ec"
+            }
+          ],
+          "removedPersonalColumns": {}
         },
         {
           "id": "a8506c3c-3b5f-4872-812b-d325377dc587",
@@ -41837,11 +43040,20 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2016_RS.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2016_RS.zip",
           "format": "CSV",
-          "status": "catalogued",
+          "status": "published",
           "bytes": 89206909,
           "lastModified": "Mon, 11 Dec 2023 14:56:54 GMT",
           "etag": "\"551307d-60c3d2506b980\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "59dc4d6f6f168f13545b4edc06e437e11016da0e4db1323aafdbf9c8e54425e4",
+          "assets": [
+            {
+              "name": "a8506c3c-votacao_secao_2016_RS.zip",
+              "bytes": 89206909,
+              "sha256": "59dc4d6f6f168f13545b4edc06e437e11016da0e4db1323aafdbf9c8e54425e4"
+            }
+          ],
+          "removedPersonalColumns": {}
         },
         {
           "id": "c3e115d4-7053-4f84-84b0-0627b8e6338b",
@@ -41849,11 +43061,20 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2016_RO.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2016_RO.zip",
           "format": "CSV",
-          "status": "catalogued",
+          "status": "published",
           "bytes": 9492638,
           "lastModified": "Mon, 11 Dec 2023 14:56:47 GMT",
           "etag": "\"90d89e-60c3d249be9c0\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "2dd0d95ced8da5fb1cee40edad7457ba06864678d022a5b3342bc23b55b6f5f8",
+          "assets": [
+            {
+              "name": "c3e115d4-votacao_secao_2016_RO.zip",
+              "bytes": 9492638,
+              "sha256": "2dd0d95ced8da5fb1cee40edad7457ba06864678d022a5b3342bc23b55b6f5f8"
+            }
+          ],
+          "removedPersonalColumns": {}
         },
         {
           "id": "c6fe0203-f963-40fd-9078-0179aa0c3956",
@@ -41861,11 +43082,20 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2016_RR.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2016_RR.zip",
           "format": "CSV",
-          "status": "catalogued",
+          "status": "published",
           "bytes": 2717009,
           "lastModified": "Mon, 11 Dec 2023 14:56:47 GMT",
           "etag": "\"297551-60c3d249be9c0\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "b75ff74b1385690ae511dae0b48e3af982c6d9b9d4e6e90afdd6f0deabce5142",
+          "assets": [
+            {
+              "name": "c6fe0203-votacao_secao_2016_RR.zip",
+              "bytes": 2717009,
+              "sha256": "b75ff74b1385690ae511dae0b48e3af982c6d9b9d4e6e90afdd6f0deabce5142"
+            }
+          ],
+          "removedPersonalColumns": {}
         },
         {
           "id": "df89920e-0731-4dee-8b6f-10e7b1b469d4",
@@ -41873,11 +43103,20 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2016_SC.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2016_SC.zip",
           "format": "CSV",
-          "status": "catalogued",
+          "status": "published",
           "bytes": 42041658,
           "lastModified": "Mon, 11 Dec 2023 14:56:58 GMT",
           "etag": "\"281813a-60c3d2543c280\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "12e5b36b630b3c418643242f8cbca5431d3274d99b91a6d321182723c52a10ea",
+          "assets": [
+            {
+              "name": "df89920e-votacao_secao_2016_SC.zip",
+              "bytes": 42041658,
+              "sha256": "12e5b36b630b3c418643242f8cbca5431d3274d99b91a6d321182723c52a10ea"
+            }
+          ],
+          "removedPersonalColumns": {}
         },
         {
           "id": "e32f78e4-b99c-4697-ae44-cbe7f4c81ad7",
@@ -41885,11 +43124,20 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2016_SP.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2016_SP.zip",
           "format": "CSV",
-          "status": "catalogued",
+          "status": "published",
           "bytes": 445592010,
           "lastModified": "Mon, 11 Dec 2023 14:57:33 GMT",
           "etag": "\"1a8f31ca-60c3d2759d140\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "0eae5ebd5dc72ed28772dc8d3c3fd7b77789068d5955601f10a80e10cbe57fe9",
+          "assets": [
+            {
+              "name": "e32f78e4-votacao_secao_2016_SP.zip",
+              "bytes": 445592010,
+              "sha256": "0eae5ebd5dc72ed28772dc8d3c3fd7b77789068d5955601f10a80e10cbe57fe9"
+            }
+          ],
+          "removedPersonalColumns": {}
         },
         {
           "id": "c6948137-112a-45af-b8f0-15cf559f7f24",
@@ -41897,11 +43145,20 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2016_SE.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2016_SE.zip",
           "format": "CSV",
-          "status": "catalogued",
+          "status": "published",
           "bytes": 10445718,
           "lastModified": "Mon, 11 Dec 2023 14:56:59 GMT",
           "etag": "\"9f6396-60c3d255304c0\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "2625e98ac3d303505baab592ffb906d3dabf766a8a4732b316f55bd5d8a064d4",
+          "assets": [
+            {
+              "name": "c6948137-votacao_secao_2016_SE.zip",
+              "bytes": 10445718,
+              "sha256": "2625e98ac3d303505baab592ffb906d3dabf766a8a4732b316f55bd5d8a064d4"
+            }
+          ],
+          "removedPersonalColumns": {}
         },
         {
           "id": "625023be-fe2b-4046-86f2-459520a5fb84",
@@ -41909,14 +43166,200 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2016_TO.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2016_TO.zip",
           "format": "CSV",
-          "status": "catalogued",
+          "status": "published",
           "bytes": 7411670,
           "lastModified": "Mon, 11 Dec 2023 14:57:33 GMT",
           "etag": "\"7117d6-60c3d2759d140\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "41b5b0433056ca7669cb0bbe1876f495e9a9cfa8ef8868395afcb7ded313ca74",
+          "assets": [
+            {
+              "name": "625023be-votacao_secao_2016_TO.zip",
+              "bytes": 7411670,
+              "sha256": "41b5b0433056ca7669cb0bbe1876f495e9a9cfa8ef8868395afcb7ded313ca74"
+            }
+          ],
+          "removedPersonalColumns": {}
         }
       ],
-      "inScope": true
+      "inScope": true,
+      "publicationVerifiedAt": "2026-10-26T22:19:12.358323+00:00",
+      "normalizedSummaries": {
+        "index": "history/indicators.json",
+        "elections": [
+          "2016:220:1:2016-10-02",
+          "2016:221:2:2016-10-30",
+          "2016:230:1:2017-03-12",
+          "2016:231:1:2017-03-12",
+          "2016:232:1:2017-03-12",
+          "2016:233:1:2017-03-12",
+          "2016:234:1:2017-03-12",
+          "2016:235:1:2017-03-12",
+          "2016:236:1:2017-03-12",
+          "2016:237:1:2017-04-02",
+          "2016:238:1:2017-04-02",
+          "2016:239:1:2017-04-02",
+          "2016:240:1:2017-03-12",
+          "2016:241:1:2017-03-12",
+          "2016:242:1:2017-03-12",
+          "2016:243:1:2017-03-12",
+          "2016:244:1:2017-04-02",
+          "2016:246:1:2017-04-02",
+          "2016:247:1:2017-04-02",
+          "2016:248:1:2017-04-02",
+          "2016:249:1:2017-04-02",
+          "2016:250:1:2017-04-02",
+          "2016:251:1:2017-04-02",
+          "2016:252:1:2017-04-02",
+          "2016:253:1:2017-04-02",
+          "2016:254:1:2017-05-07",
+          "2016:255:1:2017-06-04",
+          "2016:256:1:2017-06-04",
+          "2016:257:1:2017-06-04",
+          "2016:258:1:2017-06-04",
+          "2016:259:1:2017-06-04",
+          "2016:260:1:2017-06-04",
+          "2016:261:1:2017-07-02",
+          "2016:262:1:2017-07-02",
+          "2016:263:1:2017-07-02",
+          "2016:264:1:2017-07-02",
+          "2016:265:1:2017-07-02",
+          "2016:266:1:2017-07-02",
+          "2016:267:1:2017-07-02",
+          "2016:270:1:2017-09-03",
+          "2016:271:1:2017-08-06",
+          "2016:272:1:2017-08-06",
+          "2016:273:1:2017-08-06",
+          "2016:274:1:2017-09-03",
+          "2016:275:1:2017-09-03",
+          "2016:276:1:2017-10-01",
+          "2016:277:1:2017-10-01",
+          "2016:279:1:2017-11-19",
+          "2016:280:1:2017-11-19",
+          "2016:281:1:2017-11-19",
+          "2016:282:1:2017-11-19",
+          "2016:283:1:2017-11-19",
+          "2016:284:1:2017-11-19",
+          "2016:285:1:2017-11-19",
+          "2016:286:1:2017-11-19",
+          "2016:288:1:2017-12-03",
+          "2016:289:1:2017-12-03",
+          "2016:292:1:2017-12-03",
+          "2016:293:1:2018-02-04",
+          "2016:294:1:2018-03-04",
+          "2016:300:1:2018-03-04",
+          "2016:301:1:2018-03-04",
+          "2016:302:1:2018-03-04",
+          "2016:303:1:2018-06-03",
+          "2016:306:1:2018-06-03",
+          "2016:307:1:2018-06-03",
+          "2016:308:1:2018-06-03",
+          "2016:309:1:2018-06-03",
+          "2016:311:1:2018-06-03",
+          "2016:312:1:2018-06-03",
+          "2016:314:1:2018-06-03",
+          "2016:315:1:2018-06-03",
+          "2016:316:1:2018-06-03",
+          "2016:317:1:2018-06-03",
+          "2016:318:1:2018-06-03",
+          "2016:319:1:2018-06-03",
+          "2016:320:1:2018-06-03",
+          "2016:321:1:2018-06-03",
+          "2016:322:1:2018-06-24",
+          "2016:324:1:2018-06-03",
+          "2016:325:1:2018-06-03",
+          "2016:326:1:2018-06-03",
+          "2016:327:1:2018-06-03",
+          "2016:328:1:2018-06-03",
+          "2016:329:1:2018-06-24",
+          "2016:330:1:2018-06-24",
+          "2016:331:1:2018-06-24",
+          "2016:332:1:2018-06-24",
+          "2016:333:1:2018-06-24",
+          "2016:334:1:2018-06-24",
+          "2016:338:1:2018-10-28",
+          "2016:340:1:2018-10-28",
+          "2016:341:1:2018-10-28",
+          "2016:342:1:2018-10-28",
+          "2016:343:1:2018-10-28",
+          "2016:344:1:2018-10-28",
+          "2016:345:1:2018-10-28",
+          "2016:346:1:2018-10-28",
+          "2016:347:1:2018-10-28",
+          "2016:348:1:2018-10-28",
+          "2016:350:1:2018-10-28",
+          "2016:351:1:2018-10-28",
+          "2016:352:1:2018-10-28",
+          "2016:353:1:2018-10-28",
+          "2016:354:1:2018-10-28",
+          "2016:355:1:2018-10-28",
+          "2016:356:1:2018-10-28",
+          "2016:357:1:2018-10-28",
+          "2016:359:1:2018-10-28",
+          "2016:360:1:2018-11-25",
+          "2016:361:1:2018-11-25",
+          "2016:362:1:2018-11-25",
+          "2016:363:1:2018-12-09",
+          "2016:364:1:2018-12-09",
+          "2016:365:1:2018-12-09",
+          "2016:366:1:2018-12-09",
+          "2016:368:1:2018-12-09",
+          "2016:371:1:2018-12-09",
+          "2016:372:1:2019-03-17",
+          "2016:373:1:2019-02-03",
+          "2016:374:1:2019-02-03",
+          "2016:375:1:2019-03-17",
+          "2016:376:1:2019-03-17",
+          "2016:377:1:2019-03-17",
+          "2016:378:1:2019-03-17",
+          "2016:379:1:2019-04-07",
+          "2016:381:1:2019-04-07",
+          "2016:382:1:2019-04-07",
+          "2016:383:1:2019-04-07",
+          "2016:384:1:2019-05-05",
+          "2016:385:1:2019-05-05",
+          "2016:386:1:2019-05-05",
+          "2016:387:1:2019-06-02",
+          "2016:388:1:2019-06-02",
+          "2016:390:1:2019-07-07",
+          "2016:391:1:2019-07-07",
+          "2016:393:1:2019-07-07",
+          "2016:394:1:2019-07-07",
+          "2016:395:1:2019-07-07",
+          "2016:396:1:2019-08-04",
+          "2016:397:1:2019-08-04",
+          "2016:399:1:2019-08-04",
+          "2016:400:1:2019-08-04",
+          "2016:401:1:2019-08-04",
+          "2016:402:1:2019-09-01",
+          "2016:403:1:2019-09-01",
+          "2016:404:1:2019-09-01",
+          "2016:405:1:2019-09-01",
+          "2016:406:1:2019-09-01",
+          "2016:407:1:2019-09-01",
+          "2016:408:1:2019-10-06",
+          "2016:409:1:2019-10-06",
+          "2016:410:1:2019-10-27",
+          "2016:411:1:2019-10-27",
+          "2016:412:1:2019-12-01",
+          "2016:413:1:2019-10-27",
+          "2016:414:1:2019-10-27",
+          "2016:415:1:2019-12-01",
+          "2016:416:1:2019-12-01",
+          "2016:417:1:2019-12-01",
+          "2016:418:1:2019-12-01",
+          "2016:419:1:2019-12-01",
+          "2016:420:1:2019-12-01",
+          "2016:421:1:2019-12-01",
+          "2016:422:1:2020-01-12",
+          "2016:423:1:2020-02-02",
+          "2016:424:1:2020-03-08",
+          "2016:425:1:2020-02-02",
+          "2016:428:1:2020-03-08",
+          "2016:429:1:2020-03-08",
+          "2016:430:1:2020-03-08"
+        ]
+      }
     },
     {
       "id": "resultados-2016-boletim-de-urna",
@@ -46795,7 +48238,7 @@
       "tag": "data-resultados-2018",
       "releaseUrl": "https://github.com/brauliobo/brazil-audit/releases/tag/data-resultados-2018",
       "normalized": false,
-      "status": "catalogued",
+      "status": "published",
       "resources": [
         {
           "id": "e1dae37e-c2d6-493c-bf66-437f3788af89",
@@ -46803,11 +48246,20 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_candidato_munzona/votacao_candidato_munzona_2018.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_candidato_munzona/votacao_candidato_munzona_2018.zip",
           "format": "CSV",
-          "status": "catalogued",
+          "status": "published",
           "bytes": 395389280,
           "lastModified": "Wed, 13 Nov 2024 16:25:44 GMT",
           "etag": "\"17912960-626cdc9223858\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "f880848ef4ba340b15cb91ff0754aa370d34ca7b7e605d6607c0f2a75009adc8",
+          "assets": [
+            {
+              "name": "e1dae37e-votacao_candidato_munzona_2018.zip",
+              "bytes": 395389280,
+              "sha256": "f880848ef4ba340b15cb91ff0754aa370d34ca7b7e605d6607c0f2a75009adc8"
+            }
+          ],
+          "removedPersonalColumns": {}
         },
         {
           "id": "df668b98-07ad-420e-8b90-f9525060d6b6",
@@ -46815,11 +48267,20 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_partido_munzona/votacao_partido_munzona_2018.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_partido_munzona/votacao_partido_munzona_2018.zip",
           "format": "CSV",
-          "status": "catalogued",
+          "status": "published",
           "bytes": 27920768,
           "lastModified": "Thu, 25 Jul 2024 01:01:27 GMT",
           "etag": "\"1aa0980-61e07ef3c7356\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "c3ab9e78efd8d11033d650451252cb5c019a699e79bec7e04371a3a4022143df",
+          "assets": [
+            {
+              "name": "df668b98-votacao_partido_munzona_2018.zip",
+              "bytes": 27920768,
+              "sha256": "c3ab9e78efd8d11033d650451252cb5c019a699e79bec7e04371a3a4022143df"
+            }
+          ],
+          "removedPersonalColumns": {}
         },
         {
           "id": "a96bfc8e-1e57-4eec-afcd-f98525d5cf51",
@@ -46827,11 +48288,20 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/detalhe_votacao_munzona/detalhe_votacao_munzona_2018.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/detalhe_votacao_munzona/detalhe_votacao_munzona_2018.zip",
           "format": "CSV",
-          "status": "catalogued",
+          "status": "published",
           "bytes": 4269741,
           "lastModified": "Tue, 29 Jul 2025 16:29:08 GMT",
           "etag": "\"4126ad-63b13e8577a7f\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "df68c258a2261dff37b379f65ea5f2e8de7b3d824bb2340d8f4830274a3fabb5",
+          "assets": [
+            {
+              "name": "a96bfc8e-detalhe_votacao_munzona_2018.zip",
+              "bytes": 4269741,
+              "sha256": "df68c258a2261dff37b379f65ea5f2e8de7b3d824bb2340d8f4830274a3fabb5"
+            }
+          ],
+          "removedPersonalColumns": {}
         },
         {
           "id": "7f6271bc-555e-47a5-aace-7009dc01c341",
@@ -46839,11 +48309,20 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/detalhe_votacao_secao/detalhe_votacao_secao_2018.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/detalhe_votacao_secao/detalhe_votacao_secao_2018.zip",
           "format": "CSV",
-          "status": "catalogued",
+          "status": "published",
           "bytes": 256133172,
           "lastModified": "Thu, 09 Apr 2026 16:48:22 GMT",
           "etag": "\"f444834-64f09c8d4cf8f\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "de35b08db427ee0c3089d88317e6166ea5dea33630f5b1dabdccf3304de48f70",
+          "assets": [
+            {
+              "name": "7f6271bc-detalhe_votacao_secao_2018.zip",
+              "bytes": 256133172,
+              "sha256": "de35b08db427ee0c3089d88317e6166ea5dea33630f5b1dabdccf3304de48f70"
+            }
+          ],
+          "removedPersonalColumns": {}
         },
         {
           "id": "6bba2a01-5b6f-4f0a-99d7-4ef3db782f62",
@@ -46851,11 +48330,20 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2018_AC.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2018_AC.zip",
           "format": "CSV",
-          "status": "catalogued",
+          "status": "published",
           "bytes": 5867939,
           "lastModified": "Wed, 24 Apr 2024 17:19:40 GMT",
           "etag": "\"5989a3-616dae02e21bd\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "abc157088d24df28ac06c063f46f808305b64ca5d434074b28ff39e7accaae3e",
+          "assets": [
+            {
+              "name": "6bba2a01-votacao_secao_2018_AC.zip",
+              "bytes": 5867939,
+              "sha256": "abc157088d24df28ac06c063f46f808305b64ca5d434074b28ff39e7accaae3e"
+            }
+          ],
+          "removedPersonalColumns": {}
         },
         {
           "id": "f6feee37-4913-4d83-b73b-dc25ba51e2e6",
@@ -46863,11 +48351,20 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2018_BR.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2018_BR.zip",
           "format": "CSV",
-          "status": "catalogued",
+          "status": "published",
           "bytes": 250985147,
           "lastModified": "Fri, 15 Aug 2025 14:15:53 GMT",
           "etag": "\"ef5babb-63c68071041ac\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "dde2250058a7efa3b7ee336520556905456cb75d7debf99ea4badfc4d598a48c",
+          "assets": [
+            {
+              "name": "f6feee37-votacao_secao_2018_BR.zip",
+              "bytes": 250985147,
+              "sha256": "dde2250058a7efa3b7ee336520556905456cb75d7debf99ea4badfc4d598a48c"
+            }
+          ],
+          "removedPersonalColumns": {}
         },
         {
           "id": "d98aaf7a-61b3-4b19-9428-c5b5f22fce6a",
@@ -46875,11 +48372,20 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2018_AL.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2018_AL.zip",
           "format": "CSV",
-          "status": "catalogued",
+          "status": "published",
           "bytes": 15602679,
           "lastModified": "Wed, 24 Apr 2024 17:19:33 GMT",
           "etag": "\"ee13f7-616dadfcdcd25\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "3aef92c97cdbfa4e21e6514a721703e70ff779e4141a63378ded37a7b047486b",
+          "assets": [
+            {
+              "name": "d98aaf7a-votacao_secao_2018_AL.zip",
+              "bytes": 15602679,
+              "sha256": "3aef92c97cdbfa4e21e6514a721703e70ff779e4141a63378ded37a7b047486b"
+            }
+          ],
+          "removedPersonalColumns": {}
         },
         {
           "id": "0a70cdd4-2647-415e-a986-fd8c84711eb2",
@@ -46887,11 +48393,20 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2018_AP.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2018_AP.zip",
           "format": "CSV",
-          "status": "catalogued",
+          "status": "published",
           "bytes": 7653995,
           "lastModified": "Wed, 24 Apr 2024 17:19:15 GMT",
           "etag": "\"74ca6b-616dadeba5845\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "1fefc474b741e2fcbc9deea1773864569bf09a179ff027e6038b0e92d9c7274d",
+          "assets": [
+            {
+              "name": "0a70cdd4-votacao_secao_2018_AP.zip",
+              "bytes": 7653995,
+              "sha256": "1fefc474b741e2fcbc9deea1773864569bf09a179ff027e6038b0e92d9c7274d"
+            }
+          ],
+          "removedPersonalColumns": {}
         },
         {
           "id": "e8ae54a3-86fd-4189-893d-f59e551a4b45",
@@ -46899,11 +48414,20 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2018_AM.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2018_AM.zip",
           "format": "CSV",
-          "status": "catalogued",
+          "status": "published",
           "bytes": 26048634,
           "lastModified": "Wed, 24 Apr 2024 17:19:05 GMT",
           "etag": "\"18d787a-616dade23b515\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "21a1268d6e29cfe7a08f1552ec1fe75e965701c1981a95ea6103a2ad6d6326c7",
+          "assets": [
+            {
+              "name": "e8ae54a3-votacao_secao_2018_AM.zip",
+              "bytes": 26048634,
+              "sha256": "21a1268d6e29cfe7a08f1552ec1fe75e965701c1981a95ea6103a2ad6d6326c7"
+            }
+          ],
+          "removedPersonalColumns": {}
         },
         {
           "id": "a808ced7-cb39-4aa5-9e46-96f1dafe0142",
@@ -46911,11 +48435,20 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2018_BA.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2018_BA.zip",
           "format": "CSV",
-          "status": "catalogued",
+          "status": "published",
           "bytes": 96596420,
           "lastModified": "Wed, 24 Apr 2024 17:27:36 GMT",
           "etag": "\"5c1f1c4-616dafc940946\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "deb5930e8b1aa6b890af600d9adbb72c5e53e9bdede48e54596f360683f43a68",
+          "assets": [
+            {
+              "name": "a808ced7-votacao_secao_2018_BA.zip",
+              "bytes": 96596420,
+              "sha256": "deb5930e8b1aa6b890af600d9adbb72c5e53e9bdede48e54596f360683f43a68"
+            }
+          ],
+          "removedPersonalColumns": {}
         },
         {
           "id": "d413b9b9-a516-45ea-98a5-f33d07637c1f",
@@ -46923,11 +48456,20 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2018_CE.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2018_CE.zip",
           "format": "CSV",
-          "status": "catalogued",
+          "status": "published",
           "bytes": 60036449,
           "lastModified": "Wed, 24 Apr 2024 17:20:31 GMT",
           "etag": "\"3941561-616dae3411659\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "344e21c65ef4ffd369f36fee4e0ec821ca39d8cd8c3f12057e66d025bf1dc36c",
+          "assets": [
+            {
+              "name": "d413b9b9-votacao_secao_2018_CE.zip",
+              "bytes": 60036449,
+              "sha256": "344e21c65ef4ffd369f36fee4e0ec821ca39d8cd8c3f12057e66d025bf1dc36c"
+            }
+          ],
+          "removedPersonalColumns": {}
         },
         {
           "id": "9d270cc1-180b-4694-93d1-1aa94a9c3479",
@@ -46935,11 +48477,20 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2018_DF.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2018_DF.zip",
           "format": "CSV",
-          "status": "catalogued",
+          "status": "published",
           "bytes": 37108246,
           "lastModified": "Fri, 15 Aug 2025 13:52:26 GMT",
           "etag": "\"2363a16-63c67b335de76\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "c5f236229fd89ffc80c73dae3af44882ca157b16bae2094eb464108340183b67",
+          "assets": [
+            {
+              "name": "9d270cc1-votacao_secao_2018_DF.zip",
+              "bytes": 37108246,
+              "sha256": "c5f236229fd89ffc80c73dae3af44882ca157b16bae2094eb464108340183b67"
+            }
+          ],
+          "removedPersonalColumns": {}
         },
         {
           "id": "c3fe8062-9eba-456d-99ab-610fba4fc7f4",
@@ -46947,11 +48498,20 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2018_ES.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2018_ES.zip",
           "format": "CSV",
-          "status": "catalogued",
+          "status": "published",
           "bytes": 28388000,
           "lastModified": "Wed, 24 Apr 2024 17:19:38 GMT",
           "etag": "\"1b12aa0-616dae01682c2\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "9b823ce019a7c1b565d047b257fd38df5aace43f48755d3294e2e7400f2e4100",
+          "assets": [
+            {
+              "name": "c3fe8062-votacao_secao_2018_ES.zip",
+              "bytes": 28388000,
+              "sha256": "9b823ce019a7c1b565d047b257fd38df5aace43f48755d3294e2e7400f2e4100"
+            }
+          ],
+          "removedPersonalColumns": {}
         },
         {
           "id": "4b6289e6-3133-4b0b-b264-ad12fead5318",
@@ -46959,11 +48519,20 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2018_GO.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2018_GO.zip",
           "format": "CSV",
-          "status": "catalogued",
+          "status": "published",
           "bytes": 49080024,
           "lastModified": "Wed, 24 Apr 2024 17:19:06 GMT",
           "etag": "\"2ece6d8-616dade272401\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "1a2a77c321c03fbfbbfc381056fc802b76fc2d13c04624a6baafdc7ef2dc18a5",
+          "assets": [
+            {
+              "name": "4b6289e6-votacao_secao_2018_GO.zip",
+              "bytes": 49080024,
+              "sha256": "1a2a77c321c03fbfbbfc381056fc802b76fc2d13c04624a6baafdc7ef2dc18a5"
+            }
+          ],
+          "removedPersonalColumns": {}
         },
         {
           "id": "b651eccf-94e7-47d9-85f0-a497004a2b86",
@@ -46971,11 +48540,20 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2018_MA.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2018_MA.zip",
           "format": "CSV",
-          "status": "catalogued",
+          "status": "published",
           "bytes": 40465541,
           "lastModified": "Wed, 24 Apr 2024 17:20:58 GMT",
           "etag": "\"2697485-616dae4d7c592\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "b41a2cf2bcefb24b347a87d68a0d5c4637c1e94b9cc3de2f6cecdee7b220f773",
+          "assets": [
+            {
+              "name": "b651eccf-votacao_secao_2018_MA.zip",
+              "bytes": 40465541,
+              "sha256": "b41a2cf2bcefb24b347a87d68a0d5c4637c1e94b9cc3de2f6cecdee7b220f773"
+            }
+          ],
+          "removedPersonalColumns": {}
         },
         {
           "id": "f3aebc7e-3626-492a-8783-4c40086453cf",
@@ -46983,11 +48561,20 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2018_MT.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2018_MT.zip",
           "format": "CSV",
-          "status": "catalogued",
+          "status": "published",
           "bytes": 23166003,
           "lastModified": "Wed, 24 Apr 2024 17:19:40 GMT",
           "etag": "\"1617c33-616dae0367697\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "16342cf83dec151b732cb25c35b133ea09865f0fbd4a0a03a9ae3140daf9bccb",
+          "assets": [
+            {
+              "name": "f3aebc7e-votacao_secao_2018_MT.zip",
+              "bytes": 23166003,
+              "sha256": "16342cf83dec151b732cb25c35b133ea09865f0fbd4a0a03a9ae3140daf9bccb"
+            }
+          ],
+          "removedPersonalColumns": {}
         },
         {
           "id": "97550028-3376-4a0e-a45d-a4e7ffdb72e4",
@@ -46995,11 +48582,20 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2018_MS.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2018_MS.zip",
           "format": "CSV",
-          "status": "catalogued",
+          "status": "published",
           "bytes": 19603873,
           "lastModified": "Wed, 24 Apr 2024 17:19:10 GMT",
           "etag": "\"12b21a1-616dade6a111f\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "67ee17393cd46bc84a88ace2455c9681ed6a3759f2182f0bf51d43d1bd1619b6",
+          "assets": [
+            {
+              "name": "97550028-votacao_secao_2018_MS.zip",
+              "bytes": 19603873,
+              "sha256": "67ee17393cd46bc84a88ace2455c9681ed6a3759f2182f0bf51d43d1bd1619b6"
+            }
+          ],
+          "removedPersonalColumns": {}
         },
         {
           "id": "555c17ed-9e36-407d-b9c5-078ab370bdee",
@@ -47007,11 +48603,20 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2018_MG.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2018_MG.zip",
           "format": "CSV",
-          "status": "catalogued",
+          "status": "published",
           "bytes": 192869746,
           "lastModified": "Wed, 24 Apr 2024 17:37:54 GMT",
           "etag": "\"b7ef572-616db2167f02f\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "d549941f4c4362fff39d18df0f97352c0c4747051ec9023b3e68e0d2e20b2df9",
+          "assets": [
+            {
+              "name": "555c17ed-votacao_secao_2018_MG.zip",
+              "bytes": 192869746,
+              "sha256": "d549941f4c4362fff39d18df0f97352c0c4747051ec9023b3e68e0d2e20b2df9"
+            }
+          ],
+          "removedPersonalColumns": {}
         },
         {
           "id": "53c22412-e411-423d-a57a-9027fd84fa20",
@@ -47019,11 +48624,20 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2018_PA.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2018_PA.zip",
           "format": "CSV",
-          "status": "catalogued",
+          "status": "published",
           "bytes": 55889161,
           "lastModified": "Wed, 24 Apr 2024 17:19:26 GMT",
           "etag": "\"354cd09-616dadf585e1c\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "9c1c9ce624baa172351fbbd640940cf6bf2da72314661dab3099f2712897d55f",
+          "assets": [
+            {
+              "name": "53c22412-votacao_secao_2018_PA.zip",
+              "bytes": 55889161,
+              "sha256": "9c1c9ce624baa172351fbbd640940cf6bf2da72314661dab3099f2712897d55f"
+            }
+          ],
+          "removedPersonalColumns": {}
         },
         {
           "id": "0418cb0a-94a1-4e67-89fb-a3a9fe55af76",
@@ -47031,11 +48645,20 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2018_PB.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2018_PB.zip",
           "format": "CSV",
-          "status": "catalogued",
+          "status": "published",
           "bytes": 25223817,
           "lastModified": "Wed, 24 Apr 2024 17:19:29 GMT",
           "etag": "\"180e289-616dadf8f450c\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "6608d0af9713deb9ca86dabd923b3342d3bfd2aa44067e19537ae766791c5625",
+          "assets": [
+            {
+              "name": "0418cb0a-votacao_secao_2018_PB.zip",
+              "bytes": 25223817,
+              "sha256": "6608d0af9713deb9ca86dabd923b3342d3bfd2aa44067e19537ae766791c5625"
+            }
+          ],
+          "removedPersonalColumns": {}
         },
         {
           "id": "8be6687e-7105-4520-8879-346455f1e7e6",
@@ -47043,11 +48666,20 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2018_PR.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2018_PR.zip",
           "format": "CSV",
-          "status": "catalogued",
+          "status": "published",
           "bytes": 95099945,
           "lastModified": "Wed, 24 Apr 2024 17:19:23 GMT",
           "etag": "\"5ab1c29-616dadf3253a8\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "1244cb0bddc95857c4f65587a16a2d8a0d7ed18311c4ec8af11f4f62b0d70037",
+          "assets": [
+            {
+              "name": "8be6687e-votacao_secao_2018_PR.zip",
+              "bytes": 95099945,
+              "sha256": "1244cb0bddc95857c4f65587a16a2d8a0d7ed18311c4ec8af11f4f62b0d70037"
+            }
+          ],
+          "removedPersonalColumns": {}
         },
         {
           "id": "10f1c33e-7562-450d-9c84-855a404c5221",
@@ -47055,11 +48687,20 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2018_PE.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2018_PE.zip",
           "format": "CSV",
-          "status": "catalogued",
+          "status": "published",
           "bytes": 64237552,
           "lastModified": "Wed, 24 Apr 2024 17:19:11 GMT",
           "etag": "\"3d42ff0-616dade74a04c\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "f8c82a1052619e1dc173a6f1ed2c1ea715b2451dfa35377b079227ae262cc0f1",
+          "assets": [
+            {
+              "name": "10f1c33e-votacao_secao_2018_PE.zip",
+              "bytes": 64237552,
+              "sha256": "f8c82a1052619e1dc173a6f1ed2c1ea715b2451dfa35377b079227ae262cc0f1"
+            }
+          ],
+          "removedPersonalColumns": {}
         },
         {
           "id": "dd6b9a3b-44e0-4de7-82a7-63bd546f5450",
@@ -47067,11 +48708,20 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2018_PI.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2018_PI.zip",
           "format": "CSV",
-          "status": "catalogued",
+          "status": "published",
           "bytes": 20279700,
           "lastModified": "Wed, 24 Apr 2024 17:18:55 GMT",
           "etag": "\"1357194-616dadd7f2756\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "c3c92426efb79c1c10438cdc0c937f8e8349735fb305aeac2955d6a6cb7f95e3",
+          "assets": [
+            {
+              "name": "dd6b9a3b-votacao_secao_2018_PI.zip",
+              "bytes": 20279700,
+              "sha256": "c3c92426efb79c1c10438cdc0c937f8e8349735fb305aeac2955d6a6cb7f95e3"
+            }
+          ],
+          "removedPersonalColumns": {}
         },
         {
           "id": "7baf8629-69d7-4796-bb64-251a92ee38b0",
@@ -47079,11 +48729,20 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2018_RJ.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2018_RJ.zip",
           "format": "CSV",
-          "status": "catalogued",
+          "status": "published",
           "bytes": 204050711,
           "lastModified": "Wed, 24 Apr 2024 17:32:18 GMT",
           "etag": "\"c299117-616db0d663ff6\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "13760090b758e31e7b30830e62af306b394ee5885ccadbe97229bf0cdcb2dfae",
+          "assets": [
+            {
+              "name": "7baf8629-votacao_secao_2018_RJ.zip",
+              "bytes": 204050711,
+              "sha256": "13760090b758e31e7b30830e62af306b394ee5885ccadbe97229bf0cdcb2dfae"
+            }
+          ],
+          "removedPersonalColumns": {}
         },
         {
           "id": "85bb9c2a-8270-46e2-a9f5-0989ae7bc4ff",
@@ -47091,11 +48750,20 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2018_RN.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2018_RN.zip",
           "format": "CSV",
-          "status": "catalogued",
+          "status": "published",
           "bytes": 22815737,
           "lastModified": "Wed, 24 Apr 2024 17:19:00 GMT",
           "etag": "\"15c23f9-616daddd28f47\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "a51dfc2c4276dadc4b9d686ecc20c26a46662126201da52ad27830880265479d",
+          "assets": [
+            {
+              "name": "85bb9c2a-votacao_secao_2018_RN.zip",
+              "bytes": 22815737,
+              "sha256": "a51dfc2c4276dadc4b9d686ecc20c26a46662126201da52ad27830880265479d"
+            }
+          ],
+          "removedPersonalColumns": {}
         },
         {
           "id": "a0e042c9-dc36-4a6a-95ba-f71b2a8ef9ea",
@@ -47103,11 +48771,20 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2018_RS.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2018_RS.zip",
           "format": "CSV",
-          "status": "catalogued",
+          "status": "published",
           "bytes": 183466885,
           "lastModified": "Wed, 24 Apr 2024 17:25:31 GMT",
           "etag": "\"aef7b85-616daf51b7735\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "a851d28fa9a9edfd0c86bd1100477583b0fd71482d130a2476b9df14d4ebbdd6",
+          "assets": [
+            {
+              "name": "a0e042c9-votacao_secao_2018_RS.zip",
+              "bytes": 183466885,
+              "sha256": "a851d28fa9a9edfd0c86bd1100477583b0fd71482d130a2476b9df14d4ebbdd6"
+            }
+          ],
+          "removedPersonalColumns": {}
         },
         {
           "id": "d9e10559-3be9-4c80-83d9-d1cf3c234b42",
@@ -47115,11 +48792,20 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2018_RO.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2018_RO.zip",
           "format": "CSV",
-          "status": "catalogued",
+          "status": "published",
           "bytes": 17325762,
           "lastModified": "Wed, 24 Apr 2024 17:19:15 GMT",
           "etag": "\"1085ec2-616dadeb9d75c\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "628dc214a175918d35a4b0cc3dee47ee8dfedb75d1f33378dae01d8d1a7fd6e5",
+          "assets": [
+            {
+              "name": "d9e10559-votacao_secao_2018_RO.zip",
+              "bytes": 17325762,
+              "sha256": "628dc214a175918d35a4b0cc3dee47ee8dfedb75d1f33378dae01d8d1a7fd6e5"
+            }
+          ],
+          "removedPersonalColumns": {}
         },
         {
           "id": "4cf48022-973f-40d6-b1ec-ee5eecce40fc",
@@ -47127,11 +48813,20 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2018_RR.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2018_RR.zip",
           "format": "CSV",
-          "status": "catalogued",
+          "status": "published",
           "bytes": 6242815,
           "lastModified": "Wed, 24 Apr 2024 17:19:20 GMT",
           "etag": "\"5f41ff-616dadf02a469\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "65913fe1cec6dc2fe867f3de2d481b2804098794dfb1a212135cc8bc8fcd0867",
+          "assets": [
+            {
+              "name": "4cf48022-votacao_secao_2018_RR.zip",
+              "bytes": 6242815,
+              "sha256": "65913fe1cec6dc2fe867f3de2d481b2804098794dfb1a212135cc8bc8fcd0867"
+            }
+          ],
+          "removedPersonalColumns": {}
         },
         {
           "id": "f9687ae9-e282-4e38-b827-fbf634b91352",
@@ -47139,11 +48834,20 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2018_SC.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2018_SC.zip",
           "format": "CSV",
-          "status": "catalogued",
+          "status": "published",
           "bytes": 90446538,
           "lastModified": "Wed, 24 Apr 2024 17:18:53 GMT",
           "etag": "\"5641aca-616dadd621d9c\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "c5c6b6432507ec5092e24dc5475be5c6c918c570b9f3f622cd7ec7bd78c4c147",
+          "assets": [
+            {
+              "name": "f9687ae9-votacao_secao_2018_SC.zip",
+              "bytes": 90446538,
+              "sha256": "c5c6b6432507ec5092e24dc5475be5c6c918c570b9f3f622cd7ec7bd78c4c147"
+            }
+          ],
+          "removedPersonalColumns": {}
         },
         {
           "id": "459d3040-12a2-4b59-9d90-31bec1e3e40d",
@@ -47151,11 +48855,20 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2018_SP.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2018_SP.zip",
           "format": "CSV",
-          "status": "catalogued",
+          "status": "published",
           "bytes": 495073028,
           "lastModified": "Wed, 24 Apr 2024 18:04:13 GMT",
           "etag": "\"1d823704-616db7f8382ab\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "59e0fa455d8b53098b4363f0970f08b11916a9088aa50591f418158cf0ec9544",
+          "assets": [
+            {
+              "name": "459d3040-votacao_secao_2018_SP.zip",
+              "bytes": 495073028,
+              "sha256": "59e0fa455d8b53098b4363f0970f08b11916a9088aa50591f418158cf0ec9544"
+            }
+          ],
+          "removedPersonalColumns": {}
         },
         {
           "id": "ed615fe7-eb5a-411f-a8b4-67ed42b91823",
@@ -47163,11 +48876,20 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2018_SE.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2018_SE.zip",
           "format": "CSV",
-          "status": "catalogued",
+          "status": "published",
           "bytes": 15065673,
           "lastModified": "Wed, 24 Apr 2024 17:19:43 GMT",
           "etag": "\"e5e249-616dae05bd52a\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "eaa409a340fc8425ac87c0efec57645a79d2aa67573b8121a42935a073374647",
+          "assets": [
+            {
+              "name": "ed615fe7-votacao_secao_2018_SE.zip",
+              "bytes": 15065673,
+              "sha256": "eaa409a340fc8425ac87c0efec57645a79d2aa67573b8121a42935a073374647"
+            }
+          ],
+          "removedPersonalColumns": {}
         },
         {
           "id": "45657cd3-6e93-402a-ab59-da76b0aeda0a",
@@ -47175,14 +48897,35 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2018_TO.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2018_TO.zip",
           "format": "CSV",
-          "status": "catalogued",
+          "status": "published",
           "bytes": 8689897,
           "lastModified": "Wed, 24 Apr 2024 17:19:35 GMT",
           "etag": "\"8498e9-616dadfeb82c0\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "7a8ec34f827dd71a535691d60b71809773afb3b2f82aa806d11e0408965fceb8",
+          "assets": [
+            {
+              "name": "45657cd3-votacao_secao_2018_TO.zip",
+              "bytes": 8689897,
+              "sha256": "7a8ec34f827dd71a535691d60b71809773afb3b2f82aa806d11e0408965fceb8"
+            }
+          ],
+          "removedPersonalColumns": {}
         }
       ],
-      "inScope": true
+      "inScope": true,
+      "publicationVerifiedAt": "2026-10-26T22:20:53.663374+00:00",
+      "normalizedSummaries": {
+        "index": "history/indicators.json",
+        "elections": [
+          "2018:295:1:2018-10-07",
+          "2018:296:2:2018-10-28",
+          "2018:297:1:2018-10-07",
+          "2018:298:2:2018-10-28",
+          "2018:339:1:2018-10-07",
+          "2018:438:1:2020-11-15"
+        ]
+      }
     },
     {
       "id": "resultados-2018-boletim-de-urna",
@@ -52639,7 +54382,7 @@
       "tag": "data-resultados-2020",
       "releaseUrl": "https://github.com/brauliobo/brazil-audit/releases/tag/data-resultados-2020",
       "normalized": false,
-      "status": "catalogued",
+      "status": "published",
       "resources": [
         {
           "id": "db0b6c75-dc82-48d8-b207-ba2b420ec58a",
@@ -52647,11 +54390,20 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_candidato_munzona/votacao_candidato_munzona_2020.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_candidato_munzona/votacao_candidato_munzona_2020.zip",
           "format": "CSV",
-          "status": "catalogued",
+          "status": "published",
           "bytes": 57815640,
           "lastModified": "Tue, 06 Jan 2026 19:56:42 GMT",
           "etag": "\"3723258-647bd93191cce\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "a8a32d46e813dfd2c3ba032b0df4faaa57fc567ef3c4a5a73fc50d9a5e680763",
+          "assets": [
+            {
+              "name": "db0b6c75-votacao_candidato_munzona_2020.zip",
+              "bytes": 57815640,
+              "sha256": "a8a32d46e813dfd2c3ba032b0df4faaa57fc567ef3c4a5a73fc50d9a5e680763"
+            }
+          ],
+          "removedPersonalColumns": {}
         },
         {
           "id": "314f3304-58d1-4464-84c7-f472293d03cb",
@@ -52659,11 +54411,20 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_partido_munzona/votacao_partido_munzona_2020.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_partido_munzona/votacao_partido_munzona_2020.zip",
           "format": "CSV",
-          "status": "catalogued",
+          "status": "published",
           "bytes": 6104460,
           "lastModified": "Tue, 06 Jan 2026 19:51:09 GMT",
           "etag": "\"5d258c-647bd7f460571\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "f827862ff624bb1b3518c7ea809ce04ff6a98cac5600bef851d0e43498d993a0",
+          "assets": [
+            {
+              "name": "314f3304-votacao_partido_munzona_2020.zip",
+              "bytes": 6104460,
+              "sha256": "f827862ff624bb1b3518c7ea809ce04ff6a98cac5600bef851d0e43498d993a0"
+            }
+          ],
+          "removedPersonalColumns": {}
         },
         {
           "id": "ec29e2e9-d5b4-4934-a836-fc7f5a492032",
@@ -52671,11 +54432,20 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/detalhe_votacao_munzona/detalhe_votacao_munzona_2020.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/detalhe_votacao_munzona/detalhe_votacao_munzona_2020.zip",
           "format": "CSV",
-          "status": "catalogued",
+          "status": "published",
           "bytes": 1538312,
           "lastModified": "Fri, 16 Jan 2026 21:28:23 GMT",
           "etag": "\"177908-6488805650ceb\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "9d6ffc73b024e2b27ff984a600008aab7e4cdc1fdd72707128dc4dc05b4fd591",
+          "assets": [
+            {
+              "name": "ec29e2e9-detalhe_votacao_munzona_2020.zip",
+              "bytes": 1538312,
+              "sha256": "9d6ffc73b024e2b27ff984a600008aab7e4cdc1fdd72707128dc4dc05b4fd591"
+            }
+          ],
+          "removedPersonalColumns": {}
         },
         {
           "id": "1abd8960-16f6-464a-8b2c-1ffa45306dc0",
@@ -52683,11 +54453,20 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/detalhe_votacao_secao/detalhe_votacao_secao_2020.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/detalhe_votacao_secao/detalhe_votacao_secao_2020.zip",
           "format": "CSV",
-          "status": "catalogued",
+          "status": "published",
           "bytes": 88177739,
           "lastModified": "Fri, 06 Dec 2024 17:49:10 GMT",
           "etag": "\"5417c4b-6289da1d795d1\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "10a50a467763dce73d44eee9023ffeeb3ebe6279756edb6b437203eb2bc71a30",
+          "assets": [
+            {
+              "name": "1abd8960-detalhe_votacao_secao_2020.zip",
+              "bytes": 88177739,
+              "sha256": "10a50a467763dce73d44eee9023ffeeb3ebe6279756edb6b437203eb2bc71a30"
+            }
+          ],
+          "removedPersonalColumns": {}
         },
         {
           "id": "62b01bbe-2db8-4676-93a1-5ed316739905",
@@ -52695,11 +54474,20 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2020_AC.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2020_AC.zip",
           "format": "CSV",
-          "status": "catalogued",
+          "status": "published",
           "bytes": 6505612,
           "lastModified": "Fri, 06 Dec 2024 18:25:16 GMT",
           "etag": "\"63448c-6289e22f221ed\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "8509bae9d42ec824f24e1d275aa74d5be0f1f5d12b6f0adcb1fcb0fd5d14d9b8",
+          "assets": [
+            {
+              "name": "62b01bbe-votacao_secao_2020_AC.zip",
+              "bytes": 6505612,
+              "sha256": "8509bae9d42ec824f24e1d275aa74d5be0f1f5d12b6f0adcb1fcb0fd5d14d9b8"
+            }
+          ],
+          "removedPersonalColumns": {}
         },
         {
           "id": "4d70b473-9e35-45fb-b798-fbe3220e58b8",
@@ -52707,11 +54495,20 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2020_AL.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2020_AL.zip",
           "format": "CSV",
-          "status": "catalogued",
+          "status": "published",
           "bytes": 18386881,
           "lastModified": "Fri, 06 Dec 2024 18:25:21 GMT",
           "etag": "\"1188fc1-6289e233b3941\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "8458a14d39bf6fc18cffd0f9a40b0e134c3a082a441030b25b0f248fe2400a14",
+          "assets": [
+            {
+              "name": "4d70b473-votacao_secao_2020_AL.zip",
+              "bytes": 18386881,
+              "sha256": "8458a14d39bf6fc18cffd0f9a40b0e134c3a082a441030b25b0f248fe2400a14"
+            }
+          ],
+          "removedPersonalColumns": {}
         },
         {
           "id": "5c96371b-cf39-4f1a-9e75-018c5cfb9299",
@@ -52719,11 +54516,20 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2020_AP.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2020_AP.zip",
           "format": "CSV",
-          "status": "catalogued",
+          "status": "published",
           "bytes": 4400927,
           "lastModified": "Fri, 06 Dec 2024 18:24:59 GMT",
           "etag": "\"43271f-6289e21ec9765\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "3a84a1a15b24f280862cb8567a79b535fd591da879b88d00bb23d277e7dedff3",
+          "assets": [
+            {
+              "name": "5c96371b-votacao_secao_2020_AP.zip",
+              "bytes": 4400927,
+              "sha256": "3a84a1a15b24f280862cb8567a79b535fd591da879b88d00bb23d277e7dedff3"
+            }
+          ],
+          "removedPersonalColumns": {}
         },
         {
           "id": "d0bd8f5e-9f47-4216-a87f-1c0d25d1f9dc",
@@ -52731,11 +54537,20 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2020_AM.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2020_AM.zip",
           "format": "CSV",
-          "status": "catalogued",
+          "status": "published",
           "bytes": 36573711,
           "lastModified": "Fri, 06 Dec 2024 18:25:21 GMT",
           "etag": "\"22e120f-6289e23418692\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "537f6afc236e13afec805d85f2cd83ef0e57a1a48b13d61704fa9cc06ccb65e4",
+          "assets": [
+            {
+              "name": "d0bd8f5e-votacao_secao_2020_AM.zip",
+              "bytes": 36573711,
+              "sha256": "537f6afc236e13afec805d85f2cd83ef0e57a1a48b13d61704fa9cc06ccb65e4"
+            }
+          ],
+          "removedPersonalColumns": {}
         },
         {
           "id": "4ca09baa-075a-49d3-9633-a91490290f9e",
@@ -52743,11 +54558,20 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2020_BA.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2020_BA.zip",
           "format": "CSV",
-          "status": "catalogued",
+          "status": "published",
           "bytes": 116345264,
           "lastModified": "Fri, 06 Dec 2024 18:25:05 GMT",
           "etag": "\"6ef49b0-6289e22487383\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "8dde52f34311d2a9591c3cae9e6942520d0fdc7572f64a29384c6aa42400e31d",
+          "assets": [
+            {
+              "name": "4ca09baa-votacao_secao_2020_BA.zip",
+              "bytes": 116345264,
+              "sha256": "8dde52f34311d2a9591c3cae9e6942520d0fdc7572f64a29384c6aa42400e31d"
+            }
+          ],
+          "removedPersonalColumns": {}
         },
         {
           "id": "87c23989-0cd7-4861-b439-5da32a7d98e7",
@@ -52755,11 +54579,20 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2020_CE.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2020_CE.zip",
           "format": "CSV",
-          "status": "catalogued",
+          "status": "published",
           "bytes": 71357125,
           "lastModified": "Fri, 06 Dec 2024 18:25:27 GMT",
           "etag": "\"440d2c5-6289e239b091d\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "9fe68d704aa69f6fc289d97e12459635a34e43e0b728a61bc723bfbeea035173",
+          "assets": [
+            {
+              "name": "87c23989-votacao_secao_2020_CE.zip",
+              "bytes": 71357125,
+              "sha256": "9fe68d704aa69f6fc289d97e12459635a34e43e0b728a61bc723bfbeea035173"
+            }
+          ],
+          "removedPersonalColumns": {}
         },
         {
           "id": "cb6af674-e3fd-4172-a6d2-a414e09d7045",
@@ -52767,11 +54600,20 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2020_ES.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2020_ES.zip",
           "format": "CSV",
-          "status": "catalogued",
+          "status": "published",
           "bytes": 32269901,
           "lastModified": "Fri, 06 Dec 2024 18:25:23 GMT",
           "etag": "\"1ec664d-6289e235e3a61\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "37f24a39afa9bcc522eb79ff4dc1156fb8b5cd2817d03984635458bc2555770a",
+          "assets": [
+            {
+              "name": "cb6af674-votacao_secao_2020_ES.zip",
+              "bytes": 32269901,
+              "sha256": "37f24a39afa9bcc522eb79ff4dc1156fb8b5cd2817d03984635458bc2555770a"
+            }
+          ],
+          "removedPersonalColumns": {}
         },
         {
           "id": "67c25b6b-2021-4599-944b-0f06b09ae51a",
@@ -52779,11 +54621,20 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2020_GO.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2020_GO.zip",
           "format": "CSV",
-          "status": "catalogued",
+          "status": "published",
           "bytes": 65143300,
           "lastModified": "Fri, 06 Dec 2024 18:25:27 GMT",
           "etag": "\"3e20204-6289e239b479d\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "1916401af4ae569d335245855c2902d75b5d9ac356f0b0e477d091b0d7c5de45",
+          "assets": [
+            {
+              "name": "67c25b6b-votacao_secao_2020_GO.zip",
+              "bytes": 65143300,
+              "sha256": "1916401af4ae569d335245855c2902d75b5d9ac356f0b0e477d091b0d7c5de45"
+            }
+          ],
+          "removedPersonalColumns": {}
         },
         {
           "id": "17d68d23-b1f0-4f7c-b3de-0c4d6cafc438",
@@ -52791,11 +54642,20 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2020_MA.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2020_MA.zip",
           "format": "CSV",
-          "status": "catalogued",
+          "status": "published",
           "bytes": 49883847,
           "lastModified": "Fri, 06 Dec 2024 18:25:25 GMT",
           "etag": "\"2f92ac7-6289e237df78d\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "179b2b1541c7d8cbb3e5a5e50957d44e693e1dde18c927811874a029edd140c6",
+          "assets": [
+            {
+              "name": "17d68d23-votacao_secao_2020_MA.zip",
+              "bytes": 49883847,
+              "sha256": "179b2b1541c7d8cbb3e5a5e50957d44e693e1dde18c927811874a029edd140c6"
+            }
+          ],
+          "removedPersonalColumns": {}
         },
         {
           "id": "e0c874ba-26e1-4824-bb5a-f4efe3663e20",
@@ -52803,11 +54663,20 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2020_MT.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2020_MT.zip",
           "format": "CSV",
-          "status": "catalogued",
+          "status": "published",
           "bytes": 27996996,
           "lastModified": "Fri, 06 Dec 2024 18:25:38 GMT",
           "etag": "\"1ab3344-6289e24408548\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "c6d8415317693b970a72a252cf7071d2312efd8e7bf5fccc895304e045115d94",
+          "assets": [
+            {
+              "name": "e0c874ba-votacao_secao_2020_MT.zip",
+              "bytes": 27996996,
+              "sha256": "c6d8415317693b970a72a252cf7071d2312efd8e7bf5fccc895304e045115d94"
+            }
+          ],
+          "removedPersonalColumns": {}
         },
         {
           "id": "81bbe443-9208-40d3-b85a-98425a963616",
@@ -52815,11 +54684,20 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2020_MS.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2020_MS.zip",
           "format": "CSV",
-          "status": "catalogued",
+          "status": "published",
           "bytes": 25694018,
           "lastModified": "Fri, 06 Dec 2024 18:25:17 GMT",
           "etag": "\"1880f42-6289e22fb3e01\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "2b933ab0cdfa970f259cae75243adf058498c81845856300650104a2bb822727",
+          "assets": [
+            {
+              "name": "81bbe443-votacao_secao_2020_MS.zip",
+              "bytes": 25694018,
+              "sha256": "2b933ab0cdfa970f259cae75243adf058498c81845856300650104a2bb822727"
+            }
+          ],
+          "removedPersonalColumns": {}
         },
         {
           "id": "a7ea06bb-01a0-4b00-804e-c78e05e6f7b7",
@@ -52827,11 +54705,20 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2020_MG.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2020_MG.zip",
           "format": "CSV",
-          "status": "catalogued",
+          "status": "published",
           "bytes": 218553625,
           "lastModified": "Fri, 06 Dec 2024 18:30:12 GMT",
           "etag": "\"d06dd19-6289e34939fda\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "ee5f6253407665178bad9d4e1f6f48371094e20c76652b93dbb48ad7503199dd",
+          "assets": [
+            {
+              "name": "a7ea06bb-votacao_secao_2020_MG.zip",
+              "bytes": 218553625,
+              "sha256": "ee5f6253407665178bad9d4e1f6f48371094e20c76652b93dbb48ad7503199dd"
+            }
+          ],
+          "removedPersonalColumns": {}
         },
         {
           "id": "aa13316b-8c2f-4075-9b33-b98b2da5af2c",
@@ -52839,11 +54726,20 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2020_PA.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2020_PA.zip",
           "format": "CSV",
-          "status": "catalogued",
+          "status": "published",
           "bytes": 79917609,
           "lastModified": "Fri, 06 Dec 2024 18:25:38 GMT",
           "etag": "\"4c37229-6289e244115d1\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "a288aaa281a2a8af599d0c408811d9ba13ff4fcef8395ce3352b92b9a6bf44d6",
+          "assets": [
+            {
+              "name": "aa13316b-votacao_secao_2020_PA.zip",
+              "bytes": 79917609,
+              "sha256": "a288aaa281a2a8af599d0c408811d9ba13ff4fcef8395ce3352b92b9a6bf44d6"
+            }
+          ],
+          "removedPersonalColumns": {}
         },
         {
           "id": "c73866a8-bf1f-46ad-8a6a-85e21c358204",
@@ -52851,11 +54747,20 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2020_PB.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2020_PB.zip",
           "format": "CSV",
-          "status": "catalogued",
+          "status": "published",
           "bytes": 29065131,
           "lastModified": "Fri, 06 Dec 2024 18:25:29 GMT",
           "etag": "\"1bb7fab-6289e23b95ee7\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "f2ee18275c812ce42a43aa7c685848f6dfaa0b667475ce81d700a0b3ee32e4a5",
+          "assets": [
+            {
+              "name": "c73866a8-votacao_secao_2020_PB.zip",
+              "bytes": 29065131,
+              "sha256": "f2ee18275c812ce42a43aa7c685848f6dfaa0b667475ce81d700a0b3ee32e4a5"
+            }
+          ],
+          "removedPersonalColumns": {}
         },
         {
           "id": "50573c48-020a-4266-ac0b-eef16015914b",
@@ -52863,11 +54768,20 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2020_PR.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2020_PR.zip",
           "format": "CSV",
-          "status": "catalogued",
+          "status": "published",
           "bytes": 107175640,
           "lastModified": "Fri, 06 Dec 2024 18:31:25 GMT",
           "etag": "\"6635ed8-6289e38eb3855\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "21781c3176a0ba53553021af2c593aa5271b442e2c7fc2c86d91121ef73a8a3f",
+          "assets": [
+            {
+              "name": "50573c48-votacao_secao_2020_PR.zip",
+              "bytes": 107175640,
+              "sha256": "21781c3176a0ba53553021af2c593aa5271b442e2c7fc2c86d91121ef73a8a3f"
+            }
+          ],
+          "removedPersonalColumns": {}
         },
         {
           "id": "977f5f4a-8d03-4b3d-aaa5-00001b996f02",
@@ -52875,11 +54789,20 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2020_PE.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2020_PE.zip",
           "format": "CSV",
-          "status": "catalogued",
+          "status": "published",
           "bytes": 79130359,
           "lastModified": "Fri, 06 Dec 2024 18:29:11 GMT",
           "etag": "\"4b76ef7-6289e30f774dc\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "5762dfa5cdf76843e53470eaea635e1486564837018a14dbf2278c2bae079311",
+          "assets": [
+            {
+              "name": "977f5f4a-votacao_secao_2020_PE.zip",
+              "bytes": 79130359,
+              "sha256": "5762dfa5cdf76843e53470eaea635e1486564837018a14dbf2278c2bae079311"
+            }
+          ],
+          "removedPersonalColumns": {}
         },
         {
           "id": "eddf8896-f114-4d1d-b041-7b3be84acce3",
@@ -52887,11 +54810,20 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2020_PI.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2020_PI.zip",
           "format": "CSV",
-          "status": "catalogued",
+          "status": "published",
           "bytes": 22663352,
           "lastModified": "Fri, 06 Dec 2024 18:25:37 GMT",
           "etag": "\"159d0b8-6289e24306c1a\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "fc7a3033351afebad28c49b8325ff470c65d8dcbb7409b856481d92f83f0b329",
+          "assets": [
+            {
+              "name": "eddf8896-votacao_secao_2020_PI.zip",
+              "bytes": 22663352,
+              "sha256": "fc7a3033351afebad28c49b8325ff470c65d8dcbb7409b856481d92f83f0b329"
+            }
+          ],
+          "removedPersonalColumns": {}
         },
         {
           "id": "6574023d-479d-41ad-86a8-6fbed3a511d9",
@@ -52899,11 +54831,20 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2020_RJ.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2020_RJ.zip",
           "format": "CSV",
-          "status": "catalogued",
+          "status": "published",
           "bytes": 177592339,
           "lastModified": "Fri, 06 Dec 2024 18:28:04 GMT",
           "etag": "\"a95d813-6289e2cfb52f1\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "96c8236b37e91034feef36f69f7b58bfcae1a8dd56b9f8679226844a1daf68cd",
+          "assets": [
+            {
+              "name": "6574023d-votacao_secao_2020_RJ.zip",
+              "bytes": 177592339,
+              "sha256": "96c8236b37e91034feef36f69f7b58bfcae1a8dd56b9f8679226844a1daf68cd"
+            }
+          ],
+          "removedPersonalColumns": {}
         },
         {
           "id": "5c3aba6c-5cdb-4b87-8480-2a678abfa253",
@@ -52911,11 +54852,20 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2020_RN.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2020_RN.zip",
           "format": "CSV",
-          "status": "catalogued",
+          "status": "published",
           "bytes": 22549987,
           "lastModified": "Fri, 06 Dec 2024 18:25:33 GMT",
           "etag": "\"15815e3-6289e23fb947a\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "1cc29249a301a7c92f66578a2e971fc66a3df79da60929ce12202d27ada962a6",
+          "assets": [
+            {
+              "name": "5c3aba6c-votacao_secao_2020_RN.zip",
+              "bytes": 22549987,
+              "sha256": "1cc29249a301a7c92f66578a2e971fc66a3df79da60929ce12202d27ada962a6"
+            }
+          ],
+          "removedPersonalColumns": {}
         },
         {
           "id": "6cac2287-517a-4c90-a776-688f4971ad66",
@@ -52923,11 +54873,20 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2020_RS.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2020_RS.zip",
           "format": "CSV",
-          "status": "catalogued",
+          "status": "published",
           "bytes": 107829657,
           "lastModified": "Fri, 06 Dec 2024 18:25:41 GMT",
           "etag": "\"66d5999-6289e246dd717\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "170ab923830e8fc445e95dbad643c51dde3b36ca849f62e8e26f8de08119e26f",
+          "assets": [
+            {
+              "name": "6cac2287-votacao_secao_2020_RS.zip",
+              "bytes": 107829657,
+              "sha256": "170ab923830e8fc445e95dbad643c51dde3b36ca849f62e8e26f8de08119e26f"
+            }
+          ],
+          "removedPersonalColumns": {}
         },
         {
           "id": "12eb2917-eacf-443d-88fa-81b65edd70d7",
@@ -52935,11 +54894,20 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2020_RO.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2020_RO.zip",
           "format": "CSV",
-          "status": "catalogued",
+          "status": "published",
           "bytes": 12928905,
           "lastModified": "Fri, 06 Dec 2024 18:25:34 GMT",
           "etag": "\"c54789-6289e2407e0fb\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "e1bdfe458b81b65e260fde46584e62838e4255b3c8c0bf6943ac839c4ca1e9cc",
+          "assets": [
+            {
+              "name": "12eb2917-votacao_secao_2020_RO.zip",
+              "bytes": 12928905,
+              "sha256": "e1bdfe458b81b65e260fde46584e62838e4255b3c8c0bf6943ac839c4ca1e9cc"
+            }
+          ],
+          "removedPersonalColumns": {}
         },
         {
           "id": "f8f6fb9a-c53e-4e96-afeb-eb133276effa",
@@ -52947,11 +54915,20 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2020_RR.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2020_RR.zip",
           "format": "CSV",
-          "status": "catalogued",
+          "status": "published",
           "bytes": 4146881,
           "lastModified": "Fri, 06 Dec 2024 18:25:11 GMT",
           "etag": "\"3f46c1-6289e22a02d04\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "6f46cb276bef8efebdc646d8fdadc25e1af92df7a814682e239bd90138bb6a66",
+          "assets": [
+            {
+              "name": "f8f6fb9a-votacao_secao_2020_RR.zip",
+              "bytes": 4146881,
+              "sha256": "6f46cb276bef8efebdc646d8fdadc25e1af92df7a814682e239bd90138bb6a66"
+            }
+          ],
+          "removedPersonalColumns": {}
         },
         {
           "id": "0485506f-5f94-4dfe-9e97-990d4a2bee20",
@@ -52959,11 +54936,20 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2020_SC.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2020_SC.zip",
           "format": "CSV",
-          "status": "catalogued",
+          "status": "published",
           "bytes": 58004583,
           "lastModified": "Fri, 06 Dec 2024 18:25:11 GMT",
           "etag": "\"3751467-6289e22a902c8\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "cb19a7aadf1397b5a69a2550e935570ec2721e3998b59470fa23f73953d6fa6e",
+          "assets": [
+            {
+              "name": "0485506f-votacao_secao_2020_SC.zip",
+              "bytes": 58004583,
+              "sha256": "cb19a7aadf1397b5a69a2550e935570ec2721e3998b59470fa23f73953d6fa6e"
+            }
+          ],
+          "removedPersonalColumns": {}
         },
         {
           "id": "5192162f-91ad-41fd-9aaf-869fdee9f9fa",
@@ -52971,11 +54957,20 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2020_SP.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2020_SP.zip",
           "format": "CSV",
-          "status": "catalogued",
+          "status": "published",
           "bytes": 526974460,
           "lastModified": "Fri, 06 Dec 2024 18:48:57 GMT",
           "etag": "\"1f68fdfc-6289e779ff8cc\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "79dbc252f6d6187f351ceaf1bbf2a0d3fba5043a90df1e2af9c4e8bae7244fc8",
+          "assets": [
+            {
+              "name": "5192162f-votacao_secao_2020_SP.zip",
+              "bytes": 526974460,
+              "sha256": "79dbc252f6d6187f351ceaf1bbf2a0d3fba5043a90df1e2af9c4e8bae7244fc8"
+            }
+          ],
+          "removedPersonalColumns": {}
         },
         {
           "id": "02c260ef-8865-4b8b-991e-7e9a1b7a9760",
@@ -52983,11 +54978,20 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2020_SE.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2020_SE.zip",
           "format": "CSV",
-          "status": "catalogued",
+          "status": "published",
           "bytes": 15983779,
           "lastModified": "Fri, 06 Dec 2024 18:25:32 GMT",
           "etag": "\"f3e4a3-6289e23e2a96f\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "f5324a1b99d9274442e6c792b3d4f38e3d30ce9c2db33b29441074fe534cb5ec",
+          "assets": [
+            {
+              "name": "02c260ef-votacao_secao_2020_SE.zip",
+              "bytes": 15983779,
+              "sha256": "f5324a1b99d9274442e6c792b3d4f38e3d30ce9c2db33b29441074fe534cb5ec"
+            }
+          ],
+          "removedPersonalColumns": {}
         },
         {
           "id": "132b5c46-850b-43c5-995e-0243bf9c1cb6",
@@ -52995,14 +54999,150 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2020_TO.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2020_TO.zip",
           "format": "CSV",
-          "status": "catalogued",
+          "status": "published",
           "bytes": 10870608,
           "lastModified": "Fri, 06 Dec 2024 18:25:32 GMT",
           "etag": "\"a5df50-6289e23df80d3\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "f34a04edb07a67ffd487da7a7e9025e4606236fa1c42bc6d4f62c673eb3ce3cf",
+          "assets": [
+            {
+              "name": "132b5c46-votacao_secao_2020_TO.zip",
+              "bytes": 10870608,
+              "sha256": "f34a04edb07a67ffd487da7a7e9025e4606236fa1c42bc6d4f62c673eb3ce3cf"
+            }
+          ],
+          "removedPersonalColumns": {}
         }
       ],
-      "inScope": true
+      "inScope": true,
+      "publicationVerifiedAt": "2026-10-26T22:20:30.439221+00:00",
+      "normalizedSummaries": {
+        "index": "history/indicators.json",
+        "elections": [
+          "2020:426:1:2020-11-15",
+          "2020:427:2:2020-11-29",
+          "2020:445:1:2020-12-06",
+          "2020:446:2:2020-12-20",
+          "2020:460:1:2021-04-11",
+          "2020:466:1:2021-06-13",
+          "2020:467:1:2021-06-13",
+          "2020:468:1:2021-06-13",
+          "2020:469:1:2021-06-13",
+          "2020:470:1:2021-07-04",
+          "2020:471:1:2021-07-04",
+          "2020:482:1:2021-06-13",
+          "2020:483:1:2021-08-01",
+          "2020:484:1:2021-07-04",
+          "2020:485:1:2021-08-01",
+          "2020:486:1:2021-08-01",
+          "2020:487:1:2021-08-01",
+          "2020:488:1:2021-08-01",
+          "2020:489:1:2021-08-01",
+          "2020:490:1:2021-09-12",
+          "2020:491:1:2021-08-01",
+          "2020:492:1:2021-08-01",
+          "2020:493:1:2021-08-01",
+          "2020:504:1:2021-09-12",
+          "2020:506:1:2021-09-12",
+          "2020:508:1:2021-09-12",
+          "2020:510:1:2021-09-12",
+          "2020:511:1:2021-10-03",
+          "2020:512:1:2021-10-03",
+          "2020:513:1:2021-10-03",
+          "2020:514:1:2021-10-03",
+          "2020:515:1:2021-11-07",
+          "2020:516:1:2021-10-03",
+          "2020:517:1:2021-10-03",
+          "2020:518:1:2021-10-03",
+          "2020:519:1:2021-10-03",
+          "2020:521:1:2021-10-03",
+          "2020:522:1:2021-10-03",
+          "2020:523:1:2021-10-03",
+          "2020:524:1:2021-10-03",
+          "2020:525:1:2021-10-03",
+          "2020:526:1:2021-10-03",
+          "2020:527:1:2021-10-03",
+          "2020:528:1:2021-10-03",
+          "2020:529:1:2021-10-03",
+          "2020:530:1:2021-10-03",
+          "2020:531:1:2021-10-03",
+          "2020:532:1:2021-11-07",
+          "2020:533:1:2021-11-07",
+          "2020:534:1:2021-11-07",
+          "2020:535:1:2021-11-07",
+          "2020:536:1:2021-11-07",
+          "2020:537:1:2021-11-07",
+          "2020:538:1:2021-12-05",
+          "2020:539:1:2021-12-05",
+          "2020:540:1:2021-12-05",
+          "2020:541:1:2021-12-05",
+          "2020:542:1:2021-12-05",
+          "2020:543:1:2021-12-05",
+          "2020:550:1:2022-03-13",
+          "2020:551:1:2022-03-13",
+          "2020:552:1:2022-04-03",
+          "2020:553:1:2022-04-03",
+          "2020:554:1:2022-04-03",
+          "2020:555:1:2022-05-15",
+          "2020:556:1:2022-06-05",
+          "2020:557:1:2022-06-05",
+          "2020:558:1:2022-06-05",
+          "2020:562:2:2022-10-30",
+          "2020:563:2:2022-10-30",
+          "2020:564:2:2022-10-30",
+          "2020:565:2:2022-10-30",
+          "2020:566:2:2022-10-30",
+          "2020:571:2:2022-10-30",
+          "2020:572:2:2022-10-30",
+          "2020:574:2:2022-10-30",
+          "2020:580:1:2022-12-11",
+          "2020:581:1:2022-11-27",
+          "2020:582:1:2022-11-27",
+          "2020:583:1:2022-11-27",
+          "2020:584:1:2022-12-11",
+          "2020:585:1:2022-11-27",
+          "2020:586:1:2022-12-11",
+          "2020:587:1:2022-11-27",
+          "2020:588:1:2022-11-27",
+          "2020:589:1:2022-12-11",
+          "2020:590:1:2022-12-11",
+          "2020:591:1:2023-02-05",
+          "2020:594:1:2023-02-05",
+          "2020:595:1:2023-03-05",
+          "2020:597:1:2023-03-05",
+          "2020:598:1:2023-03-05",
+          "2020:599:1:2023-03-05",
+          "2020:601:1:2023-03-05",
+          "2020:602:1:2023-05-07",
+          "2020:603:1:2023-05-07",
+          "2020:604:1:2023-06-04",
+          "2020:605:1:2023-07-02",
+          "2020:606:1:2023-08-06",
+          "2020:607:1:2023-08-06",
+          "2020:609:1:2023-09-03",
+          "2020:610:1:2023-09-03",
+          "2020:611:1:2023-09-03",
+          "2020:612:1:2023-11-12",
+          "2020:613:1:2023-11-12",
+          "2020:614:1:2023-12-03",
+          "2020:615:1:2023-12-03",
+          "2020:616:1:2023-12-03",
+          "2020:617:1:2023-12-03",
+          "2020:618:1:2024-03-03",
+          "2020:621:1:2024-03-03",
+          "2020:623:1:2024-03-03",
+          "2020:624:1:2024-04-07",
+          "2020:626:1:2024-04-28",
+          "2020:627:1:2024-04-28",
+          "2020:628:1:2024-06-09",
+          "2020:629:1:2024-04-28",
+          "2020:630:1:2024-06-09",
+          "2020:631:1:2024-06-09",
+          "2020:632:1:2024-06-09",
+          "2020:638:1:2024-11-10"
+        ]
+      }
     },
     {
       "id": "resultados-2020-boletim-de-urna",
@@ -58759,7 +60899,17 @@
           "inScope": true
         }
       ],
-      "inScope": true
+      "inScope": true,
+      "normalizedSummaries": {
+        "index": "history/indicators.json",
+        "elections": [
+          "2022:544:1:2022-10-02",
+          "2022:545:2:2022-10-30",
+          "2022:546:1:2022-10-02",
+          "2022:547:2:2022-10-30",
+          "2022:6278:1:2026-06-21"
+        ]
+      }
     },
     {
       "id": "resultados-2022-arquivos-transmitidos-para-totalizacao",
@@ -64909,7 +67059,7 @@
       "tag": "data-resultados-2024",
       "releaseUrl": "https://github.com/brauliobo/brazil-audit/releases/tag/data-resultados-2024",
       "normalized": false,
-      "status": "catalogued",
+      "status": "published",
       "resources": [
         {
           "id": "c5e1bff9-98f1-4d3b-b944-37cd22c84112",
@@ -64917,11 +67067,20 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_candidato_munzona/votacao_candidato_munzona_2024.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_candidato_munzona/votacao_candidato_munzona_2024.zip",
           "format": "CSV",
-          "status": "catalogued",
+          "status": "published",
           "bytes": 48241098,
           "lastModified": "Sat, 24 Oct 2026 05:29:19 GMT",
           "etag": "\"2e019ca-65e8f60ee048c\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "fc936c2f33128124601d626ae29d7970a91767359ac8c50ead449c607fd73d18",
+          "assets": [
+            {
+              "name": "c5e1bff9-votacao_candidato_munzona_2024.zip",
+              "bytes": 48241098,
+              "sha256": "fc936c2f33128124601d626ae29d7970a91767359ac8c50ead449c607fd73d18"
+            }
+          ],
+          "removedPersonalColumns": {}
         },
         {
           "id": "701610ba-523e-4941-82ee-e25ab475fcbb",
@@ -64929,11 +67088,20 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_partido_munzona/votacao_partido_munzona_2024.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_partido_munzona/votacao_partido_munzona_2024.zip",
           "format": "CSV",
-          "status": "catalogued",
+          "status": "published",
           "bytes": 6147719,
           "lastModified": "Sat, 24 Oct 2026 05:29:13 GMT",
           "etag": "\"5dce87-65e8f60937537\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "d9ac1746d70a49edf4d490135bfa9419ce13acbecfe2b761512817bee62074a8",
+          "assets": [
+            {
+              "name": "701610ba-votacao_partido_munzona_2024.zip",
+              "bytes": 6147719,
+              "sha256": "d9ac1746d70a49edf4d490135bfa9419ce13acbecfe2b761512817bee62074a8"
+            }
+          ],
+          "removedPersonalColumns": {}
         },
         {
           "id": "51f991a5-6431-426c-b3d4-b61bcdcf12ab",
@@ -64941,11 +67109,20 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/detalhe_votacao_munzona/detalhe_votacao_munzona_2024.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/detalhe_votacao_munzona/detalhe_votacao_munzona_2024.zip",
           "format": "CSV",
-          "status": "catalogued",
+          "status": "published",
           "bytes": 1496777,
           "lastModified": "Sat, 24 Oct 2026 05:29:14 GMT",
           "etag": "\"16d6c9-65e8f609d1dd8\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "51f4c540645269ccca10407442b66e9eaf24b9a65fd0d2c4e00e0b2127504a22",
+          "assets": [
+            {
+              "name": "51f991a5-detalhe_votacao_munzona_2024.zip",
+              "bytes": 1496777,
+              "sha256": "51f4c540645269ccca10407442b66e9eaf24b9a65fd0d2c4e00e0b2127504a22"
+            }
+          ],
+          "removedPersonalColumns": {}
         },
         {
           "id": "34fc801e-8a49-4c25-9d31-e5a6388a1d30",
@@ -64953,11 +67130,20 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/detalhe_votacao_secao/detalhe_votacao_secao_2024.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/detalhe_votacao_secao/detalhe_votacao_secao_2024.zip",
           "format": "CSV",
-          "status": "catalogued",
+          "status": "published",
           "bytes": 87270063,
           "lastModified": "Mon, 22 Jun 2026 14:48:38 GMT",
           "etag": "\"533a2af-654d8bcdb4f1d\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "a9e8c08cd046f92a76b49b709d8525476bcf7933604564025e27796f710866a7",
+          "assets": [
+            {
+              "name": "34fc801e-detalhe_votacao_secao_2024.zip",
+              "bytes": 87270063,
+              "sha256": "a9e8c08cd046f92a76b49b709d8525476bcf7933604564025e27796f710866a7"
+            }
+          ],
+          "removedPersonalColumns": {}
         },
         {
           "id": "a98b167d-ea91-4be0-9419-03d8b11d2c17",
@@ -65277,11 +67463,20 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2024_AC.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2024_AC.zip",
           "format": "CSV",
-          "status": "catalogued",
+          "status": "published",
           "bytes": 5568218,
           "lastModified": "Mon, 22 Jun 2026 14:47:27 GMT",
           "etag": "\"54f6da-654d8b8a22d82\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "3505fe23101505e13d2278e4dd92df5c136d005fe722f260d207402542ba367b",
+          "assets": [
+            {
+              "name": "682e11eb-votacao_secao_2024_AC.zip",
+              "bytes": 5568218,
+              "sha256": "3505fe23101505e13d2278e4dd92df5c136d005fe722f260d207402542ba367b"
+            }
+          ],
+          "removedPersonalColumns": {}
         },
         {
           "id": "ab24af80-b9e2-4d64-a8df-3b7e5cd61966",
@@ -65289,11 +67484,20 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2024_AL.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2024_AL.zip",
           "format": "CSV",
-          "status": "catalogued",
+          "status": "published",
           "bytes": 17376004,
           "lastModified": "Mon, 22 Jun 2026 14:47:22 GMT",
           "etag": "\"1092304-654d8b857f1dd\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "cf102015682676e3cf555ac330442d05a4e56a319ed322c5a087b12b9347c020",
+          "assets": [
+            {
+              "name": "ab24af80-votacao_secao_2024_AL.zip",
+              "bytes": 17376004,
+              "sha256": "cf102015682676e3cf555ac330442d05a4e56a319ed322c5a087b12b9347c020"
+            }
+          ],
+          "removedPersonalColumns": {}
         },
         {
           "id": "8fbc3cf7-967f-4f9c-929a-a4e2dd9558c2",
@@ -65301,11 +67505,20 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2024_AM.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2024_AM.zip",
           "format": "CSV",
-          "status": "catalogued",
+          "status": "published",
           "bytes": 34122098,
           "lastModified": "Mon, 22 Jun 2026 14:47:50 GMT",
           "etag": "\"208a972-654d8ba079c25\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "b1f8db5148c81c3dd85285a7c470b89e17c46489cdccf7e70d54a3657411f333",
+          "assets": [
+            {
+              "name": "8fbc3cf7-votacao_secao_2024_AM.zip",
+              "bytes": 34122098,
+              "sha256": "b1f8db5148c81c3dd85285a7c470b89e17c46489cdccf7e70d54a3657411f333"
+            }
+          ],
+          "removedPersonalColumns": {}
         },
         {
           "id": "8e9e63dc-e89b-4034-9996-07952f5a9fd6",
@@ -65313,11 +67526,20 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2024_AP.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2024_AP.zip",
           "format": "CSV",
-          "status": "catalogued",
+          "status": "published",
           "bytes": 5138859,
           "lastModified": "Mon, 22 Jun 2026 14:46:54 GMT",
           "etag": "\"4e69ab-654d8b6a56d1f\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "4c23d90e011ab45096e2a4d35c68726afd86b0cec30bfaa5d0b748c143bc43b4",
+          "assets": [
+            {
+              "name": "8e9e63dc-votacao_secao_2024_AP.zip",
+              "bytes": 5138859,
+              "sha256": "4c23d90e011ab45096e2a4d35c68726afd86b0cec30bfaa5d0b748c143bc43b4"
+            }
+          ],
+          "removedPersonalColumns": {}
         },
         {
           "id": "47c37d35-24db-4877-8df1-bb5cc8ba9965",
@@ -65325,11 +67547,20 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2024_BA.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2024_BA.zip",
           "format": "CSV",
-          "status": "catalogued",
+          "status": "published",
           "bytes": 113963142,
           "lastModified": "Mon, 22 Jun 2026 14:47:00 GMT",
           "etag": "\"6caf086-654d8b70403a1\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "2c3d1ad1ecf37c01baff8eb954fe163096ebcaf3bd229473c156ec8517ab52bb",
+          "assets": [
+            {
+              "name": "47c37d35-votacao_secao_2024_BA.zip",
+              "bytes": 113963142,
+              "sha256": "2c3d1ad1ecf37c01baff8eb954fe163096ebcaf3bd229473c156ec8517ab52bb"
+            }
+          ],
+          "removedPersonalColumns": {}
         },
         {
           "id": "329d4887-ed28-45f2-a206-0bce1ffe9a24",
@@ -65337,11 +67568,20 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2024_CE.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2024_CE.zip",
           "format": "CSV",
-          "status": "catalogued",
+          "status": "published",
           "bytes": 69533579,
           "lastModified": "Mon, 22 Jun 2026 14:46:44 GMT",
           "etag": "\"424ff8b-654d8b616e559\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "9d5c2b1e7cab35564d18d22fdcb565bc152a476e3f112a72c5465793dee2b443",
+          "assets": [
+            {
+              "name": "329d4887-votacao_secao_2024_CE.zip",
+              "bytes": 69533579,
+              "sha256": "9d5c2b1e7cab35564d18d22fdcb565bc152a476e3f112a72c5465793dee2b443"
+            }
+          ],
+          "removedPersonalColumns": {}
         },
         {
           "id": "9a44c492-4b9c-4829-b43a-d7b502b81ec6",
@@ -65349,11 +67589,20 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2024_ES.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2024_ES.zip",
           "format": "CSV",
-          "status": "catalogued",
+          "status": "published",
           "bytes": 31862561,
           "lastModified": "Mon, 22 Jun 2026 14:46:57 GMT",
           "etag": "\"1e62f21-654d8b6d5b06b\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "32fca0a59d860708de3350d80824a15164a48de5a245dd443de61a8eabd9cea0",
+          "assets": [
+            {
+              "name": "9a44c492-votacao_secao_2024_ES.zip",
+              "bytes": 31862561,
+              "sha256": "32fca0a59d860708de3350d80824a15164a48de5a245dd443de61a8eabd9cea0"
+            }
+          ],
+          "removedPersonalColumns": {}
         },
         {
           "id": "bff950d9-61b9-4baa-b9f5-92eca5a9e78b",
@@ -65361,11 +67610,20 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2024_GO.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2024_GO.zip",
           "format": "CSV",
-          "status": "catalogued",
+          "status": "published",
           "bytes": 64435871,
           "lastModified": "Mon, 22 Jun 2026 14:47:04 GMT",
           "etag": "\"3d7369f-654d8b73f280c\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "ce2cae527a10de2b71fb72b1d936572c8ef56320046503cef15c882e2b438ec7",
+          "assets": [
+            {
+              "name": "bff950d9-votacao_secao_2024_GO.zip",
+              "bytes": 64435871,
+              "sha256": "ce2cae527a10de2b71fb72b1d936572c8ef56320046503cef15c882e2b438ec7"
+            }
+          ],
+          "removedPersonalColumns": {}
         },
         {
           "id": "6bf86ada-88d4-47c5-96c7-e874da680d39",
@@ -65373,11 +67631,20 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2024_MA.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2024_MA.zip",
           "format": "CSV",
-          "status": "catalogued",
+          "status": "published",
           "bytes": 48918240,
           "lastModified": "Mon, 22 Jun 2026 14:47:30 GMT",
           "etag": "\"2ea6ee0-654d8b8d1d0a6\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "727ad9b99feb8ca176a8f221c31b82b8c4499e328bae50b15daf29f7a03deed6",
+          "assets": [
+            {
+              "name": "6bf86ada-votacao_secao_2024_MA.zip",
+              "bytes": 48918240,
+              "sha256": "727ad9b99feb8ca176a8f221c31b82b8c4499e328bae50b15daf29f7a03deed6"
+            }
+          ],
+          "removedPersonalColumns": {}
         },
         {
           "id": "f4092fc0-0841-4b29-993e-412161b0bb7f",
@@ -65385,11 +67652,20 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2024_MG.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2024_MG.zip",
           "format": "CSV",
-          "status": "catalogued",
+          "status": "published",
           "bytes": 201366815,
           "lastModified": "Mon, 22 Jun 2026 14:46:54 GMT",
           "etag": "\"c009d1f-654d8b6acc019\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "b305cb4783deac6e6ac37cd080eb96902af3c55d3dc5a0d794c6b5e771e8586a",
+          "assets": [
+            {
+              "name": "f4092fc0-votacao_secao_2024_MG.zip",
+              "bytes": 201366815,
+              "sha256": "b305cb4783deac6e6ac37cd080eb96902af3c55d3dc5a0d794c6b5e771e8586a"
+            }
+          ],
+          "removedPersonalColumns": {}
         },
         {
           "id": "90c92a6f-6b9d-49c5-8889-63a2212fea0a",
@@ -65397,11 +67673,20 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2024_MS.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2024_MS.zip",
           "format": "CSV",
-          "status": "catalogued",
+          "status": "published",
           "bytes": 23262652,
           "lastModified": "Mon, 22 Jun 2026 14:46:47 GMT",
           "etag": "\"162f5bc-654d8b641ae52\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "1dfa19396cba24bc8d779f609245215e1f1240928ab9ff9cc5a6ad5fdc255e7e",
+          "assets": [
+            {
+              "name": "90c92a6f-votacao_secao_2024_MS.zip",
+              "bytes": 23262652,
+              "sha256": "1dfa19396cba24bc8d779f609245215e1f1240928ab9ff9cc5a6ad5fdc255e7e"
+            }
+          ],
+          "removedPersonalColumns": {}
         },
         {
           "id": "6a0c2759-e560-46f2-94f9-72881a00ab47",
@@ -65409,11 +67694,20 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2024_MT.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2024_MT.zip",
           "format": "CSV",
-          "status": "catalogued",
+          "status": "published",
           "bytes": 26078892,
           "lastModified": "Mon, 22 Jun 2026 14:46:57 GMT",
           "etag": "\"18deeac-654d8b6d72382\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "4d84497edbd8944c2a8f84b4c6c6c04b3d106ca399afe4e6eb6c23bdb535662a",
+          "assets": [
+            {
+              "name": "6a0c2759-votacao_secao_2024_MT.zip",
+              "bytes": 26078892,
+              "sha256": "4d84497edbd8944c2a8f84b4c6c6c04b3d106ca399afe4e6eb6c23bdb535662a"
+            }
+          ],
+          "removedPersonalColumns": {}
         },
         {
           "id": "927fc1c3-3b77-4b51-acac-9678828c5f27",
@@ -65421,11 +67715,20 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2024_PA.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2024_PA.zip",
           "format": "CSV",
-          "status": "catalogued",
+          "status": "published",
           "bytes": 71540522,
           "lastModified": "Mon, 22 Jun 2026 14:47:07 GMT",
           "etag": "\"4439f2a-654d8b771bd16\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "3a9a65d48a49c09bb92c4e3da11800e799a28d7f2922e4fa7c622760da4ec229",
+          "assets": [
+            {
+              "name": "927fc1c3-votacao_secao_2024_PA.zip",
+              "bytes": 71540522,
+              "sha256": "3a9a65d48a49c09bb92c4e3da11800e799a28d7f2922e4fa7c622760da4ec229"
+            }
+          ],
+          "removedPersonalColumns": {}
         },
         {
           "id": "323b8fd8-c276-4e89-8b9f-adfd590d3250",
@@ -65433,11 +67736,20 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2024_PB.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2024_PB.zip",
           "format": "CSV",
-          "status": "catalogued",
+          "status": "published",
           "bytes": 28109471,
           "lastModified": "Mon, 22 Jun 2026 14:47:19 GMT",
           "etag": "\"1acea9f-654d8b823da1c\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "a2005be05e2ee36dcbbbf83871d54edc12ba50ddc6f8361f627c1dfaf5749973",
+          "assets": [
+            {
+              "name": "323b8fd8-votacao_secao_2024_PB.zip",
+              "bytes": 28109471,
+              "sha256": "a2005be05e2ee36dcbbbf83871d54edc12ba50ddc6f8361f627c1dfaf5749973"
+            }
+          ],
+          "removedPersonalColumns": {}
         },
         {
           "id": "25a1936a-0e14-486a-bd4e-a5a57e348289",
@@ -65445,11 +67757,20 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2024_PE.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2024_PE.zip",
           "format": "CSV",
-          "status": "catalogued",
+          "status": "published",
           "bytes": 66653339,
           "lastModified": "Mon, 22 Jun 2026 14:47:10 GMT",
           "etag": "\"3f90c9b-654d8b79ccc5f\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "a0644bdade0339f827c345cc958fd1e9bf3f3e5834ad3e51369819912fe8efcc",
+          "assets": [
+            {
+              "name": "25a1936a-votacao_secao_2024_PE.zip",
+              "bytes": 66653339,
+              "sha256": "a0644bdade0339f827c345cc958fd1e9bf3f3e5834ad3e51369819912fe8efcc"
+            }
+          ],
+          "removedPersonalColumns": {}
         },
         {
           "id": "a2bb8557-b248-4bb7-bd55-e64e8b8a8fe6",
@@ -65457,11 +67778,20 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2024_PI.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2024_PI.zip",
           "format": "CSV",
-          "status": "catalogued",
+          "status": "published",
           "bytes": 23263290,
           "lastModified": "Mon, 22 Jun 2026 14:47:47 GMT",
           "etag": "\"162f83a-654d8b9d3901d\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "e5eed87c495c4cb56ca36237303d64e6943d85fdabe2a64669d7d70762335b6e",
+          "assets": [
+            {
+              "name": "a2bb8557-votacao_secao_2024_PI.zip",
+              "bytes": 23263290,
+              "sha256": "e5eed87c495c4cb56ca36237303d64e6943d85fdabe2a64669d7d70762335b6e"
+            }
+          ],
+          "removedPersonalColumns": {}
         },
         {
           "id": "8cef9a19-a495-4ac1-bb11-ebf2a252a76d",
@@ -65469,11 +67799,20 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2024_PR.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2024_PR.zip",
           "format": "CSV",
-          "status": "catalogued",
+          "status": "published",
           "bytes": 110124174,
           "lastModified": "Mon, 22 Jun 2026 14:47:13 GMT",
           "etag": "\"6905c8e-654d8b7c979b6\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "737233f15259d9cc205a1b2435e79dd7f88a9bc46253e0d7a43b60d6917bc5ae",
+          "assets": [
+            {
+              "name": "8cef9a19-votacao_secao_2024_PR.zip",
+              "bytes": 110124174,
+              "sha256": "737233f15259d9cc205a1b2435e79dd7f88a9bc46253e0d7a43b60d6917bc5ae"
+            }
+          ],
+          "removedPersonalColumns": {}
         },
         {
           "id": "5fb638aa-f29d-454d-9872-38fd84f51b3f",
@@ -65481,11 +67820,20 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2024_RJ.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2024_RJ.zip",
           "format": "CSV",
-          "status": "catalogued",
+          "status": "published",
           "bytes": 156836604,
           "lastModified": "Mon, 22 Jun 2026 14:47:24 GMT",
           "etag": "\"95922fc-654d8b870389f\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "c956615e39ecc4abd1121c5e7add14d94482653728627363e368f3bcec3a9522",
+          "assets": [
+            {
+              "name": "5fb638aa-votacao_secao_2024_RJ.zip",
+              "bytes": 156836604,
+              "sha256": "c956615e39ecc4abd1121c5e7add14d94482653728627363e368f3bcec3a9522"
+            }
+          ],
+          "removedPersonalColumns": {}
         },
         {
           "id": "5c4a8db8-3e54-4a10-a047-7e48d5e8bcff",
@@ -65493,11 +67841,20 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2024_RN.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2024_RN.zip",
           "format": "CSV",
-          "status": "catalogued",
+          "status": "published",
           "bytes": 21597475,
           "lastModified": "Mon, 22 Jun 2026 14:47:15 GMT",
           "etag": "\"1498d23-654d8b7e48b4e\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "9f986702c2059b1760e5f87a1b7385667de30d9fb2e8b8e36033def65586de2b",
+          "assets": [
+            {
+              "name": "5c4a8db8-votacao_secao_2024_RN.zip",
+              "bytes": 21597475,
+              "sha256": "9f986702c2059b1760e5f87a1b7385667de30d9fb2e8b8e36033def65586de2b"
+            }
+          ],
+          "removedPersonalColumns": {}
         },
         {
           "id": "f813789d-26df-48e0-8534-34419b82a8e1",
@@ -65505,11 +67862,20 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2024_RO.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2024_RO.zip",
           "format": "CSV",
-          "status": "catalogued",
+          "status": "published",
           "bytes": 12739577,
           "lastModified": "Mon, 22 Jun 2026 14:47:12 GMT",
           "etag": "\"c263f9-654d8b7c01f37\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "31fcada6606bd4e53dc9f7f7c83a2b0fc5ebb3a5d675ba5b8fd658240d971d75",
+          "assets": [
+            {
+              "name": "f813789d-votacao_secao_2024_RO.zip",
+              "bytes": 12739577,
+              "sha256": "31fcada6606bd4e53dc9f7f7c83a2b0fc5ebb3a5d675ba5b8fd658240d971d75"
+            }
+          ],
+          "removedPersonalColumns": {}
         },
         {
           "id": "0a5c1bcf-45f5-47e0-8592-f3f56ef056ed",
@@ -65517,11 +67883,20 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2024_RR.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2024_RR.zip",
           "format": "CSV",
-          "status": "catalogued",
+          "status": "published",
           "bytes": 4071506,
           "lastModified": "Mon, 22 Jun 2026 14:47:45 GMT",
           "etag": "\"3e2052-654d8b9b19cd3\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "3f2e5dd34af80b991d626a93cfa8005fb71b8d1d4599744608109dc0cd1ebdd4",
+          "assets": [
+            {
+              "name": "0a5c1bcf-votacao_secao_2024_RR.zip",
+              "bytes": 4071506,
+              "sha256": "3f2e5dd34af80b991d626a93cfa8005fb71b8d1d4599744608109dc0cd1ebdd4"
+            }
+          ],
+          "removedPersonalColumns": {}
         },
         {
           "id": "2b584433-8ba0-4ac2-9029-ff9cf8386d4b",
@@ -65529,11 +67904,20 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2024_RS.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2024_RS.zip",
           "format": "CSV",
-          "status": "catalogued",
+          "status": "published",
           "bytes": 96132770,
           "lastModified": "Mon, 22 Jun 2026 14:47:41 GMT",
           "etag": "\"5badea2-654d8b971b995\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "42167998705f965f00657fc3750eb1d794ea4831241abc9d51fcfa0475627308",
+          "assets": [
+            {
+              "name": "2b584433-votacao_secao_2024_RS.zip",
+              "bytes": 96132770,
+              "sha256": "42167998705f965f00657fc3750eb1d794ea4831241abc9d51fcfa0475627308"
+            }
+          ],
+          "removedPersonalColumns": {}
         },
         {
           "id": "960efaba-f09a-4d23-a503-cadc380e929e",
@@ -65541,11 +67925,20 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2024_SC.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2024_SC.zip",
           "format": "CSV",
-          "status": "catalogued",
+          "status": "published",
           "bytes": 53794714,
           "lastModified": "Mon, 22 Jun 2026 14:47:30 GMT",
           "etag": "\"334d79a-654d8b8cdc582\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "36cd7aa412d81ec300e2c7c0d3f05f4ee293b4d7653282a6c3776989969406b4",
+          "assets": [
+            {
+              "name": "960efaba-votacao_secao_2024_SC.zip",
+              "bytes": 53794714,
+              "sha256": "36cd7aa412d81ec300e2c7c0d3f05f4ee293b4d7653282a6c3776989969406b4"
+            }
+          ],
+          "removedPersonalColumns": {}
         },
         {
           "id": "d3f4dd75-37c4-4242-b0d4-361fbdd48284",
@@ -65553,11 +67946,20 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2024_SE.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2024_SE.zip",
           "format": "CSV",
-          "status": "catalogued",
+          "status": "published",
           "bytes": 15603197,
           "lastModified": "Mon, 22 Jun 2026 14:47:43 GMT",
           "etag": "\"ee15fd-654d8b992f92f\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "06a51a88f213f4e1f9df3940d3ec4040f4ee7deee20f81f9d15efe28c72a7b2d",
+          "assets": [
+            {
+              "name": "d3f4dd75-votacao_secao_2024_SE.zip",
+              "bytes": 15603197,
+              "sha256": "06a51a88f213f4e1f9df3940d3ec4040f4ee7deee20f81f9d15efe28c72a7b2d"
+            }
+          ],
+          "removedPersonalColumns": {}
         },
         {
           "id": "655a5e7f-08d7-4a21-8a5f-0c851e21b670",
@@ -65565,11 +67967,20 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2024_SP.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2024_SP.zip",
           "format": "CSV",
-          "status": "catalogued",
+          "status": "published",
           "bytes": 475770264,
           "lastModified": "Mon, 22 Jun 2026 14:46:41 GMT",
           "etag": "\"1c5bad98-654d8b5e79ff4\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "3d7063c453ca4d2e16b37618c43019eb7c73d3fe729ee75d71e57f5102d31797",
+          "assets": [
+            {
+              "name": "655a5e7f-votacao_secao_2024_SP.zip",
+              "bytes": 475770264,
+              "sha256": "3d7063c453ca4d2e16b37618c43019eb7c73d3fe729ee75d71e57f5102d31797"
+            }
+          ],
+          "removedPersonalColumns": {}
         },
         {
           "id": "1aaeb6d3-202f-4fcc-9f06-f772d1fd0d8e",
@@ -65577,14 +67988,67 @@
           "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2024_TO.zip",
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2024_TO.zip",
           "format": "CSV",
-          "status": "catalogued",
+          "status": "published",
           "bytes": 10184639,
           "lastModified": "Mon, 22 Jun 2026 14:47:00 GMT",
           "etag": "\"9b67bf-654d8b6fe1bef\"",
-          "inScope": true
+          "inScope": true,
+          "sha256": "9258920a27193be86b7fa679c30baaf41eb57f63bcf2941f69df326b36665060",
+          "assets": [
+            {
+              "name": "1aaeb6d3-votacao_secao_2024_TO.zip",
+              "bytes": 10184639,
+              "sha256": "9258920a27193be86b7fa679c30baaf41eb57f63bcf2941f69df326b36665060"
+            }
+          ],
+          "removedPersonalColumns": {}
         }
       ],
-      "inScope": true
+      "inScope": true,
+      "publicationVerifiedAt": "2026-10-26T22:19:54.183006+00:00",
+      "normalizedSummaries": {
+        "index": "history/indicators.json",
+        "elections": [
+          "2024:6041:1:2025-04-06",
+          "2024:6042:1:2025-04-06",
+          "2024:6081:1:2025-04-06",
+          "2024:6120:1:2025-04-06",
+          "2024:6140:1:2025-05-04",
+          "2024:6160:1:2025-06-08",
+          "2024:6161:1:2025-06-08",
+          "2024:6180:1:2025-06-08",
+          "2024:619:1:2024-10-06",
+          "2024:6200:1:2025-07-06",
+          "2024:620:2:2024-10-27",
+          "2024:6235:1:2025-07-06",
+          "2024:6236:1:2025-08-03",
+          "2024:6237:1:2025-08-03",
+          "2024:6238:1:2025-09-14",
+          "2024:6240:1:2025-10-05",
+          "2024:6241:1:2025-10-05",
+          "2024:6242:1:2025-10-05",
+          "2024:6243:1:2025-10-05",
+          "2024:6244:1:2025-10-26",
+          "2024:6247:1:2025-12-07",
+          "2024:6248:1:2025-12-07",
+          "2024:6249:1:2025-12-07",
+          "2024:6262:1:2026-03-01",
+          "2024:6263:1:2026-03-01",
+          "2024:6264:1:2026-03-01",
+          "2024:6265:1:2026-04-12",
+          "2024:6266:1:2026-04-12",
+          "2024:6268:1:2026-04-12",
+          "2024:6269:1:2026-05-17",
+          "2024:6270:1:2026-05-17",
+          "2024:6271:1:2026-05-17",
+          "2024:6272:1:2026-05-17",
+          "2024:6275:1:2026-06-21",
+          "2024:6276:1:2026-06-21",
+          "2024:6277:1:2026-06-21",
+          "2024:6280:1:2026-06-21",
+          "2024:6281:1:2026-06-21"
+        ]
+      }
     },
     {
       "id": "resultados-2024-arquivos-transmitidos-para-totalizacao",
@@ -74573,7 +77037,14 @@
           "inScope": false
         }
       ],
-      "inScope": true
+      "inScope": true,
+      "normalizedSummaries": {
+        "index": "history/indicators.json",
+        "elections": [
+          "2026:6257:1:2026-10-04",
+          "2026:6259:1:2026-10-04"
+        ]
+      }
     },
     {
       "id": "resultados-2026-arquivos-transmitidos-para-totalizacao",
@@ -82159,6 +84630,90 @@
         }
       ],
       "inScope": false
+    },
+    {
+      "id": "rdv-resultados-2020-suplementares",
+      "title": "RDV · Resultados - Eleições suplementares 2020",
+      "groups": [
+        "resultados"
+      ],
+      "family": "resultados",
+      "years": [
+        2020
+      ],
+      "license": "",
+      "source": "https://dadosabertos.tse.jus.br/dataset/resultados-2020-suplementares",
+      "branch": "archive/rdv-resultados-2020-suplementares",
+      "tag": "data-rdv-resultados-2020-suplementares",
+      "releaseUrl": "https://github.com/brauliobo/brazil-audit/releases/tag/data-resultados-2020-suplementares",
+      "normalized": false,
+      "status": "published",
+      "inScope": true,
+      "publicationVerifiedAt": "2026-10-26T22:17:39.232112+00:00",
+      "resources": [
+        {
+          "id": "da1eae04-e0e7-4984-bbf5-0c7beb9d65f4",
+          "name": "Arquivos  transmitidos para totalização",
+          "url": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2020/arqurnatot/bu_imgbu_logjez_rdv_vscmr_ele_suplementares_2020.zip",
+          "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2020/arqurnatot/bu_imgbu_logjez_rdv_vscmr_ele_suplementares_2020.zip",
+          "format": "CSV",
+          "status": "prepared",
+          "bytes": 257015077,
+          "lastModified": "Fri, 06 Dec 2024 14:54:42 GMT",
+          "etag": "\"f51bd25-6289b31e92427\"",
+          "inScope": false,
+          "sourceBytes": 257015077,
+          "retrievedAt": "2026-10-26T22:16:16.981837+00:00",
+          "membersAvailable": 17,
+          "membersExtracted": 17,
+          "membersReused": 0,
+          "networkBytes": 7784317,
+          "requests": 37,
+          "elapsedSeconds": 2.37,
+          "assets": [
+            {
+              "name": "da1eae04-rdv-00.zip",
+              "bytes": 1407,
+              "sha256": "9a0f3d3f2944802d6fb2fedf59d89c0e16b02dfc5cfcce9644ab3479ff0ff4b3"
+            },
+            {
+              "name": "da1eae04-rdv-01.zip",
+              "bytes": 970,
+              "sha256": "955db4bd394a5450a44114c0bdd1898a5fa139bd7c12a8902fdab57114ad90dc"
+            },
+            {
+              "name": "da1eae04-rdv-02.zip",
+              "bytes": 939,
+              "sha256": "d79de731563c172b2ccbfbc064f86f99cc6a9601db788075a2660e82e71912d8"
+            },
+            {
+              "name": "da1eae04-rdv-03.zip",
+              "bytes": 973,
+              "sha256": "6c6a9a62c57cd024619a1c08940a73d923508485d770bab296fabb18c5cd6923"
+            },
+            {
+              "name": "da1eae04-rdv-04.zip",
+              "bytes": 974,
+              "sha256": "c8b4fa2e65cda6e5a2e99584b2e65a21d56fb59f05af48a3bebecbbab1ecce61"
+            },
+            {
+              "name": "da1eae04-rdv-05.zip",
+              "bytes": 934,
+              "sha256": "b5c7c24fe1db5c7a2d8726438d220f70885efa878e4dd0aac84967339c8b84ca"
+            },
+            {
+              "name": "da1eae04-rdv-06.zip",
+              "bytes": 961,
+              "sha256": "f022d703d17871e8eaf9403555f8a5d7561515bb64dcbcecd8d3a8322a7d1c73"
+            },
+            {
+              "name": "da1eae04-rdv-07.zip",
+              "bytes": 957,
+              "sha256": "e37766e023e154d64aac24487a2ee892ba46001305116b0ec46ed49b4cfdc528"
+            }
+          ]
+        }
+      ]
     }
   ],
   "knownSourceBytes": 2633827505950,
