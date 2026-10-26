@@ -1,0 +1,48 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-10-26T21:50:12.148323+00:00",
+  "status": "published",
+  "dataset": {
+    "id": "eleitorado-2000",
+    "title": "Eleitorado - 2000",
+    "groups": [
+      "eleitorado"
+    ],
+    "family": "eleitorado",
+    "years": [
+      2000
+    ],
+    "license": "cc-by",
+    "source": "https://dadosabertos.tse.jus.br/dataset/eleitorado-2000",
+    "branch": "archive/eleitorado-2000",
+    "tag": "data-eleitorado-2000",
+    "releaseUrl": "https://github.com/brauliobo/brazil-audit/releases/tag/data-eleitorado-2000",
+    "normalized": false,
+    "status": "catalogued",
+    "inScope": true
+  },
+  "resources": [
+    {
+      "id": "6e68c788-ad7d-4d4d-a599-b70c4db28a90",
+      "name": "Eleitorado - 2000",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitorado/perfil_eleitorado_2000.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitorado/perfil_eleitorado_2000.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 2212679,
+      "lastModified": "Mon, 06 Sep 2021 19:13:45 GMT",
+      "etag": "\"21c347-5cb5872ac2c40\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:50:12.145245+00:00",
+      "sha256": "07aa7274837eb2dbc096d13fce46ccdeb9e1a3e88b1d4e23c5616cc6ccc2c048",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "6e68c788-perfil_eleitorado_2000.zip",
+          "bytes": 2212679,
+          "sha256": "07aa7274837eb2dbc096d13fce46ccdeb9e1a3e88b1d4e23c5616cc6ccc2c048"
+        }
+      ]
+    }
+  ]
+}
