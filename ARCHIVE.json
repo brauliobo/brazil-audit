@@ -1,0 +1,398 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-10-26T21:58:15.614143+00:00",
+  "status": "published",
+  "dataset": {
+    "id": "eleitorado-2016",
+    "title": "Eleitorado - 2016",
+    "groups": [
+      "eleitorado"
+    ],
+    "family": "eleitorado",
+    "years": [
+      2016
+    ],
+    "license": "cc-by",
+    "source": "https://dadosabertos.tse.jus.br/dataset/eleitorado-2016",
+    "branch": "archive/eleitorado-2016",
+    "tag": "data-eleitorado-2016",
+    "releaseUrl": "https://github.com/brauliobo/brazil-audit/releases/tag/data-eleitorado-2016",
+    "normalized": false,
+    "status": "catalogued",
+    "inScope": true
+  },
+  "resources": [
+    {
+      "id": "5d4303b1-8a9b-47dd-8f62-74ae5679574f",
+      "name": "Eleitorado - 2016",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitorado/perfil_eleitorado_2016.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitorado/perfil_eleitorado_2016.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 41603530,
+      "lastModified": "Tue, 26 Aug 2025 10:25:36 GMT",
+      "etag": "\"27ad1ca-63d4217c22800\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:58:09.607337+00:00",
+      "sha256": "0e511c46a2e22c1766c21dd5d8d5d9f50596e1316cc8243a52af74b384784ddd",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "5d4303b1-perfil_eleitorado_2016.zip",
+          "bytes": 41603530,
+          "sha256": "0e511c46a2e22c1766c21dd5d8d5d9f50596e1316cc8243a52af74b384784ddd"
+        }
+      ]
+    },
+    {
+      "id": "e1683c87-e688-4313-b1e2-d44a25fede3f",
+      "name": "Perfil do eleitorado com deficiência - 2016",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_deficiente/perfil_eleitor_deficiencia_2016.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_deficiente/perfil_eleitor_deficiencia_2016.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 29203837,
+      "lastModified": "Tue, 06 Dec 2022 20:51:00 GMT",
+      "etag": "\"1bd9d7d-5ef2ef61a3500\"",
+      "inScope": false
+    },
+    {
+      "id": "86119c97-3f3a-4071-b5ad-dbd632fe4316",
+      "name": "Eleitorado por local de votação - 2016",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/eleitorado_locais_votacao/eleitorado_local_votacao_2016.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/eleitorado_locais_votacao/eleitorado_local_votacao_2016.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 45690110,
+      "lastModified": "Wed, 20 Aug 2025 13:50:45 GMT",
+      "etag": "\"2b92cfe-63ccc42625740\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:58:10.992631+00:00",
+      "sha256": "817f5f5c8977de8159f8434f830ce083f25e698756b3d48f068cf4e5dfb32518",
+      "removedPersonalColumns": {
+        "eleitorado_local_votacao_2016.csv": [
+          "NR_TELEFONE_LOCAL"
+        ]
+      },
+      "assets": [
+        {
+          "name": "86119c97-eleitorado_local_votacao_2016.zip",
+          "bytes": 44469976,
+          "sha256": "e2b7fb6002f52964f45089716b8943af46ecb41d5e45a32cec8945ad245868e2"
+        }
+      ]
+    },
+    {
+      "id": "5e539f73-90df-4a61-a48b-c0cc7e09220f",
+      "name": "AC - Perfil do eleitorado por seção eleitoral - 2016",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2016_AC.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2016_AC.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 2175803,
+      "lastModified": "Tue, 26 Aug 2025 10:25:47 GMT",
+      "etag": "\"21333b-63d42186a00c0\"",
+      "inScope": false
+    },
+    {
+      "id": "47e3dfb5-52af-45a8-a0cf-7f4cfbb75613",
+      "name": "AL - Perfil do eleitorado por seção eleitoral - 2016",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2016_AL.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2016_AL.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 8426256,
+      "lastModified": "Tue, 26 Aug 2025 10:23:36 GMT",
+      "etag": "\"809310-63d42109b1a00\"",
+      "inScope": false
+    },
+    {
+      "id": "8fa5abd3-a794-4323-8766-f4df3fafc6e0",
+      "name": "AM - Perfil do eleitorado por seção eleitoral - 2016",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2016_AM.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2016_AM.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 8253848,
+      "lastModified": "Tue, 26 Aug 2025 10:23:31 GMT",
+      "etag": "\"7df198-63d42104ecec0\"",
+      "inScope": false
+    },
+    {
+      "id": "cbf3afa8-27f7-4ae6-a1e1-35c81a3e4a7d",
+      "name": "AP - Perfil do eleitorado por seção eleitoral - 2016",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2016_AP.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2016_AP.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 1719428,
+      "lastModified": "Tue, 26 Aug 2025 10:25:49 GMT",
+      "etag": "\"1a3c84-63d4218888540\"",
+      "inScope": false
+    },
+    {
+      "id": "bdac1c6d-8b8e-465c-94de-7321fd521f4f",
+      "name": "BA - Perfil do eleitorado por seção eleitoral - 2016",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2016_BA.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2016_BA.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 39282987,
+      "lastModified": "Tue, 26 Aug 2025 10:23:55 GMT",
+      "etag": "\"257692b-63d4211bd04c0\"",
+      "inScope": false
+    },
+    {
+      "id": "49a9dbd7-05d3-4779-a630-727769ab5b99",
+      "name": "CE - Perfil do eleitorado por seção eleitoral - 2016",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2016_CE.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2016_CE.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 25089122,
+      "lastModified": "Tue, 26 Aug 2025 10:27:43 GMT",
+      "etag": "\"17ed462-63d421f5405c0\"",
+      "inScope": false
+    },
+    {
+      "id": "f0e93520-42ca-4dca-b1d3-597de9607b8e",
+      "name": "ES - Perfil do eleitorado por seção eleitoral - 2016",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2016_ES.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2016_ES.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 10807309,
+      "lastModified": "Tue, 26 Aug 2025 10:26:05 GMT",
+      "etag": "\"a4e80d-63d42197ca940\"",
+      "inScope": false
+    },
+    {
+      "id": "b71f1009-4bfa-4502-b2ab-321060f1533e",
+      "name": "GO - Perfil do eleitorado por seção eleitoral - 2016",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2016_GO.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2016_GO.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 19315927,
+      "lastModified": "Tue, 26 Aug 2025 10:25:58 GMT",
+      "etag": "\"126bcd7-63d421911d980\"",
+      "inScope": false
+    },
+    {
+      "id": "1f3f3f64-1986-40cf-ab93-f18b062ed5f8",
+      "name": "MA - Perfil do eleitorado por seção eleitoral  - 2016",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2016_MA.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2016_MA.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 18766953,
+      "lastModified": "Tue, 26 Aug 2025 10:25:44 GMT",
+      "etag": "\"11e5c69-63d42183c3a00\"",
+      "inScope": false
+    },
+    {
+      "id": "607a4e7f-4860-4fc6-9e14-87a716b482ff",
+      "name": "MG - Perfil do eleitorado por seção eleitoral  - 2016",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2016_MG.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2016_MG.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 61478621,
+      "lastModified": "Tue, 26 Aug 2025 10:26:54 GMT",
+      "etag": "\"3aa16dd-63d421c685780\"",
+      "inScope": false
+    },
+    {
+      "id": "77599bd0-e642-4585-9381-aaf842695b02",
+      "name": "MS - Perfil do eleitorado por seção eleitoral - 2016",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2016_MS.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2016_MS.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 7420787,
+      "lastModified": "Tue, 26 Aug 2025 10:26:27 GMT",
+      "etag": "\"713b73-63d421acc5ac0\"",
+      "inScope": false
+    },
+    {
+      "id": "420fc21e-0663-48bf-a0a8-6c754735cd43",
+      "name": "MT - Perfil do eleitorado por seção eleitoral - 2016",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2016_MT.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2016_MT.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 9515115,
+      "lastModified": "Tue, 26 Aug 2025 10:26:21 GMT",
+      "etag": "\"91306b-63d421a70cd40\"",
+      "inScope": false
+    },
+    {
+      "id": "35c3bfc7-b005-4ba4-9a16-1a713c6e2450",
+      "name": "PA - Perfil do eleitorado por seção eleitoral - 2016",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2016_PA.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2016_PA.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 20407746,
+      "lastModified": "Tue, 26 Aug 2025 10:26:16 GMT",
+      "etag": "\"13765c2-63d421a248200\"",
+      "inScope": false
+    },
+    {
+      "id": "0b093226-df23-45b4-a47e-3325bcb38dd0",
+      "name": "PB - Perfil do eleitorado por seção eleitoral - 2016",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2016_PB.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2016_PB.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 12365359,
+      "lastModified": "Tue, 26 Aug 2025 10:27:30 GMT",
+      "etag": "\"bcae2f-63d421e8da880\"",
+      "inScope": false
+    },
+    {
+      "id": "b26ca562-519a-4e12-81db-e2ab26e3ffb1",
+      "name": "PE - Perfil do eleitorado por seção eleitoral - 2016",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2016_PE.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2016_PE.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 25825656,
+      "lastModified": "Tue, 26 Aug 2025 10:27:55 GMT",
+      "etag": "\"18a1178-63d42200b20c0\"",
+      "inScope": false
+    },
+    {
+      "id": "b891754d-6375-4970-ac4d-5184880197ca",
+      "name": "PI - Perfil do eleitorado por seção eleitoral - 2016",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2016_PI.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2016_PI.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 10103850,
+      "lastModified": "Tue, 26 Aug 2025 10:26:59 GMT",
+      "etag": "\"9a2c2a-63d421cb4a2c0\"",
+      "inScope": false
+    },
+    {
+      "id": "aef05b7e-2771-4c9b-8284-6dae64f3fe7e",
+      "name": "PR - Perfil do eleitorado por seção eleitoral - 2016",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2016_PR.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2016_PR.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 33809449,
+      "lastModified": "Tue, 26 Aug 2025 10:28:34 GMT",
+      "etag": "\"203e429-63d42225e3880\"",
+      "inScope": false
+    },
+    {
+      "id": "cc100f96-4c51-440e-931b-82db1389b689",
+      "name": "RJ - Perfil do eleitorado por seção eleitoral - 2016",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2016_RJ.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2016_RJ.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 45357405,
+      "lastModified": "Tue, 26 Aug 2025 10:27:21 GMT",
+      "etag": "\"2b4195d-63d421e045440\"",
+      "inScope": false
+    },
+    {
+      "id": "a0da67ac-562d-4216-8980-c10ceda6ee2f",
+      "name": "RN - Perfil do eleitorado por seção eleitoral - 2016",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2016_RN.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2016_RN.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 9899523,
+      "lastModified": "Tue, 26 Aug 2025 10:28:01 GMT",
+      "etag": "\"970e03-63d422066ae40\"",
+      "inScope": false
+    },
+    {
+      "id": "04d846ce-25f7-46c8-bd2d-0270568878c1",
+      "name": "RO - Perfil do eleitorado por seção eleitoral - 2016",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2016_RO.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2016_RO.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 4907293,
+      "lastModified": "Tue, 26 Aug 2025 10:25:17 GMT",
+      "etag": "\"4ae11d-63d4216a03d40\"",
+      "inScope": false
+    },
+    {
+      "id": "540fb3e0-dcfb-4e6b-8159-8e315d728d24",
+      "name": "RR - Perfil do eleitorado por seção eleitoral - 2016",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2016_RR.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2016_RR.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 1314098,
+      "lastModified": "Tue, 26 Aug 2025 10:28:03 GMT",
+      "etag": "\"140d32-63d42208532c0\"",
+      "inScope": false
+    },
+    {
+      "id": "95da4ac7-a068-4003-a28c-e65144d74774",
+      "name": "RS - Perfil do eleitorado por seção eleitoral - 2016",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2016_RS.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2016_RS.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 36147143,
+      "lastModified": "Tue, 26 Aug 2025 10:25:13 GMT",
+      "etag": "\"2278fc7-63d4216633440\"",
+      "inScope": false
+    },
+    {
+      "id": "82e04dfb-962d-4f45-91e6-f21129872b39",
+      "name": "SE - Perfil do eleitorado por seção eleitoral - 2016",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2016_SE.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2016_SE.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 5999075,
+      "lastModified": "Tue, 26 Aug 2025 10:28:07 GMT",
+      "etag": "\"5b89e3-63d4220c23bc0\"",
+      "inScope": false
+    },
+    {
+      "id": "8b49f46c-08cc-4fa1-a52b-a4c3552f8b44",
+      "name": "SC - Perfil do eleitorado por seção eleitoral - 2016",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2016_SC.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2016_SC.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 19962200,
+      "lastModified": "Tue, 26 Aug 2025 10:28:19 GMT",
+      "etag": "\"1309958-63d42217956c0\"",
+      "inScope": false
+    },
+    {
+      "id": "42a5d8e9-2d28-4338-89ef-fcfd10671bf7",
+      "name": "SP - Perfil do eleitorado por seção eleitoral - 2016",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2016_SP.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2016_SP.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 120926838,
+      "lastModified": "Tue, 26 Aug 2025 10:24:58 GMT",
+      "etag": "\"7353276-63d42157e5280\"",
+      "inScope": false
+    },
+    {
+      "id": "0793e78e-0322-43b3-a347-3c7c609b2217",
+      "name": "TO - Perfil do eleitorado por seção eleitoral - 2016",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2016_TO.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2016_TO.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 4499702,
+      "lastModified": "Tue, 26 Aug 2025 10:23:59 GMT",
+      "etag": "\"44a8f6-63d4211fa0dc0\"",
+      "inScope": false
+    }
+  ]
+}
