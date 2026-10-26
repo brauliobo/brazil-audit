@@ -1,0 +1,70 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-10-26T21:48:23.304794+00:00",
+  "status": "published",
+  "dataset": {
+    "id": "candidatos-1958",
+    "title": "Candidatos - 1958",
+    "groups": [
+      "candidatos"
+    ],
+    "family": "candidatos",
+    "years": [
+      1958
+    ],
+    "license": "cc-by",
+    "source": "https://dadosabertos.tse.jus.br/dataset/candidatos-1958",
+    "branch": "archive/candidatos-1958",
+    "tag": "data-candidatos-1958",
+    "releaseUrl": "https://github.com/brauliobo/brazil-audit/releases/tag/data-candidatos-1958",
+    "normalized": false,
+    "status": "catalogued",
+    "inScope": true
+  },
+  "resources": [
+    {
+      "id": "cc0abca0-a652-48cb-8779-5ccf744c1cea",
+      "name": "Legendas",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_legendas/consulta_legendas_1958.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_legendas/consulta_legendas_1958.zip",
+      "format": "TXT",
+      "status": "prepared",
+      "bytes": 293534,
+      "lastModified": "Thu, 16 Apr 2015 19:35:42 GMT",
+      "etag": "\"47a9e-513dc91b75f80\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:48:23.104366+00:00",
+      "sha256": "6d52ef8364ebbade9ce685dea9b6fa7d32e75fd1b4f240a20f94e6fb38e175b5",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "cc0abca0-consulta_legendas_1958.zip",
+          "bytes": 293534,
+          "sha256": "6d52ef8364ebbade9ce685dea9b6fa7d32e75fd1b4f240a20f94e6fb38e175b5"
+        }
+      ]
+    },
+    {
+      "id": "578a747f-e41c-4b43-a587-4f315023f2b3",
+      "name": "Vagas",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_vagas/consulta_vagas_1958.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_vagas/consulta_vagas_1958.zip",
+      "format": "TXT",
+      "status": "prepared",
+      "bytes": 286426,
+      "lastModified": "Thu, 16 Apr 2015 19:35:54 GMT",
+      "etag": "\"45eda-513dc926e7a80\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:48:23.303888+00:00",
+      "sha256": "3ee7cafc739fdc5e06348ecfe56fd18a5d146530a5da12409cb0a9f35a9a4eb3",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "578a747f-consulta_vagas_1958.zip",
+          "bytes": 286426,
+          "sha256": "3ee7cafc739fdc5e06348ecfe56fd18a5d146530a5da12409cb0a9f35a9a4eb3"
+        }
+      ]
+    }
+  ]
+}
