@@ -1,0 +1,172 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-10-26T23:08:48.534640+00:00",
+  "status": "published",
+  "dataset": {
+    "id": "official-history-2026-2",
+    "title": "Fontes oficiais e resumos históricos · 2026 · turno 2",
+    "groups": [
+      "resultados"
+    ],
+    "family": "resultados",
+    "sourceType": "official-json",
+    "years": [
+      2026
+    ],
+    "license": "",
+    "source": "https://resultados.tse.jus.br/oficial/ele2026/6258/dados/br/br-c0001-e006258-u.json",
+    "branch": "archive/official-history-2026-2",
+    "tag": "data-official-history-2026-2",
+    "releaseUrl": "https://github.com/brauliobo/brazil-audit/releases/tag/data-official-history-2026-2",
+    "normalized": false,
+    "inScope": true,
+    "status": "prepared"
+  },
+  "resources": [
+    {
+      "id": "official-presidential-turnout",
+      "name": "Original presidential turnout JSONs",
+      "url": "https://resultados.tse.jus.br/oficial/ele2026/6258/dados/br/br-c0001-e006258-u.json",
+      "status": "prepared",
+      "inScope": true,
+      "existingRelease": "https://github.com/brauliobo/brazil-audit/releases/tag/data-2026-2",
+      "existingAssets": [
+        {
+          "name": "2026-2-official-turnout.zip",
+          "bytes": 14894621,
+          "sha256": "859049ed2f59bf73567ab09b4f8d368edf5f467367a942dfdf7a4ab321200c38",
+          "url": "https://github.com/brauliobo/brazil-audit/releases/download/data-2026-2/2026-2-official-turnout.zip"
+        }
+      ],
+      "assets": []
+    },
+    {
+      "id": "governor-ac-6260",
+      "name": "Governor · AC",
+      "url": "https://resultados.tse.jus.br/oficial/ele2026/6260/dados/ac/ac-c0003-e006260-u.json",
+      "status": "prepared",
+      "inScope": true,
+      "sha256": "7bf1f65f9c1f77ff9e70fbbbf8ce15c4f3bf843f9ed97783340f95d0fbf5fa88",
+      "bytes": 3123,
+      "assets": [
+        {
+          "name": "2026-2-governor-ac.json",
+          "bytes": 3123,
+          "sha256": "7bf1f65f9c1f77ff9e70fbbbf8ce15c4f3bf843f9ed97783340f95d0fbf5fa88"
+        }
+      ]
+    },
+    {
+      "id": "governor-am-6260",
+      "name": "Governor · AM",
+      "url": "https://resultados.tse.jus.br/oficial/ele2026/6260/dados/am/am-c0003-e006260-u.json",
+      "status": "prepared",
+      "inScope": true,
+      "sha256": "ad814f7694d9cf6d5c4847cbdfdf1f23a281991cd7207f068dc9ddebf3db9acb",
+      "bytes": 3037,
+      "assets": [
+        {
+          "name": "2026-2-governor-am.json",
+          "bytes": 3037,
+          "sha256": "ad814f7694d9cf6d5c4847cbdfdf1f23a281991cd7207f068dc9ddebf3db9acb"
+        }
+      ]
+    },
+    {
+      "id": "governor-df-6260",
+      "name": "Governor · DF",
+      "url": "https://resultados.tse.jus.br/oficial/ele2026/6260/dados/df/df-c0003-e006260-u.json",
+      "status": "prepared",
+      "inScope": true,
+      "sha256": "362a011c437b2120b66f96314703a2c803eaac81a0ed075790bea1cc4989b901",
+      "bytes": 3399,
+      "assets": [
+        {
+          "name": "2026-2-governor-df.json",
+          "bytes": 3399,
+          "sha256": "362a011c437b2120b66f96314703a2c803eaac81a0ed075790bea1cc4989b901"
+        }
+      ]
+    },
+    {
+      "id": "governor-es-6260",
+      "name": "Governor · ES",
+      "url": "https://resultados.tse.jus.br/oficial/ele2026/6260/dados/es/es-c0003-e006260-u.json",
+      "status": "prepared",
+      "inScope": true,
+      "sha256": "ed715ecbb21d48c5e10dc8dda4e7c738bbeb72ad9bb1963d010dcacf9314da0c",
+      "bytes": 3089,
+      "assets": [
+        {
+          "name": "2026-2-governor-es.json",
+          "bytes": 3089,
+          "sha256": "ed715ecbb21d48c5e10dc8dda4e7c738bbeb72ad9bb1963d010dcacf9314da0c"
+        }
+      ]
+    },
+    {
+      "id": "governor-rn-6260",
+      "name": "Governor · RN",
+      "url": "https://resultados.tse.jus.br/oficial/ele2026/6260/dados/rn/rn-c0003-e006260-u.json",
+      "status": "prepared",
+      "inScope": true,
+      "sha256": "6ba7877cba3837cbccca75c839917fe697fdbf8917a3b8cb4580e5d7d760d869",
+      "bytes": 3360,
+      "assets": [
+        {
+          "name": "2026-2-governor-rn.json",
+          "bytes": 3360,
+          "sha256": "6ba7877cba3837cbccca75c839917fe697fdbf8917a3b8cb4580e5d7d760d869"
+        }
+      ]
+    },
+    {
+      "id": "governor-to-6260",
+      "name": "Governor · TO",
+      "url": "https://resultados.tse.jus.br/oficial/ele2026/6260/dados/to/to-c0003-e006260-u.json",
+      "status": "prepared",
+      "inScope": true,
+      "sha256": "6629b897507db1a4f2f861831fd26425e2b00cd2bcdb2701f57b4283db3e0bf5",
+      "bytes": 3373,
+      "assets": [
+        {
+          "name": "2026-2-governor-to.json",
+          "bytes": 3373,
+          "sha256": "6629b897507db1a4f2f861831fd26425e2b00cd2bcdb2701f57b4283db3e0bf5"
+        }
+      ]
+    },
+    {
+      "id": "normalized-2026:6258:2:2026-10-25",
+      "name": "Eleição Geral 2026 — Presidente",
+      "url": "https://resultados.tse.jus.br/oficial/ele2026/6258/dados/ac/ac-c0001-e006258-u.json",
+      "status": "prepared",
+      "inScope": true,
+      "normalizedSummary": true,
+      "rows": 12078,
+      "assets": [
+        {
+          "name": "indicators-2026-6258-2-2026-10-25.csv.gz",
+          "bytes": 821258,
+          "sha256": "09817c560ccb5759aa88804995e4311451ca57dde109949e496de0d7d152691e"
+        }
+      ]
+    },
+    {
+      "id": "normalized-2026:6260:2:2026-10-25",
+      "name": "Eleição Geral 2026 — Governador",
+      "url": "https://resultados.tse.jus.br/oficial/ele2026/6260/dados/ac/ac-c0003-e006260-u.json",
+      "status": "prepared",
+      "inScope": true,
+      "normalizedSummary": true,
+      "rows": 6,
+      "assets": [
+        {
+          "name": "indicators-2026-6260-2-2026-10-25.csv.gz",
+          "bytes": 873,
+          "sha256": "f61cbc71e43fd6eee0512581aff4cdccc3dd92f9ebd5926b297f269c1dcfb6a7"
+        }
+      ]
+    }
+  ]
+}
