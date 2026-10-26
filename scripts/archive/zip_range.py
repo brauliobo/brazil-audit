@@ -5,6 +5,7 @@ import io
 import http.client
 import urllib.parse
 import urllib.request
+import urllib.error
 
 
 @dataclasses.dataclass(frozen=True)
@@ -28,11 +29,18 @@ class RemoteZipFile(io.RawIOBase):
         self.capture = capture
         self.url = url
         if version is None:
-            with urllib.request.urlopen(urllib.request.Request(url, method='HEAD'), timeout=40) as response:
-                self.size = int(response.headers['Content-Length'])
-                self.etag = response.headers['ETag']
-                url = response.geturl()
-                self.url = url
+            for attempt in range(3):
+                try:
+                    with urllib.request.urlopen(urllib.request.Request(url, method='HEAD'), timeout=40) as response:
+                        self.size = int(response.headers['Content-Length'])
+                        self.etag = response.headers['ETag']
+                        url = response.geturl()
+                        self.url = url
+                    break
+                except (TimeoutError, ConnectionError, urllib.error.URLError) as error:
+                    reason = error.reason if isinstance(error, urllib.error.URLError) else error
+                    if not isinstance(reason, (TimeoutError, ConnectionError)) or attempt == 2:
+                        raise
         else:
             self.size, self.etag = version
         address = urllib.parse.urlsplit(url)

@@ -113,3 +113,81 @@ class DerivedCollectionTest(unittest.TestCase):
         finally:
             for _ in range(31):
                 archive_rdv.NETWORK_SLOTS.release()
+
+
+class PipelineOverlapTest(unittest.TestCase):
+    def test_next_collection_downloads_while_previous_release_uploads(self):
+        import threading
+        from unittest.mock import patch
+        import archive_rdv
+        upload_started = threading.Event()
+        second_downloaded = threading.Event()
+        published = []
+        datasets = [dict(id=name, title=name, groups=['resultados'], years=[2024], license='', source='https://dadosabertos.tse.jus.br/',
+                         resources=[dict(id=name, url=f'https://cdn.tse.jus.br/{name}/arqurnatot/source.zip')]) for name in ['first', 'second']]
+        def extract(root, resource, reused):
+            if resource['id'] == 'second':
+                self.assertTrue(upload_started.wait(1))
+                second_downloaded.set()
+            return dict(status='prepared'), []
+        def publish(root, collection, entries, paths):
+            if collection['id'] == 'rdv-first':
+                upload_started.set()
+                self.assertTrue(second_downloaded.wait(1))
+            published.append(collection['id'])
+        with patch('archive_rdv.extract_bundle', extract), patch('archive_rdv.publish_collection', publish):
+            archive_rdv.run(pathlib.Path('.'), dict(datasets=datasets), {})
+        self.assertEqual(published, ['rdv-first', 'rdv-second'])
+
+
+class EmptyOfficialSourceTest(unittest.TestCase):
+    def test_documentation_only_and_empty_archives_preserve_evidence_without_claiming_zero_votes(self):
+        import io
+        import tempfile
+        import zipfile
+        from unittest.mock import patch
+        from archive_rdv import extract_bundle
+        from tse_archive import resource_complete
+        for documentation in [False, True]:
+            buffer = io.BytesIO()
+            with zipfile.ZipFile(buffer, 'w') as archive:
+                if documentation:
+                    archive.writestr('leiame.pdf', b'official layout')
+            body = buffer.getvalue()
+            class Source(io.BytesIO):
+                def __init__(self, *args, **kwargs):
+                    super().__init__(body)
+                    self.size, self.etag, self.transferred, self.requests = len(body), 'version', 0, 0
+                def snapshot(self):
+                    return None
+            with tempfile.TemporaryDirectory() as temporary, patch('archive_rdv.RemoteZipFile', Source):
+                result, paths = extract_bundle(pathlib.Path(temporary), dict(id='resource', url='https://cdn.tse.jus.br/source.zip'), {})
+                self.assertEqual(result['status'], 'unavailable')
+                self.assertEqual(result['availability'], 'empty_source')
+                self.assertEqual(result['membersAvailable'], 0)
+                self.assertEqual(result['sourceMemberCount'], int(documentation))
+                self.assertEqual(len(result['sourceInventorySha256']), 64)
+                self.assertEqual(len(result['sourceArchiveSha256']), 64)
+                self.assertTrue(resource_complete(result))
+                self.assertFalse(resource_complete({**result, 'inventoryVerified': False}))
+                self.assertEqual(len(paths), 1)
+                with zipfile.ZipFile(paths[0]) as archive:
+                    self.assertEqual(archive.namelist(), ['leiame.pdf'] if documentation else [])
+
+    def test_an_unknown_rdv_format_is_not_classified_as_missing_data(self):
+        import io
+        import tempfile
+        import zipfile
+        from unittest.mock import patch
+        from archive_rdv import extract_bundle
+        buffer = io.BytesIO()
+        with zipfile.ZipFile(buffer, 'w') as archive:
+            archive.writestr('urn-rdv.unknown', b'unknown representation')
+        body = buffer.getvalue()
+        class Source(io.BytesIO):
+            def __init__(self, *args, **kwargs):
+                super().__init__(body)
+                self.size, self.etag, self.transferred, self.requests = len(body), 'version', 0, 0
+        with tempfile.TemporaryDirectory() as temporary, patch('archive_rdv.RemoteZipFile', Source):
+            with self.assertRaisesRegex(ValueError, 'Unsupported RDV member format'):
+                extract_bundle(pathlib.Path(temporary), dict(id='resource', url='https://cdn.tse.jus.br/source.zip'), {})

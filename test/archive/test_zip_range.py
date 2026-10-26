@@ -52,6 +52,23 @@ class RemoteArchiveTest(unittest.TestCase):
             self.assertEqual(z.read('urn-rdv.dat'), b'actual anonymous RDV')
             self.assertLess(file.transferred, len(body) // 10)
 
+    def test_head_tls_timeout_reconnects_but_http_errors_are_not_retried(self):
+        import urllib.error
+        calls = []
+        def request(req, timeout):
+            calls.append(req.full_url)
+            if len(calls) == 1:
+                raise urllib.error.URLError(TimeoutError('TLS handshake timed out'))
+            return Response(b'', 200, {'Content-Length': '100', 'ETag': '"version"'})
+        with patch('urllib.request.urlopen', request), RemoteZipFile('https://cdn.tse.jus.br/a.zip', connection=Connection(request)):
+            pass
+        self.assertEqual(calls, ['https://cdn.tse.jus.br/a.zip'] * 2)
+        error = urllib.error.HTTPError('https://cdn.tse.jus.br/a.zip', 403, 'Forbidden', {}, None)
+        with patch('urllib.request.urlopen', side_effect=error) as request:
+            with self.assertRaises(urllib.error.HTTPError):
+                RemoteZipFile('https://cdn.tse.jus.br/a.zip')
+            self.assertEqual(request.call_count, 1)
+
     def test_metadata_snapshot_shares_verified_bytes_without_another_request(self):
         def request(req, timeout):
             if req.get_method() == 'HEAD':

@@ -253,10 +253,16 @@ def publish(root, dataset):
     return publish_prepared(root, dataset, entries, paths)
 
 
+def resource_complete(entry):
+    if entry['status'] in ['prepared', 'excluded']:
+        return True
+    return entry['status'] == 'unavailable' and entry.get('availability') in ['empty_source', 'no-rdv-published'] and entry.get('membersAvailable') == 0 and entry.get('inventoryVerified') is True
+
+
 def publish_prepared(root, dataset, entries, paths):
     directory = root / 'releases' / dataset['id']
     directory.mkdir(parents=True, exist_ok=True)
-    status = 'published' if all(e['status'] in ['prepared', 'excluded'] for e in entries) else 'partial'
+    status = 'published' if all(resource_complete(e) for e in entries) else 'partial'
     manifest = dict(schemaVersion=1, generatedAt=now(), status=status, dataset={k: v for k, v in dataset.items() if k != 'resources'}, resources=entries)
     write_json(directory / 'ARCHIVE.json', manifest)
     sums = '\n'.join(f'{sha256(path)}  {path.name}' for path in paths) + '\n'
@@ -281,8 +287,9 @@ def publish_prepared(root, dataset, entries, paths):
     subprocess.run(['git', 'push', GIT, f'{commit}:refs/heads/{branch}'], check=True)
     exists = subprocess.run(['gh', 'release', 'view', dataset['tag'], '-R', REPO], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL).returncode == 0
     if not exists:
-        subprocess.run(['gh', 'release', 'create', dataset['tag'], '-R', REPO, '--target', branch, '--title', dataset['title'], '--notes-file', str(directory / 'README.md')], check=True)
-    current = json.loads(command('gh', 'api', f'repos/{REPO}/releases/tags/{dataset["tag"]}', '--jq', '.assets'))
+        subprocess.run(['gh', 'release', 'create', dataset['tag'], '-R', REPO, '--target', branch, '--title', dataset['title'], '--notes-file', str(directory / 'README.md'), '--draft'], check=True)
+    release_api = command('gh', 'release', 'view', dataset['tag'], '-R', REPO, '--json', 'apiUrl', '--jq', '.apiUrl')
+    current = json.loads(command('gh', 'api', release_api, '--jq', '.assets'))
     known = {a['name']: (a['size'], a.get('digest')) for a in current}
     for path in paths + [directory / name for name in files]:
         if known.get(path.name) == (path.stat().st_size, f'sha256:{sha256(path)}'):
@@ -296,7 +303,7 @@ def publish_prepared(root, dataset, entries, paths):
             except (subprocess.TimeoutExpired, subprocess.CalledProcessError):
                 if attempt == 2:
                     raise
-    assets = json.loads(command('gh', 'api', f'repos/{REPO}/releases/tags/{dataset["tag"]}', '--jq', '.assets'))
+    assets = json.loads(command('gh', 'api', release_api, '--jq', '.assets'))
     expected = {p.name: (p.stat().st_size, sha256(p)) for p in paths + [directory / name for name in files]}
     remote_assets = {a['name']: (a['size'], a.get('digest')) for a in assets}
     if set(expected) != set(remote_assets):
@@ -304,6 +311,7 @@ def publish_prepared(root, dataset, entries, paths):
     for name, (size, digest) in expected.items():
         if remote_assets[name] != (size, f'sha256:{digest}'):
             raise ValueError(f'Remote digest or size mismatch: {name}')
+    subprocess.run(['gh', 'release', 'edit', dataset['tag'], '-R', REPO, '--draft=false'], check=True)
     write_json(directory / 'VERIFIED.json', dict(verifiedAt=now(), commit=commit, assets=len(expected), bytes=sum(v[0] for v in expected.values())))
     return manifest
 

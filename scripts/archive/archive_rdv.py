@@ -69,20 +69,39 @@ def extract_bundle(root, resource, reused):
     directory.mkdir(parents=True, exist_ok=True)
     state = directory / 'VERIFIED.json'
     started = time.monotonic()
+    documents = []
+    source_archive_sha256 = None
     with NETWORK_SLOTS, RemoteZipFile(resource['url'], capture=True) as remote, zipfile.ZipFile(remote) as source:
         version = remote.size, remote.etag
-        members = [m for m in source.infolist() if m.filename.lower().endswith(('.rdv', '-rdv.dat'))]
-        if not members:
-            raise ValueError(f'No recognized RDV members in official bundle: {resource["url"]}')
+        all_members = source.infolist()
+        members = [m for m in all_members if m.filename.lower().endswith(('.rdv', '-rdv.dat'))]
+        unknown = [m.filename for m in all_members if not m.is_dir() and 'rdv' in m.filename.lower() and not m.filename.lower().endswith(('.rdv', '-rdv.dat', '.pdf', '.txt', '.md'))]
+        if unknown:
+            raise ValueError(f'Unsupported RDV member format: {unknown}')
+        if not members and all(m.is_dir() or m.filename.lower().endswith(('.pdf', '.txt', '.md')) for m in all_members):
+            remote.seek(0)
+            body = remote.read()
+            source_archive_sha256 = hashlib.sha256(body).hexdigest()
+            document = directory / f'{resource["id"][:8]}-source-documentation.zip'
+            document.write_bytes(body)
+            with zipfile.ZipFile(document) as check:
+                if check.testzip():
+                    raise ValueError('Official documentation archive CRC mismatch')
+            documents.append(document)
         snapshot = remote.snapshot()
         network, requests = remote.transferred, remote.requests
     inventory = sorted((m.filename, m.file_size, m.CRC) for m in members)
+    inventory_sha256 = hashlib.sha256(json.dumps(sorted((m.filename, m.file_size, m.CRC) for m in all_members), ensure_ascii=False).encode()).hexdigest()
     if state.exists():
         result = read_json(state)
+        if not members:
+            result.update(status='unavailable', availability='empty_source', sourceArchiveSha256=source_archive_sha256, sourceInventorySha256=inventory_sha256, assets=[dict(name=p.name, bytes=p.stat().st_size, sha256=sha256(p)) for p in documents])
         recorded = sorted([(m['name'], m['bytes'], m['crc32']) for m in result['extracted']] +
                           [(m['sourceMember'], m['bytes'], m['crc32']) for m in result['reused']])
         if result['etag'] == version[1] and recorded == inventory and all((directory / a['name']).exists() and sha256(directory / a['name']) == a['sha256'] for a in result['assets']):
             result['selectionVersion'] = 2
+            result['inventoryVerified'] = True
+            result['sourceInventorySha256'] = inventory_sha256
             write_json(state, result)
             return result, [directory / a['name'] for a in result['assets']]
     state_match = re.search(r'_([A-Z]{2})\.zip$', resource['url'])
@@ -112,7 +131,7 @@ def extract_bundle(root, resource, reused):
                 raise ValueError('Output RDV ZIP CRC mismatch')
         return output, records, network, requests
     tasks = [(i, selected[i::STREAMS]) for i in range(min(STREAMS, len(selected)))]
-    paths = []
+    paths = documents.copy()
     extracted = []
     with concurrent.futures.ThreadPoolExecutor(max_workers=STREAMS) as pool:
         for output, records, transferred, count in pool.map(shard, tasks):
@@ -121,7 +140,9 @@ def extract_bundle(root, resource, reused):
             network += transferred
             requests += count
     result = dict(url=resource['url'], etag=version[1], sourceBytes=version[0], retrievedAt=now(),
-                  status='prepared', selectionVersion=2, membersAvailable=len(members), membersExtracted=len(extracted), membersReused=len(matched),
+                  status='prepared' if members else 'unavailable', availability='available' if members else 'empty_source',
+                  selectionVersion=2, inventoryVerified=True, sourceInventorySha256=inventory_sha256, sourceArchiveSha256=source_archive_sha256, sourceMemberCount=len(all_members),
+                  otherMemberNames=[m.filename for m in all_members] if not members else [], membersAvailable=len(members), membersExtracted=len(extracted), membersReused=len(matched),
                   reused=matched, extracted=extracted, networkBytes=network, requests=requests, elapsedSeconds=round(time.monotonic()-started, 2),
                   assets=[dict(name=p.name, bytes=p.stat().st_size, sha256=sha256(p)) for p in paths])
     write_json(state, result)
@@ -138,31 +159,40 @@ def derived_collection(dataset, resources):
                 resources=resources, inScope=True)
 
 
+def publish_collection(root, collection, entries, paths):
+    # Per-member integrity evidence remains a release asset, not a huge Pages catalogue.
+    detail = root / 'releases' / collection['id'] / 'MEMBERS.json'
+    write_json(detail, dict(generatedAt=now(), sources=entries))
+    compact = [{k: v for k, v in entry.items() if k not in ['extracted', 'reused']} for entry in entries]
+    manifest = publish_prepared(root, collection, compact, paths + [detail])
+    write_json(root / 'rdv' / f'{collection["id"]}.json', manifest)
+    print(f'published {collection["id"]}', flush=True)
+
+
+def run(root, catalog, reused, selected=None):
+    jobs = []
+    with concurrent.futures.ThreadPoolExecutor(max_workers=1) as publisher:
+        for dataset in catalog['datasets']:
+            resources = [r for r in dataset['resources'] if '/arqurnatot/' in r['url'] and r['url'].endswith('.zip')]
+            if not resources or selected and dataset['id'] not in selected:
+                continue
+            collection = derived_collection(dataset, resources)
+            entries, paths = [], []
+            with concurrent.futures.ThreadPoolExecutor(max_workers=4) as pool:
+                for resource, (result, files) in zip(resources, pool.map(lambda r: extract_bundle(root, r, reused), resources)):
+                    entries.append({**resource, **result, 'inScope': True})
+                    paths.extend(files)
+            jobs.append(publisher.submit(publish_collection, root, collection, entries, paths))
+        for job in jobs:
+            job.result()
+
+
 def main():
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument('--root', type=pathlib.Path, default=pathlib.Path('.cache/tse-archive'))
     p.add_argument('--dataset', action='append')
-    a = p.parse_args()
-    catalog = read_json(a.root / 'catalog/catalog.json')
-    reused = existing(a.root)
-    for dataset in catalog['datasets']:
-        resources = [r for r in dataset['resources'] if '/arqurnatot/' in r['url'] and r['url'].endswith('.zip')]
-        if not resources or a.dataset and dataset['id'] not in a.dataset:
-            continue
-        collection = derived_collection(dataset, resources)
-        entries, paths = [], []
-        with concurrent.futures.ThreadPoolExecutor(max_workers=4) as pool:
-            for resource, (result, files) in zip(resources, pool.map(lambda r: extract_bundle(a.root, r, reused), resources)):
-                entries.append({**resource, **result, 'inScope': True})
-                paths.extend(files)
-        # Per-member integrity and exact reuse evidence are release assets, not a huge Pages catalogue.
-        detail = a.root / 'releases' / collection['id'] / 'MEMBERS.json'
-        write_json(detail, dict(generatedAt=now(), sources=entries))
-        paths.append(detail)
-        compact = [{k: v for k, v in entry.items() if k not in ['extracted', 'reused']} for entry in entries]
-        manifest = publish_prepared(a.root, collection, compact, paths)
-        write_json(a.root / 'rdv' / f'{collection["id"]}.json', manifest)
-        print(f'published {collection["id"]}', flush=True)
+    args = p.parse_args()
+    run(args.root, read_json(args.root / 'catalog/catalog.json'), existing(args.root), args.dataset)
 
 
 if __name__ == '__main__':
