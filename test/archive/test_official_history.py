@@ -46,6 +46,22 @@ class OfficialHistoryTest(unittest.TestCase):
         self.assertEqual(diagnostics[0]['unavailableMetrics'], ['null'])
         self.assertIsNone(next(iter(elections[row['election_id']]['rows'].values()))['null'])
 
+    def test_ballot_denominator_is_native_and_not_inferred_from_voters(self):
+        source = dict(id='source', url='https://cdn.tse.jus.br/source.zip')
+        row = normalize(dict(ANO_ELEICAO='2018', CD_CARGO='5', DS_CARGO='Senador', QT_APTOS='1000', QT_COMPARECIMENTO='800', QT_VOTOS='1600'), source)
+        self.assertEqual(row['ballots'], 1600)
+        self.assertEqual(row['present'], 800)
+        row = normalize(dict(ANO_ELEICAO='1989', QTD_COMPARECIMENTO='800'), source)
+        self.assertIsNone(row['ballots'])
+
+    def test_converted_zero_total_is_unavailable_when_reported_votes_are_positive(self):
+        row = normalize(dict(ANO_ELEICAO='1994', QT_VOTOS='0', QT_VOTOS_BRANCOS='923', QT_VOTOS_NULOS='884'),
+                        dict(id='source', url='https://cdn.tse.jus.br/source.zip'))
+        self.assertIsNone(row['ballots'])
+        self.assertEqual(row['blank'], 923)
+        self.assertEqual(row['null'], 884)
+        self.assertEqual(row['_invalid_ballots'], 0)
+
     def test_annulled_categories_are_retained_without_assuming_they_are_null(self):
         row = normalize(dict(ANO_ELEICAO='2018', QT_TOTAL_VOTOS_ANULADOS='2', QT_TOTAL_VOTOS_ANUL_SUBJUD='3', QT_VOTOS_ANULADOS_APU_SEP='746'),
                         dict(id='source', url='https://cdn.tse.jus.br/source.zip'))

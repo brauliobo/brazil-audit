@@ -9,8 +9,10 @@ import subprocess
 import urllib.request
 
 
-def election_configs():
-    code = "import {ELECTION_LIST} from './src/elections.js'; console.log(JSON.stringify(ELECTION_LIST.filter(e=>e.hasTurnout).map(({key,year,turn,date,official})=>({key,year,turn,date,official}))))"
+def election_configs(turnout_only=True):
+    selection = 'e.official && e.hasTurnout' if turnout_only else 'e.official'
+    code = "import {ELECTION_LIST} from './src/elections.js'; console.log(JSON.stringify(ELECTION_LIST.filter(e=>SELECTED).map(({key,year,turn,date,official})=>({key,year,turn,date,official}))))"
+    code = code.replace('SELECTED', selection)
     return json.loads(subprocess.check_output(['node', '--input-type=module', '-e', code]))
 
 
@@ -37,7 +39,8 @@ def adapt(source, target, config, url, digest, normalize):
                NM_TIPO_ELEICAO='Eleição Ordinária', SG_UF=target['state'], CD_MUNICIPIO=target.get('code', ''), NR_ZONA=target.get('zone', ''),
                CD_CARGO=code, DS_CARGO=cargo['nmn'], QT_APTOS=e['te'], QT_COMPARECIMENTO=e['c'], QT_ABSTENCOES=e['a'],
                QT_ELEITORES_SECOES_NAO_INSTALADAS=e['esni'], QT_VOTOS_BRANCOS=v.get('vb'), QT_VOTOS_NULOS=v.get('vn'),
-               QT_TOTAL_VOTOS_NULOS=v.get('tvn'), QT_VOTOS_NULOS_TECNICOS=v.get('vnt'), QT_TOTAL_SECOES=s.get('ts'))
+               QT_TOTAL_VOTOS_NULOS=v.get('tvn'), QT_VOTOS_NULOS_TECNICOS=v.get('vnt'), QT_TOTAL_SECOES=s.get('ts'), QT_VOTOS=v.get('tv'),
+               QT_TOTAL_VOTOS_ANULADOS=v.get('van'), QT_TOTAL_VOTOS_ANUL_SUBJUD=v.get('vansj'))
     resource = dict(id=f'official-{event}-{code}', url=url, sha256=digest)
     row = normalize(raw, resource)
     row['valid'] = int(v['vv']) if str(v.get('vv', '')).isdigit() else None
@@ -88,3 +91,25 @@ def official_rows(root, normalize):
         with concurrent.futures.ThreadPoolExecutor(max_workers=4) as pool:
             for row in pool.map(governor, states):
                 yield row, config['year'], True
+
+    configs = {config['turn']: config for config in election_configs(False)}
+    availability = pathlib.Path('.cache/transfers-governor-availability.json')
+    if availability.exists():
+        for target in json.loads(availability.read_text()):
+            # T1 zones are already covered by CSV transit cohorts. Add state rollups only;
+            # T2 has no corresponding CSV and can safely retain every official grain.
+            if target['status'] != 'available' or target['turn'] == 1 and target['scope'] != 'uf' or target['turn'] == 2 and target['scope'] == 'uf':
+                continue
+            config = configs[target['turn']]
+            data = (pathlib.Path('.cache') / target['cache']).read_bytes()
+            row = adapt(json.loads(data), target, config, target['url'], hashlib.sha256(data).hexdigest(), normalize)
+            yield row, config['year'], target['scope'] == 'uf'
+    first = configs.get(1)
+    if first:
+        event = first['official']['events']['1']
+        for path in sorted(pathlib.Path('.cache').glob(f'transfers-{first["year"]}-1-??.json')):
+            state = path.stem.rsplit('-', 1)[-1]
+            data = path.read_bytes()
+            url = f'https://resultados.tse.jus.br/oficial/ele{first["year"]}/{event}/dados/{state}/{state}-c0001-e{event:06d}-u.json'
+            row = adapt(json.loads(data), dict(scope='uf', state=state), first, url, hashlib.sha256(data).hexdigest(), normalize)
+            yield row, first['year'], True

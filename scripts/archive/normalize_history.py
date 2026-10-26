@@ -13,7 +13,7 @@ import zipfile
 from tse_archive import read_json, write_json, now, sha256
 
 COLUMNS = ['election_id', 'source_election_id', 'year', 'turn', 'description', 'date', 'election_type', 'scope', 'state', 'city_code', 'zone', 'office', 'office_key', 'office_name',
-           'eligible', 'installed', 'present', 'absent', 'blank', 'null', 'null_total', 'null_technical', 'annulled', 'annulled_subjudice', 'annulled_separate', 'valid', 'sections', 'not_installed', 'transit', 'source_url', 'source_id', 'source_sha256']
+           'eligible', 'installed', 'present', 'absent', 'blank', 'null', 'null_total', 'null_technical', 'annulled', 'annulled_subjudice', 'annulled_separate', 'ballots', 'ballots_reported', 'valid', 'sections', 'not_installed', 'transit', 'source_url', 'source_id', 'source_sha256']
 METRIC_DEFINITIONS = {
     'eligible': 'Registered electorate reported by QT_APTOS/QTD_APTOS.',
     'installed': 'Participation denominator; available only when electorate, reported attendance, abstention and uninstalled-section voters reconcile.',
@@ -23,6 +23,8 @@ METRIC_DEFINITIONS = {
     'annulled': 'QT_TOTAL_VOTOS_ANULADOS: votes annulled due to the legal status of candidacies or parties.',
     'annulled_subjudice': 'QT_TOTAL_VOTOS_ANUL_SUBJUD: annulled votes under judicial appeal.',
     'annulled_separate': 'QT_VOTOS_ANULADOS_APU_SEP/QTD_VOTOS_ANULADOS_APU_SEP: separately counted votes from urns under judicial review; neither valid nor null pending judgment.',
+    'ballots': 'QT_VOTOS or official JSON v.tv, unless smaller than a reported component; never inferred from attendance, including multi-vacancy Senate races.',
+    'ballots_reported': 'Original reported QT_VOTOS or JSON v.tv, retained even when contradictory and unsuitable as a denominator.',
     'valid': 'Native official JSON v.vv, or QT_TOTAL_VOTOS_VALIDOS only when consistent with nominal and list components; historical votos líquidos are not silently converted.'
 }
 LEGACY = ['DATA_GERACAO', 'HORA_GERACAO', 'ANO_ELEICAO', 'NUM_TURNO', 'DESC_ELEICAO', 'SIGLA_UF', 'SIGLA_UE', 'COD_CARGO',
@@ -74,10 +76,13 @@ def normalize(raw, resource):
                   absent=number(get('QT_ABSTENCOES', 'QTD_ABSTENCOES')), blank=number(get('QT_VOTOS_BRANCOS', 'QTD_VOTOS_BRANCOS')),
                   null=number(get('QT_VOTOS_NULOS', 'QTD_VOTOS_NULOS')), null_total=number(get('QT_TOTAL_VOTOS_NULOS')),
                   null_technical=number(get('QT_VOTOS_NULOS_TECNICOS')), annulled=number(get('QT_TOTAL_VOTOS_ANULADOS')),
-                  annulled_subjudice=number(get('QT_TOTAL_VOTOS_ANUL_SUBJUD')), annulled_separate=number(get('QT_VOTOS_ANULADOS_APU_SEP', 'QTD_VOTOS_ANULADOS_APU_SEP')), valid=valid,
+                  annulled_subjudice=number(get('QT_TOTAL_VOTOS_ANUL_SUBJUD')), annulled_separate=number(get('QT_VOTOS_ANULADOS_APU_SEP', 'QTD_VOTOS_ANULADOS_APU_SEP')), ballots=number(get('QT_VOTOS')), ballots_reported=number(get('QT_VOTOS')), valid=valid,
                   sections=number(get('QT_TOTAL_SECOES', 'QTD_SECOES_TOT')),
                   not_installed=number(get('QT_ELEITORES_SECOES_NAO_INSTALADAS')),
                   transit=get('ST_VOTO_EM_TRANSITO') or '', source_url=resource['url'], source_id=resource['id'], source_sha256=resource.get('sha256') or '')
+    if result['ballots'] is not None and any(result[k] is not None and result[k] > result['ballots'] for k in ['valid', 'blank', 'null']):
+        result['_invalid_ballots'] = result['ballots']
+        result['ballots'] = None
     eligible, present, absent, not_installed = [result[k] for k in ['eligible', 'present', 'absent', 'not_installed']]
     result['installed'] = None
     if None not in [eligible, present, absent]:
@@ -94,7 +99,7 @@ def source_issue(row):
     return None
 
 
-METRICS = ['eligible', 'installed', 'present', 'absent', 'blank', 'null', 'null_total', 'null_technical', 'annulled', 'annulled_subjudice', 'annulled_separate', 'valid', 'sections', 'not_installed']
+METRICS = ['eligible', 'installed', 'present', 'absent', 'blank', 'null', 'null_total', 'null_technical', 'annulled', 'annulled_subjudice', 'annulled_separate', 'ballots', 'ballots_reported', 'valid', 'sections', 'not_installed']
 
 
 def reconcile(previous, row):
@@ -191,7 +196,16 @@ def build(root, out):
     for row, source_year, anchor in official_rows(root, normalize):
         append_row(elections, row, source_year, ambiguous, anchor)
     index = dict(version=1, generatedAt=now(), columns=COLUMNS, metricDefinitions=METRIC_DEFINITIONS, missingSources=missing, ambiguousUnits=len(ambiguous), inconsistentUnits=len(inconsistent), diagnostics='history/diagnostics.json', elections=[])
-    write_json(out / 'diagnostics.json', dict(generatedAt=now(), ambiguousUnits=ambiguous, inconsistentUnits=inconsistent, electionYearConflicts=list(year_conflicts.values())))
+    ballot_issues = {}
+    for event in elections.values():
+        for row in event['rows'].values():
+            if '_invalid_ballots' in row:
+                key = row['source_id'], row['year'], row['office']
+                issue = ballot_issues.setdefault(key, dict(source=row['source_url'], sourceId=row['source_id'], year=row['year'], office=row['office'],
+                    reason='Reported vote total is smaller than a reported component; original remains in ballots_reported and the source archive.', unavailableMetrics=['ballots'], units=0,
+                    example={k: row[k] for k in ['election_id', 'state', 'city_code', 'zone', 'transit', 'ballots_reported', 'blank', 'null', 'valid']}))
+                issue['units'] += 1
+    write_json(out / 'diagnostics.json', dict(generatedAt=now(), ambiguousUnits=ambiguous, inconsistentUnits=inconsistent, invalidBallotTotals=list(ballot_issues.values()), electionYearConflicts=list(year_conflicts.values())))
     for e in sorted(elections.values(), key=lambda e: (e['year'], e['turn'] or 0, e['id'])):
         slug = re.sub(r'[^A-Za-z0-9._-]+', '-', e['id'])
         path = out / f'indicators-{slug}.csv.gz'
