@@ -30,7 +30,7 @@ REPO = os.environ.get('REPO', 'brauliobo/brazil-audit')
 MIB = 1 << 20
 TARGET, MAX = 1800 * MIB, 1900 * MIB
 ENTRY = 400  # zip headers per entry, roughly
-NAME = re.compile(r'(\d{4})-(aux|rdv|logs)-([a-z]{2})-(\d+)\.zip')
+NAME = re.compile(r'(\d{4}(?:-2)?)-(aux|rdv|logs)-([a-z]{2})-(\d+)\.zip')
 
 
 def base(year):
