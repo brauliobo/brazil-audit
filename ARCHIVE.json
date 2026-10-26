@@ -1,0 +1,754 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-10-26T22:19:35.243997+00:00",
+  "status": "published",
+  "dataset": {
+    "id": "resultados-2022",
+    "title": "Resultados - 2022",
+    "groups": [
+      "resultados"
+    ],
+    "family": "resultados",
+    "years": [
+      2022
+    ],
+    "license": "cc-by",
+    "source": "https://dadosabertos.tse.jus.br/dataset/resultados-2022",
+    "branch": "archive/resultados-2022",
+    "tag": "data-resultados-2022",
+    "releaseUrl": "https://github.com/brauliobo/brazil-audit/releases/tag/data-resultados-2022",
+    "normalized": false,
+    "status": "catalogued",
+    "inScope": true
+  },
+  "resources": [
+    {
+      "id": "47f692af-7309-4a21-b536-0d1386d449b9",
+      "name": "BR - Histórico totalização Presidente 1º Turno - 2022",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2022/Historico_Totalizacao_Presidente_BR_1T_2022.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2022/Historico_Totalizacao_Presidente_BR_1T_2022.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 1625754,
+      "lastModified": "Fri, 14 Oct 2022 17:06:09 GMT",
+      "etag": "\"18ce9a-5eb01a4630240\"",
+      "inScope": false
+    },
+    {
+      "id": "7cd53725-5dc5-4954-aee9-7dbf4097d26c",
+      "name": "BR - Histórico totalização Presidente 2º Turno - 2022",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2022/Historico_Totalizacao_Presidente_BR_2T_2022.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2022/Historico_Totalizacao_Presidente_BR_2T_2022.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 825276,
+      "lastModified": "Tue, 01 Nov 2022 20:01:54 GMT",
+      "etag": "\"c97bc-5ec6e320fb080\"",
+      "inScope": false
+    },
+    {
+      "id": "40fdcf49-256a-4c81-87cf-711545bd1528",
+      "name": "Votação nominal por município e zona",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_candidato_munzona/votacao_candidato_munzona_2022.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_candidato_munzona/votacao_candidato_munzona_2022.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 642592078,
+      "lastModified": "Sat, 24 Oct 2026 07:24:58 GMT",
+      "etag": "\"264d2d4e-65e90fe80037a\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T22:05:05.020825+00:00",
+      "sha256": "56265a50afc3765efeabc3d88b1e8ef35796ac38572fb1344496f3d3c8543369",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "40fdcf49-votacao_candidato_munzona_2022.zip",
+          "bytes": 642592078,
+          "sha256": "56265a50afc3765efeabc3d88b1e8ef35796ac38572fb1344496f3d3c8543369"
+        }
+      ]
+    },
+    {
+      "id": "ffb14f0e-85eb-4618-8031-7cb88f95e05e",
+      "name": "Votação em partido por município e zona ",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_partido_munzona/votacao_partido_munzona_2022.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_partido_munzona/votacao_partido_munzona_2022.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 26046497,
+      "lastModified": "Sat, 24 Oct 2026 06:24:16 GMT",
+      "etag": "\"18d7021-65e9025699649\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T22:05:06.532025+00:00",
+      "sha256": "beb096164c42e2feb2f39b8669991a44e7bae6cc439eb5ed30d380bdfbbfe1ba",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "ffb14f0e-votacao_partido_munzona_2022.zip",
+          "bytes": 26046497,
+          "sha256": "beb096164c42e2feb2f39b8669991a44e7bae6cc439eb5ed30d380bdfbbfe1ba"
+        }
+      ]
+    },
+    {
+      "id": "0e59001a-3c9f-4a0d-a8db-7befdba22330",
+      "name": "Detalhe da apuração por município e zona",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/detalhe_votacao_munzona/detalhe_votacao_munzona_2022.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/detalhe_votacao_munzona/detalhe_votacao_munzona_2022.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 4429327,
+      "lastModified": "Sat, 24 Oct 2026 06:52:18 GMT",
+      "etag": "\"43960f-65e9089b62cca\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T22:05:06.855403+00:00",
+      "sha256": "dbf41c5e95c2efedc72848bd0ec70a47f419b539c82e893388314749617ea2f4",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "0e59001a-detalhe_votacao_munzona_2022.zip",
+          "bytes": 4429327,
+          "sha256": "dbf41c5e95c2efedc72848bd0ec70a47f419b539c82e893388314749617ea2f4"
+        }
+      ]
+    },
+    {
+      "id": "9f042e8b-ed41-4b18-a01b-e0613a68d90c",
+      "name": "Detalhe da apuração por seção eleitoral",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/detalhe_votacao_secao/detalhe_votacao_secao_2022.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/detalhe_votacao_secao/detalhe_votacao_secao_2022.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 243822213,
+      "lastModified": "Fri, 31 Jul 2026 19:47:56 GMT",
+      "etag": "\"e886e85-657ed7705d300\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T22:05:12.211216+00:00",
+      "sha256": "ad22c50b9e6d9dfb096a2170680a190f1734895ba89d8977b95fd63ca02c03da",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "9f042e8b-detalhe_votacao_secao_2022.zip",
+          "bytes": 243822213,
+          "sha256": "ad22c50b9e6d9dfb096a2170680a190f1734895ba89d8977b95fd63ca02c03da"
+        }
+      ]
+    },
+    {
+      "id": "f509562b-3b7f-487d-ad61-145a7ae6b96f",
+      "name": "Presidente - Votação por seção eleitoral - 2022",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2022_BR.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2022_BR.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 271292455,
+      "lastModified": "Thu, 24 Nov 2022 14:26:58 GMT",
+      "etag": "\"102b9827-5ee383298b080\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T22:16:59.132178+00:00",
+      "sha256": "9353993de5cf03778aef44e01d4925e7ee105f5262491d344a2f0dbc956b0139",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "f509562b-votacao_secao_2022_BR.zip",
+          "bytes": 271292455,
+          "sha256": "9353993de5cf03778aef44e01d4925e7ee105f5262491d344a2f0dbc956b0139"
+        }
+      ]
+    },
+    {
+      "id": "c8f4430e-8d63-47d5-9c87-30581ffb0c6a",
+      "name": "AC - Votação por seção eleitoral - 2022",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2022_AC.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2022_AC.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 6680201,
+      "lastModified": "Mon, 22 Jun 2026 14:45:09 GMT",
+      "etag": "\"65ee89-654d8b06d54bc\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T22:17:00.748660+00:00",
+      "sha256": "d17b815a4d6faa49de01380890c40ec2247ffee1096d30804ce47cdc35b3b518",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "c8f4430e-votacao_secao_2022_AC.zip",
+          "bytes": 6680201,
+          "sha256": "d17b815a4d6faa49de01380890c40ec2247ffee1096d30804ce47cdc35b3b518"
+        }
+      ]
+    },
+    {
+      "id": "65e7b342-d14f-402d-a7c7-e9911ff45583",
+      "name": "AL - Votação por seção eleitoral - 2022",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2022_AL.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2022_AL.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 30273477,
+      "lastModified": "Mon, 22 Jun 2026 14:45:25 GMT",
+      "etag": "\"1cdefc5-654d8b1580dbf\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T22:17:02.094756+00:00",
+      "sha256": "d5ae3a20a8ecc32b750dc19caae54321abd43bdc2bfe8f47ede4dc53de1cd4ca",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "65e7b342-votacao_secao_2022_AL.zip",
+          "bytes": 30273477,
+          "sha256": "d5ae3a20a8ecc32b750dc19caae54321abd43bdc2bfe8f47ede4dc53de1cd4ca"
+        }
+      ]
+    },
+    {
+      "id": "7ae9b9ce-0c50-4142-bfb3-92a8e84962e9",
+      "name": "AM - Votação por seção eleitoral - 2022",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2022_AM.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2022_AM.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 44046931,
+      "lastModified": "Mon, 22 Jun 2026 14:45:22 GMT",
+      "etag": "\"2a01a53-654d8b1283bba\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T22:17:07.281789+00:00",
+      "sha256": "1ba6c258320799f595bdbe1563582926bbf7bae87640b59ad9b1edd2702beb97",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "7ae9b9ce-votacao_secao_2022_AM.zip",
+          "bytes": 44046931,
+          "sha256": "1ba6c258320799f595bdbe1563582926bbf7bae87640b59ad9b1edd2702beb97"
+        }
+      ]
+    },
+    {
+      "id": "a534b390-3e94-4c19-8442-16415ac0169f",
+      "name": "AP - Votação por seção eleitoral - 2022",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2022_AP.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2022_AP.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 7258929,
+      "lastModified": "Mon, 22 Jun 2026 14:44:58 GMT",
+      "etag": "\"6ec331-654d8afc5c6cc\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T22:17:07.756741+00:00",
+      "sha256": "e7f0c8836f5dcbb0e59e17cc68701f819cd33565fd5ab87a41a6d562977df579",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "a534b390-votacao_secao_2022_AP.zip",
+          "bytes": 7258929,
+          "sha256": "e7f0c8836f5dcbb0e59e17cc68701f819cd33565fd5ab87a41a6d562977df579"
+        }
+      ]
+    },
+    {
+      "id": "aca0a7a4-8d07-4d59-affe-98ca29809226",
+      "name": "BA - Votação por seção eleitoral - 2022",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2022_BA.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2022_BA.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 191461319,
+      "lastModified": "Mon, 22 Jun 2026 14:44:56 GMT",
+      "etag": "\"b6977c7-654d8afa01296\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T22:17:12.544060+00:00",
+      "sha256": "54d397ff4b5a39d6bb363f774402ffeee61a0c2c5d2b8096db16b019d3f02e64",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "aca0a7a4-votacao_secao_2022_BA.zip",
+          "bytes": 191461319,
+          "sha256": "54d397ff4b5a39d6bb363f774402ffeee61a0c2c5d2b8096db16b019d3f02e64"
+        }
+      ]
+    },
+    {
+      "id": "d5827dc3-1cdf-4477-a920-8ebb0a725f3a",
+      "name": "CE - Votação por seção eleitoral - 2022",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2022_CE.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2022_CE.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 111548497,
+      "lastModified": "Mon, 22 Jun 2026 14:44:49 GMT",
+      "etag": "\"6a61851-654d8af378555\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T22:17:20.075317+00:00",
+      "sha256": "47a8a151d4b511963a163ad60c6719d3a8f861a6c2503dbb3dbe69878d3fad9c",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "d5827dc3-votacao_secao_2022_CE.zip",
+          "bytes": 111548497,
+          "sha256": "47a8a151d4b511963a163ad60c6719d3a8f861a6c2503dbb3dbe69878d3fad9c"
+        }
+      ]
+    },
+    {
+      "id": "35f3aa57-bd6c-4ec6-8676-4a51ca8b832a",
+      "name": "DF - Votação por seção eleitoral - 2022",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2022_DF.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2022_DF.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 34314301,
+      "lastModified": "Thu, 24 Nov 2022 14:27:37 GMT",
+      "etag": "\"20b983d-5ee3834ebc840\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T22:17:24.460737+00:00",
+      "sha256": "eb9184e4927df556c8bf1b4c1678cbef11555de6438abdccd26181ddea284459",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "35f3aa57-votacao_secao_2022_DF.zip",
+          "bytes": 34314301,
+          "sha256": "eb9184e4927df556c8bf1b4c1678cbef11555de6438abdccd26181ddea284459"
+        }
+      ]
+    },
+    {
+      "id": "825e26d6-ecfc-492f-a650-852944c87d81",
+      "name": "ES - Votação por seção eleitoral - 2022",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2022_ES.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2022_ES.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 49893772,
+      "lastModified": "Mon, 22 Jun 2026 14:44:58 GMT",
+      "etag": "\"2f9518c-654d8afbb6a7d\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T22:17:25.567058+00:00",
+      "sha256": "2c5dbd8fe808b1e485c1024c3367d0719c03a56a0f9ddcb9beb3cd9dfae5057a",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "825e26d6-votacao_secao_2022_ES.zip",
+          "bytes": 49893772,
+          "sha256": "2c5dbd8fe808b1e485c1024c3367d0719c03a56a0f9ddcb9beb3cd9dfae5057a"
+        }
+      ]
+    },
+    {
+      "id": "d5fc403d-3977-4f1a-bc31-291c6822455d",
+      "name": "GO - Votação por seção eleitoral - 2022",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2022_GO.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2022_GO.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 94828607,
+      "lastModified": "Mon, 22 Jun 2026 14:45:11 GMT",
+      "etag": "\"5a6f83f-654d8b08a278a\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T22:17:28.083901+00:00",
+      "sha256": "be46c92b743a95add1a73818579d2f0cc15fc736c4445abbb194a2ef0cf2585a",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "d5fc403d-votacao_secao_2022_GO.zip",
+          "bytes": 94828607,
+          "sha256": "be46c92b743a95add1a73818579d2f0cc15fc736c4445abbb194a2ef0cf2585a"
+        }
+      ]
+    },
+    {
+      "id": "3dfa5b9d-3abe-4278-8578-b60f23c37eb9",
+      "name": "MA - Votação por seção eleitoral - 2022",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2022_MA.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2022_MA.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 71322283,
+      "lastModified": "Mon, 22 Jun 2026 14:45:12 GMT",
+      "etag": "\"4404aab-654d8b09b07cb\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T22:17:30.227389+00:00",
+      "sha256": "7422ee2870be969afc971d7e9ae5cd14f2ddc0ba3c3cfb70e4c713127023673e",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "3dfa5b9d-votacao_secao_2022_MA.zip",
+          "bytes": 71322283,
+          "sha256": "7422ee2870be969afc971d7e9ae5cd14f2ddc0ba3c3cfb70e4c713127023673e"
+        }
+      ]
+    },
+    {
+      "id": "8169c471-00f0-496c-a992-c69352064fae",
+      "name": "MG - Votação por seção eleitoral - 2022",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2022_MG.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2022_MG.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 295129070,
+      "lastModified": "Mon, 22 Jun 2026 14:44:47 GMT",
+      "etag": "\"11974fee-654d8af1d46ad\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T22:17:38.070038+00:00",
+      "sha256": "e35b85dcc15fea438b7e6d039db49bcb9b035bc3174a91334ffd37ebd93db9f6",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "8169c471-votacao_secao_2022_MG.zip",
+          "bytes": 295129070,
+          "sha256": "e35b85dcc15fea438b7e6d039db49bcb9b035bc3174a91334ffd37ebd93db9f6"
+        }
+      ]
+    },
+    {
+      "id": "91ab09eb-d662-492e-a88d-adc7aa3cc002",
+      "name": "MS - Votação por seção eleitoral - 2022",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2022_MS.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2022_MS.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 38353961,
+      "lastModified": "Mon, 22 Jun 2026 14:44:51 GMT",
+      "etag": "\"2493c29-654d8af5b2e1d\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T22:17:39.510674+00:00",
+      "sha256": "0e377349b066b24b2024e1ebe1bfe96f1b1f91d02f67f33f9694df52b810a5c0",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "91ab09eb-votacao_secao_2022_MS.zip",
+          "bytes": 38353961,
+          "sha256": "0e377349b066b24b2024e1ebe1bfe96f1b1f91d02f67f33f9694df52b810a5c0"
+        }
+      ]
+    },
+    {
+      "id": "8e25cbdf-426c-4d0c-92cb-5310f1f0e475",
+      "name": "MT - Votação por seção eleitoral - 2022",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2022_MT.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2022_MT.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 34570017,
+      "lastModified": "Mon, 22 Jun 2026 14:44:50 GMT",
+      "etag": "\"20f7f21-654d8af4c74a2\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T22:17:40.931814+00:00",
+      "sha256": "371117d76ec7f115e4575fab2d08a819df611dff08f1ecdc975640709da62f74",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "8e25cbdf-votacao_secao_2022_MT.zip",
+          "bytes": 34570017,
+          "sha256": "371117d76ec7f115e4575fab2d08a819df611dff08f1ecdc975640709da62f74"
+        }
+      ]
+    },
+    {
+      "id": "895eeea9-45d3-46fc-916c-b169a50a3dc0",
+      "name": "PA - Votação por seção eleitoral - 2022",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2022_PA.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2022_PA.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 96960303,
+      "lastModified": "Mon, 22 Jun 2026 14:45:02 GMT",
+      "etag": "\"5c77f2f-654d8affe0cd9\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T22:17:43.968306+00:00",
+      "sha256": "efec9371ca3e571ed6c06586d1232c0616be44582d65447f4147c52aaa9c7cba",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "895eeea9-votacao_secao_2022_PA.zip",
+          "bytes": 96960303,
+          "sha256": "efec9371ca3e571ed6c06586d1232c0616be44582d65447f4147c52aaa9c7cba"
+        }
+      ]
+    },
+    {
+      "id": "6f68d7f3-67c0-45af-8743-1d3aea701eab",
+      "name": "PB - Votação por seção eleitoral - 2022",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2022_PB.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2022_PB.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 47957126,
+      "lastModified": "Mon, 22 Jun 2026 14:45:20 GMT",
+      "etag": "\"2dbc486-654d8b1118b37\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T22:17:45.699500+00:00",
+      "sha256": "6918c138a450eb218cc19933537411377fb0f383d6a51fd3b7b9736f60c5c992",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "6f68d7f3-votacao_secao_2022_PB.zip",
+          "bytes": 47957126,
+          "sha256": "6918c138a450eb218cc19933537411377fb0f383d6a51fd3b7b9736f60c5c992"
+        }
+      ]
+    },
+    {
+      "id": "f382f4e4-a794-430c-a035-d23730257995",
+      "name": "PE - Votação por seção eleitoral - 2022",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2022_PE.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2022_PE.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 122201173,
+      "lastModified": "Mon, 22 Jun 2026 14:45:06 GMT",
+      "etag": "\"748a455-654d8b04110dc\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T22:17:52.684522+00:00",
+      "sha256": "058f042466913b5467b431e5e30d19f2138dd2a1ab3b938f6b39f059b4d8f347",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "f382f4e4-votacao_secao_2022_PE.zip",
+          "bytes": 122201173,
+          "sha256": "058f042466913b5467b431e5e30d19f2138dd2a1ab3b938f6b39f059b4d8f347"
+        }
+      ]
+    },
+    {
+      "id": "1d9d6040-c1e5-41f9-94fe-80e4af52f0bf",
+      "name": "PI - Votação por seção eleitoral - 2022",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2022_PI.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2022_PI.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 33011338,
+      "lastModified": "Mon, 22 Jun 2026 14:45:28 GMT",
+      "etag": "\"1f7b68a-654d8b1888ba3\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T22:17:53.881174+00:00",
+      "sha256": "3883b3e9a67ce1b20723606e3a59d3d3d88562cbf1be8ce350e74a11dd31e99e",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "1d9d6040-votacao_secao_2022_PI.zip",
+          "bytes": 33011338,
+          "sha256": "3883b3e9a67ce1b20723606e3a59d3d3d88562cbf1be8ce350e74a11dd31e99e"
+        }
+      ]
+    },
+    {
+      "id": "ac7bb6a5-68e4-4852-a690-dd2b526c92ee",
+      "name": "PR - Votação por seção eleitoral - 2022",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2022_PR.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2022_PR.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 160959351,
+      "lastModified": "Mon, 22 Jun 2026 14:45:17 GMT",
+      "etag": "\"9980b77-654d8b0dac3f9\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T22:18:02.557882+00:00",
+      "sha256": "67048a3c8d94b96cec79b3f51b612fdaa77833a556220e64a94dd10f4d6ee872",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "ac7bb6a5-votacao_secao_2022_PR.zip",
+          "bytes": 160959351,
+          "sha256": "67048a3c8d94b96cec79b3f51b612fdaa77833a556220e64a94dd10f4d6ee872"
+        }
+      ]
+    },
+    {
+      "id": "48e557cd-42ae-4b8d-b3dc-fc3c1625ce7e",
+      "name": "RJ - Votação por seção eleitoral - 2022",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2022_RJ.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2022_RJ.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 314526595,
+      "lastModified": "Mon, 22 Jun 2026 14:45:18 GMT",
+      "etag": "\"12bf4b83-654d8b0f62b80\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T22:18:20.543399+00:00",
+      "sha256": "0adf67cbe0573691765467cc18f68e02ff92567e42d8f03ec2f149cc37eef9f8",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "48e557cd-votacao_secao_2022_RJ.zip",
+          "bytes": 314526595,
+          "sha256": "0adf67cbe0573691765467cc18f68e02ff92567e42d8f03ec2f149cc37eef9f8"
+        }
+      ]
+    },
+    {
+      "id": "680a8385-d189-412c-9441-8caf460a4fb7",
+      "name": "RN - Votação por seção eleitoral - 2022",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2022_RN.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2022_RN.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 34686541,
+      "lastModified": "Mon, 22 Jun 2026 14:44:55 GMT",
+      "etag": "\"211464d-654d8af8d617f\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T22:18:21.854673+00:00",
+      "sha256": "b211fba5ddfecf2c27c323496c5330927c1205f59958705601b13e03f7f3aacd",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "680a8385-votacao_secao_2022_RN.zip",
+          "bytes": 34686541,
+          "sha256": "b211fba5ddfecf2c27c323496c5330927c1205f59958705601b13e03f7f3aacd"
+        }
+      ]
+    },
+    {
+      "id": "4647eee5-f0ea-44ee-a525-7019660afdf0",
+      "name": "RO - Votação por seção eleitoral - 2022",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2022_RO.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2022_RO.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 20721026,
+      "lastModified": "Mon, 22 Jun 2026 14:44:05 GMT",
+      "etag": "\"13c2d82-654d8ac9a728c\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T22:18:23.295687+00:00",
+      "sha256": "399bd2850ac81cd4e0cd0e04e6583e7f38c25737290c9b5777bbb52b72a7d4a4",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "4647eee5-votacao_secao_2022_RO.zip",
+          "bytes": 20721026,
+          "sha256": "399bd2850ac81cd4e0cd0e04e6583e7f38c25737290c9b5777bbb52b72a7d4a4"
+        }
+      ]
+    },
+    {
+      "id": "4fe47e38-cbfc-4ef5-93ea-31fcf56b4617",
+      "name": "RR - Votação por seção eleitoral - 2022",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2022_RR.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2022_RR.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 7723169,
+      "lastModified": "Mon, 22 Jun 2026 14:45:22 GMT",
+      "etag": "\"75d8a1-654d8b1340350\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T22:18:23.711308+00:00",
+      "sha256": "66b18486f64797d2e08930c4bd02548281481cf4aa4318f68ee41801f3dd45fe",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "4fe47e38-votacao_secao_2022_RR.zip",
+          "bytes": 7723169,
+          "sha256": "66b18486f64797d2e08930c4bd02548281481cf4aa4318f68ee41801f3dd45fe"
+        }
+      ]
+    },
+    {
+      "id": "12858da8-e607-4b3b-8aa4-9a866c70573c",
+      "name": "RS - Votação por seção eleitoral - 2022",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2022_RS.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2022_RS.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 181897570,
+      "lastModified": "Mon, 22 Jun 2026 14:44:34 GMT",
+      "etag": "\"ad78962-654d8ae5626d2\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T22:18:29.254972+00:00",
+      "sha256": "a6ca495c557673c7ea655bedcde1cf829b4630e916b72da00100589d2d61826a",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "12858da8-votacao_secao_2022_RS.zip",
+          "bytes": 181897570,
+          "sha256": "a6ca495c557673c7ea655bedcde1cf829b4630e916b72da00100589d2d61826a"
+        }
+      ]
+    },
+    {
+      "id": "ff3e660a-6387-4632-97f7-9b60a477751a",
+      "name": "SC - Votação por seção eleitoral - 2022",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2022_SC.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2022_SC.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 100162943,
+      "lastModified": "Mon, 22 Jun 2026 14:44:38 GMT",
+      "etag": "\"5f85d7f-654d8ae875095\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T22:18:32.785144+00:00",
+      "sha256": "a658388c8b6094c1cf8623b5c2a7d5b87771c31ed1afb1edac88dadf3b9081e7",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "ff3e660a-votacao_secao_2022_SC.zip",
+          "bytes": 100162943,
+          "sha256": "a658388c8b6094c1cf8623b5c2a7d5b87771c31ed1afb1edac88dadf3b9081e7"
+        }
+      ]
+    },
+    {
+      "id": "5de81a35-7c2d-451c-8c25-b770b4949c05",
+      "name": "SE - Votação por seção eleitoral - 2022",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2022_SE.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2022_SE.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 25947561,
+      "lastModified": "Mon, 22 Jun 2026 14:44:27 GMT",
+      "etag": "\"18beda9-654d8ade0c85c\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T22:18:34.142573+00:00",
+      "sha256": "96530d4198fa97a330ab6a46568fa418190714238f4986eec2a25a2fac1827d6",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "5de81a35-votacao_secao_2022_SE.zip",
+          "bytes": 25947561,
+          "sha256": "96530d4198fa97a330ab6a46568fa418190714238f4986eec2a25a2fac1827d6"
+        }
+      ]
+    },
+    {
+      "id": "5c375ecc-9c40-4c75-921c-686a920c150a",
+      "name": "SP - Votação por seção eleitoral - 2022",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2022_SP.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2022_SP.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 900947881,
+      "lastModified": "Mon, 22 Jun 2026 14:44:46 GMT",
+      "etag": "\"35b35fa9-654d8af0b6885\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T22:19:33.474305+00:00",
+      "sha256": "36c417ab6af3fc0a69c01a2ae5ee34d05fb8f2068eee70565c693ebef059688e",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "5c375ecc-votacao_secao_2022_SP.zip",
+          "bytes": 900947881,
+          "sha256": "36c417ab6af3fc0a69c01a2ae5ee34d05fb8f2068eee70565c693ebef059688e"
+        }
+      ]
+    },
+    {
+      "id": "9447e759-fede-4f7d-9e70-01b73cc9bc5c",
+      "name": "TO - Votação por seção eleitoral - 2022",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2022_TO.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2022_TO.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 16828225,
+      "lastModified": "Mon, 22 Jun 2026 14:44:40 GMT",
+      "etag": "\"100c741-654d8aeb2aa16\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T22:19:35.228243+00:00",
+      "sha256": "b2dedc70f6921376b3d7d1a16383a29c3db85880befa164b19f06ba60f377a9c",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "9447e759-votacao_secao_2022_TO.zip",
+          "bytes": 16828225,
+          "sha256": "b2dedc70f6921376b3d7d1a16383a29c3db85880befa164b19f06ba60f377a9c"
+        }
+      ]
+    }
+  ]
+}
