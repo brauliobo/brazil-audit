@@ -53,6 +53,12 @@ const isNamespace = (key) => [...defined].some((k) => k.startsWith(`${key}.`))
 // ---- dynamic key families: prefix -> member ids (each `prefix + id` must exist) --------------------------------------------
 const officeIds = [...new Set(Object.values(ELECTIONS).flatMap((e) => e.offices))]
 const FAMILIES = {
+  'history.status.': ['catalogued','downloaded','published','blocked','downloading','unavailable','partial','privacy-review-required','excluded'],
+  'navGroups.': ['summary', 'explore', 'compare', 'investigate'],
+  'compare.families.': ['participation', 'results', 'operation', 'representation'],
+  'compare.metrics.': ['abstention_rate','attendance_rate','absent','present','electorate','valid_votes','blank_votes','null_votes','ballot_votes','blank_rate','null_rate','events','late_rate','manual_rate','nonbiometric_rate','flagged_rate','seats','parties'],
+  'compare.sources.': ['turnout','sgz','tot','totx','vtc','seats'],
+  'compare.notes.': ['participation','results','time','identification','signals','seats'],
   'nav.': [...VIEWS_NAV, ...HIDDEN_VIEWS],
   'states.': UFS,
   'regions.': REGION_IDS,

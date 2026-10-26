@@ -9,6 +9,7 @@ const base = baseUrl()
 const session = arg('session', 'app')
 const widths = arg('widths', '320,375,768,1280').split(',').map(Number)
 const ALL = [
+  '2026-2/compare', '2026-2/compare?metric=blank_rate&state=ac', '2026-2/history',
   '2026-2/overview', '2026-2/maps', '2026-2/drill/ac', '2026-2/analysis?state=ac', '2026-2/benford', '2026-2/time/ac', '2026-2/signals', '2026-2/logs/ac', '2026-2/seats',
   '2026/overview', '2026/maps', '2026/maps?scope=state&uf=sp', '2026/parliament?chamber=chamber', '2026/seats', '2026/seats?office=6&uf=sp', '2022/seats?office=7&uf=ac', '2018/seats?office=8', '2026/drill/sp', '2026/drill/sp/SÃO%20PAULO',
   '2026/analysis?state=rr', '2026/benford', '2018/benford?office=3&place=sp&digits=2', '2022-2/benford?unit=city', '2026/time/ac', '2026/sql', '2026/design', '2022/overview', '2022/time/ac', '2022-2/overview',
@@ -37,6 +38,7 @@ const TOUCH = `(() => {
   const dense = 'p, td, th, li, .chips, .legend, .breadcrumb, .panel__sql, .bars__row, .tooltip, .skip-link, label.switch, .site-footer, .chip'
   const bad = []
   for (const e of document.querySelectorAll('a, button, select, input:not([type=checkbox]), textarea, summary, [tabindex="0"]:not(main)')) {
+    if (!e.checkVisibility()) continue // closed details contain no visible hit targets
     if (e.closest('svg, .map, .skip-link') || (e.tagName === 'A' && getComputedStyle(e).display === 'inline')) continue // inline text links are exempt (WCAG 2.5.8)
     const r = e.getBoundingClientRect()
     const min = e.closest(dense) ? 24 : hit

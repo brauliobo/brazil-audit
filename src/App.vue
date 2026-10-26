@@ -1,7 +1,8 @@
 <script setup vapor>
 import { computed } from 'vue'
 import { route, href } from './router'
-import { DEFAULT_ELECTION, VIEWS_NAV } from './model'
+import { DEFAULT_ELECTION } from './model'
+import { NAV_AREAS, areaForView } from './navigation'
 import { viewName } from './labels'
 import { renderError } from './errors'
 import { t } from './i18n'
@@ -27,12 +28,16 @@ import Parliament from './views/Parliament.vue'
 import Seats from './views/Seats.vue'
 import Design from './views/Design.vue'
 import NotFound from './views/NotFound.vue'
+import Compare from './views/Compare.vue'
+import History from './views/History.vue'
 
 const REPO = 'https://github.com/brauliobo/brazil-audit'
-const views = { overview: Overview, maps: Maps, parliament: Parliament, seats: Seats, drill: Drill, analysis: Analysis, benford: Benford, signals: Signals, time: Time, logs: Logs, sql: Sql, design: Design }
+const views = { overview: Overview, maps: Maps, parliament: Parliament, seats: Seats, drill: Drill, analysis: Analysis, benford: Benford, signals: Signals, time: Time, logs: Logs, sql: Sql, design: Design, compare: Compare, history: History }
 const current = computed(() => (route.value.notFound ? NotFound : views[route.value.view]))
 const election = computed(() => route.value.election)
-const nav = computed(() => VIEWS_NAV.map((v) => ({ label: viewName(v), href: href(election.value, v), current: route.value.view === v })))
+const area = computed(() => areaForView(route.value.view))
+const nav = computed(() => NAV_AREAS.map((a) => ({ label: t(`navGroups.${a.id}`), href: href(election.value, a.view), current: area.value?.id === a.id })))
+const subnav = computed(() => (area.value?.views.length > 1 ? area.value.views : []).map((v) => ({ label: viewName(v), href: href(election.value, v), current: route.value.view === v })))
 </script>
 
 <template lang="pug">
@@ -44,11 +49,16 @@ header.site-header
   Tabs(:items="nav" :label="t('nav.label')")
   .header-end
     ElectionPicker
-    .header-tools
-      LangSwitch
-      ThemeSwitch
+    details.header-tools
+      summary {{ t('navGroups.tools') }}
+      .cluster
+        a.btn.btn--ghost(:href="href(election, 'sql')") {{ t('nav.sql') }}
+        a.btn.btn--ghost(:href="`${REPO}#dados-brutos`") {{ t('footer.raw') }}
+        LangSwitch
+        ThemeSwitch
 EngineStatus
 main#main(tabindex="-1")
+  Tabs(v-if="subnav.length" :items="subnav" :label="t('navGroups.sections')")
   SectionSearch(v-if="!route.notFound && route.view !== 'design'")
   Notice(v-if="renderError" kind="danger") {{ t('errors.render', { message: renderError.message }) }}
   component(:is="current" :key="route.view + route.election")

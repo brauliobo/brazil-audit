@@ -9,6 +9,8 @@ app:
 
 nav:
   label: Seções do site
+  history: Acervo histórico
+  compare: Comparar
   overview: Visão geral
   maps: Mapas
   parliament: Parlamento
@@ -1078,3 +1080,95 @@ turnout:
   scopeNote: "Os totais oficiais são apresentados por UF, município e zona dentro do município. Cada nível é consultado separadamente, sem somar os mesmos eleitores mais de uma vez. Os dados por seção para os sinais continuam aguardando a fonte detalhada."
   download: "Baixar todos os dados (CSV compactado)"
   rawDownload: "Baixar fontes oficiais (ZIP)"
+
+navGroups:
+  summary: Resumo
+  explore: Explorar
+  compare: Comparar
+  investigate: Investigar
+  tools: Dados e preferências
+  sections: Ferramentas da área
+
+compare:
+  title: Comparar eleições
+  intro: "O mesmo indicador, território e definição em todas as eleições disponíveis. Os totais usam os arquivos completos, independentemente das UFs já carregadas."
+  indicator: Indicador
+  election: Eleição
+  value: Valor
+  change: Diferença para a primeira disponível
+  numerator: Numerador
+  denominator: Denominador
+  source: Fonte e cobertura
+  round: Turnos
+  allRounds: Todos os turnos
+  unavailable: Sem dados compatíveis
+  noMatch: Localidade sem correspondência nesta fonte
+  pp: p.p.
+  definition: "Taxas são calculadas com a soma dos numeradores dividida pela soma dos denominadores; valores indisponíveis não são zeros. A diferença usa a primeira eleição com dados na seleção."
+  download: Baixar comparação em CSV
+  more: Análises detalhadas
+  moreNote: "Benford, sinais e consultas próprias continuam disponíveis nas ferramentas detalhadas. Os anos sem fontes compatíveis são identificados, sem estimar dados ausentes."
+  families:
+    participation: Participação
+    results: Resultados
+    operation: Operação da votação
+    representation: Representação
+  sources:
+    turnout: Totais oficiais de comparecimento
+    sgz: Dados oficiais por seção agregados
+    tot: Votos das seções disponíveis
+    totx: Votos das seções e complemento oficial
+    vtc: Eventos dos logs disponíveis
+    seats: Composição oficial por partido ou federação
+  notes:
+    participation: "Eleitorado aqui é o das seções instaladas ou o informado no detalhe por seção, conforme a fonte. A abstenção usa esse denominador, sem incluir seções não instaladas."
+    results: "Cada cargo tem seus próprios votos válidos, brancos e nulos. No Senado, dois votos por eleitor não equivalem a dois eleitores."
+    time: "Eventos são confirmações de voto para presidente nos logs. Após as 17h significa horário de Brasília estimado por município; a prorrogação de 2026 altera o contexto dessa medida."
+    identification: "Identificação é medida nos logs: a taxa usa os eleitores registrados nos eventos disponíveis, não o eleitorado total."
+    signals: "Sinais são critérios estatísticos sobre as seções com insumos disponíveis; não são prova de irregularidade."
+    seats: "As regras, alianças e federações mudam entre eleições. Cadeiras representam o resultado oficial de cada período, não uma simulação com a mesma regra."
+  metrics:
+    abstention_rate: Abstenção (%)
+    attendance_rate: Comparecimento (%)
+    absent: Eleitores ausentes
+    present: Eleitores presentes
+    electorate: Eleitorado da base de comparecimento
+    valid_votes: Votos nominais ou válidos na fonte
+    blank_votes: Votos brancos
+    null_votes: Votos nulos
+    ballot_votes: Total de votos no cargo
+    blank_rate: Brancos (%)
+    null_rate: Nulos (%)
+    events: Eventos de voto para presidente
+    late_rate: Eventos a partir das 17h (%)
+    manual_rate: Liberação manual (%)
+    nonbiometric_rate: Identificação sem biometria (%)
+    flagged_rate: Seções com sinal estatístico (%)
+    seats: Cadeiras atribuídas
+    parties: Partidos ou federações com cadeira
+
+history:
+  title: Acervo histórico do TSE
+  catalog: Catálogo de dados oficiais
+  intro: "O catálogo distingue fontes disponíveis, arquivos baixados, releases publicados e dados normalizados para análise. Estar no catálogo não significa que o arquivo já tenha sido baixado ou integrado."
+  summary: "Acervo desde {first}: {datasets} conjuntos e {resources} recursos oficiais."
+  allYears: Todos os anos
+  family: Família de dados
+  allFamilies: Todas as famílias
+  normalized: Dados normalizados e integrados às análises.
+  notNormalized: Fonte ainda não normalizada para as análises da interface.
+  source: Conjunto no TSE
+  release: Release arquivado
+  resource: Recurso oficial
+  state: Situação
+  size: Tamanho informado
+  status:
+    catalogued: Catalogado
+    downloaded: Baixado
+    published: Publicado
+    blocked: Bloqueado
+    downloading: Em download
+    unavailable: Indisponível na fonte
+    partial: Publicado parcialmente
+    privacy-review-required: Revisão de dados pessoais necessária
+    excluded: Fora do escopo de coleta

@@ -8,6 +8,8 @@ app:
 
 nav:
   label: Site sections
+  history: Historical archive
+  compare: Compare
   overview: Overview
   maps: Maps
   parliament: Parliament
@@ -1077,3 +1079,95 @@ turnout:
   scopeNote: "Official totals are available by state, municipality and zone within each municipality. Each level is queried separately without counting voters more than once. Section-level signals still await the detailed source."
   download: "Download all data (compressed CSV)"
   rawDownload: "Download official sources (ZIP)"
+
+navGroups:
+  summary: Summary
+  explore: Explore
+  compare: Compare
+  investigate: Investigate
+  tools: Data and preferences
+  sections: Tools in this area
+
+compare:
+  title: Compare elections
+  intro: "The same indicator, territory and definition across all available elections. Totals use complete files, independently of the states already loaded."
+  indicator: Indicator
+  election: Election
+  value: Value
+  change: Change from the first available
+  numerator: Numerator
+  denominator: Denominator
+  source: Source and coverage
+  round: Rounds
+  allRounds: All rounds
+  unavailable: No compatible data
+  noMatch: No matching locality in this source
+  pp: pp
+  definition: "Rates divide the sum of numerators by the sum of denominators; unavailable values are not zeros. Changes use the first election with data in the selection."
+  download: Download comparison as CSV
+  more: Detailed analyses
+  moreNote: "Benford, signals and custom queries remain available in the detailed tools. Years without compatible sources are identified, without estimating missing data."
+  families:
+    participation: Participation
+    results: Results
+    operation: Voting operations
+    representation: Representation
+  sources:
+    turnout: Official turnout totals
+    sgz: Aggregated official section data
+    tot: Votes of available sections
+    totx: Section votes and official supplement
+    vtc: Events from available logs
+    seats: Official party or federation composition
+  notes:
+    participation: "Electorate here means voters in installed sections or in the section detail, depending on the source. Abstention uses this denominator, excluding uninstalled sections."
+    results: "Each office has its own valid, blank and null votes. For Senate elections, two votes per voter do not mean two voters."
+    time: "Events are presidential vote confirmations in machine logs. After 17:00 uses Brasília time estimated per municipality; the 2026 extension changes the context of this measure."
+    identification: "Identification is measured in logs: the rate uses voters in the available events, not the total electorate."
+    signals: "Signals are statistical criteria over sections with available inputs; they are not proof of irregularity."
+    seats: "Rules, alliances and federations change across elections. Seats represent each period's official result, not a simulation under the same rule."
+  metrics:
+    abstention_rate: Abstention (%)
+    attendance_rate: Turnout (%)
+    absent: Absent voters
+    present: Voters present
+    electorate: Electorate in the turnout source
+    valid_votes: Nominal or valid votes in the source
+    blank_votes: Blank votes
+    null_votes: Null votes
+    ballot_votes: Total votes for the office
+    blank_rate: Blank votes (%)
+    null_rate: Null votes (%)
+    events: Presidential voting events
+    late_rate: Events from 17:00 onwards (%)
+    manual_rate: Manual release (%)
+    nonbiometric_rate: Identification without biometrics (%)
+    flagged_rate: Sections with a statistical signal (%)
+    seats: Seats assigned
+    parties: Parties or federations with a seat
+
+history:
+  title: TSE historical archive
+  catalog: Official data catalogue
+  intro: "The catalogue distinguishes available sources, downloaded files, published releases and data normalized for analysis. A catalogue entry does not mean the file has already been downloaded or integrated."
+  summary: "Archive from {first}: {datasets} datasets and {resources} official resources."
+  allYears: All years
+  family: Data family
+  allFamilies: All families
+  normalized: Data normalized and integrated into the analyses.
+  notNormalized: Source not yet normalized for analysis in the interface.
+  source: TSE dataset
+  release: Archived release
+  resource: Official resource
+  state: Status
+  size: Reported size
+  status:
+    catalogued: Catalogued
+    downloaded: Downloaded
+    published: Published
+    blocked: Blocked
+    downloading: Downloading
+    unavailable: Unavailable at source
+    partial: Partially published
+    privacy-review-required: Personal data review required
+    excluded: Outside the collection scope

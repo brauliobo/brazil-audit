@@ -14,7 +14,7 @@
     "test:times": "node --test test/voting-time.test.js",
     "test:official": "node --test test/official.test.js test/official-turnout.test.js",
     "test:regions": "node --test test/regions.test.js",
-    "test:charts": "node --test test/chart-scale.test.js",
+    "test:charts": "node --test test/chart-scale.test.js test/comparison.test.js",
     "test:signals": "node --test test/signals.test.js",
     "test:logpack": "node --test test/logpack.test.js test/lookup.test.js test/logpack-index.test.js",
     "test:logscan": "cargo test --release --manifest-path tools/logscan/Cargo.toml",
