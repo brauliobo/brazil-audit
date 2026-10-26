@@ -1,0 +1,70 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-10-26T21:48:25.097929+00:00",
+  "status": "published",
+  "dataset": {
+    "id": "candidatos-1960",
+    "title": "Candidatos - 1960",
+    "groups": [
+      "candidatos"
+    ],
+    "family": "candidatos",
+    "years": [
+      1960
+    ],
+    "license": "cc-by",
+    "source": "https://dadosabertos.tse.jus.br/dataset/candidatos-1960",
+    "branch": "archive/candidatos-1960",
+    "tag": "data-candidatos-1960",
+    "releaseUrl": "https://github.com/brauliobo/brazil-audit/releases/tag/data-candidatos-1960",
+    "normalized": false,
+    "status": "catalogued",
+    "inScope": true
+  },
+  "resources": [
+    {
+      "id": "70a6a47a-ecbc-4f57-9296-d18db772d94a",
+      "name": "Legendas",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_legendas/consulta_legendas_1960.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_legendas/consulta_legendas_1960.zip",
+      "format": "TXT",
+      "status": "prepared",
+      "bytes": 280120,
+      "lastModified": "Thu, 16 Apr 2015 19:35:42 GMT",
+      "etag": "\"44638-513dc91b75f80\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:48:24.850728+00:00",
+      "sha256": "ff2298d5100b721450e52cca6d508e5716cf033853a22bdf14d99df12936629e",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "70a6a47a-consulta_legendas_1960.zip",
+          "bytes": 280120,
+          "sha256": "ff2298d5100b721450e52cca6d508e5716cf033853a22bdf14d99df12936629e"
+        }
+      ]
+    },
+    {
+      "id": "0d94f263-69e0-4ab4-88e0-db83edad69b5",
+      "name": "Vagas",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_vagas/consulta_vagas_1960.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_vagas/consulta_vagas_1960.zip",
+      "format": "TXT",
+      "status": "prepared",
+      "bytes": 279557,
+      "lastModified": "Thu, 16 Apr 2015 19:35:53 GMT",
+      "etag": "\"44405-513dc925f3840\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:48:25.097338+00:00",
+      "sha256": "aa5ff6b807b47f7b4b417ea3423426485814eafa8cd00104979b341c53863d09",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "0d94f263-consulta_vagas_1960.zip",
+          "bytes": 279557,
+          "sha256": "aa5ff6b807b47f7b4b417ea3423426485814eafa8cd00104979b341c53863d09"
+        }
+      ]
+    }
+  ]
+}
