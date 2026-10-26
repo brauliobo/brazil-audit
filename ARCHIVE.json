@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-26T21:46:04.238764+00:00",
+  "generatedAt": "2026-10-26T21:48:12.550104+00:00",
   "status": "published",
   "dataset": {
     "id": "resultados-1954",
@@ -18,7 +18,8 @@
     "tag": "data-resultados-1954",
     "releaseUrl": "https://github.com/brauliobo/brazil-audit/releases/tag/data-resultados-1954",
     "normalized": false,
-    "status": "catalogued"
+    "status": "catalogued",
+    "inScope": true
   },
   "resources": [
     {
@@ -31,6 +32,7 @@
       "bytes": 9572,
       "lastModified": "Thu, 16 Apr 2015 19:39:52 GMT",
       "etag": "\"2564-513dca09e1200\"",
+      "inScope": true,
       "downloadedAt": "2026-10-26T21:46:03.445468+00:00",
       "sha256": "4981c7f0e63f2c40601623611d148769ca4d932b85efe5b965dbd4b563cc3911",
       "removedPersonalColumns": {},
@@ -52,6 +54,7 @@
       "bytes": 121661,
       "lastModified": "Mon, 26 May 2014 16:14:43 GMT",
       "etag": "\"1db3d-4fa4fe084c2c0\"",
+      "inScope": true,
       "downloadedAt": "2026-10-26T21:46:03.801325+00:00",
       "sha256": "fed34d4befa03c0e9e5163c58aa6c0625f201f9892868757814cb5a65efa268a",
       "removedPersonalColumns": {},
@@ -73,6 +76,7 @@
       "bytes": 294455,
       "lastModified": "Mon, 26 May 2014 16:15:13 GMT",
       "etag": "\"47e37-4fa4fe24e8640\"",
+      "inScope": true,
       "downloadedAt": "2026-10-26T21:46:04.237672+00:00",
       "sha256": "180cb8ad3bbf81cd59d7a682f3ffbad607d52fe9d55c6a5bd70305140b0e0121",
       "removedPersonalColumns": {},
