@@ -71,5 +71,5 @@ export function comparisonQuery(id, election, source) {
     numerator = id === 'parties' ? 'count(distinct bloc)' : 'sum(seats)'
     filter = `($1::text = '' or uf = $1) and $2::text = '' and office = $3`
   }
-  return `select ${numerator}::float8 numerator, ${denominator}::float8 denominator, count(*) records from ${from} where ${where} and ${filter} and $3::int > 0`
+  return `select ${numerator}::float8 numerator, ${denominator}::float8 denominator, ${source === 'sgf' ? denominator : 'count(*)'} records from ${from} where ${where} and ${filter} and $3::int > 0`
 }

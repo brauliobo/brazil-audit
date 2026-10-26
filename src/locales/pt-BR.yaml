@@ -1090,6 +1090,13 @@ navGroups:
   sections: Ferramentas da área
 
 compare:
+  flowModels: Modelos e verificações
+  historyDates: "Data oficial"
+  historyTypes: "Tipo de eleição"
+  historySourceYears: "Ano do pacote de origem"
+  flowCredible: "Intervalo posterior condicional (95%)"
+  flowPosteriorNote: "Intervalo credível condicionado ao modelo e às hipóteses a priori; convergência, adequação e sensibilidade são apresentadas no diagnóstico."
+  flowBootstrapNote: "Intervalo por bootstrap territorial condicionado ao modelo homogêneo; não é uma probabilidade posterior."
   unknownParty: Partido não informado na fonte
   unknownOffice: Cargo não informado na fonte
   mode: "Tipo de comparação"
@@ -1107,7 +1114,7 @@ compare:
   flowShare: "% da origem"
   flowInterval: "Intervalo bootstrap condicional (95%)"
   flowBounds: "Limites possíveis pelas margens"
-  flowNote: "Estimativa ecológica agregada: não acompanha votos individuais. O modelo supõe comportamento homogêneo entre territórios; os intervalos são de bootstrap territorial condicional, não probabilidades posteriores. Os limites pelas margens independem do modelo. Só participam localidades com eleitorado compatível nos dois turnos."
+  flowNote: "Estimativa ecológica agregada: não acompanha votos individuais. O método e o tipo de intervalo são identificados para cada resultado. Os limites pelas margens independem do modelo. Só participam localidades com eleitorado compatível nos dois turnos."
   flowPending: "Estimativas ainda em preparação."
   flowCoverage: "Cobertura: {units} de {total} localidades; {electorate} de {all} eleitores."
   flowDiagnostics: "Método e diagnóstico"

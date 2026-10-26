@@ -22,15 +22,17 @@ const rows = computed(() => {
   const d = data.data
   return d?.cells?.map((c) => ({...c,fromLabel:d.from.find((r) => r.id===c.from)?.label ?? c.from,toLabel:d.to.find((r) => r.id===c.to)?.label ?? c.to,interval:c.low==null?'–':`${int(c.low)} – ${int(c.high)}`,bounds:`${int(c.boundLow)} – ${int(c.boundHigh)}`})) ?? []
 })
+const interval = computed(() => data.data?.method?.interval ?? index?.method?.interval)
 const columns = computed(() => [
   {key:'fromLabel',label:t('compare.flowFrom')},{key:'toLabel',label:t('compare.flowTo')},
   {key:'estimate',label:t('compare.flowEstimate'),num:true,fmt:int},
   {key:'rowShare',label:t('compare.flowShare'),num:true,fmt:(v)=>v==null?'–':pct(v,2)},
-  {key:'interval',label:t('compare.flowInterval')},{key:'bounds',label:t('compare.flowBounds')},
+  {key:'interval',label:t(interval.value === 'posterior-95' ? 'compare.flowCredible' : 'compare.flowInterval')},{key:'bounds',label:t('compare.flowBounds')},
 ])
 </script>
 <template lang="pug">
 p.muted {{ t('compare.flowNote') }}
+p.muted(v-if="interval") {{ t(interval === 'posterior-95' ? 'compare.flowPosteriorNote' : 'compare.flowBootstrapNote') }}
 p(v-if="!contests.length") {{ t('compare.flowPending') }}
 Field(v-else :label="t('compare.election')")
   select(:value="selected.id" @change="setParam('contest',$event.target.value)")
@@ -40,6 +42,14 @@ Panel(v-if="selected" :title="t('compare.flowMode')" :state="data" wide)
     p {{ t(`compare.flowStatus.${data.data.status}`) }}
     p(v-if="data.data.reason") {{ t(`compare.flowReasons.${data.data.reason}`) }}
     p {{ t('compare.flowCoverage', { units: int(data.data.coverage.units), total: int(data.data.coverage.eligibleUnits), electorate: int(data.data.coverage.electorate), all: int(data.data.coverage.electorateTotal) }) }}
+    details(v-if="data.data.models?.length")
+      summary {{ t('compare.flowModels') }}
+      ul
+        li(v-for="model in data.data.models" :key="model.id")
+          strong {{ model.id }}
+          |  · {{ t(`compare.flowStatus.${model.status}`) }}
+          p(v-if="model.reason") {{ t(`compare.flowReasons.${model.reason}`) }}
+          pre {{ JSON.stringify(model.diagnostics,null,2) }}
     DataTable(:columns="columns" :rows="rows")
     details
       summary {{ t('compare.flowDiagnostics') }}

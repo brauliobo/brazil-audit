@@ -42,6 +42,7 @@ test('every metric query executes against the shared schema and respects its gra
       create table sgz(election int,turn int,state text,city text,aptos int,comp int,v int,man int,nor int,flagged int,sections int);
       create table tot(election int,turn int,state text,city text,office int,nominal int,blank int,nul int);
       create view totx as select * from tot;
+      create table sgf(election int,turn int,state text,city text,fl int);
       create table vtc(election int,turn int,state text,city text,n int,tz int,b int[]);
       create table seats(election int,turn int,uf text,office int,bloc text,seats int);
       insert into turnout values(2026,2,'br','br',null,100,70,30,101,1),(2026,2,'uf','ac',null,100,70,30,101,1),(2026,2,'city','ac','CITY',100,70,30,101,1);
@@ -63,6 +64,8 @@ test('every metric query executes against the shared schema and respects its gra
     assert.equal(metricResult('abstention_rate', detail).value, .3, 'weights are electorate counts, not mean section rates')
     const { rows: [city] } = await db.query(comparisonQuery('abstention_rate', election, 'turnout'), ['ac', 'CITY', 1])
     assert.equal(Number(city.records), 1)
+    const {rows:[noFlags]} = await db.query(comparisonQuery('signal_idle',election,'sgf'),['','',1])
+    assert.equal(metricResult('signal_idle',noFlags).value,0,'sparse signal rows with known coverage imply zero, not missing')
   } finally { await db.close() }
 })
 
@@ -76,12 +79,12 @@ test('section medians are explicitly equal-weight section statistics, not pooled
 test('historical totals resolve geography hierarchy per state and municipality', async () => {
   const { historicalValue,parseHistoricalCsv } = await import('../src/history-comparison.js')
   const rows = [
-    {office_key:'x',scope:'state',state:'a',eligible:100,absent:20},
-    {office_key:'x',scope:'zone',state:'a',city_code:'1',eligible:100,absent:20},
-    {office_key:'x',scope:'municipality',state:'b',city_code:'2',eligible:200,absent:20},
-    {office_key:'x',scope:'zone',state:'b',city_code:'2',eligible:200,absent:20},
-    {office_key:'x',scope:'zone',state:'b',city_code:'3',eligible:50,absent:10},
-    {office_key:'x',scope:'zone',state:'b',city_code:'4',eligible:50,absent:null},
+    {office_key:'x',scope:'state',state:'a',eligible:100,installed:100,absent:20},
+    {office_key:'x',scope:'zone',state:'a',city_code:'1',eligible:100,installed:100,absent:20},
+    {office_key:'x',scope:'municipality',state:'b',city_code:'2',eligible:200,installed:200,absent:20},
+    {office_key:'x',scope:'zone',state:'b',city_code:'2',eligible:200,installed:200,absent:20},
+    {office_key:'x',scope:'zone',state:'b',city_code:'3',eligible:50,installed:50,absent:10},
+    {office_key:'x',scope:'zone',state:'b',city_code:'4',eligible:50,installed:50,absent:null},
   ]
   const r = historicalValue(rows,'abstention_rate','x')
   assert.equal(r.value,50/350)

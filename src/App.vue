@@ -48,7 +48,7 @@ header.site-header
     Logo.brand__mark(mark)
   Tabs(:items="nav" :label="t('nav.label')")
   .header-end
-    ElectionPicker
+    ElectionPicker(v-if="!['compare','history'].includes(route.view)")
     details.header-tools
       summary {{ t('navGroups.tools') }}
       .cluster
@@ -59,7 +59,7 @@ header.site-header
 EngineStatus
 main#main(tabindex="-1")
   Tabs(v-if="subnav.length" :items="subnav" :label="t('navGroups.sections')")
-  SectionSearch(v-if="!route.notFound && route.view !== 'design'")
+  SectionSearch(v-if="!route.notFound && !['design','compare','history'].includes(route.view)")
   Notice(v-if="renderError" kind="danger") {{ t('errors.render', { message: renderError.message }) }}
   component(:is="current" :key="route.view + route.election")
 footer.site-footer

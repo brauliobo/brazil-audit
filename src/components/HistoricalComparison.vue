@@ -25,7 +25,7 @@ async function load(e) {
 const data = useAsync(() => [office.value,metric.value,state.value],async ([cargo,id,uf]) => {
   const elections = index.elections.filter((e) => e.offices.some((o) => o.key === cargo))
   const rows = []
-  for (const e of elections) rows.push({election:`${e.year} · ${e.turn ?? '–'} · ${e.description || e.id}`, ...historicalValue(await load(e),id,cargo,uf)})
+  for (const e of elections) rows.push({election:`${e.year} · ${e.turn ?? '–'} · ${e.description || e.id}`, dates:e.dates?.join(', '),types:e.electionTypes?.join(', '),sourceYears:e.sourceDatasetYears?.join(', '),...historicalValue(await load(e),id,cargo,uf)})
   return rows
 })
 const sources = computed(() => [...new Set(index.elections.filter((e) => e.offices.some((o) => o.key === office.value)).flatMap((e) => e.sources))])
@@ -35,6 +35,9 @@ const columns = computed(() => [
   {key:'value',label:t('compare.value'),fmt:show,num:true},
   {key:'numerator',label:t('compare.numerator'),fmt:int,num:true},
   {key:'denominator',label:t('compare.denominator'),fmt:int,num:true},
+  {key:'dates',label:t('compare.historyDates')},
+  {key:'types',label:t('compare.historyTypes')},
+  {key:'sourceYears',label:t('compare.historySourceYears')},
   {key:'scope',label:t('compare.historyGrain')},
   {key:'units',label:t('compare.historyKnown'),fmt:int,num:true},
   {key:'totalUnits',label:t('compare.historyTotal'),fmt:int,num:true},

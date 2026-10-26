@@ -1089,6 +1089,13 @@ navGroups:
   sections: Tools in this area
 
 compare:
+  flowModels: Models and checks
+  historyDates: "Official date"
+  historyTypes: "Election type"
+  historySourceYears: "Source package year"
+  flowCredible: "Conditional posterior interval (95%)"
+  flowPosteriorNote: "Credible interval conditional on the model and prior assumptions; convergence, fit and sensitivity are reported in diagnostics."
+  flowBootstrapNote: "Territorial bootstrap interval conditional on the homogeneous model; this is not a posterior probability."
   unknownParty: Party unspecified in source
   unknownOffice: Office unspecified in source
   mode: "Comparison type"
@@ -1106,7 +1113,7 @@ compare:
   flowShare: "% of origin"
   flowInterval: "Conditional bootstrap interval (95%)"
   flowBounds: "Feasible margin bounds"
-  flowNote: "Aggregate ecological estimate: does not track individual votes. The model assumes homogeneous behavior across territories; intervals use conditional territorial bootstrap, not posterior probabilities. Margin bounds are independent of the model. Only localities with compatible electorates in both rounds are included."
+  flowNote: "Aggregate ecological estimate: does not track individual votes. The method and interval type are identified for each result. Margin bounds are independent of the model. Only localities with compatible electorates in both rounds are included."
   flowPending: "Estimates are being prepared."
   flowCoverage: "Coverage: {units} of {total} localities; {electorate} of {all} voters."
   flowDiagnostics: "Method and diagnostics"

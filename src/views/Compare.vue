@@ -41,8 +41,8 @@ const cityOptions = useAsync(() => [state.value], async ([s], q) => {
   await ensure('mun_map')
   return objects(await q('select city from mun_map where state = $1 order by city', [s]))
 })
-const targetOptions = useAsync(() => [state.value,city.value,office.value,selected.value,turn.value], async ([uf,municipality,cargo],q) => {
-  if (!hasTargets.value) return {}
+const targetOptions = useAsync(() => [state.value,city.value,office.value,selected.value,turn.value,mode.value], async ([uf,municipality,cargo],q) => {
+  if (mode.value !== 'indicators' || !hasTargets.value) return {}
   await ensure('cands')
   const options = {}
   for (const e of elections.value) {
