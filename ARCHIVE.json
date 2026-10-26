@@ -1,0 +1,422 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-10-26T22:08:10.820124+00:00",
+  "status": "published",
+  "dataset": {
+    "id": "eleitorado-2024",
+    "title": "Eleitorado - 2024",
+    "groups": [
+      "eleitorado"
+    ],
+    "family": "eleitorado",
+    "years": [
+      2024
+    ],
+    "license": "cc-by",
+    "source": "https://dadosabertos.tse.jus.br/dataset/eleitorado-2024",
+    "branch": "archive/eleitorado-2024",
+    "tag": "data-eleitorado-2024",
+    "releaseUrl": "https://github.com/brauliobo/brazil-audit/releases/tag/data-eleitorado-2024",
+    "normalized": false,
+    "status": "catalogued",
+    "inScope": true
+  },
+  "resources": [
+    {
+      "id": "bdf4f7dc-9428-4172-ab1b-15eb55bbe640",
+      "name": "Eleitorado - 2024",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitorado/perfil_eleitorado_2024.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitorado/perfil_eleitorado_2024.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 333597149,
+      "lastModified": "Fri, 12 Sep 2025 16:47:08 GMT",
+      "etag": "\"13e249dd-63e9d6787bb00\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T22:08:04.109024+00:00",
+      "sha256": "fd6703bdaa89aba023b3a21fc1dccede94aa315b985d91011ad5c2e971819de6",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "bdf4f7dc-perfil_eleitorado_2024.zip",
+          "bytes": 333597149,
+          "sha256": "fd6703bdaa89aba023b3a21fc1dccede94aa315b985d91011ad5c2e971819de6"
+        }
+      ]
+    },
+    {
+      "id": "d7f40e71-58f8-42bc-9487-dd1128b6f36c",
+      "name": "Perfil do eleitorado com deficiência - 2024",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_deficiente/perfil_eleitor_deficiencia_2024.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_deficiente/perfil_eleitor_deficiencia_2024.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 79654048,
+      "lastModified": "Fri, 13 Sep 2024 22:21:20 GMT",
+      "etag": "\"4bf6ca0-62207a47fa493\"",
+      "inScope": false
+    },
+    {
+      "id": "56348b87-e07c-4569-9c60-9cf6ccb10206",
+      "name": "Eleitorado por local de votação - 2024",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/eleitorado_locais_votacao/eleitorado_local_votacao_2024.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/eleitorado_locais_votacao/eleitorado_local_votacao_2024.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 45276803,
+      "lastModified": "Tue, 29 Oct 2024 18:02:29 GMT",
+      "etag": "\"2b2de83-625a1638093d9\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T22:08:06.350135+00:00",
+      "sha256": "352ea0731f862b8a52a749f076e1b597438cfafdd03621fcc772f3076bb35aed",
+      "removedPersonalColumns": {
+        "eleitorado_local_votacao_2024.csv": [
+          "NR_TELEFONE_LOCAL"
+        ]
+      },
+      "assets": [
+        {
+          "name": "56348b87-eleitorado_local_votacao_2024.zip",
+          "bytes": 44081947,
+          "sha256": "b4f127ff3deaace9e55163eb678cc9ef0e765ad45e16e814ddfb1bae8253d90d"
+        }
+      ]
+    },
+    {
+      "id": "b65027ad-c1a8-4a50-aa6e-54f1b1e5b3a7",
+      "name": "Transferência temporária do eleitorado - 2024",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_tte/transferencia_temporaria_2024.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_tte/transferencia_temporaria_2024.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 256578,
+      "lastModified": "Wed, 19 Mar 2025 16:01:19 GMT",
+      "etag": "\"3ea42-630b421d2d534\"",
+      "inScope": false
+    },
+    {
+      "id": "61b41083-f16d-4256-b769-42994b5b0d94",
+      "name": "Transferência temporária do eleitorado por seção - 2024",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_tte/transf_temporaria_secao_2024.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_tte/transf_temporaria_secao_2024.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 3898335,
+      "lastModified": "Wed, 19 Mar 2025 16:01:42 GMT",
+      "etag": "\"3b7bdf-630b4232c2aa7\"",
+      "inScope": false
+    },
+    {
+      "id": "3afda213-1258-4b96-80fa-a204c78f9572",
+      "name": "AC - Perfil do eleitorado por seção eleitoral - 2024",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2024_AC.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2024_AC.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 7944504,
+      "lastModified": "Mon, 25 Aug 2025 21:37:32 GMT",
+      "etag": "\"793938-63d375cf01f00\"",
+      "inScope": false
+    },
+    {
+      "id": "eeef1163-2429-4bc6-b481-621f85c6587e",
+      "name": "AL - Perfil do eleitorado por seção eleitoral - 2024",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2024_AL.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2024_AL.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 34654308,
+      "lastModified": "Mon, 25 Aug 2025 21:37:38 GMT",
+      "etag": "\"210c864-63d375d4bac80\"",
+      "inScope": false
+    },
+    {
+      "id": "d2da016c-5a29-4b75-9218-98038127cbb8",
+      "name": "AM - Perfil do eleitorado por seção eleitoral - 2024",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2024_AM.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2024_AM.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 34262649,
+      "lastModified": "Mon, 25 Aug 2025 21:31:28 GMT",
+      "etag": "\"20ace79-63d37473dec00\"",
+      "inScope": false
+    },
+    {
+      "id": "3be033d8-3f0c-4ee8-884b-e256a3a160a2",
+      "name": "AP - Perfil do eleitorado por seção eleitoral - 2024",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2024_AP.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2024_AP.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 6494415,
+      "lastModified": "Mon, 25 Aug 2025 21:35:40 GMT",
+      "etag": "\"6318cf-63d3756432300\"",
+      "inScope": false
+    },
+    {
+      "id": "7da930dd-5d0f-49e5-bfe9-a7868962ac6b",
+      "name": "BA - Perfil do eleitorado por seção eleitoral - 2024",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2024_BA.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2024_BA.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 194895355,
+      "lastModified": "Mon, 25 Aug 2025 21:38:27 GMT",
+      "etag": "\"b9dddfb-63d3760375ac0\"",
+      "inScope": false
+    },
+    {
+      "id": "181db2e9-19a8-45e9-b4f6-7e89a6b7afc5",
+      "name": "CE - Perfil do eleitorado por seção eleitoral - 2024",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2024_CE.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2024_CE.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 122982690,
+      "lastModified": "Mon, 25 Aug 2025 21:37:29 GMT",
+      "etag": "\"7549122-63d375cc25840\"",
+      "inScope": false
+    },
+    {
+      "id": "e35b6053-1dea-4b9f-a4a8-12ae833bf95c",
+      "name": "ES - Perfil do eleitorado por seção eleitoral - 2024",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2024_ES.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2024_ES.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 45457064,
+      "lastModified": "Mon, 25 Aug 2025 21:37:47 GMT",
+      "etag": "\"2b59ea8-63d375dd500c0\"",
+      "inScope": false
+    },
+    {
+      "id": "90c32056-e5c6-46a8-8603-bec05d895cb7",
+      "name": "GO - Perfil do eleitorado por seção eleitoral - 2024",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2024_GO.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2024_GO.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 87440765,
+      "lastModified": "Mon, 25 Aug 2025 21:37:03 GMT",
+      "etag": "\"5363d7d-63d375b359dc0\"",
+      "inScope": false
+    },
+    {
+      "id": "f6aa3298-7f99-49a8-a59d-a3f292a4e8c8",
+      "name": "MA - Perfil do eleitorado por seção eleitoral - 2024",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2024_MA.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2024_MA.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 90008201,
+      "lastModified": "Mon, 25 Aug 2025 21:31:41 GMT",
+      "etag": "\"55d6a89-63d3748044940\"",
+      "inScope": false
+    },
+    {
+      "id": "cfbec134-0d72-499c-920c-6504d98ae051",
+      "name": "MG - Perfil do eleitorado por seção eleitoral - 2024",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2024_MG.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2024_MG.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 291721132,
+      "lastModified": "Mon, 25 Aug 2025 21:36:25 GMT",
+      "etag": "\"11634fac-63d3758f1c840\"",
+      "inScope": false
+    },
+    {
+      "id": "53f05cd2-d87c-4416-be77-ac1cbdc6090a",
+      "name": "MS - Perfil do eleitorado por seção eleitoral - 2024",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2024_MS.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2024_MS.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 33142439,
+      "lastModified": "Mon, 25 Aug 2025 21:36:32 GMT",
+      "etag": "\"1f9b6a7-63d37595c9800\"",
+      "inScope": false
+    },
+    {
+      "id": "b9f84671-596c-45f3-9582-70d8729a4dd7",
+      "name": "MT - Perfil do eleitorado por seção eleitoral - 2024",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2024_MT.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2024_MT.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 45661659,
+      "lastModified": "Mon, 25 Aug 2025 21:34:54 GMT",
+      "etag": "\"2b8bddb-63d3753853b80\"",
+      "inScope": false
+    },
+    {
+      "id": "1ec9af59-0229-41b7-bfc2-d66a8fa97331",
+      "name": "PA - Perfil do eleitorado por seção eleitoral - 2024",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2024_PA.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2024_PA.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 98755428,
+      "lastModified": "Mon, 25 Aug 2025 21:36:49 GMT",
+      "etag": "\"5e2e364-63d375a5ffe40\"",
+      "inScope": false
+    },
+    {
+      "id": "cf27fdd1-6a5b-4772-be6f-db4447debcf9",
+      "name": "PB - Perfil do eleitorado por seção eleitoral - 2024",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2024_PB.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2024_PB.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 57259672,
+      "lastModified": "Mon, 25 Aug 2025 21:37:57 GMT",
+      "etag": "\"369b698-63d375e6d9740\"",
+      "inScope": false
+    },
+    {
+      "id": "d7f0b6c7-28f0-4ebb-b69f-ddd553ac4281",
+      "name": "PE - Perfil do eleitorado por seção eleitoral - 2024",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2024_PE.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2024_PE.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 114473226,
+      "lastModified": "Mon, 25 Aug 2025 21:35:13 GMT",
+      "etag": "\"6d2b90a-63d3754a72640\"",
+      "inScope": false
+    },
+    {
+      "id": "09564ee8-2357-43b0-9727-afbd233ed520",
+      "name": "PI - Perfil do eleitorado por seção eleitoral - 2024",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2024_PI.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2024_PI.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 45368855,
+      "lastModified": "Mon, 25 Aug 2025 21:37:10 GMT",
+      "etag": "\"2b44617-63d375ba06d80\"",
+      "inScope": false
+    },
+    {
+      "id": "c6ff00d0-837a-44f8-9d98-fbad37a45b74",
+      "name": "PR - Perfil do eleitorado por seção eleitoral - 2024",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2024_PR.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2024_PR.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 148884124,
+      "lastModified": "Mon, 25 Aug 2025 21:35:38 GMT",
+      "etag": "\"8dfca9c-63d3756249e80\"",
+      "inScope": false
+    },
+    {
+      "id": "ca296e6f-4dde-40d8-ac94-c0786989528d",
+      "name": "RJ - Perfil do eleitorado por seção eleitoral - 2024",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2024_RJ.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2024_RJ.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 198483479,
+      "lastModified": "Mon, 25 Aug 2025 21:32:45 GMT",
+      "etag": "\"bd49e17-63d374bd4d940\"",
+      "inScope": false
+    },
+    {
+      "id": "30675e12-58dd-4c30-8754-810307594395",
+      "name": "RN - Perfil do eleitorado por seção eleitoral - 2024",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2024_RN.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2024_RN.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 40656221,
+      "lastModified": "Mon, 25 Aug 2025 21:31:48 GMT",
+      "etag": "\"26c5d5d-63d37486f1900\"",
+      "inScope": false
+    },
+    {
+      "id": "8b00ccce-93b6-40e9-89f4-634cdc773276",
+      "name": "RO - Perfil do eleitorado por seção eleitoral - 2024",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2024_RO.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2024_RO.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 18982567,
+      "lastModified": "Mon, 25 Aug 2025 21:32:50 GMT",
+      "etag": "\"121a6a7-63d374c212480\"",
+      "inScope": false
+    },
+    {
+      "id": "3d7b16c9-0752-421d-ae77-57778e6f4a56",
+      "name": "RR - Perfil do eleitorado por seção eleitoral - 2024",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2024_RR.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2024_RR.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 4871985,
+      "lastModified": "Mon, 25 Aug 2025 21:31:50 GMT",
+      "etag": "\"4a5731-63d37488d9d80\"",
+      "inScope": false
+    },
+    {
+      "id": "6d03cc30-587b-410e-9f0c-a4a194594f4f",
+      "name": "RS - Perfil do eleitorado por seção eleitoral - 2024",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2024_RS.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2024_RS.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 153018919,
+      "lastModified": "Mon, 25 Aug 2025 21:32:15 GMT",
+      "etag": "\"91ee227-63d374a0b15c0\"",
+      "inScope": false
+    },
+    {
+      "id": "d49b47a2-0b3f-4c79-8fcc-08272dc04745",
+      "name": "SE - Perfil do eleitorado por seção eleitoral - 2024",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2024_SE.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2024_SE.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 23451003,
+      "lastModified": "Mon, 25 Aug 2025 21:32:54 GMT",
+      "etag": "\"165d57b-63d374c5e2d80\"",
+      "inScope": false
+    },
+    {
+      "id": "3176a804-7686-4d3b-be58-85e52f70ddd4",
+      "name": "SC - Perfil do eleitorado por seção eleitoral - 2024",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2024_SC.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2024_SC.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 94206375,
+      "lastModified": "Mon, 25 Aug 2025 21:33:10 GMT",
+      "etag": "\"59d79a7-63d374d525180\"",
+      "inScope": false
+    },
+    {
+      "id": "95fd61b6-a7df-421d-9641-84fd829748fc",
+      "name": "SP - Perfil do eleitorado por seção eleitoral - 2024",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2024_SP.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2024_SP.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 589101245,
+      "lastModified": "Mon, 25 Aug 2025 21:34:45 GMT",
+      "etag": "\"231cf8bd-63d3752fbe740\"",
+      "inScope": false
+    },
+    {
+      "id": "01e167a8-2f7c-4e78-800c-49ffa0372ace",
+      "name": "TO - Perfil do eleitorado por seção eleitoral - 2024",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2024_TO.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2024_TO.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 17094399,
+      "lastModified": "Mon, 25 Aug 2025 21:33:16 GMT",
+      "etag": "\"104d6ff-63d374daddf00\"",
+      "inScope": false
+    }
+  ]
+}
