@@ -1,0 +1,398 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-10-26T21:54:12.282787+00:00",
+  "status": "published",
+  "dataset": {
+    "id": "eleitorado-2010",
+    "title": "Eleitorado - 2010",
+    "groups": [
+      "eleitorado"
+    ],
+    "family": "eleitorado",
+    "years": [
+      2010
+    ],
+    "license": "cc-by",
+    "source": "https://dadosabertos.tse.jus.br/dataset/eleitorado-2010",
+    "branch": "archive/eleitorado-2010",
+    "tag": "data-eleitorado-2010",
+    "releaseUrl": "https://github.com/brauliobo/brazil-audit/releases/tag/data-eleitorado-2010",
+    "normalized": false,
+    "status": "catalogued",
+    "inScope": true
+  },
+  "resources": [
+    {
+      "id": "1b07ac85-269b-4956-a05a-f7b0987a22e5",
+      "name": "Eleitorado - 2010",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitorado/perfil_eleitorado_2010.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitorado/perfil_eleitorado_2010.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 35907120,
+      "lastModified": "Tue, 26 Aug 2025 16:36:03 GMT",
+      "etag": "\"223e630-63d47449742c0\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:54:02.951857+00:00",
+      "sha256": "76360758f6285a94004c730d85ccd673c86d0c5a0d85e43f5574cc2e67f691c4",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "1b07ac85-perfil_eleitorado_2010.zip",
+          "bytes": 35907120,
+          "sha256": "76360758f6285a94004c730d85ccd673c86d0c5a0d85e43f5574cc2e67f691c4"
+        }
+      ]
+    },
+    {
+      "id": "da1f77a4-6688-4049-9922-e6c50db72fa8",
+      "name": "Eleitorado por local de votação - 2010",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/eleitorado_locais_votacao/eleitorado_local_votacao_2010.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/eleitorado_locais_votacao/eleitorado_local_votacao_2010.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 70976425,
+      "lastModified": "Wed, 20 Aug 2025 13:52:23 GMT",
+      "etag": "\"43b03a9-63ccc4839b3c0\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:54:05.241961+00:00",
+      "sha256": "1f54c24d81950495fc6059521e00350e3549e1cda27a3058b58b4481002e7ca7",
+      "removedPersonalColumns": {
+        "eleitorado_local_votacao_2010.csv": [
+          "NR_TELEFONE_LOCAL"
+        ]
+      },
+      "assets": [
+        {
+          "name": "da1f77a4-eleitorado_local_votacao_2010.zip",
+          "bytes": 68952215,
+          "sha256": "916b0d71b344a1d8532868cb3d68488e7f87d14d1b955c12c8a46b0e39c328cf"
+        }
+      ]
+    },
+    {
+      "id": "240ad79d-f515-41f9-b702-11601d08585a",
+      "name": "AC - Perfil do eleitorado por seção eleitoral - 2010",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2010_AC.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2010_AC.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 2155722,
+      "lastModified": "Tue, 26 Aug 2025 16:37:25 GMT",
+      "etag": "\"20e4ca-63d47497a7b40\"",
+      "inScope": false
+    },
+    {
+      "id": "074e328d-e928-4b91-b4c7-8867fa05f6ab",
+      "name": "AL - Perfil do eleitorado por seção eleitoral - 2010",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2010_AL.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2010_AL.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 8432361,
+      "lastModified": "Tue, 26 Aug 2025 16:37:22 GMT",
+      "etag": "\"80aae9-63d47494cb480\"",
+      "inScope": false
+    },
+    {
+      "id": "1e2911f5-bef5-40ae-a931-113315aab3d9",
+      "name": "AM - Perfil do eleitorado por seção eleitoral - 2010",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2010_AM.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2010_AM.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 7768247,
+      "lastModified": "Tue, 26 Aug 2025 16:37:20 GMT",
+      "etag": "\"7688b7-63d47492e3000\"",
+      "inScope": false
+    },
+    {
+      "id": "9e759402-3825-46f6-a257-d5ab9b2bc92d",
+      "name": "AP - Perfil do eleitorado por seção eleitoral - 2010",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2010_AP.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2010_AP.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 1678580,
+      "lastModified": "Tue, 26 Aug 2025 16:37:23 GMT",
+      "etag": "\"199cf4-63d47495bf6c0\"",
+      "inScope": false
+    },
+    {
+      "id": "60dc6858-0180-4548-a6cc-128f8b99630e",
+      "name": "BA - Perfil do eleitorado por seção eleitoral - 2010",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2010_BA.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2010_BA.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 41652721,
+      "lastModified": "Tue, 26 Aug 2025 16:37:11 GMT",
+      "etag": "\"27b91f1-63d4748a4dbc0\"",
+      "inScope": false
+    },
+    {
+      "id": "70f3fd71-db7b-4535-b9bf-6b8c284d784b",
+      "name": "CE - Perfil do eleitorado por seção eleitoral - 2010",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2010_CE.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2010_CE.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 27055507,
+      "lastModified": "Tue, 26 Aug 2025 16:36:09 GMT",
+      "etag": "\"19cd593-63d4744f2d040\"",
+      "inScope": false
+    },
+    {
+      "id": "3d683b57-40ac-4c42-9db3-9ca28ebe2906",
+      "name": "DF - Perfil do eleitorado por seção eleitoral - 2010",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2010_DF.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2010_DF.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 3721330,
+      "lastModified": "Fri, 17 Sep 2021 00:12:51 GMT",
+      "etag": "\"38c872-5cc25cac026c0\"",
+      "inScope": false
+    },
+    {
+      "id": "33fbdb61-e657-4262-90d8-9cd29818b507",
+      "name": "ES - Perfil do eleitorado por seção eleitoral - 2010",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2010_ES.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2010_ES.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 11649412,
+      "lastModified": "Tue, 26 Aug 2025 16:37:13 GMT",
+      "etag": "\"b1c184-63d4748c36040\"",
+      "inScope": false
+    },
+    {
+      "id": "94ea72f1-8d3e-4ad7-83cf-83905136a2ab",
+      "name": "GO - Perfil do eleitorado por seção eleitoral - 2010",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2010_GO.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2010_GO.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 19319069,
+      "lastModified": "Tue, 26 Aug 2025 16:36:05 GMT",
+      "etag": "\"126c91d-63d4744b5c740\"",
+      "inScope": false
+    },
+    {
+      "id": "b4d41608-e3ef-4798-a4a2-5f093642debd",
+      "name": "MA - Perfil do eleitorado por seção eleitoral  - 2010",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2010_MA.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2010_MA.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 19567338,
+      "lastModified": "Tue, 26 Aug 2025 16:37:16 GMT",
+      "etag": "\"12a92ea-63d4748f12700\"",
+      "inScope": false
+    },
+    {
+      "id": "86fa1f9f-c6bd-441e-a10b-9f6823a53bcd",
+      "name": "MG - Perfil do eleitorado por seção eleitoral - 2010",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2010_MG.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2010_MG.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 65990381,
+      "lastModified": "Tue, 26 Aug 2025 16:36:16 GMT",
+      "etag": "\"3eeeeed-63d47455da000\"",
+      "inScope": false
+    },
+    {
+      "id": "8673905d-d988-4288-9ada-787c43d81d5d",
+      "name": "MS - Perfil do eleitorado por seção eleitoral - 2010",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2010_MS.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2010_MS.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 8058618,
+      "lastModified": "Tue, 26 Aug 2025 16:36:18 GMT",
+      "etag": "\"7af6fa-63d47457c2480\"",
+      "inScope": false
+    },
+    {
+      "id": "ae09a847-32de-4a96-94c5-09521fb09bc1",
+      "name": "MT - Perfil do eleitorado por seção eleitoral - 2010",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2010_MT.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2010_MT.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 10363205,
+      "lastModified": "Tue, 26 Aug 2025 16:37:18 GMT",
+      "etag": "\"9e2145-63d47490fab80\"",
+      "inScope": false
+    },
+    {
+      "id": "cc1c41a0-195f-4a79-ad5b-108d1ae50864",
+      "name": "PA - Perfil do eleitorado por seção eleitoral - 2010",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2010_PA.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2010_PA.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 20420128,
+      "lastModified": "Tue, 26 Aug 2025 16:36:24 GMT",
+      "etag": "\"1379620-63d4745d7b200\"",
+      "inScope": false
+    },
+    {
+      "id": "3631763f-4172-4397-a501-129ec22e12dc",
+      "name": "PB - Perfil do eleitorado por seção eleitoral - 2010",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2010_PB.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2010_PB.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 13149429,
+      "lastModified": "Tue, 26 Aug 2025 16:37:06 GMT",
+      "etag": "\"c8a4f5-63d4748589080\"",
+      "inScope": false
+    },
+    {
+      "id": "2d7b5c54-c3e2-4ef3-a98b-d64f90086ed0",
+      "name": "PE - Perfil do eleitorado por seção eleitoral - 2010",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2010_PE.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2010_PE.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 26636787,
+      "lastModified": "Tue, 26 Aug 2025 16:36:27 GMT",
+      "etag": "\"19671f3-63d47460578c0\"",
+      "inScope": false
+    },
+    {
+      "id": "22d9a3a7-feae-418e-bd09-1614d34eb019",
+      "name": "PI - Perfil do eleitorado por seção eleitoral - 2010",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2010_PI.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2010_PI.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 10607858,
+      "lastModified": "Tue, 26 Aug 2025 16:37:04 GMT",
+      "etag": "\"a1dcf2-63d47483a0c00\"",
+      "inScope": false
+    },
+    {
+      "id": "5f9dc43b-2d37-42ca-8a0c-18ac40da656f",
+      "name": "PR - Perfil do eleitorado por seção eleitoral - 2010",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2010_PR.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2010_PR.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 36494475,
+      "lastModified": "Tue, 26 Aug 2025 16:36:32 GMT",
+      "etag": "\"22cdc8b-63d474651c400\"",
+      "inScope": false
+    },
+    {
+      "id": "857a68eb-9bf9-48d1-bfe0-6128448ccbe4",
+      "name": "RJ - Perfil do eleitorado por seção eleitoral - 2010",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2010_RJ.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2010_RJ.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 50577927,
+      "lastModified": "Tue, 26 Aug 2025 16:37:02 GMT",
+      "etag": "\"303c207-63d47481b8780\"",
+      "inScope": false
+    },
+    {
+      "id": "17568708-5dbe-4b85-a74d-b802c2da871e",
+      "name": "RN - Perfil do eleitorado por seção eleitoral - 2010",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2010_RN.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2010_RN.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 10026832,
+      "lastModified": "Tue, 26 Aug 2025 16:36:34 GMT",
+      "etag": "\"98ff50-63d4746704880\"",
+      "inScope": false
+    },
+    {
+      "id": "a1231b3e-b228-417a-8d62-14cd324b4b40",
+      "name": "RO - Perfil do eleitorado por seção eleitoral - 2010",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2010_RO.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2010_RO.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 4968869,
+      "lastModified": "Tue, 26 Aug 2025 16:37:23 GMT",
+      "etag": "\"4bd1a5-63d47495bf6c0\"",
+      "inScope": false
+    },
+    {
+      "id": "5fe6de78-14c8-48a1-a7cd-d449014345be",
+      "name": "RR - Perfil do eleitorado por seção eleitoral - 2010",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2010_RR.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2010_RR.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 1273749,
+      "lastModified": "Tue, 26 Aug 2025 16:36:35 GMT",
+      "etag": "\"136f95-63d47467f8ac0\"",
+      "inScope": false
+    },
+    {
+      "id": "1d398e92-a540-4dc0-8d21-167569ad3be2",
+      "name": "RS - Perfil do eleitorado por seção eleitoral - 2010",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2010_RS.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2010_RS.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 42122911,
+      "lastModified": "Tue, 26 Aug 2025 16:36:56 GMT",
+      "etag": "\"282be9f-63d4747bffa00\"",
+      "inScope": false
+    },
+    {
+      "id": "d9f917a0-a752-4a72-92f6-1598f37d8573",
+      "name": "SE - Perfil do eleitorado por seção eleitoral - 2010",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2010_SE.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2010_SE.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 6343729,
+      "lastModified": "Tue, 26 Aug 2025 16:36:37 GMT",
+      "etag": "\"60cc31-63d47469e0f40\"",
+      "inScope": false
+    },
+    {
+      "id": "8c6cc5ad-2e58-4e74-81b5-833fc664405d",
+      "name": "SC - Perfil do eleitorado por seção eleitoral - 2010",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2010_SC.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2010_SC.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 22013617,
+      "lastModified": "Tue, 26 Aug 2025 16:36:22 GMT",
+      "etag": "\"14fe6b1-63d4745b92d80\"",
+      "inScope": false
+    },
+    {
+      "id": "4d45237b-eab0-49e1-9333-9b306f238360",
+      "name": "SP - Perfil do eleitorado por seção eleitoral - 2010",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2010_SP.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2010_SP.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 122780473,
+      "lastModified": "Tue, 26 Aug 2025 16:36:50 GMT",
+      "etag": "\"7517b39-63d4747646c80\"",
+      "inScope": false
+    },
+    {
+      "id": "a76d0408-4295-441c-992b-1fb60251d1bc",
+      "name": "TO - Perfil do eleitorado por seção eleitoral - 2010",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2010_TO.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitor_secao/perfil_eleitor_secao_2010_TO.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 4681854,
+      "lastModified": "Tue, 26 Aug 2025 16:35:59 GMT",
+      "etag": "\"47707e-63d47445a39c0\"",
+      "inScope": false
+    }
+  ]
+}
