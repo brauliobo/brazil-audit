@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-26T23:42:33.266293+00:00",
+  "generatedAt": "2026-10-26T23:55:56.199518+00:00",
   "source": {
     "url": "https://dadosabertos.tse.jus.br/api/3/action/package_search",
     "license": "cc-by"
@@ -87989,5 +87989,6 @@
   "inScopeDatasetCount": 101,
   "inScopeUniqueResourceCount": 759,
   "inScopeKnownSourceBytes": 25882033659,
-  "normalizedIndex": "history/indicators.json"
+  "normalizedIndex": "history/indicators.json",
+  "availabilityEvidence": "history/availability.json"
 }

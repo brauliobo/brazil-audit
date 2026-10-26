@@ -1,0 +1,37 @@
+{
+  "version": 1,
+  "checkedAt": "2026-10-26T23:51:16.405295+00:00",
+  "emptySourceMeaning": "A successfully inspected source ZIP with no RDV members does not establish zero votes or electors. Election applicability is checked separately against the official configuration.",
+  "configurations": [
+    {
+      "year": 2024,
+      "turn": 2,
+      "event": 620,
+      "url": "https://resultados.tse.jus.br/oficial/ele2024/620/config/mun-e000620-cm.json",
+      "path": "history/official-config-2024-620.json",
+      "sha256": "3ee461483c3e429093e949982f733eabb93b1c1e9b1e1d22241de73971239913",
+      "states": [
+        "am",
+        "ba",
+        "ce",
+        "es",
+        "go",
+        "ma",
+        "mt",
+        "ms",
+        "mg",
+        "pr",
+        "pb",
+        "pa",
+        "pe",
+        "rj",
+        "rn",
+        "rs",
+        "ro",
+        "se",
+        "sp",
+        "to"
+      ]
+    }
+  ]
+}

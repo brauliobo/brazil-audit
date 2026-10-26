@@ -9,6 +9,8 @@ def finalize(root, out):
     catalog = read_json(root / 'catalog/catalog.json')
     index = read_json(out.parent / 'indicators.json')
     catalog['normalizedIndex'] = 'history/indicators.json'
+    if (out.parent / 'availability.json').exists():
+        catalog['availabilityEvidence'] = 'history/availability.json'
     sources = {}
     for election in index['elections']:
         for source in election['sources']:
