@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-26T23:08:48.534640+00:00",
+  "generatedAt": "2026-10-26T23:35:28.962980+00:00",
   "status": "published",
   "dataset": {
     "id": "official-history-2026-2",
-    "title": "Fontes oficiais e resumos históricos · 2026 · turno 2",
+    "title": "Fontes oficiais e fatos para comparação de turnos · 2026",
     "groups": [
       "resultados"
     ],
@@ -137,6 +137,58 @@
       ]
     },
     {
+      "id": "official-comparison-sources",
+      "name": "Official comparison inputs, both rounds",
+      "url": "https://resultados.tse.jus.br/oficial/ele2026/6259/dados/ac/ac-c0003-e006259-u.json",
+      "status": "prepared",
+      "inScope": true,
+      "sourceCount": 2004,
+      "assets": [
+        {
+          "name": "comparison-official-sources.zip",
+          "bytes": 3168712,
+          "sha256": "2df84d0189aa80d4ed7d588a4d1e744c52a5e2048806abf676319062f7eb9e3b"
+        },
+        {
+          "name": "COMPARISON-SOURCES.json",
+          "bytes": 859498,
+          "sha256": "28bac4d2dd2e67f9cfb4bd367dbf5a6f1768a4fd43718583e7270e4e29aa04ea"
+        }
+      ]
+    },
+    {
+      "id": "normalized-2026:6257:1:2026-10-04",
+      "name": "Eleição Geral Federal 2026",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/detalhe_votacao_munzona/detalhe_votacao_munzona_2026.zip",
+      "status": "prepared",
+      "inScope": true,
+      "normalizedSummary": true,
+      "rows": 6320,
+      "assets": [
+        {
+          "name": "indicators-2026-6257-1-2026-10-04.csv.gz",
+          "bytes": 211634,
+          "sha256": "0f18310bbb3a6f50828305a36c04b5ebab0fb36460ed617722fd8072ec34b7d2"
+        }
+      ]
+    },
+    {
+      "id": "normalized-2026:6259:1:2026-10-04",
+      "name": "Eleições Gerais Estaduais 2026",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/detalhe_votacao_munzona/detalhe_votacao_munzona_2026.zip",
+      "status": "prepared",
+      "inScope": true,
+      "normalizedSummary": true,
+      "rows": 24430,
+      "assets": [
+        {
+          "name": "indicators-2026-6259-1-2026-10-04.csv.gz",
+          "bytes": 653910,
+          "sha256": "9e268462e90be2e906a65be44d7c4b79737851e1f5fa70a21211830acfdfd948"
+        }
+      ]
+    },
+    {
       "id": "normalized-2026:6258:2:2026-10-25",
       "name": "Eleição Geral 2026 — Presidente",
       "url": "https://resultados.tse.jus.br/oficial/ele2026/6258/dados/ac/ac-c0001-e006258-u.json",
@@ -147,8 +199,8 @@
       "assets": [
         {
           "name": "indicators-2026-6258-2-2026-10-25.csv.gz",
-          "bytes": 821258,
-          "sha256": "09817c560ccb5759aa88804995e4311451ca57dde109949e496de0d7d152691e"
+          "bytes": 839808,
+          "sha256": "c5edfa3e9c0b7f6a10c312bde91fbc3fed32ceac31e058060663d4e5aa99757b"
         }
       ]
     },
@@ -159,12 +211,12 @@
       "status": "prepared",
       "inScope": true,
       "normalizedSummary": true,
-      "rows": 6,
+      "rows": 988,
       "assets": [
         {
           "name": "indicators-2026-6260-2-2026-10-25.csv.gz",
-          "bytes": 873,
-          "sha256": "f61cbc71e43fd6eee0512581aff4cdccc3dd92f9ebd5926b297f269c1dcfb6a7"
+          "bytes": 76580,
+          "sha256": "d84ecff5b0bcfbb7c3d7f6009209e20da206554ac536e4d38af93f3a50162c04"
         }
       ]
     }

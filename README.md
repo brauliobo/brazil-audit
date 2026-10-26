@@ -1,4 +1,4 @@
-# Fontes oficiais e resumos históricos · 2026 · turno 2
+# Fontes oficiais e fatos para comparação de turnos · 2026
 
 Fonte: https://resultados.tse.jus.br/oficial/ele2026/6258/dados/br/br-c0001-e006258-u.json
 
