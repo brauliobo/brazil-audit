@@ -1,0 +1,686 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-10-26T21:52:07.551322+00:00",
+  "status": "published",
+  "dataset": {
+    "id": "resultados-2004",
+    "title": "Resultados - 2004",
+    "groups": [
+      "resultados"
+    ],
+    "family": "resultados",
+    "years": [
+      2004
+    ],
+    "license": "cc-by",
+    "source": "https://dadosabertos.tse.jus.br/dataset/resultados-2004",
+    "branch": "archive/resultados-2004",
+    "tag": "data-resultados-2004",
+    "releaseUrl": "https://github.com/brauliobo/brazil-audit/releases/tag/data-resultados-2004",
+    "normalized": false,
+    "status": "catalogued",
+    "inScope": true
+  },
+  "resources": [
+    {
+      "id": "75e1d28f-2245-467c-98ae-db7f35f299fd",
+      "name": "Votação nominal por município e zona",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_candidato_munzona/votacao_candidato_munzona_2004.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_candidato_munzona/votacao_candidato_munzona_2004.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 41242913,
+      "lastModified": "Fri, 18 Mar 2022 17:36:41 GMT",
+      "etag": "\"2755121-5da8196e85c40\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:51:49.580217+00:00",
+      "sha256": "902483586e4541a3415c5f2f50d865271493a9a1d4968b06d4f0138aef55d631",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "75e1d28f-votacao_candidato_munzona_2004.zip",
+          "bytes": 41242913,
+          "sha256": "902483586e4541a3415c5f2f50d865271493a9a1d4968b06d4f0138aef55d631"
+        }
+      ]
+    },
+    {
+      "id": "d99b127d-bd7d-4c1a-bdbf-28d7b25486bb",
+      "name": "Votação em partido por município e zona",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_partido_munzona/votacao_partido_munzona_2004.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_partido_munzona/votacao_partido_munzona_2004.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 3320160,
+      "lastModified": "Fri, 18 Mar 2022 17:36:46 GMT",
+      "etag": "\"32a960-5da819734a780\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:51:50.657928+00:00",
+      "sha256": "dfc48a3f3a6098b4e0b365bfc71d0699f2d378682fc2b3150efe549b9ee48cc3",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "d99b127d-votacao_partido_munzona_2004.zip",
+          "bytes": 3320160,
+          "sha256": "dfc48a3f3a6098b4e0b365bfc71d0699f2d378682fc2b3150efe549b9ee48cc3"
+        }
+      ]
+    },
+    {
+      "id": "1aa1c488-cf57-4a52-8277-01387cb3dfb6",
+      "name": "Detalhe da apuração por município e zona",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/detalhe_votacao_munzona/detalhe_votacao_munzona_2004.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/detalhe_votacao_munzona/detalhe_votacao_munzona_2004.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 1400835,
+      "lastModified": "Fri, 08 Aug 2025 16:17:03 GMT",
+      "etag": "\"156003-63bdce7890290\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:51:51.048046+00:00",
+      "sha256": "eff233ffcd56fa9f2ebe94fa7c0e40e88aa201a510bfe8b6abab252075c8deb2",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "1aa1c488-detalhe_votacao_munzona_2004.zip",
+          "bytes": 1400835,
+          "sha256": "eff233ffcd56fa9f2ebe94fa7c0e40e88aa201a510bfe8b6abab252075c8deb2"
+        }
+      ]
+    },
+    {
+      "id": "2a413442-1265-48d1-98fa-a3d0db29b15f",
+      "name": "Detalhe da apuração por seção eleitoral",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/detalhe_votacao_secao/detalhe_votacao_secao_2004.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/detalhe_votacao_secao/detalhe_votacao_secao_2004.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 20633231,
+      "lastModified": "Mon, 25 Oct 2021 16:32:08 GMT",
+      "etag": "\"13ad68f-5cf2fe6e91200\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:51:51.760626+00:00",
+      "sha256": "596faa22d4c98424f399818c44a735de03f5157b5b5a2362be65cc1566ac1129",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "2a413442-detalhe_votacao_secao_2004.zip",
+          "bytes": 20633231,
+          "sha256": "596faa22d4c98424f399818c44a735de03f5157b5b5a2362be65cc1566ac1129"
+        }
+      ]
+    },
+    {
+      "id": "d0760ce1-3b00-46d4-8abe-a6445ed9b680",
+      "name": "AC - Votação por seção eleitoral - 2004",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2004_AC.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2004_AC.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 950497,
+      "lastModified": "Thu, 04 Nov 2021 22:15:56 GMT",
+      "etag": "\"e80e1-5cffdded91f00\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:51:52.068689+00:00",
+      "sha256": "a93503404a6bbb986230a9fc20c1d1c436834996028a0f69f721ad2442102c18",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "d0760ce1-votacao_secao_2004_AC.zip",
+          "bytes": 950497,
+          "sha256": "a93503404a6bbb986230a9fc20c1d1c436834996028a0f69f721ad2442102c18"
+        }
+      ]
+    },
+    {
+      "id": "a627b2e1-28f3-4dd7-8675-be555b9be269",
+      "name": "AL - Votação por seção eleitoral - 2004",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2004_AL.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2004_AL.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 2990635,
+      "lastModified": "Thu, 04 Nov 2021 22:15:56 GMT",
+      "etag": "\"2da22b-5cffdded91f00\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:51:52.409630+00:00",
+      "sha256": "733fa278c40feba10aa6db624baecbcdb33fa14b9a92a133e2f3e8f63efd18dc",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "a627b2e1-votacao_secao_2004_AL.zip",
+          "bytes": 2990635,
+          "sha256": "733fa278c40feba10aa6db624baecbcdb33fa14b9a92a133e2f3e8f63efd18dc"
+        }
+      ]
+    },
+    {
+      "id": "55bebb28-0741-451c-bed0-188f82c2b646",
+      "name": "AP - Votação por seção eleitoral - 2004",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2004_AP.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2004_AP.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 835128,
+      "lastModified": "Thu, 04 Nov 2021 22:15:47 GMT",
+      "etag": "\"cbe38-5cffdde4fcac0\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:51:52.695358+00:00",
+      "sha256": "49c686b25e0c0f805f47cf70a546c912baf5841c5279284cfc66c8e1bf4d24d4",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "55bebb28-votacao_secao_2004_AP.zip",
+          "bytes": 835128,
+          "sha256": "49c686b25e0c0f805f47cf70a546c912baf5841c5279284cfc66c8e1bf4d24d4"
+        }
+      ]
+    },
+    {
+      "id": "76775cef-324c-4570-8aad-571463e85153",
+      "name": "AM - Votação por seção eleitoral - 2004",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2004_AM.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2004_AM.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 6578864,
+      "lastModified": "Thu, 04 Nov 2021 22:15:52 GMT",
+      "etag": "\"6462b0-5cffdde9c1600\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:51:53.139997+00:00",
+      "sha256": "92aa47dd02e562e5e2c82b05a89118f6fa19185a95ac9dcf2fa7458f023b890e",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "76775cef-votacao_secao_2004_AM.zip",
+          "bytes": 6578864,
+          "sha256": "92aa47dd02e562e5e2c82b05a89118f6fa19185a95ac9dcf2fa7458f023b890e"
+        }
+      ]
+    },
+    {
+      "id": "a4d90056-d13a-4198-84df-0672983f883c",
+      "name": "BA - Votação por seção eleitoral - 2004",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2004_BA.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2004_BA.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 18141647,
+      "lastModified": "Thu, 04 Nov 2021 22:15:46 GMT",
+      "etag": "\"114d1cf-5cffdde408880\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:51:53.915092+00:00",
+      "sha256": "833afab1fc3b34f4d1eaac7711506a61cbd516deeb0e9612d1d3a2b92f83e38b",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "a4d90056-votacao_secao_2004_BA.zip",
+          "bytes": 18141647,
+          "sha256": "833afab1fc3b34f4d1eaac7711506a61cbd516deeb0e9612d1d3a2b92f83e38b"
+        }
+      ]
+    },
+    {
+      "id": "91e44e30-9a85-48bb-b743-b5133e6b70a0",
+      "name": "CE - Votação por seção eleitoral - 2004",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2004_CE.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2004_CE.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 12762302,
+      "lastModified": "Thu, 04 Nov 2021 22:15:39 GMT",
+      "etag": "\"c2bcbe-5cffdddd5b8c0\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:51:54.538360+00:00",
+      "sha256": "a6421e893734630ab0c9f09749440da526e671134799b451c9c2d72b0904de57",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "91e44e30-votacao_secao_2004_CE.zip",
+          "bytes": 12762302,
+          "sha256": "a6421e893734630ab0c9f09749440da526e671134799b451c9c2d72b0904de57"
+        }
+      ]
+    },
+    {
+      "id": "6b6a9ee2-c83e-40a8-a9a5-e54b8238d836",
+      "name": "ES - Votação por seção eleitoral - 2004",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2004_ES.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2004_ES.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 4714649,
+      "lastModified": "Thu, 04 Nov 2021 22:15:36 GMT",
+      "etag": "\"47f099-5cffddda7f200\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:51:54.974353+00:00",
+      "sha256": "785dac5b1c14ba08376f753afeb525f3fed1f02c80b2cbfbf12da3c7ae51ae46",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "6b6a9ee2-votacao_secao_2004_ES.zip",
+          "bytes": 4714649,
+          "sha256": "785dac5b1c14ba08376f753afeb525f3fed1f02c80b2cbfbf12da3c7ae51ae46"
+        }
+      ]
+    },
+    {
+      "id": "58aa1843-cc8c-4423-8350-f450d915bffb",
+      "name": "GO - Votação por seção eleitoral - 2004",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2004_GO.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2004_GO.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 9477375,
+      "lastModified": "Thu, 04 Nov 2021 22:15:26 GMT",
+      "etag": "\"909cff-5cffddd0f5b80\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:51:55.466962+00:00",
+      "sha256": "5840a08e572314819669016f4fe27c7f22edaf71d0334ad9f41bd5465dee9555",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "58aa1843-votacao_secao_2004_GO.zip",
+          "bytes": 9477375,
+          "sha256": "5840a08e572314819669016f4fe27c7f22edaf71d0334ad9f41bd5465dee9555"
+        }
+      ]
+    },
+    {
+      "id": "63cdb132-8cd2-4e2c-b967-4a67b0dc3759",
+      "name": "MA - Votação por seção eleitoral - 2004",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2004_MA.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2004_MA.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 6663420,
+      "lastModified": "Thu, 04 Nov 2021 22:15:18 GMT",
+      "etag": "\"65acfc-5cffddc954980\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:51:55.984735+00:00",
+      "sha256": "8c49e635f65c5be4e2e32f98e6ea106e574da92240889b0a539c615c31013163",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "63cdb132-votacao_secao_2004_MA.zip",
+          "bytes": 6663420,
+          "sha256": "8c49e635f65c5be4e2e32f98e6ea106e574da92240889b0a539c615c31013163"
+        }
+      ]
+    },
+    {
+      "id": "c775e2a8-ed2e-4c17-829a-d46f8876614a",
+      "name": "MT - Votação por seção eleitoral - 2004",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2004_MT.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2004_MT.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 1572382,
+      "lastModified": "Thu, 04 Nov 2021 22:15:09 GMT",
+      "etag": "\"17fe1e-5cffddc0bf540\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:51:56.300306+00:00",
+      "sha256": "7701fe47d94016ef75206c56043a67a28ac278280c41d696e5fd410490f4366a",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "c775e2a8-votacao_secao_2004_MT.zip",
+          "bytes": 1572382,
+          "sha256": "7701fe47d94016ef75206c56043a67a28ac278280c41d696e5fd410490f4366a"
+        }
+      ]
+    },
+    {
+      "id": "df73aca4-a3bb-4730-8c7d-e0fd596dd678",
+      "name": "MS - Votação por seção eleitoral - 2004",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2004_MS.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2004_MS.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 3243165,
+      "lastModified": "Thu, 04 Nov 2021 22:14:06 GMT",
+      "etag": "\"317c9d-5cffdd84aa780\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:51:56.669732+00:00",
+      "sha256": "8929cee435c1566049ebbee083ecbd60af1a9a69175155d5712d7756c5686749",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "df73aca4-votacao_secao_2004_MS.zip",
+          "bytes": 3243165,
+          "sha256": "8929cee435c1566049ebbee083ecbd60af1a9a69175155d5712d7756c5686749"
+        }
+      ]
+    },
+    {
+      "id": "7bb55a8e-7025-46f9-9bcc-a5c3b7dec8c5",
+      "name": "MG - Votação por seção eleitoral - 2004",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2004_MG.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2004_MG.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 30513442,
+      "lastModified": "Thu, 04 Nov 2021 22:15:16 GMT",
+      "etag": "\"1d19922-5cffddc76c500\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:51:57.882813+00:00",
+      "sha256": "90462e80673e06407c6f204f2b7617194bbc1e19e7cb14c688b17fa3d9bd531e",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "7bb55a8e-votacao_secao_2004_MG.zip",
+          "bytes": 30513442,
+          "sha256": "90462e80673e06407c6f204f2b7617194bbc1e19e7cb14c688b17fa3d9bd531e"
+        }
+      ]
+    },
+    {
+      "id": "ec34b054-5539-46ae-a1d6-60e372bfc9d8",
+      "name": "PA - Votação por seção eleitoral - 2004",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2004_PA.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2004_PA.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 9538078,
+      "lastModified": "Thu, 04 Nov 2021 22:15:07 GMT",
+      "etag": "\"918a1e-5cffddbed70c0\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:51:58.768379+00:00",
+      "sha256": "4e8a4bfca7e86574f56ce88707cd2a2ccd20e3e7d18d394ab9c1e142773f8b35",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "ec34b054-votacao_secao_2004_PA.zip",
+          "bytes": 9538078,
+          "sha256": "4e8a4bfca7e86574f56ce88707cd2a2ccd20e3e7d18d394ab9c1e142773f8b35"
+        }
+      ]
+    },
+    {
+      "id": "ee7766db-e463-4683-98d2-1b5551fbe1b7",
+      "name": "PB - Votação por seção eleitoral - 2004",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2004_PB.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2004_PB.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 4565227,
+      "lastModified": "Thu, 04 Nov 2021 22:14:54 GMT",
+      "etag": "\"45a8eb-5cffddb271380\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:51:59.207897+00:00",
+      "sha256": "a8fadf472f45dfd31c74e0ef13c2470ad7a7c90c11ece0418a6e1936f3a55769",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "ee7766db-votacao_secao_2004_PB.zip",
+          "bytes": 4565227,
+          "sha256": "a8fadf472f45dfd31c74e0ef13c2470ad7a7c90c11ece0418a6e1936f3a55769"
+        }
+      ]
+    },
+    {
+      "id": "4a95c2c9-a6d8-4dfc-81b4-255c5bef2b09",
+      "name": "PR - Votação por seção eleitoral - 2004",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2004_PR.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2004_PR.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 14714569,
+      "lastModified": "Thu, 04 Nov 2021 22:14:21 GMT",
+      "etag": "\"e086c9-5cffdd92f8940\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:51:59.950483+00:00",
+      "sha256": "eeee845b0fe908947eb64a31b4113bd1e724eebd6d1e7ee0b61e1823bb8e1e5e",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "4a95c2c9-votacao_secao_2004_PR.zip",
+          "bytes": 14714569,
+          "sha256": "eeee845b0fe908947eb64a31b4113bd1e724eebd6d1e7ee0b61e1823bb8e1e5e"
+        }
+      ]
+    },
+    {
+      "id": "d5ce6cbc-3425-48fe-8bb1-79ad1c368946",
+      "name": "PE - Votação por seção eleitoral - 2004",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2004_PE.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2004_PE.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 11988963,
+      "lastModified": "Thu, 04 Nov 2021 22:14:47 GMT",
+      "etag": "\"b6efe3-5cffddabc43c0\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:52:00.538345+00:00",
+      "sha256": "bcaf3c74d4d41347d4417869f9ecbe95a14db5be894b85a96f6a6a95279019b6",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "d5ce6cbc-votacao_secao_2004_PE.zip",
+          "bytes": 11988963,
+          "sha256": "bcaf3c74d4d41347d4417869f9ecbe95a14db5be894b85a96f6a6a95279019b6"
+        }
+      ]
+    },
+    {
+      "id": "7754f2f0-dc50-4bf6-aa5e-c5596e67721a",
+      "name": "PI - Votação por seção eleitoral - 2004",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2004_PI.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2004_PI.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 3405080,
+      "lastModified": "Thu, 04 Nov 2021 22:13:56 GMT",
+      "etag": "\"33f518-5cffdd7b21100\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:52:00.902149+00:00",
+      "sha256": "9d3b585a114d3587729d589deb8849e37c4f3388ec591da0fbe06a0e62ce992c",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "7754f2f0-votacao_secao_2004_PI.zip",
+          "bytes": 3405080,
+          "sha256": "9d3b585a114d3587729d589deb8849e37c4f3388ec591da0fbe06a0e62ce992c"
+        }
+      ]
+    },
+    {
+      "id": "bd257331-797b-4823-bb0b-2e1567def7ac",
+      "name": "RJ - Votação por seção eleitoral - 2004",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2004_RJ.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2004_RJ.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 33922624,
+      "lastModified": "Thu, 04 Nov 2021 22:14:48 GMT",
+      "etag": "\"2059e40-5cffddacb8600\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:52:02.214806+00:00",
+      "sha256": "f690734b648560e5cd35d82158a88a61e8008c742b54c0f93ac7a4954cbbf267",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "bd257331-votacao_secao_2004_RJ.zip",
+          "bytes": 33922624,
+          "sha256": "f690734b648560e5cd35d82158a88a61e8008c742b54c0f93ac7a4954cbbf267"
+        }
+      ]
+    },
+    {
+      "id": "aecd5753-58b5-48a1-b143-a3b95c2e9cc7",
+      "name": "RN - Votação por seção eleitoral - 2004",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2004_RN.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2004_RN.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 3220608,
+      "lastModified": "Thu, 04 Nov 2021 22:13:24 GMT",
+      "etag": "\"312480-5cffdd5c9c900\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:52:02.618422+00:00",
+      "sha256": "05f23f9846293f09f6f9279bfdc00bc9312912f87dab34ce17092674b2a3f096",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "aecd5753-votacao_secao_2004_RN.zip",
+          "bytes": 3220608,
+          "sha256": "05f23f9846293f09f6f9279bfdc00bc9312912f87dab34ce17092674b2a3f096"
+        }
+      ]
+    },
+    {
+      "id": "d0aaa305-5ea2-4919-91a1-11535f66034a",
+      "name": "RS - Votação por seção eleitoral - 2004",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2004_RS.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2004_RS.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 16122316,
+      "lastModified": "Thu, 04 Nov 2021 22:13:51 GMT",
+      "etag": "\"f601cc-5cffdd765c5c0\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:52:03.337426+00:00",
+      "sha256": "29520f93404bb2a71bfcf0ebe2802d1378e762f99c93bd324bb8d8ab558d487e",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "d0aaa305-votacao_secao_2004_RS.zip",
+          "bytes": 16122316,
+          "sha256": "29520f93404bb2a71bfcf0ebe2802d1378e762f99c93bd324bb8d8ab558d487e"
+        }
+      ]
+    },
+    {
+      "id": "82875453-a6b6-48df-aa64-0afe51f4305d",
+      "name": "RO - Votação por seção eleitoral - 2004",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2004_RO.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2004_RO.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 2353496,
+      "lastModified": "Thu, 04 Nov 2021 22:13:40 GMT",
+      "etag": "\"23e958-5cffdd6bded00\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:52:03.721802+00:00",
+      "sha256": "44e8003a67bc26e139343175a54c1e933c2e596843055118a6d43ae74de3f485",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "82875453-votacao_secao_2004_RO.zip",
+          "bytes": 2353496,
+          "sha256": "44e8003a67bc26e139343175a54c1e933c2e596843055118a6d43ae74de3f485"
+        }
+      ]
+    },
+    {
+      "id": "12bffec6-7009-44fe-9567-9fe478b90d42",
+      "name": "RR - Votação por seção eleitoral - 2004",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2004_RR.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2004_RR.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 756639,
+      "lastModified": "Thu, 04 Nov 2021 22:14:11 GMT",
+      "etag": "\"b8b9f-5cffdd896f2c0\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:52:04.079925+00:00",
+      "sha256": "1bfbc9cfea71deece3befb103b3293bd311b71c53be4de9b274c359c8387a7bb",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "12bffec6-votacao_secao_2004_RR.zip",
+          "bytes": 756639,
+          "sha256": "1bfbc9cfea71deece3befb103b3293bd311b71c53be4de9b274c359c8387a7bb"
+        }
+      ]
+    },
+    {
+      "id": "3241384b-6fd4-4654-9686-f279357b4d77",
+      "name": "SC - Votação por seção eleitoral - 2004",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2004_SC.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2004_SC.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 5961573,
+      "lastModified": "Thu, 04 Nov 2021 22:14:27 GMT",
+      "etag": "\"5af765-5cffdd98b16c0\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:52:04.640237+00:00",
+      "sha256": "0e786c7f763ecf0b50f208c5cb802a0a18ebc4f17e9f6946ccff0d0ce92c62fb",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "3241384b-votacao_secao_2004_SC.zip",
+          "bytes": 5961573,
+          "sha256": "0e786c7f763ecf0b50f208c5cb802a0a18ebc4f17e9f6946ccff0d0ce92c62fb"
+        }
+      ]
+    },
+    {
+      "id": "3a6526f8-c79e-47f7-b78f-dade9bcff23e",
+      "name": "SP - Votação por seção eleitoral - 2004",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2004_SP.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2004_SP.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 69640078,
+      "lastModified": "Thu, 04 Nov 2021 22:14:21 GMT",
+      "etag": "\"4269f8e-5cffdd92f8940\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:52:06.763559+00:00",
+      "sha256": "ee868e03a24d04caa57641dfe9f3228dfae7d8c644658bd815bf31ffe1cd0483",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "3a6526f8-votacao_secao_2004_SP.zip",
+          "bytes": 69640078,
+          "sha256": "ee868e03a24d04caa57641dfe9f3228dfae7d8c644658bd815bf31ffe1cd0483"
+        }
+      ]
+    },
+    {
+      "id": "95ad4d4c-f463-42b7-af0f-c772cdfb0600",
+      "name": "SE - Votação por seção eleitoral - 2004",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2004_SE.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2004_SE.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 2249911,
+      "lastModified": "Thu, 04 Nov 2021 22:14:41 GMT",
+      "etag": "\"2254b7-5cffdda60b640\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:52:07.174657+00:00",
+      "sha256": "0f01741d44ba2cbab896cf739cae737f2194a5e20209d679ffde70294c01acfc",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "95ad4d4c-votacao_secao_2004_SE.zip",
+          "bytes": 2249911,
+          "sha256": "0f01741d44ba2cbab896cf739cae737f2194a5e20209d679ffde70294c01acfc"
+        }
+      ]
+    },
+    {
+      "id": "a9cb5747-9251-4590-9fc3-80d0afc495c2",
+      "name": "TO - Votação por seção eleitoral - 2004",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2004_TO.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2004_TO.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 1463507,
+      "lastModified": "Thu, 04 Nov 2021 22:14:37 GMT",
+      "etag": "\"1654d3-5cffdda23ad40\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:52:07.549578+00:00",
+      "sha256": "1dd7181a1b51d5f827005f947c364ca45d6b40d31b3baf31a53601343b9d3a2f",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "a9cb5747-votacao_secao_2004_TO.zip",
+          "bytes": 1463507,
+          "sha256": "1dd7181a1b51d5f827005f947c364ca45d6b40d31b3baf31a53601343b9d3a2f"
+        }
+      ]
+    }
+  ]
+}
