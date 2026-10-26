@@ -1,0 +1,81 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-10-26T21:43:20.324967+00:00",
+  "dataset": {
+    "id": "candidatos-1933",
+    "title": "Candidatos - 1933",
+    "groups": [
+      "candidatos"
+    ],
+    "family": "candidatos",
+    "years": [
+      1933
+    ],
+    "license": "cc-by",
+    "source": "https://dadosabertos.tse.jus.br/dataset/candidatos-1933",
+    "branch": "archive/candidatos-1933",
+    "tag": "data-candidatos-1933",
+    "releaseUrl": "https://github.com/brauliobo/brazil-audit/releases/tag/data-candidatos-1933",
+    "normalized": false,
+    "status": "catalogued"
+  },
+  "resources": [
+    {
+      "id": "8ce68b2b-262f-4950-bdcd-50c8a26cf931",
+      "name": "Candidato legenda",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_legendas/candidato_legenda_1933_br.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_legendas/candidato_legenda_1933_br.zip",
+      "format": "TXT",
+      "status": "prepared",
+      "downloadedAt": "2026-10-26T21:43:19.826288+00:00",
+      "bytes": 368050,
+      "sha256": "d6a9c6e6025276a73e219e16ccc30c8664caca75b54361b3491cc5755ebcb901",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "8ce68b2b-candidato_legenda_1933_br.zip",
+          "bytes": 368050,
+          "sha256": "d6a9c6e6025276a73e219e16ccc30c8664caca75b54361b3491cc5755ebcb901"
+        }
+      ]
+    },
+    {
+      "id": "3d77f461-63fe-4a10-b7b6-fb80a2593474",
+      "name": "Legendas",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_legendas/consulta_legendas_1933_br.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_legendas/consulta_legendas_1933_br.zip",
+      "format": "TXT",
+      "status": "prepared",
+      "downloadedAt": "2026-10-26T21:43:20.069113+00:00",
+      "bytes": 351507,
+      "sha256": "fb0eafb0d8229749d53d326a620c387dccf279ede76a9e320b64239a665e71b7",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "3d77f461-consulta_legendas_1933_br.zip",
+          "bytes": 351507,
+          "sha256": "fb0eafb0d8229749d53d326a620c387dccf279ede76a9e320b64239a665e71b7"
+        }
+      ]
+    },
+    {
+      "id": "50a92d72-7fc8-4905-8164-806e8f05af64",
+      "name": "Vagas",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_vagas/consulta_vagas_1933_br.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_vagas/consulta_vagas_1933_br.zip",
+      "format": "TXT",
+      "status": "prepared",
+      "downloadedAt": "2026-10-26T21:43:20.317022+00:00",
+      "bytes": 350277,
+      "sha256": "7010ba8b20918e59fb1918250eb64de25f1abc590316cc526858852ec61f6c79",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "50a92d72-consulta_vagas_1933_br.zip",
+          "bytes": 350277,
+          "sha256": "7010ba8b20918e59fb1918250eb64de25f1abc590316cc526858852ec61f6c79"
+        }
+      ]
+    }
+  ]
+}
