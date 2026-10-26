@@ -1,0 +1,48 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-10-26T21:49:49.480780+00:00",
+  "status": "published",
+  "dataset": {
+    "id": "eleitorado-1996",
+    "title": "Eleitorado - 1996",
+    "groups": [
+      "eleitorado"
+    ],
+    "family": "eleitorado",
+    "years": [
+      1996
+    ],
+    "license": "cc-by",
+    "source": "https://dadosabertos.tse.jus.br/dataset/eleitorado-1996",
+    "branch": "archive/eleitorado-1996",
+    "tag": "data-eleitorado-1996",
+    "releaseUrl": "https://github.com/brauliobo/brazil-audit/releases/tag/data-eleitorado-1996",
+    "normalized": false,
+    "status": "catalogued",
+    "inScope": true
+  },
+  "resources": [
+    {
+      "id": "5c00ef85-2e72-4732-b697-685d1640167a",
+      "name": "Eleitorado - 1996",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitorado/perfil_eleitorado_1996.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitorado/perfil_eleitorado_1996.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 291191,
+      "lastModified": "Mon, 06 Sep 2021 19:13:44 GMT",
+      "etag": "\"47177-5cb58729cea00\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:49:49.479678+00:00",
+      "sha256": "0caa90d8f188239665b541f1380ecdd470b149e6af4f3afaf1d1868c89933fbf",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "5c00ef85-perfil_eleitorado_1996.zip",
+          "bytes": 291191,
+          "sha256": "0caa90d8f188239665b541f1380ecdd470b149e6af4f3afaf1d1868c89933fbf"
+        }
+      ]
+    }
+  ]
+}
