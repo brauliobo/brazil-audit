@@ -1,0 +1,686 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-10-26T22:03:27.225311+00:00",
+  "status": "published",
+  "dataset": {
+    "id": "resultados-2020",
+    "title": "Resultados - 2020",
+    "groups": [
+      "resultados"
+    ],
+    "family": "resultados",
+    "years": [
+      2020
+    ],
+    "license": "cc-by",
+    "source": "https://dadosabertos.tse.jus.br/dataset/resultados-2020",
+    "branch": "archive/resultados-2020",
+    "tag": "data-resultados-2020",
+    "releaseUrl": "https://github.com/brauliobo/brazil-audit/releases/tag/data-resultados-2020",
+    "normalized": false,
+    "status": "catalogued",
+    "inScope": true
+  },
+  "resources": [
+    {
+      "id": "db0b6c75-dc82-48d8-b207-ba2b420ec58a",
+      "name": "Votação nominal por município e zona",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_candidato_munzona/votacao_candidato_munzona_2020.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_candidato_munzona/votacao_candidato_munzona_2020.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 57815640,
+      "lastModified": "Tue, 06 Jan 2026 19:56:42 GMT",
+      "etag": "\"3723258-647bd93191cce\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T22:01:28.518537+00:00",
+      "sha256": "a8a32d46e813dfd2c3ba032b0df4faaa57fc567ef3c4a5a73fc50d9a5e680763",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "db0b6c75-votacao_candidato_munzona_2020.zip",
+          "bytes": 57815640,
+          "sha256": "a8a32d46e813dfd2c3ba032b0df4faaa57fc567ef3c4a5a73fc50d9a5e680763"
+        }
+      ]
+    },
+    {
+      "id": "314f3304-58d1-4464-84c7-f472293d03cb",
+      "name": "Votação em partido por município e zona ",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_partido_munzona/votacao_partido_munzona_2020.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_partido_munzona/votacao_partido_munzona_2020.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 6104460,
+      "lastModified": "Tue, 06 Jan 2026 19:51:09 GMT",
+      "etag": "\"5d258c-647bd7f460571\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T22:01:29.068006+00:00",
+      "sha256": "f827862ff624bb1b3518c7ea809ce04ff6a98cac5600bef851d0e43498d993a0",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "314f3304-votacao_partido_munzona_2020.zip",
+          "bytes": 6104460,
+          "sha256": "f827862ff624bb1b3518c7ea809ce04ff6a98cac5600bef851d0e43498d993a0"
+        }
+      ]
+    },
+    {
+      "id": "ec29e2e9-d5b4-4934-a836-fc7f5a492032",
+      "name": "Detalhe da apuração por município e zona",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/detalhe_votacao_munzona/detalhe_votacao_munzona_2020.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/detalhe_votacao_munzona/detalhe_votacao_munzona_2020.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 1538312,
+      "lastModified": "Fri, 16 Jan 2026 21:28:23 GMT",
+      "etag": "\"177908-6488805650ceb\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T22:01:29.634376+00:00",
+      "sha256": "9d6ffc73b024e2b27ff984a600008aab7e4cdc1fdd72707128dc4dc05b4fd591",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "ec29e2e9-detalhe_votacao_munzona_2020.zip",
+          "bytes": 1538312,
+          "sha256": "9d6ffc73b024e2b27ff984a600008aab7e4cdc1fdd72707128dc4dc05b4fd591"
+        }
+      ]
+    },
+    {
+      "id": "1abd8960-16f6-464a-8b2c-1ffa45306dc0",
+      "name": "Detalhe da apuração por seção eleitoral",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/detalhe_votacao_secao/detalhe_votacao_secao_2020.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/detalhe_votacao_secao/detalhe_votacao_secao_2020.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 88177739,
+      "lastModified": "Fri, 06 Dec 2024 17:49:10 GMT",
+      "etag": "\"5417c4b-6289da1d795d1\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T22:01:32.823661+00:00",
+      "sha256": "10a50a467763dce73d44eee9023ffeeb3ebe6279756edb6b437203eb2bc71a30",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "1abd8960-detalhe_votacao_secao_2020.zip",
+          "bytes": 88177739,
+          "sha256": "10a50a467763dce73d44eee9023ffeeb3ebe6279756edb6b437203eb2bc71a30"
+        }
+      ]
+    },
+    {
+      "id": "62b01bbe-2db8-4676-93a1-5ed316739905",
+      "name": "AC - Votação por seção eleitoral - 2020",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2020_AC.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2020_AC.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 6505612,
+      "lastModified": "Fri, 06 Dec 2024 18:25:16 GMT",
+      "etag": "\"63448c-6289e22f221ed\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T22:01:33.598066+00:00",
+      "sha256": "8509bae9d42ec824f24e1d275aa74d5be0f1f5d12b6f0adcb1fcb0fd5d14d9b8",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "62b01bbe-votacao_secao_2020_AC.zip",
+          "bytes": 6505612,
+          "sha256": "8509bae9d42ec824f24e1d275aa74d5be0f1f5d12b6f0adcb1fcb0fd5d14d9b8"
+        }
+      ]
+    },
+    {
+      "id": "4d70b473-9e35-45fb-b798-fbe3220e58b8",
+      "name": "AL - Votação por seção eleitoral - 2020",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2020_AL.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2020_AL.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 18386881,
+      "lastModified": "Fri, 06 Dec 2024 18:25:21 GMT",
+      "etag": "\"1188fc1-6289e233b3941\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T22:01:34.788060+00:00",
+      "sha256": "8458a14d39bf6fc18cffd0f9a40b0e134c3a082a441030b25b0f248fe2400a14",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "4d70b473-votacao_secao_2020_AL.zip",
+          "bytes": 18386881,
+          "sha256": "8458a14d39bf6fc18cffd0f9a40b0e134c3a082a441030b25b0f248fe2400a14"
+        }
+      ]
+    },
+    {
+      "id": "5c96371b-cf39-4f1a-9e75-018c5cfb9299",
+      "name": "AP - Votação por seção eleitoral - 2020",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2020_AP.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2020_AP.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 4400927,
+      "lastModified": "Fri, 06 Dec 2024 18:24:59 GMT",
+      "etag": "\"43271f-6289e21ec9765\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T22:01:35.313035+00:00",
+      "sha256": "3a84a1a15b24f280862cb8567a79b535fd591da879b88d00bb23d277e7dedff3",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "5c96371b-votacao_secao_2020_AP.zip",
+          "bytes": 4400927,
+          "sha256": "3a84a1a15b24f280862cb8567a79b535fd591da879b88d00bb23d277e7dedff3"
+        }
+      ]
+    },
+    {
+      "id": "d0bd8f5e-9f47-4216-a87f-1c0d25d1f9dc",
+      "name": "AM - Votação por seção eleitoral - 2020",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2020_AM.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2020_AM.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 36573711,
+      "lastModified": "Fri, 06 Dec 2024 18:25:21 GMT",
+      "etag": "\"22e120f-6289e23418692\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T22:01:36.932111+00:00",
+      "sha256": "537f6afc236e13afec805d85f2cd83ef0e57a1a48b13d61704fa9cc06ccb65e4",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "d0bd8f5e-votacao_secao_2020_AM.zip",
+          "bytes": 36573711,
+          "sha256": "537f6afc236e13afec805d85f2cd83ef0e57a1a48b13d61704fa9cc06ccb65e4"
+        }
+      ]
+    },
+    {
+      "id": "4ca09baa-075a-49d3-9633-a91490290f9e",
+      "name": "BA - Votação por seção eleitoral - 2020",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2020_BA.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2020_BA.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 116345264,
+      "lastModified": "Fri, 06 Dec 2024 18:25:05 GMT",
+      "etag": "\"6ef49b0-6289e22487383\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T22:01:45.709469+00:00",
+      "sha256": "8dde52f34311d2a9591c3cae9e6942520d0fdc7572f64a29384c6aa42400e31d",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "4ca09baa-votacao_secao_2020_BA.zip",
+          "bytes": 116345264,
+          "sha256": "8dde52f34311d2a9591c3cae9e6942520d0fdc7572f64a29384c6aa42400e31d"
+        }
+      ]
+    },
+    {
+      "id": "87c23989-0cd7-4861-b439-5da32a7d98e7",
+      "name": "CE - Votação por seção eleitoral - 2020",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2020_CE.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2020_CE.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 71357125,
+      "lastModified": "Fri, 06 Dec 2024 18:25:27 GMT",
+      "etag": "\"440d2c5-6289e239b091d\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T22:01:48.308383+00:00",
+      "sha256": "9fe68d704aa69f6fc289d97e12459635a34e43e0b728a61bc723bfbeea035173",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "87c23989-votacao_secao_2020_CE.zip",
+          "bytes": 71357125,
+          "sha256": "9fe68d704aa69f6fc289d97e12459635a34e43e0b728a61bc723bfbeea035173"
+        }
+      ]
+    },
+    {
+      "id": "cb6af674-e3fd-4172-a6d2-a414e09d7045",
+      "name": "ES - Votação por seção eleitoral - 2020",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2020_ES.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2020_ES.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 32269901,
+      "lastModified": "Fri, 06 Dec 2024 18:25:23 GMT",
+      "etag": "\"1ec664d-6289e235e3a61\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T22:01:49.638392+00:00",
+      "sha256": "37f24a39afa9bcc522eb79ff4dc1156fb8b5cd2817d03984635458bc2555770a",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "cb6af674-votacao_secao_2020_ES.zip",
+          "bytes": 32269901,
+          "sha256": "37f24a39afa9bcc522eb79ff4dc1156fb8b5cd2817d03984635458bc2555770a"
+        }
+      ]
+    },
+    {
+      "id": "67c25b6b-2021-4599-944b-0f06b09ae51a",
+      "name": "GO - Votação por seção eleitoral - 2020",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2020_GO.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2020_GO.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 65143300,
+      "lastModified": "Fri, 06 Dec 2024 18:25:27 GMT",
+      "etag": "\"3e20204-6289e239b479d\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T22:01:51.986521+00:00",
+      "sha256": "1916401af4ae569d335245855c2902d75b5d9ac356f0b0e477d091b0d7c5de45",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "67c25b6b-votacao_secao_2020_GO.zip",
+          "bytes": 65143300,
+          "sha256": "1916401af4ae569d335245855c2902d75b5d9ac356f0b0e477d091b0d7c5de45"
+        }
+      ]
+    },
+    {
+      "id": "17d68d23-b1f0-4f7c-b3de-0c4d6cafc438",
+      "name": "MA - Votação por seção eleitoral - 2020",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2020_MA.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2020_MA.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 49883847,
+      "lastModified": "Fri, 06 Dec 2024 18:25:25 GMT",
+      "etag": "\"2f92ac7-6289e237df78d\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T22:01:53.425187+00:00",
+      "sha256": "179b2b1541c7d8cbb3e5a5e50957d44e693e1dde18c927811874a029edd140c6",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "17d68d23-votacao_secao_2020_MA.zip",
+          "bytes": 49883847,
+          "sha256": "179b2b1541c7d8cbb3e5a5e50957d44e693e1dde18c927811874a029edd140c6"
+        }
+      ]
+    },
+    {
+      "id": "e0c874ba-26e1-4824-bb5a-f4efe3663e20",
+      "name": "MT - Votação por seção eleitoral - 2020",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2020_MT.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2020_MT.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 27996996,
+      "lastModified": "Fri, 06 Dec 2024 18:25:38 GMT",
+      "etag": "\"1ab3344-6289e24408548\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T22:01:54.923406+00:00",
+      "sha256": "c6d8415317693b970a72a252cf7071d2312efd8e7bf5fccc895304e045115d94",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "e0c874ba-votacao_secao_2020_MT.zip",
+          "bytes": 27996996,
+          "sha256": "c6d8415317693b970a72a252cf7071d2312efd8e7bf5fccc895304e045115d94"
+        }
+      ]
+    },
+    {
+      "id": "81bbe443-9208-40d3-b85a-98425a963616",
+      "name": "MS - Votação por seção eleitoral - 2020",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2020_MS.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2020_MS.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 25694018,
+      "lastModified": "Fri, 06 Dec 2024 18:25:17 GMT",
+      "etag": "\"1880f42-6289e22fb3e01\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T22:01:56.153394+00:00",
+      "sha256": "2b933ab0cdfa970f259cae75243adf058498c81845856300650104a2bb822727",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "81bbe443-votacao_secao_2020_MS.zip",
+          "bytes": 25694018,
+          "sha256": "2b933ab0cdfa970f259cae75243adf058498c81845856300650104a2bb822727"
+        }
+      ]
+    },
+    {
+      "id": "a7ea06bb-01a0-4b00-804e-c78e05e6f7b7",
+      "name": "MG - Votação por seção eleitoral - 2020",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2020_MG.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2020_MG.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 218553625,
+      "lastModified": "Fri, 06 Dec 2024 18:30:12 GMT",
+      "etag": "\"d06dd19-6289e34939fda\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T22:02:10.187877+00:00",
+      "sha256": "ee5f6253407665178bad9d4e1f6f48371094e20c76652b93dbb48ad7503199dd",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "a7ea06bb-votacao_secao_2020_MG.zip",
+          "bytes": 218553625,
+          "sha256": "ee5f6253407665178bad9d4e1f6f48371094e20c76652b93dbb48ad7503199dd"
+        }
+      ]
+    },
+    {
+      "id": "aa13316b-8c2f-4075-9b33-b98b2da5af2c",
+      "name": "PA - Votação por seção eleitoral - 2020",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2020_PA.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2020_PA.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 79917609,
+      "lastModified": "Fri, 06 Dec 2024 18:25:38 GMT",
+      "etag": "\"4c37229-6289e244115d1\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T22:02:24.650133+00:00",
+      "sha256": "a288aaa281a2a8af599d0c408811d9ba13ff4fcef8395ce3352b92b9a6bf44d6",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "aa13316b-votacao_secao_2020_PA.zip",
+          "bytes": 79917609,
+          "sha256": "a288aaa281a2a8af599d0c408811d9ba13ff4fcef8395ce3352b92b9a6bf44d6"
+        }
+      ]
+    },
+    {
+      "id": "c73866a8-bf1f-46ad-8a6a-85e21c358204",
+      "name": "PB - Votação por seção eleitoral - 2020",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2020_PB.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2020_PB.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 29065131,
+      "lastModified": "Fri, 06 Dec 2024 18:25:29 GMT",
+      "etag": "\"1bb7fab-6289e23b95ee7\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T22:02:26.353916+00:00",
+      "sha256": "f2ee18275c812ce42a43aa7c685848f6dfaa0b667475ce81d700a0b3ee32e4a5",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "c73866a8-votacao_secao_2020_PB.zip",
+          "bytes": 29065131,
+          "sha256": "f2ee18275c812ce42a43aa7c685848f6dfaa0b667475ce81d700a0b3ee32e4a5"
+        }
+      ]
+    },
+    {
+      "id": "50573c48-020a-4266-ac0b-eef16015914b",
+      "name": "PR - Votação por seção eleitoral - 2020",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2020_PR.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2020_PR.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 107175640,
+      "lastModified": "Fri, 06 Dec 2024 18:31:25 GMT",
+      "etag": "\"6635ed8-6289e38eb3855\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T22:02:32.948905+00:00",
+      "sha256": "21781c3176a0ba53553021af2c593aa5271b442e2c7fc2c86d91121ef73a8a3f",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "50573c48-votacao_secao_2020_PR.zip",
+          "bytes": 107175640,
+          "sha256": "21781c3176a0ba53553021af2c593aa5271b442e2c7fc2c86d91121ef73a8a3f"
+        }
+      ]
+    },
+    {
+      "id": "977f5f4a-8d03-4b3d-aaa5-00001b996f02",
+      "name": "PE - Votação por seção eleitoral - 2020",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2020_PE.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2020_PE.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 79130359,
+      "lastModified": "Fri, 06 Dec 2024 18:29:11 GMT",
+      "etag": "\"4b76ef7-6289e30f774dc\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T22:02:35.377640+00:00",
+      "sha256": "5762dfa5cdf76843e53470eaea635e1486564837018a14dbf2278c2bae079311",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "977f5f4a-votacao_secao_2020_PE.zip",
+          "bytes": 79130359,
+          "sha256": "5762dfa5cdf76843e53470eaea635e1486564837018a14dbf2278c2bae079311"
+        }
+      ]
+    },
+    {
+      "id": "eddf8896-f114-4d1d-b041-7b3be84acce3",
+      "name": "PI - Votação por seção eleitoral - 2020",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2020_PI.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2020_PI.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 22663352,
+      "lastModified": "Fri, 06 Dec 2024 18:25:37 GMT",
+      "etag": "\"159d0b8-6289e24306c1a\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T22:02:39.582817+00:00",
+      "sha256": "fc7a3033351afebad28c49b8325ff470c65d8dcbb7409b856481d92f83f0b329",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "eddf8896-votacao_secao_2020_PI.zip",
+          "bytes": 22663352,
+          "sha256": "fc7a3033351afebad28c49b8325ff470c65d8dcbb7409b856481d92f83f0b329"
+        }
+      ]
+    },
+    {
+      "id": "6574023d-479d-41ad-86a8-6fbed3a511d9",
+      "name": "RJ - Votação por seção eleitoral - 2020",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2020_RJ.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2020_RJ.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 177592339,
+      "lastModified": "Fri, 06 Dec 2024 18:28:04 GMT",
+      "etag": "\"a95d813-6289e2cfb52f1\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T22:02:47.125375+00:00",
+      "sha256": "96c8236b37e91034feef36f69f7b58bfcae1a8dd56b9f8679226844a1daf68cd",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "6574023d-votacao_secao_2020_RJ.zip",
+          "bytes": 177592339,
+          "sha256": "96c8236b37e91034feef36f69f7b58bfcae1a8dd56b9f8679226844a1daf68cd"
+        }
+      ]
+    },
+    {
+      "id": "5c3aba6c-5cdb-4b87-8480-2a678abfa253",
+      "name": "RN - Votação por seção eleitoral - 2020",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2020_RN.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2020_RN.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 22549987,
+      "lastModified": "Fri, 06 Dec 2024 18:25:33 GMT",
+      "etag": "\"15815e3-6289e23fb947a\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T22:02:48.426265+00:00",
+      "sha256": "1cc29249a301a7c92f66578a2e971fc66a3df79da60929ce12202d27ada962a6",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "5c3aba6c-votacao_secao_2020_RN.zip",
+          "bytes": 22549987,
+          "sha256": "1cc29249a301a7c92f66578a2e971fc66a3df79da60929ce12202d27ada962a6"
+        }
+      ]
+    },
+    {
+      "id": "6cac2287-517a-4c90-a776-688f4971ad66",
+      "name": "RS - Votação por seção eleitoral - 2020",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2020_RS.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2020_RS.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 107829657,
+      "lastModified": "Fri, 06 Dec 2024 18:25:41 GMT",
+      "etag": "\"66d5999-6289e246dd717\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T22:02:54.789775+00:00",
+      "sha256": "170ab923830e8fc445e95dbad643c51dde3b36ca849f62e8e26f8de08119e26f",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "6cac2287-votacao_secao_2020_RS.zip",
+          "bytes": 107829657,
+          "sha256": "170ab923830e8fc445e95dbad643c51dde3b36ca849f62e8e26f8de08119e26f"
+        }
+      ]
+    },
+    {
+      "id": "12eb2917-eacf-443d-88fa-81b65edd70d7",
+      "name": "RO - Votação por seção eleitoral - 2020",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2020_RO.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2020_RO.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 12928905,
+      "lastModified": "Fri, 06 Dec 2024 18:25:34 GMT",
+      "etag": "\"c54789-6289e2407e0fb\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T22:02:55.852631+00:00",
+      "sha256": "e1bdfe458b81b65e260fde46584e62838e4255b3c8c0bf6943ac839c4ca1e9cc",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "12eb2917-votacao_secao_2020_RO.zip",
+          "bytes": 12928905,
+          "sha256": "e1bdfe458b81b65e260fde46584e62838e4255b3c8c0bf6943ac839c4ca1e9cc"
+        }
+      ]
+    },
+    {
+      "id": "f8f6fb9a-c53e-4e96-afeb-eb133276effa",
+      "name": "RR - Votação por seção eleitoral - 2020",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2020_RR.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2020_RR.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 4146881,
+      "lastModified": "Fri, 06 Dec 2024 18:25:11 GMT",
+      "etag": "\"3f46c1-6289e22a02d04\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T22:02:56.306580+00:00",
+      "sha256": "6f46cb276bef8efebdc646d8fdadc25e1af92df7a814682e239bd90138bb6a66",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "f8f6fb9a-votacao_secao_2020_RR.zip",
+          "bytes": 4146881,
+          "sha256": "6f46cb276bef8efebdc646d8fdadc25e1af92df7a814682e239bd90138bb6a66"
+        }
+      ]
+    },
+    {
+      "id": "0485506f-5f94-4dfe-9e97-990d4a2bee20",
+      "name": "SC - Votação por seção eleitoral - 2020",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2020_SC.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2020_SC.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 58004583,
+      "lastModified": "Fri, 06 Dec 2024 18:25:11 GMT",
+      "etag": "\"3751467-6289e22a902c8\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T22:02:58.032529+00:00",
+      "sha256": "cb19a7aadf1397b5a69a2550e935570ec2721e3998b59470fa23f73953d6fa6e",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "0485506f-votacao_secao_2020_SC.zip",
+          "bytes": 58004583,
+          "sha256": "cb19a7aadf1397b5a69a2550e935570ec2721e3998b59470fa23f73953d6fa6e"
+        }
+      ]
+    },
+    {
+      "id": "5192162f-91ad-41fd-9aaf-869fdee9f9fa",
+      "name": "SP - Votação por seção eleitoral - 2020",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2020_SP.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2020_SP.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 526974460,
+      "lastModified": "Fri, 06 Dec 2024 18:48:57 GMT",
+      "etag": "\"1f68fdfc-6289e779ff8cc\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T22:03:25.374613+00:00",
+      "sha256": "79dbc252f6d6187f351ceaf1bbf2a0d3fba5043a90df1e2af9c4e8bae7244fc8",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "5192162f-votacao_secao_2020_SP.zip",
+          "bytes": 526974460,
+          "sha256": "79dbc252f6d6187f351ceaf1bbf2a0d3fba5043a90df1e2af9c4e8bae7244fc8"
+        }
+      ]
+    },
+    {
+      "id": "02c260ef-8865-4b8b-991e-7e9a1b7a9760",
+      "name": "SE - Votação por seção eleitoral - 2020",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2020_SE.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2020_SE.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 15983779,
+      "lastModified": "Fri, 06 Dec 2024 18:25:32 GMT",
+      "etag": "\"f3e4a3-6289e23e2a96f\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T22:03:26.641894+00:00",
+      "sha256": "f5324a1b99d9274442e6c792b3d4f38e3d30ce9c2db33b29441074fe534cb5ec",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "02c260ef-votacao_secao_2020_SE.zip",
+          "bytes": 15983779,
+          "sha256": "f5324a1b99d9274442e6c792b3d4f38e3d30ce9c2db33b29441074fe534cb5ec"
+        }
+      ]
+    },
+    {
+      "id": "132b5c46-850b-43c5-995e-0243bf9c1cb6",
+      "name": "TO - Votação por seção eleitoral - 2020",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2020_TO.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2020_TO.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 10870608,
+      "lastModified": "Fri, 06 Dec 2024 18:25:32 GMT",
+      "etag": "\"a5df50-6289e23df80d3\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T22:03:27.214732+00:00",
+      "sha256": "f34a04edb07a67ffd487da7a7e9025e4606236fa1c42bc6d4f62c673eb3ce3cf",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "132b5c46-votacao_secao_2020_TO.zip",
+          "bytes": 10870608,
+          "sha256": "f34a04edb07a67ffd487da7a7e9025e4606236fa1c42bc6d4f62c673eb3ce3cf"
+        }
+      ]
+    }
+  ]
+}
