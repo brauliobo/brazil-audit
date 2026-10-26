@@ -1,0 +1,67 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-10-26T21:45:50.478420+00:00",
+  "status": "published",
+  "dataset": {
+    "id": "candidatos-1947",
+    "title": "Candidatos - 1947",
+    "groups": [
+      "candidatos"
+    ],
+    "family": "candidatos",
+    "years": [
+      1947
+    ],
+    "license": "cc-by",
+    "source": "https://dadosabertos.tse.jus.br/dataset/candidatos-1947",
+    "branch": "archive/candidatos-1947",
+    "tag": "data-candidatos-1947",
+    "releaseUrl": "https://github.com/brauliobo/brazil-audit/releases/tag/data-candidatos-1947",
+    "normalized": false,
+    "status": "catalogued"
+  },
+  "resources": [
+    {
+      "id": "88b90cbd-52bd-443d-bfef-2896bdf4c83c",
+      "name": "Legendas",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_legendas/consulta_legendas_1947.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_legendas/consulta_legendas_1947.zip",
+      "format": "TXT",
+      "status": "prepared",
+      "bytes": 291598,
+      "lastModified": "Thu, 16 Apr 2015 19:35:42 GMT",
+      "etag": "\"4730e-513dc91b75f80\"",
+      "downloadedAt": "2026-10-26T21:45:50.026044+00:00",
+      "sha256": "eab388f0cd73968383f6a9d224b3a1417a246347c61e989bf372c0581f6c4d69",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "88b90cbd-consulta_legendas_1947.zip",
+          "bytes": 291598,
+          "sha256": "eab388f0cd73968383f6a9d224b3a1417a246347c61e989bf372c0581f6c4d69"
+        }
+      ]
+    },
+    {
+      "id": "cea9e1e7-aeaf-41a3-a7bf-4ffe9993e5a9",
+      "name": "Vagas",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_vagas/consulta_vagas_1947.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_vagas/consulta_vagas_1947.zip",
+      "format": "TXT",
+      "status": "prepared",
+      "bytes": 286250,
+      "lastModified": "Thu, 16 Apr 2015 19:35:54 GMT",
+      "etag": "\"45e2a-513dc926e7a80\"",
+      "downloadedAt": "2026-10-26T21:45:50.477585+00:00",
+      "sha256": "dd69ae29b79274d61869c6bf1e692628ec33621b9daa07ede8b59f4549fed148",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "cea9e1e7-consulta_vagas_1947.zip",
+          "bytes": 286250,
+          "sha256": "dd69ae29b79274d61869c6bf1e692628ec33621b9daa07ede8b59f4549fed148"
+        }
+      ]
+    }
+  ]
+}
