@@ -1,0 +1,48 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-10-26T21:51:37.590301+00:00",
+  "status": "published",
+  "dataset": {
+    "id": "eleitorado-2004",
+    "title": "Eleitorado - 2004",
+    "groups": [
+      "eleitorado"
+    ],
+    "family": "eleitorado",
+    "years": [
+      2004
+    ],
+    "license": "cc-by",
+    "source": "https://dadosabertos.tse.jus.br/dataset/eleitorado-2004",
+    "branch": "archive/eleitorado-2004",
+    "tag": "data-eleitorado-2004",
+    "releaseUrl": "https://github.com/brauliobo/brazil-audit/releases/tag/data-eleitorado-2004",
+    "normalized": false,
+    "status": "catalogued",
+    "inScope": true
+  },
+  "resources": [
+    {
+      "id": "2df5b3d2-9247-4317-8d00-426dc3febcce",
+      "name": "Eleitorado - 2004",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitorado/perfil_eleitorado_2004.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitorado/perfil_eleitorado_2004.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 2235993,
+      "lastModified": "Mon, 06 Sep 2021 19:13:45 GMT",
+      "etag": "\"221e59-5cb5872ac2c40\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:51:37.587892+00:00",
+      "sha256": "57744304ddaadc07f61c55c54346f01ae51c18e5c617b3da9fc45e46383b0407",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "2df5b3d2-perfil_eleitorado_2004.zip",
+          "bytes": 2235993,
+          "sha256": "57744304ddaadc07f61c55c54346f01ae51c18e5c617b3da9fc45e46383b0407"
+        }
+      ]
+    }
+  ]
+}
