@@ -5,18 +5,25 @@ module Enumerable
 
     return each(&block) if threads == 1
 
-    pool = Concurrent::FixedThreadPool.new threads
-    ret  = each do |*args|
-      pool.post do
-        block.call(*args)
-      rescue => e
-        puts "error: #{e.message}"
+    queue   = SizedQueue.new threads
+    workers = Array.new(threads) do
+      Thread.new do
+        while args = queue.pop
+          begin
+            block.call(*args)
+          rescue => e
+            puts "error: #{e.message}"
+          end
+        end
       end
     end
 
-    pool.shutdown
-    pool.wait_for_termination
-    ret
+    begin
+      each{ |*args| queue << args }
+    ensure
+      threads.times{ queue << nil }
+      workers.each(&:join)
+    end
   end
 
 end

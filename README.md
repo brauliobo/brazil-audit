@@ -17,7 +17,8 @@ rate limits (429, 466) are retried through another one.
 |---|---|
 | `YEAR` | `2026` (default), `2024` or `2022`; each year has its own dir and database |
 | `PROXIES` | proxies file; without it requests go out directly |
-| `THREADS` | threads per level (state, city, zone, section, hash) |
+| `HTTP_SLOTS` | maximum requests in flight across all collector processes (default 100); also the section workers per state |
+| `THREADS` | workers for other `peach` calls (default 10); section scheduling uses `HTTP_SLOTS` |
 | `PHASE` | `fetch` or `store` to run only one step (default: both, per section) |
 | `STATES`, `CITY` | restrict the run, e.g. `STATES="to sp" CITY="AURORA DO TOCANTINS"` |
 | `DB_NAME` | database name (default `brazil-audit-<year>`) |
@@ -27,7 +28,9 @@ rate limits (429, 466) are retried through another one.
 
 Every section reloads its missing files (fetch) and then stores its votes (store) in one transaction; a mark in
 `2026/stored/<database>/` tells a resume what is already stored. Cities the official results do not count as totalized
-yet are skipped, so a pass only downloads what the TSE already published.
+yet are skipped, so a pass only downloads what the TSE already published. Each state has one bounded section queue
+and a shared worker pool across its cities: even one remaining city can fill the HTTP capacity. The request limit
+is shared across all states and collector runs for the same election.
 
 | Table | |
 |---|---|
