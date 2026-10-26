@@ -1,0 +1,774 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-10-26T21:54:53.197668+00:00",
+  "status": "published",
+  "dataset": {
+    "id": "resultados-2010",
+    "title": "Resultados - 2010",
+    "groups": [
+      "resultados"
+    ],
+    "family": "resultados",
+    "years": [
+      2010
+    ],
+    "license": "cc-by",
+    "source": "https://dadosabertos.tse.jus.br/dataset/resultados-2010",
+    "branch": "archive/resultados-2010",
+    "tag": "data-resultados-2010",
+    "releaseUrl": "https://github.com/brauliobo/brazil-audit/releases/tag/data-resultados-2010",
+    "normalized": false,
+    "status": "catalogued",
+    "inScope": true
+  },
+  "resources": [
+    {
+      "id": "24996eb7-2b7c-4ef6-a427-9d9229bc1b5c",
+      "name": "Votação nominal por município e zona",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_candidato_munzona/votacao_candidato_munzona_2010.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_candidato_munzona/votacao_candidato_munzona_2010.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 132565895,
+      "lastModified": "Fri, 03 Sep 2021 20:11:47 GMT",
+      "etag": "\"7e6cb87-5cb1ce8b126c0\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:54:19.555586+00:00",
+      "sha256": "fc7052974632351a3dc81e8ec17312889687eae0b2d56508259f91deecadd563",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "24996eb7-votacao_candidato_munzona_2010.zip",
+          "bytes": 132565895,
+          "sha256": "fc7052974632351a3dc81e8ec17312889687eae0b2d56508259f91deecadd563"
+        }
+      ]
+    },
+    {
+      "id": "74689650-8ae6-43bf-99e1-ada8ff03d8d4",
+      "name": "Votação em partido por município e zona",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_partido_munzona/votacao_partido_munzona_2010.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_partido_munzona/votacao_partido_munzona_2010.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 7875767,
+      "lastModified": "Fri, 03 Sep 2021 20:12:05 GMT",
+      "etag": "\"782cb7-5cb1ce9c3cf40\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:54:20.017516+00:00",
+      "sha256": "32d210a9b5535694bc48c0026e8afecd10267117b86b51272e53836510a4339f",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "74689650-votacao_partido_munzona_2010.zip",
+          "bytes": 7875767,
+          "sha256": "32d210a9b5535694bc48c0026e8afecd10267117b86b51272e53836510a4339f"
+        }
+      ]
+    },
+    {
+      "id": "702d9c8a-d0f3-4877-acbc-9ed368077e71",
+      "name": "Detalhe da apuração por município e zona",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/detalhe_votacao_munzona/detalhe_votacao_munzona_2010.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/detalhe_votacao_munzona/detalhe_votacao_munzona_2010.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 3354480,
+      "lastModified": "Fri, 08 Aug 2025 16:28:11 GMT",
+      "etag": "\"332f70-63bdd0f5db779\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:54:20.508232+00:00",
+      "sha256": "5f0ea64db232ddf7b88c0cb568534477cf21d8d1c8c8d40790b33cffce03a034",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "702d9c8a-detalhe_votacao_munzona_2010.zip",
+          "bytes": 3354480,
+          "sha256": "5f0ea64db232ddf7b88c0cb568534477cf21d8d1c8c8d40790b33cffce03a034"
+        }
+      ]
+    },
+    {
+      "id": "76da3955-3c3a-4efa-a5fb-0b972a23ce45",
+      "name": "Detalhe da apuração por seção eleitoral",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/detalhe_votacao_secao/detalhe_votacao_secao_2010.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/detalhe_votacao_secao/detalhe_votacao_secao_2010.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 67345754,
+      "lastModified": "Fri, 03 Sep 2021 20:11:17 GMT",
+      "etag": "\"4039d5a-5cb1ce6e76340\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:54:22.340507+00:00",
+      "sha256": "16dd2d039cde82bf74d13ad18af5cc3796229ae1811522a0951bcdb017d38aa0",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "76da3955-detalhe_votacao_secao_2010.zip",
+          "bytes": 67345754,
+          "sha256": "16dd2d039cde82bf74d13ad18af5cc3796229ae1811522a0951bcdb017d38aa0"
+        }
+      ]
+    },
+    {
+      "id": "31868b3b-aa7f-4f78-abd3-8d7a183d0a81",
+      "name": "Presidente - Votação por seção eleitoral - 2010",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2010_BR.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2010_BR.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 23737900,
+      "lastModified": "Fri, 03 Sep 2021 20:13:35 GMT",
+      "etag": "\"16a362c-5cb1cef2119c0\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:54:23.389374+00:00",
+      "sha256": "d884147629221fa4bbedb657f83cf7a56a31d1775a51be5ce73e2b6d32617634",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "31868b3b-votacao_secao_2010_BR.zip",
+          "bytes": 23737900,
+          "sha256": "d884147629221fa4bbedb657f83cf7a56a31d1775a51be5ce73e2b6d32617634"
+        }
+      ]
+    },
+    {
+      "id": "0b0250f3-09b8-4dad-a8a0-06393e45eeef",
+      "name": "AC - Votação por seção eleitoral - 2010",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2010_AC.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2010_AC.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 2151806,
+      "lastModified": "Fri, 03 Sep 2021 20:13:31 GMT",
+      "etag": "\"20d57e-5cb1ceee410c0\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:54:23.766974+00:00",
+      "sha256": "80b225eccb3903def34e121a812b9934a5383edca7b1bf7f509d21f53cdfd05e",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "0b0250f3-votacao_secao_2010_AC.zip",
+          "bytes": 2151806,
+          "sha256": "80b225eccb3903def34e121a812b9934a5383edca7b1bf7f509d21f53cdfd05e"
+        }
+      ]
+    },
+    {
+      "id": "68f09e47-1d3f-44e2-8fe6-5fd69f7e9afc",
+      "name": "AL - Votação por seção eleitoral - 2010",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2010_AL.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2010_AL.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 5372957,
+      "lastModified": "Fri, 03 Sep 2021 20:13:32 GMT",
+      "etag": "\"51fc1d-5cb1ceef35300\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:54:24.178355+00:00",
+      "sha256": "7f5ce1ecea898b6edc3d0d1b7b163b2eb64d9f556b8c70c39860b84321c786b1",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "68f09e47-votacao_secao_2010_AL.zip",
+          "bytes": 5372957,
+          "sha256": "7f5ce1ecea898b6edc3d0d1b7b163b2eb64d9f556b8c70c39860b84321c786b1"
+        }
+      ]
+    },
+    {
+      "id": "71c00c07-c740-4e8c-8302-8429f5b52d75",
+      "name": "AP - Votação por seção eleitoral - 2010",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2010_AP.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2010_AP.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 2378423,
+      "lastModified": "Fri, 03 Sep 2021 20:13:33 GMT",
+      "etag": "\"244ab7-5cb1cef029540\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:54:24.537366+00:00",
+      "sha256": "7e47e6d824228a9bfe2d2bb515d0fcc5a8c48f9434ceefdc6f8866d1c7695c7f",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "71c00c07-votacao_secao_2010_AP.zip",
+          "bytes": 2378423,
+          "sha256": "7e47e6d824228a9bfe2d2bb515d0fcc5a8c48f9434ceefdc6f8866d1c7695c7f"
+        }
+      ]
+    },
+    {
+      "id": "50cfd246-255a-497a-9d5e-88d053ffa64d",
+      "name": "AM - Votação por seção eleitoral - 2010",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2010_AM.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2010_AM.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 6732008,
+      "lastModified": "Fri, 03 Sep 2021 20:13:33 GMT",
+      "etag": "\"66b8e8-5cb1cef029540\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:54:24.971832+00:00",
+      "sha256": "3739837bd2cdcdb4fcd7aef16d4cc380bfad418b2fc11f7393ecf6a98b638738",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "50cfd246-votacao_secao_2010_AM.zip",
+          "bytes": 6732008,
+          "sha256": "3739837bd2cdcdb4fcd7aef16d4cc380bfad418b2fc11f7393ecf6a98b638738"
+        }
+      ]
+    },
+    {
+      "id": "88f6348f-cacd-499d-a10c-cea6919cd1d8",
+      "name": "BA - Votação por seção eleitoral - 2010",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2010_BA.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2010_BA.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 35942337,
+      "lastModified": "Fri, 03 Sep 2021 20:13:35 GMT",
+      "etag": "\"2246fc1-5cb1cef2119c0\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:54:26.366997+00:00",
+      "sha256": "ce126ecb825c7e9df30c62fcfd19615d33f3391e199af27dc13d305d389e12df",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "88f6348f-votacao_secao_2010_BA.zip",
+          "bytes": 35942337,
+          "sha256": "ce126ecb825c7e9df30c62fcfd19615d33f3391e199af27dc13d305d389e12df"
+        }
+      ]
+    },
+    {
+      "id": "83e49fc6-a939-4e1a-b581-bb953a755583",
+      "name": "CE - Votação por seção eleitoral - 2010",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2010_CE.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2010_CE.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 20335031,
+      "lastModified": "Fri, 03 Sep 2021 20:13:36 GMT",
+      "etag": "\"13649b7-5cb1cef305c00\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:54:27.275132+00:00",
+      "sha256": "32012e72ddc64227e63e31daba194060a78603b97971f1b9b8788b098aa0ec41",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "83e49fc6-votacao_secao_2010_CE.zip",
+          "bytes": 20335031,
+          "sha256": "32012e72ddc64227e63e31daba194060a78603b97971f1b9b8788b098aa0ec41"
+        }
+      ]
+    },
+    {
+      "id": "371c0d8d-21a3-4b86-9415-bd1e4cd447fb",
+      "name": "DF - Votação por seção eleitoral - 2010",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2010_DF.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2010_DF.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 14253063,
+      "lastModified": "Fri, 03 Sep 2021 20:13:37 GMT",
+      "etag": "\"d97c07-5cb1cef3f9e40\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:54:27.928367+00:00",
+      "sha256": "7b1ee2ff07c0cb56b59ce02fae8c8c142aa3d08fb35e88fd396ad09bfbb41d10",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "371c0d8d-votacao_secao_2010_DF.zip",
+          "bytes": 14253063,
+          "sha256": "7b1ee2ff07c0cb56b59ce02fae8c8c142aa3d08fb35e88fd396ad09bfbb41d10"
+        }
+      ]
+    },
+    {
+      "id": "5ecc7d46-e2ba-4668-8d65-071b102d4963",
+      "name": "ES - Votação por seção eleitoral - 2010",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2010_ES.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2010_ES.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 7187448,
+      "lastModified": "Fri, 03 Sep 2021 20:13:38 GMT",
+      "etag": "\"6dabf8-5cb1cef4ee080\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:54:28.395940+00:00",
+      "sha256": "f62f3fe45f4562e4a2151431750ea9729411f0ed39179c36da4bb524de152a2c",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "5ecc7d46-votacao_secao_2010_ES.zip",
+          "bytes": 7187448,
+          "sha256": "f62f3fe45f4562e4a2151431750ea9729411f0ed39179c36da4bb524de152a2c"
+        }
+      ]
+    },
+    {
+      "id": "281a0c4a-a624-4c7b-804f-cec284c0fa56",
+      "name": "GO - Votação por seção eleitoral - 2010",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2010_GO.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2010_GO.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 14666437,
+      "lastModified": "Fri, 03 Sep 2021 20:13:43 GMT",
+      "etag": "\"dfcac5-5cb1cef9b2bc0\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:54:29.075028+00:00",
+      "sha256": "b5ec0ed835be2304fc25cf3e492a4b2095d36aca7a0d49468d2b63209d7e54d1",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "281a0c4a-votacao_secao_2010_GO.zip",
+          "bytes": 14666437,
+          "sha256": "b5ec0ed835be2304fc25cf3e492a4b2095d36aca7a0d49468d2b63209d7e54d1"
+        }
+      ]
+    },
+    {
+      "id": "7fce4c33-1468-4fde-a0bc-d0cb6912583b",
+      "name": "MA - Votação por seção eleitoral - 2010",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2010_MA.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2010_MA.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 13776930,
+      "lastModified": "Fri, 03 Sep 2021 20:13:43 GMT",
+      "etag": "\"d23822-5cb1cef9b2bc0\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:54:29.728894+00:00",
+      "sha256": "01d7d5ec6ed76d13c362d75bd9534188031fd62651f74ea2e6d5f5dadbe8e1b3",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "7fce4c33-votacao_secao_2010_MA.zip",
+          "bytes": 13776930,
+          "sha256": "01d7d5ec6ed76d13c362d75bd9534188031fd62651f74ea2e6d5f5dadbe8e1b3"
+        }
+      ]
+    },
+    {
+      "id": "f1fc7093-6853-44e1-81a4-672eeeaba691",
+      "name": "MT - Votação por seção eleitoral - 2010",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2010_MT.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2010_MT.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 4851600,
+      "lastModified": "Fri, 03 Sep 2021 20:13:46 GMT",
+      "etag": "\"4a0790-5cb1cefc8f280\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:54:30.136519+00:00",
+      "sha256": "e36b1a10aa9e2847dc461b84ad9545521ea1ef47fc4649acd177cadd1327c4db",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "f1fc7093-votacao_secao_2010_MT.zip",
+          "bytes": 4851600,
+          "sha256": "e36b1a10aa9e2847dc461b84ad9545521ea1ef47fc4649acd177cadd1327c4db"
+        }
+      ]
+    },
+    {
+      "id": "5f8729ce-6f13-47b0-9b2e-137922feff3a",
+      "name": "MS - Votação por seção eleitoral - 2010",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2010_MS.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2010_MS.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 4264262,
+      "lastModified": "Fri, 03 Sep 2021 20:13:45 GMT",
+      "etag": "\"411146-5cb1cefb9b040\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:54:30.545260+00:00",
+      "sha256": "71a71671fb5d7ac553885eca0c21dbbabd2b67d0e9cd9ced1a368c680d78e327",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "5f8729ce-votacao_secao_2010_MS.zip",
+          "bytes": 4264262,
+          "sha256": "71a71671fb5d7ac553885eca0c21dbbabd2b67d0e9cd9ced1a368c680d78e327"
+        }
+      ]
+    },
+    {
+      "id": "bc07dcb6-c741-48a1-b6ad-8a4cdeed2bb4",
+      "name": "MG - Votação por seção eleitoral - 2010",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2010_MG.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2010_MG.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 50844061,
+      "lastModified": "Fri, 03 Sep 2021 20:13:45 GMT",
+      "etag": "\"307d19d-5cb1cefb9b040\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:54:32.030045+00:00",
+      "sha256": "bf9deaaa6ae2ffb2a99a11d739309906646859a90e567918704d6b64d71e9a5f",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "bc07dcb6-votacao_secao_2010_MG.zip",
+          "bytes": 50844061,
+          "sha256": "bf9deaaa6ae2ffb2a99a11d739309906646859a90e567918704d6b64d71e9a5f"
+        }
+      ]
+    },
+    {
+      "id": "f8a66209-c64f-4f4d-bd11-0c7aaccc3209",
+      "name": "PA - Votação por seção eleitoral - 2010",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2010_PA.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2010_PA.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 16336162,
+      "lastModified": "Fri, 03 Sep 2021 20:13:47 GMT",
+      "etag": "\"f94522-5cb1cefd834c0\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:54:32.864712+00:00",
+      "sha256": "34f6ed9480836bef08a9fc31526bd87c4125344884b2682532b8b68995eab0fa",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "f8a66209-votacao_secao_2010_PA.zip",
+          "bytes": 16336162,
+          "sha256": "34f6ed9480836bef08a9fc31526bd87c4125344884b2682532b8b68995eab0fa"
+        }
+      ]
+    },
+    {
+      "id": "73f24ebe-acd1-4c09-9439-cff28ad5d49e",
+      "name": "PB - Votação por seção eleitoral - 2010",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2010_PB.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2010_PB.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 7365676,
+      "lastModified": "Fri, 03 Sep 2021 20:13:49 GMT",
+      "etag": "\"70642c-5cb1ceff6b940\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:54:33.323233+00:00",
+      "sha256": "be1f23e3cfa2825a7593f7a9ba0233fe8505b2cdcfc56b2be68d516072ef09f9",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "73f24ebe-votacao_secao_2010_PB.zip",
+          "bytes": 7365676,
+          "sha256": "be1f23e3cfa2825a7593f7a9ba0233fe8505b2cdcfc56b2be68d516072ef09f9"
+        }
+      ]
+    },
+    {
+      "id": "a1370d7c-a445-4496-9d21-f4287946543f",
+      "name": "PR - Votação por seção eleitoral - 2010",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2010_PR.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2010_PR.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 26253865,
+      "lastModified": "Fri, 03 Sep 2021 20:13:52 GMT",
+      "etag": "\"1909a29-5cb1cf0248000\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:54:34.177196+00:00",
+      "sha256": "ae567b1879a03622d454cf7ab9b3b87fb681195f567fafe20aecd96fb216c4dc",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "a1370d7c-votacao_secao_2010_PR.zip",
+          "bytes": 26253865,
+          "sha256": "ae567b1879a03622d454cf7ab9b3b87fb681195f567fafe20aecd96fb216c4dc"
+        }
+      ]
+    },
+    {
+      "id": "ed0600ea-7c6c-43c8-8b5e-bcc5a51b2a62",
+      "name": "PE - Votação por seção eleitoral - 2010",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2010_PE.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2010_PE.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 21984002,
+      "lastModified": "Fri, 03 Sep 2021 20:13:51 GMT",
+      "etag": "\"14f7302-5cb1cf0153dc0\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:54:34.957799+00:00",
+      "sha256": "4f44e2c5cf36d2b98844210c9f100bb27522577b2d9ffae0483b742736f254cb",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "ed0600ea-votacao_secao_2010_PE.zip",
+          "bytes": 21984002,
+          "sha256": "4f44e2c5cf36d2b98844210c9f100bb27522577b2d9ffae0483b742736f254cb"
+        }
+      ]
+    },
+    {
+      "id": "cf3b63f3-60a8-4fd5-97ff-07b96648ea24",
+      "name": "PI - Votação por seção eleitoral - 2010",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2010_PI.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2010_PI.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 5521605,
+      "lastModified": "Fri, 03 Sep 2021 20:13:51 GMT",
+      "etag": "\"5440c5-5cb1cf0153dc0\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:54:35.431347+00:00",
+      "sha256": "7f099c73afc1e3e41796c0d0426c807dc0a19f6173730a23218356282d757d9f",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "cf3b63f3-votacao_secao_2010_PI.zip",
+          "bytes": 5521605,
+          "sha256": "7f099c73afc1e3e41796c0d0426c807dc0a19f6173730a23218356282d757d9f"
+        }
+      ]
+    },
+    {
+      "id": "5b9ee94d-771d-4425-918d-4c88425d136a",
+      "name": "RJ - Votação por seção eleitoral - 2010",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2010_RJ.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2010_RJ.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 72600829,
+      "lastModified": "Fri, 03 Sep 2021 20:13:54 GMT",
+      "etag": "\"453ccfd-5cb1cf0430480\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:54:38.528657+00:00",
+      "sha256": "535d791d8096d42d31673fa12bc4f0ae346c62533743eb27b1e4fb3c471af911",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "5b9ee94d-votacao_secao_2010_RJ.zip",
+          "bytes": 72600829,
+          "sha256": "535d791d8096d42d31673fa12bc4f0ae346c62533743eb27b1e4fb3c471af911"
+        }
+      ]
+    },
+    {
+      "id": "fcc905ba-0f6d-4c19-b252-ee9278038e40",
+      "name": "RN - Votação por seção eleitoral - 2010",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2010_RN.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2010_RN.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 4776545,
+      "lastModified": "Fri, 03 Sep 2021 20:13:52 GMT",
+      "etag": "\"48e261-5cb1cf0248000\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:54:39.327395+00:00",
+      "sha256": "3786e5ad412ac7172314c819b79f30f742cc7be861bff47cf5fef7f2827c5bf7",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "fcc905ba-votacao_secao_2010_RN.zip",
+          "bytes": 4776545,
+          "sha256": "3786e5ad412ac7172314c819b79f30f742cc7be861bff47cf5fef7f2827c5bf7"
+        }
+      ]
+    },
+    {
+      "id": "16f523a2-dc18-40dd-b754-3d5fac82da39",
+      "name": "RS - Votação por seção eleitoral - 2010",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2010_RS.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2010_RS.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 32692293,
+      "lastModified": "Fri, 03 Sep 2021 20:13:54 GMT",
+      "etag": "\"1f2d845-5cb1cf0430480\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:54:40.548759+00:00",
+      "sha256": "56df1dd9a4789062a657dfdc04bd735e500da4b9dd469940e083e641d1270302",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "16f523a2-votacao_secao_2010_RS.zip",
+          "bytes": 32692293,
+          "sha256": "56df1dd9a4789062a657dfdc04bd735e500da4b9dd469940e083e641d1270302"
+        }
+      ]
+    },
+    {
+      "id": "b30f5d64-f3dd-455b-82dd-6411a1084cfd",
+      "name": "RO - Votação por seção eleitoral - 2010",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2010_RO.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2010_RO.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 3698714,
+      "lastModified": "Fri, 03 Sep 2021 20:13:52 GMT",
+      "etag": "\"38701a-5cb1cf0248000\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:54:41.005922+00:00",
+      "sha256": "c295429672a7b007c2533e72ba7c2ab08a4787374b2e714caf8bfca96c9f6f7e",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "b30f5d64-votacao_secao_2010_RO.zip",
+          "bytes": 3698714,
+          "sha256": "c295429672a7b007c2533e72ba7c2ab08a4787374b2e714caf8bfca96c9f6f7e"
+        }
+      ]
+    },
+    {
+      "id": "63c066f2-c317-443f-95a0-b5d851dd8266",
+      "name": "RR - Votação por seção eleitoral - 2010",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2010_RR.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2010_RR.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 2083484,
+      "lastModified": "Fri, 03 Sep 2021 20:13:53 GMT",
+      "etag": "\"1fca9c-5cb1cf033c240\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:54:41.546729+00:00",
+      "sha256": "dfc3adb0004c48001fdb4433f5c91e7b848a2e9365cf5f001fc8c8661d10249e",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "63c066f2-votacao_secao_2010_RR.zip",
+          "bytes": 2083484,
+          "sha256": "dfc3adb0004c48001fdb4433f5c91e7b848a2e9365cf5f001fc8c8661d10249e"
+        }
+      ]
+    },
+    {
+      "id": "46665c9b-796d-4c68-ba4d-91f6803cdd26",
+      "name": "SC - Votação por seção eleitoral - 2010",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2010_SC.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2010_SC.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 12360351,
+      "lastModified": "Fri, 03 Sep 2021 20:13:54 GMT",
+      "etag": "\"bc9a9f-5cb1cf0430480\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:54:42.211172+00:00",
+      "sha256": "799093a5ea689d85e5f8dd24cdd52ea38afba4d6c8de8ba7be967c387760884b",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "46665c9b-votacao_secao_2010_SC.zip",
+          "bytes": 12360351,
+          "sha256": "799093a5ea689d85e5f8dd24cdd52ea38afba4d6c8de8ba7be967c387760884b"
+        }
+      ]
+    },
+    {
+      "id": "405c8c1b-00e2-4cb7-a4ec-1e290392e607",
+      "name": "SP - Votação por seção eleitoral - 2010",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2010_SP.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2010_SP.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 160321176,
+      "lastModified": "Fri, 03 Sep 2021 20:13:57 GMT",
+      "etag": "\"98e4e98-5cb1cf070cb40\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:54:51.579478+00:00",
+      "sha256": "ddaa7b8422f0239f0ab7f04b61354408717bce991da0782f097c550e4f3cb079",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "405c8c1b-votacao_secao_2010_SP.zip",
+          "bytes": 160321176,
+          "sha256": "ddaa7b8422f0239f0ab7f04b61354408717bce991da0782f097c550e4f3cb079"
+        }
+      ]
+    },
+    {
+      "id": "d193f445-0511-4a27-a8aa-151549e4dc5d",
+      "name": "SE - Votação por seção eleitoral - 2010",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2010_SE.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2010_SE.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 3501698,
+      "lastModified": "Fri, 03 Sep 2021 20:13:54 GMT",
+      "etag": "\"356e82-5cb1cf0430480\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:54:52.193736+00:00",
+      "sha256": "4569cc5e34cfc8f28d529523b221a6fc329b43ac254943b8a99bc86f9b9b6773",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "d193f445-votacao_secao_2010_SE.zip",
+          "bytes": 3501698,
+          "sha256": "4569cc5e34cfc8f28d529523b221a6fc329b43ac254943b8a99bc86f9b9b6773"
+        }
+      ]
+    },
+    {
+      "id": "83dfefa0-920a-4ba7-9e50-73f1acbdd831",
+      "name": "TO - Votação por seção eleitoral - 2010",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2010_TO.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2010_TO.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 2426995,
+      "lastModified": "Fri, 03 Sep 2021 20:13:54 GMT",
+      "etag": "\"250873-5cb1cf0430480\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:54:52.584553+00:00",
+      "sha256": "4556b9857529c86fe12c414b1a0ef58f4069bafcb9acfd1b2de03f2f643d781d",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "83dfefa0-votacao_secao_2010_TO.zip",
+          "bytes": 2426995,
+          "sha256": "4556b9857529c86fe12c414b1a0ef58f4069bafcb9acfd1b2de03f2f643d781d"
+        }
+      ]
+    },
+    {
+      "id": "ccccdc1e-747c-47f1-b81d-fb8307a9f02f",
+      "name": "Exterior - Votação por seção eleitoral - 2010",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2010_ZZ.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2010_ZZ.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 713278,
+      "lastModified": "Thu, 28 Jul 2016 22:09:33 GMT",
+      "etag": "\"ae23e-538b963802140\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:54:52.915570+00:00",
+      "sha256": "5b620fa4f79c267ac145aa3c2918ac8ae770680d9797aca5b154427af60b73df",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "ccccdc1e-votacao_secao_2010_ZZ.zip",
+          "bytes": 713278,
+          "sha256": "5b620fa4f79c267ac145aa3c2918ac8ae770680d9797aca5b154427af60b73df"
+        }
+      ]
+    },
+    {
+      "id": "e199609b-38f6-4ac2-8bc1-60b91000e9a3",
+      "name": "Voto em trânsito - Votação por seção eleitoral - 2010",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2010_VT.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2010_VT.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 687746,
+      "lastModified": "Thu, 28 Jul 2016 22:09:29 GMT",
+      "etag": "\"a7e82-538b963431840\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:54:53.196700+00:00",
+      "sha256": "c2908b76e5b44884585f4e2aada1a0454cc7a240d356f65129d78412dc130e4e",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "e199609b-votacao_secao_2010_VT.zip",
+          "bytes": 687746,
+          "sha256": "c2908b76e5b44884585f4e2aada1a0454cc7a240d356f65129d78412dc130e4e"
+        }
+      ]
+    }
+  ]
+}
