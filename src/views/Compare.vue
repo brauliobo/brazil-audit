@@ -1,5 +1,6 @@
 <script setup vapor>
 import { computed } from 'vue'
+import { transferIndex } from '../transfers'
 import { route, setParam, href } from '../router'
 import { ELECTION_LIST, UFS } from '../model'
 import { electionLabel, stateTitle } from '../labels'
@@ -19,6 +20,7 @@ import Field from '../components/Field.vue'
 import DataTable from '../components/DataTable.vue'
 import BarList from '../components/BarList.vue'
 
+const modes = computed(() => ['indicators','history',...(transferIndex?.contests?.length ? ['flows'] : [])])
 const mode = computed(() => route.value.params.get('comparison_mode') ?? 'indicators')
 const selected = computed(() => metricOf(route.value.params.get('metric'))?.id ?? 'abstention_rate')
 const metric = computed(() => metricOf(selected.value))
@@ -101,7 +103,7 @@ const csv = computed(() => !data.data ? '' : 'data:text/csv;charset=utf-8,' + en
 <template lang="pug">
 h1 {{ t('compare.title') }}
 p.muted {{ t('compare.intro') }}
-ButtonGroup(:label="t('compare.mode')" :value="mode" :items="['indicators','history','flows'].map((value) => ({value,label:t(`compare.modes.${value}`)}))" @change="setParam('comparison_mode',$event)")
+ButtonGroup(:label="t('compare.mode')" :value="mode" :items="modes.map((value) => ({value,label:t(`compare.modes.${value}`)}))" @change="setParam('comparison_mode',$event)")
 HistoricalComparison(v-if="mode === 'history'")
 TransferComparison(v-else-if="mode === 'flows'")
 template(v-else)

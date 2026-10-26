@@ -1,5 +1,6 @@
 <script setup vapor>
 import { computed } from 'vue'
+import { transferIndex as index } from '../transfers'
 import { route,setParam } from '../router'
 import { useAsync } from '../use'
 import { t } from '../i18n'
@@ -7,8 +8,6 @@ import { int,pct } from '../format'
 import Panel from './Panel.vue'
 import Field from './Field.vue'
 import DataTable from './DataTable.vue'
-const indexes = import.meta.glob('../../data/transfers/index.json',{eager:true,import:'default'})
-const index = Object.values(indexes)[0]
 const contests = computed(() => index?.contests ?? [])
 const selected = computed(() => contests.value.find((c) => c.id === route.value.params.get('contest')) ?? contests.value[0])
 const data = useAsync(() => [selected.value?.id],async () => {

@@ -1090,6 +1090,8 @@ navGroups:
   sections: Ferramentas da área
 
 compare:
+  historyContext: Contexto da fonte
+  historyYearConflict: Ano declarado difere da data da eleição
   flowModels: Modelos e verificações
   historyDates: "Data oficial"
   historyTypes: "Tipo de eleição"
@@ -1262,6 +1264,7 @@ compare:
     signal_idle: "Pausa longa (%)"
 
 history:
+  summaries: "Resumos históricos disponíveis para comparação (a coleção completa pode conter recursos ainda não normalizados)."
   title: Acervo histórico do TSE
   catalog: Catálogo de dados oficiais
   intro: "O catálogo distingue fontes disponíveis, arquivos baixados, releases publicados e dados normalizados para análise. Estar no catálogo não significa que o arquivo já tenha sido baixado ou integrado."
