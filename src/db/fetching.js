@@ -1,13 +1,16 @@
 import { t } from '../i18n'
 
+// v1 could store an HTTP-cached response under a newer version key. Its entries cannot be trusted.
+export const ASSET_CACHE = 'auditoria-assets-v2'
+
 // Cache API backed fetch for the compressed assets (engine wasm/vfs and data parts): the second visit never hits the network.
 /** `version` busts the cache entry when the asset changes (it is stored as a query on the key). */
 export async function cachedFetch(url, version) {
-  const cache = await caches.open('auditoria-assets-v1')
+  const cache = await caches.open(ASSET_CACHE)
   const key = `${url}?v=${version}`
   const hit = await cache.match(key)
   if (hit) return hit
-  const res = await fetch(url)
+  const res = await fetch(key)
   if (!res.ok) throw new Error(t('errors.http', { url, status: res.status }))
   cache.put(key, res.clone()).catch(console.warn)
   return res

@@ -2,6 +2,7 @@
 // Part ids are `<election key>/<part>` for election tables (parts per UF, deputy offices apart) and `all` for cands and mun_map.
 import { reactive } from 'vue'
 import { load, many, one, query } from './db'
+import { ASSET_CACHE } from './db/fetching'
 import { t } from './i18n'
 import { INDEXES, VIEWS } from './model'
 
@@ -25,7 +26,7 @@ export const manifestReady = fetch(`${BASE}data/manifest.json`).then(async (res)
   store.manifest = await res.json()
 })
 
-// a new dump (manifest version) replaces the whole schema, which also removes tables of older app versions
+// A new dump or asset policy replaces imported data, including imports made by the old HTTP-cache policy.
 async function resetIfStale(version) {
   if ((await one(`select v from _meta where k='version'`))?.v === version) return
   await query('drop schema public cascade')
@@ -37,7 +38,7 @@ async function resetIfStale(version) {
 async function init() {
   await manifestReady
   await query('create table if not exists _meta(k text primary key, v text)')
-  await resetIfStale(store.manifest.version)
+  await resetIfStale(`${store.manifest.version}:${ASSET_CACHE}`)
   await query('create table if not exists _parts(tbl text, part text, rows int, primary key (tbl, part))')
   for (const t of Object.values(tables())) await query(t.ddl.replace('create table', 'create table if not exists'))
   for (const sql of [...INDEXES, ...VIEWS]) await query(sql)
@@ -83,7 +84,7 @@ export const ensureSmall = (election, ...names) => Promise.all(names.map((t) => 
 export async function clearLocal() {
   for (const t of Object.keys(tables())) await query(`truncate ${t}`)
   await query('truncate _parts')
-  await caches.delete('auditoria-assets-v1')
+  await Promise.all([ASSET_CACHE,'auditoria-assets-v1'].map((name) => caches.delete(name)))
   location.reload()
 }
 
