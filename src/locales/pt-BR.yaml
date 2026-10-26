@@ -561,6 +561,11 @@ time:
   clock: Relógio
   clockBrt: Brasília (UTC-3)
   clockLocal: local, como gravado
+  scale: Escala vertical
+  scaleLog: Logarítmica
+  scaleLinear: Linear
+  scaleLogNote: "Escala logarítmica: torna visíveis os intervalos com poucos votos, inclusive após as 17h. As contagens permanecem exatas; a altura das barras não é proporcional ao número de votos."
+  scaleLinearNote: "Escala linear: a altura das barras é proporcional ao número de votos. Intervalos com poucos votos podem ficar quase invisíveis."
   seeResults: resultados da seção →
   seeSignals: sinais da seção →
   pending: "Os logs desta eleição estão sendo importados: os horários aparecem aqui quando estiverem prontos."

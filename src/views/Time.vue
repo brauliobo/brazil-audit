@@ -21,6 +21,8 @@ const args = computed(() => route.value.args)
 const [state, city] = [computed(() => args.value[0] ?? null), computed(() => args.value[1] ?? null)]
 const isSection = computed(() => args.value.length === 4)
 const brt = computed(() => route.value.params.get('clock') !== 'local')
+const logarithmic = computed(() => route.value.params.get('scale') !== 'linear')
+const scaleItems = computed(() => [{ value: 'log', label: t('time.scaleLog') }, { value: 'linear', label: t('time.scaleLinear') }])
 const rank = computed(() => route.value.params.get('rank') ?? 'fast')
 const rows = async (q, sql, params) => objects(await q(sql, params))
 
@@ -120,7 +122,9 @@ SourceBadge(:election="year" view="times")
 .muted(v-if="!cfg.hasTimes") {{ t(cfg.sources.pending.includes('logs') ? 'time.pending' : 'time.unavailable') }}
 .grid-auto(v-else)
   Panel(:title="t('time.curveTitle')" :state="curve" :election="year" wide)
-    ColumnChart(:label="t('time.curveTitle')" :values="curve.data.votes" :labels="curve.data.labels" :height="260" :tick="int" :fmt="(v) => t('common.votes', { count: v })")
+    ButtonGroup(:label="t('time.scale')" :items="scaleItems" :value="logarithmic ? 'log' : 'linear'" @change="setParam('scale', $event === 'linear' ? 'linear' : null)")
+    p.muted {{ t(logarithmic ? 'time.scaleLogNote' : 'time.scaleLinearNote') }}
+    ColumnChart(:label="`${t('time.curveTitle')} · ${t(logarithmic ? 'time.scaleLog' : 'time.scaleLinear')}`" :values="curve.data.votes" :labels="curve.data.labels" :logarithmic="logarithmic" :height="320" :tick="int" :fmt="(v) => t('common.votes', { count: v })")
     p.muted(v-if="summary.data") {{ t('time.summary', { events: int(curve.data.total), sections: int(summary.data.sections), cities: int(summary.data.cities), clock: clockNote }) }}
   Panel(:title="t('time.pace')" :state="paced" :election="year" wide)
     .cluster

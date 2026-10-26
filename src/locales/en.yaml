@@ -560,6 +560,11 @@ time:
   clock: Clock
   clockBrt: Brasília (UTC-3)
   clockLocal: local, as recorded
+  scale: Vertical scale
+  scaleLog: Logarithmic
+  scaleLinear: Linear
+  scaleLogNote: "Logarithmic scale: makes intervals with few votes visible, including after 17:00. Counts remain exact; bar heights are not proportional to vote counts."
+  scaleLinearNote: "Linear scale: bar heights are proportional to vote counts. Intervals with few votes may be almost invisible."
   seeResults: section results →
   seeSignals: section signals →
   pending: "The logs of this election are being imported: the times will appear here when they are ready."

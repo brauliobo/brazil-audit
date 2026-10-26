@@ -1,8 +1,9 @@
 <script setup vapor>
 import { computed } from 'vue'
+import { chartScale } from '../chart-scale'
 
 // SVG column chart; `line` optionally overlays a second series (e.g. the Benford expectation); `label` is its accessible name.
-const props = defineProps({ label: String, values: Array, labels: Array, line: Array, height: { type: Number, default: 220 }, fmt: { type: Function, default: (v) => String(Math.round(v)) }, tick: Function })
+const props = defineProps({ label: String, values: Array, labels: Array, line: Array, logarithmic: Boolean, height: { type: Number, default: 220 }, fmt: { type: Function, default: (v) => String(Math.round(v)) }, tick: Function })
 const W = 640
 const B = 22
 const CHAR = 6.5 // approximate width of an axis digit in viewBox units
@@ -11,15 +12,16 @@ const top = computed(() => {
   const mag = 10 ** Math.floor(Math.log10(m))
   return Math.ceil(m / mag * 2) / 2 * mag
 })
-const tickTexts = computed(() => [0, 1, 2, 3, 4].map((i) => (props.tick ?? props.fmt)(top.value * i / 4)))
+const scale = computed(() => chartScale(top.value, props.logarithmic))
+const tickTexts = computed(() => scale.value.ticks.map((v) => (props.tick ?? props.fmt)(v)))
 const L = computed(() => Math.max(46, 12 + CHAR * Math.max(...tickTexts.value.map((s) => s.length)))) // room for the widest y label
 const plot = computed(() => ({ w: W - L.value - 8, h: props.height - B - 8 }))
 const bars = computed(() => {
   const step = plot.value.w / props.values.length
-  return props.values.map((v, i) => ({ x: L.value + i * step + step * 0.08, w: step * 0.84, y: 8 + plot.value.h * (1 - v / top.value), h: plot.value.h * v / top.value, t: `${props.labels[i]}: ${props.fmt(v)}` }))
+  return props.values.map((v, i) => ({ x: L.value + i * step + step * 0.08, w: step * 0.84, y: 8 + plot.value.h * (1 - scale.value.position(v)), h: plot.value.h * scale.value.position(v), t: `${props.labels[i]}: ${props.fmt(v)}` }))
 })
-const dots = computed(() => (props.line ?? []).map((v, i) => `${L.value + (i + 0.5) * plot.value.w / props.values.length},${8 + plot.value.h * (1 - v / top.value)}`).join(' '))
-const ticks = computed(() => tickTexts.value.map((t, i) => ({ y: 8 + plot.value.h * (1 - i / 4), t })))
+const dots = computed(() => (props.line ?? []).map((v, i) => `${L.value + (i + 0.5) * plot.value.w / props.values.length},${8 + plot.value.h * (1 - scale.value.position(v))}`).join(' '))
+const ticks = computed(() => tickTexts.value.map((t, i) => ({ y: 8 + plot.value.h * (1 - scale.value.position(scale.value.ticks[i])), t })))
 const xlabels = computed(() => {
   const every = Math.ceil(props.values.length / 12)
   return props.labels.map((t, i) => ({ t, x: L.value + (i + 0.5) * plot.value.w / props.values.length })).filter((_, i) => i % every === 0)
