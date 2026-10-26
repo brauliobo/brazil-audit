@@ -1,0 +1,238 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-10-26T21:50:23.816849+00:00",
+  "status": "published",
+  "dataset": {
+    "id": "candidatos-2002",
+    "title": "Candidatos - 2002",
+    "groups": [
+      "candidatos"
+    ],
+    "family": "candidatos",
+    "years": [
+      2002
+    ],
+    "license": "cc-by",
+    "source": "https://dadosabertos.tse.jus.br/dataset/candidatos-2002",
+    "branch": "archive/candidatos-2002",
+    "tag": "data-candidatos-2002",
+    "releaseUrl": "https://github.com/brauliobo/brazil-audit/releases/tag/data-candidatos-2002",
+    "normalized": false,
+    "status": "catalogued",
+    "inScope": true
+  },
+  "resources": [
+    {
+      "id": "a455f101-0ce1-41f9-8130-5bebfad13c2a",
+      "name": "Candidatos",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_cand/consulta_cand_2002.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_cand/consulta_cand_2002.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 3615898,
+      "lastModified": "Wed, 01 Sep 2021 14:02:24 GMT",
+      "etag": "\"372c9a-5caef83fddc00\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:50:22.764305+00:00",
+      "sha256": "33876c4d988c17f77251d115b6548fec2b941e63d6d1062f45c4f9407d218b12",
+      "removedPersonalColumns": {
+        "consulta_cand_2002_AC.csv": [
+          "NR_CPF_CANDIDATO",
+          "NM_EMAIL",
+          "NR_TITULO_ELEITORAL_CANDIDATO"
+        ],
+        "consulta_cand_2002_AL.csv": [
+          "NR_CPF_CANDIDATO",
+          "NM_EMAIL",
+          "NR_TITULO_ELEITORAL_CANDIDATO"
+        ],
+        "consulta_cand_2002_AM.csv": [
+          "NR_CPF_CANDIDATO",
+          "NM_EMAIL",
+          "NR_TITULO_ELEITORAL_CANDIDATO"
+        ],
+        "consulta_cand_2002_AP.csv": [
+          "NR_CPF_CANDIDATO",
+          "NM_EMAIL",
+          "NR_TITULO_ELEITORAL_CANDIDATO"
+        ],
+        "consulta_cand_2002_BA.csv": [
+          "NR_CPF_CANDIDATO",
+          "NM_EMAIL",
+          "NR_TITULO_ELEITORAL_CANDIDATO"
+        ],
+        "consulta_cand_2002_CE.csv": [
+          "NR_CPF_CANDIDATO",
+          "NM_EMAIL",
+          "NR_TITULO_ELEITORAL_CANDIDATO"
+        ],
+        "consulta_cand_2002_DF.csv": [
+          "NR_CPF_CANDIDATO",
+          "NM_EMAIL",
+          "NR_TITULO_ELEITORAL_CANDIDATO"
+        ],
+        "consulta_cand_2002_ES.csv": [
+          "NR_CPF_CANDIDATO",
+          "NM_EMAIL",
+          "NR_TITULO_ELEITORAL_CANDIDATO"
+        ],
+        "consulta_cand_2002_GO.csv": [
+          "NR_CPF_CANDIDATO",
+          "NM_EMAIL",
+          "NR_TITULO_ELEITORAL_CANDIDATO"
+        ],
+        "consulta_cand_2002_MA.csv": [
+          "NR_CPF_CANDIDATO",
+          "NM_EMAIL",
+          "NR_TITULO_ELEITORAL_CANDIDATO"
+        ],
+        "consulta_cand_2002_MG.csv": [
+          "NR_CPF_CANDIDATO",
+          "NM_EMAIL",
+          "NR_TITULO_ELEITORAL_CANDIDATO"
+        ],
+        "consulta_cand_2002_MS.csv": [
+          "NR_CPF_CANDIDATO",
+          "NM_EMAIL",
+          "NR_TITULO_ELEITORAL_CANDIDATO"
+        ],
+        "consulta_cand_2002_MT.csv": [
+          "NR_CPF_CANDIDATO",
+          "NM_EMAIL",
+          "NR_TITULO_ELEITORAL_CANDIDATO"
+        ],
+        "consulta_cand_2002_PA.csv": [
+          "NR_CPF_CANDIDATO",
+          "NM_EMAIL",
+          "NR_TITULO_ELEITORAL_CANDIDATO"
+        ],
+        "consulta_cand_2002_PB.csv": [
+          "NR_CPF_CANDIDATO",
+          "NM_EMAIL",
+          "NR_TITULO_ELEITORAL_CANDIDATO"
+        ],
+        "consulta_cand_2002_PE.csv": [
+          "NR_CPF_CANDIDATO",
+          "NM_EMAIL",
+          "NR_TITULO_ELEITORAL_CANDIDATO"
+        ],
+        "consulta_cand_2002_PI.csv": [
+          "NR_CPF_CANDIDATO",
+          "NM_EMAIL",
+          "NR_TITULO_ELEITORAL_CANDIDATO"
+        ],
+        "consulta_cand_2002_PR.csv": [
+          "NR_CPF_CANDIDATO",
+          "NM_EMAIL",
+          "NR_TITULO_ELEITORAL_CANDIDATO"
+        ],
+        "consulta_cand_2002_RJ.csv": [
+          "NR_CPF_CANDIDATO",
+          "NM_EMAIL",
+          "NR_TITULO_ELEITORAL_CANDIDATO"
+        ],
+        "consulta_cand_2002_RN.csv": [
+          "NR_CPF_CANDIDATO",
+          "NM_EMAIL",
+          "NR_TITULO_ELEITORAL_CANDIDATO"
+        ],
+        "consulta_cand_2002_RO.csv": [
+          "NR_CPF_CANDIDATO",
+          "NM_EMAIL",
+          "NR_TITULO_ELEITORAL_CANDIDATO"
+        ],
+        "consulta_cand_2002_RR.csv": [
+          "NR_CPF_CANDIDATO",
+          "NM_EMAIL",
+          "NR_TITULO_ELEITORAL_CANDIDATO"
+        ],
+        "consulta_cand_2002_RS.csv": [
+          "NR_CPF_CANDIDATO",
+          "NM_EMAIL",
+          "NR_TITULO_ELEITORAL_CANDIDATO"
+        ],
+        "consulta_cand_2002_SC.csv": [
+          "NR_CPF_CANDIDATO",
+          "NM_EMAIL",
+          "NR_TITULO_ELEITORAL_CANDIDATO"
+        ],
+        "consulta_cand_2002_SE.csv": [
+          "NR_CPF_CANDIDATO",
+          "NM_EMAIL",
+          "NR_TITULO_ELEITORAL_CANDIDATO"
+        ],
+        "consulta_cand_2002_SP.csv": [
+          "NR_CPF_CANDIDATO",
+          "NM_EMAIL",
+          "NR_TITULO_ELEITORAL_CANDIDATO"
+        ],
+        "consulta_cand_2002_TO.csv": [
+          "NR_CPF_CANDIDATO",
+          "NM_EMAIL",
+          "NR_TITULO_ELEITORAL_CANDIDATO"
+        ],
+        "consulta_cand_2002_BR.csv": [
+          "NR_CPF_CANDIDATO",
+          "NM_EMAIL",
+          "NR_TITULO_ELEITORAL_CANDIDATO"
+        ],
+        "consulta_cand_2002_BRASIL.csv": [
+          "NR_CPF_CANDIDATO",
+          "NM_EMAIL",
+          "NR_TITULO_ELEITORAL_CANDIDATO"
+        ]
+      },
+      "assets": [
+        {
+          "name": "a455f101-consulta_cand_2002.zip",
+          "bytes": 2871802,
+          "sha256": "6a5a89ec25ad662e6b06e20ab5394f7c5bfe56c2ae2267e802cb98137e3dd611"
+        }
+      ]
+    },
+    {
+      "id": "e2e1e0c6-a4df-4fe6-9c5d-c02b11bd245a",
+      "name": "Coligações",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_coligacao/consulta_coligacao_2002.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_coligacao/consulta_coligacao_2002.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 477697,
+      "lastModified": "Wed, 01 Sep 2021 14:44:23 GMT",
+      "etag": "\"74a01-5caf01a22bfc0\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:50:23.595888+00:00",
+      "sha256": "a337f7e838b77f8a80c7f6341f1de108135aa70e1b9bf16e409aabcabbb86729",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "e2e1e0c6-consulta_coligacao_2002.zip",
+          "bytes": 477697,
+          "sha256": "a337f7e838b77f8a80c7f6341f1de108135aa70e1b9bf16e409aabcabbb86729"
+        }
+      ]
+    },
+    {
+      "id": "bbcb7014-6ee3-440c-b124-f16b1224ddea",
+      "name": "Vagas",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_vagas/consulta_vagas_2002.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_vagas/consulta_vagas_2002.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 181495,
+      "lastModified": "Wed, 01 Sep 2021 15:04:20 GMT",
+      "etag": "\"2c4f7-5caf0617b8500\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:50:23.815487+00:00",
+      "sha256": "2dd933fe45ac084b0e355a554c4f9bd500141412e1ab5f16098aa673f8f6ddef",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "bbcb7014-consulta_vagas_2002.zip",
+          "bytes": 181495,
+          "sha256": "2dd933fe45ac084b0e355a554c4f9bd500141412e1ab5f16098aa673f8f6ddef"
+        }
+      ]
+    }
+  ]
+}
