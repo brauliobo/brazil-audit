@@ -1,13 +1,31 @@
 """Seekable, version-checked HTTP byte ranges for selecting members of large official ZIPs."""
 import collections
+import dataclasses
 import io
 import http.client
 import urllib.parse
 import urllib.request
 
 
+@dataclasses.dataclass(frozen=True)
+class ZipMetadataSnapshot:
+    url: str
+    resolved_url: str
+    version: tuple
+    ranges: tuple
+
+
 class RemoteZipFile(io.RawIOBase):
-    def __init__(self, url, block_size=4096, version=None, connection=None):
+    def __init__(self, url, block_size=4096, version=None, connection=None, capture=False, snapshot=None):
+        self.connection = None
+        self.source_url = url
+        if snapshot is not None:
+            if snapshot.url != url or version is not None:
+                raise ValueError('ZIP metadata snapshot must identify this source and its version')
+            version = snapshot.version
+            url = snapshot.resolved_url
+        self.prefetched = list(snapshot.ranges) if snapshot is not None else []
+        self.capture = capture
         self.url = url
         if version is None:
             with urllib.request.urlopen(urllib.request.Request(url, method='HEAD'), timeout=40) as response:
@@ -27,6 +45,9 @@ class RemoteZipFile(io.RawIOBase):
         self.transferred = 0
         self.requests = 0
 
+    def snapshot(self):
+        return ZipMetadataSnapshot(self.source_url, self.url, (self.size, self.etag), tuple(self.prefetched))
+
     def seekable(self):
         return True
 
@@ -44,6 +65,9 @@ class RemoteZipFile(io.RawIOBase):
         return position
 
     def fetch(self, start, end):
+        for offset, cached in self.prefetched:
+            if offset <= start and end < offset + len(cached):
+                return cached[start - offset:end - offset + 1]
         for attempt in range(3):
             self.requests += 1
             try:
@@ -61,6 +85,8 @@ class RemoteZipFile(io.RawIOBase):
         if len(data) != end - start + 1:
             raise ValueError('Truncated HTTP byte range')
         self.transferred += len(data)
+        if self.capture:
+            self.prefetched.append((start, data))
         return data
 
     def block(self, index):
@@ -92,5 +118,6 @@ class RemoteZipFile(io.RawIOBase):
         return b''.join(chunks)
 
     def close(self):
-        self.connection.close()
+        if self.connection is not None:
+            self.connection.close()
         super().close()

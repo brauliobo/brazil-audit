@@ -52,6 +52,20 @@ class RemoteArchiveTest(unittest.TestCase):
             self.assertEqual(z.read('urn-rdv.dat'), b'actual anonymous RDV')
             self.assertLess(file.transferred, len(body) // 10)
 
+    def test_metadata_snapshot_shares_verified_bytes_without_another_request(self):
+        def request(req, timeout):
+            if req.get_method() == 'HEAD':
+                return Response(b'', 200, {'Content-Length': '100', 'ETag': '"version"'})
+            return Response(b'x' * 100, 206, {'Content-Range': 'bytes 0-99/100', 'ETag': '"version"'})
+        with patch('urllib.request.urlopen', request), RemoteZipFile('https://cdn.tse.jus.br/a.zip', connection=Connection(request), capture=True) as first:
+            self.assertEqual(first.read(1), b'x')
+            snapshot = first.snapshot()
+        with RemoteZipFile('https://cdn.tse.jus.br/a.zip', connection=Connection(request), snapshot=snapshot) as second:
+            self.assertEqual(second.read(1), b'x')
+            self.assertEqual(second.requests, 0)
+        with self.assertRaisesRegex(ValueError, 'snapshot'):
+            RemoteZipFile('https://cdn.tse.jus.br/another.zip', snapshot=snapshot)
+
     def test_transport_timeout_reconnects_the_same_versioned_range(self):
         attempts = []
         def request(req, timeout):

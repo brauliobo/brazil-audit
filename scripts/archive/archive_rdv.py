@@ -66,11 +66,12 @@ def extract_bundle(root, resource, reused):
     directory.mkdir(parents=True, exist_ok=True)
     state = directory / 'VERIFIED.json'
     started = time.monotonic()
-    with RemoteZipFile(resource['url']) as remote, zipfile.ZipFile(remote) as source:
+    with RemoteZipFile(resource['url'], capture=True) as remote, zipfile.ZipFile(remote) as source:
         version = remote.size, remote.etag
         members = [m for m in source.infolist() if SOURCE.search(m.filename) or BARE.search(m.filename)]
         if not members:
             raise ValueError(f'No recognized RDV members in official bundle: {resource["url"]}')
+        snapshot = remote.snapshot()
         network, requests = remote.transferred, remote.requests
     inventory = sorted((m.filename, m.file_size, m.CRC) for m in members)
     if state.exists():
@@ -96,7 +97,7 @@ def extract_bundle(root, resource, reused):
         output = directory / f'{resource["id"][:8]}-rdv-{index:02d}.zip'
         partial = output.with_suffix('.zip.part')
         records = []
-        with RemoteZipFile(resource['url'], version=version) as stream, zipfile.ZipFile(stream) as source, zipfile.ZipFile(partial, 'w', compression=zipfile.ZIP_DEFLATED, compresslevel=6) as target:
+        with RemoteZipFile(resource['url'], snapshot=snapshot) as stream, zipfile.ZipFile(stream) as source, zipfile.ZipFile(partial, 'w', compression=zipfile.ZIP_DEFLATED, compresslevel=6) as target:
             for member in names:
                 data = source.read(member.filename)  # zipfile verifies source CRC, including ZIP64.
                 target.writestr(member.filename, data)

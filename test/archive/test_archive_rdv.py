@@ -46,6 +46,8 @@ class DerivedCollectionTest(unittest.TestCase):
             def __init__(self, *args, **kwargs):
                 super().__init__(body)
                 self.size, self.etag, self.transferred, self.requests = len(body), 'version', 0, 0
+            def snapshot(self):
+                return None
         with tempfile.TemporaryDirectory() as temporary:
             root = pathlib.Path(temporary)
             resource = dict(id='resource', url='https://cdn.tse.jus.br/source_AC.zip')
