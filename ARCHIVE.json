@@ -1,0 +1,92 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-10-26T21:49:15.780928+00:00",
+  "status": "published",
+  "dataset": {
+    "id": "resultados-1982",
+    "title": "Resultados - 1982",
+    "groups": [
+      "resultados"
+    ],
+    "family": "resultados",
+    "years": [
+      1982
+    ],
+    "license": "cc-by",
+    "source": "https://dadosabertos.tse.jus.br/dataset/resultados-1982",
+    "branch": "archive/resultados-1982",
+    "tag": "data-resultados-1982",
+    "releaseUrl": "https://github.com/brauliobo/brazil-audit/releases/tag/data-resultados-1982",
+    "normalized": false,
+    "status": "catalogued",
+    "inScope": true
+  },
+  "resources": [
+    {
+      "id": "5cb314d0-376e-4d9b-9ec6-3805c15afca2",
+      "name": "Detalhe de apuração por UF",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/detalhe_votacao_uf/detalhe_votacao_uf_1982.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/detalhe_votacao_uf/detalhe_votacao_uf_1982.zip",
+      "format": "TXT",
+      "status": "prepared",
+      "bytes": 288465,
+      "lastModified": "Thu, 16 Apr 2015 19:39:51 GMT",
+      "etag": "\"466d1-513dca08ecfc0\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:49:14.782908+00:00",
+      "sha256": "517bb51232f504a179587ebbdc635baeac6200430edc973323c5306e207fba09",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "5cb314d0-detalhe_votacao_uf_1982.zip",
+          "bytes": 288465,
+          "sha256": "517bb51232f504a179587ebbdc635baeac6200430edc973323c5306e207fba09"
+        }
+      ]
+    },
+    {
+      "id": "612b41fb-7fff-46e4-b36c-45e93d172c14",
+      "name": "Votação nominal por UF",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_candidato_uf/votacao_candidato_uf_1982.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_candidato_uf/votacao_candidato_uf_1982.zip",
+      "format": "TXT",
+      "status": "prepared",
+      "bytes": 387239,
+      "lastModified": "Mon, 26 May 2014 16:14:43 GMT",
+      "etag": "\"5e8a7-4fa4fe084c2c0\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:49:15.137946+00:00",
+      "sha256": "4f17001ac0cd190c2774003dc6809bfd6fe4e015a4b806e6fb6a87813c575173",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "612b41fb-votacao_candidato_uf_1982.zip",
+          "bytes": 387239,
+          "sha256": "4f17001ac0cd190c2774003dc6809bfd6fe4e015a4b806e6fb6a87813c575173"
+        }
+      ]
+    },
+    {
+      "id": "ffbe9e44-5120-4755-ae7c-126a1dfa45e4",
+      "name": "Votação partido por UF",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_partido_uf/votacao_partido_uf_1982.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_partido_uf/votacao_partido_uf_1982.zip",
+      "format": "TXT",
+      "status": "prepared",
+      "bytes": 291688,
+      "lastModified": "Mon, 26 May 2014 16:15:13 GMT",
+      "etag": "\"47368-4fa4fe24e8640\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:49:15.779978+00:00",
+      "sha256": "badf248ef27c8b40697d58e04741decbd21f9e8f9aafcb4890ba8f68d104cb60",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "ffbe9e44-votacao_partido_uf_1982.zip",
+          "bytes": 291688,
+          "sha256": "badf248ef27c8b40697d58e04741decbd21f9e8f9aafcb4890ba8f68d104cb60"
+        }
+      ]
+    }
+  ]
+}
