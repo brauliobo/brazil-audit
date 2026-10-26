@@ -1,0 +1,88 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-10-26T21:45:52.873624+00:00",
+  "status": "published",
+  "dataset": {
+    "id": "resultados-1950",
+    "title": "Resultados - 1950",
+    "groups": [
+      "resultados"
+    ],
+    "family": "resultados",
+    "years": [
+      1950
+    ],
+    "license": "cc-by",
+    "source": "https://dadosabertos.tse.jus.br/dataset/resultados-1950",
+    "branch": "archive/resultados-1950",
+    "tag": "data-resultados-1950",
+    "releaseUrl": "https://github.com/brauliobo/brazil-audit/releases/tag/data-resultados-1950",
+    "normalized": false,
+    "status": "catalogued"
+  },
+  "resources": [
+    {
+      "id": "745c885a-8575-4d5c-9233-d44b962c67dc",
+      "name": "Detalhe de apuração por UF",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/detalhe_votacao_uf/detalhe_votacao_uf_1950.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/detalhe_votacao_uf/detalhe_votacao_uf_1950.zip",
+      "format": "TXT",
+      "status": "prepared",
+      "bytes": 290314,
+      "lastModified": "Thu, 16 Apr 2015 19:39:52 GMT",
+      "etag": "\"46e0a-513dca09e1200\"",
+      "downloadedAt": "2026-10-26T21:45:52.053014+00:00",
+      "sha256": "bb94845eac8179304577d3e901c476c016b1f3878c9459a91b96342640ad5821",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "745c885a-detalhe_votacao_uf_1950.zip",
+          "bytes": 290314,
+          "sha256": "bb94845eac8179304577d3e901c476c016b1f3878c9459a91b96342640ad5821"
+        }
+      ]
+    },
+    {
+      "id": "3a93b60e-aed0-4e7c-838f-075be6302afd",
+      "name": "Votação nominal por UF",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_candidato_uf/votacao_candidato_uf_1950.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_candidato_uf/votacao_candidato_uf_1950.zip",
+      "format": "TXT",
+      "status": "prepared",
+      "bytes": 416982,
+      "lastModified": "Mon, 26 May 2014 16:14:43 GMT",
+      "etag": "\"65cd6-4fa4fe084c2c0\"",
+      "downloadedAt": "2026-10-26T21:45:52.571844+00:00",
+      "sha256": "4fe19009197860e92411322eedc15d244947e6e3d5e0ad4d2ccab50210498e8a",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "3a93b60e-votacao_candidato_uf_1950.zip",
+          "bytes": 416982,
+          "sha256": "4fe19009197860e92411322eedc15d244947e6e3d5e0ad4d2ccab50210498e8a"
+        }
+      ]
+    },
+    {
+      "id": "0d2af024-5907-478b-b2ab-03ed3f6b524e",
+      "name": "Votação partido por UF",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_partido_uf/votacao_partido_uf_1950.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_partido_uf/votacao_partido_uf_1950.zip",
+      "format": "TXT",
+      "status": "prepared",
+      "bytes": 294233,
+      "lastModified": "Mon, 26 May 2014 16:15:13 GMT",
+      "etag": "\"47d59-4fa4fe24e8640\"",
+      "downloadedAt": "2026-10-26T21:45:52.872657+00:00",
+      "sha256": "3457284ed87dc5080c146288798707d40832c554758e07875df48056fed17bfa",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "0d2af024-votacao_partido_uf_1950.zip",
+          "bytes": 294233,
+          "sha256": "3457284ed87dc5080c146288798707d40832c554758e07875df48056fed17bfa"
+        }
+      ]
+    }
+  ]
+}
