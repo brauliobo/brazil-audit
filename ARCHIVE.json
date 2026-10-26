@@ -1,0 +1,92 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-10-26T21:49:51.019197+00:00",
+  "status": "published",
+  "dataset": {
+    "id": "resultados-1996",
+    "title": "Resultados - 1996",
+    "groups": [
+      "resultados"
+    ],
+    "family": "resultados",
+    "years": [
+      1996
+    ],
+    "license": "cc-by",
+    "source": "https://dadosabertos.tse.jus.br/dataset/resultados-1996",
+    "branch": "archive/resultados-1996",
+    "tag": "data-resultados-1996",
+    "releaseUrl": "https://github.com/brauliobo/brazil-audit/releases/tag/data-resultados-1996",
+    "normalized": false,
+    "status": "catalogued",
+    "inScope": true
+  },
+  "resources": [
+    {
+      "id": "a3a9eff5-0f00-416c-b5b1-5674e9a90499",
+      "name": "Votação nominal por município e zona",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_candidato_munzona/votacao_candidato_munzona_1996.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_candidato_munzona/votacao_candidato_munzona_1996.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 19437416,
+      "lastModified": "Fri, 13 Feb 2026 17:00:14 GMT",
+      "etag": "\"1289768-64ab789f0e380\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:49:49.984347+00:00",
+      "sha256": "4b6bb5a422a83f63a81c0cf6dde20d05c5461a1f46aaa9a48fa14dece5679b4c",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "a3a9eff5-votacao_candidato_munzona_1996.zip",
+          "bytes": 19437416,
+          "sha256": "4b6bb5a422a83f63a81c0cf6dde20d05c5461a1f46aaa9a48fa14dece5679b4c"
+        }
+      ]
+    },
+    {
+      "id": "ca0d9352-5493-4204-b3c6-d3cb7bb237f7",
+      "name": "Votação em partido por município e zona",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_partido_munzona/votacao_partido_munzona_1996.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_partido_munzona/votacao_partido_munzona_1996.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 11073155,
+      "lastModified": "Fri, 13 Feb 2026 17:00:14 GMT",
+      "etag": "\"a8f683-64ab789f0e380\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:49:50.700171+00:00",
+      "sha256": "f7c44bf547e727eab28de0e6977924c7c6f4c6da8b9dccb7fe4b4ac536bfd33a",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "ca0d9352-votacao_partido_munzona_1996.zip",
+          "bytes": 11073155,
+          "sha256": "f7c44bf547e727eab28de0e6977924c7c6f4c6da8b9dccb7fe4b4ac536bfd33a"
+        }
+      ]
+    },
+    {
+      "id": "1a5bdfb3-29f8-439d-b8de-d6d041f53832",
+      "name": "Detalhe da apuração por município e zona",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/detalhe_votacao_munzona/detalhe_votacao_munzona_1996.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/detalhe_votacao_munzona/detalhe_votacao_munzona_1996.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 752177,
+      "lastModified": "Fri, 13 Feb 2026 17:00:14 GMT",
+      "etag": "\"b7a31-64ab789f0e380\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:49:51.015094+00:00",
+      "sha256": "8a3f56a5c0b975619ced2be11f4d70911eeb028009a7a6d85a053cdb12fc8452",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "1a5bdfb3-detalhe_votacao_munzona_1996.zip",
+          "bytes": 752177,
+          "sha256": "8a3f56a5c0b975619ced2be11f4d70911eeb028009a7a6d85a053cdb12fc8452"
+        }
+      ]
+    }
+  ]
+}
