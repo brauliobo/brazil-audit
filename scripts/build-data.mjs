@@ -14,7 +14,7 @@ import { EMPTY, RDV, dumpOf, officesOf, officialEvent, officialFile, residualOf 
 import { buildGeometry, cached, tseMunicipalities } from './geo.mjs'
 import { buildSeatsData } from './seats-data.mjs'
 import { CORE } from '../src/signals.js'
-import { vtSql } from './voting-time.mjs'
+import { vtSql, votingTimeRollups } from './voting-time.mjs'
 import { sectionRows, sgCsv, sgzCsv, sgzRows } from './signals-data.mjs'
 
 const opt = Object.fromEntries(process.argv.slice(2).map((a) => a.replace(/^--/, '').split('=')))
@@ -22,9 +22,6 @@ const list = (k, all) => (opt[k] ? opt[k].split(',') : all)
 const SELECTED = list('election', Object.keys(ELECTIONS)).map((k) => ELECTIONS[k])
 const ONLY = list('only', ['rdv', 'vt', 'logmatch', 'results', 'cands', 'geo', 'elected', 'residual', 'raw', 'lineup', 'signals'])
 const OUT = 'data'
-
-// Fernando de Noronha runs on UTC-2 but its polls still open at 08:00 BRT (09:00 on its clock): the estimate below would be capped to 0
-const FIXED_TZ = { 'pe/FERNANDO DE NORONHA': 1 }
 
 // The shared schema. Every table starts with `election int, turn int` (cands has its own election column, mun_map has none).
 const SG = 'state text, city text, zone text, section text, school int, aptos int, comp int, zabs real, v int, bio int, man int, nor int, run int, hv smallint[], hm smallint[], hn smallint[], lt int, zman real, znf real, dlate int, dnf real, fl int, med int, gap int'
@@ -187,23 +184,7 @@ function buildRollups(el) {
   const rows = []
   for (const [id, p] of Object.entries(manifest.tables.vt.parts).filter(([id]) => id.startsWith(`${el.key}/`))) {
     const state = id.split('/')[1]
-    const cities = new Map()
-    for (const line of gunzipSync(readFileSync(`${OUT}/${p.url}`)).toString().trim().split('\n')) {
-      const [head, b] = line.split(',"{')
-      if (head.includes('"')) throw new Error(`quoted field, rollup parser needs a CSV reader: ${head}`)
-      const f = head.split(',')
-      const c = cities.get(f[3]) ?? { sections: 0, n: 0, first: Infinity, b: Array(NB).fill(0) }
-      cities.set(f[3], c)
-      c.sections++
-      c.n += +f[7]
-      c.first = Math.min(c.first, +f[8])
-      b.slice(0, -2).split(',').forEach((v, i) => (c.b[i] += +v))
-    }
-    // a late-opening section can only push the estimate up, so cap it at the state's most common value
-    const est = new Map([...cities].map(([city, c]) => [city, Math.round((c.first - 8 * 3600 - 300) / 3600)]))
-    const all = [...est.values()]
-    const mode = [...new Set(all)].sort((a, b) => all.filter((x) => x === b).length - all.filter((x) => x === a).length)[0]
-    for (const [city, c] of cities) rows.push([state, city, c.sections, c.n, FIXED_TZ[`${state}/${city}`] ?? Math.min(est.get(city), mode), `{${c.b}}`])
+    rows.push(...votingTimeRollups(state, gunzipSync(readFileSync(`${OUT}/${p.url}`)).toString().trim().split('\n')))
   }
   smallTable('vtc', el, rows)
 }

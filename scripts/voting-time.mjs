@@ -31,3 +31,29 @@ const vtRdvSql = (el, s, city) => `with e as (select sec.zone,sec.section,sec.mo
   cross join lateral (select time,(extract(epoch from time)::bigint % 86400)::int sc from voting_times v where v.state=${q(s)} and v.city=${q(city)}
     and v.zone=sec.zone and v.section=sec.section and v.model=sec.model and v.post='Presidente' and ${onDay(el)}) x),
   ${VT_TAIL(el, s, city)}`
+
+// Fernando de Noronha's clock is UTC-2; its polls open at 09:00 local time (08:00 Brasilia).
+const FIXED_TZ = { 'pe/FERNANDO DE NORONHA': 1 }
+
+/** City buckets shared by the city, state and national time charts, from the section CSV rows. */
+export function votingTimeRollups(state, lines) {
+  const rows = []
+  const cities = new Map()
+  for (const line of lines) {
+    const [head, b] = line.split(',"{')
+    if (head.includes('"')) throw new Error(`quoted field, rollup parser needs a CSV reader: ${head}`)
+    const f = head.split(',')
+    const c = cities.get(f[3]) ?? { sections: 0, n: 0, first: Infinity, b: Array(NB).fill(0) }
+    cities.set(f[3], c)
+    c.sections++
+    c.n += +f[7]
+    c.first = Math.min(c.first, +f[8])
+    b.slice(0, -2).split(',').forEach((v, i) => (c.b[i] += +v))
+  }
+  // a late-opening section can only push the estimate up, so cap it at the state's most common value
+  const est = new Map([...cities].map(([city, c]) => [city, Math.round((c.first - 8 * 3600 - 300) / 3600)]))
+  const all = [...est.values()]
+  const mode = [...new Set(all)].sort((a, b) => all.filter((x) => x === b).length - all.filter((x) => x === a).length)[0]
+  for (const [city, c] of cities) rows.push([state, city, c.sections, c.n, FIXED_TZ[`${state}/${city}`] ?? Math.min(est.get(city), mode), `{${c.b}}`])
+  return rows
+}
