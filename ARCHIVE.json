@@ -1,0 +1,2220 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-10-26T22:02:14.696598+00:00",
+  "status": "published",
+  "dataset": {
+    "id": "candidatos-2022",
+    "title": "Candidatos - 2022",
+    "groups": [
+      "candidatos"
+    ],
+    "family": "candidatos",
+    "years": [
+      2022
+    ],
+    "license": "cc-by",
+    "source": "https://dadosabertos.tse.jus.br/dataset/candidatos-2022",
+    "branch": "archive/candidatos-2022",
+    "tag": "data-candidatos-2022",
+    "releaseUrl": "https://github.com/brauliobo/brazil-audit/releases/tag/data-candidatos-2022",
+    "normalized": false,
+    "status": "catalogued",
+    "inScope": true
+  },
+  "resources": [
+    {
+      "id": "435145fd-bc9d-446a-ac9d-273f585a0bb9",
+      "name": "Candidatos",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_cand/consulta_cand_2022.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_cand/consulta_cand_2022.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 4387458,
+      "lastModified": "Sat, 24 Oct 2026 06:21:05 GMT",
+      "etag": "\"42f282-65e901a06f66d\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T22:02:03.452306+00:00",
+      "sha256": "f5144c1f8e29f29ce4de7cd84c94485bf28460d689965d61fb48cfd51e0f793c",
+      "removedPersonalColumns": {
+        "consulta_cand_2022_RS.csv": [
+          "NR_CPF_CANDIDATO",
+          "DS_EMAIL",
+          "NR_TITULO_ELEITORAL_CANDIDATO"
+        ],
+        "consulta_cand_2022_SC.csv": [
+          "NR_CPF_CANDIDATO",
+          "DS_EMAIL",
+          "NR_TITULO_ELEITORAL_CANDIDATO"
+        ],
+        "consulta_cand_2022_RO.csv": [
+          "NR_CPF_CANDIDATO",
+          "DS_EMAIL",
+          "NR_TITULO_ELEITORAL_CANDIDATO"
+        ],
+        "consulta_cand_2022_RR.csv": [
+          "NR_CPF_CANDIDATO",
+          "DS_EMAIL",
+          "NR_TITULO_ELEITORAL_CANDIDATO"
+        ],
+        "consulta_cand_2022_SE.csv": [
+          "NR_CPF_CANDIDATO",
+          "DS_EMAIL",
+          "NR_TITULO_ELEITORAL_CANDIDATO"
+        ],
+        "consulta_cand_2022_SP.csv": [
+          "NR_CPF_CANDIDATO",
+          "DS_EMAIL",
+          "NR_TITULO_ELEITORAL_CANDIDATO"
+        ],
+        "consulta_cand_2022_TO.csv": [
+          "NR_CPF_CANDIDATO",
+          "DS_EMAIL",
+          "NR_TITULO_ELEITORAL_CANDIDATO"
+        ],
+        "consulta_cand_2022_PI.csv": [
+          "NR_CPF_CANDIDATO",
+          "DS_EMAIL",
+          "NR_TITULO_ELEITORAL_CANDIDATO"
+        ],
+        "consulta_cand_2022_PR.csv": [
+          "NR_CPF_CANDIDATO",
+          "DS_EMAIL",
+          "NR_TITULO_ELEITORAL_CANDIDATO"
+        ],
+        "consulta_cand_2022_RN.csv": [
+          "NR_CPF_CANDIDATO",
+          "DS_EMAIL",
+          "NR_TITULO_ELEITORAL_CANDIDATO"
+        ],
+        "consulta_cand_2022_BR.csv": [
+          "NR_CPF_CANDIDATO",
+          "DS_EMAIL",
+          "NR_TITULO_ELEITORAL_CANDIDATO"
+        ],
+        "consulta_cand_2022_RJ.csv": [
+          "NR_CPF_CANDIDATO",
+          "DS_EMAIL",
+          "NR_TITULO_ELEITORAL_CANDIDATO"
+        ],
+        "consulta_cand_2022_PE.csv": [
+          "NR_CPF_CANDIDATO",
+          "DS_EMAIL",
+          "NR_TITULO_ELEITORAL_CANDIDATO"
+        ],
+        "consulta_cand_2022_BRASIL.csv": [
+          "NR_CPF_CANDIDATO",
+          "DS_EMAIL",
+          "NR_TITULO_ELEITORAL_CANDIDATO"
+        ],
+        "consulta_cand_2022_PB.csv": [
+          "NR_CPF_CANDIDATO",
+          "DS_EMAIL",
+          "NR_TITULO_ELEITORAL_CANDIDATO"
+        ],
+        "consulta_cand_2022_MA.csv": [
+          "NR_CPF_CANDIDATO",
+          "DS_EMAIL",
+          "NR_TITULO_ELEITORAL_CANDIDATO"
+        ],
+        "consulta_cand_2022_MG.csv": [
+          "NR_CPF_CANDIDATO",
+          "DS_EMAIL",
+          "NR_TITULO_ELEITORAL_CANDIDATO"
+        ],
+        "consulta_cand_2022_MT.csv": [
+          "NR_CPF_CANDIDATO",
+          "DS_EMAIL",
+          "NR_TITULO_ELEITORAL_CANDIDATO"
+        ],
+        "consulta_cand_2022_PA.csv": [
+          "NR_CPF_CANDIDATO",
+          "DS_EMAIL",
+          "NR_TITULO_ELEITORAL_CANDIDATO"
+        ],
+        "consulta_cand_2022_MS.csv": [
+          "NR_CPF_CANDIDATO",
+          "DS_EMAIL",
+          "NR_TITULO_ELEITORAL_CANDIDATO"
+        ],
+        "consulta_cand_2022_ES.csv": [
+          "NR_CPF_CANDIDATO",
+          "DS_EMAIL",
+          "NR_TITULO_ELEITORAL_CANDIDATO"
+        ],
+        "consulta_cand_2022_DF.csv": [
+          "NR_CPF_CANDIDATO",
+          "DS_EMAIL",
+          "NR_TITULO_ELEITORAL_CANDIDATO"
+        ],
+        "consulta_cand_2022_BA.csv": [
+          "NR_CPF_CANDIDATO",
+          "DS_EMAIL",
+          "NR_TITULO_ELEITORAL_CANDIDATO"
+        ],
+        "consulta_cand_2022_GO.csv": [
+          "NR_CPF_CANDIDATO",
+          "DS_EMAIL",
+          "NR_TITULO_ELEITORAL_CANDIDATO"
+        ],
+        "consulta_cand_2022_AP.csv": [
+          "NR_CPF_CANDIDATO",
+          "DS_EMAIL",
+          "NR_TITULO_ELEITORAL_CANDIDATO"
+        ],
+        "consulta_cand_2022_CE.csv": [
+          "NR_CPF_CANDIDATO",
+          "DS_EMAIL",
+          "NR_TITULO_ELEITORAL_CANDIDATO"
+        ],
+        "consulta_cand_2022_AM.csv": [
+          "NR_CPF_CANDIDATO",
+          "DS_EMAIL",
+          "NR_TITULO_ELEITORAL_CANDIDATO"
+        ],
+        "consulta_cand_2022_AL.csv": [
+          "NR_CPF_CANDIDATO",
+          "DS_EMAIL",
+          "NR_TITULO_ELEITORAL_CANDIDATO"
+        ],
+        "consulta_cand_2022_AC.csv": [
+          "NR_CPF_CANDIDATO",
+          "DS_EMAIL",
+          "NR_TITULO_ELEITORAL_CANDIDATO"
+        ]
+      },
+      "assets": [
+        {
+          "name": "435145fd-consulta_cand_2022.zip",
+          "bytes": 3388125,
+          "sha256": "6b95d0358c6293d0aa6e35bee50e2326217eb9f42247985bad43a74fda427332"
+        }
+      ]
+    },
+    {
+      "id": "f26933f5-ca6d-4251-a49c-7bc077dbf250",
+      "name": "Candidatos - Informações complementares",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_cand_complementar/consulta_cand_complementar_2022.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_cand_complementar/consulta_cand_complementar_2022.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 1692771,
+      "lastModified": "Sat, 24 Oct 2026 06:21:09 GMT",
+      "etag": "\"19d463-65e901a45c45e\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T22:02:04.302136+00:00",
+      "sha256": "6c11197d5100056d65d4fe17c1475eef3ff1edf6126374a73e152eefee2ce5a6",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "f26933f5-consulta_cand_complementar_2022.zip",
+          "bytes": 1692771,
+          "sha256": "6c11197d5100056d65d4fe17c1475eef3ff1edf6126374a73e152eefee2ce5a6"
+        }
+      ]
+    },
+    {
+      "id": "fac824ef-8519-4c75-b634-378e6fcc717f",
+      "name": "Bens de candidatos",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/bem_candidato/bem_candidato_2022.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/bem_candidato/bem_candidato_2022.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 5675735,
+      "lastModified": "Sat, 24 Oct 2026 06:21:04 GMT",
+      "etag": "\"569ad7-65e9019fb790d\"",
+      "inScope": false
+    },
+    {
+      "id": "dbcf2dfb-14b1-430a-a22a-327cc6601737",
+      "name": "Coligações",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_coligacao/consulta_coligacao_2022.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_coligacao/consulta_coligacao_2022.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 373000,
+      "lastModified": "Sat, 24 Oct 2026 06:21:04 GMT",
+      "etag": "\"5b108-65e9019fd0f4c\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T22:02:04.681345+00:00",
+      "sha256": "9e619e1a8d88a6f52136332c7ecb47923cc700e913842f58bdc4c36a79463efc",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "dbcf2dfb-consulta_coligacao_2022.zip",
+          "bytes": 373000,
+          "sha256": "9e619e1a8d88a6f52136332c7ecb47923cc700e913842f58bdc4c36a79463efc"
+        }
+      ]
+    },
+    {
+      "id": "4cdfbdca-457d-45b8-9c25-e1163ad5215b",
+      "name": "Vagas",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_vagas/consulta_vagas_2022.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_vagas/consulta_vagas_2022.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 183958,
+      "lastModified": "Sat, 24 Oct 2026 06:21:04 GMT",
+      "etag": "\"2ce96-65e901a036848\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T22:02:05.152371+00:00",
+      "sha256": "fb8ee3186f28abbc6512d676d21e1cba0df853461558efa289d274886e8eceeb",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "4cdfbdca-consulta_vagas_2022.zip",
+          "bytes": 183958,
+          "sha256": "fb8ee3186f28abbc6512d676d21e1cba0df853461558efa289d274886e8eceeb"
+        }
+      ]
+    },
+    {
+      "id": "4ce17af4-feeb-4eb1-aa7c-07eb56478c09",
+      "name": "Motivo da Cassação",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/motivo_cassacao/motivo_cassacao_2022.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/motivo_cassacao/motivo_cassacao_2022.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 163338,
+      "lastModified": "Sat, 24 Oct 2026 06:21:04 GMT",
+      "etag": "\"27e0a-65e9019fbfddd\"",
+      "inScope": false
+    },
+    {
+      "id": "c2a22787-eb0a-491d-b13c-f611e0e0befe",
+      "name": "AC - Redes sociais de candidatos",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_cand/rede_social_candidato_2022_AC.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_cand/rede_social_candidato_2022_AC.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 176846,
+      "lastModified": "Wed, 27 Dec 2023 03:07:14 GMT",
+      "etag": "\"2b2ce-60d75188fa019\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T22:02:05.444007+00:00",
+      "sha256": "d866b0cff8491efee5a3e3b5cbbbf534102fb9ecd26a8bed1402062107f59ca1",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "c2a22787-rede_social_candidato_2022_AC.zip",
+          "bytes": 176846,
+          "sha256": "d866b0cff8491efee5a3e3b5cbbbf534102fb9ecd26a8bed1402062107f59ca1"
+        }
+      ]
+    },
+    {
+      "id": "deb2cca4-0c99-40e2-9a91-9f54c6998015",
+      "name": "AL - Redes sociais de candidatos",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_cand/rede_social_candidato_2022_AL.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_cand/rede_social_candidato_2022_AL.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 172337,
+      "lastModified": "Wed, 27 Dec 2023 03:07:14 GMT",
+      "etag": "\"2a131-60d75188fb3a1\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T22:02:05.764930+00:00",
+      "sha256": "d8bcd9f9775308d6446442d8164da63e695742b8c8d6b390ed3d2ee6fccf84ae",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "deb2cca4-rede_social_candidato_2022_AL.zip",
+          "bytes": 172337,
+          "sha256": "d8bcd9f9775308d6446442d8164da63e695742b8c8d6b390ed3d2ee6fccf84ae"
+        }
+      ]
+    },
+    {
+      "id": "e9d07724-1fdf-4f77-887a-357cc20d6b3b",
+      "name": "AM - Redes sociais de candidatos",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_cand/rede_social_candidato_2022_AM.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_cand/rede_social_candidato_2022_AM.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 185741,
+      "lastModified": "Wed, 27 Dec 2023 03:07:14 GMT",
+      "etag": "\"2d58d-60d75188fc341\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T22:02:06.042631+00:00",
+      "sha256": "96398f0aed730f4e2e8c16304fcd3e34969b8996a998efdfbbf6cb947c177b47",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "e9d07724-rede_social_candidato_2022_AM.zip",
+          "bytes": 185741,
+          "sha256": "96398f0aed730f4e2e8c16304fcd3e34969b8996a998efdfbbf6cb947c177b47"
+        }
+      ]
+    },
+    {
+      "id": "942809c4-8d40-4b64-a531-5c9c0da02234",
+      "name": "AP - Redes sociais de candidatos",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_cand/rede_social_candidato_2022_AP.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_cand/rede_social_candidato_2022_AP.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 177304,
+      "lastModified": "Wed, 27 Dec 2023 03:07:14 GMT",
+      "etag": "\"2b498-60d75188fd2e1\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T22:02:06.446707+00:00",
+      "sha256": "4152ede5a043c1507efee0f4387c56d2623b401b8f137363e952e2e8493e5dd3",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "942809c4-rede_social_candidato_2022_AP.zip",
+          "bytes": 177304,
+          "sha256": "4152ede5a043c1507efee0f4387c56d2623b401b8f137363e952e2e8493e5dd3"
+        }
+      ]
+    },
+    {
+      "id": "add1ad8e-9b37-4325-996e-495d9e2bd18a",
+      "name": "BA - Redes sociais de candidatos",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_cand/rede_social_candidato_2022_BA.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_cand/rede_social_candidato_2022_BA.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 181771,
+      "lastModified": "Wed, 27 Dec 2023 03:07:14 GMT",
+      "etag": "\"2c60b-60d75188fe281\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T22:02:06.783877+00:00",
+      "sha256": "5c7243bca4178940a3679d0b27af7e985a8750cd13e6fbc9909ce0cb9b1611c5",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "add1ad8e-rede_social_candidato_2022_BA.zip",
+          "bytes": 181771,
+          "sha256": "5c7243bca4178940a3679d0b27af7e985a8750cd13e6fbc9909ce0cb9b1611c5"
+        }
+      ]
+    },
+    {
+      "id": "c464e4ae-85f2-480a-9b21-73ea648411f4",
+      "name": "BR - Redes sociais de candidatos",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_cand/rede_social_candidato_2022_BR.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_cand/rede_social_candidato_2022_BR.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 172061,
+      "lastModified": "Wed, 27 Dec 2023 03:07:14 GMT",
+      "etag": "\"2a01d-60d75188ff221\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T22:02:07.152660+00:00",
+      "sha256": "f202ccf9b38609b983a1025d9fc32ac9839e8ef098e8a372ed23943e41c17ab4",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "c464e4ae-rede_social_candidato_2022_BR.zip",
+          "bytes": 172061,
+          "sha256": "f202ccf9b38609b983a1025d9fc32ac9839e8ef098e8a372ed23943e41c17ab4"
+        }
+      ]
+    },
+    {
+      "id": "bfc45522-72d0-42bb-bef1-2f4eb3953f5f",
+      "name": "CE - Redes sociais de candidatos",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_cand/rede_social_candidato_2022_CE.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_cand/rede_social_candidato_2022_CE.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 200130,
+      "lastModified": "Wed, 27 Dec 2023 03:07:14 GMT",
+      "etag": "\"30dc2-60d7518902cb9\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T22:02:07.572253+00:00",
+      "sha256": "4a045677114524f4854cb35c8ee8573c5e62be21830dfc8a9559e87b0b24bb7c",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "bfc45522-rede_social_candidato_2022_CE.zip",
+          "bytes": 200130,
+          "sha256": "4a045677114524f4854cb35c8ee8573c5e62be21830dfc8a9559e87b0b24bb7c"
+        }
+      ]
+    },
+    {
+      "id": "81daf0c9-1cc0-4c56-b456-95c7c5f5f40e",
+      "name": "DF - Redes sociais de candidatos",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_cand/rede_social_candidato_2022_DF.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_cand/rede_social_candidato_2022_DF.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 193174,
+      "lastModified": "Wed, 27 Dec 2023 03:07:14 GMT",
+      "etag": "\"2f296-60d7518904041\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T22:02:07.956352+00:00",
+      "sha256": "60d9b68a888cbef70534632e6fa7e6dc0465574db9e16f124d08d9d1ad563638",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "81daf0c9-rede_social_candidato_2022_DF.zip",
+          "bytes": 193174,
+          "sha256": "60d9b68a888cbef70534632e6fa7e6dc0465574db9e16f124d08d9d1ad563638"
+        }
+      ]
+    },
+    {
+      "id": "b7edf4b6-ee0a-461f-9634-435477eb895d",
+      "name": "ES - Redes sociais de candidatos",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_cand/rede_social_candidato_2022_ES.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_cand/rede_social_candidato_2022_ES.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 182340,
+      "lastModified": "Wed, 27 Dec 2023 03:07:14 GMT",
+      "etag": "\"2c844-60d7518904fe2\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T22:02:08.352698+00:00",
+      "sha256": "5480f9afe76f688c5f9b38577e8af3bbbf777fdcbdcef17fb8709c987571ecf1",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "b7edf4b6-rede_social_candidato_2022_ES.zip",
+          "bytes": 182340,
+          "sha256": "5480f9afe76f688c5f9b38577e8af3bbbf777fdcbdcef17fb8709c987571ecf1"
+        }
+      ]
+    },
+    {
+      "id": "27ebd942-e443-411d-b115-35bbdf1a0606",
+      "name": "GO - Redes sociais de candidatos",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_cand/rede_social_candidato_2022_GO.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_cand/rede_social_candidato_2022_GO.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 189823,
+      "lastModified": "Wed, 27 Dec 2023 03:07:14 GMT",
+      "etag": "\"2e57f-60d7518905f82\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T22:02:08.694800+00:00",
+      "sha256": "ffc1b57655728727193b1d0637b9243dcded3ead756409d1d51dd7273c65651c",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "27ebd942-rede_social_candidato_2022_GO.zip",
+          "bytes": 189823,
+          "sha256": "ffc1b57655728727193b1d0637b9243dcded3ead756409d1d51dd7273c65651c"
+        }
+      ]
+    },
+    {
+      "id": "0ab95ea7-f69e-48d2-a305-549c7bbafc73",
+      "name": "MA - Redes sociais de candidatos",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_cand/rede_social_candidato_2022_MA.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_cand/rede_social_candidato_2022_MA.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 180364,
+      "lastModified": "Wed, 27 Dec 2023 03:07:14 GMT",
+      "etag": "\"2c08c-60d7518906f22\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T22:02:09.980788+00:00",
+      "sha256": "4b9cf032dda3e2de99a3ad97be52d48242a3c9161c88a93f3e3706a3174d1b53",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "0ab95ea7-rede_social_candidato_2022_MA.zip",
+          "bytes": 180364,
+          "sha256": "4b9cf032dda3e2de99a3ad97be52d48242a3c9161c88a93f3e3706a3174d1b53"
+        }
+      ]
+    },
+    {
+      "id": "41b7ade2-6793-4841-a3af-50b78eb84d67",
+      "name": "MG - Redes sociais de candidatos",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_cand/rede_social_candidato_2022_MG.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_cand/rede_social_candidato_2022_MG.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 213996,
+      "lastModified": "Wed, 27 Dec 2023 03:07:14 GMT",
+      "etag": "\"343ec-60d7518907ec2\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T22:02:10.270113+00:00",
+      "sha256": "26842ef9a28137724913d74da8a92d28f19b8dbe312231ac8784e4df1b2605ca",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "41b7ade2-rede_social_candidato_2022_MG.zip",
+          "bytes": 213996,
+          "sha256": "26842ef9a28137724913d74da8a92d28f19b8dbe312231ac8784e4df1b2605ca"
+        }
+      ]
+    },
+    {
+      "id": "abd54611-649c-4429-83b3-2e398d4c22c5",
+      "name": "MS - Redes sociais de candidatos",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_cand/rede_social_candidato_2022_MS.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_cand/rede_social_candidato_2022_MS.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 183624,
+      "lastModified": "Wed, 27 Dec 2023 03:07:14 GMT",
+      "etag": "\"2cd48-60d7518908e62\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T22:02:10.555590+00:00",
+      "sha256": "3c21b047012223a9361958b1869d53babf213a5f2417c8930e69963f66c79740",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "abd54611-rede_social_candidato_2022_MS.zip",
+          "bytes": 183624,
+          "sha256": "3c21b047012223a9361958b1869d53babf213a5f2417c8930e69963f66c79740"
+        }
+      ]
+    },
+    {
+      "id": "74605171-4b5a-4724-92e1-6d91a32672e8",
+      "name": "MT - Redes sociais de candidatos",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_cand/rede_social_candidato_2022_MT.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_cand/rede_social_candidato_2022_MT.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 187254,
+      "lastModified": "Wed, 27 Dec 2023 03:07:14 GMT",
+      "etag": "\"2db76-60d7518909e02\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T22:02:10.835575+00:00",
+      "sha256": "ddf51bd2c332a2dea2ea25d610673c89eb59a2068371addd98a8f46720f2a4e5",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "74605171-rede_social_candidato_2022_MT.zip",
+          "bytes": 187254,
+          "sha256": "ddf51bd2c332a2dea2ea25d610673c89eb59a2068371addd98a8f46720f2a4e5"
+        }
+      ]
+    },
+    {
+      "id": "2cc8ccc7-c9d2-4a9c-bc5d-7965f56ec543",
+      "name": "PA - Redes sociais de candidatos",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_cand/rede_social_candidato_2022_PA.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_cand/rede_social_candidato_2022_PA.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 194895,
+      "lastModified": "Wed, 27 Dec 2023 03:07:14 GMT",
+      "etag": "\"2f94f-60d751890ada2\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T22:02:11.203294+00:00",
+      "sha256": "cd0891379bcf84e52a79f92bb91df52fb957ce6dc4e1a45d741707ccbdd3a6be",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "2cc8ccc7-rede_social_candidato_2022_PA.zip",
+          "bytes": 194895,
+          "sha256": "cd0891379bcf84e52a79f92bb91df52fb957ce6dc4e1a45d741707ccbdd3a6be"
+        }
+      ]
+    },
+    {
+      "id": "53e7e9ff-20f2-4eee-8863-1464bbde6513",
+      "name": "PB - Redes sociais de candidatos",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_cand/rede_social_candidato_2022_PB.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_cand/rede_social_candidato_2022_PB.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 179869,
+      "lastModified": "Wed, 27 Dec 2023 03:07:14 GMT",
+      "etag": "\"2be9d-60d751890b95a\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T22:02:11.587516+00:00",
+      "sha256": "4c4bf317d039cca80731f1b33d09498dcbd6eb15c6b73978a6dcc6713ed215e5",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "53e7e9ff-rede_social_candidato_2022_PB.zip",
+          "bytes": 179869,
+          "sha256": "4c4bf317d039cca80731f1b33d09498dcbd6eb15c6b73978a6dcc6713ed215e5"
+        }
+      ]
+    },
+    {
+      "id": "8f9918e6-414b-49d9-af2d-8e403d900b0d",
+      "name": "PE - Redes sociais de candidatos",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_cand/rede_social_candidato_2022_PE.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_cand/rede_social_candidato_2022_PE.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 186314,
+      "lastModified": "Wed, 27 Dec 2023 03:07:14 GMT",
+      "etag": "\"2d7ca-60d751890c8fa\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T22:02:11.853669+00:00",
+      "sha256": "08874155ec3c01a02281c97219ab58dbfb9f17fb935f382c119635aa73e6e511",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "8f9918e6-rede_social_candidato_2022_PE.zip",
+          "bytes": 186314,
+          "sha256": "08874155ec3c01a02281c97219ab58dbfb9f17fb935f382c119635aa73e6e511"
+        }
+      ]
+    },
+    {
+      "id": "43f47a0c-e3f3-4b0d-bde6-d5406f6bedc6",
+      "name": "PI - Redes sociais de candidatos",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_cand/rede_social_candidato_2022_PI.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_cand/rede_social_candidato_2022_PI.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 182529,
+      "lastModified": "Wed, 27 Dec 2023 03:07:14 GMT",
+      "etag": "\"2c901-60d751890d4b2\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T22:02:12.222460+00:00",
+      "sha256": "67555f47a262245658b5541295bf387c6e115c7aa7714ab5689d1945cd370fbd",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "43f47a0c-rede_social_candidato_2022_PI.zip",
+          "bytes": 182529,
+          "sha256": "67555f47a262245658b5541295bf387c6e115c7aa7714ab5689d1945cd370fbd"
+        }
+      ]
+    },
+    {
+      "id": "770a4bd1-759b-44a6-90ee-13aa06a38123",
+      "name": "PR - Redes sociais de candidatos",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_cand/rede_social_candidato_2022_PR.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_cand/rede_social_candidato_2022_PR.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 260690,
+      "lastModified": "Wed, 27 Dec 2023 03:07:14 GMT",
+      "etag": "\"3fa52-60d751890e83a\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T22:02:12.573724+00:00",
+      "sha256": "fb26fbb2df356ca6807947304bade14dd74b1a9c66ad30e62038e1598c6ab39a",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "770a4bd1-rede_social_candidato_2022_PR.zip",
+          "bytes": 260690,
+          "sha256": "fb26fbb2df356ca6807947304bade14dd74b1a9c66ad30e62038e1598c6ab39a"
+        }
+      ]
+    },
+    {
+      "id": "931555dd-d004-4af2-918b-0e361fc465cf",
+      "name": "RJ - Redes sociais de candidatos",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_cand/rede_social_candidato_2022_RJ.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_cand/rede_social_candidato_2022_RJ.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 224702,
+      "lastModified": "Wed, 27 Dec 2023 03:07:14 GMT",
+      "etag": "\"36dbe-60d751890f7db\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T22:02:12.761028+00:00",
+      "sha256": "e49a955cd8121652e608c223d3c28d11cc47c1013cc6389a924bae9944b885af",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "931555dd-rede_social_candidato_2022_RJ.zip",
+          "bytes": 224702,
+          "sha256": "e49a955cd8121652e608c223d3c28d11cc47c1013cc6389a924bae9944b885af"
+        }
+      ]
+    },
+    {
+      "id": "b3aee7e0-69d0-4619-b925-c57ffe7f14fb",
+      "name": "RN - Redes sociais de candidatos",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_cand/rede_social_candidato_2022_RN.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_cand/rede_social_candidato_2022_RN.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 187854,
+      "lastModified": "Wed, 27 Dec 2023 03:07:14 GMT",
+      "etag": "\"2ddce-60d751891077b\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T22:02:12.950412+00:00",
+      "sha256": "e5aaf99d5827d5c99f55702f2e72afdbff4c0da5c6139f35bd100a49151ada41",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "b3aee7e0-rede_social_candidato_2022_RN.zip",
+          "bytes": 187854,
+          "sha256": "e5aaf99d5827d5c99f55702f2e72afdbff4c0da5c6139f35bd100a49151ada41"
+        }
+      ]
+    },
+    {
+      "id": "f65ffc71-b9a1-4dac-aae2-5b3aee728c66",
+      "name": "RO - Redes sociais de candidatos",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_cand/rede_social_candidato_2022_RO.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_cand/rede_social_candidato_2022_RO.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 186978,
+      "lastModified": "Wed, 27 Dec 2023 03:07:14 GMT",
+      "etag": "\"2da62-60d751891171b\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T22:02:13.217340+00:00",
+      "sha256": "bec70f90f69f786a74337d5bdcf4ead115d84dfdbbb6185f947013f17823c231",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "f65ffc71-rede_social_candidato_2022_RO.zip",
+          "bytes": 186978,
+          "sha256": "bec70f90f69f786a74337d5bdcf4ead115d84dfdbbb6185f947013f17823c231"
+        }
+      ]
+    },
+    {
+      "id": "090f7161-fcac-495b-91c4-ad4616c719b1",
+      "name": "RR - Redes sociais de candidatos",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_cand/rede_social_candidato_2022_RR.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_cand/rede_social_candidato_2022_RR.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 180993,
+      "lastModified": "Wed, 27 Dec 2023 03:07:14 GMT",
+      "etag": "\"2c301-60d75189122d3\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T22:02:13.428410+00:00",
+      "sha256": "94bfe2ef6dfed8923200e88d26548979da12884b0e976a54833ee6c3496a0792",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "090f7161-rede_social_candidato_2022_RR.zip",
+          "bytes": 180993,
+          "sha256": "94bfe2ef6dfed8923200e88d26548979da12884b0e976a54833ee6c3496a0792"
+        }
+      ]
+    },
+    {
+      "id": "0023b945-1419-4f0c-8687-6adfab32ae77",
+      "name": "RS - Redes sociais de candidatos",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_cand/rede_social_candidato_2022_RS.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_cand/rede_social_candidato_2022_RS.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 220707,
+      "lastModified": "Wed, 27 Dec 2023 03:07:14 GMT",
+      "etag": "\"35e23-60d7518913273\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T22:02:13.627319+00:00",
+      "sha256": "a29b1cdafbcf43c5d89fbd376c2ba82865aee95d1f7b73f72d6f8a57652f07a7",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "0023b945-rede_social_candidato_2022_RS.zip",
+          "bytes": 220707,
+          "sha256": "a29b1cdafbcf43c5d89fbd376c2ba82865aee95d1f7b73f72d6f8a57652f07a7"
+        }
+      ]
+    },
+    {
+      "id": "043b4633-3f59-47f7-a2ba-e5ed1cdbe1c7",
+      "name": "SC - Redes sociais de candidatos",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_cand/rede_social_candidato_2022_SC.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_cand/rede_social_candidato_2022_SC.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 196650,
+      "lastModified": "Wed, 27 Dec 2023 03:07:14 GMT",
+      "etag": "\"3002a-60d7518914213\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T22:02:13.853021+00:00",
+      "sha256": "5214f77ee8a72114779f90f86754df09a59e5fabb186b7edb79397c2a1bcac9c",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "043b4633-rede_social_candidato_2022_SC.zip",
+          "bytes": 196650,
+          "sha256": "5214f77ee8a72114779f90f86754df09a59e5fabb186b7edb79397c2a1bcac9c"
+        }
+      ]
+    },
+    {
+      "id": "4f46cd0c-8d3d-4816-bc14-38a4212ef5c3",
+      "name": "SE - Redes sociais de candidatos",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_cand/rede_social_candidato_2022_SE.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_cand/rede_social_candidato_2022_SE.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 175173,
+      "lastModified": "Wed, 27 Dec 2023 03:07:14 GMT",
+      "etag": "\"2ac45-60d75189151b3\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T22:02:14.299654+00:00",
+      "sha256": "b82b8ecc666d1e56e044e1994103789b86bd67c681c9d86f2fd983277c0e252f",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "4f46cd0c-rede_social_candidato_2022_SE.zip",
+          "bytes": 175173,
+          "sha256": "b82b8ecc666d1e56e044e1994103789b86bd67c681c9d86f2fd983277c0e252f"
+        }
+      ]
+    },
+    {
+      "id": "e05ccfc1-9a25-4042-a91a-0a00c899f577",
+      "name": "SP - Redes sociais de candidatos",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_cand/rede_social_candidato_2022_SP.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_cand/rede_social_candidato_2022_SP.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 269757,
+      "lastModified": "Wed, 27 Dec 2023 03:07:14 GMT",
+      "etag": "\"41dbd-60d751891653b\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T22:02:14.494154+00:00",
+      "sha256": "3e99dabff1f4c34cfadec533664140fc58bc00c0f724832f1342f1fff380a871",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "e05ccfc1-rede_social_candidato_2022_SP.zip",
+          "bytes": 269757,
+          "sha256": "3e99dabff1f4c34cfadec533664140fc58bc00c0f724832f1342f1fff380a871"
+        }
+      ]
+    },
+    {
+      "id": "394a6f70-4f26-465c-814b-48069d79d3c1",
+      "name": "TO - Redes sociais de candidatos",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_cand/rede_social_candidato_2022_TO.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_cand/rede_social_candidato_2022_TO.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 179272,
+      "lastModified": "Wed, 27 Dec 2023 03:07:14 GMT",
+      "etag": "\"2bc48-60d75189170f3\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T22:02:14.696025+00:00",
+      "sha256": "42e8051522328496f4073d30cf24027460dc344c1657ac52ac3846d3b5271057",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "394a6f70-rede_social_candidato_2022_TO.zip",
+          "bytes": 179272,
+          "sha256": "42e8051522328496f4073d30cf24027460dc344c1657ac52ac3846d3b5271057"
+        }
+      ]
+    },
+    {
+      "id": "dbb40ee2-4c96-4a6d-b3cf-520d5f1acb2f",
+      "name": "AC - Fotos de candidatos",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2022/fotos/foto_cand2022_AC_div.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2022/fotos/foto_cand2022_AC_div.zip",
+      "format": "JPEG",
+      "status": "excluded",
+      "bytes": 14747160,
+      "lastModified": "Mon, 22 Jun 2026 14:14:36 GMT",
+      "etag": "\"e10618-654d843246886\"",
+      "inScope": false
+    },
+    {
+      "id": "b1c9f3d3-654a-4147-9673-c20532a0c3ea",
+      "name": "AL - Fotos de candidatos",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2022/fotos/foto_cand2022_AL_div.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2022/fotos/foto_cand2022_AL_div.zip",
+      "format": "JPEG",
+      "status": "excluded",
+      "bytes": 12774331,
+      "lastModified": "Mon, 22 Jun 2026 14:14:36 GMT",
+      "etag": "\"c2ebbb-654d84325c045\"",
+      "inScope": false
+    },
+    {
+      "id": "c9973f95-ae6b-4e49-82b9-3f3ac79c022a",
+      "name": "AM - Fotos de candidatos",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2022/fotos/foto_cand2022_AM_div.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2022/fotos/foto_cand2022_AM_div.zip",
+      "format": "JPEG",
+      "status": "excluded",
+      "bytes": 17740003,
+      "lastModified": "Mon, 22 Jun 2026 14:14:36 GMT",
+      "etag": "\"10eb0e3-654d8432819d3\"",
+      "inScope": false
+    },
+    {
+      "id": "fa950026-77a3-4736-834b-ca1718000994",
+      "name": "AP - Fotos de candidatos",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2022/fotos/foto_cand2022_AP_div.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2022/fotos/foto_cand2022_AP_div.zip",
+      "format": "JPEG",
+      "status": "excluded",
+      "bytes": 17249270,
+      "lastModified": "Mon, 22 Jun 2026 14:14:36 GMT",
+      "etag": "\"10733f6-654d8432ab9b0\"",
+      "inScope": false
+    },
+    {
+      "id": "842d29ea-c0f4-477f-846b-b9be07cd67a9",
+      "name": "BA - Fotos de candidatos",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2022/fotos/foto_cand2022_BA_div.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2022/fotos/foto_cand2022_BA_div.zip",
+      "format": "JPEG",
+      "status": "excluded",
+      "bytes": 49085649,
+      "lastModified": "Mon, 22 Jun 2026 14:14:37 GMT",
+      "etag": "\"2ecfcd1-654d8433160ca\"",
+      "inScope": false
+    },
+    {
+      "id": "71335271-d219-4acb-b265-5b4971a2e81c",
+      "name": "BR - Fotos de candidatos",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2022/fotos/foto_cand2022_BR_div.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2022/fotos/foto_cand2022_BR_div.zip",
+      "format": "JPEG",
+      "status": "excluded",
+      "bytes": 931726,
+      "lastModified": "Mon, 22 Jun 2026 14:14:37 GMT",
+      "etag": "\"e378e-654d84331e1b2\"",
+      "inScope": false
+    },
+    {
+      "id": "89a1e990-6766-492e-a75c-6819b0bbef1f",
+      "name": "CE - Fotos de candidatos",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2022/fotos/foto_cand2022_CE_div.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2022/fotos/foto_cand2022_CE_div.zip",
+      "format": "JPEG",
+      "status": "excluded",
+      "bytes": 29053274,
+      "lastModified": "Mon, 22 Jun 2026 14:14:37 GMT",
+      "etag": "\"1bb515a-654d8433832dc\"",
+      "inScope": false
+    },
+    {
+      "id": "f203e15f-ece8-41ea-a026-04660f41a2cb",
+      "name": "DF - Fotos de candidatos",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2022/fotos/foto_cand2022_DF_div.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2022/fotos/foto_cand2022_DF_div.zip",
+      "format": "JPEG",
+      "status": "excluded",
+      "bytes": 25441927,
+      "lastModified": "Mon, 22 Jun 2026 14:14:38 GMT",
+      "etag": "\"1843687-654d8433f62ae\"",
+      "inScope": false
+    },
+    {
+      "id": "e77a58f3-1152-467b-b624-b5857618e8d7",
+      "name": "ES - Fotos de candidatos",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2022/fotos/foto_cand2022_ES_div.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2022/fotos/foto_cand2022_ES_div.zip",
+      "format": "JPEG",
+      "status": "excluded",
+      "bytes": 22020218,
+      "lastModified": "Mon, 22 Jun 2026 14:14:38 GMT",
+      "etag": "\"150007a-654d84342ae6b\"",
+      "inScope": false
+    },
+    {
+      "id": "7af52e12-c480-4aa9-bbf8-f64ca1d0ee01",
+      "name": "GO - Fotos de candidatos",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2022/fotos/foto_cand2022_GO_div.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2022/fotos/foto_cand2022_GO_div.zip",
+      "format": "JPEG",
+      "status": "excluded",
+      "bytes": 32288809,
+      "lastModified": "Mon, 22 Jun 2026 14:14:38 GMT",
+      "etag": "\"1ecb029-654d8434a536c\"",
+      "inScope": false
+    },
+    {
+      "id": "646cac7a-260a-43c8-8e7e-5711b4a2edb5",
+      "name": "MA - Fotos de candidatos",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2022/fotos/foto_cand2022_MA_div.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2022/fotos/foto_cand2022_MA_div.zip",
+      "format": "JPEG",
+      "status": "excluded",
+      "bytes": 27208538,
+      "lastModified": "Mon, 22 Jun 2026 14:14:39 GMT",
+      "etag": "\"19f2b5a-654d8434f25c7\"",
+      "inScope": false
+    },
+    {
+      "id": "4d484ded-59d1-4aa2-9ccc-95951a442c48",
+      "name": "MG - Fotos de candidatos",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2022/fotos/foto_cand2022_MG_div.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2022/fotos/foto_cand2022_MG_div.zip",
+      "format": "JPEG",
+      "status": "excluded",
+      "bytes": 73652817,
+      "lastModified": "Mon, 22 Jun 2026 14:14:40 GMT",
+      "etag": "\"463da51-654d8435c6073\"",
+      "inScope": false
+    },
+    {
+      "id": "9b64d27c-8d5e-4e71-9cbd-1821dc0b97ce",
+      "name": "MS - Fotos de candidatos",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2022/fotos/foto_cand2022_MS_div.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2022/fotos/foto_cand2022_MS_div.zip",
+      "format": "JPEG",
+      "status": "excluded",
+      "bytes": 17627882,
+      "lastModified": "Mon, 22 Jun 2026 14:14:40 GMT",
+      "etag": "\"10cfaea-654d8435f3318\"",
+      "inScope": false
+    },
+    {
+      "id": "858125ed-1d1f-4718-9f04-0c99848e7ee0",
+      "name": "MT - Fotos de candidatos",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2022/fotos/foto_cand2022_MT_div.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2022/fotos/foto_cand2022_MT_div.zip",
+      "format": "JPEG",
+      "status": "excluded",
+      "bytes": 15250977,
+      "lastModified": "Mon, 22 Jun 2026 14:14:40 GMT",
+      "etag": "\"e8b621-654d843614657\"",
+      "inScope": false
+    },
+    {
+      "id": "ddadd4c1-50ab-4168-9498-e9cce6ab3019",
+      "name": "PA - Fotos de candidatos",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2022/fotos/foto_cand2022_PA_div.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2022/fotos/foto_cand2022_PA_div.zip",
+      "format": "JPEG",
+      "status": "excluded",
+      "bytes": 27853076,
+      "lastModified": "Mon, 22 Jun 2026 14:14:40 GMT",
+      "etag": "\"1a90114-654d84364306c\"",
+      "inScope": false
+    },
+    {
+      "id": "e5ab7c41-5748-4139-928c-c013c7230e7f",
+      "name": "PB - Fotos de candidatos",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2022/fotos/foto_cand2022_PB_div.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2022/fotos/foto_cand2022_PB_div.zip",
+      "format": "JPEG",
+      "status": "excluded",
+      "bytes": 17997464,
+      "lastModified": "Mon, 22 Jun 2026 14:14:40 GMT",
+      "etag": "\"1129e98-654d843670311\"",
+      "inScope": false
+    },
+    {
+      "id": "e3779d67-228d-4297-8035-08ad86294252",
+      "name": "PE - Fotos de candidatos",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2022/fotos/foto_cand2022_PE_div.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2022/fotos/foto_cand2022_PE_div.zip",
+      "format": "JPEG",
+      "status": "excluded",
+      "bytes": 33142651,
+      "lastModified": "Mon, 22 Jun 2026 14:14:41 GMT",
+      "etag": "\"1f9b77b-654d8436bba15\"",
+      "inScope": false
+    },
+    {
+      "id": "c8b2944c-c06a-41eb-9f27-23cec9512239",
+      "name": "PI - Fotos de candidatos",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2022/fotos/foto_cand2022_PI_div.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2022/fotos/foto_cand2022_PI_div.zip",
+      "format": "JPEG",
+      "status": "excluded",
+      "bytes": 11981122,
+      "lastModified": "Mon, 22 Jun 2026 14:14:41 GMT",
+      "etag": "\"b6d142-654d8436d8ed3\"",
+      "inScope": false
+    },
+    {
+      "id": "c2c30a60-0bca-46c2-a8cf-31204b17f7a9",
+      "name": "PR - Fotos de candidatos",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2022/fotos/foto_cand2022_PR_div.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2022/fotos/foto_cand2022_PR_div.zip",
+      "format": "JPEG",
+      "status": "excluded",
+      "bytes": 43139124,
+      "lastModified": "Mon, 22 Jun 2026 14:14:41 GMT",
+      "etag": "\"2924034-654d843767bf3\"",
+      "inScope": false
+    },
+    {
+      "id": "9479ab46-dba2-40c6-889b-43bd64b2a1bb",
+      "name": "RJ - Fotos de candidatos",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2022/fotos/foto_cand2022_RJ_div.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2022/fotos/foto_cand2022_RJ_div.zip",
+      "format": "JPEG",
+      "status": "excluded",
+      "bytes": 80252268,
+      "lastModified": "Mon, 22 Jun 2026 14:14:42 GMT",
+      "etag": "\"4c88d6c-654d8438145a1\"",
+      "inScope": false
+    },
+    {
+      "id": "7e5c90fc-38b9-4af3-97c6-e0a56827f89c",
+      "name": "RN - Fotos de candidatos",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2022/fotos/foto_cand2022_RN_div.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2022/fotos/foto_cand2022_RN_div.zip",
+      "format": "JPEG",
+      "status": "excluded",
+      "bytes": 12955147,
+      "lastModified": "Mon, 22 Jun 2026 14:14:42 GMT",
+      "etag": "\"c5ae0b-654d84383687f\"",
+      "inScope": false
+    },
+    {
+      "id": "2d03ea89-c9c0-4cc3-8726-beed5098e6af",
+      "name": "RO - Fotos de candidatos",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2022/fotos/foto_cand2022_RO_div.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2022/fotos/foto_cand2022_RO_div.zip",
+      "format": "JPEG",
+      "status": "excluded",
+      "bytes": 17095641,
+      "lastModified": "Mon, 22 Jun 2026 14:14:43 GMT",
+      "etag": "\"104dbd9-654d84389b9aa\"",
+      "inScope": false
+    },
+    {
+      "id": "45a409de-277c-42ea-8fb1-26c8e7d2eb59",
+      "name": "RR - Fotos de candidatos",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2022/fotos/foto_cand2022_RR_div.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2022/fotos/foto_cand2022_RR_div.zip",
+      "format": "JPEG",
+      "status": "excluded",
+      "bytes": 17509629,
+      "lastModified": "Mon, 22 Jun 2026 14:14:43 GMT",
+      "etag": "\"10b2cfd-654d84395d72e\"",
+      "inScope": false
+    },
+    {
+      "id": "9c88200d-3b1e-4cf6-86e3-e2c1c207fe2a",
+      "name": "RS - Fotos de candidatos",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2022/fotos/foto_cand2022_RS_div.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2022/fotos/foto_cand2022_RS_div.zip",
+      "format": "JPEG",
+      "status": "excluded",
+      "bytes": 39598062,
+      "lastModified": "Mon, 22 Jun 2026 14:14:44 GMT",
+      "etag": "\"25c37ee-654d843a09cf5\"",
+      "inScope": false
+    },
+    {
+      "id": "6063e078-c6b1-41bd-ae41-58897d8efccd",
+      "name": "SC - Fotos de candidatos",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2022/fotos/foto_cand2022_SC_div.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2022/fotos/foto_cand2022_SC_div.zip",
+      "format": "JPEG",
+      "status": "excluded",
+      "bytes": 26778998,
+      "lastModified": "Mon, 22 Jun 2026 14:14:44 GMT",
+      "etag": "\"1989d76-654d843a5b1b8\"",
+      "inScope": false
+    },
+    {
+      "id": "fb8f82d5-743d-4f6a-ae12-5a3383ec35cd",
+      "name": "SE - Fotos de candidatos",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2022/fotos/foto_cand2022_SE_div.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2022/fotos/foto_cand2022_SE_div.zip",
+      "format": "JPEG",
+      "status": "excluded",
+      "bytes": 17103526,
+      "lastModified": "Mon, 22 Jun 2026 14:14:45 GMT",
+      "etag": "\"104faa6-654d843a9ebbc\"",
+      "inScope": false
+    },
+    {
+      "id": "74fc3d34-fa09-4813-be74-1489ac3ee2a4",
+      "name": "SP - Fotos de candidatos",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2022/fotos/foto_cand2022_SP_div.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2022/fotos/foto_cand2022_SP_div.zip",
+      "format": "JPEG",
+      "status": "excluded",
+      "bytes": 90368322,
+      "lastModified": "Mon, 22 Jun 2026 14:14:46 GMT",
+      "etag": "\"562e942-654d843b987c6\"",
+      "inScope": false
+    },
+    {
+      "id": "dd63779d-2a95-4f9a-b897-4349c67e3715",
+      "name": "TO - Fotos de candidatos",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2022/fotos/foto_cand2022_TO_div.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2022/fotos/foto_cand2022_TO_div.zip",
+      "format": "JPEG",
+      "status": "excluded",
+      "bytes": 14426816,
+      "lastModified": "Mon, 22 Jun 2026 14:14:46 GMT",
+      "etag": "\"dc22c0-654d843bd1dba\"",
+      "inScope": false
+    },
+    {
+      "id": "5833c04f-49ab-4b1c-af50-a57ca8ab960e",
+      "name": "AC - Proposta de governo",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2022_AC.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2022_AC.zip",
+      "format": "PDF",
+      "status": "excluded",
+      "bytes": 17163880,
+      "lastModified": "Sun, 21 Jul 2024 16:06:04 GMT",
+      "etag": "\"105e668-61dc41b015f41\"",
+      "inScope": false
+    },
+    {
+      "id": "a864f6da-93b9-4e0f-931c-2641f37bd078",
+      "name": "AL - Proposta de governo",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2022_AL.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2022_AL.zip",
+      "format": "PDF",
+      "status": "excluded",
+      "bytes": 10824667,
+      "lastModified": "Sun, 21 Jul 2024 16:06:05 GMT",
+      "etag": "\"a52bdb-61dc41b1a2726\"",
+      "inScope": false
+    },
+    {
+      "id": "e08c6c08-c8f1-4df5-904f-24058bbbab7a",
+      "name": "AM - Proposta de governo",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2022_AM.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2022_AM.zip",
+      "format": "PDF",
+      "status": "excluded",
+      "bytes": 5529180,
+      "lastModified": "Sun, 21 Jul 2024 16:06:06 GMT",
+      "etag": "\"545e5c-61dc41b1ede35\"",
+      "inScope": false
+    },
+    {
+      "id": "c10a7746-7ff4-4a03-a1f9-47a968bb7740",
+      "name": "AP - Proposta de governo",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2022_AP.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2022_AP.zip",
+      "format": "PDF",
+      "status": "excluded",
+      "bytes": 4891787,
+      "lastModified": "Sun, 21 Jul 2024 16:06:06 GMT",
+      "etag": "\"4aa48b-61dc41b28b1e4\"",
+      "inScope": false
+    },
+    {
+      "id": "e27d5ccc-4d5c-4361-b3a8-979f034e417c",
+      "name": "BA - Proposta de governo",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2022_BA.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2022_BA.zip",
+      "format": "PDF",
+      "status": "excluded",
+      "bytes": 16197279,
+      "lastModified": "Sun, 21 Jul 2024 16:06:08 GMT",
+      "etag": "\"f7269f-61dc41b47c71a\"",
+      "inScope": false
+    },
+    {
+      "id": "4280f82b-20a9-46dd-99d9-02b621425f26",
+      "name": "BR - Proposta de governo",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2022_BR.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2022_BR.zip",
+      "format": "PDF",
+      "status": "excluded",
+      "bytes": 15771758,
+      "lastModified": "Sun, 21 Jul 2024 16:06:09 GMT",
+      "etag": "\"f0a86e-61dc41b5a785e\"",
+      "inScope": false
+    },
+    {
+      "id": "899c6f8b-b60b-4e85-9215-540f3b3d285c",
+      "name": "CE - Proposta de governo",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2022_CE.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2022_CE.zip",
+      "format": "PDF",
+      "status": "excluded",
+      "bytes": 5129773,
+      "lastModified": "Sun, 21 Jul 2024 16:06:10 GMT",
+      "etag": "\"4e462d-61dc41b5e162b\"",
+      "inScope": false
+    },
+    {
+      "id": "90596e23-f6f8-47ba-8c03-d300cfac5959",
+      "name": "ES - Proposta de governo",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2022_ES.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2022_ES.zip",
+      "format": "PDF",
+      "status": "excluded",
+      "bytes": 14264307,
+      "lastModified": "Sun, 21 Jul 2024 16:06:12 GMT",
+      "etag": "\"d9a7f3-61dc41b8086c6\"",
+      "inScope": false
+    },
+    {
+      "id": "10413de4-47cf-405d-b875-a61c54477ed8",
+      "name": "GO - Proposta de governo",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2022_GO.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2022_GO.zip",
+      "format": "PDF",
+      "status": "excluded",
+      "bytes": 9643283,
+      "lastModified": "Sun, 21 Jul 2024 16:06:13 GMT",
+      "etag": "\"932513-61dc41b8e8cb3\"",
+      "inScope": false
+    },
+    {
+      "id": "81cdce95-4fc6-48c0-bf6b-fced908330fc",
+      "name": "MA - Proposta de governo",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2022_MA.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2022_MA.zip",
+      "format": "PDF",
+      "status": "excluded",
+      "bytes": 11232588,
+      "lastModified": "Sun, 21 Jul 2024 16:06:15 GMT",
+      "etag": "\"ab654c-61dc41baa4e54\"",
+      "inScope": false
+    },
+    {
+      "id": "d1fa45f2-8628-4c79-9284-40a1bafa31b2",
+      "name": "MG - Proposta de governo",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2022_MG.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2022_MG.zip",
+      "format": "PDF",
+      "status": "excluded",
+      "bytes": 3971828,
+      "lastModified": "Sun, 21 Jul 2024 16:06:15 GMT",
+      "etag": "\"3c9af4-61dc41bb110d6\"",
+      "inScope": false
+    },
+    {
+      "id": "bc920337-b875-418f-aab8-49996edcd1de",
+      "name": "MS - Proposta de governo",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2022_MS.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2022_MS.zip",
+      "format": "PDF",
+      "status": "excluded",
+      "bytes": 12776706,
+      "lastModified": "Sun, 21 Jul 2024 16:06:16 GMT",
+      "etag": "\"c2f502-61dc41bc0dfce\"",
+      "inScope": false
+    },
+    {
+      "id": "bccd494b-70af-498a-a5bf-83fdc1be1de3",
+      "name": "MT - Proposta de governo",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2022_MT.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2022_MT.zip",
+      "format": "PDF",
+      "status": "excluded",
+      "bytes": 504118,
+      "lastModified": "Sun, 21 Jul 2024 16:06:17 GMT",
+      "etag": "\"7b136-61dc41bce2269\"",
+      "inScope": false
+    },
+    {
+      "id": "53fbd88f-52fd-4777-82a6-d6186e8c55fb",
+      "name": "PA - Proposta de governo",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2022_PA.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2022_PA.zip",
+      "format": "PDF",
+      "status": "excluded",
+      "bytes": 5802999,
+      "lastModified": "Sun, 21 Jul 2024 16:06:17 GMT",
+      "etag": "\"588bf7-61dc41bd342f1\"",
+      "inScope": false
+    },
+    {
+      "id": "aca03568-1855-42da-bc99-ba67d7d4f44f",
+      "name": "PB - Proposta de governo",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2022_PB.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2022_PB.zip",
+      "format": "PDF",
+      "status": "excluded",
+      "bytes": 3540343,
+      "lastModified": "Sun, 21 Jul 2024 16:06:18 GMT",
+      "etag": "\"360577-61dc41bddd609\"",
+      "inScope": false
+    },
+    {
+      "id": "dcb3ffc7-5a51-4ba6-8ccf-338004dbfa52",
+      "name": "PE - Proposta de governo",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2022_PE.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2022_PE.zip",
+      "format": "PDF",
+      "status": "excluded",
+      "bytes": 19900546,
+      "lastModified": "Sun, 21 Jul 2024 16:06:19 GMT",
+      "etag": "\"12fa882-61dc41bee83aa\"",
+      "inScope": false
+    },
+    {
+      "id": "11d77f2d-57a9-4f32-b3a2-44899ade4b6f",
+      "name": "PI - Proposta de governo",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2022_PI.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2022_PI.zip",
+      "format": "PDF",
+      "status": "excluded",
+      "bytes": 11802954,
+      "lastModified": "Sun, 21 Jul 2024 16:06:22 GMT",
+      "etag": "\"b4194a-61dc41c145b62\"",
+      "inScope": false
+    },
+    {
+      "id": "eb76f0b1-2a3c-4b50-ac06-2c024907adc1",
+      "name": "PR - Proposta de governo",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2022_PR.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2022_PR.zip",
+      "format": "PDF",
+      "status": "excluded",
+      "bytes": 13164795,
+      "lastModified": "Sun, 21 Jul 2024 16:06:22 GMT",
+      "etag": "\"c8e0fb-61dc41c20751c\"",
+      "inScope": false
+    },
+    {
+      "id": "08fea596-5e7f-4efb-9cd5-4b090dcb251f",
+      "name": "RJ - Proposta de governo",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2022_RJ.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2022_RJ.zip",
+      "format": "PDF",
+      "status": "excluded",
+      "bytes": 13290455,
+      "lastModified": "Sun, 21 Jul 2024 16:06:24 GMT",
+      "etag": "\"cacbd7-61dc41c3e3a60\"",
+      "inScope": false
+    },
+    {
+      "id": "6729c65a-398e-4109-9f5e-566a7541ed99",
+      "name": "RN - Proposta de governo",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2022_RN.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2022_RN.zip",
+      "format": "PDF",
+      "status": "excluded",
+      "bytes": 4496216,
+      "lastModified": "Sun, 21 Jul 2024 16:06:26 GMT",
+      "etag": "\"449b58-61dc41c53e948\"",
+      "inScope": false
+    },
+    {
+      "id": "da82f66b-2313-48b9-827a-1090d15fcfcc",
+      "name": "RO - Proposta de governo",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2022_RO.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2022_RO.zip",
+      "format": "PDF",
+      "status": "excluded",
+      "bytes": 12895245,
+      "lastModified": "Sun, 21 Jul 2024 16:06:26 GMT",
+      "etag": "\"c4c40d-61dc41c5da587\"",
+      "inScope": false
+    },
+    {
+      "id": "f784c739-f7d7-4ef9-914a-7d6198ebdd73",
+      "name": "RR - Proposta de governo",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2022_RR.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2022_RR.zip",
+      "format": "PDF",
+      "status": "excluded",
+      "bytes": 3462023,
+      "lastModified": "Mon, 22 Jun 2026 14:51:38 GMT",
+      "etag": "\"34d387-654d8c7900636\"",
+      "inScope": false
+    },
+    {
+      "id": "cdf460f6-a7fe-4717-ac71-dbba5dc999d4",
+      "name": "RS - Proposta de governo",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2022_RS.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2022_RS.zip",
+      "format": "PDF",
+      "status": "excluded",
+      "bytes": 9139381,
+      "lastModified": "Sun, 21 Jul 2024 16:06:30 GMT",
+      "etag": "\"8b74b5-61dc41c9776a4\"",
+      "inScope": false
+    },
+    {
+      "id": "0ddc187e-61cd-4276-8312-5abb44d7be2e",
+      "name": "SC - Proposta de governo",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2022_SC.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2022_SC.zip",
+      "format": "PDF",
+      "status": "excluded",
+      "bytes": 8438556,
+      "lastModified": "Sun, 21 Jul 2024 16:06:32 GMT",
+      "etag": "\"80c31c-61dc41cafcd41\"",
+      "inScope": false
+    },
+    {
+      "id": "68b58782-dfdb-41c8-95e5-10f3df979ba2",
+      "name": "SE - Proposta de governo",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2022_SE.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2022_SE.zip",
+      "format": "PDF",
+      "status": "excluded",
+      "bytes": 10963209,
+      "lastModified": "Sun, 21 Jul 2024 16:06:33 GMT",
+      "etag": "\"a74909-61dc41cc13a4a\"",
+      "inScope": false
+    },
+    {
+      "id": "3d8166ad-42ed-4133-b531-c51707e2c428",
+      "name": "SP - Proposta de governo",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2022_SP.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2022_SP.zip",
+      "format": "PDF",
+      "status": "excluded",
+      "bytes": 16767847,
+      "lastModified": "Sun, 21 Jul 2024 16:06:34 GMT",
+      "etag": "\"ffdb67-61dc41cd118e2\"",
+      "inScope": false
+    },
+    {
+      "id": "d3c5700d-e0ee-4704-bd63-dbcfaee2e4d6",
+      "name": "TO - Proposta de governo",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2022_TO.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/proposta_governo/proposta_governo_2022_TO.zip",
+      "format": "PDF",
+      "status": "excluded",
+      "bytes": 5099787,
+      "lastModified": "Sun, 21 Jul 2024 16:06:35 GMT",
+      "etag": "\"4dd10b-61dc41cde0d5d\"",
+      "inScope": false
+    },
+    {
+      "id": "230d6969-09f7-443b-930a-7d4f89ac69d4",
+      "name": "AC - Certidões criminais",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/certidao_criminal/certidao_criminal_2022_AC.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/certidao_criminal/certidao_criminal_2022_AC.zip",
+      "format": "PDF",
+      "status": "excluded",
+      "bytes": 380597196,
+      "lastModified": "Sun, 28 Jul 2024 20:48:20 GMT",
+      "etag": "\"16af73cc-61e54dd66fc20\"",
+      "inScope": false
+    },
+    {
+      "id": "47ad3063-f160-42e0-94fa-983bf45d13da",
+      "name": "AL - Certidões criminais ",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/certidao_criminal/certidao_criminal_2022_AL.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/certidao_criminal/certidao_criminal_2022_AL.zip",
+      "format": "PDF",
+      "status": "excluded",
+      "bytes": 191065127,
+      "lastModified": "Sun, 28 Jul 2024 20:45:27 GMT",
+      "etag": "\"b636c27-61e54d30f769e\"",
+      "inScope": false
+    },
+    {
+      "id": "8b9b158d-33fe-4d29-a5ec-bcff20a1fa23",
+      "name": "AM - Certidões criminais ",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/certidao_criminal/certidao_criminal_2022_AM.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/certidao_criminal/certidao_criminal_2022_AM.zip",
+      "format": "PDF",
+      "status": "excluded",
+      "bytes": 705042379,
+      "lastModified": "Sun, 28 Jul 2024 18:57:07 GMT",
+      "etag": "\"2a0617cb-61e534f9ca713\"",
+      "inScope": false
+    },
+    {
+      "id": "e5c3cfd3-9bd6-4283-b92b-54334f71879c",
+      "name": "AP - Certidões criminais",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/certidao_criminal/certidao_criminal_2022_AP.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/certidao_criminal/certidao_criminal_2022_AP.zip",
+      "format": "PDF",
+      "status": "excluded",
+      "bytes": 581974876,
+      "lastModified": "Sun, 28 Jul 2024 19:25:53 GMT",
+      "etag": "\"22b03b5c-61e53b6810d8d\"",
+      "inScope": false
+    },
+    {
+      "id": "6b91cf7f-a073-408c-84e0-50e4a246075f",
+      "name": "BA - Certidões criminais ",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/certidao_criminal/certidao_criminal_2022_BA.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/certidao_criminal/certidao_criminal_2022_BA.zip",
+      "format": "PDF",
+      "status": "excluded",
+      "bytes": 1225283986,
+      "lastModified": "Sun, 28 Jul 2024 17:59:25 GMT",
+      "etag": "\"49085992-61e52814915fa\"",
+      "inScope": false
+    },
+    {
+      "id": "063dee5a-6af9-49d9-89e7-751d5d48d51e",
+      "name": "BR - Certidões criminais",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/certidao_criminal/certidao_criminal_2022_BR.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/certidao_criminal/certidao_criminal_2022_BR.zip",
+      "format": "PDF",
+      "status": "excluded",
+      "bytes": 33177650,
+      "lastModified": "Sun, 28 Jul 2024 20:35:27 GMT",
+      "etag": "\"1fa4032-61e54af4d3f77\"",
+      "inScope": false
+    },
+    {
+      "id": "0dc2a200-5534-480b-863a-a2b50f94f9fa",
+      "name": "CE - Certidões criminais",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/certidao_criminal/certidao_criminal_2022_CE.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/certidao_criminal/certidao_criminal_2022_CE.zip",
+      "format": "PDF",
+      "status": "excluded",
+      "bytes": 511480694,
+      "lastModified": "Sun, 28 Jul 2024 20:12:34 GMT",
+      "etag": "\"1e7c9376-61e545d7cebd6\"",
+      "inScope": false
+    },
+    {
+      "id": "72ea6be9-3a8a-46fb-bc3e-c3c9a0ad8386",
+      "name": "DF - Certidões criminais ",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/certidao_criminal/certidao_criminal_2022_DF.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/certidao_criminal/certidao_criminal_2022_DF.zip",
+      "format": "PDF",
+      "status": "excluded",
+      "bytes": 591544987,
+      "lastModified": "Sun, 28 Jul 2024 19:29:34 GMT",
+      "etag": "\"2342429b-61e53c3b618bf\"",
+      "inScope": false
+    },
+    {
+      "id": "3de5177b-2a75-4f66-91ce-1f6176775863",
+      "name": "ES - Certidões criminais",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/certidao_criminal/certidao_criminal_2022_ES.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/certidao_criminal/certidao_criminal_2022_ES.zip",
+      "format": "PDF",
+      "status": "excluded",
+      "bytes": 477688766,
+      "lastModified": "Sun, 28 Jul 2024 20:33:40 GMT",
+      "etag": "\"1c78f3be-61e54a8f36ec5\"",
+      "inScope": false
+    },
+    {
+      "id": "57831b9e-ff92-4103-845e-b78bc8b38ea2",
+      "name": "GO - Certidões criminais",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/certidao_criminal/certidao_criminal_2022_GO.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/certidao_criminal/certidao_criminal_2022_GO.zip",
+      "format": "PDF",
+      "status": "excluded",
+      "bytes": 876983742,
+      "lastModified": "Sun, 28 Jul 2024 19:05:07 GMT",
+      "etag": "\"3445b5be-61e536c3f8628\"",
+      "inScope": false
+    },
+    {
+      "id": "d56d1af5-e879-410a-9296-62f956dd5d53",
+      "name": "MA - Certidões criminais ",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/certidao_criminal/certidao_criminal_2022_MA.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/certidao_criminal/certidao_criminal_2022_MA.zip",
+      "format": "PDF",
+      "status": "excluded",
+      "bytes": 692938580,
+      "lastModified": "Sun, 28 Jul 2024 19:29:21 GMT",
+      "etag": "\"294d6754-61e53c2f140f8\"",
+      "inScope": false
+    },
+    {
+      "id": "4e1a3cc3-ff59-486f-bbd9-cd8c593fa1f3",
+      "name": "MG - Certidões criminais ",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/certidao_criminal/certidao_criminal_2022_MG.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/certidao_criminal/certidao_criminal_2022_MG.zip",
+      "format": "PDF",
+      "status": "excluded",
+      "bytes": 1757709762,
+      "lastModified": "Sun, 28 Jul 2024 17:25:17 GMT",
+      "etag": "\"68c485c2-61e520733f390\"",
+      "inScope": false
+    },
+    {
+      "id": "9e506d15-4915-4808-88e5-c847d25c2b53",
+      "name": "MS - Certidões criminais ",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/certidao_criminal/certidao_criminal_2022_MS.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/certidao_criminal/certidao_criminal_2022_MS.zip",
+      "format": "PDF",
+      "status": "excluded",
+      "bytes": 266076394,
+      "lastModified": "Sun, 28 Jul 2024 20:46:47 GMT",
+      "etag": "\"fdc00ea-61e54d7d48f85\"",
+      "inScope": false
+    },
+    {
+      "id": "93651bd9-a8e0-4580-b5b6-7ab17924e618",
+      "name": "MT - Certidões criminais",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/certidao_criminal/certidao_criminal_2022_MT.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/certidao_criminal/certidao_criminal_2022_MT.zip",
+      "format": "PDF",
+      "status": "excluded",
+      "bytes": 494219567,
+      "lastModified": "Sun, 28 Jul 2024 20:03:08 GMT",
+      "etag": "\"1d75312f-61e543bc2723c\"",
+      "inScope": false
+    },
+    {
+      "id": "6bd4f960-d709-47de-a1c2-b73b8e8cf934",
+      "name": "PA - Certidões criminais",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/certidao_criminal/certidao_criminal_2022_PA.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/certidao_criminal/certidao_criminal_2022_PA.zip",
+      "format": "PDF",
+      "status": "excluded",
+      "bytes": 794213228,
+      "lastModified": "Sun, 28 Jul 2024 18:55:26 GMT",
+      "etag": "\"2f56bb6c-61e53499c02fc\"",
+      "inScope": false
+    },
+    {
+      "id": "8bfe9c0e-619f-4327-bd3a-b4ea9fbd2cc3",
+      "name": "PB - Certidões criminais ",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/certidao_criminal/certidao_criminal_2022_PB.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/certidao_criminal/certidao_criminal_2022_PB.zip",
+      "format": "PDF",
+      "status": "excluded",
+      "bytes": 305087413,
+      "lastModified": "Sun, 28 Jul 2024 20:48:28 GMT",
+      "etag": "\"122f43b5-61e54ddd9e2dc\"",
+      "inScope": false
+    },
+    {
+      "id": "a184ff3f-b471-43fb-af88-4bff2a1f9de5",
+      "name": "PE - Certidões criminais ",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/certidao_criminal/certidao_criminal_2022_PE.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/certidao_criminal/certidao_criminal_2022_PE.zip",
+      "format": "PDF",
+      "status": "excluded",
+      "bytes": 691135930,
+      "lastModified": "Sun, 28 Jul 2024 19:42:41 GMT",
+      "etag": "\"2931e5ba-61e53f299841b\"",
+      "inScope": false
+    },
+    {
+      "id": "1d6451a0-dd96-49bb-b909-8cd1bf6b59aa",
+      "name": "PI - Certidões criminais",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/certidao_criminal/certidao_criminal_2022_PI.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/certidao_criminal/certidao_criminal_2022_PI.zip",
+      "format": "PDF",
+      "status": "excluded",
+      "bytes": 454353562,
+      "lastModified": "Sun, 28 Jul 2024 20:30:29 GMT",
+      "etag": "\"1b14e29a-61e549d8b0c28\"",
+      "inScope": false
+    },
+    {
+      "id": "1b65881c-703f-4dea-8683-a43e49d2a1d5",
+      "name": "PR - Certidões criminais",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/certidao_criminal/certidao_criminal_2022_PR.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/certidao_criminal/certidao_criminal_2022_PR.zip",
+      "format": "PDF",
+      "status": "excluded",
+      "bytes": 1195023666,
+      "lastModified": "Sun, 28 Jul 2024 18:37:16 GMT",
+      "etag": "\"473a9d32-61e5308a11063\"",
+      "inScope": false
+    },
+    {
+      "id": "0bb27364-7ade-4f40-be14-047527218906",
+      "name": "RJ - Certidões criminais ",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/certidao_criminal/certidao_criminal_2022_RJ.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/certidao_criminal/certidao_criminal_2022_RJ.zip",
+      "format": "PDF",
+      "status": "excluded",
+      "bytes": 3993198280,
+      "lastModified": "Sun, 28 Jul 2024 14:36:58 GMT",
+      "etag": "\"ee035ec8-61e4fad4468a9\"",
+      "inScope": false
+    },
+    {
+      "id": "03b97bf8-196a-45e8-80e4-e4d3c28aa7a7",
+      "name": "RN - Certidões criminais",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/certidao_criminal/certidao_criminal_2022_RN.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/certidao_criminal/certidao_criminal_2022_RN.zip",
+      "format": "PDF",
+      "status": "excluded",
+      "bytes": 407569702,
+      "lastModified": "Sun, 28 Jul 2024 20:31:19 GMT",
+      "etag": "\"184b0526-61e54a087aaec\"",
+      "inScope": false
+    },
+    {
+      "id": "35bd3966-0348-4177-954c-052f876b5ad2",
+      "name": "RO - Certidões criminais ",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/certidao_criminal/certidao_criminal_2022_RO.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/certidao_criminal/certidao_criminal_2022_RO.zip",
+      "format": "PDF",
+      "status": "excluded",
+      "bytes": 730074927,
+      "lastModified": "Sun, 28 Jul 2024 18:57:44 GMT",
+      "etag": "\"2b840f2f-61e5351df6e87\"",
+      "inScope": false
+    },
+    {
+      "id": "0b269d60-43b9-416c-9587-aabe27037e38",
+      "name": "RR - Certidões criminais ",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/certidao_criminal/certidao_criminal_2022_RR.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/certidao_criminal/certidao_criminal_2022_RR.zip",
+      "format": "PDF",
+      "status": "excluded",
+      "bytes": 492106646,
+      "lastModified": "Mon, 22 Jun 2026 14:14:51 GMT",
+      "etag": "\"1d54f396-654d8440d6ff1\"",
+      "inScope": false
+    },
+    {
+      "id": "409e6425-5735-49f7-a835-16a371ad22d6",
+      "name": "RS - Certidões criminais ",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/certidao_criminal/certidao_criminal_2022_RS.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/certidao_criminal/certidao_criminal_2022_RS.zip",
+      "format": "PDF",
+      "status": "excluded",
+      "bytes": 265064776,
+      "lastModified": "Sun, 28 Jul 2024 20:52:58 GMT",
+      "etag": "\"fcc9148-61e54edf90e47\"",
+      "inScope": false
+    },
+    {
+      "id": "3fd35135-09f4-4442-b044-5fb77abd823e",
+      "name": "SC - Certidões criminais",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/certidao_criminal/certidao_criminal_2022_SC.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/certidao_criminal/certidao_criminal_2022_SC.zip",
+      "format": "PDF",
+      "status": "excluded",
+      "bytes": 532469451,
+      "lastModified": "Sun, 28 Jul 2024 20:17:50 GMT",
+      "etag": "\"1fbcd6cb-61e5470517756\"",
+      "inScope": false
+    },
+    {
+      "id": "d1d92caa-0393-4cfe-9be6-5dff292d40ef",
+      "name": "SE - Certidões criminais",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/certidao_criminal/certidao_criminal_2022_SE.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/certidao_criminal/certidao_criminal_2022_SE.zip",
+      "format": "PDF",
+      "status": "excluded",
+      "bytes": 254169284,
+      "lastModified": "Sun, 28 Jul 2024 20:46:15 GMT",
+      "etag": "\"f2650c4-61e54d5e92bac\"",
+      "inScope": false
+    },
+    {
+      "id": "eb472d0b-6610-4e78-8b44-ca3182aca8a1",
+      "name": "SP - Certidões criminais ",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/certidao_criminal/certidao_criminal_2022_SP.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/certidao_criminal/certidao_criminal_2022_SP.zip",
+      "format": "PDF",
+      "status": "excluded",
+      "bytes": 3140623710,
+      "lastModified": "Sun, 28 Jul 2024 16:33:30 GMT",
+      "etag": "\"bb321d5e-61e514e05b620\"",
+      "inScope": false
+    },
+    {
+      "id": "c9122e3b-4212-430b-904d-e34c32b0fb66",
+      "name": "TO - Certidões criminais ",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/certidao_criminal/certidao_criminal_2022_TO.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/certidao_criminal/certidao_criminal_2022_TO.zip",
+      "format": "PDF",
+      "status": "excluded",
+      "bytes": 395726821,
+      "lastModified": "Sun, 28 Jul 2024 20:30:59 GMT",
+      "etag": "\"17964fe5-61e549f5b7d69\"",
+      "inScope": false
+    },
+    {
+      "id": "f9ac8524-86e6-44f1-931c-6c6cb373ec78",
+      "name": "AC - Notas fiscais",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/nota_fiscal_candidato/nota_fiscal_candidato_2022_AC.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/nota_fiscal_candidato/nota_fiscal_candidato_2022_AC.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 462356,
+      "lastModified": "Sun, 25 Oct 2026 18:03:24 GMT",
+      "etag": "\"70e14-65eae078ac8cd\"",
+      "inScope": false
+    },
+    {
+      "id": "3c7bace2-44db-4118-9693-36f605152e4b",
+      "name": "AL - Notas fiscais",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/nota_fiscal_candidato/nota_fiscal_candidato_2022_AL.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/nota_fiscal_candidato/nota_fiscal_candidato_2022_AL.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 196183,
+      "lastModified": "Sun, 25 Oct 2026 18:03:24 GMT",
+      "etag": "\"2fe57-65eae078aebf5\"",
+      "inScope": false
+    },
+    {
+      "id": "d4c41bce-eaae-495c-a753-a4099cdb1d91",
+      "name": "AM - Notas fiscais",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/nota_fiscal_candidato/nota_fiscal_candidato_2022_AM.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/nota_fiscal_candidato/nota_fiscal_candidato_2022_AM.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 1084557,
+      "lastModified": "Sun, 25 Oct 2026 18:03:24 GMT",
+      "etag": "\"108c8d-65eae078b16ed\"",
+      "inScope": false
+    },
+    {
+      "id": "d680176c-0bdc-4f88-93c4-38c16df60f42",
+      "name": "AP - Notas fiscais",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/nota_fiscal_candidato/nota_fiscal_candidato_2022_AP.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/nota_fiscal_candidato/nota_fiscal_candidato_2022_AP.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 127265,
+      "lastModified": "Sun, 25 Oct 2026 18:03:24 GMT",
+      "etag": "\"1f121-65eae078b3a15\"",
+      "inScope": false
+    },
+    {
+      "id": "14440ccc-f413-4efa-98a4-9fffe367f88e",
+      "name": "BA - Notas fiscais",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/nota_fiscal_candidato/nota_fiscal_candidato_2022_BA.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/nota_fiscal_candidato/nota_fiscal_candidato_2022_BA.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 355547,
+      "lastModified": "Sun, 25 Oct 2026 18:03:24 GMT",
+      "etag": "\"56cdb-65eae078b5955\"",
+      "inScope": false
+    },
+    {
+      "id": "86c80345-ee90-4352-826b-6a1bc368b39d",
+      "name": "BR - Notas fiscais",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/nota_fiscal_candidato/nota_fiscal_candidato_2022_BR.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/nota_fiscal_candidato/nota_fiscal_candidato_2022_BR.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 5005859,
+      "lastModified": "Sun, 25 Oct 2026 18:03:24 GMT",
+      "etag": "\"4c6223-65eae078bd26c\"",
+      "inScope": false
+    },
+    {
+      "id": "374d9f46-af69-47d8-9f5d-57d3053b8562",
+      "name": "CE - Notas fiscais",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/nota_fiscal_candidato/nota_fiscal_candidato_2022_CE.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/nota_fiscal_candidato/nota_fiscal_candidato_2022_CE.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 194560,
+      "lastModified": "Sun, 25 Oct 2026 18:03:24 GMT",
+      "etag": "\"2f800-65eae078be9dc\"",
+      "inScope": false
+    },
+    {
+      "id": "5cb23a45-2748-471b-a178-ea1793471695",
+      "name": "DF - Notas fiscais",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/nota_fiscal_candidato/nota_fiscal_candidato_2022_DF.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/nota_fiscal_candidato/nota_fiscal_candidato_2022_DF.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 640867,
+      "lastModified": "Sun, 25 Oct 2026 18:03:24 GMT",
+      "etag": "\"9c763-65eae078c14d4\"",
+      "inScope": false
+    },
+    {
+      "id": "86ba7351-3f8f-4dba-8a7a-f44217322306",
+      "name": "ES - Notas fiscais",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/nota_fiscal_candidato/nota_fiscal_candidato_2022_ES.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/nota_fiscal_candidato/nota_fiscal_candidato_2022_ES.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 373352,
+      "lastModified": "Sun, 25 Oct 2026 18:03:24 GMT",
+      "etag": "\"5b268-65eae078c37fc\"",
+      "inScope": false
+    },
+    {
+      "id": "e285cd7f-d8b2-41c2-9d72-c56e78926c77",
+      "name": "GO - Notas fiscais",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/nota_fiscal_candidato/nota_fiscal_candidato_2022_GO.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/nota_fiscal_candidato/nota_fiscal_candidato_2022_GO.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 1265133,
+      "lastModified": "Sun, 25 Oct 2026 18:03:24 GMT",
+      "etag": "\"134ded-65eae078c66dc\"",
+      "inScope": false
+    },
+    {
+      "id": "64c0d458-6504-4c38-a277-0e33c09e4fa3",
+      "name": "MA - Notas fiscais",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/nota_fiscal_candidato/nota_fiscal_candidato_2022_MA.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/nota_fiscal_candidato/nota_fiscal_candidato_2022_MA.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 264107,
+      "lastModified": "Sun, 25 Oct 2026 18:03:24 GMT",
+      "etag": "\"407ab-65eae078c8a04\"",
+      "inScope": false
+    },
+    {
+      "id": "ac179463-5fdb-4571-b363-c6b2f8bb3709",
+      "name": "MS - Notas fiscais",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/nota_fiscal_candidato/nota_fiscal_candidato_2022_MS.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/nota_fiscal_candidato/nota_fiscal_candidato_2022_MS.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 443800,
+      "lastModified": "Sun, 25 Oct 2026 18:03:24 GMT",
+      "etag": "\"6c598-65eae078cd053\"",
+      "inScope": false
+    },
+    {
+      "id": "ba0a2a07-1203-4dfa-8bf7-bc23c70b8c8d",
+      "name": "MT - Notas fiscais",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/nota_fiscal_candidato/nota_fiscal_candidato_2022_MT.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/nota_fiscal_candidato/nota_fiscal_candidato_2022_MT.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 447252,
+      "lastModified": "Sun, 25 Oct 2026 18:03:24 GMT",
+      "etag": "\"6d314-65eae078cf37b\"",
+      "inScope": false
+    },
+    {
+      "id": "de290245-e995-46ae-af67-030c18c095d2",
+      "name": "PA - Notas fiscais",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/nota_fiscal_candidato/nota_fiscal_candidato_2022_PA.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/nota_fiscal_candidato/nota_fiscal_candidato_2022_PA.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 251117,
+      "lastModified": "Sun, 25 Oct 2026 18:03:24 GMT",
+      "etag": "\"3d4ed-65eae078d12bb\"",
+      "inScope": false
+    },
+    {
+      "id": "66a0967c-1712-46ca-bc11-79067d29393e",
+      "name": "PB - Notas fiscais",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/nota_fiscal_candidato/nota_fiscal_candidato_2022_PB.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/nota_fiscal_candidato/nota_fiscal_candidato_2022_PB.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 684046,
+      "lastModified": "Sun, 25 Oct 2026 18:03:24 GMT",
+      "etag": "\"a700e-65eae078d419b\"",
+      "inScope": false
+    },
+    {
+      "id": "fd234695-5cfd-429a-ab95-a61fdd801d94",
+      "name": "PE - Notas fiscais",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/nota_fiscal_candidato/nota_fiscal_candidato_2022_PE.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/nota_fiscal_candidato/nota_fiscal_candidato_2022_PE.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 230453,
+      "lastModified": "Sun, 25 Oct 2026 18:03:24 GMT",
+      "etag": "\"38435-65eae078d5cf3\"",
+      "inScope": false
+    },
+    {
+      "id": "7299ab0f-4058-498a-9298-0b727bf62103",
+      "name": "PI - Notas fiscais",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/nota_fiscal_candidato/nota_fiscal_candidato_2022_PI.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/nota_fiscal_candidato/nota_fiscal_candidato_2022_PI.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 154621,
+      "lastModified": "Sun, 25 Oct 2026 18:03:24 GMT",
+      "etag": "\"25bfd-65eae078d7c33\"",
+      "inScope": false
+    },
+    {
+      "id": "763d12f5-f914-487b-9652-7a32130b9ebc",
+      "name": "PR - Notas fiscais",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/nota_fiscal_candidato/nota_fiscal_candidato_2022_PR.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/nota_fiscal_candidato/nota_fiscal_candidato_2022_PR.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 1434660,
+      "lastModified": "Sun, 25 Oct 2026 18:03:24 GMT",
+      "etag": "\"15e424-65eae078db6cb\"",
+      "inScope": false
+    },
+    {
+      "id": "751cc3ea-593b-42ae-93fc-b518186dcdc1",
+      "name": "RJ - Notas fiscais",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/nota_fiscal_candidato/nota_fiscal_candidato_2022_RJ.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/nota_fiscal_candidato/nota_fiscal_candidato_2022_RJ.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 1147781,
+      "lastModified": "Sun, 25 Oct 2026 18:03:24 GMT",
+      "etag": "\"118385-65eae078dfd1b\"",
+      "inScope": false
+    },
+    {
+      "id": "18583932-3252-4f38-9d7f-24ac78825eff",
+      "name": "RN - Notas fiscais",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/nota_fiscal_candidato/nota_fiscal_candidato_2022_RN.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/nota_fiscal_candidato/nota_fiscal_candidato_2022_RN.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 274973,
+      "lastModified": "Sun, 25 Oct 2026 18:03:24 GMT",
+      "etag": "\"4321d-65eae078e1872\"",
+      "inScope": false
+    },
+    {
+      "id": "33426da4-a6fa-4a09-817d-c21a2abc7b5d",
+      "name": "RO - Notas fiscais",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/nota_fiscal_candidato/nota_fiscal_candidato_2022_RO.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/nota_fiscal_candidato/nota_fiscal_candidato_2022_RO.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 48903,
+      "lastModified": "Sun, 25 Oct 2026 18:03:24 GMT",
+      "etag": "\"bf07-65eae078e2bfa\"",
+      "inScope": false
+    },
+    {
+      "id": "8d651a83-dba3-4e78-949a-80c865889c33",
+      "name": "RR - Notas fiscais",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/nota_fiscal_candidato/nota_fiscal_candidato_2022_RR.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/nota_fiscal_candidato/nota_fiscal_candidato_2022_RR.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 38245,
+      "lastModified": "Sun, 25 Oct 2026 18:03:24 GMT",
+      "etag": "\"9565-65eae078e3f82\"",
+      "inScope": false
+    },
+    {
+      "id": "be3379ee-f8bc-4c7e-a903-f3be5a71b19d",
+      "name": "RS - Notas fiscais",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/nota_fiscal_candidato/nota_fiscal_candidato_2022_RS.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/nota_fiscal_candidato/nota_fiscal_candidato_2022_RS.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 1438633,
+      "lastModified": "Sun, 25 Oct 2026 18:03:24 GMT",
+      "etag": "\"15f3a9-65eae078e81ea\"",
+      "inScope": false
+    },
+    {
+      "id": "7d6f3aae-aa79-4986-801a-b08457a1d251",
+      "name": "SC - Notas fiscais",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/nota_fiscal_candidato/nota_fiscal_candidato_2022_SC.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/nota_fiscal_candidato/nota_fiscal_candidato_2022_SC.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 392551,
+      "lastModified": "Sun, 25 Oct 2026 18:03:24 GMT",
+      "etag": "\"5fd67-65eae078e995a\"",
+      "inScope": false
+    },
+    {
+      "id": "dd08ff3b-aa23-4093-bfdd-78a219883b09",
+      "name": "SE - Notas fiscais",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/nota_fiscal_candidato/nota_fiscal_candidato_2022_SE.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/nota_fiscal_candidato/nota_fiscal_candidato_2022_SE.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 155146,
+      "lastModified": "Sun, 25 Oct 2026 18:03:24 GMT",
+      "etag": "\"25e0a-65eae078ec06a\"",
+      "inScope": false
+    },
+    {
+      "id": "23466ae1-0286-4d1e-acf5-d088624980ca",
+      "name": "SP - Notas fiscais",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/nota_fiscal_candidato/nota_fiscal_candidato_2022_SP.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/nota_fiscal_candidato/nota_fiscal_candidato_2022_SP.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 3822331,
+      "lastModified": "Sun, 25 Oct 2026 18:03:24 GMT",
+      "etag": "\"3a52fb-65eae078fa2f9\"",
+      "inScope": false
+    },
+    {
+      "id": "1f833fe6-0527-4bf8-8b5e-9bbfed6a68f5",
+      "name": "TO - Notas fiscais",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/nota_fiscal_candidato/nota_fiscal_candidato_2022_TO.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/nota_fiscal_candidato/nota_fiscal_candidato_2022_TO.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 226722,
+      "lastModified": "Sun, 25 Oct 2026 18:03:24 GMT",
+      "etag": "\"375a2-65eae078fcdf1\"",
+      "inScope": false
+    }
+  ]
+}
