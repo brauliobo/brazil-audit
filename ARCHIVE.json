@@ -1,0 +1,998 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-10-26T22:09:41.738995+00:00",
+  "status": "published",
+  "dataset": {
+    "id": "resultados-2024",
+    "title": "Resultados - 2024",
+    "groups": [
+      "resultados"
+    ],
+    "family": "resultados",
+    "years": [
+      2024
+    ],
+    "license": "cc-by",
+    "source": "https://dadosabertos.tse.jus.br/dataset/resultados-2024",
+    "branch": "archive/resultados-2024",
+    "tag": "data-resultados-2024",
+    "releaseUrl": "https://github.com/brauliobo/brazil-audit/releases/tag/data-resultados-2024",
+    "normalized": false,
+    "status": "catalogued",
+    "inScope": true
+  },
+  "resources": [
+    {
+      "id": "c5e1bff9-98f1-4d3b-b944-37cd22c84112",
+      "name": "Votação nominal por município e zona",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_candidato_munzona/votacao_candidato_munzona_2024.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_candidato_munzona/votacao_candidato_munzona_2024.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 48241098,
+      "lastModified": "Sat, 24 Oct 2026 05:29:19 GMT",
+      "etag": "\"2e019ca-65e8f60ee048c\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T22:08:24.182982+00:00",
+      "sha256": "fc936c2f33128124601d626ae29d7970a91767359ac8c50ead449c607fd73d18",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "c5e1bff9-votacao_candidato_munzona_2024.zip",
+          "bytes": 48241098,
+          "sha256": "fc936c2f33128124601d626ae29d7970a91767359ac8c50ead449c607fd73d18"
+        }
+      ]
+    },
+    {
+      "id": "701610ba-523e-4941-82ee-e25ab475fcbb",
+      "name": "Votação em partido por município e zona ",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_partido_munzona/votacao_partido_munzona_2024.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_partido_munzona/votacao_partido_munzona_2024.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 6147719,
+      "lastModified": "Sat, 24 Oct 2026 05:29:13 GMT",
+      "etag": "\"5dce87-65e8f60937537\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T22:08:24.981052+00:00",
+      "sha256": "d9ac1746d70a49edf4d490135bfa9419ce13acbecfe2b761512817bee62074a8",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "701610ba-votacao_partido_munzona_2024.zip",
+          "bytes": 6147719,
+          "sha256": "d9ac1746d70a49edf4d490135bfa9419ce13acbecfe2b761512817bee62074a8"
+        }
+      ]
+    },
+    {
+      "id": "51f991a5-6431-426c-b3d4-b61bcdcf12ab",
+      "name": "Detalhe da apuração por município e zona",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/detalhe_votacao_munzona/detalhe_votacao_munzona_2024.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/detalhe_votacao_munzona/detalhe_votacao_munzona_2024.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 1496777,
+      "lastModified": "Sat, 24 Oct 2026 05:29:14 GMT",
+      "etag": "\"16d6c9-65e8f609d1dd8\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T22:08:25.330409+00:00",
+      "sha256": "51f4c540645269ccca10407442b66e9eaf24b9a65fd0d2c4e00e0b2127504a22",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "51f991a5-detalhe_votacao_munzona_2024.zip",
+          "bytes": 1496777,
+          "sha256": "51f4c540645269ccca10407442b66e9eaf24b9a65fd0d2c4e00e0b2127504a22"
+        }
+      ]
+    },
+    {
+      "id": "34fc801e-8a49-4c25-9d31-e5a6388a1d30",
+      "name": "Detalhe da apuração por seção eleitoral",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/detalhe_votacao_secao/detalhe_votacao_secao_2024.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/detalhe_votacao_secao/detalhe_votacao_secao_2024.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 87270063,
+      "lastModified": "Mon, 22 Jun 2026 14:48:38 GMT",
+      "etag": "\"533a2af-654d8bcdb4f1d\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T22:08:27.749416+00:00",
+      "sha256": "a9e8c08cd046f92a76b49b709d8525476bcf7933604564025e27796f710866a7",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "34fc801e-detalhe_votacao_secao_2024.zip",
+          "bytes": 87270063,
+          "sha256": "a9e8c08cd046f92a76b49b709d8525476bcf7933604564025e27796f710866a7"
+        }
+      ]
+    },
+    {
+      "id": "a98b167d-ea91-4be0-9419-03d8b11d2c17",
+      "name": "AC - Relatório de Totalização - 2024",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/relatorio_resultado_totalizacao/Relatorio_Resultado_Totalizacao_2024_AC.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/relatorio_resultado_totalizacao/Relatorio_Resultado_Totalizacao_2024_AC.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 18864465,
+      "lastModified": "Sat, 24 Oct 2026 05:18:16 GMT",
+      "etag": "\"11fd951-65e8f39639abf\"",
+      "inScope": false
+    },
+    {
+      "id": "64c363df-5161-4ac4-9277-76249254ace9",
+      "name": "AL - Relatório de Totalização - 2024",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/relatorio_resultado_totalizacao/Relatorio_Resultado_Totalizacao_2024_AL.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/relatorio_resultado_totalizacao/Relatorio_Resultado_Totalizacao_2024_AL.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 65418565,
+      "lastModified": "Sat, 24 Oct 2026 05:18:16 GMT",
+      "etag": "\"3e63545-65e8f3968172b\"",
+      "inScope": false
+    },
+    {
+      "id": "52a52fce-dce4-40a4-aea8-c5a66d78bc9a",
+      "name": "AM - Relatório de Totalização - 2024",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/relatorio_resultado_totalizacao/Relatorio_Resultado_Totalizacao_2024_AM.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/relatorio_resultado_totalizacao/Relatorio_Resultado_Totalizacao_2024_AM.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 57379913,
+      "lastModified": "Sat, 24 Oct 2026 05:18:17 GMT",
+      "etag": "\"36b8c49-65e8f396fcbcd\"",
+      "inScope": false
+    },
+    {
+      "id": "302c2de5-0fb5-4dfa-a4a3-4783b2697eb2",
+      "name": "AP - Relatório de Totalização - 2024",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/relatorio_resultado_totalizacao/Relatorio_Resultado_Totalizacao_2024_AP.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/relatorio_resultado_totalizacao/Relatorio_Resultado_Totalizacao_2024_AP.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 13810211,
+      "lastModified": "Sat, 24 Oct 2026 05:18:17 GMT",
+      "etag": "\"d2ba23-65e8f397365ab\"",
+      "inScope": false
+    },
+    {
+      "id": "6b451729-5c8d-4340-8d9d-f14527c9f6fc",
+      "name": "BA - Relatório de Totalização - 2024",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/relatorio_resultado_totalizacao/Relatorio_Resultado_Totalizacao_2024_BA.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/relatorio_resultado_totalizacao/Relatorio_Resultado_Totalizacao_2024_BA.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 314106620,
+      "lastModified": "Sat, 24 Oct 2026 05:18:20 GMT",
+      "etag": "\"12b8e2fc-65e8f399b7b45\"",
+      "inScope": false
+    },
+    {
+      "id": "88c4d4d1-0f6d-4203-b314-668ad9756e83",
+      "name": "CE - Relatório de Totalização - 2024",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/relatorio_resultado_totalizacao/Relatorio_Resultado_Totalizacao_2024_CE.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/relatorio_resultado_totalizacao/Relatorio_Resultado_Totalizacao_2024_CE.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 133681706,
+      "lastModified": "Sat, 24 Oct 2026 05:18:21 GMT",
+      "etag": "\"7f7d22a-65e8f39ac7ac8\"",
+      "inScope": false
+    },
+    {
+      "id": "39fb940d-17b4-4aa2-a499-324cf869a30c",
+      "name": "ES - Relatório de Totalização - 2024",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/relatorio_resultado_totalizacao/Relatorio_Resultado_Totalizacao_2024_ES.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/relatorio_resultado_totalizacao/Relatorio_Resultado_Totalizacao_2024_ES.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 73787351,
+      "lastModified": "Sat, 24 Oct 2026 05:18:21 GMT",
+      "etag": "\"465e7d7-65e8f39b5bdd9\"",
+      "inScope": false
+    },
+    {
+      "id": "4321b5d8-8dd9-4a4d-a3aa-185a4ed056c6",
+      "name": "GO - Relatório de Totalização - 2024",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/relatorio_resultado_totalizacao/Relatorio_Resultado_Totalizacao_2024_GO.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/relatorio_resultado_totalizacao/Relatorio_Resultado_Totalizacao_2024_GO.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 186379876,
+      "lastModified": "Sat, 24 Oct 2026 05:18:23 GMT",
+      "etag": "\"b1bee64-65e8f39d10a0d\"",
+      "inScope": false
+    },
+    {
+      "id": "e75d0fa9-43ba-4ddc-9e57-e9bed9ab4a2c",
+      "name": "MA - Relatório de Totalização - 2024",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/relatorio_resultado_totalizacao/Relatorio_Resultado_Totalizacao_2024_MA.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/relatorio_resultado_totalizacao/Relatorio_Resultado_Totalizacao_2024_MA.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 160648235,
+      "lastModified": "Sat, 24 Oct 2026 05:18:24 GMT",
+      "etag": "\"9934c2b-65e8f39e4537e\"",
+      "inScope": false
+    },
+    {
+      "id": "3538116c-64f4-4543-98ad-8b4a502eb2bb",
+      "name": "MG - Relatório de Totalização - 2024",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/relatorio_resultado_totalizacao/Relatorio_Resultado_Totalizacao_2024_MG.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/relatorio_resultado_totalizacao/Relatorio_Resultado_Totalizacao_2024_MG.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 656519054,
+      "lastModified": "Sat, 24 Oct 2026 05:18:30 GMT",
+      "etag": "\"2721af8e-65e8f3a3cd764\"",
+      "inScope": false
+    },
+    {
+      "id": "d89849af-62d0-4465-96d3-0ee001285d20",
+      "name": "MS - Relatório de Totalização - 2024",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/relatorio_resultado_totalizacao/Relatorio_Resultado_Totalizacao_2024_MS.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/relatorio_resultado_totalizacao/Relatorio_Resultado_Totalizacao_2024_MS.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 64309268,
+      "lastModified": "Sat, 24 Oct 2026 05:18:31 GMT",
+      "etag": "\"3d54814-65e8f3a49fe8a\"",
+      "inScope": false
+    },
+    {
+      "id": "dbc9bb35-dabb-42ac-bf6e-1fef05cd2966",
+      "name": "MT - Relatório de Totalização - 2024",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/relatorio_resultado_totalizacao/Relatorio_Resultado_Totalizacao_2024_MT.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/relatorio_resultado_totalizacao/Relatorio_Resultado_Totalizacao_2024_MT.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 106532981,
+      "lastModified": "Sat, 24 Oct 2026 05:18:32 GMT",
+      "etag": "\"6599075-65e8f3a576c00\"",
+      "inScope": false
+    },
+    {
+      "id": "5d183658-7f12-4576-a95a-65fa2568c23e",
+      "name": "PA - Relatório de Totalização - 2024",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/relatorio_resultado_totalizacao/Relatorio_Resultado_Totalizacao_2024_PA.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/relatorio_resultado_totalizacao/Relatorio_Resultado_Totalizacao_2024_PA.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 133179503,
+      "lastModified": "Sat, 24 Oct 2026 05:18:33 GMT",
+      "etag": "\"7f0286f-65e8f3a669aad\"",
+      "inScope": false
+    },
+    {
+      "id": "b92d3669-f99b-4a53-a412-69d301a872a6",
+      "name": "PB - Relatório de Totalização - 2024",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/relatorio_resultado_totalizacao/Relatorio_Resultado_Totalizacao_2024_PB.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/relatorio_resultado_totalizacao/Relatorio_Resultado_Totalizacao_2024_PB.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 134442544,
+      "lastModified": "Sat, 24 Oct 2026 05:18:34 GMT",
+      "etag": "\"8036e30-65e8f3a789fe7\"",
+      "inScope": false
+    },
+    {
+      "id": "4f7cb47c-0545-4844-8a85-9d45bc6e1c2b",
+      "name": "PE - Relatório de Totalização - 2024",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/relatorio_resultado_totalizacao/Relatorio_Resultado_Totalizacao_2024_PE.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/relatorio_resultado_totalizacao/Relatorio_Resultado_Totalizacao_2024_PE.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 141424880,
+      "lastModified": "Sat, 24 Oct 2026 05:18:35 GMT",
+      "etag": "\"86df8f0-65e8f3a8cb478\"",
+      "inScope": false
+    },
+    {
+      "id": "d7dc792e-a546-43f5-bc47-7def94d55dd4",
+      "name": "PI - Relatório de Totalização - 2024",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/relatorio_resultado_totalizacao/Relatorio_Resultado_Totalizacao_2024_PI.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/relatorio_resultado_totalizacao/Relatorio_Resultado_Totalizacao_2024_PI.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 132048248,
+      "lastModified": "Sat, 24 Oct 2026 05:18:37 GMT",
+      "etag": "\"7dee578-65e8f3aa397c7\"",
+      "inScope": false
+    },
+    {
+      "id": "f04b5848-4302-47cd-87c6-6441c8954eb0",
+      "name": "PR - Relatório de Totalização - 2024",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/relatorio_resultado_totalizacao/Relatorio_Resultado_Totalizacao_2024_PR.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/relatorio_resultado_totalizacao/Relatorio_Resultado_Totalizacao_2024_PR.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 308417655,
+      "lastModified": "Sat, 24 Oct 2026 05:18:39 GMT",
+      "etag": "\"12621477-65e8f3ac8752c\"",
+      "inScope": false
+    },
+    {
+      "id": "2a672cf4-fe0d-4457-81a2-f68d321ae093",
+      "name": "RJ - Relatório de Totalização - 2024",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/relatorio_resultado_totalizacao/Relatorio_Resultado_Totalizacao_2024_RJ.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/relatorio_resultado_totalizacao/Relatorio_Resultado_Totalizacao_2024_RJ.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 104483191,
+      "lastModified": "Sat, 24 Oct 2026 05:18:40 GMT",
+      "etag": "\"63a4977-65e8f3ad61d3a\"",
+      "inScope": false
+    },
+    {
+      "id": "d0646e0c-45d5-45bf-a964-74a2e4abfcdc",
+      "name": "RN - Relatório de Totalização - 2024",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/relatorio_resultado_totalizacao/Relatorio_Resultado_Totalizacao_2024_RN.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/relatorio_resultado_totalizacao/Relatorio_Resultado_Totalizacao_2024_RN.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 101604955,
+      "lastModified": "Sat, 24 Oct 2026 05:18:41 GMT",
+      "etag": "\"60e5e5b-65e8f3ae36f58\"",
+      "inScope": false
+    },
+    {
+      "id": "93d4767d-d95a-4504-9a7d-cce74552b059",
+      "name": "RO - Relatório de Totalização - 2024",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/relatorio_resultado_totalizacao/Relatorio_Resultado_Totalizacao_2024_RO.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/relatorio_resultado_totalizacao/Relatorio_Resultado_Totalizacao_2024_RO.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 41863514,
+      "lastModified": "Sat, 24 Oct 2026 05:18:41 GMT",
+      "etag": "\"27ec95a-65e8f3ae9c853\"",
+      "inScope": false
+    },
+    {
+      "id": "c0b6b1c6-0df1-483e-8d90-d396bd1cc1f8",
+      "name": "RR - Relatório de Totalização - 2024",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/relatorio_resultado_totalizacao/Relatorio_Resultado_Totalizacao_2024_RR.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/relatorio_resultado_totalizacao/Relatorio_Resultado_Totalizacao_2024_RR.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 10549010,
+      "lastModified": "Sat, 24 Oct 2026 05:18:42 GMT",
+      "etag": "\"a0f712-65e8f3aec29b1\"",
+      "inScope": false
+    },
+    {
+      "id": "831e02af-9371-4345-82d9-446a38ab1844",
+      "name": "RS - Relatório de Totalização - 2024",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/relatorio_resultado_totalizacao/Relatorio_Resultado_Totalizacao_2024_RS.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/relatorio_resultado_totalizacao/Relatorio_Resultado_Totalizacao_2024_RS.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 333864554,
+      "lastModified": "Sat, 24 Oct 2026 05:18:45 GMT",
+      "etag": "\"13e65e6a-65e8f3b19928f\"",
+      "inScope": false
+    },
+    {
+      "id": "bb2b8595-84e3-4314-a20a-64c83e3d86e8",
+      "name": "SC - Relatório de Totalização - 2024",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/relatorio_resultado_totalizacao/Relatorio_Resultado_Totalizacao_2024_SC.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/relatorio_resultado_totalizacao/Relatorio_Resultado_Totalizacao_2024_SC.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 208674883,
+      "lastModified": "Sat, 24 Oct 2026 05:18:46 GMT",
+      "etag": "\"c702043-65e8f3b34c753\"",
+      "inScope": false
+    },
+    {
+      "id": "2685985f-c18b-490c-bd1b-7f77084e3cbd",
+      "name": "SE - Relatório de Totalização - 2024",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/relatorio_resultado_totalizacao/Relatorio_Resultado_Totalizacao_2024_SE.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/relatorio_resultado_totalizacao/Relatorio_Resultado_Totalizacao_2024_SE.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 54571371,
+      "lastModified": "Sat, 24 Oct 2026 05:18:47 GMT",
+      "etag": "\"340b16b-65e8f3b3caad5\"",
+      "inScope": false
+    },
+    {
+      "id": "b0c63e15-eca4-476a-a6d0-f4d28ceb5edb",
+      "name": "SP - Relatório de Totalização - 2024",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/relatorio_resultado_totalizacao/Relatorio_Resultado_Totalizacao_2024_SP.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/relatorio_resultado_totalizacao/Relatorio_Resultado_Totalizacao_2024_SP.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 583382045,
+      "lastModified": "Sat, 24 Oct 2026 05:18:52 GMT",
+      "etag": "\"22c5b41d-65e8f3b898e33\"",
+      "inScope": false
+    },
+    {
+      "id": "bf605797-ffd4-48f5-9c26-3a9c1f23477a",
+      "name": "TO - Relatório de Totalização - 2024",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/relatorio_resultado_totalizacao/Relatorio_Resultado_Totalizacao_2024_TO.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/relatorio_resultado_totalizacao/Relatorio_Resultado_Totalizacao_2024_TO.zip",
+      "format": "CSV",
+      "status": "excluded",
+      "bytes": 85602116,
+      "lastModified": "Sat, 24 Oct 2026 05:18:53 GMT",
+      "etag": "\"51a2f44-65e8f3b93bf8c\"",
+      "inScope": false
+    },
+    {
+      "id": "682e11eb-b36c-4e0f-acb0-7241194f71c7",
+      "name": "AC - Votação por seção eleitoral - 2024",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2024_AC.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2024_AC.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 5568218,
+      "lastModified": "Mon, 22 Jun 2026 14:47:27 GMT",
+      "etag": "\"54f6da-654d8b8a22d82\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T22:08:28.218978+00:00",
+      "sha256": "3505fe23101505e13d2278e4dd92df5c136d005fe722f260d207402542ba367b",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "682e11eb-votacao_secao_2024_AC.zip",
+          "bytes": 5568218,
+          "sha256": "3505fe23101505e13d2278e4dd92df5c136d005fe722f260d207402542ba367b"
+        }
+      ]
+    },
+    {
+      "id": "ab24af80-b9e2-4d64-a8df-3b7e5cd61966",
+      "name": "AL - Votação por seção eleitoral - 2024",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2024_AL.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2024_AL.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 17376004,
+      "lastModified": "Mon, 22 Jun 2026 14:47:22 GMT",
+      "etag": "\"1092304-654d8b857f1dd\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T22:08:29.005373+00:00",
+      "sha256": "cf102015682676e3cf555ac330442d05a4e56a319ed322c5a087b12b9347c020",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "ab24af80-votacao_secao_2024_AL.zip",
+          "bytes": 17376004,
+          "sha256": "cf102015682676e3cf555ac330442d05a4e56a319ed322c5a087b12b9347c020"
+        }
+      ]
+    },
+    {
+      "id": "8fbc3cf7-967f-4f9c-929a-a4e2dd9558c2",
+      "name": "AM - Votação por seção eleitoral - 2024",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2024_AM.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2024_AM.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 34122098,
+      "lastModified": "Mon, 22 Jun 2026 14:47:50 GMT",
+      "etag": "\"208a972-654d8ba079c25\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T22:08:30.795612+00:00",
+      "sha256": "b1f8db5148c81c3dd85285a7c470b89e17c46489cdccf7e70d54a3657411f333",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "8fbc3cf7-votacao_secao_2024_AM.zip",
+          "bytes": 34122098,
+          "sha256": "b1f8db5148c81c3dd85285a7c470b89e17c46489cdccf7e70d54a3657411f333"
+        }
+      ]
+    },
+    {
+      "id": "8e9e63dc-e89b-4034-9996-07952f5a9fd6",
+      "name": "AP - Votação por seção eleitoral - 2024",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2024_AP.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2024_AP.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 5138859,
+      "lastModified": "Mon, 22 Jun 2026 14:46:54 GMT",
+      "etag": "\"4e69ab-654d8b6a56d1f\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T22:08:31.258476+00:00",
+      "sha256": "4c23d90e011ab45096e2a4d35c68726afd86b0cec30bfaa5d0b748c143bc43b4",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "8e9e63dc-votacao_secao_2024_AP.zip",
+          "bytes": 5138859,
+          "sha256": "4c23d90e011ab45096e2a4d35c68726afd86b0cec30bfaa5d0b748c143bc43b4"
+        }
+      ]
+    },
+    {
+      "id": "47c37d35-24db-4877-8df1-bb5cc8ba9965",
+      "name": "BA - Votação por seção eleitoral - 2024",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2024_BA.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2024_BA.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 113963142,
+      "lastModified": "Mon, 22 Jun 2026 14:47:00 GMT",
+      "etag": "\"6caf086-654d8b70403a1\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T22:08:34.412611+00:00",
+      "sha256": "2c3d1ad1ecf37c01baff8eb954fe163096ebcaf3bd229473c156ec8517ab52bb",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "47c37d35-votacao_secao_2024_BA.zip",
+          "bytes": 113963142,
+          "sha256": "2c3d1ad1ecf37c01baff8eb954fe163096ebcaf3bd229473c156ec8517ab52bb"
+        }
+      ]
+    },
+    {
+      "id": "329d4887-ed28-45f2-a206-0bce1ffe9a24",
+      "name": "CE - Votação por seção eleitoral - 2024",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2024_CE.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2024_CE.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 69533579,
+      "lastModified": "Mon, 22 Jun 2026 14:46:44 GMT",
+      "etag": "\"424ff8b-654d8b616e559\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T22:08:36.489030+00:00",
+      "sha256": "9d5c2b1e7cab35564d18d22fdcb565bc152a476e3f112a72c5465793dee2b443",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "329d4887-votacao_secao_2024_CE.zip",
+          "bytes": 69533579,
+          "sha256": "9d5c2b1e7cab35564d18d22fdcb565bc152a476e3f112a72c5465793dee2b443"
+        }
+      ]
+    },
+    {
+      "id": "9a44c492-4b9c-4829-b43a-d7b502b81ec6",
+      "name": "ES - Votação por seção eleitoral - 2024",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2024_ES.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2024_ES.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 31862561,
+      "lastModified": "Mon, 22 Jun 2026 14:46:57 GMT",
+      "etag": "\"1e62f21-654d8b6d5b06b\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T22:08:38.136019+00:00",
+      "sha256": "32fca0a59d860708de3350d80824a15164a48de5a245dd443de61a8eabd9cea0",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "9a44c492-votacao_secao_2024_ES.zip",
+          "bytes": 31862561,
+          "sha256": "32fca0a59d860708de3350d80824a15164a48de5a245dd443de61a8eabd9cea0"
+        }
+      ]
+    },
+    {
+      "id": "bff950d9-61b9-4baa-b9f5-92eca5a9e78b",
+      "name": "GO - Votação por seção eleitoral - 2024",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2024_GO.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2024_GO.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 64435871,
+      "lastModified": "Mon, 22 Jun 2026 14:47:04 GMT",
+      "etag": "\"3d7369f-654d8b73f280c\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T22:08:40.085026+00:00",
+      "sha256": "ce2cae527a10de2b71fb72b1d936572c8ef56320046503cef15c882e2b438ec7",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "bff950d9-votacao_secao_2024_GO.zip",
+          "bytes": 64435871,
+          "sha256": "ce2cae527a10de2b71fb72b1d936572c8ef56320046503cef15c882e2b438ec7"
+        }
+      ]
+    },
+    {
+      "id": "6bf86ada-88d4-47c5-96c7-e874da680d39",
+      "name": "MA - Votação por seção eleitoral - 2024",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2024_MA.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2024_MA.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 48918240,
+      "lastModified": "Mon, 22 Jun 2026 14:47:30 GMT",
+      "etag": "\"2ea6ee0-654d8b8d1d0a6\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T22:08:41.738282+00:00",
+      "sha256": "727ad9b99feb8ca176a8f221c31b82b8c4499e328bae50b15daf29f7a03deed6",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "6bf86ada-votacao_secao_2024_MA.zip",
+          "bytes": 48918240,
+          "sha256": "727ad9b99feb8ca176a8f221c31b82b8c4499e328bae50b15daf29f7a03deed6"
+        }
+      ]
+    },
+    {
+      "id": "f4092fc0-0841-4b29-993e-412161b0bb7f",
+      "name": "MG - Votação por seção eleitoral - 2024",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2024_MG.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2024_MG.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 201366815,
+      "lastModified": "Mon, 22 Jun 2026 14:46:54 GMT",
+      "etag": "\"c009d1f-654d8b6acc019\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T22:08:47.086483+00:00",
+      "sha256": "b305cb4783deac6e6ac37cd080eb96902af3c55d3dc5a0d794c6b5e771e8586a",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "f4092fc0-votacao_secao_2024_MG.zip",
+          "bytes": 201366815,
+          "sha256": "b305cb4783deac6e6ac37cd080eb96902af3c55d3dc5a0d794c6b5e771e8586a"
+        }
+      ]
+    },
+    {
+      "id": "90c92a6f-6b9d-49c5-8889-63a2212fea0a",
+      "name": "MS - Votação por seção eleitoral - 2024",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2024_MS.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2024_MS.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 23262652,
+      "lastModified": "Mon, 22 Jun 2026 14:46:47 GMT",
+      "etag": "\"162f5bc-654d8b641ae52\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T22:08:48.508691+00:00",
+      "sha256": "1dfa19396cba24bc8d779f609245215e1f1240928ab9ff9cc5a6ad5fdc255e7e",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "90c92a6f-votacao_secao_2024_MS.zip",
+          "bytes": 23262652,
+          "sha256": "1dfa19396cba24bc8d779f609245215e1f1240928ab9ff9cc5a6ad5fdc255e7e"
+        }
+      ]
+    },
+    {
+      "id": "6a0c2759-e560-46f2-94f9-72881a00ab47",
+      "name": "MT - Votação por seção eleitoral - 2024",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2024_MT.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2024_MT.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 26078892,
+      "lastModified": "Mon, 22 Jun 2026 14:46:57 GMT",
+      "etag": "\"18deeac-654d8b6d72382\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T22:08:49.460337+00:00",
+      "sha256": "4d84497edbd8944c2a8f84b4c6c6c04b3d106ca399afe4e6eb6c23bdb535662a",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "6a0c2759-votacao_secao_2024_MT.zip",
+          "bytes": 26078892,
+          "sha256": "4d84497edbd8944c2a8f84b4c6c6c04b3d106ca399afe4e6eb6c23bdb535662a"
+        }
+      ]
+    },
+    {
+      "id": "927fc1c3-3b77-4b51-acac-9678828c5f27",
+      "name": "PA - Votação por seção eleitoral - 2024",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2024_PA.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2024_PA.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 71540522,
+      "lastModified": "Mon, 22 Jun 2026 14:47:07 GMT",
+      "etag": "\"4439f2a-654d8b771bd16\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T22:08:51.505275+00:00",
+      "sha256": "3a9a65d48a49c09bb92c4e3da11800e799a28d7f2922e4fa7c622760da4ec229",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "927fc1c3-votacao_secao_2024_PA.zip",
+          "bytes": 71540522,
+          "sha256": "3a9a65d48a49c09bb92c4e3da11800e799a28d7f2922e4fa7c622760da4ec229"
+        }
+      ]
+    },
+    {
+      "id": "323b8fd8-c276-4e89-8b9f-adfd590d3250",
+      "name": "PB - Votação por seção eleitoral - 2024",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2024_PB.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2024_PB.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 28109471,
+      "lastModified": "Mon, 22 Jun 2026 14:47:19 GMT",
+      "etag": "\"1acea9f-654d8b823da1c\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T22:08:52.441737+00:00",
+      "sha256": "a2005be05e2ee36dcbbbf83871d54edc12ba50ddc6f8361f627c1dfaf5749973",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "323b8fd8-votacao_secao_2024_PB.zip",
+          "bytes": 28109471,
+          "sha256": "a2005be05e2ee36dcbbbf83871d54edc12ba50ddc6f8361f627c1dfaf5749973"
+        }
+      ]
+    },
+    {
+      "id": "25a1936a-0e14-486a-bd4e-a5a57e348289",
+      "name": "PE - Votação por seção eleitoral - 2024",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2024_PE.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2024_PE.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 66653339,
+      "lastModified": "Mon, 22 Jun 2026 14:47:10 GMT",
+      "etag": "\"3f90c9b-654d8b79ccc5f\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T22:08:54.400234+00:00",
+      "sha256": "a0644bdade0339f827c345cc958fd1e9bf3f3e5834ad3e51369819912fe8efcc",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "25a1936a-votacao_secao_2024_PE.zip",
+          "bytes": 66653339,
+          "sha256": "a0644bdade0339f827c345cc958fd1e9bf3f3e5834ad3e51369819912fe8efcc"
+        }
+      ]
+    },
+    {
+      "id": "a2bb8557-b248-4bb7-bd55-e64e8b8a8fe6",
+      "name": "PI - Votação por seção eleitoral - 2024",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2024_PI.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2024_PI.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 23263290,
+      "lastModified": "Mon, 22 Jun 2026 14:47:47 GMT",
+      "etag": "\"162f83a-654d8b9d3901d\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T22:08:55.243650+00:00",
+      "sha256": "e5eed87c495c4cb56ca36237303d64e6943d85fdabe2a64669d7d70762335b6e",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "a2bb8557-votacao_secao_2024_PI.zip",
+          "bytes": 23263290,
+          "sha256": "e5eed87c495c4cb56ca36237303d64e6943d85fdabe2a64669d7d70762335b6e"
+        }
+      ]
+    },
+    {
+      "id": "8cef9a19-a495-4ac1-bb11-ebf2a252a76d",
+      "name": "PR - Votação por seção eleitoral - 2024",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2024_PR.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2024_PR.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 110124174,
+      "lastModified": "Mon, 22 Jun 2026 14:47:13 GMT",
+      "etag": "\"6905c8e-654d8b7c979b6\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T22:08:58.979175+00:00",
+      "sha256": "737233f15259d9cc205a1b2435e79dd7f88a9bc46253e0d7a43b60d6917bc5ae",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "8cef9a19-votacao_secao_2024_PR.zip",
+          "bytes": 110124174,
+          "sha256": "737233f15259d9cc205a1b2435e79dd7f88a9bc46253e0d7a43b60d6917bc5ae"
+        }
+      ]
+    },
+    {
+      "id": "5fb638aa-f29d-454d-9872-38fd84f51b3f",
+      "name": "RJ - Votação por seção eleitoral - 2024",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2024_RJ.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2024_RJ.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 156836604,
+      "lastModified": "Mon, 22 Jun 2026 14:47:24 GMT",
+      "etag": "\"95922fc-654d8b870389f\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T22:09:03.843099+00:00",
+      "sha256": "c956615e39ecc4abd1121c5e7add14d94482653728627363e368f3bcec3a9522",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "5fb638aa-votacao_secao_2024_RJ.zip",
+          "bytes": 156836604,
+          "sha256": "c956615e39ecc4abd1121c5e7add14d94482653728627363e368f3bcec3a9522"
+        }
+      ]
+    },
+    {
+      "id": "5c4a8db8-3e54-4a10-a047-7e48d5e8bcff",
+      "name": "RN - Votação por seção eleitoral - 2024",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2024_RN.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2024_RN.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 21597475,
+      "lastModified": "Mon, 22 Jun 2026 14:47:15 GMT",
+      "etag": "\"1498d23-654d8b7e48b4e\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T22:09:05.035452+00:00",
+      "sha256": "9f986702c2059b1760e5f87a1b7385667de30d9fb2e8b8e36033def65586de2b",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "5c4a8db8-votacao_secao_2024_RN.zip",
+          "bytes": 21597475,
+          "sha256": "9f986702c2059b1760e5f87a1b7385667de30d9fb2e8b8e36033def65586de2b"
+        }
+      ]
+    },
+    {
+      "id": "f813789d-26df-48e0-8534-34419b82a8e1",
+      "name": "RO - Votação por seção eleitoral - 2024",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2024_RO.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2024_RO.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 12739577,
+      "lastModified": "Mon, 22 Jun 2026 14:47:12 GMT",
+      "etag": "\"c263f9-654d8b7c01f37\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T22:09:07.920941+00:00",
+      "sha256": "31fcada6606bd4e53dc9f7f7c83a2b0fc5ebb3a5d675ba5b8fd658240d971d75",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "f813789d-votacao_secao_2024_RO.zip",
+          "bytes": 12739577,
+          "sha256": "31fcada6606bd4e53dc9f7f7c83a2b0fc5ebb3a5d675ba5b8fd658240d971d75"
+        }
+      ]
+    },
+    {
+      "id": "0a5c1bcf-45f5-47e0-8592-f3f56ef056ed",
+      "name": "RR - Votação por seção eleitoral - 2024",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2024_RR.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2024_RR.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 4071506,
+      "lastModified": "Mon, 22 Jun 2026 14:47:45 GMT",
+      "etag": "\"3e2052-654d8b9b19cd3\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T22:09:08.265013+00:00",
+      "sha256": "3f2e5dd34af80b991d626a93cfa8005fb71b8d1d4599744608109dc0cd1ebdd4",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "0a5c1bcf-votacao_secao_2024_RR.zip",
+          "bytes": 4071506,
+          "sha256": "3f2e5dd34af80b991d626a93cfa8005fb71b8d1d4599744608109dc0cd1ebdd4"
+        }
+      ]
+    },
+    {
+      "id": "2b584433-8ba0-4ac2-9029-ff9cf8386d4b",
+      "name": "RS - Votação por seção eleitoral - 2024",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2024_RS.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2024_RS.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 96132770,
+      "lastModified": "Mon, 22 Jun 2026 14:47:41 GMT",
+      "etag": "\"5badea2-654d8b971b995\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T22:09:11.110593+00:00",
+      "sha256": "42167998705f965f00657fc3750eb1d794ea4831241abc9d51fcfa0475627308",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "2b584433-votacao_secao_2024_RS.zip",
+          "bytes": 96132770,
+          "sha256": "42167998705f965f00657fc3750eb1d794ea4831241abc9d51fcfa0475627308"
+        }
+      ]
+    },
+    {
+      "id": "960efaba-f09a-4d23-a503-cadc380e929e",
+      "name": "SC - Votação por seção eleitoral - 2024",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2024_SC.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2024_SC.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 53794714,
+      "lastModified": "Mon, 22 Jun 2026 14:47:30 GMT",
+      "etag": "\"334d79a-654d8b8cdc582\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T22:09:13.238921+00:00",
+      "sha256": "36cd7aa412d81ec300e2c7c0d3f05f4ee293b4d7653282a6c3776989969406b4",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "960efaba-votacao_secao_2024_SC.zip",
+          "bytes": 53794714,
+          "sha256": "36cd7aa412d81ec300e2c7c0d3f05f4ee293b4d7653282a6c3776989969406b4"
+        }
+      ]
+    },
+    {
+      "id": "d3f4dd75-37c4-4242-b0d4-361fbdd48284",
+      "name": "SE - Votação por seção eleitoral - 2024",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2024_SE.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2024_SE.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 15603197,
+      "lastModified": "Mon, 22 Jun 2026 14:47:43 GMT",
+      "etag": "\"ee15fd-654d8b992f92f\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T22:09:13.941161+00:00",
+      "sha256": "06a51a88f213f4e1f9df3940d3ec4040f4ee7deee20f81f9d15efe28c72a7b2d",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "d3f4dd75-votacao_secao_2024_SE.zip",
+          "bytes": 15603197,
+          "sha256": "06a51a88f213f4e1f9df3940d3ec4040f4ee7deee20f81f9d15efe28c72a7b2d"
+        }
+      ]
+    },
+    {
+      "id": "655a5e7f-08d7-4a21-8a5f-0c851e21b670",
+      "name": "SP - Votação por seção eleitoral - 2024",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2024_SP.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2024_SP.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 475770264,
+      "lastModified": "Mon, 22 Jun 2026 14:46:41 GMT",
+      "etag": "\"1c5bad98-654d8b5e79ff4\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T22:09:40.687284+00:00",
+      "sha256": "3d7063c453ca4d2e16b37618c43019eb7c73d3fe729ee75d71e57f5102d31797",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "655a5e7f-votacao_secao_2024_SP.zip",
+          "bytes": 475770264,
+          "sha256": "3d7063c453ca4d2e16b37618c43019eb7c73d3fe729ee75d71e57f5102d31797"
+        }
+      ]
+    },
+    {
+      "id": "1aaeb6d3-202f-4fcc-9f06-f772d1fd0d8e",
+      "name": "TO - Votação por seção eleitoral - 2024",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2024_TO.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2024_TO.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 10184639,
+      "lastModified": "Mon, 22 Jun 2026 14:47:00 GMT",
+      "etag": "\"9b67bf-654d8b6fe1bef\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T22:09:41.729918+00:00",
+      "sha256": "9258920a27193be86b7fa679c30baaf41eb57f63bcf2941f69df326b36665060",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "1aaeb6d3-votacao_secao_2024_TO.zip",
+          "bytes": 10184639,
+          "sha256": "9258920a27193be86b7fa679c30baaf41eb57f63bcf2941f69df326b36665060"
+        }
+      ]
+    }
+  ]
+}
