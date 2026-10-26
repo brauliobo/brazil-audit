@@ -1,0 +1,48 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-10-26T21:49:25.388659+00:00",
+  "status": "published",
+  "dataset": {
+    "id": "candidatos-1989",
+    "title": "Candidatos - 1989",
+    "groups": [
+      "candidatos"
+    ],
+    "family": "candidatos",
+    "years": [
+      1989
+    ],
+    "license": "cc-by",
+    "source": "https://dadosabertos.tse.jus.br/dataset/candidatos-1989",
+    "branch": "archive/candidatos-1989",
+    "tag": "data-candidatos-1989",
+    "releaseUrl": "https://github.com/brauliobo/brazil-audit/releases/tag/data-candidatos-1989",
+    "normalized": false,
+    "status": "catalogued",
+    "inScope": true
+  },
+  "resources": [
+    {
+      "id": "fd79e7cc-eddf-47ba-9e4a-04b67e6ac4a7",
+      "name": "Legendas",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_legendas/consulta_legendas_1989.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_legendas/consulta_legendas_1989.zip",
+      "format": "TXT",
+      "status": "prepared",
+      "bytes": 279926,
+      "lastModified": "Thu, 16 Apr 2015 19:35:41 GMT",
+      "etag": "\"44576-513dc91a81d40\"",
+      "inScope": true,
+      "downloadedAt": "2026-10-26T21:49:25.388009+00:00",
+      "sha256": "447cd5c33f27fa78015593746eb2eb67264c85e427f97fbdf3004f1c2a5c25a7",
+      "removedPersonalColumns": {},
+      "assets": [
+        {
+          "name": "fd79e7cc-consulta_legendas_1989.zip",
+          "bytes": 279926,
+          "sha256": "447cd5c33f27fa78015593746eb2eb67264c85e427f97fbdf3004f1c2a5c25a7"
+        }
+      ]
+    }
+  ]
+}
