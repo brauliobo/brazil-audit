@@ -39,7 +39,7 @@ class DerivedCollectionTest(unittest.TestCase):
         from tse_archive import write_json, sha256
         buffer = io.BytesIO()
         with zipfile.ZipFile(buffer, 'w') as archive:
-            archive.writestr('o00406-0100700090001.rdv', b'older format')
+            archive.writestr('unfamiliar-section-identity.rdv', b'older format')
             archive.writestr('o00452ac0100700090002-rdv.dat', b'newer format')
         body = buffer.getvalue()
         class Source(io.BytesIO):

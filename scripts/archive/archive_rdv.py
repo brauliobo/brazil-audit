@@ -68,7 +68,7 @@ def extract_bundle(root, resource, reused):
     started = time.monotonic()
     with RemoteZipFile(resource['url'], capture=True) as remote, zipfile.ZipFile(remote) as source:
         version = remote.size, remote.etag
-        members = [m for m in source.infolist() if SOURCE.search(m.filename) or BARE.search(m.filename)]
+        members = [m for m in source.infolist() if m.filename.lower().endswith(('.rdv', '-rdv.dat'))]
         if not members:
             raise ValueError(f'No recognized RDV members in official bundle: {resource["url"]}')
         snapshot = remote.snapshot()
@@ -99,7 +99,7 @@ def extract_bundle(root, resource, reused):
         records = []
         with RemoteZipFile(resource['url'], snapshot=snapshot) as stream, zipfile.ZipFile(stream) as source, zipfile.ZipFile(partial, 'w', compression=zipfile.ZIP_DEFLATED, compresslevel=6) as target:
             for member in names:
-                data = source.read(member.filename)  # zipfile verifies source CRC, including ZIP64.
+                data = source.read(member)  # Read this exact central-directory entry and verify its CRC, including ZIP64.
                 target.writestr(member.filename, data)
                 records.append(dict(name=member.filename, bytes=len(data), crc32=member.CRC, sha256=hashlib.sha256(data).hexdigest()))
             network, requests = stream.transferred, stream.requests
