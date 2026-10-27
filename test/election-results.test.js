@@ -104,6 +104,9 @@ test('official totals retain coverage, candidate grain may be finer, unknown is 
   assert.equal(Number(row.eligible),100);assert.equal(Number(row.absent),20);assert.equal(Number(row.nominal),75)
   q=adapter.candidatesSql('sectionOnly',25,{state:'pe'});[row]=(await db.query(q.sql,q.params)).rows
   assert.equal(row.cand,'option-a');assert.equal(Number(row.votes),75);assert.equal(row.identity_status,'observed_ballot_option');assert.equal(row.name,null)
+  await db.exec("insert into election_units(election_id,office_key,state,city_code,grain,eligible,installed,present,absent,nominal,valid,blank,null_votes,ballots,sections) values('fn','historical:25:CONSELHEIRO DISTRITAL','pe','99999','municipality',50,50,40,10,35,35,2,3,40,1)")
+  q=adapter.totalsSql('sectionOnly',25,{state:'pe'});[row]=(await db.query(q.sql,q.params)).rows
+  assert.equal(Number(row.eligible),150,'a summary of one municipality must not suppress references in a different municipality of the same state')
   await db.exec("insert into election_units(election_id,office_key,state,grain,eligible,installed,present,absent,nominal,valid,blank,null_votes,ballots,sections) values('fn','historical:25:CONSELHEIRO DISTRITAL','pe','state',110,110,90,20,85,85,2,3,90,2)")
   q=adapter.totalsSql('sectionOnly',25,{state:'pe'});[row]=(await db.query(q.sql,q.params)).rows
   assert.equal(Number(row.eligible),110,'official state summary replaces section references instead of being added to them')

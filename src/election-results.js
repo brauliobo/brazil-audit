@@ -98,7 +98,9 @@ function base(key, officeKey, scope = {}, source = 'votes', grain = null) {
   const finer=grain==='all'||grain==='state'||grain==='uf' ? '' : grain==='municipality'||grain==='mun' ? ' and summary.city_code is not null' : grain==='zone' ? ' and summary.zone is not null' : ' and summary.section is not null'
   const referenceColumns=unitColumns.join(',')
   const unitTable=reference ? `(select ${referenceColumns} from election_units union all select ${referenceColumns} from election_section_units reference where not exists (
-    select 1 from election_units summary where ${summaryFilter}${finer} and summary.state=reference.state))` : 'election_units'
+    select 1 from election_units summary where ${summaryFilter}${finer} and coalesce(summary.transit,'N')<>'S' and summary.state=reference.state and (summary.grain='state' or
+      (summary.city_code=reference.city_code and (summary.grain='municipality' or
+        (summary.zone=reference.zone and (summary.grain='zone' or summary.section=reference.section)))))))` : 'election_units'
   const units = `select * from (select u.*,
       bool_or(grain='national') over (partition by election_id,office_key) _has_national,
       bool_or(grain='state') over (partition by election_id,office_key,state) _has_state,
