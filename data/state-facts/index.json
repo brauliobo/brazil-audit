@@ -1,6 +1,6 @@
 {
   "rounds": 46594,
-  "categories": 410334,
+  "categories": 410676,
   "contests": 45533,
   "years": [
     1945,
@@ -45,6 +45,6 @@
     2025,
     2026
   ],
-  "completeVotes": 46139,
-  "bytes": 6150006
+  "completeVotes": 46169,
+  "bytes": 6153027
 }
