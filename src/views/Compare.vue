@@ -11,6 +11,7 @@ import { int, pct, signed, num, hms } from '../format'
 import { competitionQuery, comparisonTargetsQuery } from '../comparison-queries'
 import { sectionComparison, benfordComparison } from '../comparison-special'
 import { METRICS, metricOf, metricSource, metricResult, comparisonQuery } from '../comparison'
+import ElectionComparison from '../components/ElectionComparison.vue'
 import HistoricalComparison from '../components/HistoricalComparison.vue'
 import TransferComparison from '../components/TransferComparison.vue'
 import ButtonGroup from '../components/ButtonGroup.vue'
@@ -19,8 +20,8 @@ import Field from '../components/Field.vue'
 import DataTable from '../components/DataTable.vue'
 import BarList from '../components/BarList.vue'
 
-const modes = computed(() => ['indicators','history',...(tables().state_rounds && tables().state_round_counts && store.manifest.stateFacts?.pairedYears?.length ? ['flows'] : [])])
-const mode = computed(() => route.value.params.get('comparison_mode') ?? (ELECTIONS[route.value.election].legacyKey ? 'indicators' : 'history'))
+const modes = computed(() => ['canonical','indicators','history',...(tables().state_rounds && tables().state_round_counts && store.manifest.stateFacts?.pairedYears?.length ? ['flows'] : [])])
+const mode = computed(() => route.value.params.get('comparison_mode') ?? 'canonical')
 const selected = computed(() => metricOf(route.value.params.get('metric'))?.id ?? 'abstention_rate')
 const metric = computed(() => metricOf(selected.value))
 const state = computed(() => route.value.params.get('state') ?? '')
@@ -102,8 +103,9 @@ const csv = computed(() => !data.data ? '' : 'data:text/csv;charset=utf-8,' + en
 <template lang="pug">
 h1 {{ t('compare.title') }}
 p.muted {{ t('compare.intro') }}
-ButtonGroup(:label="t('compare.mode')" :value="mode" :items="modes.map((value) => ({value,label:t(`compare.modes.${value}`)}))" @change="setParam('comparison_mode',$event)")
-HistoricalComparison(v-if="mode === 'history'")
+ButtonGroup(:label="t('compare.mode')" :value="mode" :items="modes.map((value) => ({value,label:value==='canonical'?t('compare.modes.canonical'):t(`compare.modes.${value}`)}))" @change="setParam('comparison_mode',$event)")
+ElectionComparison(v-if="mode === 'canonical'")
+HistoricalComparison(v-else-if="mode === 'history'")
 TransferComparison(v-else-if="mode === 'flows'")
 template(v-else)
   .cluster

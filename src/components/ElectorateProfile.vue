@@ -23,12 +23,14 @@ const metadata = useAsync(() => [], async () => {
   return response.json()
 })
 const datasets = computed(() => metadata.data?.datasets ?? [])
-const contextYear = computed(() => ELECTIONS[props.election].sourceSession?.sourceYears[0] ?? ELECTIONS[props.election].year)
+const contextYear = computed(() => ELECTIONS[props.election].sourceSession?.calendarYear ?? ELECTIONS[props.election].year)
 const dataset = computed(() => datasets.value.find((d) => d.datasetId === selectedDataset.value)
   ?? datasets.value.find((d) => d.years.includes(contextYear.value)) ?? datasets.value[0])
 const year = computed(() => dataset.value?.years.includes(Number(selectedYear.value)) ? Number(selectedYear.value) : dataset.value?.years[0])
-const turns = computed(() => dataset.value?.turns ?? [])
-const turn = computed(() => turns.value.includes(Number(selectedTurn.value)) ? Number(selectedTurn.value) : turns.value[0] ?? null)
+const contextTurn = computed(() => ELECTIONS[props.election].turn ?? null)
+const turns = computed(() => (dataset.value?.turns ?? []).filter((n) => n != null))
+const turn = computed(() => dataset.value?.kind === 'attendance' ? selectedTurn.value != null && turns.value.includes(Number(selectedTurn.value)) ? Number(selectedTurn.value) : contextTurn.value ?? turns.value[0] ?? null : null)
+const turnAvailable = computed(() => dataset.value?.kind !== 'attendance' || turns.value.includes(turn.value))
 const axis = computed(() => dataset.value?.axes.includes(selectedAxis.value) ? selectedAxis.value : dataset.value?.axes[0])
 const metric = computed(() => dataset.value?.metrics.includes(selectedMetric.value) ? selectedMetric.value : dataset.value?.metrics[0])
 const availableParts = computed(() => Object.entries(store.manifest.tables.election_profiles?.parts ?? {}).filter(([,p]) => p.datasetId === dataset.value?.datasetId))
@@ -46,6 +48,7 @@ const loaded = useAsync(() => [dataset.value?.datasetId, state.value, level.valu
 const query = computed(() => axis.value && metric.value ? profileBreakdownQuery(scope.value, axis.value, metric.value) : null)
 const results = useAsync(() => [JSON.stringify(scope.value), axis.value, metric.value, loaded.loading], async (_, q) => {
   if (loaded.loading || !loaded.data || !query.value) return null
+  if (!turnAvailable.value) return []
   return objects(await q(query.value.sql, query.value.params))
 })
 const places = useAsync(() => [dataset.value?.datasetId, year.value, turn.value, state.value, detail.value, loaded.loading], async (_, q) => {
@@ -77,27 +80,31 @@ h2 {{ t('profiles.title') }}
 Notice(v-if="metadata.error" kind="warning") {{ metadata.error.message }}
 Notice(v-if="loaded.error" kind="warning") {{ loaded.error.message }}
 Notice {{ t('profiles.snapshot') }}
+p.muted(v-if="dataset") {{ dataset.datasetId }} · {{ year }}
+Notice(v-if="!turnAvailable") {{ t('profiles.roundUnavailable') }}
 p.muted(v-if="dataset && year !== contextYear") {{ t('profiles.differentYear', { year, context: contextYear }) }}
+p.muted(v-if="dataset && dataset.kind === 'attendance' && turn !== contextTurn") {{ t('profiles.differentTurn', { turn, context: contextTurn ?? '–' }) }}
 .cluster
   Field(:label="t('profiles.source')")
     select(:value="dataset?.datasetId" @change="resetDataset")
-      option(v-for="d in datasets" :key="d.datasetId" :value="d.datasetId") {{ d.datasetId }}
-  Field(:label="t('profiles.year')")
+      option(v-for="d in datasets" :key="d.datasetId" :value="d.datasetId" :selected="d.datasetId === dataset?.datasetId") {{ d.datasetId }}
+  Field(v-if="(dataset?.years.length ?? 0) > 1" :label="t('profiles.year')")
     select(:value="year" @change="selectedYear = Number($event.target.value)")
       option(v-for="y in dataset?.years ?? []" :key="y" :value="y" :selected="y === year") {{ y }}
   Field(:label="t('profiles.turn')")
     select(:value="turn" @change="selectedTurn = Number($event.target.value)")
+      option(v-if="!turnAvailable" :value="turn" selected) {{ t('profiles.unavailableTurn', { turn }) }}
       option(v-if="!turns.length" :value="null") {{ t('profiles.snapshotTurn') }}
       option(v-for="n in turns" :key="n" :value="n" :selected="n === turn") {{ n }}
   Field(:label="t('common.state')")
     select(:value="state" @change="selectedState = $event.target.value")
-      option(v-for="s in states" :key="s" :value="s") {{ s.toUpperCase() }}
+      option(v-for="s in states" :key="s" :value="s" :selected="s === state") {{ s.toUpperCase() }}
   Field(:label="t('profiles.axis')")
     select(:value="axis" @change="selectedAxis = $event.target.value")
-      option(v-for="a in dataset?.axes ?? []" :key="a" :value="a") {{ t(`profiles.axes.${a}`) }}
+      option(v-for="a in dataset?.axes ?? []" :key="a" :value="a" :selected="a === axis") {{ t(`profiles.axes.${a}`) }}
   Field(:label="t('profiles.metric')")
     select(:value="metric" @change="selectedMetric = $event.target.value")
-      option(v-for="m in dataset?.metrics ?? []" :key="m" :value="m") {{ t(`profiles.metrics.${m}`) }}
+      option(v-for="m in dataset?.metrics ?? []" :key="m" :value="m" :selected="m === metric") {{ t(`profiles.metrics.${m}`) }}
 label
   input(type="checkbox" v-model="detail")
   | {{ t('profiles.loadDetail') }}
@@ -115,7 +122,7 @@ details
   .cluster
     Field(:label="t('profiles.axis')")
       select(v-model="filterAxis")
-        option(v-for="a in dataset?.axes ?? []" :key="a" :value="a") {{ t(`profiles.axes.${a}`) }}
+        option(v-for="a in dataset?.axes ?? []" :key="a" :value="a" :selected="a === filterAxis") {{ t(`profiles.axes.${a}`) }}
     Field(:label="t('profiles.category')")
       select(v-model="filterValue")
         option(value="") {{ t('profiles.choose') }}
@@ -130,9 +137,13 @@ Panel(:title="t('profiles.breakdown')" :state="results" :election="election" wid
   p.muted {{ t('profiles.grain', { level }) }}
   p(v-if="dataset")
     a(:href="dataset.sourceUrl" target="_blank" rel="noopener") {{ t('profiles.original') }}
-    code {{ dataset.sourceSha256 }}
+    code.profile-hash {{ dataset.sourceSha256 }}
   details(v-if="query")
     summary {{ t('common.openInConsole') }}
     pre {{ query.sql }}
     pre {{ JSON.stringify(query.params) }}
 </template>
+
+<style scoped>
+.profile-hash { display: block; overflow-wrap: anywhere; }
+</style>

@@ -1186,6 +1186,7 @@ compare:
   historyState: "State (empty: all)"
   flowFrom: "First-round origin"
   modes:
+    canonical: Indicators · all sources
     indicators: Detailed indicators
     history: History since 1933
     flows: Between rounds
@@ -1280,6 +1281,7 @@ compare:
     signals: "Signals are statistical criteria over sections with available inputs; they are not proof of irregularity."
     seats: "Rules, alliances and federations change across elections. Seats represent each period's official result, not a simulation under the same rule."
   metrics:
+    candidate_total_votes: Source candidate counts total
     null_total_votes: "Reported total null votes"
     technical_null_votes: "Technical null votes"
     annulled_votes: "Votes annulled by legal status"
@@ -1397,6 +1399,12 @@ electionData:
     ballots: "Reported ballot total"
 
 electionAnalysis:
+  aggregateUnits: Observed totals by state
+  aggregateUnitsNote: This source only publishes state aggregates. The distribution uses totals for each state; candidates from separate contests are not compared against one another.
+  nominalValid: Counts represent official aggregate valid candidate votes.
+  recorded: Counts represent recorded section votes; they do not automatically equal valid votes.
+  reported: Counts represent candidate votes reported by the historical source without reinterpreting their legal destination.
+  mixed: Consult each count’s source and destination; different universes are not equated.
   unit: Territorial unit
   grain: Source granularity
   grains:
@@ -1417,6 +1425,9 @@ electionAnalysis:
 profiles:
   title: Electorate and participation profiles
   snapshot: 'These are aggregate demographic cells from the selected source. Electorate profiles are registration snapshots; they do not identify individual votes or automatically describe supplementary elections.'
+  unavailableTurn: 'Round {turn} — unavailable in this source'
+  roundUnavailable: This collection has no participation data for the selected round. A different round is queried only when explicitly selected.
+  differentTurn: 'The source displays round {turn}; the selected context is round {context}.'
   differentYear: 'The displayed source reports {year}; the selected election context is {context}.'
   source: Official collection
   year: Source year
@@ -1451,6 +1462,7 @@ profiles:
     indigenous_language: Indigenous language
     indigenous_group: Indigenous group
     quilombola_language: Quilombola language
+    vote_obligation: Voting obligation
     biometric_status: Biometric registration
   metrics:
     eligible: Electorate
@@ -1471,3 +1483,34 @@ profiles:
     absent_disability_optional: Abstention with disability and optional voting
     present_disability_mandatory: Attendance with disability and mandatory voting
     absent_disability_mandatory: Abstention with disability and mandatory voting
+
+
+candidateRoster:
+  title: Official nominations and outcomes
+  observedNote: Outcomes and attributes published by TSE. Observed composition does not recalculate seat-allocation rules.
+  outcome: Reported electoral outcome
+  registrationStatus: Registration status
+  gender: Gender
+  race: Race
+  education: Education
+  occupation: Occupation
+  age_band: Age band
+  allCities: All municipalities · descriptive summary
+  separateBodies: Municipalities have separate contests and governing bodies. These source-record totals do not represent a single state chamber.
+  observedElected: Records explicitly reported as elected
+  records: '{n} records with an explicit elected outcome'
+  registrations: Nomination records and attributes
+  unknownNote: An unknown outcome does not mean unelected. Aggregated records without a known jurisdiction do not necessarily identify distinct people.
+  nativeComposition: Composition and visualizations from existing seat sources
+
+
+canonicalComparison:
+  intro: Official indicators for all available elections, queried directly in the browser. Missing source quantities remain unknown.
+  date: Reported date
+  cityCode: Source TSE municipality code
+  turn: Round
+  allTurns: All rounds
+  supplementary: Include supplementary elections
+  jurisdiction: Select the contest state. Municipal offices also require a municipality code; candidates from separate contests do not form a single competition.
+  definition: Changes use the first observation with the same count definition. Municipalities, territories, rules, nominations and electorates can change between elections; ballot numbers do not identify the same person across years.
+  leading: Leading candidate in each contest · separate selection per election

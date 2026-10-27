@@ -1187,6 +1187,7 @@ compare:
   historyState: "UF (vazio: todas)"
   flowFrom: "Origem no 1º turno"
   modes:
+    canonical: Indicadores · todas as fontes
     indicators: Indicadores detalhados
     history: Histórico desde 1933
     flows: Entre turnos
@@ -1281,6 +1282,7 @@ compare:
     signals: "Sinais são critérios estatísticos sobre as seções com insumos disponíveis; não são prova de irregularidade."
     seats: "As regras, alianças e federações mudam entre eleições. Cadeiras representam o resultado oficial de cada período, não uma simulação com a mesma regra."
   metrics:
+    candidate_total_votes: Total das contagens de candidatos na fonte
     null_total_votes: "Total de votos nulos informado"
     technical_null_votes: "Nulos técnicos"
     annulled_votes: "Anulados por situação jurídica"
@@ -1398,6 +1400,12 @@ electionData:
     ballots: "Total de votos informado"
 
 electionAnalysis:
+  aggregateUnits: Totais observados por UF
+  aggregateUnitsNote: Esta fonte só oferece agregados estaduais. A distribuição usa os totais de cada UF; candidatos de disputas diferentes não são comparados entre si.
+  nominalValid: A contagem representa votos nominais válidos da fonte oficial agregada.
+  recorded: A contagem representa votos registrados na fonte por seção; não equivale automaticamente a votos válidos.
+  reported: A contagem representa votos nominais reportados na fonte histórica, sem reinterpretar sua destinação.
+  mixed: Consulte a destinação e a fonte de cada contagem; universos diferentes não são equiparados.
   unit: Unidade territorial
   grain: Granularidade da fonte
   grains:
@@ -1418,6 +1426,9 @@ electionAnalysis:
 profiles:
   title: Perfil do eleitorado e da participação
   snapshot: 'Estas são células demográficas agregadas da fonte selecionada. O perfil do eleitorado é uma fotografia cadastral; não identifica votos individuais nem vincula automaticamente eleições suplementares.'
+  unavailableTurn: 'Turno {turn} — indisponível nesta fonte'
+  roundUnavailable: Esta coleção não possui dados de participação para o turno selecionado. Outro turno só será consultado se você o selecionar explicitamente.
+  differentTurn: 'A fonte exibe o turno {turn}; o contexto selecionado é o turno {context}.'
   differentYear: 'A fonte exibida é de {year}; o contexto selecionado é de {context}.'
   source: Coleção oficial
   year: Ano informado pela fonte
@@ -1452,6 +1463,7 @@ profiles:
     indigenous_language: Idioma indígena
     indigenous_group: Grupo indígena
     quilombola_language: Idioma quilombola
+    vote_obligation: Obrigatoriedade do voto
     biometric_status: Situação biométrica
   metrics:
     eligible: Eleitorado
@@ -1472,3 +1484,34 @@ profiles:
     absent_disability_optional: Abstenção com deficiência e voto facultativo
     present_disability_mandatory: Comparecimento com deficiência e voto obrigatório
     absent_disability_mandatory: Abstenção com deficiência e voto obrigatório
+
+
+candidateRoster:
+  title: Candidaturas e resultados oficiais
+  observedNote: Situações e atributos publicados pelo TSE. A composição observada não recalcula regras de distribuição de cadeiras.
+  outcome: Situação de totalização
+  registrationStatus: Situação da candidatura
+  gender: Gênero
+  race: Cor ou raça
+  education: Escolaridade
+  occupation: Ocupação
+  age_band: Faixa etária
+  allCities: Todos os municípios · resumo descritivo
+  separateBodies: Cada município constitui uma disputa e um órgão distintos. A soma abaixo descreve registros da fonte e não uma Câmara estadual unificada.
+  observedElected: Registros com situação de eleito
+  records: '{n} registros com eleição explicitamente informada'
+  registrations: Registros de candidatura e atributos
+  unknownNote: Ausência de situação de totalização não significa não eleito. Registros agregados sem circunscrição conhecida não identificam necessariamente pessoas distintas.
+  nativeComposition: Composição e visualização das fontes de cadeiras existentes
+
+
+canonicalComparison:
+  intro: Indicadores oficiais de todos os pleitos disponíveis, consultados diretamente no navegador. Fontes sem a medida permanecem sem valor.
+  date: Data informada
+  cityCode: Código TSE do município na fonte
+  turn: Turno
+  allTurns: Todos os turnos
+  supplementary: Incluir eleições suplementares
+  jurisdiction: Selecione a UF da disputa. Para cargos municipais, informe também o código do município; candidatos de disputas distintas não compõem uma competição única.
+  definition: Mudanças usam a primeira observação com a mesma definição de contagem. Municípios, territórios, regras, candidaturas e universos eleitorais podem mudar entre pleitos; números de urna não identificam a mesma pessoa em anos diferentes.
+  leading: Mais votado na disputa · escolha independente por pleito

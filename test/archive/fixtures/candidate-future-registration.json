@@ -1,0 +1,31 @@
+{
+ "columns": [
+  "election_id",
+  "state",
+  "office",
+  "office_key",
+  "constituency",
+  "candidate_id",
+  "number",
+  "name",
+  "short_name",
+  "party_number",
+  "party",
+  "party_name",
+  "source_candidate_id",
+  "gender",
+  "race",
+  "education",
+  "occupation",
+  "age_band",
+  "status",
+  "status_code",
+  "candidacy_status",
+  "source_url",
+  "source_sha256",
+  "source_year"
+ ],
+ "rows": 4,
+ "sourceUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_cand/consulta_cand_2024.zip",
+ "sourceSha256": "9216ce71f42a4366dd2ee0f02c97db03ae5688cf4fdc13c2db4b13fa6c8f0576"
+}
