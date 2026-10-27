@@ -100,7 +100,7 @@ Notice(v-if="cand&&!selectedCandidate&&!inputs.loading&&!aggregate") {{ t('canon
 p.muted {{ t(meaningKey) }}
 Notice(v-if="aggregate") {{ t('electionAnalysis.aggregateUnitsNote') }}
 Notice(v-if="grain==='section'&&data.data") {{ data.data.referenceSections==null?t('electionAnalysis.sectionReferenceUnknown',{n:int(data.data.rows.length)}):t('electionAnalysis.sectionCoverage',{n:int(data.data.rows.length),reference:int(data.data.referenceSections)}) }}
-Notice {{ t('electionAnalysis.sourceGrain', { grain: grain ? t(`electionAnalysis.grains.${grain}`) : '–' }) }}
+Notice {{ grain==='section'?t('electionAnalysis.sectionGrain'):t('electionAnalysis.sourceGrain', { grain: grain ? t(`electionAnalysis.grains.${grain}`) : '–' }) }}
 .grid-auto
   Panel(:title="t('analysis.histTitle')" :state="data" :election="key" wide v-if="mode === 'analysis'")
     ColumnChart(:label="t('analysis.histTitle')" :values="counts" :labels="Array.from({length:40},(_,i)=>aggregate?int(i/40*maxValue):pct(i/40))" :tick="int" :fmt="int")
@@ -123,5 +123,5 @@ Notice {{ t('electionAnalysis.sourceGrain', { grain: grain ? t(`electionAnalysis
   Panel(:title="t('common.openInConsole')" :election="key" wide v-if="query")
     pre {{ query.sql }}
     p.muted {{ JSON.stringify(query.params) }}
-  Explainer(v-if="mode === 'benford'")
+  Explainer(v-if="mode === 'benford'" mode="observed")
 </template>

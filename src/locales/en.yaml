@@ -1422,6 +1422,7 @@ electionData:
     ballots: "Reported ballot total"
 
 electionAnalysis:
+  sectionGrain: "Observed unit: published polling sections. Each record is an aggregate count for a section, not an individual ballot."
   sectionCoverage: "{n} sections with observed candidate counts in this scope; the official reference reports {reference} sections. File availability does not imply complete section coverage."
   sectionReferenceUnknown: "{n} sections with observed counts. The official reference section count is unknown in this scope."
   aggregateN: "{n} states with published counts; totals do not identify voters or individual ballots."

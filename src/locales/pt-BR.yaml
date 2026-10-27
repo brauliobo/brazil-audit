@@ -1423,6 +1423,7 @@ electionData:
     ballots: "Total de votos informado"
 
 electionAnalysis:
+  sectionGrain: "Unidade observada: seções eleitorais publicadas. Cada registro é uma contagem agregada por seção, não um voto individual."
   sectionCoverage: "{n} seções com contagens de candidatos observadas neste recorte; a referência oficial informa {reference} seções. A disponibilidade do arquivo não implica cobertura de todas as seções."
   sectionReferenceUnknown: "{n} seções com contagens observadas. O número de seções na referência oficial é desconhecido neste recorte."
   aggregateN: "{n} UFs com contagens publicadas; os totais não identificam eleitores ou votos individuais."

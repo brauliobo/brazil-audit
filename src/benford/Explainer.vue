@@ -1,11 +1,12 @@
 <script setup vapor>
+import { computed } from 'vue'
 import { int, pct } from '../format'
 import { t } from '../i18n'
 import { minSample } from './stats'
 
 // The plain-language panel: what the law says, why it is a heuristic, why section counts break it, what the baseline adds,
 // how to read the numbers, what is included. `build` = the parameters recorded in the manifest by the build.
-const props = defineProps({ build: Object })
+const props = defineProps({ build: Object,mode:{type:String,default:'simulation'} })
 const SECTIONS = [
   { id: 'law', title: 'benford.explainer.law.title', body: ['benford.explainer.law.p1'] },
   { id: 'heuristic', title: 'benford.explainer.heuristic.title', body: ['benford.explainer.heuristic.p1'] },
@@ -23,19 +24,23 @@ const SOURCES = [
   ['benford.explainer.sources.mebane', 'https://public.websites.umich.edu/~wmebane/pm06.pdf'],
   ['benford.explainer.sources.nigrini', "https://www.wiley.com/en-us/Benford's+Law:+Applications+for+Forensic+Accounting,+Auditing,+and+Fraud+Detection-p-9781118152850"],
 ]
-const vars = {
-  minD1: int(minSample('d1')), minD2: int(minSample('d2')), minD12: int(minSample('d12')), minLast: int(minSample('d_last')),
-  nationalShare: pct(props.build.nationalShare, 0), localShare: pct(props.build.localShare, 0), bigShare: pct(props.build.bigShare, 0),
-  munLocalShare: pct(props.build.munLocalShare, 0), munNationalShare: pct(props.build.munNationalShare, 0), munSections: int(props.build.munSections[1]), munSectionsOther: int(props.build.munSections.other),
-}
+const sections=computed(()=>props.mode==='observed' ? SECTIONS.filter(s=>['law','heuristic','sections','read'].includes(s.id)).map(s=>s.id==='read'?{...s,body:['benford.explainer.read.p1','benford.explainer.read.p3']}:s) : SECTIONS)
+const vars = computed(() => {
+  const minimums={minD1:int(minSample('d1')),minD2:int(minSample('d2')),minD12:int(minSample('d12')),minLast:int(minSample('d_last'))}
+  if(props.mode==='observed')return minimums
+  return {...minimums,
+    nationalShare:pct(props.build.nationalShare,0),localShare:pct(props.build.localShare,0),bigShare:pct(props.build.bigShare,0),
+    munLocalShare:pct(props.build.munLocalShare,0),munNationalShare:pct(props.build.munNationalShare,0),munSections:int(props.build.munSections[1]),munSectionsOther:int(props.build.munSections.other),
+  }
+})
 </script>
 
 <template lang="pug">
 .bf-explainer
-  section(v-for="s in SECTIONS" :key="s.id" :id="`bf-${s.id}`")
+  section(v-for="s in sections" :key="s.id" :id="`bf-${s.id}`")
     h3 {{ t(s.title) }}
     p(v-for="key in s.body" :key="key") {{ t(key, vars) }}
-  section#bf-included
+  section#bf-included(v-if="mode==='simulation'")
     h3 {{ t('benford.explainer.included.title') }}
     ul
       li(v-for="key in INCLUDED" :key="key") {{ t(key, vars) }}
