@@ -1,0 +1,56 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-10-27T14:58:54.787163+00:00",
+  "status": "published",
+  "dataset": {
+    "id": "historical-sections-2000",
+    "title": "Seções eleitorais 2000 — fatos consultáveis",
+    "branch": "archive/historical-sections-2000",
+    "tag": "data-historical-sections-2000",
+    "source": "https://dadosabertos.tse.jus.br",
+    "license": "Licença declarada em cada fonte oficial"
+  },
+  "resources": [
+    {
+      "status": "prepared",
+      "year": 2000,
+      "sourceUrls": [
+        "https://cdn.tse.jus.br/estatistica/sead/odsele/detalhe_votacao_secao/detalhe_votacao_secao_2000.zip",
+        "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2000_AC.zip",
+        "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2000_AL.zip",
+        "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2000_AM.zip",
+        "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2000_AP.zip",
+        "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2000_BA.zip",
+        "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2000_CE.zip",
+        "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2000_ES.zip",
+        "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2000_GO.zip",
+        "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2000_MA.zip",
+        "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2000_MG.zip",
+        "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2000_MS.zip",
+        "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2000_MT.zip",
+        "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2000_PA.zip",
+        "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2000_PB.zip",
+        "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2000_PE.zip",
+        "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2000_PI.zip",
+        "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2000_PR.zip",
+        "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2000_RJ.zip",
+        "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2000_RN.zip",
+        "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2000_RO.zip",
+        "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2000_RR.zip",
+        "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2000_RS.zip",
+        "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2000_SC.zip",
+        "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2000_SE.zip",
+        "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2000_SP.zip",
+        "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2000_TO.zip"
+      ],
+      "browserCommit": "a1fd1eb9dd13b98fba4472b17c3a4c26ae574d99",
+      "assets": [
+        {
+          "name": "sections-0000.zip",
+          "bytes": 466076737,
+          "sha256": "12ccf049b532f26e6f084f0e975adaa576f59a59ea2698f5eda0df734604e650"
+        }
+      ]
+    }
+  ]
+}
