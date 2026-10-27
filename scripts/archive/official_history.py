@@ -113,3 +113,11 @@ def official_rows(root, normalize):
             url = f'https://resultados.tse.jus.br/oficial/ele{first["year"]}/{event}/dados/{state}/{state}-c0001-e{event:06d}-u.json'
             row = adapt(json.loads(data), dict(scope='uf', state=state), first, url, hashlib.sha256(data).hexdigest(), normalize)
             yield row, first['year'], True
+
+        governor_event = first['official']['events']['3']
+        for path in sorted(pathlib.Path('.cache').glob(f'transfers-{first["year"]}-1-governor-??.json')):
+            state = path.stem.rsplit('-', 1)[-1]
+            data = path.read_bytes()
+            url = f'https://resultados.tse.jus.br/oficial/ele{first["year"]}/{governor_event}/dados/{state}/{state}-c0003-e{governor_event:06d}-u.json'
+            row = adapt(json.loads(data), dict(scope='uf', state=state), first, url, hashlib.sha256(data).hexdigest(), normalize)
+            yield row, first['year'], True

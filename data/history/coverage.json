@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-26T23:55:56.198480+00:00",
+  "generatedAt": "2026-10-27T00:15:37.568550+00:00",
   "basic": {
     "collections": 98,
     "published": 98,
@@ -46,7 +46,7 @@
       2024,
       2026
     ],
-    "rows": 449011,
+    "rows": 449032,
     "missingSources": []
   },
   "rdv": {

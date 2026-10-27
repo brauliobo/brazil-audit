@@ -62,6 +62,13 @@ def publish(root):
                 state = path.stem.rsplit('-', 1)[-1]
                 comparisons.append(dict(input=path, office='president', turn=1, event=event, state=state, code='', zone=None, scope='uf',
                     url=f'https://resultados.tse.jus.br/oficial/ele{first["year"]}/{event}/dados/{state}/{state}-c0001-e{event:06d}-u.json'))
+        if first:
+            event = first['official']['events']['3']
+            for path in sorted(pathlib.Path('.cache').glob(f'transfers-{first["year"]}-1-governor-??.json')):
+                state = path.stem.rsplit('-', 1)[-1]
+                comparisons.append(dict(input=path, office='governor', turn=1, event=event, state=state, code='', zone=None, scope='uf',
+                    url=f'https://resultados.tse.jus.br/oficial/ele{first["year"]}/{event}/dados/{state}/{state}-c0003-e{event:06d}-u.json'))
+        comparisons = list({source['url']: source for source in comparisons}.values())
         if comparisons:
             pack = directory / 'comparison-official-sources.zip'
             sources = []

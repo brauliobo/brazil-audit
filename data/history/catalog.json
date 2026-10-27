@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-26T23:55:56.199518+00:00",
+  "generatedAt": "2026-10-27T00:15:37.569414+00:00",
   "source": {
     "url": "https://dadosabertos.tse.jus.br/api/3/action/package_search",
     "license": "cc-by"
@@ -87772,7 +87772,7 @@
       "normalized": false,
       "inScope": true,
       "status": "published",
-      "publicationVerifiedAt": "2026-10-26T23:35:58.319006+00:00",
+      "publicationVerifiedAt": "2026-10-27T00:13:23.476390+00:00",
       "resources": [
         {
           "id": "official-presidential-turnout",
@@ -87893,17 +87893,17 @@
           "url": "https://resultados.tse.jus.br/oficial/ele2026/6259/dados/ac/ac-c0003-e006259-u.json",
           "status": "published",
           "inScope": true,
-          "sourceCount": 2004,
+          "sourceCount": 2025,
           "assets": [
             {
               "name": "comparison-official-sources.zip",
-              "bytes": 3168712,
-              "sha256": "2df84d0189aa80d4ed7d588a4d1e744c52a5e2048806abf676319062f7eb9e3b"
+              "bytes": 3209759,
+              "sha256": "0f52243ae5dc446349b53e79de7ca8f295993d1c86c293e6833e65c6a6dc4565"
             },
             {
               "name": "COMPARISON-SOURCES.json",
-              "bytes": 859498,
-              "sha256": "28bac4d2dd2e67f9cfb4bd367dbf5a6f1768a4fd43718583e7270e4e29aa04ea"
+              "bytes": 868003,
+              "sha256": "af0bf6860f2e59f1b6c704c7a9e2456a1134a7658b87d22e5467569486764dcf"
             }
           ]
         },
@@ -87918,8 +87918,8 @@
           "assets": [
             {
               "name": "indicators-2026-6257-1-2026-10-04.csv.gz",
-              "bytes": 211634,
-              "sha256": "0f18310bbb3a6f50828305a36c04b5ebab0fb36460ed617722fd8072ec34b7d2"
+              "bytes": 215855,
+              "sha256": "257155a566f7bb4ec08404af7203273d3a6def79afd8a119a455fde1ebf47ba9"
             }
           ]
         },
@@ -87930,12 +87930,12 @@
           "status": "published",
           "inScope": true,
           "normalizedSummary": true,
-          "rows": 24430,
+          "rows": 24451,
           "assets": [
             {
               "name": "indicators-2026-6259-1-2026-10-04.csv.gz",
-              "bytes": 653910,
-              "sha256": "9e268462e90be2e906a65be44d7c4b79737851e1f5fa70a21211830acfdfd948"
+              "bytes": 669635,
+              "sha256": "e4f31bd0f8b65f539332fad494ee5b3938aadf4d313e43373b269fc602c7d84b"
             }
           ]
         },
@@ -87950,8 +87950,8 @@
           "assets": [
             {
               "name": "indicators-2026-6258-2-2026-10-25.csv.gz",
-              "bytes": 839808,
-              "sha256": "c5edfa3e9c0b7f6a10c312bde91fbc3fed32ceac31e058060663d4e5aa99757b"
+              "bytes": 848046,
+              "sha256": "363134161a6900886dc4601d508bbb24698c0279424de918493cec0f0da8c9f4"
             }
           ]
         },
@@ -87966,8 +87966,8 @@
           "assets": [
             {
               "name": "indicators-2026-6260-2-2026-10-25.csv.gz",
-              "bytes": 76580,
-              "sha256": "d84ecff5b0bcfbb7c3d7f6009209e20da206554ac536e4d38af93f3a50162c04"
+              "bytes": 77673,
+              "sha256": "d5370a25fa9be177e59bd099d446bd8cdc424e4cc88b50f898c0713bc3f109e9"
             }
           ]
         }
