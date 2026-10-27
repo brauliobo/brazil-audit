@@ -5,7 +5,7 @@ import hashlib
 import json
 import pathlib
 import subprocess
-from tse_archive import GIT, REPO, command, now, read_json, write_json, sha256
+from tse_archive import GIT, REPO, command, now, read_json, write_json, sha256, resource_complete
 
 RESERVED = {'data-2018', 'data-2022', 'data-2026', 'data-2026-2'}
 
@@ -17,6 +17,12 @@ def owned_identity(manifest, allowed):
     if identifier not in allowed or tag in RESERVED or tag != f'data-{identifier}' or branch != f'archive/{identifier}':
         raise ValueError('Refusing to modify a tag outside this task-owned archive namespace')
     return identifier, tag, branch
+
+
+def publication_complete(manifest):
+    # The first schema-v1 snapshots did not have an operation-level status.
+    # Read their explicit resource states and still require full remote asset verification.
+    return manifest.get('status') in [None, 'published'] and all(resource_complete(row) for row in manifest['resources'])
 
 
 def verify_assets(directory, manifest, verification, assets):
@@ -43,14 +49,16 @@ def synchronize(root):
     allowed = {d['id'] for d in catalog['datasets'] if d.get('inScope')}
     for folder in ['rdv', 'official-published']:
         allowed.update(read_json(p)['dataset']['id'] for p in (root / folder).glob('*.json') if 'dataset' in read_json(p))
-    receipt = dict(generatedAt=now(), publications=[])
+    receipt_path = root / 'catalog/release-verification.json'
+    receipt = read_json(receipt_path) if receipt_path.exists() else dict(generatedAt=now(), publications=[])
+    previous = {row['tag']: row for row in receipt['publications']}
     for directory in sorted((root / 'releases').iterdir()):
         if not (directory / 'VERIFIED.json').exists() or directory.name not in allowed:
             continue
         manifest = read_json(directory / 'ARCHIVE.json')
         identifier, tag, branch = owned_identity(manifest, allowed)
         verification = read_json(directory / 'VERIFIED.json')
-        if manifest['status'] != 'published':
+        if not publication_complete(manifest):
             raise ValueError('Cannot finalize tags for an incomplete publication')
         branch_row = command('git', 'ls-remote', '--heads', GIT, f'refs/heads/{branch}')
         new = branch_row.split()[0]
@@ -66,6 +74,16 @@ def synchronize(root):
             raise ValueError('Verified release is not public')
         assets_before = verify_assets(directory, manifest, verification, release['assets'])
         old = command('git', 'ls-remote', '--tags', GIT, f'refs/tags/{tag}').split()[0]
+        prior = previous.get(tag)
+        if prior and (prior['verifiedCommit'] != new or prior['manifestSha256'] != manifest_sha or prior['assetSetSha256'] != assets_before):
+            raise ValueError('Publication changed after final tag audit began')
+        row = prior or dict(id=identifier, tag=tag, branch=branch, oldCommit=old, verifiedCommit=new,
+            manifestSha256=manifest_sha, assetSetSha256=assets_before, assets=verification['assets'], bytes=verification['bytes'],
+            tagChanged=old != new, assetsUnchanged=False, status='planned', releaseUrl=f'https://github.com/{REPO}/releases/tag/{tag}')
+        if not prior:
+            receipt['publications'].append(row)
+            previous[tag] = row
+        write_json(receipt_path, receipt)
         if old != new:
             subprocess.run(['git', 'merge-base', '--is-ancestor', old, new], check=True)
             subprocess.run(['git', 'push', f'--force-with-lease=refs/tags/{tag}:{old}', GIT, f'{new}:refs/tags/{tag}'], check=True)
@@ -77,10 +95,8 @@ def synchronize(root):
             raise ValueError('Tag does not identify the verified branch commit')
         verification.update(manifestSha256=manifest_sha, assetSetSha256=assets_before)
         write_json(directory / 'VERIFIED.json', verification)
-        receipt['publications'].append(dict(id=identifier, tag=tag, branch=branch, oldCommit=old, verifiedCommit=new,
-            manifestSha256=manifest_sha, assetSetSha256=assets_before, assets=verification['assets'], bytes=verification['bytes'],
-            tagChanged=old != new, assetsUnchanged=True, releaseUrl=f'https://github.com/{REPO}/releases/tag/{tag}'))
-        write_json(root / 'catalog/release-verification.json', receipt)
+        row.update(status='verified', assetsUnchanged=True, checkedAt=now())
+        write_json(receipt_path, receipt)
         print(f'verified tag/branch/assets {identifier}', flush=True)
     return receipt
 

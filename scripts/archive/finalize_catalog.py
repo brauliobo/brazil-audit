@@ -59,6 +59,22 @@ def finalize(root, out):
     catalog['uniqueUrlCount'] = len({r['url'] for d in catalog['datasets'] for r in d['resources']})
     catalog['inScopeUniqueResourceCount'] = len({r['url'] for d in catalog['datasets'] if d.get('inScope') for r in d['resources'] if r.get('inScope')})
     catalog['inScopeDatasetCount'] = sum(bool(d.get('inScope')) for d in catalog['datasets'])
+    audit_path = root / 'catalog/final-rdv-inventory.json'
+    if audit_path.exists():
+        audit = read_json(audit_path)
+        proof = {r['url']: r for r in audit['sources']}
+        for dataset in catalog['datasets']:
+            if dataset['id'].startswith('rdv-'):
+                for resource in dataset['resources']:
+                    observed = proof[resource['url']]
+                    if resource['etag'] != observed['etag'] or resource['membersAvailable'] != observed['membersAvailable']:
+                        raise ValueError('Published source does not match the final inventory audit')
+                    for field in ['sourceInventorySha256', 'sourceArchiveSha256']:
+                        resource[field] = observed[field]
+        coverage = read_json(out.parent / 'coverage.json')
+        coverage['rdv'].update(processedResources=audit['resources'], newMembers=audit['newMembers'], referencedMembers=audit['referencedMembers'],
+                               emptySources=audit['emptySources'], originalAssetsVerified=audit['originalAssetsVerified'], inventoryCheckedAt=audit['checkedAt'])
+        write_json(out.parent / 'coverage.json', coverage)
     catalog['generatedAt'] = now()
     write_json(out, catalog)
 
