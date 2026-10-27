@@ -2,7 +2,7 @@ import test from 'node:test'
 import assert from 'node:assert/strict'
 import { readFileSync } from 'node:fs'
 import { ELECTION_LIST as COLLECTORS } from '../src/elections.js'
-import { ELECTION_LIST, ELECTIONS, installElectionRegistry, selectedOffice, supportsView } from '../src/election-registry.js'
+import { ELECTION_LIST, ELECTIONS, installElectionRegistry, selectedOffice, supportsView, currentStateGeometry, territorialGrain, contextParams } from '../src/election-registry.js'
 import { parseRoute } from '../src/routes.js'
 const registry = JSON.parse(readFileSync('data/elections.json','utf8'))
 installElectionRegistry(registry)
@@ -46,4 +46,31 @@ test('municipal and supplementary identities remain separate, using actual sourc
   assert.ok(delayed)
   assert.equal(delayed.year,2026)
   assert.ok(delayed.sourceSession.sourceYears.includes(2022))
+})
+
+test('state maps use geographic compatibility rather than collector availability', () => {
+  assert.equal(currentStateGeometry('2000',['ac','sp'],['ac','sp']).available,true)
+  assert.equal(currentStateGeometry('1998',['ac','sp'],['ac','sp']).available,true)
+  assert.equal(currentStateGeometry('1933',['go','df'],['go','df']).available,false)
+  assert.equal(currentStateGeometry('2000',['gb'],['ac','sp']).available,false)
+  const mixed = currentStateGeometry('2000',['ac','vt'],['ac','sp'])
+  assert.equal(mixed.available,true)
+  assert.deepEqual(mixed.mappedCodes,['ac'])
+  assert.deepEqual(mixed.unmappedCodes,['vt'])
+})
+
+test('local offices keep municipal constituencies and context does not carry unsupported UFs', () => {
+  assert.equal(territorialGrain(selectedOffice('2000','mayor')),'municipality')
+  assert.equal(territorialGrain(selectedOffice('2024','councillor')),'municipality')
+  const fn=ELECTION_LIST.find(e=>e.officeDefinitions.some(o=>String(o.id)==='25'))
+  assert.ok(fn)
+  assert.equal(territorialGrain(fn.officeDefinitions.find(o=>String(o.id)==='25')),'municipality')
+  assert.equal(territorialGrain(selectedOffice('1933')),'state')
+  const normalized=contextParams('2026-2',{office:'governor',state:'sp',city:'71072',cand:'13'})
+  assert.equal(normalized.state,undefined)
+  assert.equal(normalized.city,undefined)
+  const switched=contextParams('1933',{office:'governor',state:'ac',city:'01120',cand:'13'},true)
+  assert.equal(switched.office,'historical:6:DEPUTADO')
+  assert.equal(switched.city,undefined)
+  assert.equal(switched.cand,undefined)
 })

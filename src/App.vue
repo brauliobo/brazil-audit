@@ -2,6 +2,7 @@
 import { computed } from 'vue'
 import { route, href } from './router'
 import { DEFAULT_ELECTION, supportsView } from './model'
+import { contextParams } from './election-registry'
 import { NAV_AREAS, areaForView } from './navigation'
 import { viewName } from './labels'
 import { renderError } from './errors'
@@ -35,9 +36,14 @@ const REPO = 'https://github.com/brauliobo/brazil-audit'
 const views = { overview: Overview, maps: Maps, parliament: Parliament, seats: Seats, drill: Drill, analysis: Analysis, benford: Benford, signals: Signals, time: Time, logs: Logs, sql: Sql, design: Design, compare: Compare, history: History }
 const current = computed(() => (route.value.notFound ? NotFound : views[route.value.view]))
 const election = computed(() => route.value.election)
+const context = computed(() => contextParams(election.value,{
+  ...Object.fromEntries([...route.value.params].filter(([key]) => ['office','state','city'].includes(key))),
+  ...(route.value.view === 'drill' ? {state:route.value.args[0],city:route.value.args[1]} : {}),
+}))
+const contextHref = (view) => href(election.value,view,[],context.value)
 const area = computed(() => areaForView(route.value.view))
-const nav = computed(() => NAV_AREAS.filter((a) => a.views.some((v) => supportsView(election.value,v))).map((a) => ({ label: t(`navGroups.${a.id}`), href: href(election.value, a.views.find((v) => supportsView(election.value,v))), current: area.value?.id === a.id })))
-const subnav = computed(() => (area.value?.views.length > 1 ? area.value.views : []).filter((v) => supportsView(election.value,v)).map((v) => ({ label: viewName(v), href: href(election.value, v), current: route.value.view === v })))
+const nav = computed(() => NAV_AREAS.filter((a) => a.views.some((v) => supportsView(election.value,v))).map((a) => ({ label: t(`navGroups.${a.id}`), href: contextHref(a.views.find((v) => supportsView(election.value,v))), current: area.value?.id === a.id })))
+const subnav = computed(() => (area.value?.views.length > 1 ? area.value.views : []).filter((v) => supportsView(election.value,v)).map((v) => ({ label: viewName(v), href: contextHref(v), current: route.value.view === v })))
 </script>
 
 <template lang="pug">
@@ -52,7 +58,7 @@ header.site-header
     details.header-tools
       summary {{ t('navGroups.tools') }}
       .cluster
-        a.btn.btn--ghost(:href="href(election, 'sql')") {{ t('nav.sql') }}
+        a.btn.btn--ghost(:href="contextHref('sql')") {{ t('nav.sql') }}
         a.btn.btn--ghost(:href="`${REPO}#dados-brutos`") {{ t('footer.raw') }}
         LangSwitch
         ThemeSwitch

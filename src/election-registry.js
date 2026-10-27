@@ -48,6 +48,33 @@ export function selectedOffice(key, requested) {
   return definitions.find((o) => o.key === requested || String(o.id) === String(requested)) ?? preferred ?? definitions[0]
 }
 
+export function contextState(office, requested) {
+  if (requested != null) return requested
+  return office.constituencyGrain === 'municipality' ? office.capabilities.states.find((state) => state && state !== 'br' && state !== 'zz') ?? '' : ''
+}
+
+export function contextParams(key, params, newElection = false) {
+  const result = { ...params }
+  const office = selectedOffice(key,result.office)
+  if (result.office != null) result.office = office.key
+  if (result.state && !office.capabilities.states.includes(result.state)) { delete result.state; delete result.city }
+  if (newElection) { delete result.city; delete result.cand }
+  return result
+}
+
+export function territorialGrain(office) {
+  if (office.constituencyGrain === 'municipality') return 'municipality'
+  if (['national','state'].includes(office.constituencyGrain)) return 'state'
+  return null
+}
+
+export function currentStateGeometry(key, states, geometryCodes) {
+  const temporalCompatible = ELECTIONS[key].year >= 1990
+  const mappedCodes = temporalCompatible ? states.filter((state) => geometryCodes.includes(state)) : []
+  const unmappedCodes = states.filter((state) => !mappedCodes.includes(state))
+  return { temporalCompatible, mappedCodes, unmappedCodes, available: mappedCodes.length > 0 }
+}
+
 export function supportsView(key, view) {
   const e = ELECTIONS[key]
   if (['time', 'logs'].includes(view)) return e.hasTimes

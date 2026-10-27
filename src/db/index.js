@@ -69,10 +69,5 @@ export async function load(copySql, url, version, size, onProgress) {
   return run(copySql, [], { blob })
 }
 
-const literal = (v) =>
-  v === null || v === undefined ? 'NULL'
-  : typeof v === 'number' || typeof v === 'boolean' ? String(v)
-  : `'${String(v).replaceAll("'", "''")}'`
-
-/** The statement with its parameters spelled out, to display and to paste into the SQL console. */
-export const inline = (sql, params = []) => sql.replace(/\$(\d+)/g, (_, i) => literal(params[i - 1]))
+/** Bind parameters are displayed as valid SQL, including source identity arrays. */
+export { inline } from './sql'

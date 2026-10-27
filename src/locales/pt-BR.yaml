@@ -162,7 +162,7 @@ overview:
   polarization: "Polarização: votos válidos dos dois mais votados"
   polarizationNote: Área do círculo proporcional ao percentual dos votos nominais (válidos) segundo os totais oficiais do TSE. Eleições com muitos candidatos e segundos turnos (dois) não são diretamente comparáveis.
   polarizationLabel: "Polarização: participação dos dois candidatos mais votados nos votos válidos, círculos com área proporcional"
-  winnerByState: Vencedor por UF
+  winnerByState: Mais votado por UF
   winnerMapLabel: Mapa do Brasil por UF, colorido pelo candidato mais votado
   winnerNote: Cor do candidato mais votado em cada UF; mais forte = maior margem. Clique numa UF para ver seus municípios.
   seeMaps: Ver mapas
@@ -190,18 +190,18 @@ maps:
   scaleState: Uma UF por município
   show: Mostrar
   metric:
-    winner: Quem venceu
+    winner: Mais votado
     share: "% de um candidato"
-    margin: Margem da vitória
+    margin: Diferença entre os dois mais votados
     blank: Brancos + nulos
   candidate: Candidato
   findCity: Ir para o município
   findCityHint: digite o nome
   headline: "{office}: {headline}"
-  leads_one: "{name} vence em {count} estado"
-  leads_other: "{name} vence em {count} estados"
-  leadsDf_one: "{name} vence em {count} estado e no DF"
-  leadsDf_other: "{name} vence em {count} estados e no DF"
+  leads_one: "{name} é mais votado em {count} estado"
+  leads_other: "{name} é mais votado em {count} estados"
+  leadsDf_one: "{name} é mais votado em {count} estado e no DF"
+  leadsDf_other: "{name} é mais votado em {count} estados e no DF"
   trails: "{name} em {n}"
   trailsDf: "{name} em {n} e no DF"
   panelUf: Brasil por UF
@@ -218,7 +218,7 @@ maps:
   noShape: "Sem polígono no mapa (só aparecem na lista de busca e no detalhamento): {names}."
   blankAndNull: "Brancos e nulos: {rate}"
   clickCities: Clique para ver os municípios
-  winner: "Vencedor: {name}"
+  winner: "Mais votado: {name}"
   spreadTitle: Margem entre os dois mais votados, por município
   municipalities_one: "{count} município"
   municipalities_other: "{count} municípios"
@@ -665,6 +665,10 @@ sql:
   rows_other: "{count} linhas"
   showing: (mostrando {n})
   examples:
+    electionRoster: "Candidaturas e situação cadastral da fonte"
+    electionVotes: "Contagens de votos por cargo e pleito"
+    electionSectionUnits: "Quantidades de referência por seção"
+    electionSectionVotes: "Votos registrados por seção"
     electionUnits: "Unidades e participação do pleito"
     electionCandidates: "Candidatos da fonte do pleito"
     stateFacts: Totais eleitorais históricos por UF
@@ -674,7 +678,7 @@ sql:
     outliers: Seções com tamanho atípico no município (z-score, AC)
     names: Votos por candidato (presidente), com nomes
     time: Votos por 10 minutos (relógio local)
-    cross: "Presidente: vencedor e % por UF em cada eleição carregada"
+    cross: "Presidente: mais votado e % por UF em cada eleição carregada"
     parts: Partes carregadas no navegador
     catalog: "Catálogo: tabelas, colunas e eleições"
   tables:
@@ -1345,6 +1349,8 @@ compare:
     signal_idle: "Pausa longa (%)"
 
 history:
+  integratedFacts: "Há fatos desta fonte integrados às consultas"
+  verifiedVersion: "Versão verificada"
   summaries: "Resumos históricos disponíveis para comparação (a coleção completa pode conter recursos ainda não normalizados)."
   title: Acervo histórico do TSE
   catalog: Catálogo de dados oficiais
@@ -1372,7 +1378,21 @@ history:
     excluded: Fora do escopo de coleta
 
 electionData:
-  leadingShare: "Participação do mais votado"
+  registrationDate: "Data informada no cadastro: {date}"
+  noOfficialTotals: "Há contagens por candidatura na fonte, mas não há resumo oficial de participação e totalização para este cargo e recorte."
+  candidateTotal: "Total dos candidatos nesta fonte"
+  registrationOnly: "{n} candidaturas com dados cadastrais nesta fonte. Não há contagens de votos publicadas para este cargo e recorte."
+  registrationStatus: "Situação informada"
+  originalCode: "{code} (código original da fonte)"
+  constituency: "Circunscrição"
+  unmappedStates: "Códigos da fonte sem geometria compatível: {codes}. Seus dados permanecem na tabela."
+  candidateShareNote: "Percentuais sobre a soma dos votos dos candidatos desta fonte e recorte."
+  meanings:
+    official_nominal_valid: "Votos nominais válidos oficiais"
+    observed_cast: "Votos registrados na fonte"
+    reported_nominal: "Votos nominais informados na fonte"
+  referenceGeometry: "Geografia atual do IBGE como referência para os códigos de UF compatíveis. Não reconstrói alterações históricas de limites."
+  leadingShare: "Participação no total dos candidatos da fonte"
   participationBase: "Percentuais sobre {n} eleitores da base de participação informada; seções não instaladas não informadas pela fonte."
   mapDetails: "Mapas regionais e municipais, anotações e opções da coleta"
   candidate: "Candidato"
@@ -1382,7 +1402,7 @@ electionData:
   sections: "Seções"
   leader: "Mais votado"
   allCandidates: "Todos os candidatos ({n})"
-  byState: "Resultados por UF"
+  byTerritory: "Resultados por circunscrição e localidade"
   noCandidates: "Não há votos por candidato nesta fonte e recorte. Os totais conhecidos permanecem disponíveis."
   noUnits: "Não há registros para este cargo e recorte."
   noParticipation: "A fonte não informa uma base de participação compatível neste recorte."

@@ -1,6 +1,8 @@
+import { PROFILE_AXES, PROFILE_METRICS } from '../src/election-profiles.js'
 import { TRANSFER_CATEGORIES,TRANSFER_STATUSES,TRANSFER_GRAINS,TRANSFER_OFFICES,TRANSFER_REASONS } from '../src/transfer-contract.js'
 import { HISTORICAL_METRICS } from '../src/history-comparison.js'
 import { METRICS } from '../src/comparison.js'
+import { ELECTION_COMPARISON_METRICS } from '../src/election-comparison.js'
 // Checks the locale files and the code that uses them (run by `npm run lint:i18n` and by the Pages workflow):
 //   1. pt-BR.yaml and en.yaml have the same keys and the same {placeholders}; plural keys come as `_one` + `_other`
 //   2. every key used in code (t('a.b'), t(`a.${x}`), or a string that is a key) exists; every key is used
@@ -56,13 +58,17 @@ const isNamespace = (key) => [...defined].some((k) => k.startsWith(`${key}.`))
 // ---- dynamic key families: prefix -> member ids (each `prefix + id` must exist) --------------------------------------------
 const officeIds = [...new Set(Object.values(ELECTIONS).flatMap((e) => e.offices))]
 const FAMILIES = {
+  'candidateRoster.': ['gender','race','education','occupation','age_band'],
+  'electionData.meanings.': ['official_nominal_valid','observed_cast','reported_nominal'],
+  'profiles.axes.': PROFILE_AXES,
+  'profiles.metrics.': PROFILE_METRICS,
   'electionAnalysis.grains.': ['state','municipality','zone','section','national'],
   'electionData.fields.': ['sections','nominal','valid','blank','nul','ballots'],
   'compare.digits.': ['d1','d2','d12','d_last'],
   'history.status.': ['catalogued','downloaded','published','blocked','downloading','unavailable','partial','privacy-review-required','excluded'],
   'navGroups.': ['summary', 'explore', 'compare', 'investigate'],
   'compare.families.': [...new Set(METRICS.map((m) => m.family))],
-  'compare.metrics.': [...new Set([...METRICS.map((m) => m.id),...HISTORICAL_METRICS])],
+  'compare.metrics.': [...new Set([...ELECTION_COMPARISON_METRICS.map((m) => m.id),...HISTORICAL_METRICS])],
   'compare.modes.': ['indicators','history','flows'],
   'compare.roundFields.': ['electorate','installed','present','absent','not_installed'],
   'compare.unitReasons.': ['missing_round','invalid_population','invalid_vote_partition'],

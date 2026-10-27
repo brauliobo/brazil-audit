@@ -41,8 +41,10 @@ Panel(:title="t('history.catalog')" :state="catalog" :election="route.election" 
         option(v-for="f in families" :key="f" :value="f") {{ f }}
   details(v-for="dataset in datasets" :key="dataset.id")
     summary {{ dataset.title }} · {{ status(dataset.status) }}
-    a(v-if="hasSummaries(dataset)" :href="href(route.election,'compare') + '?comparison_mode=history'") {{ t('history.summaries') }}
-    p.muted(v-if="!hasSummaries(dataset)") {{ t(dataset.normalized ? 'history.normalized' : 'history.notNormalized') }}
+    a(v-if="dataset.browserNormalized?.available && dataset.browserNormalized.sessionKey" :href="href(dataset.browserNormalized.sessionKey,'overview')") {{ t('history.integratedFacts') }}
+    p.muted(v-else-if="dataset.browserNormalized?.available") {{ t('history.integratedFacts') }}
+    a(v-else-if="hasSummaries(dataset)" :href="href(route.election,'compare') + '?comparison_mode=history'") {{ t('history.summaries') }}
+    p.muted(v-else) {{ t('history.notNormalized') }}
     .cluster
       a(:href="dataset.source" target="_blank" rel="noopener") {{ t('history.source') }}
       a(v-if="dataset.status === 'published' || (dataset.status === 'partial' && dataset.publicationVerifiedAt)" :href="dataset.releaseUrl" target="_blank" rel="noopener") {{ t('history.release') }}
@@ -57,6 +59,8 @@ Panel(:title="t('history.catalog')" :state="catalog" :election="route.election" 
           tr(v-for="resource in dataset.resources.filter((r) => r.inScope !== false)" :key="resource.id")
             td
               a(:href="resource.url" target="_blank" rel="noopener") {{ resource.name }}
+              span(v-if="resource.downloadVersionUrl") ·
+              a(v-if="resource.downloadVersionUrl" :href="resource.downloadVersionUrl" target="_blank" rel="noopener") {{ t('history.verifiedVersion') }}
             td {{ status(resource.status) }}
             td {{ resource.bytes == null ? '–' : bytes(resource.bytes) }}
 </template>

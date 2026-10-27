@@ -5,8 +5,12 @@ import { ELECTIONS, selectedOffice } from './model.js'
 
 const E = 'election = {year} and turn = {turn}'
 export const EXAMPLES = [
-  { id: 'electionUnits', canonical: true, sql: `select election_id,grain,state,city_code,zone,office_name,eligible,installed,present,absent,blank,null_votes,ballots,valid,source_url\nfrom election_units where session_key = {session} and office_key = {office_key} order by state,city_code,zone` },
-  { id: 'electionCandidates', canonical: true, sql: `select c.* from election_candidates c\nwhere c.election_id in (select distinct election_id from election_units where session_key = {session}) order by c.state,c.name` },
+  { id: 'electionUnits', canonical: true, table:'election_units', sql: `select election_id,grain,state,city_code,zone,office_name,eligible,installed,present,absent,blank,null_votes,ballots,valid,source_url\nfrom election_units where election_id = any({event_ids}::text[]) and office_key = {office_key} order by state,city_code,zone` },
+  { id: 'electionCandidates', canonical: true, table:'election_candidates', sql: `select c.* from election_candidates c\nwhere c.election_id = any({event_ids}::text[]) and c.office_key = {office_key} order by c.state,c.name` },
+  { id: 'electionRoster', canonical: true, table:'candidate_attributes', sql: `select election_id,state,constituency,number,name,party,party_name,status,candidacy_status,source_url from candidate_attributes\nwhere election_id = any({event_ids}::text[]) and office_key = {office_key} order by state,constituency,name` },
+  { id: 'electionVotes', canonical: true, table:'election_vote_rollups', sql: `select election_id,grain,state,city_code,office_key,kind,number,votes,destination,source_url from election_vote_rollups\nwhere election_id = any({event_ids}::text[]) and office_key = {office_key} order by state,city_code,votes desc` },
+  { id: 'electionSectionUnits', canonical: true, table:'election_section_units', sql: `select election_id,state,city_code,zone,section,office_name,eligible,installed,present,absent,blank,null_votes,nominal_reported,source_url from election_section_units\nwhere election_id = any({event_ids}::text[]) and office_key = {office_key} order by state,city_code,zone,section` },
+  { id: 'electionSectionVotes', canonical: true, table:'election_section_votes', sql: `select election_id,state,city_code,zone,section,office_key,number,kind,votes,destination,source_url from election_section_votes\nwhere election_id = any({event_ids}::text[]) and office_key = {office_key} order by state,city_code,zone,section,number` },
   { id: 'uf', sql: `select state, cand, sum(votes) votes from res\nwhere ${E} and office = 1 and state <> 'zz' group by state, cand order by state, votes desc` },
   { id: 'stateFacts', sql: `select year,date,office,state,turn,electorate,installed,present,absent,not_installed,votes_complete\nfrom state_rounds where year = {year} and office = 1 order by state,turn` },
   { id: 'ranking', sql: `with c as (select state, city, cand, sum(votes) votes from res where ${E} and office = 1 group by 1, 2, 3),\n  t as (select state, city, sum(votes) total from c group by 1, 2)\nselect c.state, c.city, c.cand, c.votes, round(c.votes::numeric / t.total * 100, 1) pct\nfrom c join t using (state, city) where t.total > 5000 order by pct desc limit 20` },
@@ -20,20 +24,21 @@ export const EXAMPLES = [
 ]
 
 /** The examples that make sense for an election (some need voting times or seats). */
-export const examplesFor = (key) => EXAMPLES.filter((e) => (e.canonical || ELECTIONS[key].legacyKey || ['parts','catalog'].includes(e.id)) && (!e.needs || ELECTIONS[key][e.needs]))
+export const examplesFor = (key, office) => EXAMPLES.filter((e) => (!e.table || selectedOffice(key,office).capabilities.tables.includes(e.table)) && (e.canonical || ELECTIONS[key].legacyKey || ['parts','catalog'].includes(e.id)) && (!e.needs || ELECTIONS[key][e.needs]))
 
-export const fill = (sql, key) => sql.replaceAll('{year}', ELECTIONS[key].year).replaceAll('{turn}', ELECTIONS[key].turn)
-  .replaceAll('{session}', `'${key.replaceAll("'", "''")}'`).replaceAll('{office_key}', `'${selectedOffice(key).key.replaceAll("'", "''")}'`)
+export const fill = (sql, key, office) => sql.replaceAll('{year}', ELECTIONS[key].year).replaceAll('{turn}', ELECTIONS[key].turn)
+  .replaceAll('{event_ids}', `array[${ELECTIONS[key].sourceSession.eventIds.map((id) => `'${id.replaceAll("'", "''")}'`).join(',')}]`)
+  .replaceAll('{session}', `'${key.replaceAll("'", "''")}'`).replaceAll('{office_key}', `'${selectedOffice(key,office).key.replaceAll("'", "''")}'`)
 
 /** What the user did last in the console, kept across election switches: { text } once edited, { example } id when one was picked. */
 export const draft = ref(null)
 
 /** The statement of a fresh console: the first example of the election, unless a draft exists. */
-export function initialSql(key, q) {
+export function initialSql(key, q, office) {
   if (q) return q
-  const examples = examplesFor(key)
+  const examples = examplesFor(key,office)
   if (draft.value?.text != null) return draft.value.text
-  return fill((examples.find((e) => e.id === draft.value?.example) ?? examples[0]).sql, key)
+  return fill((examples.find((e) => e.id === draft.value?.example) ?? examples[0]).sql, key, office)
 }
 
 /** Tables and views of the shared schema, listed under the editor (descriptions: sql.tables.<name>). */

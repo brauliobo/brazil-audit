@@ -161,7 +161,7 @@ overview:
   polarization: "Polarization: valid votes of the top two"
   polarizationNote: Circle area is proportional to the share of nominal (valid) votes according to the official TSE totals. Elections with many candidates and runoffs (two) are not directly comparable.
   polarizationLabel: "Polarization: share of the two leading candidates in the valid votes, circles with proportional area"
-  winnerByState: Winner by state
+  winnerByState: Most voted by state
   winnerMapLabel: Map of Brazil by state, coloured by the leading candidate
   winnerNote: Colour of the leading candidate in each state; stronger = larger margin. Click a state to see its municipalities.
   seeMaps: See maps
@@ -189,18 +189,18 @@ maps:
   scaleState: One state by municipality
   show: Show
   metric:
-    winner: Who won
+    winner: Most voted
     share: "% of one candidate"
-    margin: Winning margin
+    margin: Difference between the top two
     blank: Blank + null
   candidate: Candidate
   findCity: Go to municipality
   findCityHint: type the name
   headline: "{office}: {headline}"
-  leads_one: "{name} wins {count} state"
-  leads_other: "{name} wins {count} states"
-  leadsDf_one: "{name} wins {count} state and the DF"
-  leadsDf_other: "{name} wins {count} states and the DF"
+  leads_one: "{name} is most voted in {count} state"
+  leads_other: "{name} is most voted in {count} states"
+  leadsDf_one: "{name} is most voted in {count} state and the DF"
+  leadsDf_other: "{name} is most voted in {count} states and the DF"
   trails: "{name} {n}"
   trailsDf: "{name} {n} and the DF"
   panelUf: Brazil by state
@@ -217,7 +217,7 @@ maps:
   noShape: "No polygon in the map (they only appear in the search list and in the drill-down): {names}."
   blankAndNull: "Blank and null: {rate}"
   clickCities: Click to see the municipalities
-  winner: "Winner: {name}"
+  winner: "Most voted: {name}"
   spreadTitle: Margin between the top two, by municipality
   municipalities_one: "{count} municipality"
   municipalities_other: "{count} municipalities"
@@ -664,6 +664,10 @@ sql:
   rows_other: "{count} rows"
   showing: (showing {n})
   examples:
+    electionRoster: "Candidacy registrations and source status"
+    electionVotes: "Vote counts by office and election"
+    electionSectionUnits: "Reference quantities by section"
+    electionSectionVotes: "Recorded votes by section"
     electionUnits: "Election units and participation"
     electionCandidates: "Source candidates of the election"
     stateFacts: Historical state election totals
@@ -673,7 +677,7 @@ sql:
     outliers: Sections with an atypical size in the municipality (z-score, AC)
     names: Votes per candidate (president), with names
     time: Votes per 10 minutes (local clock)
-    cross: "President: winner and % by state in each loaded election"
+    cross: "President: most voted and % by state in each loaded election"
     parts: Parts loaded in the browser
     catalog: "Catalog: tables, columns and elections"
   tables:
@@ -1344,6 +1348,8 @@ compare:
     signal_idle: "Long pause (%)"
 
 history:
+  integratedFacts: "Selected facts from this source are integrated into queries"
+  verifiedVersion: "Verified version"
   summaries: "Historical summaries available for comparison (the full collection may include resources not yet normalized)."
   title: TSE historical archive
   catalog: Official data catalogue
@@ -1371,7 +1377,21 @@ history:
     excluded: Outside the collection scope
 
 electionData:
-  leadingShare: "Leading candidate share"
+  registrationDate: "Date reported by registration source: {date}"
+  noOfficialTotals: "Candidate counts are available, but an official participation and tally summary is unavailable for this office and scope."
+  candidateTotal: "Candidate total in this source"
+  registrationOnly: "{n} candidacies with registration data in this source. No vote counts are published for this office and scope."
+  registrationStatus: "Reported status"
+  originalCode: "{code} (original source code)"
+  constituency: "Constituency"
+  unmappedStates: "Source codes without compatible geometry: {codes}. Their data remain in the table."
+  candidateShareNote: "Shares use the sum of candidate votes in this source and scope."
+  meanings:
+    official_nominal_valid: "Official valid nominal votes"
+    observed_cast: "Recorded votes in the source"
+    reported_nominal: "Nominal votes reported by the source"
+  referenceGeometry: "Current IBGE geography is a reference for compatible state codes. Historical boundary changes are not reconstructed."
+  leadingShare: "Share of the source candidate total"
   participationBase: "Rates use the reported participation base of {n} voters; the source does not report uninstalled sections."
   mapDetails: "Regional and municipal maps, annotations and collection options"
   candidate: "Candidate"
@@ -1381,7 +1401,7 @@ electionData:
   sections: "Sections"
   leader: "Leading candidate"
   allCandidates: "All candidates ({n})"
-  byState: "Results by state"
+  byTerritory: "Results by constituency and locality"
   noCandidates: "This source and scope have no candidate vote records. Known totals remain available."
   noUnits: "No records match this office and scope."
   noParticipation: "The source has no compatible participation base for this scope."

@@ -51,6 +51,7 @@ export default defineConfig({
   base,
   plugins: [vue({ features: { vapor: true } }), yamlModules(), themeColors(), pages()],
   worker: { format: 'es' },
+  server: { watch: { ignored: ['**/.cache/**','**/dist/**'] } },
   optimizeDeps: { exclude: ['@electric-sql/pglite'] },
   build: { target: 'es2022', chunkSizeWarningLimit: 600 },
 })

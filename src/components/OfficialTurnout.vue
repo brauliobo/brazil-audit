@@ -2,7 +2,7 @@
 import { computed } from 'vue'
 import { route, href } from '../router'
 import { selectedOffice, ELECTIONS } from '../model'
-import { ensureElection, totalsSql } from '../election-results'
+import { ensureTotals, totalsSql } from '../election-results'
 import { useAsync } from '../use'
 import { objects } from '../db'
 import { int, pct } from '../format'
@@ -15,7 +15,7 @@ const props = defineProps({ year:String,summary:Boolean,scope:Object,officeKey:S
 const office = computed(() => selectedOffice(props.year,props.officeKey ?? route.value.params.get('office')))
 const scope = computed(() => props.scope ?? {state:route.value.args[0],city_code:route.value.args[1],zone:route.value.args[2]})
 const data = useAsync(() => [props.year,office.value.key,scope.value],async ([key,o,s],q) => {
-  await ensureElection(key,o)
+  await ensureTotals(key,o,s)
   const request = totalsSql(key,o,s)
   return objects(await q(request.sql,request.params))[0] ?? {}
 })
@@ -30,7 +30,7 @@ Panel(:title="t('turnout.title')" :state="data" :election="year" wide)
     p.muted(v-if="data.data.not_installed != null") {{ t('turnout.denominator', {n:int(data.data.installed),excluded:int(data.data.not_installed)}) }}
     p.muted(v-else) {{ t('electionData.participationBase', {n:int(data.data.installed)}) }}
   Notice(v-else) {{ t('electionData.noParticipation') }}
-  p.muted(v-if="data.data.units != null") {{ t('electionData.grain', {grain:grainLabel(data.data.grain),n:int(data.data.units)}) }}
+  p.muted(v-if="data.data.units > 0") {{ t('electionData.grain', {grain:grainLabel(data.data.grain),n:int(data.data.units)}) }}
   details(v-if="office.key === 'president' && ELECTIONS[year].sources.official.includes('turnout')")
     summary {{ t('turnout.source') }}
     CollectorTurnout(:year="year" :summary="summary")

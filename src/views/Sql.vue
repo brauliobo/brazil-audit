@@ -16,31 +16,39 @@ import DataTable from '../components/DataTable.vue'
 
 const year = computed(() => route.value.election)
 const cfg = computed(() => ELECTIONS[year.value])
-const examples = computed(() => examplesFor(year.value))
+const examples = computed(() => examplesFor(year.value,route.value.params.get('office')))
 
 // Parts are loaded automatically for the tables a statement mentions (directly or through the views): the small tables of every
 // election, the default parts of rdv/vt for the elections the statement names (`election = 2022`), else the active one.
 const SMALL = ['turnout', 'tot', 'res', 'cov', 'miss', 'residual', 'residual_skipped', 'vtc', 'sgf', 'sgz', 'elected', 'seats']
 const FACTUAL = ['state_rounds','state_round_counts']
-const CANONICAL = ['election_units','election_votes','election_candidates']
+const CANONICAL = ['election_units','election_votes','election_candidates','election_vote_rollups','candidate_attributes','candidate_identity','election_places','election_profiles','election_section_votes','election_section_units']
 const SECTION = ['rdv', 'vt', 'sg','benford_hist', 'benford_base', 'benford_stat']
 const VIEW_TABLES = { sec: ['rdv'], cs: ['rdv'], resx: ['res', 'residual'], totx: ['tot', 'residual'] }
 async function load(text) {
-  const mentioned = [...text.matchAll(/\b[a-z_]+\b/g)].map((m) => m[0])
+  const mentioned = [...text.toLowerCase().matchAll(/\b[a-z_]+\b/g)].map((m) => m[0])
   const wanted = new Set(mentioned.flatMap((n) => VIEW_TABLES[n] ?? [n]))
   const turns = [...text.matchAll(/turn\s*=\s*(\d)/g)].map((m) => +m[1]) // `election = 2022 and turn = 2` names one round, `election = 2022` both
   const named = ELECTION_LIST.filter((e) => [...text.matchAll(/election\s*=\s*(\d{4})/g)].some((m) => +m[1] === e.year) && (!turns.length || turns.includes(e.turn))).map((e) => e.key)
   const sessions = [...text.matchAll(/session_key\s*=\s*'([^']+)'/g)].map((m) => ELECTIONS[m[1]]).filter(Boolean)
-  const canonicalParts = (table) => !sessions.length ? parts(table) : parts(table).filter((id) => {
+  const explicitIds = [...text.matchAll(/(?:\w+\.)?election_id\s*=\s*'([^']+)'/gi)].map((m) => m[1])
+  for (const match of text.matchAll(/(?:\w+\.)?election_id\s*=\s*any\(array\[([^\]]+)\]/gi)) {
+    explicitIds.push(...[...match[1].matchAll(/'((?:[^']|'')+)'/g)].map((m) => m[1].replaceAll("''", "'")))
+  }
+  const officeKeys = [...text.matchAll(/(?:\w+\.)?office_key\s*=\s*'([^']+)'/gi)].map((m) => m[1])
+  const canonicalParts = (table) => parts(table).filter((id) => {
     const metadata = tables()[table].parts[id]
-    return sessions.some((e) => metadata.electionIds?.some((event) => e.sourceSession.eventIds.includes(event)) || id.startsWith(`${e.key}/`) || (table !== 'election_units' && e.sourceSession.sourceYears.some((year) => id.startsWith(`${year}/`))))
+    const columns=tables()[table].columns.split(',')
+    const events = columns.includes('election_id') || columns.includes('session_key') ? [...explicitIds,...sessions.flatMap((e) => e.sourceSession.eventIds)] : []
+    return (!events.length || metadata.electionIds?.some((event) => events.includes(event)) || metadata.sessionKeys?.some((session) => sessions.some((e) => e.key === session)))
+      && (!columns.includes('office_key') || !officeKeys.length || metadata.officeKeys?.some((office) => officeKeys.includes(office)))
   })
-  await Promise.all([...wanted].flatMap((t) => (SMALL.includes(t) ? ELECTION_LIST.map((e) => ensureSmall(e.key, t))
+  await Promise.all([...wanted].flatMap((t) => (SMALL.includes(t) ? ELECTION_LIST.filter((e) => e.legacyKey).map((e) => ensureSmall(e.key, t))
     : CANONICAL.includes(t) ? [ensure(t,canonicalParts(t))]
     : SECTION.includes(t) ? (named.length ? named : [year.value]).map((k) => ensureDefault(t, k)) : [...FACTUAL,'cands','mun_map'].includes(t) ? [ensure(t)] : [])))
 }
 
-const sql = ref(initialSql(year.value, route.value.params.get('q')))
+const sql = ref(initialSql(year.value, route.value.params.get('q'),route.value.params.get('office')))
 const out = ref(null)
 const failure = ref(null)
 const running = ref(false)
@@ -80,7 +88,7 @@ const columns = computed(() => out.value.columns.map((c) => ({ key: c, label: c,
 const pick = (e) => {
   const example = EXAMPLES.find((x) => x.id === e.target.value)
   draft.value = { example: example.id }
-  sql.value = fill(example.sql, year.value)
+  sql.value = fill(example.sql, year.value,route.value.params.get('office'))
   e.target.value = ''
 }
 const loadedElections = computed(() => String(ELECTION_LIST.length))
