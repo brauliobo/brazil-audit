@@ -50,12 +50,15 @@ function base(key, officeKey, scope = {}, source = 'votes') {
     return { cfg, params, office, filter, modern: true, city, res: scope.zone || scope.section ? 'cs' : rollup(cfg.legacyKey ?? key).res, tot: scope.zone || scope.section ? 'sec' : rollup(cfg.legacyKey ?? key).tot }
   }
   // Official national/state/municipality rollups are not additive to their descendants.
-  const units = `select u.* from election_units u where ${filter} and coalesce(u.transit,'N') <> 'S'
-    and not exists (select 1 from election_units d where d.election_id=u.election_id and d.office_key=u.office_key
-      and coalesce(d.transit,'N') <> 'S' and (d.state=u.state or u.state='br')
-      and (d.city_code is null or d.city_code=u.city_code) and (d.zone is null or d.zone=u.zone)
-      and case d.grain when 'section' then 4 when 'zone' then 3 when 'municipality' then 2 when 'state' then 1 else 0 end
-        < case u.grain when 'section' then 4 when 'zone' then 3 when 'municipality' then 2 when 'state' then 1 else 0 end)`
+  const units = `select * from (select u.*,
+      bool_or(grain='national') over (partition by election_id,office_key) _has_national,
+      bool_or(grain='state') over (partition by election_id,office_key,state) _has_state,
+      bool_or(grain='municipality') over (partition by election_id,office_key,state,city_code) _has_city,
+      bool_or(grain='zone') over (partition by election_id,office_key,state,city_code,zone) _has_zone
+    from election_units u where ${filter} and coalesce(u.transit,'N') <> 'S') scoped
+    where grain='national' or (not _has_national and
+      (grain='state' or (not _has_state and (grain='municipality' or
+        (not _has_city and (grain='zone' or not _has_zone))))))`
   return { cfg, params, office, modern: false, cte: `u as (${units}), v as (select v.* from election_votes v
     where ${filter.replaceAll('u.', 'v.')} and coalesce(v.transit,'N') <> 'S')` }
 }
@@ -75,11 +78,11 @@ export function totalsSql(key, officeKey, scope = {}) {
 
 export function candidatesSql(key, officeKey, scope = {}) {
   const b = base(key, officeKey, scope)
-  if (b.modern) return { sql: `select u.cand,u.cand number,max(c.name) name,max(c.short_name) short_name,max(c.party) party,
+  if (b.modern) return { sql: `select case when u.office=1 then u.cand else concat_ws('/',u.state,case when u.office in (11,12,13) then u.city end,u.cand) end cand,max(u.state) state,max(u.cand) number,max(c.name) name,max(c.short_name) short_name,max(c.party) party,
     sum(u.votes) votes,sum(sum(u.votes)) over () total from ${b.res} u left join cands c on c.election=u.election and c.turn=u.turn
     and c.office=u.office and c.n=u.cand and c.uf=case when u.office=1 then 'br' else u.state end
-    where ${b.filter} group by u.cand order by votes desc,u.cand`, params: b.params }
-  return { sql: `with ${b.cte} select v.candidate_id cand,max(v.number) number,max(c.name) name,max(c.short_name) short_name,
+    where ${b.filter} group by 1 order by votes desc,cand`, params: b.params }
+  return { sql: `with ${b.cte} select v.candidate_id cand,max(v.state) state,max(v.number) number,max(c.name) name,max(c.short_name) short_name,
     case when count(distinct c.party)=1 then min(c.party) end party,sum(v.votes) votes,sum(sum(v.votes)) over () total
     from v left join election_candidates c on c.election_id=v.election_id and c.candidate_id=v.candidate_id and c.state=v.state
     where v.kind='candidate' group by v.candidate_id order by votes desc,cand`, params: b.params }
@@ -91,9 +94,9 @@ export function unitsSql(key, officeKey, grain = 'state', scope = {}) {
   const fields = ['state', ...(['municipality','zone','section'].includes(g) ? ['city_code'] : []), ...(['zone','section'].includes(g) ? ['zone'] : []), ...(g === 'section' ? ['section'] : [])]
   if (b.modern) {
     const cols = fields.map((f) => f === 'city_code' ? 'u.city' : `u.${f}`)
-    return { sql: `with a as (select ${cols.map((f, i) => `${f} ${fields[i]}`).join(',')},u.cand,u.cand number,max(c.short_name) cname,max(c.party) party,sum(u.votes) votes
+    return { sql: `with a as (select ${cols.map((f, i) => `${f} ${fields[i]}`).join(',')},case when u.office=1 then u.cand else concat_ws('/',u.state,case when u.office in (11,12,13) then u.city end,u.cand) end cand,u.cand number,max(c.short_name) cname,max(c.party) party,sum(u.votes) votes
       from ${b.res} u left join cands c on c.election=u.election and c.turn=u.turn and c.office=u.office and c.n=u.cand
-      and c.uf=case when u.office=1 then 'br' else u.state end where ${b.filter} group by ${cols.join(',')},u.cand)
+      and c.uf=case when u.office=1 then 'br' else u.state end where ${b.filter} group by ${cols.join(',')},${fields.length + 1},u.cand)
       select *,concat_ws('/',${fields.join(',')}) id,${g === 'state' ? 'state' : 'city_code'} name,
       sum(votes) over (partition by ${fields.join(',')}) valid,row_number() over (partition by ${fields.join(',')} order by votes desc,cand) rn
       from a order by id,rn`, params: b.params }
