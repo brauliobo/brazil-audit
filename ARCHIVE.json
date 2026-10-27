@@ -1,0 +1,353 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-10-27T10:50:05.801304+00:00",
+  "status": "published",
+  "dataset": {
+    "id": "historical-profiles",
+    "title": "Perfis históricos de eleitorado e comparecimento — fatos completos",
+    "source": "https://dadosabertos.tse.jus.br",
+    "license": "cc-by",
+    "branch": "archive/historical-profiles",
+    "tag": "data-historical-profiles"
+  },
+  "resources": [
+    {
+      "id": "comparecimento-e-abstencao-2012",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_comparecimento_abstencao/perfil_comparecimento_abstencao_2012.zip",
+      "sha256": "2f2033d715263d6abcecdbc7e88b274832fb649ac79a3f96d79d8ff17d04a514",
+      "status": "prepared",
+      "assets": [
+        {
+          "name": "comparecimento-e-abstencao-2012.zip",
+          "bytes": 62130604,
+          "sha256": "93f26a3892146923cec2af428fe99854a713f6a9039ac5130a06cb1f445e2718"
+        }
+      ]
+    },
+    {
+      "id": "comparecimento-e-abstencao-2014",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_comparecimento_abstencao/perfil_comparecimento_abstencao_2014.zip",
+      "sha256": "9acd5c54959545424b41da320633b63b942c8524d5bb36eced09437af3970f33",
+      "status": "prepared",
+      "assets": [
+        {
+          "name": "comparecimento-e-abstencao-2014.zip",
+          "bytes": 116615539,
+          "sha256": "6a9222af99f47ad6612dd354d436fa483648bb684eb36e3a185660cef19a8e1b"
+        }
+      ]
+    },
+    {
+      "id": "comparecimento-e-abstencao-2016",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_comparecimento_abstencao/perfil_comparecimento_abstencao_2016.zip",
+      "sha256": "79a5cfbaa29748a2a7c50bb5bc2a3919c9782698bba414c25adc576a27eafbae",
+      "status": "prepared",
+      "assets": [
+        {
+          "name": "comparecimento-e-abstencao-2016.zip",
+          "bytes": 67915130,
+          "sha256": "4e23f4a977c54614418208631b6e615527c85e81d301fc30c9927ce0bdc43c68"
+        }
+      ]
+    },
+    {
+      "id": "comparecimento-e-abstencao-2018",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_comparecimento_abstencao/perfil_comparecimento_abstencao_2018.zip",
+      "sha256": "15cb9b07be56eaa52f79754dc27d82460478398dd155982f9df53bb95e069dd0",
+      "status": "prepared",
+      "assets": [
+        {
+          "name": "comparecimento-e-abstencao-2018.zip",
+          "bytes": 123356387,
+          "sha256": "c34e3b2eb67e6548da9bbc5fec19ccdb9bd1b43c1d5bcd92eaeb330f55de6044"
+        }
+      ]
+    },
+    {
+      "id": "comparecimento-e-abstencao-2020",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_comparecimento_abstencao/perfil_comparecimento_abstencao_2020.zip",
+      "sha256": "dee4986e16284e5f34b04d405ead3b399a8e0f1976817d038e2bd2abccac0fbd",
+      "status": "prepared",
+      "assets": [
+        {
+          "name": "comparecimento-e-abstencao-2020.zip",
+          "bytes": 73731091,
+          "sha256": "2a8a3553abb4f64cb4b4356eb8a2f33715422c0c8a7cb8e25f16553d0ae8eaa0"
+        }
+      ]
+    },
+    {
+      "id": "comparecimento-e-abstencao-2022",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_comparecimento_abstencao/perfil_comparecimento_abstencao_2022.zip",
+      "sha256": "fb4e03d95a9e8f4981cbe32aeca9e77facf9e5f83e7b882f0f8c1610f350a7df",
+      "status": "prepared",
+      "assets": [
+        {
+          "name": "comparecimento-e-abstencao-2022.zip",
+          "bytes": 132656632,
+          "sha256": "4887565c9988e77499e159433df08187fd9e01392ff6ae457deb805979462b40"
+        }
+      ]
+    },
+    {
+      "id": "comparecimento-e-abstencao-2024",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_comparecimento_abstencao/perfil_comparecimento_abstencao_2024.zip",
+      "sha256": "0d79bbea5b0cdce78feca66ce56ad91f50d7bb84d85e1aae049a53e2260d53df",
+      "status": "prepared",
+      "assets": [
+        {
+          "name": "comparecimento-e-abstencao-2024.zip",
+          "bytes": 133631325,
+          "sha256": "e1ea9f8f6d8ac4f2179d436d7294b469964cd791d435e19890f5042f16bc3193"
+        }
+      ]
+    },
+    {
+      "id": "comparecimento-e-abstencao-2026",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_comparecimento_abstencao/perfil_comparecimento_abstencao_2026.zip",
+      "sha256": "abd1af8ff28a80b4e861edafd9f544a8f3f667e1c2e146911d083bf7cc34f023",
+      "status": "prepared",
+      "assets": [
+        {
+          "name": "comparecimento-e-abstencao-2026.zip",
+          "bytes": 150685903,
+          "sha256": "4ed8082401646c34490b541bac5a363d10bfb00be231e2914e0623c79fc7f56c"
+        }
+      ]
+    },
+    {
+      "id": "eleitorado-1994",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitorado/perfil_eleitorado_1994.zip",
+      "sha256": "d1a4bf37fbaf50906c0757f375c3dfa8019bb5b3d3f31f836e020f1a5adadbdb",
+      "status": "prepared",
+      "assets": [
+        {
+          "name": "eleitorado-1994.zip",
+          "bytes": 225606,
+          "sha256": "4814caf797688bcf8dc15e10d4ea3e82a871baae12176e4bf1a023b29e0142cd"
+        }
+      ]
+    },
+    {
+      "id": "eleitorado-1996",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitorado/perfil_eleitorado_1996.zip",
+      "sha256": "0caa90d8f188239665b541f1380ecdd470b149e6af4f3afaf1d1868c89933fbf",
+      "status": "prepared",
+      "assets": [
+        {
+          "name": "eleitorado-1996.zip",
+          "bytes": 254192,
+          "sha256": "1d9d578218f8320667a95ad16d464422f151076e27fdb85d15885df17ad58a0a"
+        }
+      ]
+    },
+    {
+      "id": "eleitorado-1998",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitorado/perfil_eleitorado_1998.zip",
+      "sha256": "a458c4bc176ed80eb8b6279a3c2516b6e73dae2ab88676cb0790b41ae43228f3",
+      "status": "prepared",
+      "assets": [
+        {
+          "name": "eleitorado-1998.zip",
+          "bytes": 252961,
+          "sha256": "f19fe13d1b87c266cfae71b4123d4bf13d38ea88ab57613404abc194d2420820"
+        }
+      ]
+    },
+    {
+      "id": "eleitorado-2000",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitorado/perfil_eleitorado_2000.zip",
+      "sha256": "07aa7274837eb2dbc096d13fce46ccdeb9e1a3e88b1d4e23c5616cc6ccc2c048",
+      "status": "prepared",
+      "assets": [
+        {
+          "name": "eleitorado-2000.zip",
+          "bytes": 2160591,
+          "sha256": "e8bdbaa4b580093ff6f3a835c20fb7387f42405b70918974fa9b9d5e387b21a2"
+        }
+      ]
+    },
+    {
+      "id": "eleitorado-2002",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitorado/perfil_eleitorado_2002.zip",
+      "sha256": "45737185ef698107a3e54419ec12614bef7867df30055707cec8fb8aef1453b7",
+      "status": "prepared",
+      "assets": [
+        {
+          "name": "eleitorado-2002.zip",
+          "bytes": 2172537,
+          "sha256": "426af7fa188fe248e5ea88c2a8eda0e119f2ab29de5f2c2e78e48cd41dd6440f"
+        }
+      ]
+    },
+    {
+      "id": "eleitorado-2004",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitorado/perfil_eleitorado_2004.zip",
+      "sha256": "57744304ddaadc07f61c55c54346f01ae51c18e5c617b3da9fc45e46383b0407",
+      "status": "prepared",
+      "assets": [
+        {
+          "name": "eleitorado-2004.zip",
+          "bytes": 2167682,
+          "sha256": "27a930ce76ae76c1d67c82dca6efe53484ad6de60f2ebff4266c1fe1cd325ac3"
+        }
+      ]
+    },
+    {
+      "id": "eleitorado-2006",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitorado/perfil_eleitorado_2006.zip",
+      "sha256": "7e08ce10070b073594a14550dfecd79b8108c887234cb17afb52f4193fa58e91",
+      "status": "prepared",
+      "assets": [
+        {
+          "name": "eleitorado-2006.zip",
+          "bytes": 2208906,
+          "sha256": "a3ea775e255b31622c9b4a236305e62fedd6b1da7d7b3eed71423971626ee103"
+        }
+      ]
+    },
+    {
+      "id": "eleitorado-2008",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitorado/perfil_eleitorado_2008.zip",
+      "sha256": "ac130ac3c70b2edd8788e4428db2f8ec25084d9c5c55dc4e85262bd12d9fca89",
+      "status": "prepared",
+      "assets": [
+        {
+          "name": "eleitorado-2008.zip",
+          "bytes": 32709688,
+          "sha256": "3c564048ace49866dc19e9ddf1262575c139d760d4a10d058db8d2d0849f835b"
+        }
+      ]
+    },
+    {
+      "id": "eleitorado-2010",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitorado/perfil_eleitorado_2010.zip",
+      "sha256": "76360758f6285a94004c730d85ccd673c86d0c5a0d85e43f5574cc2e67f691c4",
+      "status": "prepared",
+      "assets": [
+        {
+          "name": "eleitorado-2010.zip",
+          "bytes": 40718273,
+          "sha256": "3027305a6c40f186d1173a30f49f88ac2186da8c6c536af5779a4fe1b3464ddf"
+        }
+      ]
+    },
+    {
+      "id": "eleitorado-2012",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitorado/perfil_eleitorado_2012.zip",
+      "sha256": "0a1246c4e2189317cdaabed74d83095bc613a96f167a8b7adaab26700c3927fa",
+      "status": "prepared",
+      "assets": [
+        {
+          "name": "eleitorado-2012.zip",
+          "bytes": 35392010,
+          "sha256": "48a27bfc1e22d0a61298286204d9a5f2321e0185c7e5f98c4ec9476072c3e4f1"
+        }
+      ]
+    },
+    {
+      "id": "eleitorado-2014",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitorado/perfil_eleitorado_2014.zip",
+      "sha256": "a4276a1aeaae888a6a1df17ee2cd44f52b82778460cf39f40f9f5c2126e34f11",
+      "status": "prepared",
+      "assets": [
+        {
+          "name": "eleitorado-2014.zip",
+          "bytes": 37756607,
+          "sha256": "a4a1b391493d763d7f031d4ed7387ae83dc875c06b080e1136f2c95395250d87"
+        }
+      ]
+    },
+    {
+      "id": "eleitorado-2016",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitorado/perfil_eleitorado_2016.zip",
+      "sha256": "0e511c46a2e22c1766c21dd5d8d5d9f50596e1316cc8243a52af74b384784ddd",
+      "status": "prepared",
+      "assets": [
+        {
+          "name": "eleitorado-2016.zip",
+          "bytes": 48395363,
+          "sha256": "30acfe173d07c1ef70aa4da40cef9adbbff5d23659c29aad027c2f1161871bea"
+        }
+      ]
+    },
+    {
+      "id": "eleitorado-2018",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitorado/perfil_eleitorado_2018.zip",
+      "sha256": "d94cc9871ffbdbee3184c98b52c256560dffb5e19f62e27c91648a6fdfe4d803",
+      "status": "prepared",
+      "assets": [
+        {
+          "name": "eleitorado-2018.zip",
+          "bytes": 44728247,
+          "sha256": "4c63a589da2acbcbebf90adeb56544cdc78cb5ac26fd27fc571ae9cf7558a8df"
+        }
+      ]
+    },
+    {
+      "id": "eleitorado-2020",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitorado/perfil_eleitorado_2020.zip",
+      "sha256": "d949f62ee17ea553324ba1f73d1489e3e57be24099590a2f7c2006532aad7ef7",
+      "status": "prepared",
+      "assets": [
+        {
+          "name": "eleitorado-2020.zip",
+          "bytes": 46520654,
+          "sha256": "40ea3be7dd6af2f1a691f819aaa64735544ba080d39f5f2a4cab0ec1695f0902"
+        }
+      ]
+    },
+    {
+      "id": "eleitorado-2022",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitorado/perfil_eleitorado_2022.zip",
+      "sha256": "4bccad7e39ec13ea22a0ce4612d6147b4f06ee2c672cd5978112943951fb87e8",
+      "status": "prepared",
+      "assets": [
+        {
+          "name": "eleitorado-2022.zip",
+          "bytes": 46638611,
+          "sha256": "e8f90b8e74c1f313bfbbab248c18d5ebe0c36378532dedb59bccd804592aee94"
+        }
+      ]
+    },
+    {
+      "id": "eleitorado-2024",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitorado/perfil_eleitorado_2024.zip",
+      "sha256": "fd6703bdaa89aba023b3a21fc1dccede94aa315b985d91011ad5c2e971819de6",
+      "status": "prepared",
+      "assets": [
+        {
+          "name": "eleitorado-2024.zip",
+          "bytes": 167384940,
+          "sha256": "df8a583b1e9d2995065599f0edeba6922afbf0629cc1b3835be2ac68be275f27"
+        }
+      ]
+    },
+    {
+      "id": "eleitorado-2026",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitorado/perfil_eleitorado_2026.zip",
+      "sha256": "0952e9d9577be19380b444bfcc6a9a99397005e8dc839de9d5ec49914d75648b",
+      "status": "prepared",
+      "assets": [
+        {
+          "name": "eleitorado-2026.zip",
+          "bytes": 203841452,
+          "sha256": "50cf85600f0deddd5907c37bad61b90cddfca817d95de252b643b8765f67527f"
+        }
+      ]
+    },
+    {
+      "id": "eleitorado-atual",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/perfil_eleitorado/perfil_eleitorado_ATUAL.zip",
+      "sha256": "47f972043b7b44de1b58e93f30bfec11b7e43f4e383a39678fcd6caba32e25ad",
+      "status": "prepared",
+      "assets": [
+        {
+          "name": "eleitorado-atual.zip",
+          "bytes": 109522174,
+          "sha256": "c62413f4a4a8d03ddbd636cdc38c565cdcddd8cdc6a81b1475013648f8c8893d"
+        }
+      ]
+    }
+  ]
+}
