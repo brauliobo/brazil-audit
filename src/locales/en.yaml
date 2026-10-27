@@ -1411,6 +1411,9 @@ electionData:
   mapUnavailable: "Historical units have no verified correspondence with this map. Consult the original values in the table."
   source: "Original source"
   fields:
+    nominal_reported: "Nominal votes reported by the reference"
+    legend_reported: "Party-list votes reported by the reference"
+    ballots_reported: "Original ballot total declared by the source"
     sections: "Sections"
     nominal: "Nominal votes"
     valid: "Valid votes in source"

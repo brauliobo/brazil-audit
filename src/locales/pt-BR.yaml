@@ -1412,6 +1412,9 @@ electionData:
   mapUnavailable: "As unidades históricas não possuem correspondência territorial comprovada com este mapa. Consulte os valores originais na tabela."
   source: "Fonte original"
   fields:
+    nominal_reported: "Votos nominais informados na referência"
+    legend_reported: "Votos de legenda informados na referência"
+    ballots_reported: "Total original de votos declarado na fonte"
     sections: "Seções"
     nominal: "Votos nominais"
     valid: "Votos válidos da fonte"

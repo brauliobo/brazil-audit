@@ -41,7 +41,9 @@ const locality = computed(() => {
   return [scope.value.state?.toUpperCase(),place?.city_name,place?.city_code ?? scope.value.city_code,scope.value.zone,scope.value.section].filter(Boolean).join(' · ')
 })
 const hasVoteCounts = computed(() => data.data?.candidates.some((row) => row.votes != null))
-const fields = ['sections','nominal','valid','blank','nul','ballots']
+const fields = computed(() => ['sections','nominal','valid','blank','nul','ballots',
+  ...['nominal_reported','legend_reported','ballots_reported'].filter((field) => data.data?.total?.[field] != null),
+])
 const fieldLabel = (field) => field === 'nominal' && data.data.total.nominal_kind ? t(`electionData.meanings.${data.data.total.nominal_kind}`) : t(`electionData.fields.${field}`)
 const items = computed(() => data.data?.candidates.filter((r) => r.votes != null).slice(0,25).map((r) => ({ label:[r.short_name || r.name || r.number,r.party_label,office.value.key === 'president' ? null : r.state?.toUpperCase(),r.city_name || r.city_code || (territorialGrain(office.value) === 'municipality' ? r.constituency : null)].filter(Boolean).join(' · '),value:r.votes,text:`${int(r.votes)} · ${pct(r.candidate_total ? r.votes/r.candidate_total : null)}` })) ?? [])
 const candidatesColumns = computed(() => [

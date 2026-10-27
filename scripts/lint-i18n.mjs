@@ -66,7 +66,7 @@ const FAMILIES = {
   'profiles.axes.': PROFILE_AXES,
   'profiles.metrics.': PROFILE_METRICS,
   'electionAnalysis.grains.': ['state','municipality','zone','section','national'],
-  'electionData.fields.': ['sections','nominal','valid','blank','nul','ballots'],
+  'electionData.fields.': ['sections','nominal','valid','blank','nul','ballots','nominal_reported','legend_reported','ballots_reported'],
   'compare.digits.': ['d1','d2','d12','d_last'],
   'history.status.': ['catalogued','downloaded','published','blocked','downloading','unavailable','partial','privacy-review-required','excluded'],
   'navGroups.': ['summary', 'explore', 'compare', 'investigate'],
