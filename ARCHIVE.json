@@ -1,0 +1,49 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-10-27T13:19:34.566214+00:00",
+  "status": "published",
+  "dataset": {
+    "id": "resultados-2026-rj-correction",
+    "title": "Resultados 2026 RJ — arquivo ZIP completo e correção de integridade",
+    "branch": "archive/resultados-2026-rj-correction",
+    "tag": "data-resultados-2026-rj-correction",
+    "source": "https://dadosabertos.tse.jus.br/dataset/resultados-2026",
+    "license": "cc-by"
+  },
+  "resources": [
+    {
+      "id": "0069b075-2f46-449a-9881-0d63be3046fe",
+      "name": "RJ - Votação por seção eleitoral - 2026",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2026_RJ.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2026_RJ.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 296106129,
+      "lastModified": "Tue, 06 Oct 2026 19:32:16 GMT",
+      "etag": "\"112fc109-65d310e65be55\"",
+      "inScope": true,
+      "sha256": "ec93c020ae1f0088216de92e5acc5d3211aefaf1fa589b961132bbf471ee3cf5",
+      "assets": [
+        {
+          "name": "votacao_secao_2026_RJ-ec93c020ae1f.zip",
+          "bytes": 296106129,
+          "sha256": "ec93c020ae1f0088216de92e5acc5d3211aefaf1fa589b961132bbf471ee3cf5"
+        }
+      ],
+      "removedPersonalColumns": {},
+      "members": 2,
+      "crcVerified": true,
+      "integrity": "zip-crc-verified",
+      "supersedes": {
+        "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2026_RJ.zip",
+        "downloadedAt": "2026-10-26T22:20:32.493687+00:00",
+        "bytes": 291504128,
+        "sha256": "33cf8906752970ee6d21c0d426ffbbe74c1f5c1e8a798c55891f33973197ba74",
+        "availability": "invalid_archive",
+        "reason": "truncated ZIP; exact prefix of complete object",
+        "releaseUrl": "https://github.com/brauliobo/brazil-audit/releases/tag/data-resultados-2026",
+        "asset": "0069b075-votacao_secao_2026_RJ.zip"
+      }
+    }
+  ]
+}
