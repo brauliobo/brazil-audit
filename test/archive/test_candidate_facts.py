@@ -87,3 +87,13 @@ class SourceRepresentationTest(unittest.TestCase):
         before=candidate_record(r,{})[1]['candidate_id']
         r['DS_SIT_TOT_TURNO']='ELEITO'
         self.assertEqual(candidate_record(r,{})[1]['candidate_id'],before)
+
+class PublicArtifactCopyTest(unittest.TestCase):
+    def test_public_export_replaces_a_previous_hardlink_without_mutating_private_source(self):
+        import tempfile,os
+        from publish_candidate_facts import copy_public_part
+        with tempfile.TemporaryDirectory() as temporary:
+            root=Path(temporary);source=root/'private.gz';target=root/'public.gz';source.write_bytes(b'official')
+            os.link(source,target);copy_public_part(source,target)
+            self.assertEqual(target.read_bytes(),source.read_bytes())
+            self.assertNotEqual(source.stat().st_ino,target.stat().st_ino)

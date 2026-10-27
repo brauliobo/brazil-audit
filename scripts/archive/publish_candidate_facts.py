@@ -11,6 +11,12 @@ def digest(path):
     with path.open('rb') as f:return hashlib.file_digest(f,'sha256').hexdigest()
 
 
+def copy_public_part(source,destination):
+    destination.parent.mkdir(parents=True,exist_ok=True)
+    temporary=destination.with_name(destination.name+'.tmp')
+    shutil.copyfile(source,temporary);temporary.replace(destination)
+
+
 def publish(root,public_output,repository,branch,release=None):
     workspace=pathlib.Path.cwd();index=json.loads((root/'index.json').read_text())
     index['sourceCommit']=subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip()
@@ -49,7 +55,7 @@ def publish(root,public_output,repository,branch,release=None):
         for part in table['parts'].values():
             source=part['url'];part['remoteUrl']=raw+source
             if name in ['election_vote_rollups','candidate_identity']:
-                destination=public_output/source;destination.parent.mkdir(parents=True,exist_ok=True);shutil.copyfile(root/source,destination)
+                destination=public_output/source;copy_public_part(root/source,destination)
                 part['url']=str(destination.relative_to('data'))
             else:part['url']=raw+source
     public['remote']={'branch':branch,'commit':commit,'index':raw+'index.json','verified':verified}
@@ -76,7 +82,8 @@ def publish_release(root,index,commit,repository,tag):
     if result.returncode:subprocess.run(['gh','release','create',tag,'--repo',repository,'--target',commit,'--draft','--title','Historical electoral results and public nominations','--notes','Official historical source facts for browser SQL. Source URLs, hashes, original count meanings and territorial grain are preserved in INDEX.json and METHOD.md.'],check=True)
     def upload(p):subprocess.run(['gh','release','upload',tag,str(p),'--repo',repository,'--clobber'],check=True)
     with concurrent.futures.ThreadPoolExecutor(max_workers=4) as pool:list(pool.map(upload,assets))
-    metadata=json.loads(subprocess.check_output(['gh','api',f'repos/{repository}/releases/tags/{tag}'],text=True))
+    api=subprocess.check_output(['gh','release','view',tag,'--repo',repository,'--json','apiUrl','--jq','.apiUrl'],text=True).strip()
+    metadata=json.loads(subprocess.check_output(['gh','api',api],text=True))
     actual={a['name']:a for a in metadata['assets']}
     if set(actual)!=set(p.name for p in assets):raise ValueError('Release asset set differs from the verified export')
     for p in assets:

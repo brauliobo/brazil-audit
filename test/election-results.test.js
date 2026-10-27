@@ -8,7 +8,9 @@ const cfg={historic:{sourceSession:{key:'historic',eventIds:['e'],sourceYears:[1
 cfg.future={sourceSession:{key:'future',eventIds:['2024:6295:1:2026-12-06'],sourceYears:[2024]},offices:[11,12],officeDefinitions:[{id:'11',key:'mayor',constituencyGrain:'municipality',electionStage:'registrationOnly',capabilities:{candidateAttributes:true}},{id:'12',key:'historical:12:VICE-PREFEITO',constituencyGrain:'municipality',electionStage:'registrationOnly',capabilities:{candidateAttributes:true}}]}
 cfg.modern={year:2026,turn:2,legacyKey:'modern',sourceSession:{key:'modern',eventIds:['gov'],sourceYears:[2026]},offices:[3],officeDefinitions:[{id:'3',key:'governor',constituencyGrain:'state'}]}
 cfg.nativeRoster={...cfg.future,legacyKey:'modern'}
-const adapter=await import(`data:text/javascript;base64,${Buffer.from(`const ELECTIONS=${JSON.stringify(cfg)};const NATIVE_ELECTIONS={modern:{offices:[3]}};const SOURCE_BINDINGS=[];const rollup=()=>({res:'res',tot:'tot'});\n${source}`).toString('base64')}`)
+cfg.sectionOnly={sourceSession:{key:'sectionOnly',eventIds:['fn'],sourceYears:[2022]},offices:[25],officeDefinitions:[{id:'25',key:'historical:25:CONSELHEIRO DISTRITAL',constituencyGrain:'municipality',capabilities:{unitStates:[],sources:{sectionReference:{table:'election_section_units'},observedSections:{tables:['election_section_votes']}}}}]}
+cfg.bound={sourceSession:{key:'bound',eventIds:['source','target'],sourceYears:[2008]},offices:[11],officeDefinitions:[{id:'11',key:'mayor',constituencyGrain:'municipality',electionStage:'observedData',capabilities:{candidateAttributes:true}}]}
+const adapter=await import(`data:text/javascript;base64,${Buffer.from(`const ELECTIONS=${JSON.stringify(cfg)};const NATIVE_ELECTIONS={modern:{offices:[3]}};const SOURCE_BINDINGS=[{sourceEventId:'source',targetEventId:'target',candidateIdentityLinks:[{sourceCandidateId:'source-id',targetCandidateId:'target-id'}]}];const FACT_REGISTRY={};const rollup=()=>({res:'res',tot:'tot'});\n${source}`).toString('base64')}`)
 
 test('official totals retain coverage, candidate grain may be finer, unknown is not zero',async()=>{
  const db=new PGlite()
@@ -80,5 +82,35 @@ test('official totals retain coverage, candidate grain may be finer, unknown is 
   }
   await db.exec("update candidate_attributes set status='ELEITO' where office_key='historical:12:VICE-PREFEITO'")
   const q=adapter.rosterSql('future','historical:12:VICE-PREFEITO',{state:'ma'});assert.ok((await db.query(q.sql,q.params)).rows.every(r=>r.is_elected===true),'an explicit vice outcome does not require personal votes')
+ }finally{await db.close()}
+ })
+
+ test('section-only official references are visible without inventing candidate registrations or summary totals',async()=>{
+ const db=new PGlite()
+ try{
+  const manifest=JSON.parse(await readFile(new URL('../data/manifest.json',import.meta.url),'utf8'))
+  for(const table of ['election_units','election_vote_rollups','election_candidates','candidate_attributes','candidate_identity','election_places'])await db.exec(manifest.tables[table].ddl)
+  await db.exec('create table election_section_units as select * from election_units;create table election_section_votes as select * from election_vote_rollups')
+  await db.exec("insert into election_section_units(election_id,office_key,state,city_code,zone,section,grain,eligible,installed,present,absent,nominal,valid,blank,null_votes,ballots,sections) values('fn','historical:25:CONSELHEIRO DISTRITAL','pe','30015','0001','0001','section',100,100,80,20,75,75,2,3,80,1)")
+  await db.exec("insert into election_section_votes(election_id,office_key,state,city_code,zone,section,grain,constituency,candidate_id,number,kind,destination,votes) values('fn','historical:25:CONSELHEIRO DISTRITAL','pe','30015','0001','0001','section','30015','option-a','78','candidate','reported',75)")
+  let q=adapter.totalsSql('sectionOnly',25,{state:'pe'});let [row]=(await db.query(q.sql,q.params)).rows
+  assert.equal(Number(row.eligible),100);assert.equal(Number(row.absent),20);assert.equal(Number(row.nominal),75)
+  q=adapter.candidatesSql('sectionOnly',25,{state:'pe'});[row]=(await db.query(q.sql,q.params)).rows
+  assert.equal(row.cand,'option-a');assert.equal(Number(row.votes),75);assert.equal(row.identity_status,'observed_ballot_option');assert.equal(row.name,null)
+  await db.exec("insert into election_units(election_id,office_key,state,grain,eligible,installed,present,absent,nominal,valid,blank,null_votes,ballots,sections) values('fn','historical:25:CONSELHEIRO DISTRITAL','pe','state',110,110,90,20,85,85,2,3,90,2)")
+  q=adapter.totalsSql('sectionOnly',25,{state:'pe'});[row]=(await db.query(q.sql,q.params)).rows
+  assert.equal(Number(row.eligible),110,'official state summary replaces section references instead of being added to them')
+ }finally{await db.close()}
+ })
+
+ test('declared exact identity links join source registration to voting context once and expose the voting identity',async()=>{
+ const db=new PGlite()
+ try{
+  const manifest=JSON.parse(await readFile(new URL('../data/manifest.json',import.meta.url),'utf8'))
+  for(const table of ['election_units','election_vote_rollups','election_candidates','candidate_attributes','candidate_identity','election_places'])await db.exec(manifest.tables[table].ddl)
+  await db.exec("insert into candidate_attributes(election_id,state,office_key,constituency,candidate_id,number,name,status) values('source','ac','mayor','00100','source-id','13','Alice','ELEITO')")
+  await db.exec("insert into election_vote_rollups(election_id,state,office_key,constituency,candidate_id,city_code,kind,destination,votes) values('target','ac','mayor','00100','target-id','00100','candidate','valid',100)")
+  const q=adapter.candidatesSql('bound','mayor',{state:'ac',city_code:'00100'});const rows=(await db.query(q.sql,q.params)).rows
+  assert.equal(rows.length,1);assert.equal(rows[0].cand,'target-id');assert.equal(rows[0].source_record_candidate_id,'source-id');assert.equal(Number(rows[0].votes),100);assert.equal(rows[0].status,'ELEITO')
  }finally{await db.close()}
  })

@@ -3,6 +3,7 @@ import { ELECTIONS } from './model'
 import { ensure, ensureSmall, ensureState, parts, tables } from './data'
 import { rollup } from './results'
 import { ELECTIONS as NATIVE_ELECTIONS } from './elections'
+import FACT_REGISTRY from '../data/elections.json'
 import SOURCE_BINDINGS from '../data/election-source-bindings.json'
 
 const keyOf = (key, requested) => {
@@ -26,16 +27,26 @@ const selectedParts = (table, cfg, officeKey, scope = {}) => Object.entries(tabl
   && (!scope.city_code || !p.cities?.length || p.cities.includes(scope.city_code))).map(([id]) => id)
 
 
-export async function ensureElection(key, officeKey, scope = {}) {
-  const { cfg, office, definition, jurisdiction, officeKey: canonical } = keyOf(key, officeKey)
+export async function ensureTotals(key,officeKey,scope={}) {
+  const {cfg,definition,officeKey:canonical}=keyOf(key,officeKey)
   if (cfg.sourceSession) {
     await Promise.all([
       ensure('election_units', Object.entries(tables().election_units.parts).filter(([,p]) => p.electionIds.some((id) => cfg.sourceSession.eventIds.includes(id)) && p.officeKeys.includes(canonical) && (!scope.state || p.state === scope.state)).map(([id]) => id)),
-      ensure('election_places', Object.entries(tables().election_places.parts).filter(([,p]) => p.sessionKeys.includes(cfg.sourceSession.key) && (!scope.state || p.states.includes(scope.state))).map(([id]) => id)),
     ])
   }
+  if(cfg.legacyKey&&scope.city_code)await ensure('mun_map')
   const reference=definition?.capabilities?.sources?.sectionReference
-  if(reference && !(definition.capabilities.unitStates??[]).length) await ensure('election_section_units',selectedParts('election_section_units',cfg,canonical,scope))
+  if(reference) {
+    const summary=definition.capabilities.unitStates??[]
+    const fine=scope.grain && !['state','all'].includes(scope.grain)
+    const missing=selectedParts('election_section_units',cfg,canonical,scope).filter(id=>fine || tables().election_section_units.parts[id].states.some(s=>!summary.includes(s)))
+    await ensure('election_section_units',missing)
+  }
+ }
+
+export async function ensureElection(key, officeKey, scope = {}) {
+  const { cfg, office, definition, jurisdiction, officeKey: canonical } = keyOf(key, officeKey)
+  await Promise.all([ensureTotals(key,canonical,scope),ensure('election_places',Object.entries(tables().election_places.parts).filter(([,p])=>p.sessionKeys.includes(cfg.sourceSession.key)&&(!scope.state||p.states.includes(scope.state))).map(([id])=>id))])
   if (!nativeOffice(cfg,office)) {
     const table = definition?.capabilities?.sources?.observedSections && !definition?.capabilities?.sources?.votes ? 'election_section_votes' : voteTableOf(jurisdiction==='municipality' ? 11 : office, scope.grain ?? scopeGrain(scope))
     const roster = definition?.capabilities?.candidateAttributes ? 'candidate_attributes' : 'election_candidates'
@@ -82,9 +93,12 @@ function base(key, officeKey, scope = {}, source = 'votes', grain = null) {
   }
   // Official national/state/municipality rollups are not additive to their descendants.
   const reference=selected.definition?.capabilities?.sources?.sectionReference
-  const summaryStates=selected.definition?.capabilities?.unitStates ?? []
-  const referenceOnly=reference && summaryStates.length===0
-  const unitTable=referenceOnly ? 'election_section_units' : 'election_units'
+  const unitColumns=['election_id','office_key','state','city_code','zone','section','grain','transit','nominal','legend','sections','valid','blank','null_votes','ballots','eligible','installed','present','absent','not_installed','null_total','null_technical','annulled','annulled_subjudice','annulled_separate','source_url','source_sha256']
+  const summaryFilter=filter.replaceAll('u.','summary.')
+  const finer=grain==='all'||grain==='state'||grain==='uf' ? '' : grain==='municipality'||grain==='mun' ? ' and summary.city_code is not null' : grain==='zone' ? ' and summary.zone is not null' : ' and summary.section is not null'
+  const referenceColumns=unitColumns.join(',')
+  const unitTable=reference ? `(select ${referenceColumns} from election_units union all select ${referenceColumns} from election_section_units reference where not exists (
+    select 1 from election_units summary where ${summaryFilter}${finer} and summary.state=reference.state))` : 'election_units'
   const units = `select * from (select u.*,
       bool_or(grain='national') over (partition by election_id,office_key) _has_national,
       bool_or(grain='state') over (partition by election_id,office_key,state) _has_state,
@@ -95,7 +109,7 @@ function base(key, officeKey, scope = {}, source = 'votes', grain = null) {
       (grain='state' or (not _has_state and (grain='municipality' or
         (not _has_city and (grain='zone' or not _has_zone))))))`
   const voteTable = selected.definition?.capabilities?.sources?.observedSections && !selected.definition?.capabilities?.sources?.votes ? 'election_section_votes' : voteTableOf(selected.jurisdiction==='municipality' ? 11 : office, grain)
-  return { cfg, params, office, modern: false, unitSourceSql: units, voteTable, cte: `u as (${units}), v as (select v.* from ${voteTable} v
+  return { cfg, params, office, modern: false, unitSourceSql: units, voteTable, cte: source==='units' ? `u as (${units})` : `u as (${units}), v as (select v.* from ${voteTable} v
     where ${filter.replaceAll('u.', 'v.')} and coalesce(v.transit,'N') <> 'S')` }
 }
 const completeSum = (column, alias = '') => `case when count(${alias}${column})=count(*) then sum(${alias}${column}) end`
@@ -115,6 +129,13 @@ const identityBridge = () => {
   return rows.length ? `(values ${rows.map((r)=>'('+r.map(quoted).join(',')+')').join(',')})` : `(select null::text,null::text,null::text,null::text where false)`
 }
 
+const observedOptions = (selected) => {
+  const rows=(FACT_REGISTRY.observedBallotOptions??[]).filter(r=>idsOf(selected.cfg).includes(r.election_id)&&r.office_key===selected.officeKey)
+  const quote=v=>v==null?'null':"'"+String(v).replaceAll("'","''")+"'"
+  const values=rows.map(r=>[r.election_id,r.state,r.constituency,r.candidate_id,r.number,r.names.join(' / '),r.source_url,r.source_sha256].map(quote).join(','))
+  return values.length?`(values ${values.map(r=>'('+r+')').join(',')})`:`(select null::text,null::text,null::text,null::text,null::text,null::text,null::text,null::text where false)`
+}
+
 export function candidatesSql(key, officeKey, scope = {}, paging = {}) {
   const b = base(key, officeKey, scope)
   if (b.modern) return { sql: `select case when u.office=1 then u.cand else concat_ws('/',u.state,case when u.office in (11,12,13,25) then u.city end,u.cand) end cand,case when max(u.office)=1 then 'br' else max(u.state) end state,max(u.cand) number,max(c.name) name,max(c.short_name) short_name,max(c.party) party,null::text party_name,max(c.party) party_label,count(*) over () total_rows,
@@ -123,6 +144,18 @@ export function candidatesSql(key, officeKey, scope = {}, paging = {}) {
     where ${b.filter} group by 1 order by votes desc nulls last,cand${paging.limit == null ? '' : ` limit $${b.params.length + 1} offset $${b.params.length + 2}`}`, params: paging.limit == null ? b.params : [...b.params,paging.limit,paging.offset ?? 0] }
   const selection = keyOf(key, officeKey)
   const roster = selection.definition?.capabilities?.candidateAttributes ? 'candidate_attributes' : 'election_candidates'
+  if(selection.definition?.capabilities?.sources?.observedSections&&!selection.definition?.capabilities?.sources?.votes) {
+    const options=observedOptions(selection)
+    return {sql:`with ${b.cte}, options(election_id,state,constituency,candidate_id,number,name,source_url,source_sha256) as ${options}
+      select v.candidate_id cand,v.state,v.constituency,v.constituency city_code,max(p.city_name) city_name,max(v.number) number,max(o.name) name,max(o.name) short_name,
+        null::text party,null::text party_name,null::text party_label,sum(v.votes) votes,sum(sum(v.votes)) over() candidate_total,
+        'observed_cast'::text count_meaning,'observed_ballot_option'::text identity_status,count(*) vote_record_count,count(*) over() total_rows
+      from v left join options o on o.election_id=v.election_id and o.state=v.state and o.candidate_id=v.candidate_id
+      left join election_places p on p.session_key=$${b.params.length+1} and p.state=v.state and p.city_code=v.constituency
+      where v.kind='candidate' group by v.candidate_id,v.state,v.constituency order by votes desc,cand${paging.limit==null?'':` limit $${b.params.length+2} offset $${b.params.length+3}`}`,
+      params:[...b.params,selection.cfg.sourceSession.key,...(paging.limit==null?[]:[paging.limit,paging.offset??0])]}
+  }
+
   const params = [...b.params], add = (v) => { params.push(v);return `$${params.length}` }
   const filters = [`r.election_id=any(${add(idsOf(b.cfg))}::text[])`,`r.office_key=${add(selection.officeKey)}`,`r.candidate_id not like 'party_list:%'`]
   if (scope.state && selection.jurisdiction !== 'national') filters.push(`r.state=${add(scope.state)}`)
@@ -136,7 +169,7 @@ export function candidatesSql(key, officeKey, scope = {}, paging = {}) {
       max(r.constituency) constituency,${selection.jurisdiction === 'national' ? "'br'::text" : 'max(r.state)'} state,
       case when count(distinct r.status)=1 then min(r.status) end status,array_agg(distinct r.status) status_variants,
       array_agg(distinct r.source_url) source_urls from ${roster} r where ${filters.join(' and ')} group by r.election_id,r.candidate_id)
-    select n.*,coalesce(n.party,n.party_name) party_label,count(*) over () total_rows,v.votes,v.vote_record_count,v.count_meaning,sum(v.votes) over () candidate_total,
+    select n.election_id,n.number,n.name,n.short_name,n.party,n.party_name,n.constituency,n.state,n.status,n.status_variants,n.source_urls,coalesce(bridge.target_id,n.cand) cand,n.cand source_record_candidate_id,coalesce(n.party,n.party_name) party_label,count(*) over () total_rows,v.votes,v.vote_record_count,v.count_meaning,sum(v.votes) over () candidate_total,
       ${selection.jurisdiction === 'municipality' ? 'p.city_code,p.city_name' : 'null::text city_code,null::text city_name'},
       case when n.cand like 'record:%' then ci.identity_status else 'context_resolved' end identity_status,ci.source_record_id
     from nominees n left join ${identityBridge()} bridge(source_event,source_id,target_event,target_id) on bridge.source_event=n.election_id and bridge.source_id=n.cand
@@ -153,14 +186,15 @@ export function unitsSql(key, officeKey, grain = 'state', scope = {}) {
   const g = local && requestedGrain === 'state' ? 'municipality' : requestedGrain
   const b = base(key, officeKey, scope, 'votes', g)
   const observed = base(key, officeKey, scope, 'units', g)
+  const options=observedOptions(keyOf(key,officeKey))
   const fields = ['state', ...(['municipality','zone','section'].includes(g) ? ['city_code'] : []), ...(['zone','section'].includes(g) ? ['zone'] : []), ...(g === 'section' ? ['section'] : [])]
   const vote = b.modern
     ? `select u.state,m.tse city_code,u.city city_name,${b.res === 'cs' ? 'u.zone,u.section' : 'null::text zone,null::text section' /* i18n-ignore */},
         case when u.office=1 then u.cand else concat_ws('/',u.state,case when u.office in (11,12,13,25) then u.city end,u.cand) end cand,
         u.cand number,coalesce(c.short_name,c.name) cname,c.party,null::text party_name,c.party party_label,'observed_cast'::text count_meaning,u.votes from ${b.res} u left join cands c on c.election=u.election and c.turn=u.turn
         and c.office=u.office and c.n=u.cand and c.uf=case when u.office=1 then 'br' else u.state end left join mun_map m on m.state=u.state and m.city=u.city where ${b.filter}`
-    : `select v.state,v.city_code,p.city_name,v.zone,v.section,v.candidate_id cand,v.number,coalesce(c.short_name,c.name) cname,c.party,c.party_name,coalesce(c.party,c.party_name) party_label,case when v.grain='section' then 'observed_cast' when v.destination='valid' then 'official_nominal_valid' else 'reported_nominal' end count_meaning,v.votes
-        from ${b.voteTable} v left join election_candidates c on c.election_id=v.election_id and c.candidate_id=v.candidate_id and c.state=v.state left join election_places p on p.session_key=$${b.params.length + 1} and p.state=v.state and p.city_code=v.city_code
+    : `select v.state,v.city_code,p.city_name,v.zone,v.section,v.candidate_id cand,v.number,coalesce(c.short_name,c.name,o.name) cname,c.party,c.party_name,coalesce(c.party,c.party_name) party_label,case when v.grain='section' then 'observed_cast' when v.destination='valid' then 'official_nominal_valid' else 'reported_nominal' end count_meaning,v.votes
+        from ${b.voteTable} v left join ${options} o(election_id,state,constituency,candidate_id,number,name,source_url,source_sha256) on o.election_id=v.election_id and o.state=v.state and o.candidate_id=v.candidate_id left join election_candidates c on c.election_id=v.election_id and c.candidate_id=v.candidate_id and c.state=v.state left join election_places p on p.session_key=$${b.params.length + 1} and p.state=v.state and p.city_code=v.city_code
         where ${where(b.cfg, b.office, keyOf(key, officeKey).officeKey, scope, 'v', [])} and coalesce(v.transit,'N') <> 'S' and v.kind='candidate'`
   if (!b.modern) b.params.push(b.cfg.sourceSession.key)
   const unitSource = observed.unitSourceSql.replace(/\$(\d+)/g, (_, n) => `$${Number(n) + b.params.length}`)
