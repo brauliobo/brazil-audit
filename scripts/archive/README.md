@@ -108,3 +108,17 @@ Declared ZIP resources must pass ZIP structure and member CRC validation before
 cache reuse or public copying. A matching file hash alone does not establish
 archive integrity. Corrective source versions preserve the original published
 artifact and record its superseded status and the complete source's digest.
+
+`normalize_nominations.py` reads the already archived list, coalition, vacancy
+and historical candidate-list files. Three typed tables preserve the declared
+cargo, jurisdiction, year, round and source context. A missing election identity
+stays NULL; declared vacancies do not become observed elected outcomes. Exact
+duplicate source facts retain their member/line provenance once. Modern senator
+alternate labels are routed by an explicit source-year and official cargo-code
+bridge, preserving the original source keys and contextual election codes.
+
+`publish_nominations.py` publishes the complete facts on
+`data/historical-nominations`, retaining compact historical lists, vacancies and
+links locally. Larger current list parts use immutable CORS URLs. The producer
+defaults to private staging, keeping large temporary data out of the site tree.
+The export release includes every normalized part and its typed schema.

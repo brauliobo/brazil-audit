@@ -8,6 +8,7 @@ def update(data_dir, registry, fragment_paths):
     catalog_path=data_dir/'history/catalog.json'
     if not catalog_path.exists():return
     sources=defaultdict(lambda:dict(indexes=set(),tables=set(),sessionKeys=set(),profileSnapshotYears=set()))
+    count_years={}
     event_sessions=defaultdict(set)
     for event in registry['events']:
         for url in event['sources']:event_sessions[url].add(event['session_key'])
@@ -22,12 +23,16 @@ def update(data_dir, registry, fragment_paths):
             add(dataset['sourceUrl'],'profiles/index.json',['election_profiles'],dataset['years'])
     for path in fragment_paths:
         fragment=read_json(path);index=str(path.relative_to(data_dir))
+        years={year for name,table in fragment['tables'].items() if name in ['election_votes','election_section_votes']
+            for part in table['parts'].values() if part['rows']>0 for year in part['sourceYears']}
+        if years:count_years[index]=years
         for item in fragment.get('eventOffices',[]):
             for url in item.get('sources',[]):add(url,index,item['tables'])
         # Native source inventories explicitly distinguish their section roles;
         # their collection-level table set is not a per-resource column claim.
         for item in fragment.get('sources',[]):
-            if item.get('status')=='ready':add(item['url'],index,list(fragment['tables']))
+            if 'table' in item:add(item['source_url'],index,[item['table']])
+            elif item.get('status')=='ready':add(item['url'],index,list(fragment['tables']))
     sessions={s['key']:s for s in registry['sessions']}
     catalog=read_json(catalog_path)
     for dataset in catalog['datasets']:
@@ -48,4 +53,15 @@ def update(data_dir, registry, fragment_paths):
         if candidates:descriptor['sessionKey']=candidates[0]
         if aggregate['profileSnapshotYears']:descriptor['context']='independent-profile-snapshot'
         dataset['browserNormalized']=descriptor
+    for dataset in catalog['datasets']:
+        if dataset.get('inScope') and dataset.get('family')=='rdv':
+            related=[index for index,years in count_years.items() if years.intersection(dataset['years'])]
+            if not related:continue
+            dataset['browserDataEquivalent']=dict(kind='related-section-counts',indexes=related,
+                sourceCollectionYears=dataset['years'],fullCollectionNormalized=False,completeMemberLevelEquivalence=False,
+                rawArchiveRelease=dataset['releaseUrl'],scope='Related aggregate vote facts are queryable; this does not assert that every archived RDV member was decoded or matched.')
+    catalog['browserCoverage']=dict(inScopeCollections=sum(bool(d.get('inScope')) for d in catalog['datasets']),
+        normalizedFactCollections=sum(bool(d.get('inScope') and d.get('browserNormalized')) for d in catalog['datasets']),
+        rawRdvCollectionsWithRelatedCounts=sum(bool(d.get('inScope') and d.get('browserDataEquivalent')) for d in catalog['datasets']),
+        scope='Selected electoral facts, not every source column or raw binary member.')
     write_json(catalog_path,catalog)

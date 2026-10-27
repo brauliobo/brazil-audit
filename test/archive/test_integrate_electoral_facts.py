@@ -3,7 +3,7 @@ import sys
 import unittest
 from pathlib import Path
 sys.path.insert(0,str(Path(__file__).parents[2]/'scripts/archive'))
-from integrate_electoral_facts import fingerprint,merge_offices,election_stages,date_evidence
+from integrate_electoral_facts import fingerprint,merge_offices,election_stages,date_evidence,nomination_references
 
 
 def registry():
@@ -21,6 +21,26 @@ def observed(eid='votes',office='president'):
 
 
 class FactualRegistryIntegrationTest(unittest.TestCase):
+    def test_modern_alternate_label_bridge_uses_source_year_and_official_code(self):
+        canonical='historical:9:1º SUPLENTE SENADOR';raw='historical:9:1. SUPLENTE SENADOR'
+        office=dict(id='9',key=canonical,name='1º SUPLENTE SENADOR',capabilities={})
+        r=dict(sessions=[dict(key='1994',offices=[office])],events=[dict(id='event',sourceDatasetYears=[1994],sourceElectionIds=['1994001'],dates=['03/10/1994'],session_key='1994',offices=[office])])
+        part=dict(sourceYears=[1994],sessionKeys=['1994'],officeKeys=[raw])
+        nomination_references(r,dict(tables={'election_declared_seats':dict(parts={'sp':part})}),'nominations/index.json')
+        self.assertEqual(part['officeKeys'],[raw]);self.assertIn(canonical,part['canonicalOfficeKeys'])
+        bridge=r['nominations']['officeBindings'][0]
+        self.assertEqual((bridge['sourceYear'],bridge['office'],bridge['rawOfficeKey'],bridge['officeKey']),(1994,'9',raw,canonical))
+        self.assertEqual(bridge['events'][0]['date'],'1994-10-03')
+        self.assertTrue(office['capabilities']['declaredSeats'])
+
+    def test_declared_vacancies_enable_references_without_creating_elected_outcomes(self):
+        r=registry();part=dict(sourceYears=[2002],sessionKeys=['2002'],officeKeys=['president'])
+        nomination_references(r,dict(tables={'election_declared_seats':dict(parts={'ac':part})}),'nominations/index.json')
+        cap=r['sessions'][0]['offices'][0]['capabilities']
+        self.assertTrue(cap['declaredSeats'])
+        self.assertNotIn('electedCount',cap);self.assertNotIn('hasSeats',cap)
+        self.assertEqual(cap['sources']['nominations']['bindingKind'],'source-year-reference')
+
     def test_registration_date_is_not_asserted_as_observed_voting(self):
         r=registry();source=source_event('registration',kind='Eleição Suplementar');o=observed('registration')
         o.update(tables=['candidate_attributes'],grains=[],registeredCount=2,statusKnownCount=0,electedCount=None)

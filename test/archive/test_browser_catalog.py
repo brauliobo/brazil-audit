@@ -8,6 +8,18 @@ from browser_catalog import update
 
 
 class BrowserCatalogTest(unittest.TestCase):
+    def test_raw_rdv_count_relation_does_not_claim_full_binary_normalization(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root=Path(directory);(root/'history').mkdir()
+            (root/'history/indicators.json').write_text('{"elections":[]}')
+            (root/'history/catalog.json').write_text(json.dumps(dict(datasets=[dict(id='rdv',family='rdv',inScope=True,years=[2024],resources=[],releaseUrl='https://example.org/raw-rdv')])) )
+            fragment=root/'facts.json';fragment.write_text(json.dumps(dict(tables={'election_section_votes':dict(parts={'known':dict(sourceYears=[2024],rows=9)})})))
+            update(root,dict(events=[],sessions=[]),[fragment])
+            row=json.loads((root/'history/catalog.json').read_text())['datasets'][0]
+            self.assertNotIn('browserNormalized',row)
+            self.assertFalse(row['browserDataEquivalent']['fullCollectionNormalized'])
+            self.assertFalse(row['browserDataEquivalent']['completeMemberLevelEquivalence'])
+
     def test_profile_availability_uses_existing_year_context_without_claiming_complete_archive(self):
         with tempfile.TemporaryDirectory() as directory:
             root=Path(directory);(root/'history').mkdir();(root/'profiles').mkdir()

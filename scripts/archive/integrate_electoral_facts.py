@@ -231,6 +231,46 @@ def date_evidence(registry):
     return registry
 
 
+def nomination_references(registry,fragment,index):
+    """Expose source-year references independently of observed election counts."""
+    names={'election_lists','election_declared_seats','candidate_list_links'}
+    if not names.intersection(fragment['tables']):return
+    sessions={s['key']:s for s in registry['sessions']};available=set();bridges={}
+    from build_election_registry import iso_date
+    seats=fragment['tables'].get('election_declared_seats',{}).get('parts',{})
+    for part in seats.values():
+        canonical=set(part['officeKeys'])
+        for year in part['sourceYears']:
+            if year<1994:continue
+            for raw in part['officeKeys']:
+                pieces=raw.split(':',2)
+                if len(pieces)!=3 or pieces[0]!='historical' or pieces[1] not in ['9','10']:continue
+                code=pieces[1]
+                observed=[(e,o) for e in registry['events'] if year in e['sourceDatasetYears'] for o in e['offices'] if str(o['id'])==code]
+                keys={o['key'] for e,o in observed}
+                if len(keys)!=1:raise ValueError('modern alternate cargo code needs one explicit source-year identity')
+                office=next(iter(keys));canonical.add(office)
+                if office==raw:continue
+                refs=[dict(id=e['id'],code=c,date=iso_date(d),sessionKey=e['session_key']) for e,o in observed for c in e['sourceElectionIds'] for d in e['dates']]
+                bridges[(year,raw)]=dict(sourceYear=year,office=code,rawOfficeKey=raw,officeKey=office,
+                    evidence='same-source-year-official-cargo-code',tables=['election_declared_seats'],events=refs)
+        part['canonicalOfficeKeys']=sorted(canonical)
+    for name in names.intersection(fragment['tables']):
+        for part in fragment['tables'][name]['parts'].values():
+            available.update(part['sourceYears'])
+            for key in part['sessionKeys']:
+                session=sessions[key]
+                for office in session['offices']:
+                    if office['key'] not in part.get('canonicalOfficeKeys',part['officeKeys']):continue
+                    cap=office['capabilities'];role=cap.setdefault('sources',{}).setdefault('nominations',dict(index=index,bindingKind='source-year-reference',tables=[],sourceYears=[]))
+                    role['tables']=sorted(set(role['tables'])|{name});role['sourceYears']=sorted(set(role['sourceYears'])|set(part['sourceYears']))
+                    aliases={b['rawOfficeKey'] for (year,raw),b in bridges.items() if year in part['sourceYears'] and b['officeKey']==office['key']}
+                    role['sourceOfficeKeys']=sorted(set(role.get('sourceOfficeKeys',[]))|{office['key']}|aliases)
+                    flag={'election_lists':'listMetadata','election_declared_seats':'declaredSeats','candidate_list_links':'candidateListLinks'}[name]
+                    cap[flag]=True
+    registry['nominations']=dict(index=index,tables=sorted(names.intersection(fragment['tables'])),availableYears=sorted(available),officeBindings=list(bridges.values()),scope='Source-year reference or explicitly identified source event; declared vacancies are not observed outcomes.')
+
+
 def integrate(data_dir, fragment_paths):
     manifest_path = data_dir/'manifest.json';manifest=read_json(manifest_path)
     registry_path = data_dir/'elections.json';registry=read_json(registry_path)
@@ -263,10 +303,14 @@ def integrate(data_dir, fragment_paths):
         merge_descriptors(data_dir,registry,manifest,combined['places'])
     if combined['observedBallotOptions']:
         registry['observedBallotOptions']=combined['observedBallotOptions']
+    for path in fragment_paths:
+        if path.name=='index.json' and path.parent.name=='nominations':
+            nomination_references(registry,dict(tables={name:manifest['tables'][name] for name in ['election_lists','election_declared_seats','candidate_list_links']}),str(path.relative_to(data_dir)))
     election_stages(registry)
     date_evidence(registry)
     registry['counts'].update(sessions=len(registry['sessions']),events=len(registry['events']))
     manifest['elections']=dict(index='elections.json',**registry['counts'])
+    if registry.get('nominations'):manifest['nominations']=registry['nominations']
     relative=[str(path.relative_to(data_dir)) for path in fragment_paths]
     manifest['electoralFacts']=dict(indexes=relative)
     if manifest.get('geo'):
