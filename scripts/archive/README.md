@@ -75,9 +75,36 @@ outside Git. Release ZIP exports and checksums remain available separately.
 python3 scripts/archive/build_election_registry.py
 nice python3 scripts/archive/normalize_profiles.py --root .cache/tse-archive --workers 4
 nice python3 scripts/archive/publish_profiles.py --root .cache/tse-archive
-python3 scripts/archive/integrate_electoral_facts.py --fragment data/history/result-facts/index.json
+python3 scripts/archive/integrate_electoral_facts.py --fragment data/results-facts/index.json
 python3 -m unittest discover -s test/archive
 ```
 
 The publication command writes the dedicated data branch and release; run it
 only within an explicitly authorized publication task. It does not deploy Pages.
+
+`election-source-bindings.json` records proven source-context equivalences. The
+2008 municipal registration snapshot reports 5 October for its second-round
+records; all sixty mayoral source sequences, offices and constituencies match
+the dated 26 October vote source bijectively. Both reported event IDs and dates
+remain inspectable. Explicit candidate-ID links connect the different source
+contexts, and reported outcomes are counted once. A registration-only date
+without equivalent voting evidence remains labelled as source context.
+Outcome availability is independent of a direct vote file: vice-candidate
+outcomes remain usable when the source reports them.
+
+`election_places.py` preserves municipality labels from the same electoral
+source context. Native-only event descriptors can add their names incrementally;
+no contemporary municipality crosswalk fills missing historical labels.
+
+`publish_section_facts.py` verifies packed native sections before publishing
+bounded, fast-forward commits on `data/historical-sections`. Intermediate
+checkpoints do not activate a public index. Final publication requires the full
+423-source inventory, reconciles only publisher-owned obsolete pack paths, and
+pins browser URLs to the verified commit. Separate yearly export releases retain
+the same compressed factual bytes. Reference section totals and observed ballot
+option votes retain distinct source roles and metric meanings.
+
+Declared ZIP resources must pass ZIP structure and member CRC validation before
+cache reuse or public copying. A matching file hash alone does not establish
+archive integrity. Corrective source versions preserve the original published
+artifact and record its superseded status and the complete source's digest.

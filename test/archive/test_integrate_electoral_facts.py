@@ -3,7 +3,7 @@ import sys
 import unittest
 from pathlib import Path
 sys.path.insert(0,str(Path(__file__).parents[2]/'scripts/archive'))
-from integrate_electoral_facts import fingerprint,merge_offices,election_stages
+from integrate_electoral_facts import fingerprint,merge_offices,election_stages,date_evidence
 
 
 def registry():
@@ -21,6 +21,25 @@ def observed(eid='votes',office='president'):
 
 
 class FactualRegistryIntegrationTest(unittest.TestCase):
+    def test_registration_date_is_not_asserted_as_observed_voting(self):
+        r=registry();source=source_event('registration',kind='Eleição Suplementar');o=observed('registration')
+        o.update(tables=['candidate_attributes'],grains=[],registeredCount=2,statusKnownCount=0,electedCount=None)
+        merge_offices(r,dict(events=[source],eventOffices=[o]));date_evidence(r)
+        event=next(e for e in r['events'] if e['id']=='registration')
+        session=next(s for s in r['sessions'] if s['key']==event['session_key'])
+        self.assertEqual(event['dateEvidence'],'registration-source-reported')
+        self.assertEqual(session['dateMeaning'],'source-context-reported')
+
+    def test_reference_only_source_exposes_counts_without_claiming_candidate_votes(self):
+        r=registry();r['sessions'][0]['offices'][0]['capabilities'].update(rows=0,metrics={})
+        o=observed();o.update(tables=['election_section_units'],grains=['section'],rows=2,metrics={'null_votes':dict(knownRows=2,totalRows=2)})
+        merge_offices(r,dict(events=[source_event()],eventOffices=[o]));election_stages(r)
+        office=r['sessions'][0]['offices'][0];cap=office['capabilities']
+        self.assertEqual(office['electionStage'],'observedData')
+        self.assertFalse(cap['sectionResults'])
+        self.assertNotIn('observedSections',cap['sources'])
+        self.assertEqual(cap['sources']['sectionReference']['metrics']['null_votes']['knownRows'],2)
+
     def test_2008_registration_context_has_sixty_bijective_candidate_links(self):
         import json
         proof=json.loads((Path(__file__).parents[2]/'data/election-source-bindings.json').read_text())[0]

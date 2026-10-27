@@ -82,6 +82,30 @@ def merge_descriptors(data_dir,registry,manifest,descriptors):
     write_json(index_path,index)
 
 
+def rebind_source_contexts(data_dir,registry,manifest):
+    """Move a proven source-context dimension to its canonical session."""
+    sessions={s['key'] for s in registry['sessions']}
+    events={e['id']:e for e in registry['events']};table=manifest['tables'].get('election_places')
+    if not table:return
+    obsolete=[];descriptors=[]
+    for key,part in table['parts'].items():
+        if all(session in sessions for session in part['sessionKeys']):continue
+        if not all(events[eid].get('sourceContextOnly') for eid in part['electionIds']):
+            raise ValueError('place partition lost its session without a proven source-context binding')
+        with gzip.open(data_dir/part['url'],'rt',newline='') as stream:
+            for row in csv.DictReader(stream,fieldnames=FIELDS):
+                for source in json.loads(row['provenance']):
+                    for name in json.loads(row['name_variants']):
+                        descriptors.append(dict(election_id=source['election_id'],state=row['state'],city_code=row['city_code'],city_name=name,
+                            source_url=source['url'],source_sha256=source['sha256'],source_year=source['year']))
+        obsolete.append((key,part['url']))
+    if not obsolete:return
+    for key,relative in obsolete:
+        if not relative.startswith('places/'):raise ValueError('place producer cannot remove an unowned path')
+        del table['parts'][key];(data_dir/relative).unlink()
+    merge_descriptors(data_dir,registry,manifest,descriptors)
+
+
 def build(root,data_dir):
     registry=read_json(data_dir/'elections.json');events={e['id']:e for e in registry['events']}
     observed=defaultdict(list);missing=[];source_count=0

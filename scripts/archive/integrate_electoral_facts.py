@@ -192,7 +192,9 @@ def election_stages(registry):
         stages=[]
         for office in session['offices']:
             cap=office['capabilities']
-            observed=cap.get('rows',0)>0 or cap.get('voteRows',0)>0 or bool(cap.get('sources',{}).get('observedSections'))
+            sources=cap.get('sources',{})
+            reference_rows=sources.get('sectionReference',{}).get('rows') or 0
+            observed=cap.get('rows',0)>0 or cap.get('voteRows',0)>0 or bool(sources.get('observedSections')) or reference_rows>0
             registered=cap.get('candidateAttributes') and cap.get('registeredCount',0)>0
             reported_outcomes=bool(cap.get('statusKnownCount') or cap.get('statusKnownRecordCount'))
             outcome_people=bool(cap.get('statusKnownCount')) and not cap.get('identityContextUnresolved',False)
@@ -202,6 +204,30 @@ def election_stages(registry):
             cap['outcomeKnown']=outcome_people
         session['electionStage']=next((stage for stage in ['observedData','registrationWithOutcomes','registrationOnly'] if stage in stages),'unknown')
         session['availability']={key:any(o['availability'][key] for o in session['offices']) for key in ['counts','registration','reportedOutcomes','resolvedOutcomePeople']}
+    return registry
+
+
+def date_evidence(registry):
+    """A registration snapshot's declared date is not proof of voting on that date."""
+    bindings={}
+    for binding in registry['bindings']:
+        bindings.setdefault(binding['election_id'],set()).update(binding['sources'])
+    events={e['id']:e for e in registry['events']}
+    count_tables={'units','election_units','election_votes','election_vote_rollups','election_section_votes','election_section_units'}
+    for event in events.values():
+        tables=bindings.get(event['id'],set())
+        if event.get('sourceContextOnly'):
+            evidence='candidate-identity-linked-to-voting-source'
+        elif tables & count_tables:
+            evidence='voting-source-reported'
+        elif 'candidate_attributes' in tables:
+            evidence='registration-source-reported'
+        else:
+            evidence='source-reported'
+        event['dateEvidence']=evidence
+    for session in registry['sessions']:
+        observed={events[eid]['dateEvidence'] for eid in session['eventIds']}
+        session['dateMeaning']='voting-source-reported' if observed & {'voting-source-reported','candidate-identity-linked-to-voting-source'} else 'source-context-reported'
     return registry
 
 
@@ -229,12 +255,16 @@ def integrate(data_dir, fragment_paths):
         for name in combined:combined[name].extend(fragment.get(name,[]))
     combined['events']=canonical_events(combined['events'],combined['eventOffices'],combined['sources'])
     merge_offices(registry,combined)
+    if registry.get('sourceContextBindings'):
+        from election_places import rebind_source_contexts
+        rebind_source_contexts(data_dir,registry,manifest)
     if combined['places']:
         from election_places import merge_descriptors
         merge_descriptors(data_dir,registry,manifest,combined['places'])
     if combined['observedBallotOptions']:
         registry['observedBallotOptions']=combined['observedBallotOptions']
     election_stages(registry)
+    date_evidence(registry)
     registry['counts'].update(sessions=len(registry['sessions']),events=len(registry['events']))
     manifest['elections']=dict(index='elections.json',**registry['counts'])
     relative=[str(path.relative_to(data_dir)) for path in fragment_paths]
@@ -249,6 +279,8 @@ def integrate(data_dir, fragment_paths):
                 source='https://resultados.tse.jus.br/oficial/ele2026/6257/config/mun-e006257-cm.json'),
             note='Reference outlines were fetched without a historical period. Matching a UF or municipality code does not establish equivalent historical boundaries.')
     manifest['version']=manifest['version'].split('+')[0]+'+facts-'+fingerprint(manifest)
+    from browser_catalog import update
+    update(data_dir,registry,fragment_paths)
     write_json(registry_path,registry)
     manifest_path.write_text(json.dumps(manifest,ensure_ascii=False,indent=1)+'\n')
     return manifest

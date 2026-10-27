@@ -7,10 +7,29 @@ import csv
 from collections import defaultdict
 from pathlib import Path
 sys.path.insert(0,str(Path(__file__).parents[2]/'scripts/archive'))
-from election_places import collapse,merge_descriptors,FIELDS
+from election_places import collapse,merge_descriptors,rebind_source_contexts,FIELDS
 
 
 class ElectoralPlacesTest(unittest.TestCase):
+    def test_proven_context_rebinding_preserves_names_without_orphan_partitions(self):
+        with tempfile.TemporaryDirectory() as directory:
+            data=Path(directory);(data/'places').mkdir();(data/'places/index.json').write_text('{}')
+            registry=dict(sessions=[dict(key='reported')],events=[dict(id='reported-event',session_key='reported')])
+            manifest=dict(tables={'election_places':dict(parts={})})
+            row=dict(election_id='reported-event',state='mg',city_code='43710',city_name='CONTAGEM',
+                source_url='https://cdn.tse.jus.br/candidates.zip',source_sha256='a'*64,source_year=2008)
+            merge_descriptors(data,registry,manifest,[row])
+            old=data/'places/reported/mg.csv.gz'
+            registry['sessions']=[dict(key='canonical')]
+            registry['events'][0].update(session_key='canonical',sourceContextOnly=True)
+            rebind_source_contexts(data,registry,manifest)
+            self.assertFalse(old.exists())
+            self.assertEqual(list(manifest['tables']['election_places']['parts']),['canonical/mg'])
+            with gzip.open(data/'places/canonical/mg.csv.gz','rt') as stream:
+                result=next(csv.DictReader(stream,fieldnames=FIELDS))
+            self.assertEqual(result['source_election_ids'],'["reported-event"]')
+            self.assertEqual(result['city_name'],'CONTAGEM')
+
     def test_native_event_descriptor_adds_a_name_without_duplicating_existing_rows(self):
         with tempfile.TemporaryDirectory() as directory:
             data=Path(directory);(data/'places').mkdir();(data/'places/index.json').write_text('{}')

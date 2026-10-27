@@ -292,12 +292,12 @@ def publish_prepared(root, dataset, entries, paths, readme=None):
     remote = command('git', 'ls-remote', '--heads', GIT, f'refs/heads/{branch}')
     parent = remote.split()[0] if remote else None
     if parent:
-        subprocess.run(['git', 'fetch', '--no-tags', '--no-write-fetch-head', GIT, parent], check=True, stdout=subprocess.DEVNULL)
+        subprocess.run(['git', '-c', 'pack.threads=4', 'fetch', '--no-auto-maintenance', '--no-tags', '--no-write-fetch-head', GIT, parent], check=True, stdout=subprocess.DEVNULL)
     args = ['git', 'commit-tree', tree, '-m', f"archive: preserve official {dataset['id']} sources"]
     if parent:
         args.extend(['-p', parent])
     commit = command(*args)
-    subprocess.run(['git', 'push', GIT, f'{commit}:refs/heads/{branch}'], check=True)
+    subprocess.run(['git', '-c', 'pack.threads=4', 'push', GIT, f'{commit}:refs/heads/{branch}'], check=True)
     exists = subprocess.run(['gh', 'release', 'view', dataset['tag'], '-R', REPO], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL).returncode == 0
     if not exists:
         subprocess.run(['gh', 'release', 'create', dataset['tag'], '-R', REPO, '--target', branch, '--title', dataset['title'], '--notes-file', str(directory / 'README.md'), '--draft'], check=True)

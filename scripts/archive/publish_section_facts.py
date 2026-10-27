@@ -74,9 +74,11 @@ def push_batches(root,records,branch=BRANCH,prune=False):
         receipt['head']=head;receipt['commits'].append(dict(commit=head,files=len(planned['records']),bytes=planned['bytes'],verifiedAt=now()))
         receipt.pop('planned');write_json(receipt_path,receipt)
     if receipt.get('head') and head!=receipt['head']:raise ValueError('remote section branch changed outside its publication journal')
-    environment=dict(os.environ,GIT_INDEX_FILE=str(state_dir/'index.git'))
+    environment=dict(os.environ,GIT_INDEX_FILE=str(state_dir/'index.git'),
+        GIT_CONFIG_COUNT='3',GIT_CONFIG_KEY_0='maintenance.auto',GIT_CONFIG_VALUE_0='false',
+        GIT_CONFIG_KEY_1='gc.auto',GIT_CONFIG_VALUE_1='0',GIT_CONFIG_KEY_2='pack.threads',GIT_CONFIG_VALUE_2='4')
     if head:
-        subprocess.run(['git','fetch','--no-tags','--no-write-fetch-head',GIT,head],check=True,stdout=subprocess.DEVNULL)
+        subprocess.run(['git','fetch','--no-auto-maintenance','--no-tags','--no-write-fetch-head',GIT,head],env=environment,check=True,stdout=subprocess.DEVNULL)
         subprocess.run(['git','read-tree',head],env=environment,check=True)
     else:subprocess.run(['git','read-tree','--empty'],env=environment,check=True)
     changed=[r for r in records if receipt['files'].get(r['path'],{}).get('sha256')!=r['sha256']]
@@ -89,7 +91,7 @@ def push_batches(root,records,branch=BRANCH,prune=False):
         commit=command(*args)
         receipt['planned']=dict(commit=commit,records=batch,bytes=sum(r['bytes'] for r in batch))
         write_json(receipt_path,receipt)
-        subprocess.run(['git','-c','pack.threads=4','-c','pack.window=0','push',GIT,f'{commit}:refs/heads/{branch}'],check=True,timeout=900)
+        subprocess.run(['git','-c','pack.threads=4','-c','pack.window=0','push',GIT,f'{commit}:refs/heads/{branch}'],env=environment,check=True,timeout=900)
         if command('git','ls-remote','--heads',GIT,f'refs/heads/{branch}').split()[0]!=commit:
             raise ValueError('remote section branch does not match the verified push')
         head=commit
@@ -108,7 +110,7 @@ def push_batches(root,records,branch=BRANCH,prune=False):
             commit=command('git','commit-tree',tree,'-p',head,'-m','sections: retain the final verified factual inventory')
             receipt['planned']=dict(commit=commit,records=[],removed=obsolete,bytes=0)
             write_json(receipt_path,receipt)
-            subprocess.run(['git','-c','pack.threads=4','push',GIT,f'{commit}:refs/heads/{branch}'],check=True,timeout=900)
+            subprocess.run(['git','-c','pack.threads=4','push',GIT,f'{commit}:refs/heads/{branch}'],env=environment,check=True,timeout=900)
             if command('git','ls-remote','--heads',GIT,f'refs/heads/{branch}').split()[0]!=commit:
                 raise ValueError('remote section cleanup does not match the final inventory')
             for name in obsolete:receipt['files'].pop(name)
@@ -184,6 +186,15 @@ def pin_fragment(document,commit):
     return result
 
 
+def index_payloads(document):
+    body=(json.dumps(public_document(document),ensure_ascii=False,separators=(',',':'))+'\n').encode()
+    compressed=gzip.compress(body,mtime=0)
+    if len(compressed)>=MAX_PART:raise ValueError('compressed section index exceeds the transport limit')
+    descriptor=dict(version=1,index=dict(url='index.json.gz',encoding='gzip',bytes=len(compressed),rawBytes=len(body),sha256=hashlib.sha256(compressed).hexdigest()),
+        expectedSources=document['expectedSources'],sourceCounts=document['sourceCounts'])
+    return {'index.json.gz':compressed,'index.json':(json.dumps(descriptor,separators=(',',':'))+'\n').encode()}
+
+
 def sync(root,packed_root,index_path,final=False,data_dir=Path('data')):
     directory=root/'browser-publications'/'sections';directory.mkdir(parents=True,exist_ok=True)
     with (directory/'publication.lock').open('a') as lock:
@@ -194,13 +205,14 @@ def sync(root,packed_root,index_path,final=False,data_dir=Path('data')):
                 raise ValueError('final section publication requires all 423 source inventories')
             if any(n for status,n in document['sourceCounts'].items() if status!='ready') or document.get('unregisteredEvents'):
                 raise ValueError('final section publication has unfinished, failed or unregistered sources')
+            document['publicationProducer']=dict(sourceCommit=command('git','rev-parse','HEAD'),
+                sha256=sha256(Path(__file__)))
         records=snapshot_parts(packed_root,document)
         # The source index is published only with a complete source inventory.
         if final:
-            body=(json.dumps(public_document(document),ensure_ascii=False,separators=(',',':'))+'\n').encode()
-            if len(body)>=MAX_PART:raise ValueError('section index must remain below 20 MB')
-            blob=subprocess.check_output(['git','hash-object','-w','--stdin'],input=body).decode().strip()
-            records.append(dict(path='index.json',blob=blob,bytes=len(body),sha256=hashlib.sha256(body).hexdigest()))
+            for relative,payload in index_payloads(document).items():
+                blob=subprocess.check_output(['git','hash-object','-w','--stdin'],input=payload).decode().strip()
+                records.append(dict(path=relative,blob=blob,bytes=len(payload),sha256=hashlib.sha256(payload).hexdigest()))
         head,receipt=push_batches(root,records,prune=final)
         if final:
             actual=set(receipt['files']);expected={r['path'] for r in records}

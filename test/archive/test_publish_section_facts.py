@@ -1,4 +1,5 @@
 import hashlib
+import gzip
 import json
 import sys
 import tempfile
@@ -7,10 +8,19 @@ import zipfile
 from pathlib import Path
 from unittest.mock import patch
 sys.path.insert(0,str(Path(__file__).parents[2]/'scripts/archive'))
-from publish_section_facts import bounded_batches,pin_fragment,public_document,snapshot_parts,export_archives
+from publish_section_facts import bounded_batches,pin_fragment,public_document,snapshot_parts,export_archives,index_payloads
 
 
 class SectionPublicationTest(unittest.TestCase):
+    def test_complete_index_is_compressed_without_losing_source_metadata(self):
+        document=dict(expectedSources=423,sourceCounts={'ready':423},tables={'votes':{'parts':{'one':dict(url='one.gz',localFile='one.gz',rawBytes=99,cities=['30015'])}}})
+        files=index_payloads(document);descriptor=json.loads(files['index.json'])
+        metadata=json.loads(gzip.decompress(files[descriptor['index']['url']]))
+        self.assertEqual(metadata['tables']['votes']['parts']['one']['cities'],['30015'])
+        self.assertEqual(metadata['tables']['votes']['parts']['one']['rawBytes'],99)
+        self.assertNotIn('localFile',metadata['tables']['votes']['parts']['one'])
+        self.assertEqual(descriptor['index']['sha256'],hashlib.sha256(files['index.json.gz']).hexdigest())
+
     def test_exports_preserve_pack_bytes_and_fail_if_the_snapshot_changed(self):
         with tempfile.TemporaryDirectory() as directory:
             root=Path(directory);body=b'exact compressed observations';(root/'part.gz').write_bytes(body)
