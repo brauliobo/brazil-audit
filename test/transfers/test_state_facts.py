@@ -44,3 +44,12 @@ class BrowserFactTests(unittest.TestCase):
         self.assertFalse(dict(zip(ROUND_FIELDS,rounds[0]))['votes_complete'])
         self.assertEqual(len([c for c in counts if c[4].startswith('candidate:')]),0)
         self.assertNotIn('residual',[c[4] for c in counts])
+
+class AvailabilityMetadataTests(unittest.TestCase):
+    def test_paired_years_require_both_rounds_of_the_same_contest_and_uf(self):
+        from state_facts import paired_years
+        def row(contest,state,turn):
+            values={k:None for k in ROUND_FIELDS};values.update(contest_id=contest,state=state,turn=turn,year=2026,office=3)
+            return [values[k] for k in ROUND_FIELDS]
+        self.assertEqual(paired_years([row('a','ac',1),row('b','ac',2),row('a','am',2)]),[])
+        self.assertEqual(paired_years([row('a','ac',1),row('a','ac',2)]),[2026])

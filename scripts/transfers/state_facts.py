@@ -148,6 +148,14 @@ def validate(rounds,counts):
     return by_key
 
 
+def paired_years(rounds):
+    groups=defaultdict(set)
+    for row in rounds:
+        record=dict(zip(ROUND_FIELDS,row))
+        if record['office'] in [1,3,11]:groups[(record['year'],record['contest_id'],record['state'])].add(record['turn'])
+    return sorted(set(year for (year,_,_),turns in groups.items() if {1,2}.issubset(turns)))
+
+
 def write_table(name,fields,types,rows,manifest):
     directory=Path('data/state-facts');directory.mkdir(exist_ok=True)
     parts={}
@@ -173,7 +181,7 @@ def main():
     write_table('state_rounds',ROUND_FIELDS,ROUND_TYPES,rounds,manifest);write_table('state_round_counts',COUNT_FIELDS,COUNT_TYPES,counts,manifest)
     fingerprint=hashlib.sha256(json.dumps({t:manifest['tables'][t]['parts'] for t in ['state_rounds','state_round_counts']},sort_keys=True).encode()).hexdigest()
     manifest['version']=manifest['version'].split('+statefacts-')[0]+'+statefacts-'+fingerprint[:16]
-    manifest['stateFacts']={'version':1,'scope':'president/governor by UF; mayor by municipality within UF','browserAnalysis':True,'status':'ready','availableYears':sorted(set(r[2] for r in rounds)),
+    manifest['stateFacts']={'version':1,'scope':'president/governor by UF; mayor by municipality within UF','browserAnalysis':True,'status':'ready','availableYears':sorted(set(r[2] for r in rounds)),'pairedYears':paired_years(rounds),
                             'key':['contest_id','state','turn'],'categoryKey':['contest_id','state','turn','category_id'],
                             'populationRepeatedInCounts':False,'nativeAndTechnicalNullsSeparate':True,'administrativeBalanceObserved':False,
                             'rows':len(rounds),'categories':len(counts),'optionalModels':'transfers/index.json',

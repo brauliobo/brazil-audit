@@ -10358,6 +10358,28 @@
   "rows": 46594,
   "categories": 410334,
   "optionalModels": "transfers/index.json",
-  "definitions": "https://github.com/brauliobo/brazil-audit/blob/main/scripts/transfers/STATE_FACTS.md"
+  "definitions": "https://github.com/brauliobo/brazil-audit/blob/main/scripts/transfers/STATE_FACTS.md",
+  "pairedYears": [
+   1989,
+   1990,
+   1994,
+   1996,
+   1998,
+   2000,
+   2002,
+   2004,
+   2006,
+   2008,
+   2010,
+   2012,
+   2014,
+   2016,
+   2017,
+   2018,
+   2020,
+   2022,
+   2024,
+   2026
+  ]
  }
 }
