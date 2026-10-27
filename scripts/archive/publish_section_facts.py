@@ -140,11 +140,29 @@ def export_archives(packed_root,records,directory,limit=CHUNK):
     return outputs
 
 
+def source_years(sources):
+    """A verified duplicate inherits export grouping from its proven primary."""
+    by_url={s['url']:s for s in sources};years={}
+    for source in sources:
+        if 'sourceYear' in source:
+            year=source['sourceYear']
+        elif source.get('analyticalRole')=='verified-duplicate':
+            primary=by_url[source['primarySource']];proof=source['equalityProof']
+            if proof['source_url']!=source['url'] or proof['source_sha256']!=source['source_sha256']:
+                raise ValueError('duplicate export source does not match its equality proof')
+            year=primary['sourceYear']
+        else:
+            raise ValueError('section export source lacks declared year or verified primary identity')
+        years[source['url']]=year
+    return years
+
+
 def publish_exports(root,packed_root,document,records,commit):
     """One yearly export release; browser queries keep immutable raw URLs."""
     fragment=pin_fragment(document,commit)
-    for year in sorted({s['sourceYear'] for s in document['sources']}):
-        sources=[s for s in document['sources'] if s['sourceYear']==year]
+    years=source_years(document['sources'])
+    for year in sorted(set(years.values())):
+        sources=[s for s in document['sources'] if years[s['url']]==year]
         urls={s['url'] for s in sources};selected={}
         for table in document['tables'].values():
             for p in table['parts'].values():
@@ -155,12 +173,13 @@ def publish_exports(root,packed_root,document,records,commit):
         identifier=f'historical-sections-{year}';directory=root/'releases'/identifier
         archives=export_archives(packed_root,files,directory)
         index=copy.deepcopy(fragment)
-        index['sources']=[s for s in fragment['sources'] if s['sourceYear']==year]
+        index['sources']=[s for s in fragment['sources'] if s['url'] in urls]
         index['sourceMetadata']=[s for s in fragment['sourceMetadata'] if s['source_url'] in urls]
         for table in index['tables'].values():table['parts']={k:p for k,p in table['parts'].items() if year in p['sourceYears']}
         event_ids={eid for t in index['tables'].values() for p in t['parts'].values() for eid in p['electionIds']}
         index['eventOffices']=[o for o in index['eventOffices'] if o['election_id'] in event_ids]
         index['expectedSources']=len(sources);index['sourceCounts']={'ready':len(sources)}
+        index['exportSourceYear']=year
         index['events']=[e for e in index.get('events',[]) if e.get('id',e.get('election_id')) in event_ids]
         write_json(directory/'index.json',index)
         entries=[dict(status='prepared',year=year,sourceUrls=sorted(urls),browserCommit=commit,

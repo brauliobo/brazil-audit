@@ -8,10 +8,23 @@ import zipfile
 from pathlib import Path
 from unittest.mock import patch
 sys.path.insert(0,str(Path(__file__).parents[2]/'scripts/archive'))
-from publish_section_facts import bounded_batches,pin_fragment,public_document,snapshot_parts,export_archives,index_payloads
+from publish_section_facts import bounded_batches,pin_fragment,public_document,snapshot_parts,export_archives,index_payloads,source_years
 
 
 class SectionPublicationTest(unittest.TestCase):
+    def test_verified_duplicate_uses_primary_year_without_filename_inference(self):
+        primary=dict(url='https://example.org/primary',sourceYear=2010)
+        duplicate=dict(url='https://example.org/duplicate',analyticalRole='verified-duplicate',primarySource=primary['url'],
+            source_sha256='a'*64,equalityProof=dict(source_url='https://example.org/duplicate',source_sha256='a'*64))
+        years=source_years([primary,duplicate])
+        self.assertEqual(years[duplicate['url']],2010)
+        self.assertNotIn('sourceYear',duplicate)
+        with self.assertRaises(KeyError):
+            source_years([duplicate])
+        duplicate['equalityProof']['source_sha256']='b'*64
+        with self.assertRaisesRegex(ValueError,'does not match'):
+            source_years([primary,duplicate])
+
     def test_complete_index_is_compressed_without_losing_source_metadata(self):
         document=dict(expectedSources=423,sourceCounts={'ready':423},tables={'votes':{'parts':{'one':dict(url='one.gz',localFile='one.gz',rawBytes=99,cities=['30015'])}}})
         files=index_payloads(document);descriptor=json.loads(files['index.json'])
