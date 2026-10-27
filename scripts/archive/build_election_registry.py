@@ -6,12 +6,14 @@ import gzip
 import hashlib
 import io
 import json
+import unicodedata
 from collections import defaultdict
 from datetime import datetime
 from pathlib import Path
 
-from normalize_history import METRICS
+from normalize_history import METRICS, METRIC_DEFINITIONS
 from tse_archive import read_json, write_json
+from integrate_electoral_facts import fingerprint
 
 MODERN_EVENTS = {
     '2018': ['295', '297'], '2018-2': ['296', '298'],
@@ -26,6 +28,23 @@ HISTORICAL_STATES = {
     'rb': {'name': 'Rio Branco', 'historical': True},
     'vt': {'name': 'VT (código original da fonte)', 'historical': False, 'unresolved': True},
 }
+
+
+def constituency_grain(office, event):
+    """Jurisdiction follows the source office meaning, never its numeric code alone."""
+    key = office['key']
+    name=office['name'].upper()
+    if key == 'president' or name == 'VICE-PRESIDENTE':
+        return 'national'
+    if key in ['governor','senator','federal_deputy','state_deputy','district_deputy'] or name == 'VICE-GOVERNADOR':
+        return 'state'
+    if key in ['mayor','councillor'] or name in ['VICE-PREFEITO','CONSELHEIRO DISTRITAL']:
+        return 'municipality'
+    if office['name'].upper().startswith('SUPLENTE DE SENADOR'):
+        return 'state'
+    if event['year'] == 1933 and key == 'historical:6:DEPUTADO' and 'CONSTITUINTE' in event['description'].upper():
+        return 'state'
+    return 'unknown'
 # Native null votes are named explicitly: NULL remains the SQL missing-value marker.
 UNIT_FIELDS = ['session_key', 'election_id', 'year', 'source_year', 'turn', 'date', 'description', 'election_type',
                'grain', 'state', 'city_code', 'zone', 'section', 'office', 'office_key', 'office_name',
@@ -39,7 +58,8 @@ def iso_date(value):
 
 def event_family(event):
     keys = {o['key'] for o in event['offices']}
-    if any('Extraordin' in t or 'Suplementar' in t for t in event['electionTypes']):
+    types = [''.join(c for c in unicodedata.normalize('NFD', t.casefold()) if not unicodedata.combining(c)) for t in event['electionTypes']]
+    if any('extraordin' in t or 'suplement' in t for t in types):
         return 'supplementary'
     if keys and keys <= GENERAL:
         return 'general'
@@ -103,11 +123,11 @@ def session_groups(events):
 
 
 def unit_row(row, session):
-    result = {k: row.get(k) or None for k in UNIT_FIELDS}
+    result = {k: value if (value:=row.get(k)) not in [None,''] else None for k in UNIT_FIELDS}
     date = iso_date(row['date'])
     result.update(session_key=session['key'], year=int(date[:4]) if date else int(row['year']), source_year=int(row['year']),
-                  turn=int(row['turn']) if row['turn'] else None, date=date, grain=row['scope'], section=None,
-                  null_votes=row.get('null') or None)
+                  turn=int(row['turn']) if row['turn'] not in [None,''] else None, date=date, grain=row['scope'], section=None,
+                  null_votes=row.get('null') if row.get('null') not in [None,''] else None)
     for name in NUMERIC:
         if name in result:
             result[name] = int(result[name]) if result[name] is not None else None
@@ -117,7 +137,13 @@ def unit_row(row, session):
 def table_definition(parts):
     types = {k: 'bigint' if k in NUMERIC else 'text' for k in UNIT_FIELDS}
     types.update(year='int', source_year='int', turn='int', date='date')
-    return dict(name='election_units', columns=','.join(UNIT_FIELDS),
+    meanings = {('null_votes' if k == 'null' else k): dict(definition=v) for k,v in METRIC_DEFINITIONS.items()}
+    meanings['nominal'].update(countMeaning='nominal_valid', sourceFields=['QT_VOTOS_NOMINAIS_VALIDOS','v.vnom'])
+    meanings['legend'].update(countMeaning='party_list_reported', sourceFields=['QT_TOTAL_VOTOS_LEG_VALIDOS','QTD_VOTOS_LEGENDA','v.vl'],
+        sourceSemantics={'QT_TOTAL_VOTOS_LEG_VALIDOS':'valid-party-list','QTD_VOTOS_LEGENDA':'historical-reported-party-list','v.vl':'official-reported-party-list'})
+    meanings['ballots'].update(countMeaning='ballot_votes', isAttendance=False)
+    meanings['sections']=dict(definition='Section count reported by the summary; it does not change the row grain.', isGrain=False)
+    return dict(name='election_units', columns=','.join(UNIT_FIELDS), metricDefinitions=meanings,
                 ddl='create table election_units (' + ', '.join(f'{k} {types[k]}' for k in UNIT_FIELDS) + ')', parts=parts)
 
 
@@ -152,7 +178,7 @@ def build(data_dir):
                 raise ValueError(f"duplicate event: {e['id']}")
             event_sessions[e['id']] = key
             for o in e['offices']:
-                offices[o['key']] = dict(o, capabilities={'metrics': {}, 'grains': [], 'states': [], 'tables': ['election_units'],
+                offices[o['key']] = dict(o, constituencyGrain=constituency_grain(o,e), capabilities={'metrics': {}, 'grains': [], 'states': [], 'tables': ['election_units'],
                                                           'sectionResults': False, 'browserRdv': False, 'times': False})
                 sources = {'units': dict(table='election_units', election_id=e['id'])}
                 if (e['id'], o['id']) in state_events:
@@ -219,10 +245,9 @@ def build(data_dir):
                     counts=dict(sessions=len(sessions), events=len(events_out), units=sum(p['rows'] for p in parts.values())))
     write_json(data_dir / 'elections.json', registry)
     manifest['tables']['election_units'] = table_definition(parts)
-    digest = hashlib.sha256(json.dumps(registry, sort_keys=True).encode()).hexdigest()[:16]
-    manifest['version'] = manifest['version'].split('+elections-')[0] + '+elections-' + digest
     manifest['elections'] = dict(index='elections.json', **registry['counts'])
-    write_json(manifest_path, manifest)
+    manifest['version'] = manifest['version'].split('+')[0] + '+facts-' + fingerprint(manifest)
+    manifest_path.write_text(json.dumps(manifest,ensure_ascii=False,indent=1)+'\n')
     for old in previous_paths - {p['url'] for p in parts.values()}:
         if not old.startswith('election-units/'):
             raise ValueError(f'unit generator does not own obsolete path: {old}')

@@ -40,7 +40,8 @@ def adapt(source, target, config, url, digest, normalize):
                CD_CARGO=code, DS_CARGO=cargo['nmn'], QT_APTOS=e['te'], QT_COMPARECIMENTO=e['c'], QT_ABSTENCOES=e['a'],
                QT_ELEITORES_SECOES_NAO_INSTALADAS=e['esni'], QT_VOTOS_BRANCOS=v.get('vb'), QT_VOTOS_NULOS=v.get('vn'),
                QT_TOTAL_VOTOS_NULOS=v.get('tvn'), QT_VOTOS_NULOS_TECNICOS=v.get('vnt'), QT_TOTAL_SECOES=s.get('ts'), QT_VOTOS=v.get('tv'),
-               QT_TOTAL_VOTOS_ANULADOS=v.get('van'), QT_TOTAL_VOTOS_ANUL_SUBJUD=v.get('vansj'))
+               QT_TOTAL_VOTOS_ANULADOS=v.get('van'), QT_TOTAL_VOTOS_ANUL_SUBJUD=v.get('vansj'),
+               QT_VOTOS_NOMINAIS_VALIDOS=v.get('vnom'), QT_TOTAL_VOTOS_LEG_VALIDOS=v.get('vl'))
     resource = dict(id=f'official-{event}-{code}', url=url, sha256=digest)
     row = normalize(raw, resource)
     row['valid'] = int(v['vv']) if str(v.get('vv', '')).isdigit() else None

@@ -124,6 +124,20 @@ def probe(root, workers):
                 print(f'probed {len(known) + i}', flush=True)
 
 
+def validate_archive(path, resource=None):
+    """Validate declared ZIPs even when their central directory is missing."""
+    resource = resource or {}
+    source_name = urllib.parse.urlsplit(resource.get('url', '')).path
+    declared = (resource.get('expectedFormat', resource.get('format', '')).upper() == 'ZIP'
+                or source_name.lower().endswith('.zip') or path.suffix.lower() == '.zip')
+    if not declared and not zipfile.is_zipfile(path):
+        return
+    with zipfile.ZipFile(path) as archive:
+        bad = archive.testzip()
+        if bad:
+            raise ValueError(f'ZIP CRC mismatch: {resource.get("url", path.name)} / {bad}')
+
+
 def download(root, resource):
     key = hashlib.sha256(resource['url'].encode()).hexdigest()
     directory = root / 'downloads' / key
@@ -142,26 +156,24 @@ def _download(root, resource):
     if state.exists():
         record = read_json(state)
         if path.exists() and path.stat().st_size == record['bytes'] and sha256(path) == record['sha256']:
+            validate_archive(path, resource)
             return path, record
     directory.mkdir(parents=True, exist_ok=True)
     part = path.with_suffix(path.suffix + '.part')
     # curl resumes only its own partial file; errors remain errors, never empty archive substitutes.
     subprocess.run(['curl', '-fL', '--retry', '3', '--retry-delay', '2', '--connect-timeout', '30', '--speed-time', '120',
                     '--speed-limit', '1024', '--continue-at', '-', '--output', str(part), url], check=True, stdout=subprocess.DEVNULL, stderr=subprocess.PIPE)
-    if zipfile.is_zipfile(part):
-        with zipfile.ZipFile(part) as archive:
-            bad = archive.testzip()
-            if bad:
-                raise ValueError(f'ZIP CRC mismatch: {url} / {bad}')
+    validate_archive(part, resource)
     part.replace(path)
     record = dict(url=url, downloadedAt=now(), bytes=path.stat().st_size, sha256=sha256(path))
     write_json(state, record)
     return path, record
 
 
-def public_copy(path, output):
+def public_copy(path, output, resource=None):
     """Remove direct personal identifiers from tabular resources before public republication."""
     removed = {}
+    validate_archive(path, resource)
     if not zipfile.is_zipfile(path):
         output.unlink(missing_ok=True)
         os.link(path, output)
@@ -227,7 +239,7 @@ def publish(root, dataset):
             continue
         source, record = download(root, resource)
         output = directory / f"{resource['id'][:8]}-{source.name}"
-        removed = public_copy(source, output)
+        removed = public_copy(source, output, resource)
         published = []
         if output.stat().st_size > CHUNK:
             with output.open('rb') as inp:
@@ -259,7 +271,7 @@ def resource_complete(entry):
     return entry['status'] == 'unavailable' and entry.get('availability') in ['empty_source', 'no-rdv-published'] and entry.get('membersAvailable') == 0 and entry.get('inventoryVerified') is True
 
 
-def publish_prepared(root, dataset, entries, paths):
+def publish_prepared(root, dataset, entries, paths, readme=None):
     directory = root / 'releases' / dataset['id']
     directory.mkdir(parents=True, exist_ok=True)
     status = 'published' if all(resource_complete(e) for e in entries) else 'partial'
@@ -267,7 +279,8 @@ def publish_prepared(root, dataset, entries, paths):
     write_json(directory / 'ARCHIVE.json', manifest)
     sums = '\n'.join(f'{sha256(path)}  {path.name}' for path in paths) + '\n'
     (directory / 'SHA256SUMS').write_text(sums)
-    readme = f"# {dataset['title']}\n\nFonte: {dataset['source']}\n\nLicença: {dataset['license']}. Dados arquivados, ainda não normalizados para todas as análises.\n\nARCHIVE.json identifica URL, instante, hash original, assets publicados e eventuais colunas pessoais removidas. Arquivos multipartes devem ser concatenados em ordem antes da extração.\n"
+    if readme is None:
+        readme = f"# {dataset['title']}\n\nFonte: {dataset['source']}\n\nLicença: {dataset['license']}. Dados arquivados, ainda não normalizados para todas as análises.\n\nARCHIVE.json identifica URL, instante, hash original, assets publicados e eventuais colunas pessoais removidas. Arquivos multipartes devem ser concatenados em ordem antes da extração.\n"
     (directory / 'README.md').write_text(readme)
     files = ['ARCHIVE.json', 'SHA256SUMS', 'README.md']
     tree_input = ''

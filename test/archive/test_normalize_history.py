@@ -30,8 +30,14 @@ class HistoricalSummariesTest(unittest.TestCase):
         self.assertEqual(row['scope'], 'municipality')
         self.assertEqual(row['zone'], '')
         self.assertIsNone(row['valid'])
+        self.assertEqual((row['nominal'], row['legend']), (1643, 247))
         raw['QT_TOTAL_VOTOS_VALIDOS'] = '1890'
         self.assertEqual(history.normalize(raw, {'id': 'a', 'url': 'https://cdn.tse.jus.br/a.zip'})['valid'], 1890)
+
+    def test_unknown_nominal_votes_are_not_reconstructed_from_total_valid_votes(self):
+        raw = {'ANO_ELEICAO': '1989', 'QTD_VOTOS_LIQUIDOS': '128010', 'QTD_VOTOS_LEGENDA': '-3'}
+        row = history.normalize(raw, {'id': 'a', 'url': 'https://cdn.tse.jus.br/a.zip'})
+        self.assertIsNone(row['nominal']); self.assertIsNone(row['legend'])
 
     def test_conflicting_senate_metrics_do_not_discard_consistent_turnout(self):
         first = dict.fromkeys(history.METRICS)

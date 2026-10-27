@@ -31,3 +31,53 @@ Native vote totals are preserved as `ballots_reported` (CSV `QT_VOTOS`, JSON `v.
 Official state/municipality/zone counts are source facts, not precomputed estimates. The historical adapter reuses the application election configuration and exact official JSONs, including the 2026 presidential and six governor runoffs. National reference totals remain distinct from state rollups. Existing source archives are referenced by digest instead of duplicated.
 
 A valid official ZIP containing only documentation is recorded as `empty_source`: the published source has no RDV members. Its documentation, source URL, ETag, size and inventory hash are preserved. This says nothing by itself about zero votes, zero electors, or whether a runoff took place. `data/history/availability.json` links the separate official election-configuration evidence. Unsupported RDV representations and transport failures remain errors.
+
+## Shared election registry and browser facts
+
+`build_election_registry.py` generates `data/elections.json` and the
+`election_units` table in the main manifest from the verified historical summary
+parts. Source event IDs remain distinct. Ordinary federal and statewide sources
+can share a visible session; supplementary contests retain their dated identity.
+The six existing election URLs remain unchanged. A missing historical round or
+date stays NULL. An aggregate count of sections does not turn a UF record into a
+section-level observation.
+
+`integrate_electoral_facts.py` merges separately generated table fragments and
+per-event office capabilities. Votes and participation may have different source
+event codes and different grains. Their bindings preserve both; they are not
+joined by year/round alone. Missing participation stays unknown when only
+candidate votes exist. Browser database versions fingerprint all table schemas
+and part digests, including later normalization changes.
+
+`normalize_profiles.py` preserves complete electoral demographic cells for every
+archived electorate and attendance profile. Each demographic code and its label
+are retained, including source sentinel categories. Negative quantitative
+sentinels become SQL NULL with the original value in `metric_sentinels`.
+`level = 'state'` is an additive UF cube retaining every demographic axis;
+`level = 'detail'` retains the original municipality/zone cells. Never sum these
+two levels. When the TSE supplies a nationwide `BRASIL.csv` and UF copies, only
+the nationwide cell file is selected. Its `SG_UF` still identifies the real UF.
+
+Profiles are independent source snapshots, not an inferred electorate for every
+contest held in that year. Generation date is not election date. Attendance
+retains only the rounds supplied in that source. A nominal source year does not
+link a profile to a supplementary contest held in a different calendar year.
+
+`publish_profiles.py` keeps compact UF cubes with the application and publishes
+full normalized cells on `data/historical-profiles`. Browser URLs pin the exact
+commit on `raw.githubusercontent.com`, which supports CORS. These are factual
+counts, not model results. Each compressed part is below 20 MB; oversized UF
+files are partitioned into disjoint city-code intervals so interrupted COPY
+replacements cannot delete neighboring shards. Original raw TSE archives stay
+outside Git. Release ZIP exports and checksums remain available separately.
+
+```sh
+python3 scripts/archive/build_election_registry.py
+nice python3 scripts/archive/normalize_profiles.py --root .cache/tse-archive --workers 4
+nice python3 scripts/archive/publish_profiles.py --root .cache/tse-archive
+python3 scripts/archive/integrate_electoral_facts.py --fragment data/history/result-facts/index.json
+python3 -m unittest discover -s test/archive
+```
+
+The publication command writes the dedicated data branch and release; run it
+only within an explicitly authorized publication task. It does not deploy Pages.

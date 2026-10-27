@@ -77083,19 +77083,44 @@
           "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2026_RJ.zip",
           "format": "CSV",
           "status": "published",
-          "bytes": 291504128,
-          "lastModified": "Tue, 06 Oct 2026 19:32:16 GMT",
-          "etag": "\"112fc109-65d310e65be55\"",
+          "bytes": 296106129,
+          "lastModified": "Mon, 26 Oct 2026 17:53:09 GMT",
+          "etag": "\"11a63891-65ec200bc36aa\"",
           "inScope": true,
-          "sha256": "33cf8906752970ee6d21c0d426ffbbe74c1f5c1e8a798c55891f33973197ba74",
+          "sha256": "ec93c020ae1f0088216de92e5acc5d3211aefaf1fa589b961132bbf471ee3cf5",
           "assets": [
             {
-              "name": "0069b075-votacao_secao_2026_RJ.zip",
-              "bytes": 291504128,
-              "sha256": "33cf8906752970ee6d21c0d426ffbbe74c1f5c1e8a798c55891f33973197ba74"
+              "name": "votacao_secao_2026_RJ-ec93c020ae1f.zip",
+              "bytes": 296106129,
+              "sha256": "ec93c020ae1f0088216de92e5acc5d3211aefaf1fa589b961132bbf471ee3cf5",
+              "url": "https://github.com/brauliobo/brazil-audit/releases/download/data-resultados-2026-rj-correction/votacao_secao_2026_RJ-ec93c020ae1f.zip"
             }
           ],
-          "removedPersonalColumns": {}
+          "removedPersonalColumns": {},
+          "versions": [
+            {
+              "bytes": 291504128,
+              "sha256": "33cf8906752970ee6d21c0d426ffbbe74c1f5c1e8a798c55891f33973197ba74",
+              "assets": [
+                {
+                  "name": "0069b075-votacao_secao_2026_RJ.zip",
+                  "bytes": 291504128,
+                  "sha256": "33cf8906752970ee6d21c0d426ffbbe74c1f5c1e8a798c55891f33973197ba74"
+                }
+              ],
+              "etag": "\"112fc109-65d310e65be55\"",
+              "lastModified": "Tue, 06 Oct 2026 19:32:16 GMT",
+              "status": "invalid_archive",
+              "reason": "truncated ZIP; exact prefix of complete source",
+              "releaseUrl": "https://github.com/brauliobo/brazil-audit/releases/tag/data-resultados-2026",
+              "preserved": true
+            }
+          ],
+          "expectedFormat": "ZIP",
+          "integrity": "zip-crc-verified",
+          "releaseUrl": "https://github.com/brauliobo/brazil-audit/releases/tag/data-resultados-2026-rj-correction",
+          "downloadVersionUrl": "https://github.com/brauliobo/brazil-audit/releases/download/data-resultados-2026-rj-correction/votacao_secao_2026_RJ-ec93c020ae1f.zip",
+          "repairEvidenceUrl": "https://github.com/brauliobo/brazil-audit/releases/download/data-resultados-2026-rj-correction/REPAIR.json"
         },
         {
           "id": "41e881d8-35fc-4f7c-b194-87dd61ae259b",

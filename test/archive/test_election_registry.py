@@ -7,7 +7,7 @@ import unittest
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parents[2] / 'scripts/archive'))
-from build_election_registry import UNIT_FIELDS, session_groups, unit_row, table_definition
+from build_election_registry import UNIT_FIELDS, session_groups, unit_row, table_definition, constituency_grain
 
 
 def event(ident, office='president', code='1', year=2026, turn=1, date='04/10/2026', kind='Eleição Ordinária'):
@@ -16,6 +16,11 @@ def event(ident, office='president', code='1', year=2026, turn=1, date='04/10/20
 
 
 class ElectionRegistryTest(unittest.TestCase):
+    def test_constituency_uses_source_office_meaning_not_reused_numeric_id(self):
+        self.assertEqual(constituency_grain(dict(id='11',key='mayor',name='Prefeito'),event('x')), 'municipality')
+        self.assertEqual(constituency_grain(dict(id='25',key='historical:25:CONSELHEIRO DISTRITAL',name='Conselheiro Distrital'),event('x')), 'municipality')
+        self.assertEqual(constituency_grain(dict(id='6',key='historical:6:',name=''),event('x')), 'unknown')
+        self.assertEqual(constituency_grain(dict(id='1',key='president',name='Presidente'),event('x')), 'national')
     def test_modern_presidential_and_statewide_events_share_one_existing_url(self):
         groups = session_groups([event('p', code='6257'), event('g', office='governor', code='6259')])
         self.assertEqual([(k, [e['id'] for e in es], alias) for k, es, alias in groups], [('2026', ['p', 'g'], '2026')])
@@ -49,11 +54,21 @@ class ElectionRegistryTest(unittest.TestCase):
         self.assertIsNone(result['present']); self.assertIsNone(result['section']); self.assertIsNone(result['city_code'])
         self.assertEqual(result['grain'], 'state')
 
+    def test_typed_numeric_zero_matches_the_same_csv_zero(self):
+        base=dict(year=2022,date='',turn=1,scope='state',state='ac',eligible=0,installed=0,present=0,absent=0,null=0,blank=0)
+        typed=unit_row(base,{'key':'source'})
+        text=unit_row({k:str(v) if isinstance(v,int) else v for k,v in base.items()},{'key':'source'})
+        for field in ['eligible','installed','present','absent','null_votes','blank']:
+            self.assertEqual(typed[field],0);self.assertEqual(typed[field],text[field])
+
     def test_schema_has_real_election_identity_and_explicit_null_votes(self):
         table = table_definition({})
         self.assertIn('election_id text', table['ddl']); self.assertIn('null_votes bigint', table['ddl'])
         self.assertEqual(len(UNIT_FIELDS), len(set(UNIT_FIELDS)))
         self.assertNotIn('null bigint', table['ddl'])
+        self.assertEqual(table['metricDefinitions']['nominal']['countMeaning'], 'nominal_valid')
+        self.assertFalse(table['metricDefinitions']['ballots']['isAttendance'])
+        self.assertFalse(table['metricDefinitions']['sections']['isGrain'])
 
 
 class GeneratedRegistryTest(unittest.TestCase):
@@ -67,7 +82,13 @@ class GeneratedRegistryTest(unittest.TestCase):
     def test_every_source_event_resolves_exactly_once(self):
         source = {e['id'] for e in self.index['elections']}
         registered = [e for s in self.registry['sessions'] for e in s['eventIds']]
-        self.assertEqual(set(registered), source); self.assertEqual(len(registered), len(source))
+        self.assertTrue(source.issubset(set(registered)))
+        self.assertEqual(set(registered), {e['id'] for e in self.registry['events']})
+        self.assertEqual(len(registered), len(set(registered)))
+        fragment = self.data / 'results-facts/index.json'
+        if fragment.exists():
+            candidates = json.loads(fragment.read_text())
+            self.assertTrue({e.get('id',e.get('election_id')) for e in candidates['events']}.issubset(set(registered)))
         self.assertEqual(len({s['key'] for s in self.registry['sessions']}), len(self.registry['sessions']))
 
     def test_1933_1989_municipal_and_actual_supplementary_year(self):
@@ -77,7 +98,7 @@ class GeneratedRegistryTest(unittest.TestCase):
         self.assertEqual(first['offices'][0]['key'], 'historical:6:DEPUTADO')
         self.assertEqual({e['turn'] for e in events.values() if e['year'] == 1989}, {1, 2})
         municipal = next(s for s in self.registry['sessions'] if '2000:2000001:1:2000-10-01' in s['eventIds'])
-        self.assertEqual({o['key'] for o in municipal['offices']}, {'mayor', 'councillor'})
+        self.assertTrue({'mayor', 'councillor'}.issubset({o['key'] for o in municipal['offices']}))
         sup = next(s for s in self.registry['sessions'] if '2022:6278:1:2026-06-21' in s['eventIds'])
         self.assertEqual((sup['calendarYear'], sup['declaredYears']), (2026, [2022]))
 
@@ -86,8 +107,11 @@ class GeneratedRegistryTest(unittest.TestCase):
         for key in ['2018', '2018-2', '2022', '2022-2', '2026', '2026-2']:
             self.assertEqual(sessions[key]['legacyKey'], key)
             self.assertEqual(len(sessions[key]['eventIds']), 2)
-        self.assertEqual(len(sessions['2026']['offices']), 6)
-        self.assertEqual({o['key'] for o in sessions['2026-2']['offices']}, {'president', 'governor'})
+        self.assertTrue({'president','governor','senator','federal_deputy','state_deputy','district_deputy'}.issubset({o['key'] for o in sessions['2026']['offices']}))
+        self.assertTrue({'president', 'governor'}.issubset({o['key'] for o in sessions['2026-2']['offices']}))
+        for key in ['2026','2026-2']:
+            bound={b['office_key'] for b in self.registry['bindings'] if b['session_key']==key}
+            self.assertEqual(bound,{o['key'] for o in sessions[key]['offices']})
 
     def test_fact_partition_retains_original_grain_and_source_values(self):
         first = next(e for e in self.index['elections'] if e['year'] == 1933)

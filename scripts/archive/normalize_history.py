@@ -13,7 +13,7 @@ import zipfile
 from tse_archive import read_json, write_json, now, sha256
 
 COLUMNS = ['election_id', 'source_election_id', 'year', 'turn', 'description', 'date', 'election_type', 'scope', 'state', 'city_code', 'zone', 'office', 'office_key', 'office_name',
-           'eligible', 'installed', 'present', 'absent', 'blank', 'null', 'null_total', 'null_technical', 'annulled', 'annulled_subjudice', 'annulled_separate', 'ballots', 'ballots_reported', 'valid', 'sections', 'not_installed', 'transit', 'source_url', 'source_id', 'source_sha256']
+           'eligible', 'installed', 'present', 'absent', 'blank', 'null', 'null_total', 'null_technical', 'annulled', 'annulled_subjudice', 'annulled_separate', 'ballots', 'ballots_reported', 'valid', 'nominal', 'legend', 'sections', 'not_installed', 'transit', 'source_url', 'source_id', 'source_sha256']
 METRIC_DEFINITIONS = {
     'eligible': 'Registered electorate reported by QT_APTOS/QTD_APTOS.',
     'installed': 'Participation denominator; available only when electorate, reported attendance, abstention and uninstalled-section voters reconcile.',
@@ -25,7 +25,9 @@ METRIC_DEFINITIONS = {
     'annulled_separate': 'QT_VOTOS_ANULADOS_APU_SEP/QTD_VOTOS_ANULADOS_APU_SEP: separately counted votes from urns under judicial review; neither valid nor null pending judgment.',
     'ballots': 'QT_VOTOS or official JSON v.tv, unless smaller than a reported component; never inferred from attendance, including multi-vacancy Senate races.',
     'ballots_reported': 'Original reported QT_VOTOS or JSON v.tv, retained even when contradictory and unsuitable as a denominator.',
-    'valid': 'Native official JSON v.vv, or QT_TOTAL_VOTOS_VALIDOS only when consistent with nominal and list components; historical votos líquidos are not silently converted.'
+    'valid': 'Native official JSON v.vv, or QT_TOTAL_VOTOS_VALIDOS only when consistent with nominal and list components; historical votos líquidos are not silently converted.',
+    'nominal': 'QT_VOTOS_NOMINAIS_VALIDOS or native official JSON v.vnom; never inferred from total valid votes.',
+    'legend': 'QT_TOTAL_VOTOS_LEG_VALIDOS/QTD_VOTOS_LEGENDA or native official JSON v.vl; unknown remains NULL.'
 }
 LEGACY = ['DATA_GERACAO', 'HORA_GERACAO', 'ANO_ELEICAO', 'NUM_TURNO', 'DESC_ELEICAO', 'SIGLA_UF', 'SIGLA_UE', 'COD_CARGO',
           'DESC_CARGO', 'QTD_APTOS', 'QTD_COMPARECIMENTO', 'QTD_ABSTENCOES', 'QTD_VOTOS_LIQUIDOS', 'QTD_VOTOS_BRANCOS',
@@ -71,12 +73,14 @@ def normalize(raw, resource):
     result = dict(election_id=event_id, source_election_id=get('CD_ELEICAO') or '', year=year, turn=turn, description=description,
                   date=date, election_type=get('NM_TIPO_ELEICAO') or '',
                   scope='national' if state == 'br' and not city else 'zone' if zone and city else 'municipality' if city else 'state', state=state, city_code=city, zone=zone,
+                  city_name=get('NM_MUNICIPIO', 'NOME_MUNICIPIO'),
                   office=code, office_key=office_key(code, name), office_name=name,
                   eligible=number(get('QT_APTOS', 'QTD_APTOS')), present=number(get('QT_COMPARECIMENTO', 'QTD_COMPARECIMENTO')),
                   absent=number(get('QT_ABSTENCOES', 'QTD_ABSTENCOES')), blank=number(get('QT_VOTOS_BRANCOS', 'QTD_VOTOS_BRANCOS')),
                   null=number(get('QT_VOTOS_NULOS', 'QTD_VOTOS_NULOS')), null_total=number(get('QT_TOTAL_VOTOS_NULOS')),
                   null_technical=number(get('QT_VOTOS_NULOS_TECNICOS')), annulled=number(get('QT_TOTAL_VOTOS_ANULADOS')),
                   annulled_subjudice=number(get('QT_TOTAL_VOTOS_ANUL_SUBJUD')), annulled_separate=number(get('QT_VOTOS_ANULADOS_APU_SEP', 'QTD_VOTOS_ANULADOS_APU_SEP')), ballots=number(get('QT_VOTOS')), ballots_reported=number(get('QT_VOTOS')), valid=valid,
+                  nominal=number(get('QT_VOTOS_NOMINAIS_VALIDOS')), legend=number(get('QT_TOTAL_VOTOS_LEG_VALIDOS', 'QTD_VOTOS_LEGENDA')),
                   sections=number(get('QT_TOTAL_SECOES', 'QTD_SECOES_TOT')),
                   not_installed=number(get('QT_ELEITORES_SECOES_NAO_INSTALADAS')),
                   transit=get('ST_VOTO_EM_TRANSITO') or '', source_url=resource['url'], source_id=resource['id'], source_sha256=resource.get('sha256') or '')
@@ -99,7 +103,7 @@ def source_issue(row):
     return None
 
 
-METRICS = ['eligible', 'installed', 'present', 'absent', 'blank', 'null', 'null_total', 'null_technical', 'annulled', 'annulled_subjudice', 'annulled_separate', 'ballots', 'ballots_reported', 'valid', 'sections', 'not_installed']
+METRICS = ['eligible', 'installed', 'present', 'absent', 'blank', 'null', 'null_total', 'null_technical', 'annulled', 'annulled_subjudice', 'annulled_separate', 'ballots', 'ballots_reported', 'valid', 'nominal', 'legend', 'sections', 'not_installed']
 
 
 def reconcile(previous, row):

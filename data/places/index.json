@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "rows": 143298,
+  "parts": 1517,
+  "sources": 54,
+  "missingNames": [],
+  "unboundRegistrationEvents": [],
+  "table": "election_places",
+  "nameMeaning": "Municipality labels reported in the election source snapshot; not proof of historical names or boundaries at voting time."
+}

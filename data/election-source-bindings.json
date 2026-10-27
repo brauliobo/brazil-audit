@@ -1,0 +1,24 @@
+[
+  {
+    "sourceEventId": "2008:31:2:2008-10-05",
+    "targetEventId": "2008:31:2:2008-10-26",
+    "method": "exact source_candidate_id + office_key + state + constituency",
+    "sourceRows": 60,
+    "targetRows": 60,
+    "matched": 60,
+    "unmatchedOrAmbiguous": [],
+    "reportedDate": "2008-10-05",
+    "votingDate": "2008-10-26",
+    "sourceEvidence": [
+      [
+        "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_cand/consulta_cand_2008.zip",
+        "5bb3f77e70495acb49e4e88e6fb744830723a4a8f8f129f7c945b01e5ff8c8b0"
+      ],
+      [
+        "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_candidato_munzona/votacao_candidato_munzona_2008.zip",
+        "8e54af745a95f18f66158f711232bf9668e2df57694137db28fbab567216763f"
+      ]
+    ],
+    "sourceIdsPreserved": true
+  }
+]
