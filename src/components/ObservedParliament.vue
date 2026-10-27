@@ -30,7 +30,7 @@ const known=computed(()=>(data.data?.rows??[]).some(r=>r.is_elected!=null))
 const elected=computed(()=>(data.data?.rows??[]).filter(r=>r.is_elected===true))
 const parties=computed(()=>[...Map.groupBy(elected.value,r=>r.party_label)].map(([party,rows])=>({party,records:rows.length})).toSorted((a,b)=>b.records-a.records))
 const columns=computed(()=>[
- {key:'name',label:t('analysis.candidate')},{key:'city_name',label:t('common.city')},{key:'party_label',label:t('common.party')},
+ {key:'name',label:t('electionData.candidate')},{key:'city_name',label:t('common.city')},{key:'party_label',label:t('common.party')},
  {key:'status',label:t('candidateRoster.outcome')},{key:'candidacy_status',label:t('candidateRoster.registrationStatus')},
  ...['gender','race','education','occupation','age_band'].map(key=>({key,label:t(`candidateRoster.${key}`)})),
 ])

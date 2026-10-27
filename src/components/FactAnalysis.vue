@@ -92,7 +92,7 @@ SourceBadge(:election="key")
   Field(:label="t('electionAnalysis.grain')")
     select(:value="grain" @change="pick('grain',$event)")
       option(v-for="g in grains" :key="g" :value="g" :selected="g === grain") {{ t(`electionAnalysis.grains.${g}`) }}
-  Field(:label="t('analysis.candidate')" v-if="!aggregate")
+  Field(:label="t('electionData.candidate')" v-if="!aggregate")
     select(:value="cand" @change="pick('cand',$event)")
       option(v-if="cand&&!selectedCandidate&&!inputs.loading" :value="cand" selected) {{ t('canonicalComparison.unavailableSelection') }}
       option(v-for="c in inputs.data?.candidates ?? []" :key="c.cand" :value="c.cand" :selected="c.cand === cand") {{ c.short_name ?? c.name }} · {{ c.city_name ?? c.state }} · {{ c.party_label ?? '–' }} · {{ c.number ?? '–' }}
