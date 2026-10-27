@@ -79,6 +79,7 @@ test('section medians are explicitly equal-weight section statistics, not pooled
 test('historical totals resolve geography hierarchy per state and municipality', async () => {
   const { historicalValue,parseHistoricalCsv } = await import('../src/history-comparison.js')
   const rows = [
+    {office_key:'x',scope:'national',state:'br',eligible:1000,installed:1000,absent:200},
     {office_key:'x',scope:'state',state:'a',eligible:100,installed:100,absent:20},
     {office_key:'x',scope:'zone',state:'a',city_code:'1',eligible:100,installed:100,absent:20},
     {office_key:'x',scope:'municipality',state:'b',city_code:'2',eligible:200,installed:200,absent:20},
@@ -90,6 +91,8 @@ test('historical totals resolve geography hierarchy per state and municipality',
   assert.equal(r.value,50/350)
   assert.equal(r.units,3)
   assert.equal(r.totalUnits,4)
+  assert.equal(historicalValue(rows,'abstention_rate','x','b','2').value,.1)
+  assert.equal(historicalValue(rows,'abstention_rate','x','a','2').value,null,'state totals do not masquerade as missing municipal detail')
   assert.equal(parseHistoricalCsv('eligible,absent,office_key\n100,,"a,b"\n')[0].absent,null)
 })
 
@@ -112,4 +115,15 @@ test('competition uses scoped candidate identities and weighted vote shares', as
     const {rows:[separate]} = await db.query(competitionQuery('candidate_count',{year:2026,turn:2},'res'),['','',3,''])
     assert.equal(Number(separate.numerator),2,'same candidate number in different states is not the same candidacy')
   } finally {await db.close()}
+})
+
+test('historical ballot percentages use declared vote totals, including two-choice offices', async () => {
+  const {historicalValue} = await import('../src/history-comparison.js')
+  const rows=[{office_key:'senator',scope:'state',state:'x',installed:100,present:100,blank:10,null:10,valid:180,ballots:200}]
+  assert.equal(historicalValue(rows,'blank_rate','senator').value,.05)
+  assert.equal(historicalValue(rows,'ballot_votes','senator').value,200)
+  const unavailable = historicalValue([{...rows[0],ballots:null}],'blank_rate','senator')
+  assert.equal(unavailable.value,null,'do not manufacture a source total from category sums')
+  assert.equal(unavailable.reason,'missing_ballot_total')
+  assert.equal(historicalValue([{...rows[0],ballots:null,ballots_reported:0}],'blank_rate','senator').reason,'incompatible_ballot_total')
 })

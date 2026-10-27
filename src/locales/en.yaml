@@ -655,13 +655,14 @@ sql:
   run: Run
   share: copy link
   copied: link copied
-  intro: "Every election uses the same tables ({tables}); filter by the columns election and turn. Elections: {elections}; the active one is {active}. When you name a table, the smaller states (and the small tables of every election) are imported automatically; for a specific state open it first in Drill down/Voting time. The console is read-only."
+  intro: "Tables: {tables}. Section data uses election/turn; historical state facts use contest_id/year/date/turn. Section elections: {elections}; active: {active}. Factual tables are imported in full when queried in SQL. For large section data, open the state first in Drill down/Voting time. The console is read-only."
   result: Result
   tablesTitle: Tables and views
   rows_one: "{count} row"
   rows_other: "{count} rows"
   showing: (showing {n})
   examples:
+    stateFacts: Historical state election totals
     turnout: "Official abstention and turnout by state"
     uf: Leading candidate by state
     ranking: Municipality ranking by the first place's votes
@@ -672,6 +673,8 @@ sql:
     parts: Parts loaded in the browser
     catalog: "Catalog: tables, columns and elections"
   tables:
+    state_rounds: Observed contest, state and round totals; electorate once per unit.
+    state_round_counts: Category and candidate counts scoped to the contest; no repeated electorate.
     rdv: "section and office results (votes = jsonb {number: votes})"
     sec: rdv view without the jsonb
     cs: "view: one row per section, office and candidate"
@@ -1089,20 +1092,85 @@ navGroups:
   sections: Tools in this area
 
 compare:
+  liveIntro: "Query state totals and round-to-round bounds calculated in your browser. Cells do not identify individual votes."
+  livePreparing: "The factual tables are not available in this version yet."
+  brazilUfSum: "Brazil · sum of state bounds"
+  liveTitle: "Round-to-round totals and bounds"
+  liveCoverage: "Complete margins in {valid} of {all} units; technical population for the bounds: {population}."
+  liveScenario: "Minimum registration scenario: each state uses its larger electorate across rounds. The difference is an administrative balance, separate from votes, abstention and uninstalled polling stations."
+  liveBoundsNote: "Cells show the minimum and maximum compatible with the margins. For national presidential contests, state bounds are summed. Extremes of different cells may not occur together."
+  liveNoBounds: "There are no complete, compatible margins for both rounds at this scope. Observed values remain available below."
+  roundTotals: "Observed totals"
+  observedCategories: "Observed category counts"
+  populationChecks: "State coverage and consistency"
+  observedCategory: "Category"
+  observedCount: "Observed count"
+  firstElectorate: "First-round registration"
+  secondElectorate: "Second-round registration"
+  technicalPopulation: "Technical scenario population"
+  completeMargins: "Complete margins"
+  modelsTitle: "Model diagnostics · optional"
+  modelsSlowNote: "These models were precomputed because they are slow. Diagnostics correspond to the scopes identified below; the main screen calculates bounds using SQL in your browser."
+  modelScope: "Model unit"
+  roundFields:
+    electorate: "Registered electorate"
+    installed: "Installed-section electorate"
+    present: "Attendance"
+    absent: "Abstention"
+    not_installed: "Electors in uninstalled polling stations"
+  unitReasons:
+    missing_round: "First or second round missing from the source"
+    invalid_population: "Population totals are unavailable or incompatible"
+    invalid_vote_partition: "Vote categories are unavailable or incompatible with attendance"
+  flowDownloadJSON: "Download data and diagnostics (JSON)"
+  flowDownloadCSV: "Download cells and bounds (CSV)"
+  historyAvailability: "Indicator availability"
+  historyKnownValues: "Known source values"
+  historyReasons:
+    incompatible_ballot_total: Reported vote total is incompatible with source counts
+    no_matching_units: "No units with detail at this scope"
+    missing_ballot_total: "Vote total is not reported by the source"
+    missing_participation_base: "Participation base is unknown"
+    missing_metric: "Value unavailable or incompatible in the source"
+    empty_denominator: "No observations in the rate denominator"
+    partial_known_units: "Only units with known values"
+  historyReferenceYear: "Source reference year"
+  historyCityCode: "TSE municipality code (empty: all)"
+  historyZoneCode: "Electoral zone (empty: all)"
+  historyGeographyNote: "The filter uses the codes published in each election’s source. It does not convert historical territories to current boundaries; absent municipality or zone detail remains unavailable, without repeating state totals."
+  historyRateNote: "Vote rates use the total explicitly reported by the source. Years without that total retain an unavailable rate. Annulled votes and specific statuses appear as separate indicators."
+  flowGrains:
+    ibge-immediate-2026: immediate regions (2026 grouping)
+    state: states
+    city: municipalities
+    zone: electoral zones
+  flowOffices:
+    1: President
+    3: Governor
+    11: Mayor
+  flowOriginTotal: "Scenario origin total"
+  flowTargetTotal: "Scenario destination totals"
+  flowCategories:
+    "blank": "Blank votes"
+    "null": "Null votes"
+    "null_technical": "Technical null votes"
+    "annulled": "Annulled votes"
+    "annulled_subjudice": "Annulled votes under judicial review"
+    "annulled_separate": "Votes counted separately"
+    "annulled_urn": "Votes from annulled polling stations"
+    "abstention": "Abstention"
+    null_native: Null votes
+    administrative_balance: Minimum registration balance
+    not_installed: Uninstalled polling stations
   historyContext: Source context
   historyYearConflict: Declared year differs from election date
-  flowModels: Models and checks
   historyDates: "Official date"
   historyTypes: "Election type"
   historySourceYears: "Source package year"
-  flowCredible: "Conditional posterior interval (95%)"
-  flowPosteriorNote: "Credible interval conditional on the model and prior assumptions; convergence, fit and sensitivity are reported in diagnostics."
-  flowBootstrapNote: "Territorial bootstrap interval conditional on the homogeneous model; this is not a posterior probability."
   unknownParty: Party unspecified in source
   unknownOffice: Office unspecified in source
   mode: "Comparison type"
   historyMode: "Official historical series"
-  flowMode: "Estimated transfers"
   historyNote: "Normalized official data since 1933. Historical offices retain their original identities. Totals include only units with known values; states, municipalities and zones have different coverage and do not form a constant territorial panel. Missing fields are not zero."
   historyGrain: "Grain"
   historyKnown: "Known units"
@@ -1110,24 +1178,23 @@ compare:
   historyStates: "Included states"
   historyState: "State (empty: all)"
   flowFrom: "First-round origin"
-  flowTo: "Second-round destination"
-  flowEstimate: "Estimated voters"
-  flowShare: "% of origin"
-  flowInterval: "Conditional bootstrap interval (95%)"
-  flowBounds: "Feasible margin bounds"
-  flowNote: "Aggregate ecological estimate: does not track individual votes. The method and interval type are identified for each result. Margin bounds are independent of the model. Only localities with compatible electorates in both rounds are included."
-  flowPending: "Estimates are being prepared."
-  flowCoverage: "Coverage: {units} of {total} localities; {electorate} of {all} voters."
-  flowDiagnostics: "Method and diagnostics"
   modes:
     indicators: Detailed indicators
     history: History since 1933
-    flows: Estimated transfers
+    flows: Between rounds
   flowStatus:
+    pending: "Model still processing"
+    unavailable: "Inference unavailable for this source"
     estimated: Conditional estimate available
     inconclusive: "Inconclusive: inspect feasible bounds"
     not_applicable: Not applicable
   flowReasons:
+    nonconvergence: "Fit did not meet convergence criteria"
+    posterior_predictive_failure: "The model did not adequately reproduce territorial totals"
+    prior_sensitive: "Result sensitive to prior assumptions"
+    source_grain_too_coarse: "Source territorial resolution is insufficient for the model"
+    unmapped_historical_code: "Historical code has no verified territorial correspondence"
+    model_pending: Model still processing
     no_second_round: "No second round."
     missing_candidate_data: "Candidate results unavailable."
     missing_turnout_data: "Turnout unavailable."
@@ -1206,6 +1273,11 @@ compare:
     signals: "Signals are statistical criteria over sections with available inputs; they are not proof of irregularity."
     seats: "Rules, alliances and federations change across elections. Seats represent each period's official result, not a simulation under the same rule."
   metrics:
+    null_total_votes: "Reported total null votes"
+    technical_null_votes: "Technical null votes"
+    annulled_votes: "Votes annulled by legal status"
+    subjudice_votes: "Annulled votes under judicial review"
+    separate_votes: "Votes counted separately"
     historical_valid: Official valid votes
     historical_sections: Sections in historical source
     abstention_rate: Abstention (%)

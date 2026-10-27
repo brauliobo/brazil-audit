@@ -6,6 +6,7 @@ import { ELECTIONS } from './elections.js'
 const E = 'election = {year} and turn = {turn}'
 export const EXAMPLES = [
   { id: 'uf', sql: `select state, cand, sum(votes) votes from res\nwhere ${E} and office = 1 and state <> 'zz' group by state, cand order by state, votes desc` },
+  { id: 'stateFacts', sql: `select year,date,office,state,turn,electorate,installed,present,absent,not_installed,votes_complete\nfrom state_rounds where year = {year} and office = 1 order by state,turn` },
   { id: 'ranking', sql: `with c as (select state, city, cand, sum(votes) votes from res where ${E} and office = 1 group by 1, 2, 3),\n  t as (select state, city, sum(votes) total from c group by 1, 2)\nselect c.state, c.city, c.cand, c.votes, round(c.votes::numeric / t.total * 100, 1) pct\nfrom c join t using (state, city) where t.total > 5000 order by pct desc limit 20` },
   { id: 'outliers', sql: `select state, city, zone, section, nominal,\n  round((nominal - avg(nominal) over w) / nullif(stddev_samp(nominal) over w, 0), 2) z\nfrom sec where ${E} and office = 1 and state = 'ac'\nwindow w as (partition by city) order by abs((nominal - avg(nominal) over w) / nullif(stddev_samp(nominal) over w, 0)) desc nulls last limit 20` },
   { id: 'names', sql: `select r.cand, c.short_name, c.party, sum(r.votes) votes from res r\nleft join cands c on c.election = r.election and c.turn = r.turn and c.office = r.office and c.n = r.cand and c.uf = 'br'\nwhere r.${E.replaceAll(' and ', ' and r.')} and r.office = 1 group by 1, 2, 3 order by 4 desc` },
@@ -33,4 +34,4 @@ export function initialSql(key, q) {
 }
 
 /** Tables and views of the shared schema, listed under the editor (descriptions: sql.tables.<name>). */
-export const TABLES = ['rdv', 'sec', 'cs', 'tot', 'res', 'resx', 'totx', 'vt', 'vtc', 'sg', 'sgf', 'sgz', 'turnout', 'cov', 'miss', 'residual', 'elected', 'seats', 'lineup', 'annulled', 'cands', 'mun_map']
+export const TABLES = ['state_rounds','state_round_counts','rdv', 'sec', 'cs', 'tot', 'res', 'resx', 'totx', 'vt', 'vtc', 'sg', 'sgf', 'sgz', 'turnout', 'cov', 'miss', 'residual', 'elected', 'seats', 'lineup', 'annulled', 'cands', 'mun_map']

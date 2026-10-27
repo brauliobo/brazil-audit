@@ -1,3 +1,5 @@
+import { TRANSFER_CATEGORIES,TRANSFER_STATUSES,TRANSFER_GRAINS,TRANSFER_OFFICES,TRANSFER_REASONS } from '../src/transfer-contract.js'
+import { HISTORICAL_METRICS } from '../src/history-comparison.js'
 import { METRICS } from '../src/comparison.js'
 // Checks the locale files and the code that uses them (run by `npm run lint:i18n` and by the Pages workflow):
 //   1. pt-BR.yaml and en.yaml have the same keys and the same {placeholders}; plural keys come as `_one` + `_other`
@@ -58,10 +60,16 @@ const FAMILIES = {
   'history.status.': ['catalogued','downloaded','published','blocked','downloading','unavailable','partial','privacy-review-required','excluded'],
   'navGroups.': ['summary', 'explore', 'compare', 'investigate'],
   'compare.families.': [...new Set(METRICS.map((m) => m.family))],
-  'compare.metrics.': [...METRICS.map((m) => m.id),'historical_valid','historical_sections'],
+  'compare.metrics.': [...new Set([...METRICS.map((m) => m.id),...HISTORICAL_METRICS])],
   'compare.modes.': ['indicators','history','flows'],
-  'compare.flowStatus.': ['estimated','inconclusive','not_applicable'],
-  'compare.flowReasons.': ['no_second_round','missing_candidate_data','missing_turnout_data','population_changed','inconsistent_margins','no_matched_units','insufficient_units','rank_deficient','model_fit_failed','heterogeneous_behavior','unstable_estimates'],
+  'compare.roundFields.': ['electorate','installed','present','absent','not_installed'],
+  'compare.unitReasons.': ['missing_round','invalid_population','invalid_vote_partition'],
+  'compare.historyReasons.': ['incompatible_ballot_total','no_matching_units','missing_ballot_total','missing_participation_base','missing_metric','empty_denominator','partial_known_units'],
+  'compare.flowGrains.': TRANSFER_GRAINS,
+  'compare.flowOffices.': TRANSFER_OFFICES,
+  'compare.flowCategories.': TRANSFER_CATEGORIES,
+  'compare.flowStatus.': TRANSFER_STATUSES,
+  'compare.flowReasons.': TRANSFER_REASONS,
   'compare.sources.': ['turnout','sgz','tot','totx','vtc','seats','res','resx','sgf','section_stats','benford'],
   'compare.notes.': [...new Set(METRICS.map((m) => m.source))],
   'nav.': [...VIEWS_NAV, ...HIDDEN_VIEWS],

@@ -21,6 +21,7 @@ const examples = computed(() => examplesFor(year.value))
 // Parts are loaded automatically for the tables a statement mentions (directly or through the views): the small tables of every
 // election, the default parts of rdv/vt for the elections the statement names (`election = 2022`), else the active one.
 const SMALL = ['turnout', 'tot', 'res', 'cov', 'miss', 'residual', 'residual_skipped', 'vtc', 'sgf', 'sgz', 'elected', 'seats']
+const FACTUAL = ['state_rounds','state_round_counts']
 const SECTION = ['rdv', 'vt', 'sg','benford_hist', 'benford_base', 'benford_stat']
 const VIEW_TABLES = { sec: ['rdv'], cs: ['rdv'], resx: ['res', 'residual'], totx: ['tot', 'residual'] }
 async function load(text) {
@@ -29,7 +30,7 @@ async function load(text) {
   const turns = [...text.matchAll(/turn\s*=\s*(\d)/g)].map((m) => +m[1]) // `election = 2022 and turn = 2` names one round, `election = 2022` both
   const named = ELECTION_LIST.filter((e) => [...text.matchAll(/election\s*=\s*(\d{4})/g)].some((m) => +m[1] === e.year) && (!turns.length || turns.includes(e.turn))).map((e) => e.key)
   await Promise.all([...wanted].flatMap((t) => (SMALL.includes(t) ? ELECTION_LIST.map((e) => ensureSmall(e.key, t))
-    : SECTION.includes(t) ? (named.length ? named : [year.value]).map((k) => ensureDefault(t, k)) : ['cands', 'mun_map'].includes(t) ? [ensure(t)] : [])))
+    : SECTION.includes(t) ? (named.length ? named : [year.value]).map((k) => ensureDefault(t, k)) : [...FACTUAL,'cands','mun_map'].includes(t) ? [ensure(t)] : [])))
 }
 
 const sql = ref(initialSql(year.value, route.value.params.get('q')))

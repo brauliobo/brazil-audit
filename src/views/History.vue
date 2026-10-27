@@ -9,7 +9,7 @@ import Panel from '../components/Panel.vue'
 import Field from '../components/Field.vue'
 
 const catalog = useAsync(() => [], async () => {
-  const response = await fetch(`${import.meta.env.BASE_URL}data/history/catalog.json`)
+  const response = await fetch(`${import.meta.env.BASE_URL}data/history/catalog.json`, { cache: 'no-cache' })
   if (!response.ok) throw new Error(t('errors.http', { url: 'history/catalog.json', status: response.status }))
   return response.json()
 })

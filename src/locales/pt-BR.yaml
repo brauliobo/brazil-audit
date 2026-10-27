@@ -656,13 +656,14 @@ sql:
   run: Executar
   share: copiar link
   copied: link copiado
-  intro: "Todas as eleições usam as mesmas tabelas ({tables}); filtre pelas colunas election e turn. Eleições: {elections}; a ativa é {active}. Ao citar uma tabela, as UFs menores (e as tabelas pequenas de todas as eleições) são importadas sozinhas; para uma UF específica abra-a antes em Detalhar/Horários. O console é somente leitura."
+  intro: "Tabelas: {tables}. Dados por seção usam election/turn; fatos históricos por UF usam contest_id/year/date/turn. Eleições por seção: {elections}; ativa: {active}. As tabelas factuais são importadas por inteiro ao consultar SQL. Para dados grandes por seção, abra antes a UF em Detalhar/Horários. O console é somente leitura."
   result: Resultado
   tablesTitle: Tabelas e views
   rows_one: "{count} linha"
   rows_other: "{count} linhas"
   showing: (mostrando {n})
   examples:
+    stateFacts: Totais eleitorais históricos por UF
     turnout: "Abstenção e comparecimento oficiais por UF"
     uf: Candidato mais votado por UF
     ranking: Ranking de municípios por votos do primeiro colocado
@@ -673,6 +674,8 @@ sql:
     parts: Partes carregadas no navegador
     catalog: "Catálogo: tabelas, colunas e eleições"
   tables:
+    state_rounds: Totais observados por disputa, UF e turno; eleitorado uma vez por unidade.
+    state_round_counts: Contagens de categorias e candidatos com identidade da disputa; sem eleitorado repetido.
     rdv: "resultados por seção e cargo (votes = jsonb {número: votos})"
     sec: view de rdv sem o jsonb
     cs: "view: uma linha por seção, cargo e candidato"
@@ -1090,20 +1093,85 @@ navGroups:
   sections: Ferramentas da área
 
 compare:
+  liveIntro: "Consulte os totais por UF e os limites entre turnos, calculados no navegador. As células não identificam votos individuais."
+  livePreparing: "As tabelas factuais ainda não estão disponíveis nesta versão."
+  brazilUfSum: "Brasil · soma dos limites por UF"
+  liveTitle: "Totais e limites entre turnos"
+  liveCoverage: "Margens completas em {valid} de {all} unidades; universo técnico dos limites: {population}."
+  liveScenario: "Cenário cadastral mínimo: cada UF usa o maior eleitorado dos dois turnos. A diferença aparece como saldo administrativo, separado de votos, abstenção e seções não instaladas."
+  liveBoundsNote: "Células: mínimo e máximo compatíveis com as margens. No Brasil presidencial, os limites de cada UF são somados. Extremos de células diferentes podem não ocorrer juntos."
+  liveNoBounds: "Não há margens completas e compatíveis nos dois turnos deste recorte. Os valores observados continuam abaixo."
+  roundTotals: "Totais observados"
+  observedCategories: "Contagens observadas por categoria"
+  populationChecks: "Cobertura e consistência por UF"
+  observedCategory: "Categoria"
+  observedCount: "Contagem observada"
+  firstElectorate: "Cadastro no 1º turno"
+  secondElectorate: "Cadastro no 2º turno"
+  technicalPopulation: "Universo técnico do cenário"
+  completeMargins: "Margens completas"
+  modelsTitle: "Diagnósticos de modelos · opcional"
+  modelsSlowNote: "Estes modelos foram calculados previamente por serem lentos. Os diagnósticos correspondem aos escopos identificados abaixo; os limites da tela principal são calculados em SQL no navegador."
+  modelScope: "Unidade usada no modelo"
+  roundFields:
+    electorate: "Eleitorado registrado"
+    installed: "Eleitorado das seções instaladas"
+    present: "Comparecimento"
+    absent: "Abstenção"
+    not_installed: "Seções não instaladas: eleitores"
+  unitReasons:
+    missing_round: "Segundo ou primeiro turno ausente na fonte"
+    invalid_population: "Totais populacionais ausentes ou incompatíveis"
+    invalid_vote_partition: "Categorias de votos ausentes ou incompatíveis com o comparecimento"
+  flowDownloadJSON: "Baixar dados e diagnósticos (JSON)"
+  flowDownloadCSV: "Baixar células e limites (CSV)"
+  historyAvailability: "Disponibilidade do indicador"
+  historyKnownValues: "Valores conhecidos na fonte"
+  historyReasons:
+    incompatible_ballot_total: Total de votos incompatível com as contagens da fonte
+    no_matching_units: "Sem unidades com detalhe neste recorte"
+    missing_ballot_total: "Total de votos não informado pela fonte"
+    missing_participation_base: "Base de participação desconhecida"
+    missing_metric: "Valor indisponível ou incompatível na fonte"
+    empty_denominator: "Base sem observações para calcular taxa"
+    partial_known_units: "Somente unidades com valores conhecidos"
+  historyReferenceYear: "Ano de referência na fonte"
+  historyCityCode: "Código do município no TSE (vazio: todos)"
+  historyZoneCode: "Zona eleitoral (vazio: todas)"
+  historyGeographyNote: "O filtro usa os códigos publicados na fonte de cada eleição. Não converte territórios históricos para fronteiras atuais; ausência de detalhe municipal ou por zona fica sem valor, sem repetir o total da UF."
+  historyRateNote: "Base das taxas de votos: total explicitamente informado pela fonte. Anos sem esse total mantêm a taxa indisponível. Anulados e situações específicas aparecem em indicadores separados."
+  flowGrains:
+    ibge-immediate-2026: regiões imediatas (agrupamento2026)
+    state: UFs
+    city: municípios
+    zone: zonas eleitorais
+  flowOffices:
+    1: Presidente
+    3: Governador
+    11: Prefeito
+  flowOriginTotal: "Total da origem no cenário"
+  flowTargetTotal: "Totais do cenário de destino"
+  flowCategories:
+    "blank": "Brancos"
+    "null": "Nulos"
+    "null_technical": "Nulos técnicos"
+    "annulled": "Anulados"
+    "annulled_subjudice": "Anulados sub judice"
+    "annulled_separate": "Apurados em separado"
+    "annulled_urn": "Votos de seções anuladas"
+    "abstention": "Abstenção"
+    null_native: Nulos
+    administrative_balance: Saldo cadastral mínimo
+    not_installed: Seções não instaladas
   historyContext: Contexto da fonte
   historyYearConflict: Ano declarado difere da data da eleição
-  flowModels: Modelos e verificações
   historyDates: "Data oficial"
   historyTypes: "Tipo de eleição"
   historySourceYears: "Ano do pacote de origem"
-  flowCredible: "Intervalo posterior condicional (95%)"
-  flowPosteriorNote: "Intervalo credível condicionado ao modelo e às hipóteses a priori; convergência, adequação e sensibilidade são apresentadas no diagnóstico."
-  flowBootstrapNote: "Intervalo por bootstrap territorial condicionado ao modelo homogêneo; não é uma probabilidade posterior."
   unknownParty: Partido não informado na fonte
   unknownOffice: Cargo não informado na fonte
   mode: "Tipo de comparação"
   historyMode: "Série histórica oficial"
-  flowMode: "Migração estimada"
   historyNote: "Dados oficiais normalizados desde 1933. Cargos históricos mantêm a identidade original. Os totais somam apenas unidades com o indicador conhecido; UFs, municípios e zonas têm coberturas diferentes e não constituem um painel territorial constante. Campos ausentes não são zeros."
   historyGrain: "Granularidade"
   historyKnown: "Unidades conhecidas"
@@ -1111,24 +1179,23 @@ compare:
   historyStates: "UFs incluídas"
   historyState: "UF (vazio: todas)"
   flowFrom: "Origem no 1º turno"
-  flowTo: "Destino no 2º turno"
-  flowEstimate: "Eleitores estimados"
-  flowShare: "% da origem"
-  flowInterval: "Intervalo bootstrap condicional (95%)"
-  flowBounds: "Limites possíveis pelas margens"
-  flowNote: "Estimativa ecológica agregada: não acompanha votos individuais. O método e o tipo de intervalo são identificados para cada resultado. Os limites pelas margens independem do modelo. Só participam localidades com eleitorado compatível nos dois turnos."
-  flowPending: "Estimativas ainda em preparação."
-  flowCoverage: "Cobertura: {units} de {total} localidades; {electorate} de {all} eleitores."
-  flowDiagnostics: "Método e diagnóstico"
   modes:
     indicators: Indicadores detalhados
     history: Histórico desde 1933
-    flows: Migração estimada
+    flows: Entre turnos
   flowStatus:
+    pending: "Modelo ainda em processamento"
+    unavailable: "Inferência indisponível para esta fonte"
     estimated: Estimativa condicional disponível
     inconclusive: "Inconclusivo: consulte limites possíveis"
     not_applicable: Não aplicável
   flowReasons:
+    nonconvergence: "O ajuste não atingiu os critérios de convergência"
+    posterior_predictive_failure: "O modelo não reproduziu adequadamente os totais territoriais"
+    prior_sensitive: "Resultado sensível às hipóteses a priori"
+    source_grain_too_coarse: "Fonte sem resolução territorial suficiente para o modelo"
+    unmapped_historical_code: "Código histórico sem correspondência territorial validada"
+    model_pending: Modelo ainda em processamento
     no_second_round: "Sem segundo turno."
     missing_candidate_data: "Resultados por candidato indisponíveis."
     missing_turnout_data: "Comparecimento indisponível."
@@ -1207,6 +1274,11 @@ compare:
     signals: "Sinais são critérios estatísticos sobre as seções com insumos disponíveis; não são prova de irregularidade."
     seats: "As regras, alianças e federações mudam entre eleições. Cadeiras representam o resultado oficial de cada período, não uma simulação com a mesma regra."
   metrics:
+    null_total_votes: "Total de votos nulos informado"
+    technical_null_votes: "Nulos técnicos"
+    annulled_votes: "Anulados por situação jurídica"
+    subjudice_votes: "Anulados sub judice"
+    separate_votes: "Apurados em separado"
     historical_valid: Votos válidos oficiais
     historical_sections: Seções na fonte histórica
     abstention_rate: Abstenção (%)

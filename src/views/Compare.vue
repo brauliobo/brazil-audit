@@ -1,11 +1,10 @@
 <script setup vapor>
 import { computed } from 'vue'
-import { transferIndex } from '../transfers'
 import { route, setParam, href } from '../router'
 import { ELECTION_LIST, UFS } from '../model'
 import { electionLabel, stateTitle } from '../labels'
 import { t } from '../i18n'
-import { tables, parts, ensureSmall, ensure } from '../data'
+import { store, tables, parts, ensureSmall, ensure } from '../data'
 import { objects } from '../db'
 import { useAsync } from '../use'
 import { int, pct, signed, num, hms } from '../format'
@@ -20,7 +19,7 @@ import Field from '../components/Field.vue'
 import DataTable from '../components/DataTable.vue'
 import BarList from '../components/BarList.vue'
 
-const modes = computed(() => ['indicators','history',...(transferIndex?.contests?.length ? ['flows'] : [])])
+const modes = computed(() => ['indicators','history',...(tables().state_rounds && tables().state_round_counts && store.manifest.stateFacts?.pairedYears?.length ? ['flows'] : [])])
 const mode = computed(() => route.value.params.get('comparison_mode') ?? 'indicators')
 const selected = computed(() => metricOf(route.value.params.get('metric'))?.id ?? 'abstention_rate')
 const metric = computed(() => metricOf(selected.value))

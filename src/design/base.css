@@ -20,5 +20,6 @@ progress { accent-color: var(--accent); }
 .cluster { display: flex; flex-wrap: wrap; gap: var(--space-cluster); align-items: center; margin-bottom: var(--space-3); }
 .muted { color: var(--text-muted); font-size: var(--type-caption-size); }
 .headline { margin: var(--space-0) var(--space-0) var(--space-4); font-size: var(--type-headline-size); font-weight: var(--font-weight-semibold); }
+.breakable { overflow-wrap: anywhere; }
 .num { font-variant-numeric: var(--type-numeric); }
 .visually-hidden { position: absolute; width: var(--border-width-1); height: var(--border-width-1); margin: calc(var(--border-width-1) * -1); padding: 0; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
