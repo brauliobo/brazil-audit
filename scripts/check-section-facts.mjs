@@ -4,6 +4,7 @@ import { readFileSync,readdirSync } from 'node:fs'
 import { join } from 'node:path'
 import { gunzipSync } from 'node:zlib'
 import { createHash } from 'node:crypto'
+import { parseCsvLine } from './csv.mjs'
 import { PGlite } from '@electric-sql/pglite'
 const input=process.argv.find((a)=>a.startsWith('--input='))?.slice(8)
 assert.ok(input,'--input=<normalized 1998 AC pilot> is required')
@@ -53,5 +54,29 @@ try {
     where c.nominal is distinct from u.nominal_reported or coalesce(c.legend,0) is distinct from u.legend_reported
     or c.blank is distinct from u.blank or c.nul is distinct from u.null_votes`)
   assert.equal(Number(mismatch.n),0,'section counts must match independent detail sources wherever both provide that section')
-  console.log(JSON.stringify({sources:sources.map((s)=>({url:s.source.source_url,sha256:s.source.source_sha256,rows:s.rows})),coverage,official,mismatch:Number(mismatch.n)}))
+  let reloadTest='not-packed'
+  for(const source of sources.filter((s)=>s.table.name==='election_section_votes')) {
+    const parts=Object.values(source.table.parts)
+    const a=parts.find((p)=>p.sourcePart && parts.some((q)=>q!==p && q.offices[0]===p.offices[0] && q.cities.some((city)=>p.cities.includes(city))))
+    if(!a)continue
+    const b=parts.find((q)=>q!==a && q.offices[0]===a.offices[0] && q.cities.some((city)=>a.cities.includes(city)))
+    const before=(await query(`select source_part,count(*) n,sum(votes) votes from election_section_votes group by source_part`))
+    const beforeA=before.find((r)=>r.source_part===a.sourcePart),beforeB=before.find((r)=>r.source_part===b.sourcePart)
+    const text=gunzipSync(readFileSync(join(input,a.url))).toString()
+    const lines=text.trimEnd().split('\n'),fields=source.table.columns.split(',')
+    const first=parseCsvLine(lines[0]);first[fields.indexOf('votes')]=String(Number(first[fields.indexOf('votes')])+1)
+    lines[0]=first.map((v)=>v===''?'':'"'+v.replaceAll('"','""')+'"').join(',')
+    const replacement=Buffer.from(lines.join('\n')+'\n')
+    assert.notEqual(createHash('sha256').update(replacement).digest('hex'),createHash('sha256').update(gunzipSync(readFileSync(join(input,a.url)))).digest('hex'))
+    await db.exec(`delete from election_section_votes where ${a.where}`)
+    await db.query(`copy election_section_votes (${source.table.columns}) from '/dev/blob' csv`,[],{blob:new Blob([replacement])})
+    const after=await query(`select source_part,count(*) n,sum(votes) votes from election_section_votes group by source_part`)
+    const afterA=after.find((r)=>r.source_part===a.sourcePart),afterB=after.find((r)=>r.source_part===b.sourcePart)
+    assert.deepEqual(afterB,beforeB,'reloading a changed part must preserve the other chunk of the same municipality')
+    assert.equal(Number(afterA.n),Number(beforeA.n))
+    assert.equal(Number(afterA.votes),Number(beforeA.votes)+1)
+    reloadTest='changed-hash-same-city-isolated';break
+  }
+  if(sources.some((s)=>Object.values(s.table.parts).some((p)=>p.sourcePart)))assert.equal(reloadTest,'changed-hash-same-city-isolated')
+  console.log(JSON.stringify({sources:sources.map((s)=>({url:s.source.source_url,sha256:s.source.source_sha256,rows:s.rows})),coverage,official,mismatch:Number(mismatch.n),reloadTest}))
 }finally{await db.close()}
