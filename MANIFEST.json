@@ -1,767 +1,764 @@
 {
-  "schemaVersion": 1,
-  "kind": "observed-state-facts",
-  "sourceCommit": "beea79cf6186817d612f23b127ce56d3a6aa2f7e",
-  "version": "2026-10-26T21:46:35.598Z+statefacts-6e3b3b0a240a3070",
-  "tables": {
-    "state_rounds": {
-      "name": "state_rounds",
-      "columns": "contest_id,election_id,year,date,office,state,city,turn,description,electorate,installed,present,absent,not_installed,valid,votes_complete,turnout_complete,source_url,source_sha256,source_year,source_grain,units",
-      "ddl": "create table state_rounds (contest_id text, election_id text, year int, date date, office int, state text, city text, turn int, description text, electorate bigint, installed bigint, present bigint, absent bigint, not_installed bigint, valid bigint, votes_complete boolean, turnout_complete boolean, source_url text, source_sha256 text, source_year int, source_grain text, units int)",
-      "parts": {
-        "1945/all": {
-          "url": "state-facts/state_rounds-1945.csv.gz",
-          "bytes": 681,
-          "rawBytes": 7300,
-          "rows": 22,
-          "where": "year = 1945",
-          "sha256": "68b4de333991084727e2aa37e9b8e9bd1bfa5cbd3312f5a437404225982a4a31"
-        },
-        "1947/all": {
-          "url": "state-facts/state_rounds-1947.csv.gz",
-          "bytes": 690,
-          "rawBytes": 6650,
-          "rows": 20,
-          "where": "year = 1947",
-          "sha256": "2c330125e4582b768412e8cd3d3739bfc0a9059d8fd335bcf6d4ce2124de1766"
-        },
-        "1950/all": {
-          "url": "state-facts/state_rounds-1950.csv.gz",
-          "bytes": 989,
-          "rawBytes": 14942,
-          "rows": 45,
-          "where": "year = 1950",
-          "sha256": "0e07a322dc449a2bd33ff4fbbaf0bfcf9836689460fb9f76e007a6bbad7a1fcd"
-        },
-        "1954/all": {
-          "url": "state-facts/state_rounds-1954.csv.gz",
-          "bytes": 491,
-          "rawBytes": 3655,
-          "rows": 11,
-          "where": "year = 1954",
-          "sha256": "d49c6a1cec36438f7ef6e8908099de4cb5889416ba7a12d74f643a11f83df9a3"
-        },
-        "1955/all": {
-          "url": "state-facts/state_rounds-1955.csv.gz",
-          "bytes": 872,
-          "rawBytes": 11300,
-          "rows": 34,
-          "where": "year = 1955",
-          "sha256": "b9bead1cb4cc162c96278c7e41f1fc4e9398692b107cb9699d4041f65b27b253"
-        },
-        "1958/all": {
-          "url": "state-facts/state_rounds-1958.csv.gz",
-          "bytes": 490,
-          "rawBytes": 3646,
-          "rows": 11,
-          "where": "year = 1958",
-          "sha256": "0782147eac1af2dcc8a389964f39305d14008a83c42dabb928a410b47b51fd8a"
-        },
-        "1960/all": {
-          "url": "state-facts/state_rounds-1960.csv.gz",
-          "bytes": 935,
-          "rawBytes": 12291,
-          "rows": 37,
-          "where": "year = 1960",
-          "sha256": "f170c3a43df2256b78a335a55a91a14a422b0d5414b4d678705201dd372e8d7b"
-        },
-        "1962/all": {
-          "url": "state-facts/state_rounds-1962.csv.gz",
-          "bytes": 494,
-          "rawBytes": 3655,
-          "rows": 11,
-          "where": "year = 1962",
-          "sha256": "160c8a4b26b7ec381da34cf1ba17b4e11895fdbdfc487f1731d4493e83966110"
-        },
-        "1965/all": {
-          "url": "state-facts/state_rounds-1965.csv.gz",
-          "bytes": 486,
-          "rawBytes": 3658,
-          "rows": 11,
-          "where": "year = 1965",
-          "sha256": "79abee1c8b7ab8057597b7433d130bcaf26ccf5a093362c4ec700bcc2cbed706"
-        },
-        "1982/all": {
-          "url": "state-facts/state_rounds-1982.csv.gz",
-          "bytes": 760,
-          "rawBytes": 7344,
-          "rows": 22,
-          "where": "year = 1982",
-          "sha256": "8b62aeb44c89f59da5e3335eaca2234ad2ca1f8450b46b1cff0f3408ec724fab"
-        },
-        "1986/all": {
-          "url": "state-facts/state_rounds-1986.csv.gz",
-          "bytes": 765,
-          "rawBytes": 7698,
-          "rows": 23,
-          "where": "year = 1986",
-          "sha256": "3a76f2c6ec7bf214a031a9dc0b4f59e39b4f1acda8f1c6ffb04d5a0e558d1c5a"
-        },
-        "1989/all": {
-          "url": "state-facts/state_rounds-1989.csv.gz",
-          "bytes": 1322,
-          "rawBytes": 18749,
-          "rows": 56,
-          "where": "year = 1989",
-          "sha256": "5c0772c1c1af065bcb27b1021943f9e783490a5ec9ff9f7b68c5d74fac929c19"
-        },
-        "1990/all": {
-          "url": "state-facts/state_rounds-1990.csv.gz",
-          "bytes": 1116,
-          "rawBytes": 13073,
-          "rows": 39,
-          "where": "year = 1990",
-          "sha256": "707416455315c2b23c34638d0f2c25c907d66f5ede88c899ab26011383ae737e"
-        },
-        "1994/all": {
-          "url": "state-facts/state_rounds-1994.csv.gz",
-          "bytes": 1556,
-          "rawBytes": 26059,
-          "rows": 72,
-          "where": "year = 1994",
-          "sha256": "c9aa7dfd0a7b977d9f70f7cd06d07572a94dd22859b619df6fe703193f038739"
-        },
-        "1996/all": {
-          "url": "state-facts/state_rounds-1996.csv.gz",
-          "bytes": 107318,
-          "rawBytes": 2086004,
-          "rows": 5538,
-          "where": "year = 1996",
-          "sha256": "b91826e434bc997ab27496635ddd3020520c0e3e62290462225bbd709be2bbcc"
-        },
-        "1998/all": {
-          "url": "state-facts/state_rounds-1998.csv.gz",
-          "bytes": 1900,
-          "rawBytes": 25657,
-          "rows": 68,
-          "where": "year = 1998",
-          "sha256": "dbbe3bc37c6c3a0014873a8e4e7d4df1beabba97c37e4d51f30dd8ae8d396751"
-        },
-        "2000/all": {
-          "url": "state-facts/state_rounds-2000.csv.gz",
-          "bytes": 130328,
-          "rawBytes": 2111329,
-          "rows": 5587,
-          "where": "year = 2000",
-          "sha256": "97cbf6180848138c067b4596211da56842278071e8dec04a696f70d54e541ffe"
-        },
-        "2002/all": {
-          "url": "state-facts/state_rounds-2002.csv.gz",
-          "bytes": 2533,
-          "rawBytes": 37192,
-          "rows": 97,
-          "where": "year = 2002",
-          "sha256": "44e158e7f642f5f41314b358f1ad0f3e69199f4878a118a912b4ffa74c06aa25"
-        },
-        "2004/all": {
-          "url": "state-facts/state_rounds-2004.csv.gz",
-          "bytes": 132554,
-          "rawBytes": 2177374,
-          "rows": 5611,
-          "where": "year = 2004",
-          "sha256": "836ae58bf1384d7c309972737c465d024877c92a045a9ce37851b82e7b600bb8"
-        },
-        "2005/all": {
-          "url": "state-facts/state_rounds-2005.csv.gz",
-          "bytes": 1330,
-          "rawBytes": 7000,
-          "rows": 18,
-          "where": "year = 2005",
-          "sha256": "79751f3353e44515de1e253c1960a55d4594c785074f865dc76a5f7ae1ff9158"
-        },
-        "2006/all": {
-          "url": "state-facts/state_rounds-2006.csv.gz",
-          "bytes": 4102,
-          "rawBytes": 45138,
-          "rows": 117,
-          "where": "year = 2006",
-          "sha256": "b9c8114eaa5c73cd11ef7ffeca333ee5dcfacb2d6622750847c3fe276c3ad65a"
-        },
-        "2007/all": {
-          "url": "state-facts/state_rounds-2007.csv.gz",
-          "bytes": 840,
-          "rawBytes": 3571,
-          "rows": 9,
-          "where": "year = 2007",
-          "sha256": "21c470bbb6209e9d62cd339de24da0d6fb7c23f7a162a9bebe7954f00a3d677b"
-        },
-        "2008/all": {
-          "url": "state-facts/state_rounds-2008.csv.gz",
-          "bytes": 130699,
-          "rawBytes": 2010939,
-          "rows": 5599,
-          "where": "year = 2008",
-          "sha256": "00bbb0abc26f1252ad2b7e3e8b6501ac7c74a1d7a0e0a256c6d76f7ef2b7ba91"
-        },
-        "2009/all": {
-          "url": "state-facts/state_rounds-2009.csv.gz",
-          "bytes": 2576,
-          "rawBytes": 24241,
-          "rows": 65,
-          "where": "year = 2009",
-          "sha256": "7f837276d1509d7ab002407d3d2dd6fb89591ac020dcbfc96a241fe5456283fb"
-        },
-        "2010/all": {
-          "url": "state-facts/state_rounds-2010.csv.gz",
-          "bytes": 4188,
-          "rawBytes": 49076,
-          "rows": 136,
-          "where": "year = 2010",
-          "sha256": "a62f066bf4069620c23afbddeee0f6f604f492e725174231dda56a6d864d8d5d"
-        },
-        "2011/all": {
-          "url": "state-facts/state_rounds-2011.csv.gz",
-          "bytes": 1656,
-          "rawBytes": 13072,
-          "rows": 35,
-          "where": "year = 2011",
-          "sha256": "9b8a958faec4a46aa99ff7f4ae4175f28da1ddca8403ef783ae58df7f84020ac"
-        },
-        "2012/all": {
-          "url": "state-facts/state_rounds-2012.csv.gz",
-          "bytes": 132879,
-          "rawBytes": 2071104,
-          "rows": 5622,
-          "where": "year = 2012",
-          "sha256": "e78d383d563839416a2d50d323308199948c113fc84a9790211f676ffca28654"
-        },
-        "2013/all": {
-          "url": "state-facts/state_rounds-2013.csv.gz",
-          "bytes": 4542,
-          "rawBytes": 28184,
-          "rows": 75,
-          "where": "year = 2013",
-          "sha256": "000472c028b546636e5073916067c4e88781d3a15fc4b6baac30327ed60f7141"
-        },
-        "2014/all": {
-          "url": "state-facts/state_rounds-2014.csv.gz",
-          "bytes": 3843,
-          "rawBytes": 42644,
-          "rows": 116,
-          "where": "year = 2014",
-          "sha256": "bf1b3b5fed5de0695c8237957fafbcb514fc3004d4cae37c913d4a9398e2437d"
-        },
-        "2015/all": {
-          "url": "state-facts/state_rounds-2015.csv.gz",
-          "bytes": 1356,
-          "rawBytes": 7223,
-          "rows": 19,
-          "where": "year = 2015",
-          "sha256": "7e4a2786580a0d94b9bf258f302c35ae89e0d9b2c5b6e84f59c8238257d170d2"
-        },
-        "2016/all": {
-          "url": "state-facts/state_rounds-2016.csv.gz",
-          "bytes": 132802,
-          "rawBytes": 2089636,
-          "rows": 5625,
-          "where": "year = 2016",
-          "sha256": "389b4ac73c9351f26b66d459f163ca4df8f83510a6ae7d280b379721513585a8"
-        },
-        "2017/all": {
-          "url": "state-facts/state_rounds-2017.csv.gz",
-          "bytes": 3580,
-          "rawBytes": 22078,
-          "rows": 58,
-          "where": "year = 2017",
-          "sha256": "edce644719f2c9566abc42691bf3d00f1248ab9aca3a0d9c998b8bf2903d3174"
-        },
-        "2018/all": {
-          "url": "state-facts/state_rounds-2018.csv.gz",
-          "bytes": 7058,
-          "rawBytes": 59789,
-          "rows": 159,
-          "where": "year = 2018",
-          "sha256": "454a2d494436e9f4a0eb4cbf8f98a2502b4391837a7841e74a85d291fcae068f"
-        },
-        "2019/all": {
-          "url": "state-facts/state_rounds-2019.csv.gz",
-          "bytes": 2943,
-          "rawBytes": 17362,
-          "rows": 46,
-          "where": "year = 2019",
-          "sha256": "fbe799cbffdd70cb9089b5ad3f476d2be8af5d83953cf78d2e30ee3c164412bb"
-        },
-        "2020/all": {
-          "url": "state-facts/state_rounds-2020.csv.gz",
-          "bytes": 135002,
-          "rawBytes": 2093218,
-          "rows": 5633,
-          "where": "year = 2020",
-          "sha256": "a853b084417afc1307b7e9fd1d4d0e7d2c89024fc7306035b76d0c9f017c2506"
-        },
-        "2021/all": {
-          "url": "state-facts/state_rounds-2021.csv.gz",
-          "bytes": 3308,
-          "rawBytes": 20929,
-          "rows": 55,
-          "where": "year = 2021",
-          "sha256": "02a1ad071de3c2a140543b5521c1618713493b7d921af185e2346a1dd3c595de"
-        },
-        "2022/all": {
-          "url": "state-facts/state_rounds-2022.csv.gz",
-          "bytes": 5148,
-          "rawBytes": 45860,
-          "rows": 122,
-          "where": "year = 2022",
-          "sha256": "3949cf3a5112dc27ef134e357c1a597100ebfda7df1126664d989e27d5279676"
-        },
-        "2023/all": {
-          "url": "state-facts/state_rounds-2023.csv.gz",
-          "bytes": 1243,
-          "rawBytes": 6457,
-          "rows": 17,
-          "where": "year = 2023",
-          "sha256": "ab6fea1d353740f2db12a7afc094989643e301cab681872c3c13aa5f1ef9f940"
-        },
-        "2024/all": {
-          "url": "state-facts/state_rounds-2024.csv.gz",
-          "bytes": 135152,
-          "rawBytes": 2092415,
-          "rows": 5629,
-          "where": "year = 2024",
-          "sha256": "89b6a41977ef4ae6e0478014afd9ff7ea0ee516c96468c225f8576cfbfb6bd9a"
-        },
-        "2025/all": {
-          "url": "state-facts/state_rounds-2025.csv.gz",
-          "bytes": 1404,
-          "rawBytes": 7636,
-          "rows": 20,
-          "where": "year = 2025",
-          "sha256": "eb65805a5d96eb7a0e2325e841203863a11f8c7dd502af306d0f81434e15d246"
-        },
-        "2026/all": {
-          "url": "state-facts/state_rounds-2026.csv.gz",
-          "bytes": 8481,
-          "rawBytes": 37766,
-          "rows": 104,
-          "where": "year = 2026",
-          "sha256": "283d5e44afafc8f3e496947157c02ebbcd89fee61241eace63b625f2deffb90a"
-        }
-      }
+ "tables": {
+  "state_rounds": {
+   "name": "state_rounds",
+   "columns": "contest_id,election_id,year,date,office,state,city,turn,description,electorate,installed,present,absent,not_installed,valid,votes_complete,turnout_complete,source_url,source_sha256,source_year,source_grain,units",
+   "ddl": "create table state_rounds (contest_id text, election_id text, year int, date date, office int, state text, city text, turn int, description text, electorate bigint, installed bigint, present bigint, absent bigint, not_installed bigint, valid bigint, votes_complete boolean, turnout_complete boolean, source_url text, source_sha256 text, source_year int, source_grain text, units int)",
+   "parts": {
+    "1945/all": {
+     "url": "state-facts/state_rounds-1945.csv.gz",
+     "bytes": 681,
+     "rawBytes": 7300,
+     "rows": 22,
+     "where": "year = 1945",
+     "sha256": "68b4de333991084727e2aa37e9b8e9bd1bfa5cbd3312f5a437404225982a4a31"
     },
-    "state_round_counts": {
-      "name": "state_round_counts",
-      "columns": "contest_id,state,city,turn,category_id,label,candidate_id,count,source_url,source_sha256,year",
-      "ddl": "create table state_round_counts (contest_id text, state text, city text, turn int, category_id text, label text, candidate_id text, count bigint, source_url text, source_sha256 text, year int)",
-      "parts": {
-        "1945/all": {
-          "url": "state-facts/state_round_counts-1945.csv.gz",
-          "bytes": 857,
-          "rawBytes": 17910,
-          "rows": 66,
-          "where": "year = 1945",
-          "sha256": "74f88b5472a6f73d9e8e469b92a57fb990e8d935b66dfac4a5c29c0b5bb5064b"
-        },
-        "1947/all": {
-          "url": "state-facts/state_round_counts-1947.csv.gz",
-          "bytes": 1436,
-          "rawBytes": 16275,
-          "rows": 57,
-          "where": "year = 1947",
-          "sha256": "95bf57d275ac1451e4f84a70c612831e5f804dc664b705aed0d60afb65cabb35"
-        },
-        "1950/all": {
-          "url": "state-facts/state_round_counts-1950.csv.gz",
-          "bytes": 2167,
-          "rawBytes": 37752,
-          "rows": 134,
-          "where": "year = 1950",
-          "sha256": "d2968d0b79da60bb5bdf39e92dbd8d5060ce7f4cb3b923a5dbd408016eb1abc2"
-        },
-        "1954/all": {
-          "url": "state-facts/state_round_counts-1954.csv.gz",
-          "bytes": 965,
-          "rawBytes": 9363,
-          "rows": 33,
-          "where": "year = 1954",
-          "sha256": "c13736f91d219db9d7fed0469925b4750d19a608a33b1373d8165680f3f20712"
-        },
-        "1955/all": {
-          "url": "state-facts/state_round_counts-1955.csv.gz",
-          "bytes": 1505,
-          "rawBytes": 28823,
-          "rows": 102,
-          "where": "year = 1955",
-          "sha256": "893e5aca22cc098e2cae4a909383f90f163e3906f20e07ad3941a147738525d4"
-        },
-        "1958/all": {
-          "url": "state-facts/state_round_counts-1958.csv.gz",
-          "bytes": 988,
-          "rawBytes": 9479,
-          "rows": 33,
-          "where": "year = 1958",
-          "sha256": "5cc8465eac38dd160fb2403c98423229efd7039413ba6c8cf80daa823fdab251"
-        },
-        "1960/all": {
-          "url": "state-facts/state_round_counts-1960.csv.gz",
-          "bytes": 1643,
-          "rawBytes": 31151,
-          "rows": 111,
-          "where": "year = 1960",
-          "sha256": "7b490bca032868363c08f1cc2a633f75e1f51f3870c1b1c84225f373e66b30fd"
-        },
-        "1962/all": {
-          "url": "state-facts/state_round_counts-1962.csv.gz",
-          "bytes": 960,
-          "rawBytes": 9348,
-          "rows": 33,
-          "where": "year = 1962",
-          "sha256": "3362c65d78d7bd5373415cd25088109c8913a89e4948a5f00b1157d285022328"
-        },
-        "1965/all": {
-          "url": "state-facts/state_round_counts-1965.csv.gz",
-          "bytes": 909,
-          "rawBytes": 9203,
-          "rows": 33,
-          "where": "year = 1965",
-          "sha256": "d7dd63175bdcf81756748d0cc85987b820c3842f587f559281151eb2d40d09b6"
-        },
-        "1982/all": {
-          "url": "state-facts/state_round_counts-1982.csv.gz",
-          "bytes": 1585,
-          "rawBytes": 18683,
-          "rows": 66,
-          "where": "year = 1982",
-          "sha256": "823d0902646cd4eaf0206464ecf78b6ca064c4e283ada422a3be377c92cb7561"
-        },
-        "1986/all": {
-          "url": "state-facts/state_round_counts-1986.csv.gz",
-          "bytes": 3962,
-          "rawBytes": 48126,
-          "rows": 144,
-          "where": "year = 1986",
-          "sha256": "4b417db21cd71b0da3d87369045a2b32df9f6afb212545c31e75ce1cc1b7acdc"
-        },
-        "1989/all": {
-          "url": "state-facts/state_round_counts-1989.csv.gz",
-          "bytes": 7335,
-          "rawBytes": 273892,
-          "rows": 784,
-          "where": "year = 1989",
-          "sha256": "1cc2719140f5b3af9865d165c02785494ea5e4903d8fd413c75f9b3a13e2451e"
-        },
-        "1990/all": {
-          "url": "state-facts/state_round_counts-1990.csv.gz",
-          "bytes": 5460,
-          "rawBytes": 76276,
-          "rows": 231,
-          "where": "year = 1990",
-          "sha256": "da6309f0a2e2341ebdee681f3d5fe49d63d3ab71fb69feb72047e2063e74ff5e"
-        },
-        "1994/all": {
-          "url": "state-facts/state_round_counts-1994.csv.gz",
-          "bytes": 9980,
-          "rawBytes": 243422,
-          "rows": 818,
-          "where": "year = 1994",
-          "sha256": "10e6e56424d12a4b0485ad8613416d4be7c11b1104506681c13f125881ad29fb"
-        },
-        "1996/all": {
-          "url": "state-facts/state_round_counts-1996.csv.gz",
-          "bytes": 640644,
-          "rawBytes": 14573708,
-          "rows": 48603,
-          "where": "year = 1996",
-          "sha256": "e5c6484d0fec3a35027bd12367e429a503cf13e2dac946f976be346711d075cf"
-        },
-        "1998/all": {
-          "url": "state-facts/state_round_counts-1998.csv.gz",
-          "bytes": 6729,
-          "rawBytes": 159078,
-          "rows": 573,
-          "where": "year = 1998",
-          "sha256": "f33e6bccfdf92c5fc25f8e297f1d8b7b919da79a9a479dda9ffbba04ed4c84b6"
-        },
-        "2000/all": {
-          "url": "state-facts/state_round_counts-2000.csv.gz",
-          "bytes": 564957,
-          "rawBytes": 14019568,
-          "rows": 48541,
-          "where": "year = 2000",
-          "sha256": "72b4e0a07d20a680d049009161be0c2d2fc35a37f84890f372589b25bea8c34b"
-        },
-        "2002/all": {
-          "url": "state-facts/state_round_counts-2002.csv.gz",
-          "bytes": 10745,
-          "rawBytes": 287353,
-          "rows": 1028,
-          "where": "year = 2002",
-          "sha256": "e91055f6bdb41d9881bf3b11ad30e91577735ec2e38bbb6875c16574634ede76"
-        },
-        "2004/all": {
-          "url": "state-facts/state_round_counts-2004.csv.gz",
-          "bytes": 562599,
-          "rawBytes": 14256939,
-          "rows": 49335,
-          "where": "year = 2004",
-          "sha256": "5847e5b74aae7d1f9054a22dec0698ed80a919d722f7f6538a3724535ce3bb0a"
-        },
-        "2005/all": {
-          "url": "state-facts/state_round_counts-2005.csv.gz",
-          "bytes": 2438,
-          "rawBytes": 44838,
-          "rows": 156,
-          "where": "year = 2005",
-          "sha256": "b5ca59efc3bb06cce26392e1e080f4b6bf565453357f1cdca250500387f32da7"
-        },
-        "2006/all": {
-          "url": "state-facts/state_round_counts-2006.csv.gz",
-          "bytes": 13606,
-          "rawBytes": 345787,
-          "rows": 1225,
-          "where": "year = 2006",
-          "sha256": "d3e4631d1d8c1bc5116aa15b1de5373b392e11e62364f6956d2f321c24a33b9d"
-        },
-        "2007/all": {
-          "url": "state-facts/state_round_counts-2007.csv.gz",
-          "bytes": 1290,
-          "rawBytes": 20692,
-          "rows": 73,
-          "where": "year = 2007",
-          "sha256": "ca1b4df9cfddaaf30f26870aaf5aa009c021b49c87784dbf3ae631d1226b5274"
-        },
-        "2008/all": {
-          "url": "state-facts/state_round_counts-2008.csv.gz",
-          "bytes": 567591,
-          "rawBytes": 13984994,
-          "rows": 48336,
-          "where": "year = 2008",
-          "sha256": "001ce687cc2b4e2cabb3d48d2085e6f31540086c23fdbc731a16fa5f1e0089a2"
-        },
-        "2009/all": {
-          "url": "state-facts/state_round_counts-2009.csv.gz",
-          "bytes": 6846,
-          "rawBytes": 151604,
-          "rows": 530,
-          "where": "year = 2009",
-          "sha256": "700019ad7d807a4096d8329726cd6c4d14778caa77eef7d1afc75ee578b53282"
-        },
-        "2010/all": {
-          "url": "state-facts/state_round_counts-2010.csv.gz",
-          "bytes": 15276,
-          "rawBytes": 404404,
-          "rows": 1400,
-          "where": "year = 2010",
-          "sha256": "9647f94a112df2ca2f8cad99bb6dbe2c133fbac83ebd321847f110062037f3cd"
-        },
-        "2011/all": {
-          "url": "state-facts/state_round_counts-2011.csv.gz",
-          "bytes": 4264,
-          "rawBytes": 85368,
-          "rows": 296,
-          "where": "year = 2011",
-          "sha256": "2b5683c01116752c2f7ff6ea6506a0f6d8be623e9b8da5b0c4919c645590906d"
-        },
-        "2012/all": {
-          "url": "state-facts/state_round_counts-2012.csv.gz",
-          "bytes": 583258,
-          "rawBytes": 14415107,
-          "rows": 48969,
-          "where": "year = 2012",
-          "sha256": "86b552f3f946ef61eaaa705a5d33a11142ba1efba6f91324d43c57a2af4cb348"
-        },
-        "2013/all": {
-          "url": "state-facts/state_round_counts-2013.csv.gz",
-          "bytes": 9379,
-          "rawBytes": 193323,
-          "rows": 656,
-          "where": "year = 2013",
-          "sha256": "cdf37b02f7557d9a73440cb32ffc316d9b2bd403cb014f78275a06a067829671"
-        },
-        "2014/all": {
-          "url": "state-facts/state_round_counts-2014.csv.gz",
-          "bytes": 14052,
-          "rawBytes": 379874,
-          "rows": 1302,
-          "where": "year = 2014",
-          "sha256": "26ae0c56fbbb3664591d224d8ad7f215eb670435de15f1b1495f6693158d5521"
-        },
-        "2015/all": {
-          "url": "state-facts/state_round_counts-2015.csv.gz",
-          "bytes": 2703,
-          "rawBytes": 48622,
-          "rows": 165,
-          "where": "year = 2015",
-          "sha256": "6d7c15a2e5103350ac83b02b1adeecf640138935728546355039ef7911d4d6cd"
-        },
-        "2016/all": {
-          "url": "state-facts/state_round_counts-2016.csv.gz",
-          "bytes": 602641,
-          "rawBytes": 14591639,
-          "rows": 49425,
-          "where": "year = 2016",
-          "sha256": "394e495202082ae505dd09298cb4f28f3933d6306b78a9df86b4702ef2096327"
-        },
-        "2017/all": {
-          "url": "state-facts/state_round_counts-2017.csv.gz",
-          "bytes": 7847,
-          "rawBytes": 155169,
-          "rows": 524,
-          "where": "year = 2017",
-          "sha256": "77631b0e3d81e4fc72d9eee7e836c20db012c8c72e170f2c95875c0f135fc86c"
-        },
-        "2018/all": {
-          "url": "state-facts/state_round_counts-2018.csv.gz",
-          "bytes": 20955,
-          "rawBytes": 518413,
-          "rows": 1758,
-          "where": "year = 2018",
-          "sha256": "65afec1ec81e9e989a92e3eb6729da75eca2a0bd039e1fb4a0b94004a3dfd003"
-        },
-        "2019/all": {
-          "url": "state-facts/state_round_counts-2019.csv.gz",
-          "bytes": 6033,
-          "rawBytes": 117137,
-          "rows": 398,
-          "where": "year = 2019",
-          "sha256": "b6c5005c2bbb7aee867cb3e915ace1a7136103e737323d3df4224890cdd09fff"
-        },
-        "2020/all": {
-          "url": "state-facts/state_round_counts-2020.csv.gz",
-          "bytes": 690462,
-          "rawBytes": 15545325,
-          "rows": 52057,
-          "where": "year = 2020",
-          "sha256": "ca5754bafdb424efc5e4fd42fc718d821f03ac29ddd1edebf8bfebacf0aa452f"
-        },
-        "2021/all": {
-          "url": "state-facts/state_round_counts-2021.csv.gz",
-          "bytes": 6991,
-          "rawBytes": 136859,
-          "rows": 467,
-          "where": "year = 2021",
-          "sha256": "1ace502fb6ab91129f395f158ac707f6b9d05c610252e48f831db2e14413ddfd"
-        },
-        "2022/all": {
-          "url": "state-facts/state_round_counts-2022.csv.gz",
-          "bytes": 16495,
-          "rawBytes": 410093,
-          "rows": 1397,
-          "where": "year = 2022",
-          "sha256": "49ab13b02f461d333711e7c1e4e0b614c6cc57b763bbc25a9d101b24de402b39"
-        },
-        "2023/all": {
-          "url": "state-facts/state_round_counts-2023.csv.gz",
-          "bytes": 2411,
-          "rawBytes": 41482,
-          "rows": 142,
-          "where": "year = 2023",
-          "sha256": "6ffbf14f2dc6bc405f9d13dbd483c6541d4e14a1a54e05358a224ca03fbe6013"
-        },
-        "2024/all": {
-          "url": "state-facts/state_round_counts-2024.csv.gz",
-          "bytes": 616800,
-          "rawBytes": 14423685,
-          "rows": 48931,
-          "where": "year = 2024",
-          "sha256": "df1e5e62b9d20ef3419fea9e72c56711f05b522fce26d746965019a2d4b3fd4d"
-        },
-        "2025/all": {
-          "url": "state-facts/state_round_counts-2025.csv.gz",
-          "bytes": 2874,
-          "rawBytes": 50284,
-          "rows": 171,
-          "where": "year = 2025",
-          "sha256": "e2bc862d58ed13f82b0288cc749fa59e0523acfe25477f2a34a6700822fbfcef"
-        },
-        "2026/all": {
-          "url": "state-facts/state_round_counts-2026.csv.gz",
-          "bytes": 19956,
-          "rawBytes": 343732,
-          "rows": 1231,
-          "where": "year = 2026",
-          "sha256": "1bdacfd1ac617e47cf2cfae7af4a245588d7f154d1471396e62e460fa1df8fde"
-        }
-      }
+    "1947/all": {
+     "url": "state-facts/state_rounds-1947.csv.gz",
+     "bytes": 690,
+     "rawBytes": 6650,
+     "rows": 20,
+     "where": "year = 1947",
+     "sha256": "2c330125e4582b768412e8cd3d3739bfc0a9059d8fd335bcf6d4ce2124de1766"
+    },
+    "1950/all": {
+     "url": "state-facts/state_rounds-1950.csv.gz",
+     "bytes": 989,
+     "rawBytes": 14942,
+     "rows": 45,
+     "where": "year = 1950",
+     "sha256": "0e07a322dc449a2bd33ff4fbbaf0bfcf9836689460fb9f76e007a6bbad7a1fcd"
+    },
+    "1954/all": {
+     "url": "state-facts/state_rounds-1954.csv.gz",
+     "bytes": 491,
+     "rawBytes": 3655,
+     "rows": 11,
+     "where": "year = 1954",
+     "sha256": "d49c6a1cec36438f7ef6e8908099de4cb5889416ba7a12d74f643a11f83df9a3"
+    },
+    "1955/all": {
+     "url": "state-facts/state_rounds-1955.csv.gz",
+     "bytes": 872,
+     "rawBytes": 11300,
+     "rows": 34,
+     "where": "year = 1955",
+     "sha256": "b9bead1cb4cc162c96278c7e41f1fc4e9398692b107cb9699d4041f65b27b253"
+    },
+    "1958/all": {
+     "url": "state-facts/state_rounds-1958.csv.gz",
+     "bytes": 490,
+     "rawBytes": 3646,
+     "rows": 11,
+     "where": "year = 1958",
+     "sha256": "0782147eac1af2dcc8a389964f39305d14008a83c42dabb928a410b47b51fd8a"
+    },
+    "1960/all": {
+     "url": "state-facts/state_rounds-1960.csv.gz",
+     "bytes": 935,
+     "rawBytes": 12291,
+     "rows": 37,
+     "where": "year = 1960",
+     "sha256": "f170c3a43df2256b78a335a55a91a14a422b0d5414b4d678705201dd372e8d7b"
+    },
+    "1962/all": {
+     "url": "state-facts/state_rounds-1962.csv.gz",
+     "bytes": 494,
+     "rawBytes": 3655,
+     "rows": 11,
+     "where": "year = 1962",
+     "sha256": "160c8a4b26b7ec381da34cf1ba17b4e11895fdbdfc487f1731d4493e83966110"
+    },
+    "1965/all": {
+     "url": "state-facts/state_rounds-1965.csv.gz",
+     "bytes": 486,
+     "rawBytes": 3658,
+     "rows": 11,
+     "where": "year = 1965",
+     "sha256": "79abee1c8b7ab8057597b7433d130bcaf26ccf5a093362c4ec700bcc2cbed706"
+    },
+    "1982/all": {
+     "url": "state-facts/state_rounds-1982.csv.gz",
+     "bytes": 760,
+     "rawBytes": 7344,
+     "rows": 22,
+     "where": "year = 1982",
+     "sha256": "8b62aeb44c89f59da5e3335eaca2234ad2ca1f8450b46b1cff0f3408ec724fab"
+    },
+    "1986/all": {
+     "url": "state-facts/state_rounds-1986.csv.gz",
+     "bytes": 765,
+     "rawBytes": 7698,
+     "rows": 23,
+     "where": "year = 1986",
+     "sha256": "3a76f2c6ec7bf214a031a9dc0b4f59e39b4f1acda8f1c6ffb04d5a0e558d1c5a"
+    },
+    "1989/all": {
+     "url": "state-facts/state_rounds-1989.csv.gz",
+     "bytes": 1322,
+     "rawBytes": 18749,
+     "rows": 56,
+     "where": "year = 1989",
+     "sha256": "5c0772c1c1af065bcb27b1021943f9e783490a5ec9ff9f7b68c5d74fac929c19"
+    },
+    "1990/all": {
+     "url": "state-facts/state_rounds-1990.csv.gz",
+     "bytes": 1116,
+     "rawBytes": 13073,
+     "rows": 39,
+     "where": "year = 1990",
+     "sha256": "707416455315c2b23c34638d0f2c25c907d66f5ede88c899ab26011383ae737e"
+    },
+    "1994/all": {
+     "url": "state-facts/state_rounds-1994.csv.gz",
+     "bytes": 1556,
+     "rawBytes": 26059,
+     "rows": 72,
+     "where": "year = 1994",
+     "sha256": "c9aa7dfd0a7b977d9f70f7cd06d07572a94dd22859b619df6fe703193f038739"
+    },
+    "1996/all": {
+     "url": "state-facts/state_rounds-1996.csv.gz",
+     "bytes": 107318,
+     "rawBytes": 2086004,
+     "rows": 5538,
+     "where": "year = 1996",
+     "sha256": "b91826e434bc997ab27496635ddd3020520c0e3e62290462225bbd709be2bbcc"
+    },
+    "1998/all": {
+     "url": "state-facts/state_rounds-1998.csv.gz",
+     "bytes": 1866,
+     "rawBytes": 25627,
+     "rows": 68,
+     "where": "year = 1998",
+     "sha256": "65e2065f70c7d65c9f4d2dc3532c2f5f48a50c6fb599519d10b3cd535f042151"
+    },
+    "2000/all": {
+     "url": "state-facts/state_rounds-2000.csv.gz",
+     "bytes": 130328,
+     "rawBytes": 2111329,
+     "rows": 5587,
+     "where": "year = 2000",
+     "sha256": "97cbf6180848138c067b4596211da56842278071e8dec04a696f70d54e541ffe"
+    },
+    "2002/all": {
+     "url": "state-facts/state_rounds-2002.csv.gz",
+     "bytes": 2533,
+     "rawBytes": 37192,
+     "rows": 97,
+     "where": "year = 2002",
+     "sha256": "44e158e7f642f5f41314b358f1ad0f3e69199f4878a118a912b4ffa74c06aa25"
+    },
+    "2004/all": {
+     "url": "state-facts/state_rounds-2004.csv.gz",
+     "bytes": 132554,
+     "rawBytes": 2177374,
+     "rows": 5611,
+     "where": "year = 2004",
+     "sha256": "836ae58bf1384d7c309972737c465d024877c92a045a9ce37851b82e7b600bb8"
+    },
+    "2005/all": {
+     "url": "state-facts/state_rounds-2005.csv.gz",
+     "bytes": 1330,
+     "rawBytes": 7000,
+     "rows": 18,
+     "where": "year = 2005",
+     "sha256": "79751f3353e44515de1e253c1960a55d4594c785074f865dc76a5f7ae1ff9158"
+    },
+    "2006/all": {
+     "url": "state-facts/state_rounds-2006.csv.gz",
+     "bytes": 4102,
+     "rawBytes": 45138,
+     "rows": 117,
+     "where": "year = 2006",
+     "sha256": "b9c8114eaa5c73cd11ef7ffeca333ee5dcfacb2d6622750847c3fe276c3ad65a"
+    },
+    "2007/all": {
+     "url": "state-facts/state_rounds-2007.csv.gz",
+     "bytes": 840,
+     "rawBytes": 3571,
+     "rows": 9,
+     "where": "year = 2007",
+     "sha256": "21c470bbb6209e9d62cd339de24da0d6fb7c23f7a162a9bebe7954f00a3d677b"
+    },
+    "2008/all": {
+     "url": "state-facts/state_rounds-2008.csv.gz",
+     "bytes": 130699,
+     "rawBytes": 2010939,
+     "rows": 5599,
+     "where": "year = 2008",
+     "sha256": "00bbb0abc26f1252ad2b7e3e8b6501ac7c74a1d7a0e0a256c6d76f7ef2b7ba91"
+    },
+    "2009/all": {
+     "url": "state-facts/state_rounds-2009.csv.gz",
+     "bytes": 2576,
+     "rawBytes": 24241,
+     "rows": 65,
+     "where": "year = 2009",
+     "sha256": "7f837276d1509d7ab002407d3d2dd6fb89591ac020dcbfc96a241fe5456283fb"
+    },
+    "2010/all": {
+     "url": "state-facts/state_rounds-2010.csv.gz",
+     "bytes": 4188,
+     "rawBytes": 49076,
+     "rows": 136,
+     "where": "year = 2010",
+     "sha256": "a62f066bf4069620c23afbddeee0f6f604f492e725174231dda56a6d864d8d5d"
+    },
+    "2011/all": {
+     "url": "state-facts/state_rounds-2011.csv.gz",
+     "bytes": 1656,
+     "rawBytes": 13072,
+     "rows": 35,
+     "where": "year = 2011",
+     "sha256": "9b8a958faec4a46aa99ff7f4ae4175f28da1ddca8403ef783ae58df7f84020ac"
+    },
+    "2012/all": {
+     "url": "state-facts/state_rounds-2012.csv.gz",
+     "bytes": 132879,
+     "rawBytes": 2071104,
+     "rows": 5622,
+     "where": "year = 2012",
+     "sha256": "e78d383d563839416a2d50d323308199948c113fc84a9790211f676ffca28654"
+    },
+    "2013/all": {
+     "url": "state-facts/state_rounds-2013.csv.gz",
+     "bytes": 4542,
+     "rawBytes": 28184,
+     "rows": 75,
+     "where": "year = 2013",
+     "sha256": "000472c028b546636e5073916067c4e88781d3a15fc4b6baac30327ed60f7141"
+    },
+    "2014/all": {
+     "url": "state-facts/state_rounds-2014.csv.gz",
+     "bytes": 3843,
+     "rawBytes": 42644,
+     "rows": 116,
+     "where": "year = 2014",
+     "sha256": "bf1b3b5fed5de0695c8237957fafbcb514fc3004d4cae37c913d4a9398e2437d"
+    },
+    "2015/all": {
+     "url": "state-facts/state_rounds-2015.csv.gz",
+     "bytes": 1356,
+     "rawBytes": 7223,
+     "rows": 19,
+     "where": "year = 2015",
+     "sha256": "7e4a2786580a0d94b9bf258f302c35ae89e0d9b2c5b6e84f59c8238257d170d2"
+    },
+    "2016/all": {
+     "url": "state-facts/state_rounds-2016.csv.gz",
+     "bytes": 132802,
+     "rawBytes": 2089636,
+     "rows": 5625,
+     "where": "year = 2016",
+     "sha256": "389b4ac73c9351f26b66d459f163ca4df8f83510a6ae7d280b379721513585a8"
+    },
+    "2017/all": {
+     "url": "state-facts/state_rounds-2017.csv.gz",
+     "bytes": 3580,
+     "rawBytes": 22078,
+     "rows": 58,
+     "where": "year = 2017",
+     "sha256": "edce644719f2c9566abc42691bf3d00f1248ab9aca3a0d9c998b8bf2903d3174"
+    },
+    "2018/all": {
+     "url": "state-facts/state_rounds-2018.csv.gz",
+     "bytes": 7058,
+     "rawBytes": 59789,
+     "rows": 159,
+     "where": "year = 2018",
+     "sha256": "454a2d494436e9f4a0eb4cbf8f98a2502b4391837a7841e74a85d291fcae068f"
+    },
+    "2019/all": {
+     "url": "state-facts/state_rounds-2019.csv.gz",
+     "bytes": 2943,
+     "rawBytes": 17362,
+     "rows": 46,
+     "where": "year = 2019",
+     "sha256": "fbe799cbffdd70cb9089b5ad3f476d2be8af5d83953cf78d2e30ee3c164412bb"
+    },
+    "2020/all": {
+     "url": "state-facts/state_rounds-2020.csv.gz",
+     "bytes": 135002,
+     "rawBytes": 2093218,
+     "rows": 5633,
+     "where": "year = 2020",
+     "sha256": "a853b084417afc1307b7e9fd1d4d0e7d2c89024fc7306035b76d0c9f017c2506"
+    },
+    "2021/all": {
+     "url": "state-facts/state_rounds-2021.csv.gz",
+     "bytes": 3308,
+     "rawBytes": 20929,
+     "rows": 55,
+     "where": "year = 2021",
+     "sha256": "02a1ad071de3c2a140543b5521c1618713493b7d921af185e2346a1dd3c595de"
+    },
+    "2022/all": {
+     "url": "state-facts/state_rounds-2022.csv.gz",
+     "bytes": 5148,
+     "rawBytes": 45860,
+     "rows": 122,
+     "where": "year = 2022",
+     "sha256": "3949cf3a5112dc27ef134e357c1a597100ebfda7df1126664d989e27d5279676"
+    },
+    "2023/all": {
+     "url": "state-facts/state_rounds-2023.csv.gz",
+     "bytes": 1243,
+     "rawBytes": 6457,
+     "rows": 17,
+     "where": "year = 2023",
+     "sha256": "ab6fea1d353740f2db12a7afc094989643e301cab681872c3c13aa5f1ef9f940"
+    },
+    "2024/all": {
+     "url": "state-facts/state_rounds-2024.csv.gz",
+     "bytes": 135152,
+     "rawBytes": 2092415,
+     "rows": 5629,
+     "where": "year = 2024",
+     "sha256": "89b6a41977ef4ae6e0478014afd9ff7ea0ee516c96468c225f8576cfbfb6bd9a"
+    },
+    "2025/all": {
+     "url": "state-facts/state_rounds-2025.csv.gz",
+     "bytes": 1404,
+     "rawBytes": 7636,
+     "rows": 20,
+     "where": "year = 2025",
+     "sha256": "eb65805a5d96eb7a0e2325e841203863a11f8c7dd502af306d0f81434e15d246"
+    },
+    "2026/all": {
+     "url": "state-facts/state_rounds-2026.csv.gz",
+     "bytes": 8481,
+     "rawBytes": 37766,
+     "rows": 104,
+     "where": "year = 2026",
+     "sha256": "283d5e44afafc8f3e496947157c02ebbcd89fee61241eace63b625f2deffb90a"
     }
+   }
   },
-  "stateFacts": {
-    "version": 1,
-    "scope": "president/governor by UF; mayor by municipality within UF",
-    "browserAnalysis": true,
-    "key": [
-      "contest_id",
-      "state",
-      "turn"
-    ],
-    "categoryKey": [
-      "contest_id",
-      "state",
-      "turn",
-      "category_id"
-    ],
-    "populationRepeatedInCounts": false,
-    "nativeAndTechnicalNullsSeparate": true,
-    "administrativeBalanceObserved": false,
-    "status": "ready",
-    "availableYears": [
-      1945,
-      1947,
-      1950,
-      1954,
-      1955,
-      1958,
-      1960,
-      1962,
-      1965,
-      1982,
-      1986,
-      1989,
-      1990,
-      1994,
-      1996,
-      1998,
-      2000,
-      2002,
-      2004,
-      2005,
-      2006,
-      2007,
-      2008,
-      2009,
-      2010,
-      2011,
-      2012,
-      2013,
-      2014,
-      2015,
-      2016,
-      2017,
-      2018,
-      2019,
-      2020,
-      2021,
-      2022,
-      2023,
-      2024,
-      2025,
-      2026
-    ],
-    "rows": 46594,
-    "categories": 410334,
-    "optionalModels": "transfers/index.json",
-    "definitions": "https://github.com/brauliobo/brazil-audit/blob/main/scripts/transfers/STATE_FACTS.md",
-    "pairedYears": [
-      1989,
-      1990,
-      1994,
-      1996,
-      1998,
-      2000,
-      2002,
-      2004,
-      2006,
-      2008,
-      2010,
-      2012,
-      2014,
-      2016,
-      2017,
-      2018,
-      2020,
-      2022,
-      2024,
-      2026
-    ]
+  "state_round_counts": {
+   "name": "state_round_counts",
+   "columns": "contest_id,state,city,turn,category_id,label,candidate_id,count,source_url,source_sha256,year",
+   "ddl": "create table state_round_counts (contest_id text, state text, city text, turn int, category_id text, label text, candidate_id text, count bigint, source_url text, source_sha256 text, year int)",
+   "parts": {
+    "1945/all": {
+     "url": "state-facts/state_round_counts-1945.csv.gz",
+     "bytes": 857,
+     "rawBytes": 17910,
+     "rows": 66,
+     "where": "year = 1945",
+     "sha256": "74f88b5472a6f73d9e8e469b92a57fb990e8d935b66dfac4a5c29c0b5bb5064b"
+    },
+    "1947/all": {
+     "url": "state-facts/state_round_counts-1947.csv.gz",
+     "bytes": 1436,
+     "rawBytes": 16275,
+     "rows": 57,
+     "where": "year = 1947",
+     "sha256": "95bf57d275ac1451e4f84a70c612831e5f804dc664b705aed0d60afb65cabb35"
+    },
+    "1950/all": {
+     "url": "state-facts/state_round_counts-1950.csv.gz",
+     "bytes": 2167,
+     "rawBytes": 37752,
+     "rows": 134,
+     "where": "year = 1950",
+     "sha256": "d2968d0b79da60bb5bdf39e92dbd8d5060ce7f4cb3b923a5dbd408016eb1abc2"
+    },
+    "1954/all": {
+     "url": "state-facts/state_round_counts-1954.csv.gz",
+     "bytes": 965,
+     "rawBytes": 9363,
+     "rows": 33,
+     "where": "year = 1954",
+     "sha256": "c13736f91d219db9d7fed0469925b4750d19a608a33b1373d8165680f3f20712"
+    },
+    "1955/all": {
+     "url": "state-facts/state_round_counts-1955.csv.gz",
+     "bytes": 1505,
+     "rawBytes": 28823,
+     "rows": 102,
+     "where": "year = 1955",
+     "sha256": "893e5aca22cc098e2cae4a909383f90f163e3906f20e07ad3941a147738525d4"
+    },
+    "1958/all": {
+     "url": "state-facts/state_round_counts-1958.csv.gz",
+     "bytes": 988,
+     "rawBytes": 9479,
+     "rows": 33,
+     "where": "year = 1958",
+     "sha256": "5cc8465eac38dd160fb2403c98423229efd7039413ba6c8cf80daa823fdab251"
+    },
+    "1960/all": {
+     "url": "state-facts/state_round_counts-1960.csv.gz",
+     "bytes": 1643,
+     "rawBytes": 31151,
+     "rows": 111,
+     "where": "year = 1960",
+     "sha256": "7b490bca032868363c08f1cc2a633f75e1f51f3870c1b1c84225f373e66b30fd"
+    },
+    "1962/all": {
+     "url": "state-facts/state_round_counts-1962.csv.gz",
+     "bytes": 960,
+     "rawBytes": 9348,
+     "rows": 33,
+     "where": "year = 1962",
+     "sha256": "3362c65d78d7bd5373415cd25088109c8913a89e4948a5f00b1157d285022328"
+    },
+    "1965/all": {
+     "url": "state-facts/state_round_counts-1965.csv.gz",
+     "bytes": 909,
+     "rawBytes": 9203,
+     "rows": 33,
+     "where": "year = 1965",
+     "sha256": "d7dd63175bdcf81756748d0cc85987b820c3842f587f559281151eb2d40d09b6"
+    },
+    "1982/all": {
+     "url": "state-facts/state_round_counts-1982.csv.gz",
+     "bytes": 1585,
+     "rawBytes": 18683,
+     "rows": 66,
+     "where": "year = 1982",
+     "sha256": "823d0902646cd4eaf0206464ecf78b6ca064c4e283ada422a3be377c92cb7561"
+    },
+    "1986/all": {
+     "url": "state-facts/state_round_counts-1986.csv.gz",
+     "bytes": 3962,
+     "rawBytes": 48126,
+     "rows": 144,
+     "where": "year = 1986",
+     "sha256": "4b417db21cd71b0da3d87369045a2b32df9f6afb212545c31e75ce1cc1b7acdc"
+    },
+    "1989/all": {
+     "url": "state-facts/state_round_counts-1989.csv.gz",
+     "bytes": 7335,
+     "rawBytes": 273892,
+     "rows": 784,
+     "where": "year = 1989",
+     "sha256": "1cc2719140f5b3af9865d165c02785494ea5e4903d8fd413c75f9b3a13e2451e"
+    },
+    "1990/all": {
+     "url": "state-facts/state_round_counts-1990.csv.gz",
+     "bytes": 5460,
+     "rawBytes": 76276,
+     "rows": 231,
+     "where": "year = 1990",
+     "sha256": "da6309f0a2e2341ebdee681f3d5fe49d63d3ab71fb69feb72047e2063e74ff5e"
+    },
+    "1994/all": {
+     "url": "state-facts/state_round_counts-1994.csv.gz",
+     "bytes": 9980,
+     "rawBytes": 243422,
+     "rows": 818,
+     "where": "year = 1994",
+     "sha256": "10e6e56424d12a4b0485ad8613416d4be7c11b1104506681c13f125881ad29fb"
+    },
+    "1996/all": {
+     "url": "state-facts/state_round_counts-1996.csv.gz",
+     "bytes": 640644,
+     "rawBytes": 14573708,
+     "rows": 48603,
+     "where": "year = 1996",
+     "sha256": "e5c6484d0fec3a35027bd12367e429a503cf13e2dac946f976be346711d075cf"
+    },
+    "1998/all": {
+     "url": "state-facts/state_round_counts-1998.csv.gz",
+     "bytes": 9813,
+     "rawBytes": 275236,
+     "rows": 917,
+     "where": "year = 1998",
+     "sha256": "92bae6390031b4f036c661c9140542707f494ba465a42c1ec36151a87b813158"
+    },
+    "2000/all": {
+     "url": "state-facts/state_round_counts-2000.csv.gz",
+     "bytes": 564928,
+     "rawBytes": 14018913,
+     "rows": 48539,
+     "where": "year = 2000",
+     "sha256": "dc43b690c51c28b3774cd4c1530a273f2fa9e09180a6c9b920266d8bce885bca"
+    },
+    "2002/all": {
+     "url": "state-facts/state_round_counts-2002.csv.gz",
+     "bytes": 10745,
+     "rawBytes": 287353,
+     "rows": 1028,
+     "where": "year = 2002",
+     "sha256": "e91055f6bdb41d9881bf3b11ad30e91577735ec2e38bbb6875c16574634ede76"
+    },
+    "2004/all": {
+     "url": "state-facts/state_round_counts-2004.csv.gz",
+     "bytes": 562599,
+     "rawBytes": 14256939,
+     "rows": 49335,
+     "where": "year = 2004",
+     "sha256": "5847e5b74aae7d1f9054a22dec0698ed80a919d722f7f6538a3724535ce3bb0a"
+    },
+    "2005/all": {
+     "url": "state-facts/state_round_counts-2005.csv.gz",
+     "bytes": 2438,
+     "rawBytes": 44838,
+     "rows": 156,
+     "where": "year = 2005",
+     "sha256": "b5ca59efc3bb06cce26392e1e080f4b6bf565453357f1cdca250500387f32da7"
+    },
+    "2006/all": {
+     "url": "state-facts/state_round_counts-2006.csv.gz",
+     "bytes": 13606,
+     "rawBytes": 345787,
+     "rows": 1225,
+     "where": "year = 2006",
+     "sha256": "d3e4631d1d8c1bc5116aa15b1de5373b392e11e62364f6956d2f321c24a33b9d"
+    },
+    "2007/all": {
+     "url": "state-facts/state_round_counts-2007.csv.gz",
+     "bytes": 1290,
+     "rawBytes": 20692,
+     "rows": 73,
+     "where": "year = 2007",
+     "sha256": "ca1b4df9cfddaaf30f26870aaf5aa009c021b49c87784dbf3ae631d1226b5274"
+    },
+    "2008/all": {
+     "url": "state-facts/state_round_counts-2008.csv.gz",
+     "bytes": 567591,
+     "rawBytes": 13984994,
+     "rows": 48336,
+     "where": "year = 2008",
+     "sha256": "001ce687cc2b4e2cabb3d48d2085e6f31540086c23fdbc731a16fa5f1e0089a2"
+    },
+    "2009/all": {
+     "url": "state-facts/state_round_counts-2009.csv.gz",
+     "bytes": 6846,
+     "rawBytes": 151604,
+     "rows": 530,
+     "where": "year = 2009",
+     "sha256": "700019ad7d807a4096d8329726cd6c4d14778caa77eef7d1afc75ee578b53282"
+    },
+    "2010/all": {
+     "url": "state-facts/state_round_counts-2010.csv.gz",
+     "bytes": 15276,
+     "rawBytes": 404404,
+     "rows": 1400,
+     "where": "year = 2010",
+     "sha256": "9647f94a112df2ca2f8cad99bb6dbe2c133fbac83ebd321847f110062037f3cd"
+    },
+    "2011/all": {
+     "url": "state-facts/state_round_counts-2011.csv.gz",
+     "bytes": 4264,
+     "rawBytes": 85368,
+     "rows": 296,
+     "where": "year = 2011",
+     "sha256": "2b5683c01116752c2f7ff6ea6506a0f6d8be623e9b8da5b0c4919c645590906d"
+    },
+    "2012/all": {
+     "url": "state-facts/state_round_counts-2012.csv.gz",
+     "bytes": 583258,
+     "rawBytes": 14415107,
+     "rows": 48969,
+     "where": "year = 2012",
+     "sha256": "86b552f3f946ef61eaaa705a5d33a11142ba1efba6f91324d43c57a2af4cb348"
+    },
+    "2013/all": {
+     "url": "state-facts/state_round_counts-2013.csv.gz",
+     "bytes": 9379,
+     "rawBytes": 193323,
+     "rows": 656,
+     "where": "year = 2013",
+     "sha256": "cdf37b02f7557d9a73440cb32ffc316d9b2bd403cb014f78275a06a067829671"
+    },
+    "2014/all": {
+     "url": "state-facts/state_round_counts-2014.csv.gz",
+     "bytes": 14052,
+     "rawBytes": 379874,
+     "rows": 1302,
+     "where": "year = 2014",
+     "sha256": "26ae0c56fbbb3664591d224d8ad7f215eb670435de15f1b1495f6693158d5521"
+    },
+    "2015/all": {
+     "url": "state-facts/state_round_counts-2015.csv.gz",
+     "bytes": 2703,
+     "rawBytes": 48622,
+     "rows": 165,
+     "where": "year = 2015",
+     "sha256": "6d7c15a2e5103350ac83b02b1adeecf640138935728546355039ef7911d4d6cd"
+    },
+    "2016/all": {
+     "url": "state-facts/state_round_counts-2016.csv.gz",
+     "bytes": 602641,
+     "rawBytes": 14591639,
+     "rows": 49425,
+     "where": "year = 2016",
+     "sha256": "394e495202082ae505dd09298cb4f28f3933d6306b78a9df86b4702ef2096327"
+    },
+    "2017/all": {
+     "url": "state-facts/state_round_counts-2017.csv.gz",
+     "bytes": 7847,
+     "rawBytes": 155169,
+     "rows": 524,
+     "where": "year = 2017",
+     "sha256": "77631b0e3d81e4fc72d9eee7e836c20db012c8c72e170f2c95875c0f135fc86c"
+    },
+    "2018/all": {
+     "url": "state-facts/state_round_counts-2018.csv.gz",
+     "bytes": 20955,
+     "rawBytes": 518413,
+     "rows": 1758,
+     "where": "year = 2018",
+     "sha256": "65afec1ec81e9e989a92e3eb6729da75eca2a0bd039e1fb4a0b94004a3dfd003"
+    },
+    "2019/all": {
+     "url": "state-facts/state_round_counts-2019.csv.gz",
+     "bytes": 6033,
+     "rawBytes": 117137,
+     "rows": 398,
+     "where": "year = 2019",
+     "sha256": "b6c5005c2bbb7aee867cb3e915ace1a7136103e737323d3df4224890cdd09fff"
+    },
+    "2020/all": {
+     "url": "state-facts/state_round_counts-2020.csv.gz",
+     "bytes": 690462,
+     "rawBytes": 15545325,
+     "rows": 52057,
+     "where": "year = 2020",
+     "sha256": "ca5754bafdb424efc5e4fd42fc718d821f03ac29ddd1edebf8bfebacf0aa452f"
+    },
+    "2021/all": {
+     "url": "state-facts/state_round_counts-2021.csv.gz",
+     "bytes": 6991,
+     "rawBytes": 136859,
+     "rows": 467,
+     "where": "year = 2021",
+     "sha256": "1ace502fb6ab91129f395f158ac707f6b9d05c610252e48f831db2e14413ddfd"
+    },
+    "2022/all": {
+     "url": "state-facts/state_round_counts-2022.csv.gz",
+     "bytes": 16495,
+     "rawBytes": 410093,
+     "rows": 1397,
+     "where": "year = 2022",
+     "sha256": "49ab13b02f461d333711e7c1e4e0b614c6cc57b763bbc25a9d101b24de402b39"
+    },
+    "2023/all": {
+     "url": "state-facts/state_round_counts-2023.csv.gz",
+     "bytes": 2411,
+     "rawBytes": 41482,
+     "rows": 142,
+     "where": "year = 2023",
+     "sha256": "6ffbf14f2dc6bc405f9d13dbd483c6541d4e14a1a54e05358a224ca03fbe6013"
+    },
+    "2024/all": {
+     "url": "state-facts/state_round_counts-2024.csv.gz",
+     "bytes": 616800,
+     "rawBytes": 14423685,
+     "rows": 48931,
+     "where": "year = 2024",
+     "sha256": "df1e5e62b9d20ef3419fea9e72c56711f05b522fce26d746965019a2d4b3fd4d"
+    },
+    "2025/all": {
+     "url": "state-facts/state_round_counts-2025.csv.gz",
+     "bytes": 2874,
+     "rawBytes": 50284,
+     "rows": 171,
+     "where": "year = 2025",
+     "sha256": "e2bc862d58ed13f82b0288cc749fa59e0523acfe25477f2a34a6700822fbfcef"
+    },
+    "2026/all": {
+     "url": "state-facts/state_round_counts-2026.csv.gz",
+     "bytes": 19956,
+     "rawBytes": 343732,
+     "rows": 1231,
+     "where": "year = 2026",
+     "sha256": "1bdacfd1ac617e47cf2cfae7af4a245588d7f154d1471396e62e460fa1df8fde"
+    }
+   }
   }
+ },
+ "stateFacts": {
+  "version": 1,
+  "scope": "president/governor by UF; mayor by municipality within UF",
+  "browserAnalysis": true,
+  "status": "ready",
+  "availableYears": [
+   1945,
+   1947,
+   1950,
+   1954,
+   1955,
+   1958,
+   1960,
+   1962,
+   1965,
+   1982,
+   1986,
+   1989,
+   1990,
+   1994,
+   1996,
+   1998,
+   2000,
+   2002,
+   2004,
+   2005,
+   2006,
+   2007,
+   2008,
+   2009,
+   2010,
+   2011,
+   2012,
+   2013,
+   2014,
+   2015,
+   2016,
+   2017,
+   2018,
+   2019,
+   2020,
+   2021,
+   2022,
+   2023,
+   2024,
+   2025,
+   2026
+  ],
+  "pairedYears": [
+   1989,
+   1990,
+   1994,
+   1996,
+   1998,
+   2000,
+   2002,
+   2004,
+   2006,
+   2008,
+   2010,
+   2012,
+   2014,
+   2016,
+   2017,
+   2018,
+   2020,
+   2022,
+   2024,
+   2026
+  ],
+  "key": [
+   "contest_id",
+   "state",
+   "turn"
+  ],
+  "categoryKey": [
+   "contest_id",
+   "state",
+   "turn",
+   "category_id"
+  ],
+  "populationRepeatedInCounts": false,
+  "nativeAndTechnicalNullsSeparate": true,
+  "administrativeBalanceObserved": false,
+  "rows": 46594,
+  "categories": 410676,
+  "optionalModels": "transfers/index.json",
+  "definitions": "https://github.com/brauliobo/brazil-audit/blob/main/scripts/transfers/STATE_FACTS.md"
+ },
+ "sourceCommit": "d6521964d0cc5f8eb4978de87497e7f394e2112e"
 }
