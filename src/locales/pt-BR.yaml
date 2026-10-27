@@ -1349,6 +1349,7 @@ compare:
     signal_idle: "Pausa longa (%)"
 
 history:
+  relatedRdvCounts: "RDV originais disponíveis; há consultas de contagens relacionadas. Isso não significa que todos os RDV desta coleção foram importados."
   integratedFacts: "Há fatos desta fonte integrados às consultas"
   verifiedVersion: "Versão verificada"
   summaries: "Resumos históricos disponíveis para comparação (a coleção completa pode conter recursos ainda não normalizados)."

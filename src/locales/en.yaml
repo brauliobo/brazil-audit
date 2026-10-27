@@ -1348,6 +1348,7 @@ compare:
     signal_idle: "Long pause (%)"
 
 history:
+  relatedRdvCounts: "Original RDV files are available alongside related count queries. This does not mean that every RDV member in this collection has been imported."
   integratedFacts: "Selected facts from this source are integrated into queries"
   verifiedVersion: "Verified version"
   summaries: "Historical summaries available for comparison (the full collection may include resources not yet normalized)."

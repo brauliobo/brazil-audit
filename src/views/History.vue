@@ -43,6 +43,7 @@ Panel(:title="t('history.catalog')" :state="catalog" :election="route.election" 
     summary {{ dataset.title }} · {{ status(dataset.status) }}
     a(v-if="dataset.browserNormalized?.available && dataset.browserNormalized.sessionKey" :href="href(dataset.browserNormalized.sessionKey,'overview')") {{ t('history.integratedFacts') }}
     p.muted(v-else-if="dataset.browserNormalized?.available") {{ t('history.integratedFacts') }}
+    p.muted(v-else-if="dataset.browserDataEquivalent?.kind === 'related-section-counts'") {{ t('history.relatedRdvCounts') }}
     a(v-else-if="hasSummaries(dataset)" :href="href(route.election,'compare') + '?comparison_mode=history'") {{ t('history.summaries') }}
     p.muted(v-else) {{ t('history.notNormalized') }}
     .cluster
