@@ -79,7 +79,7 @@ export function supportsView(key, view) {
   const e = ELECTIONS[key]
   if (['time', 'logs'].includes(view)) return e.hasTimes
   if (view === 'seats') return e.hasSeats
-  if (view === 'parliament') return e.hasSeats || e.officeDefinitions?.some((o) => o.capabilities?.elected)
+  if (view === 'parliament') return e.hasSeats || e.officeDefinitions?.some((o) => ['elected','declaredSeats','listMetadata','candidateListLinks'].some((capability) => o.capabilities?.[capability]))
   return true
 }
 

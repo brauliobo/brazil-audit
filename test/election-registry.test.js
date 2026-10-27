@@ -74,3 +74,12 @@ test('local offices keep municipal constituencies and context does not carry uns
   assert.equal(switched.city,undefined)
   assert.equal(switched.cand,undefined)
 })
+
+test('source declarations remain accessible without invented elected outcomes or seat rules',()=>{
+  const source=ELECTIONS['1965']
+  assert.equal(source.legacyKey,null)
+  assert.equal(source.officeDefinitions.some(o=>o.capabilities.elected),false)
+  assert.ok(source.officeDefinitions.some(o=>o.capabilities.declaredSeats||o.capabilities.listMetadata||o.capabilities.candidateListLinks))
+  assert.equal(supportsView('1965','parliament'),true)
+  assert.equal(supportsView('1965','seats'),false)
+})

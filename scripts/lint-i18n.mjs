@@ -1,3 +1,4 @@
+import { NOMINATION_FIELDS, NOMINATION_NAMES } from '../src/nomination-contract.js'
 import { PROFILE_AXES, PROFILE_METRICS } from '../src/election-profiles.js'
 import { TRANSFER_CATEGORIES,TRANSFER_STATUSES,TRANSFER_GRAINS,TRANSFER_OFFICES,TRANSFER_REASONS } from '../src/transfer-contract.js'
 import { HISTORICAL_METRICS } from '../src/history-comparison.js'
@@ -58,6 +59,8 @@ const isNamespace = (key) => [...defined].some((k) => k.startsWith(`${key}.`))
 // ---- dynamic key families: prefix -> member ids (each `prefix + id` must exist) --------------------------------------------
 const officeIds = [...new Set(Object.values(ELECTIONS).flatMap((e) => e.offices))]
 const FAMILIES = {
+  'sourceNominations.fields.': NOMINATION_FIELDS,
+  'sourceNominations.tables.': NOMINATION_NAMES,
   'candidateRoster.': ['gender','race','education','occupation','age_band'],
   'electionData.meanings.': ['official_nominal_valid','observed_cast','reported_nominal'],
   'profiles.axes.': PROFILE_AXES,
