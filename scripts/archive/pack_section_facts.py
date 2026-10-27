@@ -7,6 +7,7 @@ import hashlib
 import io
 import json
 import pathlib
+import concurrent.futures
 from collections import Counter
 
 MAX_ROWS = 50000
@@ -57,9 +58,34 @@ class Packs:
         return self.parts
 
 
-def pack_source(index_path, source_root, output):
+UNIT_METRICS = ['eligible','installed','present','absent','blank','null_votes','null_total','null_technical','annulled','annulled_subjudice','annulled_separate','ballots','ballots_reported','valid','nominal','legend','sections','not_installed','nominal_reported','legend_reported']
+
+
+def attach_metric_coverage(record, output):
+    if record['table']['name']!='election_section_units' or record.get('metricCoverageVersion')==1:
+        return record
+    table=record['table'];fields=table['columns'].split(',');metrics=[field for field in UNIT_METRICS if field in fields]
+    coverage={}
+    for part in table['parts'].values():
+        with gzip.open(output/part['url'],'rt',encoding='utf8',newline='') as stream:
+            for values in csv.reader(stream):
+                row=dict(zip(fields,values));key=(row['election_id'],row['office_key'],row['state'])
+                item=coverage.setdefault(key,dict(election_id=key[0],office_key=key[1],state=key[2] or None,rows=0,metrics={field:{'knownRows':0,'totalRows':0} for field in metrics}))
+                item['rows']+=1
+                for field in metrics:
+                    item['metrics'][field]['totalRows']+=1
+                    item['metrics'][field]['knownRows']+=row[field]!=''
+    return {**record,'metricCoverageVersion':1,'metricCoverage':list(coverage.values())}
+
+
+def save_source(record, path):
+    path.parent.mkdir(parents=True,exist_ok=True)
+    temporary=path.with_suffix('.tmp');temporary.write_text(json.dumps(record,ensure_ascii=False,indent=1)+'\n');temporary.replace(path)
+
+
+def pack_source(index_path, source_root, output, selected_table=None):
     raw=index_path.read_bytes();record=json.loads(raw)
-    if record.get('status')!='ready':return None
+    if record.get('status')!='ready' or selected_table and record['table']['name']!=selected_table:return None
     table=record['table'];fields=table['columns'].split(',');packed_fields=[k for k in fields if k!='source_part']+['source_part']
     key=hashlib.sha256(record['source']['source_url'].encode()).hexdigest()
     previous=output/'sources'/(key+'.json')
@@ -71,7 +97,9 @@ def pack_source(index_path, source_root, output):
                 path=output/part['url']
                 if hashlib.file_digest(path.open('rb'),'sha256').hexdigest()!=part['sha256']:
                     raise ValueError('Packed section source hash mismatch')
-            return old
+            enriched=attach_metric_coverage(old,output)
+            if enriched is not old:save_source(enriched,previous)
+            return enriched
     writer=Packs(output,table['name'],packed_fields,key)
     coverage_groups={}
     # Source partitions already group event/UF/city/office. Sorting those keys lets
@@ -97,20 +125,27 @@ def pack_source(index_path, source_root, output):
     packed_table={**table,'columns':','.join(packed_fields),'ddl':table['ddl'] if 'source_part' in fields else table['ddl'][:-1]+', source_part text)','parts':parts}
     result={**record,'inputSha256':input_hash,'table':packed_table,'transport':'UF/office packs; original section grain retained; source_part is the exact reload boundary.',
             'observedCoverage':coverage,'packedRows':writer.rows}
-    previous.parent.mkdir(parents=True,exist_ok=True)
-    temporary=previous.with_suffix('.tmp');temporary.write_text(json.dumps(result,ensure_ascii=False,indent=1)+'\n');temporary.replace(previous)
+    result=attach_metric_coverage(result,output)
+    save_source(result,previous)
     return result
+
+
+def pack_job(path, source_root, output, selected_table=None):
+    result=pack_source(path,source_root,output,selected_table)
+    return dict(url=result['source']['source_url'],rows=result['packedRows'],parts=len(result['table']['parts'])) if result else None
 
 
 def main():
     parser=argparse.ArgumentParser();parser.add_argument('--input',type=pathlib.Path,required=True);parser.add_argument('--output',type=pathlib.Path,required=True)
+    parser.add_argument('--workers',type=int,choices=range(1,5),default=1)
+    parser.add_argument('--table',choices=['election_section_votes','election_section_units'])
+    parser.add_argument('--source-url')
     args=parser.parse_args()
-    for path in sorted((args.input/'sources').glob('*.json')):
-        try:result=pack_source(path,args.input,args.output)
-        except json.JSONDecodeError:
-            # A running normalizer has not finished its source-index write yet.
-            continue
-        if result:
-            print(json.dumps(dict(url=result['source']['source_url'],rows=result['packedRows'],parts=len(result['table']['parts']))),flush=True)
+    paths=[args.input/'sources'/(hashlib.sha256(args.source_url.encode()).hexdigest()+'.json')] if args.source_url else sorted((args.input/'sources').glob('*.json'))
+    with concurrent.futures.ProcessPoolExecutor(max_workers=args.workers) as pool:
+        futures=[pool.submit(pack_job,path,args.input,args.output,args.table) for path in paths]
+        for future in concurrent.futures.as_completed(futures):
+            result=future.result()
+            if result:print(json.dumps(result),flush=True)
 
 if __name__=='__main__':main()

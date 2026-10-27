@@ -36,6 +36,7 @@ class SectionFactsTest(unittest.TestCase):
         result=descriptors.export()
         self.assertEqual(result['events'][0]['offices'][0]['key'],'historical:25:CONSELHEIRO DISTRITAL')
         self.assertEqual(result['places'][0]['city_name'],'FERNANDO DE NORONHA')
+        self.assertEqual(result['observedBallotOptions'][0]['state'],'pe')
         self.assertEqual(result['observedBallotOptions'][0]['names'],['ALERCIO DIAS','VARIANTE DA FONTE'])
         self.assertEqual(vote['constituency'],'30015')
 

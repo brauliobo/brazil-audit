@@ -92,8 +92,8 @@ class SourceDescriptors:
         # These are reported ballot labels, never inferred person identities or legal statuses.
         name = first(raw, 'NM_VOTAVEL')
         if name and row.get('kind') not in ['blank','null_native','annulled_separate'] and method not in [None,'official-sequence','unambiguous-ballot-number']:
-            key = (event_id,row['office_key'],row['constituency'],row['number'])
-            option = self.options.setdefault(key, dict(election_id=event_id, office_key=row['office_key'],
+            key = (event_id,row['state'],row['office_key'],row['constituency'],row['number'])
+            option = self.options.setdefault(key, dict(election_id=event_id, state=row['state'], office_key=row['office_key'],
                 constituency=row['constituency'], number=row['number'], candidate_id=row['candidate_id'],
                 countMeaning='observed_cast', names=set(), **self.source))
             option['names'].add(name)

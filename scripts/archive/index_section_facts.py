@@ -45,9 +45,11 @@ def build(raw_root,packed_root,catalog_path,registry_path,overlap_proof=None):
                 'primarySource':proof['primary']['source_url'],'equalityProof':duplicate})
             continue
         for event in record.get('events',[]):
-            events[event['id']]=event
+            if event['id'] not in known_events or any((event['id'],o['key']) not in office_names for o in event['offices']):
+                events[event['id']]=event
             for office in event['offices']:office_names[(event['id'],office['key'])]=office['name']
         for place in record.get('places',[]):
+            if place['election_id'] in known_events:continue
             places[(place['election_id'],place['state'],place['city_code'],place['city_name'])]=place
         ballots.extend(record.get('observedBallotOptions',[]))
         if not transport or transport[0].get('inputSha256')!=input_sha:
@@ -76,6 +78,13 @@ def build(raw_root,packed_root,catalog_path,registry_path,overlap_proof=None):
                 summary['referenceSections']=(summary['referenceSections'] or 0)+coverage['sections']
                 value=coverage['counts'].get('nominal_reported')
                 summary['referenceNominalReported']=None if value is None or had_reference and summary['referenceNominalReported'] is None else (summary['referenceNominalReported'] or 0)+value
+        for metric_coverage in result.get('metricCoverage',[]):
+            profile=profiles[(metric_coverage['election_id'],metric_coverage['office_key'])]
+            profile['rows']=profile.get('rows',0)+metric_coverage['rows']
+            metrics=profile.setdefault('metrics',{})
+            for field,counts in metric_coverage['metrics'].items():
+                total=metrics.setdefault(field,dict(knownRows=0,totalRows=0))
+                for name in ['knownRows','totalRows']:total[name]+=counts[name]
         source_key=hashlib.sha256(url.encode()).hexdigest();payload=json.dumps(result,ensure_ascii=False,separators=(',',':')).encode();payload=gzip.compress(payload,mtime=0)
         relative=f'source-metadata/{source_key}.json.gz';path=packed_root/relative;path.parent.mkdir(parents=True,exist_ok=True);path.write_bytes(payload)
         metadata.append({'source_url':url,'url':relative,'localFile':relative,'sha256':hashlib.sha256(payload).hexdigest(),'bytes':len(payload),'rows':record['rows']})
@@ -83,7 +92,9 @@ def build(raw_root,packed_root,catalog_path,registry_path,overlap_proof=None):
     for p in profiles.values():
         p['states']=sorted(p['states']);p['tables']=sorted(p['tables']);p['coverageByState']=list(p['coverageByState'].values())
         for coverage in p['coverageByState']:
-            coverage['complete']=coverage['voteSections']==coverage['referenceSections'] if None not in [coverage['voteSections'],coverage['referenceSections']] else None
+            coverage['sameSectionCounts']=coverage['voteSections']==coverage['referenceSections'] if None not in [coverage['voteSections'],coverage['referenceSections']] else None
+            # Equal cardinalities do not prove equal section identities.
+            coverage['complete']=False if coverage['sameSectionCounts'] is False else None
     summary={status:sum(r['status']==status for r in inventory) for status in ['ready','packing','pending','error']}
     result={'version':1,'status':'ready' if summary['ready']==len(expected) and not (unknown-set(events)) else 'preparing','expectedSources':len(expected),'sourceCounts':summary,
         'tables':tables,'eventOffices':list(profiles.values()),'sourceMetadata':metadata,'sources':inventory,'unregisteredEvents':sorted(unknown-set(events)),
