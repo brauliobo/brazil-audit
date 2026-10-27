@@ -1361,3 +1361,21 @@ history:
     partial: Publicado parcialmente
     privacy-review-required: Revisão de dados pessoais necessária
     excluded: Fora do escopo de coleta
+
+electionAnalysis:
+  unit: Unidade territorial
+  grain: Granularidade da fonte
+  grains:
+    national: Brasil
+    state: Unidades da Federação
+    municipality: Municípios
+    zone: Município e zona
+    section: Seções eleitorais
+  sourceGrain: 'Unidade observada: {grain}. Os agregados não representam seções nem votos individuais.'
+  histogramNote: '{n} unidades com denominador nominal conhecido; participação de {candidate} nos votos nominais observados.'
+  observed: Participação observada por unidade
+  digits: Posição do dígito
+  first: Primeiro dígito
+  second: Segundo dígito
+  firstTwo: Dois primeiros dígitos
+  noSimulation: Comparação descritiva com a distribuição teórica. Não há simulação eleitoral para este recorte; desvios não demonstram fraude.

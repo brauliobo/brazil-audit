@@ -1360,3 +1360,21 @@ history:
     partial: Partially published
     privacy-review-required: Personal data review required
     excluded: Outside the collection scope
+
+electionAnalysis:
+  unit: Territorial unit
+  grain: Source granularity
+  grains:
+    national: National
+    state: States and historical territories
+    municipality: Municipalities
+    zone: Municipality and electoral zone
+    section: Polling sections
+  sourceGrain: 'Observed unit: {grain}. Aggregates do not represent polling sections or individual votes.'
+  histogramNote: '{n} units with a known candidate-vote denominator; share of {candidate} in observed candidate votes.'
+  observed: Observed share by unit
+  digits: Digit position
+  first: First digit
+  second: Second digit
+  firstTwo: First two digits
+  noSimulation: Descriptive comparison with the theoretical distribution. No electoral simulation is available for this selection; deviations do not demonstrate fraud.
