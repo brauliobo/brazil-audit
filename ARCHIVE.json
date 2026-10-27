@@ -1,0 +1,56 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-10-27T15:02:47.004874+00:00",
+  "status": "published",
+  "dataset": {
+    "id": "historical-sections-2008",
+    "title": "Seções eleitorais 2008 — fatos consultáveis",
+    "branch": "archive/historical-sections-2008",
+    "tag": "data-historical-sections-2008",
+    "source": "https://dadosabertos.tse.jus.br",
+    "license": "Licença declarada em cada fonte oficial"
+  },
+  "resources": [
+    {
+      "status": "prepared",
+      "year": 2008,
+      "sourceUrls": [
+        "https://cdn.tse.jus.br/estatistica/sead/odsele/detalhe_votacao_secao/detalhe_votacao_secao_2008.zip",
+        "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2008_AC.zip",
+        "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2008_AL.zip",
+        "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2008_AM.zip",
+        "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2008_AP.zip",
+        "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2008_BA.zip",
+        "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2008_CE.zip",
+        "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2008_ES.zip",
+        "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2008_GO.zip",
+        "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2008_MA.zip",
+        "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2008_MG.zip",
+        "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2008_MS.zip",
+        "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2008_MT.zip",
+        "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2008_PA.zip",
+        "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2008_PB.zip",
+        "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2008_PE.zip",
+        "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2008_PI.zip",
+        "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2008_PR.zip",
+        "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2008_RJ.zip",
+        "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2008_RN.zip",
+        "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2008_RO.zip",
+        "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2008_RR.zip",
+        "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2008_RS.zip",
+        "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2008_SC.zip",
+        "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2008_SE.zip",
+        "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2008_SP.zip",
+        "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2008_TO.zip"
+      ],
+      "browserCommit": "a1fd1eb9dd13b98fba4472b17c3a4c26ae574d99",
+      "assets": [
+        {
+          "name": "sections-0000.zip",
+          "bytes": 611037222,
+          "sha256": "065b9d9e4ce5eca30e9bfabd123ea1d27315cc0bd9cb6450bb3158e35310598c"
+        }
+      ]
+    }
+  ]
+}
