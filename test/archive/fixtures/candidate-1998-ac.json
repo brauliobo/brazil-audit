@@ -1,0 +1,11 @@
+{
+ "sourceUrl": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_candidato_munzona/votacao_candidato_munzona_1998.zip",
+ "sourceSha256": "8cb16d1c4901efdb46334df5f534712c1d36eea379725d68e33b9f3534963ab4",
+ "member": "votacao_candidato_munzona_1998_BRASIL.csv",
+ "selectedState": "AC",
+ "offices": [
+  "1",
+  "3"
+ ],
+ "rows": 382
+}
