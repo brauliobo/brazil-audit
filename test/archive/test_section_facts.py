@@ -94,6 +94,21 @@ class SectionFactsTest(unittest.TestCase):
             with self.assertRaisesRegex(ValueError,'ambiguous election'):
                 LegacyContext(data,1998).resolve(values)
 
+    def test_interleaved_cities_do_not_finalize_chunks_when_handles_are_evicted(self):
+        row,_=vote_record(raw(),self.lookup,self.source)
+        with tempfile.TemporaryDirectory() as directory:
+            root=pathlib.Path(directory)
+            writer=PartitionWriter(root,VOTE_FIELDS,VOTE_TABLE,self.source,max_raw=16*1024*1024,open_limit=2)
+            for n in range(1000):writer.write({**row,'city_code':str(1000+n%100).zfill(5),'section':str(n).zfill(4)})
+            parts=writer.finish()
+            self.assertLessEqual(len(parts),64)
+            self.assertEqual(sum(p['rows'] for p in parts.values()),1000)
+            self.assertFalse(list(root.rglob('*.wip')))
+            for key,p in parts.items():
+                self.assertEqual(p['where'],"source_part = '"+key+"'")
+                values=list(csv.reader(io.StringIO(gzip.decompress((root/p['url']).read_bytes()).decode())))
+                self.assertTrue(all(r[-1]==key for r in values))
+
     def test_bounded_parts_are_deterministic_and_keep_source_hashes(self):
         row,_=vote_record(raw(),self.lookup,self.source)
         with tempfile.TemporaryDirectory() as directory:

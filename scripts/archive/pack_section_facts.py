@@ -60,7 +60,7 @@ class Packs:
 def pack_source(index_path, source_root, output):
     raw=index_path.read_bytes();record=json.loads(raw)
     if record.get('status')!='ready':return None
-    table=record['table'];fields=table['columns'].split(',');packed_fields=[*fields,'source_part']
+    table=record['table'];fields=table['columns'].split(',');packed_fields=[k for k in fields if k!='source_part']+['source_part']
     key=hashlib.sha256(record['source']['source_url'].encode()).hexdigest()
     previous=output/'sources'/(key+'.json')
     input_hash=hashlib.sha256(raw).hexdigest()
@@ -73,11 +73,7 @@ def pack_source(index_path, source_root, output):
                     raise ValueError('Packed section source hash mismatch')
             return old
     writer=Packs(output,table['name'],packed_fields,key)
-    coverage=[];current=None;sections=set();counts=Counter()
-    def save_coverage():
-        if current is not None:
-            coverage.append(dict(election_id=current[0],state=current[1] or None,city_code=current[2],office=current[3],office_key=current[4],
-                                 sections=len(sections),counts=dict(counts),countMeaning='observed_cast' if table['name'].endswith('votes') else 'reported_section_detail'))
+    coverage_groups={}
     # Source partitions already group event/UF/city/office. Sorting those keys lets
     # coverage keep one municipality's set of sections, never the whole archive.
     for part_key,part in sorted(table['parts'].items()):
@@ -87,17 +83,18 @@ def pack_source(index_path, source_root, output):
         with gzip.open(source_path,'rt',encoding='utf8',newline='') as stream:
             for values in csv.reader(stream):
                 row=dict(zip(fields,values));group=tuple(row[k] for k in ['election_id','state','city_code','office','office_key'])
-                if group!=current:
-                    save_coverage();current=group;sections=set();counts=Counter()
+                covered=coverage_groups.setdefault(group,{'sections':set(),'counts':Counter()})
+                sections,counts=covered['sections'],covered['counts']
                 sections.add((row['zone'],row['section']))
                 if table['name'].endswith('votes'):counts[row['kind']]+=int(row['votes'])
                 else:
                     for field in ['nominal_reported','legend_reported','blank','null_votes']:
                         if row.get(field)!='':counts[field]+=int(row[field])
                 writer.write(row)
-    save_coverage();parts=writer.finish()
+    coverage=[dict(election_id=g[0],state=g[1] or None,city_code=g[2],office=g[3],office_key=g[4],sections=len(c['sections']),counts=dict(c['counts']),countMeaning='observed_cast' if table['name'].endswith('votes') else 'reported_section_detail') for g,c in coverage_groups.items()]
+    parts=writer.finish()
     if writer.rows!=record['rows']:raise ValueError('Repacking changed the number of source observations')
-    packed_table={**table,'columns':','.join(packed_fields),'ddl':table['ddl'][:-1]+', source_part text)','parts':parts}
+    packed_table={**table,'columns':','.join(packed_fields),'ddl':table['ddl'] if 'source_part' in fields else table['ddl'][:-1]+', source_part text)','parts':parts}
     result={**record,'inputSha256':input_hash,'table':packed_table,'transport':'UF/office packs; original section grain retained; source_part is the exact reload boundary.',
             'observedCoverage':coverage,'packedRows':writer.rows}
     previous.parent.mkdir(parents=True,exist_ok=True)

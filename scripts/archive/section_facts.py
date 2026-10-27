@@ -18,7 +18,7 @@ from candidate_facts import VOTE_FIELDS, VOTE_TYPES, first
 from build_election_registry import UNIT_FIELDS, table_definition, unit_row
 from normalize_history import normalize, number, office_key
 
-NORMALIZATION_VERSION = 2
+NORMALIZATION_VERSION = 3
 # Verified producer of this same data format; retain its original provenance hash.
 CACHE_FORMATS = {'1196b63dd606696d3398f9d494519ba84a03ecde6250ea867c42c46341853cfd': 1, '71ce00b4d4c4709a9248d8cb7b5397c0e9e6ab01d8f6c11a048ca71fc3d6e11d': 1}
 VOTE_TABLE = 'election_section_votes'
@@ -188,59 +188,58 @@ def section_unit(raw, session, source):
 
 
 class PartitionWriter:
-    """Bounded open files and bytes; partitions are lazy by event, UF, city and office."""
+    """Logical chunks survive handle eviction; gzip is written once at finalization."""
     def __init__(self, output, fields, table, source, max_raw=MAX_RAW_BYTES, open_limit=48):
-        self.output, self.fields, self.table, self.source = output, fields, table, source
+        self.output, self.table, self.source = output, table, source
+        self.fields = [*fields, 'source_part']
         self.max_raw, self.open_limit = max_raw, open_limit
         self.open = OrderedDict()
+        self.logical = {}
         self.sequence = Counter()
         self.parts = {}
         self.counts = Counter()
+        self.source_key = hashlib.sha256(source['source_url'].encode()).hexdigest()
 
-    def _close(self, key):
-        item = self.open.pop(key)
-        item['text'].close()
-        item['file'].close()
-        path = item['path']
-        data = path.read_bytes()
-        if len(data) >= 20 * 1024 * 1024:
-            raise ValueError('Section asset exceeds the browser part limit')
-        row = item['sample']
-        where = ' and '.join(f"{k} is null" if row[k] is None else f"{k} = '{str(row[k]).replace(chr(39), chr(39)*2)}'" for k in ['election_id', 'state', 'city_code', 'office'])
-        self.parts[item['id']] = dict(url=str(path.relative_to(self.output)), rows=item['rows'], bytes=len(data), rawBytes=item['raw'],
-                                     sha256=hashlib.sha256(data).hexdigest(), where=where,
-                                     electionIds=[row['election_id']], officeKeys=[row['office_key']], offices=[int(row['office'])],
-                                     states=[row['state']], cities=[row['city_code']], grains=['section'], role='section-observation',
-                                     source_url=self.source['source_url'], source_sha256=self.source['source_sha256'])
+    def _close_handle(self, key):
+        handle = self.open.pop(key,None)
+        if handle is not None:handle.close()
 
-    def write(self, row):
-        key = (row['election_id'], row['state'], row['city_code'], row['office'])
-        buffer = io.StringIO(newline='')
-        csv.writer(buffer, lineterminator='\n').writerow([row.get(k) for k in self.fields])
-        line = buffer.getvalue()
-        size = len(line.encode())
-        if key in self.open and self.open[key]['raw'] + size > self.max_raw:
-            self._close(key)
+    def _finalize(self, key):
+        self._close_handle(key)
+        item=self.logical.pop(key);path=item['path'];path.parent.mkdir(parents=True,exist_ok=True)
+        with item['raw_path'].open('rb') as inp,path.open('wb') as out:
+            with gzip.GzipFile(filename='',mode='wb',fileobj=out,mtime=0,compresslevel=6) as compressed:
+                for block in iter(lambda:inp.read(1024*1024),b''):compressed.write(block)
+        item['raw_path'].unlink();packed=path.read_bytes()
+        if len(packed)>=20*1024*1024:raise ValueError('Section asset exceeds browser part limit')
+        cities=sorted(item['cities'])
+        self.parts[item['id']]=dict(url=str(path.relative_to(self.output)),rows=item['rows'],bytes=len(packed),rawBytes=item['raw'],
+            sha256=hashlib.sha256(packed).hexdigest(),where="source_part = '"+item['id']+"'",sourcePart=item['id'],
+            electionIds=sorted(item['events']),officeKeys=sorted(item['offices']),offices=[int(key[1])],
+            states=[key[0]],cities=cities,cityMin=cities[0] if cities else None,cityMax=cities[-1] if cities else None,
+            grains=['section'],role='section-observation',source_url=self.source['source_url'],source_sha256=self.source['source_sha256'])
+
+    def write(self,row):
+        city=row['city_code'];bucket=str(int(city)%64).zfill(2) if city else 'unresolved'
+        key=(row['state'],row['office'],bucket)
+        if key in self.logical and (self.logical[key]['raw']>=self.max_raw or self.logical[key]['rows']>=50000):self._finalize(key)
+        if key not in self.logical:
+            n=self.sequence[key];self.sequence[key]+=1
+            part_id=f'{self.source_key}/{row["source_year"]}/{row["state"] or "unresolved"}/{row["office"]}/b{bucket}/{n:05}'
+            path=self.output/self.table/(part_id+'.csv.gz');raw_path=path.with_suffix('.wip');raw_path.parent.mkdir(parents=True,exist_ok=True)
+            raw_path.write_bytes(b'')
+            self.logical[key]=dict(id=part_id,path=path,raw_path=raw_path,rows=0,raw=0,cities=set(),events=set(),offices=set())
+        item=self.logical[key]
         if key not in self.open:
-            if len(self.open) >= self.open_limit:
-                self._close(next(iter(self.open)))
-            n = self.sequence[key]; self.sequence[key] += 1
-            event = row['election_id'].replace(':', '-')
-            part_id = f'{self.source["source_year"]}/{event}/{row["state"]}/{row["city_code"]}/{row["office"]}/{n}'
-            path = self.output / f'{self.table}/{part_id}.csv.gz'
-            path.parent.mkdir(parents=True, exist_ok=True)
-            file = path.open('wb')
-            binary = gzip.GzipFile(filename='', mode='wb', fileobj=file, mtime=0, compresslevel=6)
-            text = io.TextIOWrapper(binary, encoding='utf8', newline='')
-            self.open[key] = dict(text=text, file=file, path=path, rows=0, raw=0, id=part_id, sample=row)
-        item = self.open[key]
-        item['text'].write(line); item['rows'] += 1; item['raw'] += size
-        self.open.move_to_end(key)
-        self.counts[(row['election_id'], row['state'], row['office'], row.get('kind'))] += row.get('votes', 1)
+            if len(self.open)>=self.open_limit:self._close_handle(next(iter(self.open)))
+            self.open[key]=item['raw_path'].open('ab')
+        buffer=io.StringIO(newline='');csv.writer(buffer,lineterminator='\n').writerow([{**row,'source_part':item['id']}.get(k) for k in self.fields])
+        raw=buffer.getvalue().encode();self.open[key].write(raw);self.open.move_to_end(key)
+        item['rows']+=1;item['raw']+=len(raw);item['cities'].add(city);item['events'].add(row['election_id']);item['offices'].add(row['office_key'])
+        self.counts[(row['election_id'],row['state'],row['office'],row.get('kind'))]+=row.get('votes',1)
 
     def finish(self):
-        for key in list(self.open):
-            self._close(key)
+        for key in list(self.logical):self._finalize(key)
         return self.parts
 
 
@@ -322,12 +321,12 @@ def process_resource(resource, root, data, output, state=None, candidate_data=No
             row = section_unit(raw, sessions[event['election_id']], {**source, 'source_id': resource['id']})
         writer.write(row); rows += 1
     parts = writer.finish()
-    fields = SECTION_VOTE_FIELDS if is_votes else SECTION_UNIT_FIELDS
+    fields = writer.fields
     if is_votes:
-        types = [*VOTE_TYPES,*['text']*6]
+        types = [*VOTE_TYPES,*['text']*7]
     else:
         ddl = table_definition({})['ddl']
-        types = [piece.rsplit(' ', 1)[1] for piece in ddl[ddl.index('(')+1:-1].split(', ')] + ['bigint', 'bigint', 'text']
+        types = [piece.rsplit(' ', 1)[1] for piece in ddl[ddl.index('(')+1:-1].split(', ')] + ['bigint', 'bigint', 'text', 'text']
     table = VOTE_TABLE if is_votes else UNIT_TABLE
     result = dict(source=source, rows=rows, identityMethods=dict(methods), counts=[dict(election_id=k[0],state=k[1],office=k[2],kind=k[3],count=v) for k,v in writer.counts.items()],
                   table=dict(name=table, columns=','.join(fields), ddl=f'create table {table} ('+', '.join(f'{k} {t}' for k,t in zip(fields,types))+')', parts=parts))
@@ -380,7 +379,7 @@ def process_job(resource, root, data, output, state, resume, candidate_data):
         if resume and previous.exists():
             record = json.loads(previous.read_text())
             format_version = record.get('normalizationVersion',CACHE_FORMATS.get(record.get('parserSha256')))
-            if format_version in [1,NORMALIZATION_VERSION] and record['source']['source_sha256']==source_digest and record.get('scopeState')==state:
+            if format_version in [1,2,NORMALIZATION_VERSION] and record['source']['source_sha256']==source_digest and record.get('scopeState')==state:
                 for part in record['table']['parts'].values():
                     if hashlib.file_digest((output/part['url']).open('rb'),'sha256').hexdigest()!=part['sha256']:
                         raise ValueError('Cached section part hash mismatch')
