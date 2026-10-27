@@ -24,6 +24,8 @@ nav:
   design: Design system
 
 election:
+  session: Election and round
+  unavailableView: This analysis requires a source that is unavailable for this election.
   year: Year
   round: Round
   turn: "Round {turn}"
@@ -655,13 +657,15 @@ sql:
   run: Run
   share: copy link
   copied: link copied
-  intro: "Tables: {tables}. Section data uses election/turn; historical state facts use contest_id/year/date/turn. Section elections: {elections}; active: {active}. Factual tables are imported in full when queried in SQL. For large section data, open the state first in Drill down/Voting time. The console is read-only."
+  intro: "Tables: {tables}. Available elections: {elections}; active: {active}. election_units/votes/candidates use official election and office identities; modern section data use election/turn. Parts matching the stated identity are imported; without an identity filter, the entire table is imported. The console is read-only."
   result: Result
   tablesTitle: Tables and views
   rows_one: "{count} row"
   rows_other: "{count} rows"
   showing: (showing {n})
   examples:
+    electionUnits: "Election units and participation"
+    electionCandidates: "Source candidates of the election"
     stateFacts: Historical state election totals
     turnout: "Official abstention and turnout by state"
     uf: Leading candidate by state
@@ -673,6 +677,9 @@ sql:
     parts: Parts loaded in the browser
     catalog: "Catalog: tables, columns and elections"
   tables:
+    election_units: "official units by election identity, office and source grain"
+    election_votes: "candidate votes by source territorial unit"
+    election_candidates: "official candidate identities and attributes by election"
     state_rounds: Observed contest, state and round totals; electorate once per unit.
     state_round_counts: Category and candidate counts scoped to the contest; no repeated electorate.
     rdv: "section and office results (votes = jsonb {number: votes})"
@@ -1360,6 +1367,34 @@ history:
     partial: Partially published
     privacy-review-required: Personal data review required
     excluded: Outside the collection scope
+
+electionData:
+  leadingShare: "Leading candidate share"
+  participationBase: "Rates use the reported participation base of {n} voters; the source does not report uninstalled sections."
+  mapDetails: "Regional and municipal maps, annotations and collection options"
+  candidate: "Candidate"
+  number: "Number"
+  party: "Party"
+  votes: "Votes"
+  sections: "Sections"
+  leader: "Leading candidate"
+  allCandidates: "All candidates ({n})"
+  byState: "Results by state"
+  noCandidates: "This source and scope have no candidate vote records. Known totals remain available."
+  noUnits: "No records match this office and scope."
+  noParticipation: "The source has no compatible participation base for this scope."
+  grain: "Source grain: {grain} · {n} queried units."
+  collectionDetails: "Section collection evidence and analyses"
+  sectionDetails: "Section file details"
+  mapUnavailable: "Historical units have no verified correspondence with this map. Consult the original values in the table."
+  source: "Original source"
+  fields:
+    sections: "Sections"
+    nominal: "Nominal votes"
+    valid: "Valid votes in source"
+    blank: "Blank"
+    nul: "Null"
+    ballots: "Reported ballot total"
 
 electionAnalysis:
   unit: Territorial unit

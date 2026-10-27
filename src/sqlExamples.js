@@ -1,10 +1,12 @@
 // SQL console content. Every election lives in the same tables, so the examples are written once and filter by `election` and `turn`:
 // `{year}` and `{turn}` are replaced with the active election's values (see fill()). Titles are sql.examples.<id> in the locale files.
 import { ref } from 'vue'
-import { ELECTIONS } from './elections.js'
+import { ELECTIONS, selectedOffice } from './model.js'
 
 const E = 'election = {year} and turn = {turn}'
 export const EXAMPLES = [
+  { id: 'electionUnits', canonical: true, sql: `select election_id,grain,state,city_code,zone,office_name,eligible,installed,present,absent,blank,null_votes,ballots,valid,source_url\nfrom election_units where session_key = {session} and office_key = {office_key} order by state,city_code,zone` },
+  { id: 'electionCandidates', canonical: true, sql: `select c.* from election_candidates c\nwhere c.election_id in (select distinct election_id from election_units where session_key = {session}) order by c.state,c.name` },
   { id: 'uf', sql: `select state, cand, sum(votes) votes from res\nwhere ${E} and office = 1 and state <> 'zz' group by state, cand order by state, votes desc` },
   { id: 'stateFacts', sql: `select year,date,office,state,turn,electorate,installed,present,absent,not_installed,votes_complete\nfrom state_rounds where year = {year} and office = 1 order by state,turn` },
   { id: 'ranking', sql: `with c as (select state, city, cand, sum(votes) votes from res where ${E} and office = 1 group by 1, 2, 3),\n  t as (select state, city, sum(votes) total from c group by 1, 2)\nselect c.state, c.city, c.cand, c.votes, round(c.votes::numeric / t.total * 100, 1) pct\nfrom c join t using (state, city) where t.total > 5000 order by pct desc limit 20` },
@@ -18,9 +20,10 @@ export const EXAMPLES = [
 ]
 
 /** The examples that make sense for an election (some need voting times or seats). */
-export const examplesFor = (key) => EXAMPLES.filter((e) => !e.needs || ELECTIONS[key][e.needs])
+export const examplesFor = (key) => EXAMPLES.filter((e) => (e.canonical || ELECTIONS[key].legacyKey || ['parts','catalog'].includes(e.id)) && (!e.needs || ELECTIONS[key][e.needs]))
 
 export const fill = (sql, key) => sql.replaceAll('{year}', ELECTIONS[key].year).replaceAll('{turn}', ELECTIONS[key].turn)
+  .replaceAll('{session}', `'${key.replaceAll("'", "''")}'`).replaceAll('{office_key}', `'${selectedOffice(key).key.replaceAll("'", "''")}'`)
 
 /** What the user did last in the console, kept across election switches: { text } once edited, { example } id when one was picked. */
 export const draft = ref(null)
@@ -34,4 +37,4 @@ export function initialSql(key, q) {
 }
 
 /** Tables and views of the shared schema, listed under the editor (descriptions: sql.tables.<name>). */
-export const TABLES = ['state_rounds','state_round_counts','rdv', 'sec', 'cs', 'tot', 'res', 'resx', 'totx', 'vt', 'vtc', 'sg', 'sgf', 'sgz', 'turnout', 'cov', 'miss', 'residual', 'elected', 'seats', 'lineup', 'annulled', 'cands', 'mun_map']
+export const TABLES = ['election_units','election_votes','election_candidates','state_rounds','state_round_counts','rdv', 'sec', 'cs', 'tot', 'res', 'resx', 'totx', 'vt', 'vtc', 'sg', 'sgf', 'sgz', 'turnout', 'cov', 'miss', 'residual', 'elected', 'seats', 'lineup', 'annulled', 'cands', 'mun_map']

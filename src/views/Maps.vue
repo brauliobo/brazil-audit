@@ -1,236 +1,66 @@
 <script setup vapor>
-import { computed, nextTick, onMounted, onUnmounted } from 'vue'
+import { computed, ref } from 'vue'
 import { route, href, go, setParam } from '../router'
-import { ELECTIONS, inElection } from '../model'
-import { electionLabel, officeItems, officeName, stateName, stateOptions, stateTitle } from '../labels'
-import { t } from '../i18n'
-import { partyColor } from '../colors'
-import { loadGeo, preloadState } from '../geo'
-import { candName, ensureRollups, residualOn, rollup, margin, quantile, stateVotes, stateWinners, titleCase, top, unitPlace, unitSql, unitTip, unitsOf, winnerFills, winnerLegend, winnersHeadline } from '../results'
-import { REGIONS, REGION_IDS, regionOf, regionTotals } from '../regions'
-import { useAsync } from '../use'
+import { ELECTIONS, UFS, selectedOffice } from '../model'
+import { electionLabel } from '../labels'
+import { ensureElection, unitsSql } from '../election-results'
 import { objects } from '../db'
+import { loadGeo } from '../geo'
+import { useAsync } from '../use'
 import { int, pct } from '../format'
+import { partyColor } from '../colors'
+import { t } from '../i18n'
 import Panel from '../components/Panel.vue'
 import Field from '../components/Field.vue'
-import Breadcrumb from '../components/Breadcrumb.vue'
-import ButtonGroup from '../components/ButtonGroup.vue'
-import Chip from '../components/Chip.vue'
-import SourceBadge from '../components/SourceBadge.vue'
-import Legend from '../components/Legend.vue'
-import ResidualSwitch from '../components/ResidualSwitch.vue'
+import Notice from '../components/Notice.vue'
+import DataTable from '../components/DataTable.vue'
 import GeoMap from '../components/GeoMap.vue'
-import ColumnChart from '../components/ColumnChart.vue'
-import Scatter from '../components/Scatter.vue'
-import BarList from '../components/BarList.vue'
-
-const year = computed(() => route.value.election)
-const params = computed(() => route.value.params)
-const scope = computed(() => params.value.get('scope') ?? 'uf') // uf | region | mun | state
-const region = computed(() => (params.value.get('region') in REGIONS ? params.value.get('region') : '')) // '' = the five regions side by side
-const shown = computed(() => (region.value ? [region.value] : REGION_IDS))
-const regionItems = computed(() => [['', t('maps.regionAll')], ...REGION_IDS.map((r) => [r, t(`regions.${r}`)])])
-const uf = computed(() => params.value.get('uf') ?? 'sp')
-const office = computed(() => Number(params.value.get('office') ?? 1))
-const metric = computed(() => params.value.get('metric') ?? 'winner')
-const offices = computed(() => ELECTIONS[year.value].offices.filter((id) => [1, 3, 5].includes(id)))
-const pick = (key, e) => setParam(key, e.target.value)
-const scaleItems = computed(() => [['uf', 'maps.scaleUf'], ['region', 'maps.scaleRegion'], ['mun', 'maps.scaleMun'], ['state', 'maps.scaleState']].map(([value, key]) => ({ value, label: t(key) })))
-const metricItems = computed(() => ['winner', 'share', 'margin', 'blank'].map((value) => ({ value, label: t(`maps.metric.${value}`), disabled: value === 'blank' && !ELECTIONS[year.value].hasBlank })))
-
-const base = useAsync(() => [year.value], async ([y]) => { await ensureRollups(y); return true })
-
-const rateSql = (y, grain) => (grain === 'uf'
-  ? `select state id, sum(blank) blank, sum(nul) nul, sum(nominal) nominal from ${rollup(y).tot} where office = $1 and ${inElection(y)} and state <> 'zz' group by 1`
-  : `select m.ibge id, sum(t.blank) blank, sum(t.nul) nul, sum(t.nominal) nominal from ${rollup(y).tot} t join mun_map m on m.state = t.state and m.city = t.city
-     where t.office = $1 and ${inElection(y, 't')} and ($2::text = '' or t.state = $2) group by 1`)
-
-const byRegion = computed(() => scope.value === 'region')
-const grain = computed(() => (scope.value === 'uf' || byRegion.value ? 'uf' : 'mun'))
-const geoKind = computed(() => ({ uf: 'uf', region: 'uf', mun: 'mun', state: uf.value })[scope.value])
-
-const data = useAsync(() => [year.value, grain.value, scope.value === 'state' ? uf.value : '', office.value, params.value.get('cand') ?? '', base.loading, residualOn.value], async ([y, g, s, o, cand], q) => {
-  if (base.loading) return null
-  const args = g === 'uf' ? [o, cand] : [o, s, cand]
-  const [rows, rates, map, overlay, winners, votes] = await Promise.all([
-    q(unitSql(y, g), args), ELECTIONS[y].hasBlank ? q(rateSql(y, g), g === 'uf' ? [o] : [o, s]) : null, loadGeo(geoKind.value), scope.value === 'mun' ? loadGeo('uf') : null, stateWinners(q, y, o),
-    g === 'uf' ? stateVotes(q, y, o) : null, // the regions are only a different crop of the UF map: switching to them needs no new load
-  ])
-  const units = unitsOf(rows)
-  for (const r of rates ? objects(rates) : []) Object.assign(units.get(r.id) ?? {}, { rate: (r.blank + r.nul) / (r.nominal + r.blank + r.nul) })
-  return { units, map, overlay, winners, grain: g, regions: votes && regionTotals(votes.map((r) => ({ ...r, name: o === 1 ? r.name : r.key }))) } // the grain travels with the data: the view may still show the previous result while the next loads
+import ElectionContext from '../components/ElectionContext.vue'
+import CollectorMaps from '../components/collector/Maps.vue'
+const key = computed(() => route.value.election)
+const expanded = ref(false)
+const cfg = computed(() => ELECTIONS[key.value])
+const office = computed(() => selectedOffice(key.value,route.value.params.get('office')))
+const metric = computed(() => route.value.params.get('metric') ?? 'winner')
+const data = useAsync(() => [key.value,office.value.key],async ([k,o],q) => {
+  await ensureElection(k,o)
+  const query = unitsSql(k,o,'state')
+  const rows = objects(await q(query.sql,query.params))
+  const leaders = rows.filter((r) => Number(r.rn) === 1)
+  const compatible = Boolean(ELECTIONS[k].legacyKey) && leaders.every((r) => UFS.includes(r.state))
+  return {rows,leaders,states:[...new Set(rows.map((r) => r.state))].sort(),map:compatible ? await loadGeo('uf') : null}
 })
-
-const scale = (v, lo, hi) => 0.15 + 0.85 * Math.min(Math.max((v - lo) / ((hi - lo) || 1), 0), 1)
-
-// the candidate list for the share metric: leaders of the whole selection
-const leaders = computed(() => {
-  const tally = new Map()
-  for (const u of data.data.units.values()) { const w = top(u, 1); tally.set(w.cand, { ...w, wins: (tally.get(w.cand)?.wins ?? 0) + 1 }) }
-  return [...tally.values()].sort((a, b) => b.wins - a.wins)
-})
-const shareCand = computed(() => params.value.get('cand') || leaders.value[0]?.cand)
-const shareOf = (u) => (u.list.find((r) => r.cand === shareCand.value)?.votes ?? 0) / u.valid
-const sequential = { margin: 'var(--seq-margin)', blank: 'var(--seq-blank)' }
-
-const styleOf = (units) => {
-  const us = [...units.values()]
-  const m = metric.value
-  if (m === 'winner') return { fills: winnerFills(units), range: [0, 0], color: null }
-  const value = { share: shareOf, margin, blank: (u) => u.rate ?? 0 }[m]
-  const vs = us.map(value)
-  const [lo, hi] = [quantile(vs, 0.02), quantile(vs, 0.98)]
-  const color = m === 'share' ? partyColor(leaders.value.find((l) => l.cand === shareCand.value)?.party ?? '') : sequential[m]
-  return { fills: Object.fromEntries(us.map((u) => [u.id, [color, scale(value(u), lo, hi)]])), range: [lo, hi], color }
-}
-const style = computed(() => styleOf(data.data.units))
-
-// what a state says inside the map, the fullest first: the map writes the first one that fits the shape
-const firstName = (r) => candName(r).split(' ')[0]
-const markOf = (u, head) => {
-  const [a, b] = [top(u, 1), top(u, 2)]
-  const share = (r) => pct(r.votes / u.valid, 1)
-  if (['winner', 'margin'].includes(metric.value)) return [{ head, rows: [a, b].filter(Boolean).map((r) => `${firstName(r)} ${share(r)}`) }, { head, rows: [`${firstName(a)} ${share(a)}`] }, { head, rows: [share(a)] }, { rows: [share(a)] }]
-  const text = pct(metric.value === 'share' ? shareOf(u) : u.rate ?? 0, 1)
-  return [{ head, rows: [text] }, { rows: [text] }]
-}
-const marks = computed(() => (data.data.grain === 'uf' ? Object.fromEntries([...data.data.units].map(([id, u]) => [id, markOf(u, id.toUpperCase())])) : null))
-
-// the survey of a region: its leading candidates (or parties), the rest together, and who wins how many of its states
-const LEADING = 4
-const nameOf = (r) => (r.name ? (office.value === 1 ? titleCase(r.name) : r.name) : t('common.others')) // parties are not names: no title case
-const bars = (id) => {
-  const { rows } = data.data.regions[id]
-  const rest = 1 - rows.slice(0, LEADING).reduce((sum, r) => sum + r.share, 0)
-  const bar = (label, share) => ({ label, value: share, text: pct(share, 1) })
-  return [...rows.slice(0, LEADING).map((r) => bar(`${nameOf(r)}${r.party && r.party !== r.name ? ` (${r.party})` : ''}`, r.share)), ...(rows.length > LEADING ? [bar(t('common.others'), rest)] : [])]
-}
-
-// the whole of Brazil by region: a region is a unit like a state (its votes, ranked), coloured and marked once, and its states share its colour
-const regionUnits = computed(() => new Map(REGION_IDS.map((id) => {
-  const { total, rows } = data.data.regions[id]
-  const rates = REGIONS[id].map((s) => data.data.units.get(s)).filter((u) => u?.rate != null)
-  const away = rates.reduce((sum, u) => sum + (u.valid * u.rate) / (1 - u.rate), 0) // blank and null votes of its states
-  const list = rows.map((r, i) => ({ cand: r.key, label: nameOf(r), party: r.party, votes: r.votes, rn: i + 1 }))
-  return [id, { id, valid: total, list, rate: rates.length ? away / (away + total) : undefined }]
-})))
-const regionStyle = computed(() => styleOf(regionUnits.value))
-const regionFills = computed(() => Object.fromEntries(REGION_IDS.flatMap((id) => REGIONS[id].map((s) => [s, regionStyle.value.fills[id]]))))
-const regionMarks = computed(() => Object.fromEntries([...regionUnits.value].map(([id, u]) => [id, markOf(u, t(`regions.${id}`))])))
-const regionTip = (uf) => unitTip(regionUnits.value.get(regionOf(uf)), 'region', [t('maps.clickRegion')])
-const openRegion = (uf) => { go(here({ region: regionOf(uf) })); focusPanel() }
-const regionHeadline = (id) => winnersHeadline(data.data.winners.filter((r) => REGIONS[id].includes(r.state)), office.value)
-
+const fills = computed(() => Object.fromEntries((data.data?.leaders ?? []).filter((r) => r.state !== 'zz').map((r) => {
+  const opponent = data.data.rows.find((x) => x.state === r.state && Number(x.rn) === 2)
+  const value = metric.value === 'margin' ? (r.votes-(opponent?.votes ?? 0))/r.valid : metric.value === 'blank' ? r.blank == null || r.nul == null || !r.ballots ? null : (r.blank+r.nul)/r.ballots : r.votes/r.valid
+  if (value == null || !Number.isFinite(value)) return null
+  return [r.state,[metric.value === 'blank' ? 'var(--primary)' : partyColor(r.party),Number.isFinite(value) ? Math.min(1,0.25+value*0.75) : 0]]
+}).filter(Boolean)))
 const tip = (id) => {
-  const u = data.data.units.get(id)
-  const extra = [...(u.rate != null ? [t('maps.blankAndNull', { rate: pct(u.rate, 1) })] : []), ...(data.data.grain === 'uf' ? [t('maps.clickCities')] : [])]
-  return unitTip(u, data.data.grain, extra)
+  const r = data.data.leaders.find((r)=>r.state === id)
+  return r ? `${id.toUpperCase()}\n${r.cname ?? r.number ?? r.cand}: ${int(r.votes)} (${pct(r.valid ? r.votes/r.valid : null)})` : id
 }
-// the UF map opens a state's cities in place (keeping metric, office and candidate); a municipality opens its drill-down
-const here = (changes) => href(year.value, 'maps', [], { ...Object.fromEntries(params.value), ...changes })
-const focusPanel = () => nextTick(() => requestAnimationFrame(() => document.querySelector('.panel h2')?.focus({ preventScroll: true })))
-const open = (id) => {
-  if (data.data.grain === 'uf') { go(here({ scope: 'state', uf: id })); return focusPanel() }
-  const u = data.data.units.get(id)
-  go(href(year.value, 'drill', [u.state, u.name], { office: office.value }))
-}
-const toBrazil = () => { go(here({ scope: 'uf', uf: null })); focusPanel() }
-// the municipality maps have thousands of shapes: keyboard users pick a place from this list instead
-const places = computed(() => [...data.data.units.values()].map((u) => ({ id: u.id, label: unitPlace(u, 'mun') })).sort((a, b) => a.label.localeCompare(b.label)))
-// a municipality without a polygon in the IBGE mesh (e.g. created after it) is still in the data: say so instead of hiding it
-const noShape = computed(() => {
-  const shapes = new Set(data.data.map.items.map(([id]) => String(id)))
-  return [...data.data.units.values()].filter((u) => !shapes.has(String(u.id))).map((u) => unitPlace(u, 'mun'))
-})
-const find = (e) => { const place = places.value.find((p) => p.label === e.target.value); if (place) open(place.id) }
-const onKey = (e) => e.key === 'Escape' && scope.value === 'state' && toBrazil()
-onMounted(() => addEventListener('keydown', onKey))
-onUnmounted(() => removeEventListener('keydown', onKey))
-
-const legend = computed(() => winnerLegend(data.data.units, office.value))
-const headline = computed(() => (year.value && data.data ? winnersHeadline(data.data.winners, office.value) : ''))
-const abroad = computed(() => data.data?.winners.find((r) => r.state === 'zz' && r.rn === 1))
-const gradient = computed(() => `linear-gradient(90deg, color-mix(in oklab, ${style.value.color} 15%, var(--map-blend-base)), ${style.value.color})`)
-const legendItems = computed(() => [
-  ...(metric.value === 'winner' ? legend.value.map((l) => ({ color: partyColor(l.party), label: `${l.label} · ${l.n}` })) : []),
-  ...(abroad.value ? [{ color: partyColor(abroad.value.party), label: t('maps.abroad', { name: titleCase(abroad.value.name ?? abroad.value.cand), share: pct(abroad.value.votes / abroad.value.valid, 1) }) }] : []),
+const open = (state) => href(key.value,'drill',[state],{office:office.value.key})
+const columns = computed(() => [
+  {key:'state',label:t('common.state'),href:(r)=>open(r.state),fmt:(v)=>v.toUpperCase()},
+  {key:'cname',label:t('electionData.leader')},
+  {key:'votes',label:t('electionData.votes'),num:true,fmt:int},
+  {key:'valid',label:t('electionData.fields.nominal'),num:true,fmt:int},
+  {key:'blank',label:t('electionData.fields.blank'),num:true,fmt:int},
+  {key:'nul',label:t('electionData.fields.nul'),num:true,fmt:int},
 ])
-
-// how divided is the country? signed margin between the two national leaders in every municipality (president)
-const BINS = 20
-const spread = useAsync(() => [year.value, base.loading, residualOn.value], async ([y], q) => {
-  if (base.loading) return null
-  const rows = objects(await q(`with t as (select cand, sum(votes) v from ${rollup(y).res} where office = 1 and ${inElection(y)} and state <> 'zz' group by 1 order by 2 desc limit 2),
-    a as (select cand from t order by v desc limit 1), b as (select cand from t order by v limit 1)
-    select sum(r.votes) valid, (sum(r.votes) filter (where r.cand = (select cand from a)) - sum(r.votes) filter (where r.cand = (select cand from b)))::float8 / sum(r.votes) margin,
-      (select short_name from cands where election = ${ELECTIONS[y].year} and turn = ${ELECTIONS[y].turn} and office = 1 and uf = 'br' and n = (select cand from a)) na, (select short_name from cands where election = ${ELECTIONS[y].year} and turn = ${ELECTIONS[y].turn} and office = 1 and uf = 'br' and n = (select cand from b)) nb
-    from ${rollup(y).res} r join mun_map m on m.state = r.state and m.city = r.city where r.office = 1 and ${inElection(y, 'r')} and r.state <> 'zz' group by m.ibge having sum(r.votes) > 0`))
-  const counts = Array(BINS).fill(0)
-  for (const r of rows) counts[Math.min(Math.floor(((r.margin + 1) / 2) * BINS), BINS - 1)]++
-  return { counts, points: rows.map((r) => [Math.log10(r.valid), r.margin]), a: titleCase(rows[0].na), b: titleCase(rows[0].nb) }
-})
-const binLabels = Array.from({ length: BINS }, (_, i) => `${Math.round(-100 + (i * 200) / BINS)}`)
-const ufs = computed(() => stateOptions())
-const panelTitle = computed(() => ({ uf: t('maps.panelUf'), region: t('maps.panelRegion'), mun: t('maps.panelMun'), state: t('maps.panelState', { state: stateName(uf.value) }) })[scope.value])
-const mapWidth = computed(() => (region.value ? 640 : 520)) // px a map is about to be shown at: the text inside is sized for it
-const metricName = computed(() => t(`maps.metric.${metric.value}`))
 </script>
-
 <template lang="pug">
-h1 {{ t('maps.title', { election: electionLabel(year) }) }}
-SourceBadge(:election="year")
-.cluster
-  ResidualSwitch(v-if="ELECTIONS[year].hasResidual")
-  ButtonGroup(:label="t('maps.scale')" :items="scaleItems" :value="scope" @change="setParam('scope', $event)")
-  Field(v-if="scope === 'state'" :label="t('common.state')")
-    select(@change="pick('uf', $event)")
-      option(v-for="[s, title] in ufs" :key="s" :value="s" :selected="s === uf") {{ title }}
-  Field(v-if="byRegion" :label="t('maps.region')")
-    select(@change="pick('region', $event)")
-      option(v-for="[r, title] in regionItems" :key="r" :value="r" :selected="r === region") {{ title }}
-  ButtonGroup(v-if="offices.length > 1" :label="t('common.office')" :items="officeItems(offices)" :value="office" @change="setParam('office', $event)")
-  ButtonGroup(:label="t('maps.show')" :items="metricItems" :value="metric" @change="setParam('metric', $event)")
-  Field(v-if="data.data && data.data.grain === 'mun'" :label="t('maps.findCity')")
-    input(list="map-places" :placeholder="t('maps.findCityHint')" @change="find($event)")
-    datalist#map-places
-      option(v-for="p in places" :key="p.id" :value="p.label")
-  Field(v-if="metric === 'share' && data.data" :label="t('maps.candidate')")
-    select(@change="pick('cand', $event)")
-      option(v-for="l in leaders" :key="l.cand" :value="l.cand" :selected="l.cand === shareCand") {{ candName(l) }}
-p.headline(v-if="headline") {{ t('maps.headline', { office: officeName(office), headline }) }}
-.grid-auto
-  Panel(:title="panelTitle" :state="data" :election="year" wide chart)
-    Breadcrumb(v-if="scope === 'state'" :items="[{ label: t('common.brazil'), href: here({ scope: 'uf', uf: null }) }, { label: stateTitle(uf) }]" :label="t('maps.mapNav')")
-      template(#end)
-        a(:href="href(year, 'drill', [uf], { office })") {{ t('maps.seeDetail') }}
-    .regions(v-if="byRegion && data.data.regions" :class="{ 'mapwrap--busy': data.loading }")
-      figure.region.region--brazil(v-if="!region")
-        h3 {{ t('common.brazil') }}
-        GeoMap(:map="data.data.map" :groups="REGIONS" :fills="regionFills" :tip="regionTip" :marks="regionMarks" :width="800" :label="t('maps.regionsMapLabel', { metric: metricName })" @pick="openRegion")
-      figure.region(v-for="r in shown" :key="r")
-        h3 {{ t(`regions.${r}`) }}
-        p.headline {{ regionHeadline(r) }}
-        GeoMap(:map="data.data.map" :view="REGIONS[r]" :fills="style.fills" :tip="tip" keyboard callouts :marks="marks" :width="mapWidth" :label="t('maps.regionMapLabel', { region: t(`regions.${r}`), metric: metricName })" @pick="open" @hover="preloadState($event)")
-        BarList(:items="bars(r)")
-    .mapwrap(v-else :class="{ 'mapwrap--busy': data.loading }")
-      GeoMap(:map="data.data.map" :overlay="data.data.overlay" :fills="style.fills" :tip="tip" :keyboard="data.data.grain === 'uf'" :marks="marks" :width="700" :label="t('maps.mapLabel', { metric: metricName })" @pick="open" @hover="data.data.grain === 'uf' && preloadState($event)")
-    Legend(:items="legendItems")
-      span.muted(v-if="metric === 'winner'") {{ t('maps.strongerMargin') }}
-      template(v-else)
-        span.muted {{ pct(style.range[0], 0) }}
-        i.legend__ramp(:style="{ background: gradient }")
-        span.muted {{ pct(style.range[1], 0) }}
-        span.muted(v-if="metric === 'share'") {{ t('maps.shareOf', { name: candName(leaders.find((l) => l.cand === shareCand)) }) }}
-    details.statelinks(v-if="scope === 'uf' || byRegion")
-      summary {{ t('maps.openStateTable') }}
-      .chips
-        Chip(v-for="[s] in ufs" :key="s" :href="href(year, 'drill', [s], { office })") {{ s.toUpperCase() }}
-    p.muted {{ t('maps.note') }}
-    p.muted(v-if="data.data.grain === 'mun' && noShape.length") {{ t('maps.noShape', { names: noShape.join(', ') }) }}
-  Panel(:title="t('maps.spreadTitle')" :state="spread" :election="year")
-    ColumnChart(:label="t('maps.spreadTitle')" :values="spread.data.counts" :labels="binLabels" :tick="int" :fmt="(v) => t('maps.municipalities', { count: v })")
-    p.muted {{ t('maps.spreadNote', { a: spread.data.a, b: spread.data.b }) }}
-  Panel(:title="t('maps.sizeTitle')" :state="spread" :election="year")
-    Scatter(:points="spread.data.points" :x-label="t('maps.sizeX')" :y-label="t('maps.sizeY')")
-    p.muted {{ t('maps.sizeNote') }}
+h1 {{ t('nav.maps') }} · {{ electionLabel(key) }}
+ElectionContext
+Panel(:title="office.name" :state="data" :election="key" wide)
+  Field(v-if="data.data.map" :label="t('maps.show')")
+    select(:value="metric" @change="setParam('metric',$event.target.value)")
+      option(v-for="m in ['winner','share','margin','blank']" :key="m" :value="m") {{ m === 'share' ? t('electionData.leadingShare') : t(`maps.metric.${m}`) }}
+  GeoMap(v-if="data.data.map" :map="data.data.map" :fills="fills" :tip="tip" :label="office.name" keyboard @pick="(id) => go(open(id))")
+  Notice(v-else) {{ t('electionData.mapUnavailable') }}
+  DataTable(:columns="columns" :rows="data.data.leaders")
+details(v-if="cfg.legacyKey" @toggle="expanded = $event.target.open")
+  summary {{ t('electionData.mapDetails') }}
+  CollectorMaps(v-if="expanded")
 </template>

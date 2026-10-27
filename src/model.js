@@ -3,9 +3,9 @@
 //   sec (election,turn,state,city,zone,section,model,office,nominal,blank,nul)        one row per section and office
 //   cs  (election,turn,state,city,zone,section,model,office,cand,votes,nominal)       one row per section, office and candidate
 //   resx / totx  res / tot plus the official totals of sections without published files (residual)
-import { ELECTIONS, ELECTION_LIST } from './elections.js'
+import { ELECTIONS, ELECTION_LIST } from './election-registry.js'
 
-export { DEFAULT_ELECTION, ELECTIONS, ELECTION_LIST } from './elections.js'
+export { DEFAULT_ELECTION, ELECTIONS, ELECTION_LIST, selectedOffice, supportsView } from './election-registry.js'
 
 /** The election whose parliament the Parlamento tab opens when the current one has no seats data. */
 export const SEATS_ELECTION = ELECTION_LIST.findLast((e) => e.hasSeats).key
@@ -32,6 +32,9 @@ export const UFS = ['ac', 'al', 'am', 'ap', 'ba', 'ce', 'df', 'es', 'go', 'ma', 
 export const THEMES = ['light', 'system', 'dark']
 
 export const INDEXES = [
+  'create index if not exists election_units_ix on election_units (election_id, office_key, state, city_code, zone, section)',
+  'create index if not exists election_votes_ix on election_votes (election_id, office_key, state, city_code, zone, section)',
+  'create index if not exists election_candidates_ix on election_candidates (election_id, candidate_id, state)',
   'create index if not exists cands_ix on cands (election, office, uf, n)',
   'create index if not exists rdv_ix on rdv (election, turn, state, city)',
   'create index if not exists res_ix on res (election, turn, state, office)',

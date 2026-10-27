@@ -1,7 +1,7 @@
 <script setup vapor>
 import { computed } from 'vue'
 import { route, href } from './router'
-import { DEFAULT_ELECTION } from './model'
+import { DEFAULT_ELECTION, supportsView } from './model'
 import { NAV_AREAS, areaForView } from './navigation'
 import { viewName } from './labels'
 import { renderError } from './errors'
@@ -36,8 +36,8 @@ const views = { overview: Overview, maps: Maps, parliament: Parliament, seats: S
 const current = computed(() => (route.value.notFound ? NotFound : views[route.value.view]))
 const election = computed(() => route.value.election)
 const area = computed(() => areaForView(route.value.view))
-const nav = computed(() => NAV_AREAS.map((a) => ({ label: t(`navGroups.${a.id}`), href: href(election.value, a.view), current: area.value?.id === a.id })))
-const subnav = computed(() => (area.value?.views.length > 1 ? area.value.views : []).map((v) => ({ label: viewName(v), href: href(election.value, v), current: route.value.view === v })))
+const nav = computed(() => NAV_AREAS.filter((a) => a.views.some((v) => supportsView(election.value,v))).map((a) => ({ label: t(`navGroups.${a.id}`), href: href(election.value, a.views.find((v) => supportsView(election.value,v))), current: area.value?.id === a.id })))
+const subnav = computed(() => (area.value?.views.length > 1 ? area.value.views : []).filter((v) => supportsView(election.value,v)).map((v) => ({ label: viewName(v), href: href(election.value, v), current: route.value.view === v })))
 </script>
 
 <template lang="pug">
@@ -48,7 +48,7 @@ header.site-header
     Logo.brand__mark(mark)
   Tabs(:items="nav" :label="t('nav.label')")
   .header-end
-    ElectionPicker(v-if="!['compare','history'].includes(route.view)")
+    ElectionPicker
     details.header-tools
       summary {{ t('navGroups.tools') }}
       .cluster
@@ -59,9 +59,10 @@ header.site-header
 EngineStatus
 main#main(tabindex="-1")
   Tabs(v-if="subnav.length" :items="subnav" :label="t('navGroups.sections')")
-  SectionSearch(v-if="!route.notFound && !['design','compare','history'].includes(route.view)")
+  SectionSearch(v-if="!route.notFound && !['design','compare','history'].includes(route.view) && supportsView(election,'logs')")
   Notice(v-if="renderError" kind="danger") {{ t('errors.render', { message: renderError.message }) }}
-  component(:is="current" :key="route.view + route.election")
+  component(v-if="supportsView(election,route.view)" :is="current" :key="route.view + route.election")
+  Notice(v-else) {{ t('election.unavailableView') }}
 footer.site-footer
   EngineInfo
   | {{ t('footer.engine') }}&nbsp;

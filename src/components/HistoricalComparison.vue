@@ -3,6 +3,7 @@ import { computed } from 'vue'
 import index from '../../data/history/indicators.json'
 import { cachedFetch,gunzip } from '../db/fetching'
 import { HISTORICAL_DEFINITIONS,HISTORICAL_METRICS,historicalValue,parseHistoricalCsv } from '../history-comparison'
+import { ELECTIONS, selectedOffice } from '../model'
 import { route,setParam } from '../router'
 import { useAsync } from '../use'
 import { t } from '../i18n'
@@ -11,11 +12,11 @@ import Field from './Field.vue'
 import Panel from './Panel.vue'
 import DataTable from './DataTable.vue'
 const years = [...new Set(index.elections.map((e) => e.year))].sort((a,b) => a-b)
-const year = computed(() => route.value.params.get('history_year') ?? '')
+const year = computed(() => route.value.params.get('history_year') ?? (ELECTIONS[route.value.election].legacyKey ? '' : String(ELECTIONS[route.value.election].year)))
 const electionsForYear = computed(() => index.elections.filter((e) => !year.value || String(e.year) === year.value))
 const offices = computed(() => [...new Map(electionsForYear.value.flatMap((e) => e.offices).map((o) => [o.key,o])).values()])
 const office = computed(() => {
-  const requested = route.value.params.get('history_office')
+  const requested = route.value.params.get('history_office') ?? selectedOffice(route.value.election).key
   return offices.value.some((o) => o.key === requested) ? requested : offices.value.find((o) => o.key === 'president')?.key ?? offices.value[0]?.key
 })
 const metric = computed(() => HISTORICAL_METRICS.includes(route.value.params.get('history_metric')) ? route.value.params.get('history_metric') : 'abstention_rate')

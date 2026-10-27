@@ -1,7 +1,7 @@
 <script setup vapor>
 import { computed } from 'vue'
 import { route, setParam, href } from '../router'
-import { ELECTION_LIST, UFS } from '../model'
+import { ELECTION_LIST, ELECTIONS, UFS } from '../model'
 import { electionLabel, stateTitle } from '../labels'
 import { t } from '../i18n'
 import { store, tables, parts, ensureSmall, ensure } from '../data'
@@ -20,7 +20,7 @@ import DataTable from '../components/DataTable.vue'
 import BarList from '../components/BarList.vue'
 
 const modes = computed(() => ['indicators','history',...(tables().state_rounds && tables().state_round_counts && store.manifest.stateFacts?.pairedYears?.length ? ['flows'] : [])])
-const mode = computed(() => route.value.params.get('comparison_mode') ?? 'indicators')
+const mode = computed(() => route.value.params.get('comparison_mode') ?? (ELECTIONS[route.value.election].legacyKey ? 'indicators' : 'history'))
 const selected = computed(() => metricOf(route.value.params.get('metric'))?.id ?? 'abstention_rate')
 const metric = computed(() => metricOf(selected.value))
 const state = computed(() => route.value.params.get('state') ?? '')
@@ -30,7 +30,7 @@ const office = computed(() => {
   return metric.value.source === 'seats' && ![5,6,7,8].includes(value) ? 6 : value
 })
 const turn = computed(() => route.value.params.get('turn') ?? '')
-const elections = computed(() => ELECTION_LIST.filter((e) => !turn.value || String(e.turn) === turn.value))
+const elections = computed(() => ELECTION_LIST.filter((e) => e.legacyKey && (!turn.value || String(e.turn) === turn.value)))
 const selectionKey = computed(() => ELECTION_LIST.map((e) => route.value.params.get(`candidate_${e.key}`) ?? '').join('|'))
 const digit = computed(() => ['d1','d2','d12','d_last'].includes(route.value.params.get('digit')) ? route.value.params.get('digit') : 'd1')
 const unit = computed(() => route.value.params.get('unit') === 'city' ? 'city' : 'section')

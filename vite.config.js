@@ -2,7 +2,7 @@ import { defineConfig, loadEnv } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import { load as loadYaml } from 'js-yaml'
 import { cpSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs'
-import { ELECTIONS, HIDDEN_VIEWS, VIEWS_NAV } from './src/model.js'
+import { HIDDEN_VIEWS, VIEWS_NAV } from './src/model.js'
 import { toHex, token } from './scripts/tokens.mjs'
 
 const base = process.env.BASE_PATH ?? '/brazil-audit/'
@@ -17,7 +17,7 @@ const fallbackPage = `<!doctype html><meta charset="utf-8"><title>Auditoria elei
   l.pathname.slice(1).split('/').slice(${keep}).join('/').replace(/&/g, '~and~') + (l.search ? '&' + l.search.slice(1).replace(/&/g, '~and~') : '') + l.hash)</script>
 `
 
-const staticRoutes = () => Object.keys(ELECTIONS).flatMap((e) => ['', ...VIEWS_NAV, ...HIDDEN_VIEWS].map((v) => `${e}/${v}`))
+const staticRoutes = () => JSON.parse(readFileSync('data/elections.json','utf8')).sessions.map((e) => e.key).flatMap((e) => ['', ...VIEWS_NAV, ...HIDDEN_VIEWS].map((v) => `${e}/${v}`))
 
 // `data/` (the shippable dump) lives at the repo root; dev serves it as-is, the build copies it into dist.
 // theme-color metas come from the semantic surface token (index.html cannot read CSS variables)

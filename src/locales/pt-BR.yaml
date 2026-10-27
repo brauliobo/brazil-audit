@@ -25,6 +25,8 @@ nav:
   design: Sistema de design
 
 election:
+  session: Pleito e turno
+  unavailableView: Esta análise exige uma fonte que não está disponível neste pleito.
   year: Ano
   round: Turno
   turn: "{turn}º turno"
@@ -656,13 +658,15 @@ sql:
   run: Executar
   share: copiar link
   copied: link copiado
-  intro: "Tabelas: {tables}. Dados por seção usam election/turn; fatos históricos por UF usam contest_id/year/date/turn. Eleições por seção: {elections}; ativa: {active}. As tabelas factuais são importadas por inteiro ao consultar SQL. Para dados grandes por seção, abra antes a UF em Detalhar/Horários. O console é somente leitura."
+  intro: "Tabelas: {tables}. Pleitos disponíveis: {elections}; ativo: {active}. As tabelas election_units/votes/candidates usam identidade oficial do pleito e cargo; dados por seção modernos usam election/turn. São carregadas as partes da identidade declarada na consulta; sem filtro de identidade, o conjunto completo da tabela é importado. O console é somente leitura."
   result: Resultado
   tablesTitle: Tabelas e views
   rows_one: "{count} linha"
   rows_other: "{count} linhas"
   showing: (mostrando {n})
   examples:
+    electionUnits: "Unidades e participação do pleito"
+    electionCandidates: "Candidatos da fonte do pleito"
     stateFacts: Totais eleitorais históricos por UF
     turnout: "Abstenção e comparecimento oficiais por UF"
     uf: Candidato mais votado por UF
@@ -674,6 +678,9 @@ sql:
     parts: Partes carregadas no navegador
     catalog: "Catálogo: tabelas, colunas e eleições"
   tables:
+    election_units: "unidades oficiais por identidade de pleito, cargo e granularidade real"
+    election_votes: "votos por candidato e unidade territorial da fonte"
+    election_candidates: "identidades e atributos oficiais dos candidatos por pleito"
     state_rounds: Totais observados por disputa, UF e turno; eleitorado uma vez por unidade.
     state_round_counts: Contagens de categorias e candidatos com identidade da disputa; sem eleitorado repetido.
     rdv: "resultados por seção e cargo (votes = jsonb {número: votos})"
@@ -1361,6 +1368,34 @@ history:
     partial: Publicado parcialmente
     privacy-review-required: Revisão de dados pessoais necessária
     excluded: Fora do escopo de coleta
+
+electionData:
+  leadingShare: "Participação do mais votado"
+  participationBase: "Percentuais sobre {n} eleitores da base de participação informada; seções não instaladas não informadas pela fonte."
+  mapDetails: "Mapas regionais e municipais, anotações e opções da coleta"
+  candidate: "Candidato"
+  number: "Número"
+  party: "Partido"
+  votes: "Votos"
+  sections: "Seções"
+  leader: "Mais votado"
+  allCandidates: "Todos os candidatos ({n})"
+  byState: "Resultados por UF"
+  noCandidates: "Não há votos por candidato nesta fonte e recorte. Os totais conhecidos permanecem disponíveis."
+  noUnits: "Não há registros para este cargo e recorte."
+  noParticipation: "A fonte não informa uma base de participação compatível neste recorte."
+  grain: "Granularidade da fonte: {grain} · {n} unidades consultadas."
+  collectionDetails: "Evidências e análises da coleta por seção"
+  sectionDetails: "Detalhamento dos arquivos das seções"
+  mapUnavailable: "As unidades históricas não possuem correspondência territorial comprovada com este mapa. Consulte os valores originais na tabela."
+  source: "Fonte original"
+  fields:
+    sections: "Seções"
+    nominal: "Votos nominais"
+    valid: "Votos válidos da fonte"
+    blank: "Brancos"
+    nul: "Nulos"
+    ballots: "Total de votos informado"
 
 electionAnalysis:
   unit: Unidade territorial

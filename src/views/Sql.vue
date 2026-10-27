@@ -4,7 +4,7 @@ import { route, href, setParam } from '../router'
 import { ELECTIONS, ELECTION_LIST } from '../model'
 import { electionLabel } from '../labels'
 import { t } from '../i18n'
-import { ensure, ensureDefault, ensureSmall } from '../data'
+import { ensure, ensureDefault, ensureSmall, parts, tables } from '../data'
 import { consoleQuery } from '../db'
 import { EXAMPLES, TABLES, draft, examplesFor, fill, initialSql } from '../sqlExamples'
 import { cell, ms } from '../format'
@@ -22,6 +22,7 @@ const examples = computed(() => examplesFor(year.value))
 // election, the default parts of rdv/vt for the elections the statement names (`election = 2022`), else the active one.
 const SMALL = ['turnout', 'tot', 'res', 'cov', 'miss', 'residual', 'residual_skipped', 'vtc', 'sgf', 'sgz', 'elected', 'seats']
 const FACTUAL = ['state_rounds','state_round_counts']
+const CANONICAL = ['election_units','election_votes','election_candidates']
 const SECTION = ['rdv', 'vt', 'sg','benford_hist', 'benford_base', 'benford_stat']
 const VIEW_TABLES = { sec: ['rdv'], cs: ['rdv'], resx: ['res', 'residual'], totx: ['tot', 'residual'] }
 async function load(text) {
@@ -29,7 +30,13 @@ async function load(text) {
   const wanted = new Set(mentioned.flatMap((n) => VIEW_TABLES[n] ?? [n]))
   const turns = [...text.matchAll(/turn\s*=\s*(\d)/g)].map((m) => +m[1]) // `election = 2022 and turn = 2` names one round, `election = 2022` both
   const named = ELECTION_LIST.filter((e) => [...text.matchAll(/election\s*=\s*(\d{4})/g)].some((m) => +m[1] === e.year) && (!turns.length || turns.includes(e.turn))).map((e) => e.key)
+  const sessions = [...text.matchAll(/session_key\s*=\s*'([^']+)'/g)].map((m) => ELECTIONS[m[1]]).filter(Boolean)
+  const canonicalParts = (table) => !sessions.length ? parts(table) : parts(table).filter((id) => {
+    const metadata = tables()[table].parts[id]
+    return sessions.some((e) => metadata.electionIds?.some((event) => e.sourceSession.eventIds.includes(event)) || id.startsWith(`${e.key}/`) || (table !== 'election_units' && e.sourceSession.sourceYears.some((year) => id.startsWith(`${year}/`))))
+  })
   await Promise.all([...wanted].flatMap((t) => (SMALL.includes(t) ? ELECTION_LIST.map((e) => ensureSmall(e.key, t))
+    : CANONICAL.includes(t) ? [ensure(t,canonicalParts(t))]
     : SECTION.includes(t) ? (named.length ? named : [year.value]).map((k) => ensureDefault(t, k)) : [...FACTUAL,'cands','mun_map'].includes(t) ? [ensure(t)] : [])))
 }
 
@@ -76,7 +83,7 @@ const pick = (e) => {
   sql.value = fill(example.sql, year.value)
   e.target.value = ''
 }
-const loadedElections = computed(() => ELECTION_LIST.map((e) => electionLabel(e.key)).join(', '))
+const loadedElections = computed(() => String(ELECTION_LIST.length))
 const resultInfo = computed(() => [t('sql.rows', { count: out.value.rows.length }) + (out.value.rows.length > 500 ? ` ${t('sql.showing', { n: 500 })}` : ''), ms(out.value.ms)].join(' · '))
 if (route.value.params.get('q')) run()
 </script>

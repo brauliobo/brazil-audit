@@ -56,6 +56,8 @@ const isNamespace = (key) => [...defined].some((k) => k.startsWith(`${key}.`))
 // ---- dynamic key families: prefix -> member ids (each `prefix + id` must exist) --------------------------------------------
 const officeIds = [...new Set(Object.values(ELECTIONS).flatMap((e) => e.offices))]
 const FAMILIES = {
+  'electionAnalysis.grains.': ['state','municipality','zone','section','national'],
+  'electionData.fields.': ['sections','nominal','valid','blank','nul','ballots'],
   'compare.digits.': ['d1','d2','d12','d_last'],
   'history.status.': ['catalogued','downloaded','published','blocked','downloading','unavailable','partial','privacy-review-required','excluded'],
   'navGroups.': ['summary', 'explore', 'compare', 'investigate'],

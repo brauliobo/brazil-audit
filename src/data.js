@@ -9,6 +9,18 @@ import { INDEXES, VIEWS } from './model'
 const BASE = import.meta.env.BASE_URL
 export const store = reactive({ manifest: null, loaded: {}, progress: {}, error: null })
 const inflight = new Map()
+let importSlots = 4
+const importWaiters = []
+async function importSlot(run) {
+  if (!importSlots) await new Promise((resolve) => importWaiters.push(resolve))
+  else importSlots--
+  try { return await run() }
+  finally {
+    const next = importWaiters.shift()
+    if (next) next()
+    else importSlots++
+  }
+}
 
 export const tables = () => store.manifest.tables
 const partDef = (table, id) => tables()[table].parts[id]
@@ -41,7 +53,8 @@ async function init() {
   await resetIfStale(`${store.manifest.version}:${ASSET_CACHE}`)
   await query('create table if not exists _parts(tbl text, part text, rows int, primary key (tbl, part))')
   for (const t of Object.values(tables())) await query(t.ddl.replace('create table', 'create table if not exists'))
-  for (const sql of [...INDEXES, ...VIEWS]) await query(sql)
+  for (const sql of INDEXES) if (sql.match(/ on (\w+)/)?.[1] in tables()) await query(sql)
+  for (const sql of VIEWS) await query(sql)
   for (const p of await many('select tbl, part, rows from _parts')) store.loaded[`${p.tbl}/${p.part}`] = p.rows
 }
 
@@ -55,7 +68,7 @@ async function loadPart(table, id) {
   try {
     // a part interrupted before its _parts row was written is simply replaced
     await query(p.where ? `delete from ${table} where ${p.where}` : `truncate ${table}`)
-    await load(`copy ${table} (${def.columns}) from '/dev/blob' csv`, `${BASE}data/${p.url}`, store.manifest.version, p.bytes, (n, total) => (store.progress[key] = Math.min(n / total, 1)))
+    await load(`copy ${table} (${def.columns}) from '/dev/blob' csv`, new URL(p.url,new URL(`${BASE}data/`,location.origin)).href, p.sha256 ?? store.manifest.version, p.bytes, (n, total) => (store.progress[key] = Math.min(n / total, 1)))
     await query(`analyze ${table}`) // no autovacuum in the browser: without statistics the planner picks nested loops for the cands joins
     await query('insert into _parts values ($1, $2, $3)', [table, id, p.rows])
     store.loaded[key] = p.rows
@@ -66,7 +79,7 @@ async function loadPart(table, id) {
 
 const track = (table, id) => {
   const key = `${table}/${id}`
-  const p = loadPart(table, id).finally(() => inflight.delete(key))
+  const p = importSlot(() => loadPart(table, id)).finally(() => inflight.delete(key))
   inflight.set(key, p)
   return p
 }

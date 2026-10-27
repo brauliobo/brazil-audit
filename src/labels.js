@@ -2,7 +2,7 @@
 import { ELECTIONS, UFS } from './model'
 import { t } from './i18n'
 
-export const electionLabel = (key) => t('election.name', ELECTIONS[key])
+export const electionLabel = (key) => ELECTIONS[key].legacyKey ? t('election.name', ELECTIONS[key]) : [ELECTIONS[key].year, ELECTIONS[key].description, ELECTIONS[key].date].filter(Boolean).join(' · ')
 export const officeName = (id) => t(`offices.${id}`)
 /** Button group items of the offices of an election (only the ids it has). */
 export const officeItems = (ids) => ids.map((id) => ({ value: id, label: officeName(id) }))
@@ -12,3 +12,5 @@ export const stateTitle = (uf) => `${uf.toUpperCase()} · ${stateName(uf)}`
 export const viewName = (view) => t(`nav.${view}`)
 /** The UFs of a select (all but abroad, and optionally without the DF) as [sigla, title]. */
 export const stateOptions = (without = []) => UFS.filter((s) => s !== 'zz' && !without.includes(s)).map((s) => [s, stateTitle(s)])
+
+export const grainLabel = (grain) => String(grain ?? '').split(',').filter(Boolean).map((g) => t(`electionAnalysis.grains.${g}`)).join(', ')

@@ -26,7 +26,7 @@
     "data:comparison": "node scripts/build-comparison-stats.mjs",
     "logpack:index": "node scripts/build-logpack-index.mjs",
     "lint:tokens": "node scripts/lint-tokens.mjs",
-    "check:elections": "node scripts/check-elections.mjs",
+    "check:elections": "node scripts/check-elections.mjs && node --test test/election-registry.test.js",
     "test": "npm run check:elections && npm run lint:tokens && npm run lint:i18n && npm run check:logo && npm run test:seats && npm run test:benford && npm run test:regions && npm run test:charts && npm run test:transfers && npm run test:official && npm run test:times && npm run test:signals && npm run test:logpack && npm run test:logscan",
     "check:responsive": "node scripts/check-responsive.mjs",
     "check:usability": "node scripts/check-usability.mjs && node scripts/check-usability.mjs --width=375 --height=700",
