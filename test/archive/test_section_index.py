@@ -23,7 +23,7 @@ class SectionIndexTest(unittest.TestCase):
             eid='2022:548:1:2022-10-02';office='historical:25:CONSELHEIRO DISTRITAL'
             event=dict(id=eid,year=2022,turn=1,dates=['02/10/2022'],offices=[dict(id='25',key=office,name='Conselheiro Distrital')])
             table=dict(name='election_section_units',columns='election_id',ddl='create table election_section_units (election_id text)',parts={'part':dict(url='part.csv.gz',electionIds=[eid],officeKeys=[office],states=['pe'],grains=['section'])})
-            original=dict(status='ready',source=dict(source_url=url,source_sha256='source',source_year=2022),rows=1,table=table,events=[event],places=[dict(election_id=eid,state='pe',city_code='30015',city_name='FERNANDO DE NORONHA')])
+            original=dict(status='ready',referenceMemberSelection={'version':1},source=dict(source_url=url,source_sha256='source',source_year=2022),rows=1,table=table,events=[event],places=[dict(election_id=eid,state='pe',city_code='30015',city_name='FERNANDO DE NORONHA')])
             content=json.dumps(original).encode();key=hashlib.sha256(url.encode()).hexdigest()
             (raw/'sources'/f'{key}.json').write_bytes(content)
             transport={**original,'inputSha256':hashlib.sha256(content).hexdigest(),'observedCoverage':[dict(election_id=eid,office='25',office_key=office,state='pe',sections=1,counts={'nominal_reported':100})]}
@@ -37,5 +37,10 @@ class SectionIndexTest(unittest.TestCase):
             self.assertEqual(result['places'][0]['city_name'],'FERNANDO DE NORONHA')
             self.assertEqual(result['eventOffices'][0]['office_name'],'Conselheiro Distrital')
             self.assertFalse(result['eventOffices'][0]['browserRdv'])
+            original.pop('referenceMemberSelection')
+            (raw/'sources'/f'{key}.json').write_text(json.dumps(original))
+            blocked=build(raw,packed,root/'catalog.json',root/'registry.json')
+            self.assertEqual(blocked['status'],'preparing')
+            self.assertEqual(blocked['tables'],{},'an old ready record cannot publish unreconciled references')
 
 if __name__=='__main__':unittest.main()

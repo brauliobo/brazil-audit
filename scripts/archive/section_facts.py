@@ -285,9 +285,6 @@ class PartitionWriter:
 def source_rows(path, state=None, legacy=None):
     with zipfile.ZipFile(path) as archive:
         members = [m for m in archive.namelist() if m.lower().endswith(('.txt','.csv'))]
-        national = next((m for m in members if re.search(r'_BR\.(?:txt|csv)$',m,re.I)),None)
-        national = national or next((m for m in members if re.search(r'_BRASIL\.(?:txt|csv)$',m,re.I)),None)
-        state_members = {match[1].lower() for m in members if (match:=re.search(r'_([A-Za-z]{2})\.(?:txt|csv)$',m)) and match[1].lower()!='br'}
         for member in members:
             member_state = re.search(r'_([A-Za-z]{2})\.(?:txt|csv)$', member)
             if state and member_state and member_state[1].lower() not in [state, 'br']:
@@ -305,14 +302,6 @@ def source_rows(path, state=None, legacy=None):
                         raise ValueError(f'Section source column count mismatch: {member}')
                     row = dict(zip(first_row,values)) if header else legacy.resolve(values)
                     office = row['CD_CARGO']
-                    # BR/BRASIL and UF members overlap in official ZIPs. Presidential
-                    # observations use their national member; other offices use UF
-                    # members when present, retaining additional unrepresented UFs.
-                    if national and len(members)>1:
-                        if office=='1' and member!=national:
-                            continue
-                        if office!='1' and member==national and row['SG_UF'].lower() in state_members:
-                            continue
                     row['_source_member'] = member
                     if not state or row['SG_UF'].lower() == state:
                         yield row
@@ -341,6 +330,12 @@ def process_resource(resource, root, data, output, state=None, candidate_data=No
     digest = source_digest or hashlib.file_digest(path.open('rb'), 'sha256').hexdigest()
     source = dict(source_url=url, source_sha256=digest, source_year=source_year)
     is_votes = '/votacao_secao/' in url
+    if is_votes:
+        # All 408 current vote resources have one tabular member. A new archive
+        # representation must have an explicit content-reconciliation profile.
+        with zipfile.ZipFile(path) as archive:
+            members=[name for name in archive.namelist() if name.lower().endswith(('.csv','.txt'))]
+        if len(members)!=1:raise ValueError('Vote source requires a single tabular member or an explicit representation profile')
     source_state = re.search(r'_([A-Za-z]{2})\.zip$', url)
     selected_state = state or (source_state[1].lower() if source_state and source_state[1].lower() != 'br' else None)
     registry = json.loads((data / 'elections.json').read_text())
@@ -371,6 +366,12 @@ def process_resource(resource, root, data, output, state=None, candidate_data=No
     table = VOTE_TABLE if is_votes else UNIT_TABLE
     result = dict(source=source, rows=rows, **descriptors.export(), identityMethods=dict(methods), counts=[dict(election_id=k[0],state=k[1],office=k[2],kind=k[3],count=v) for k,v in writer.counts.items()],
                   table=dict(name=table, columns=','.join(fields), ddl=f'create table {table} ('+', '.join(f'{k} {t}' for k,t in zip(fields,types))+')', parts=parts))
+    if not is_votes:
+        from reference_members import reconcile
+        generation=hashlib.sha256(json.dumps(result,sort_keys=True).encode()).hexdigest()[:16]
+        relative=pathlib.Path('reference-unique')/generation
+        result=reconcile(result,output,output/relative)
+        for part in result['table']['parts'].values():part['url']=str(relative/part['url'])
     target = output / 'sources' / f'{hashlib.sha256(url.encode()).hexdigest()}.json'
     target.parent.mkdir(parents=True, exist_ok=True)
     target.write_text(json.dumps(result, ensure_ascii=False, indent=1)+'\n')
@@ -435,7 +436,7 @@ def process_job(resource, root, data, output, state, resume, candidate_data, des
             record = json.loads(previous.read_text())
             format_version = record.get('normalizationVersion',CACHE_FORMATS.get(record.get('parserSha256')))
             if format_version in [1,2,NORMALIZATION_VERSION] and record['source']['source_sha256']==source_digest and record.get('scopeState')==state:
-                cache_valid = (record['table']['name']==VOTE_TABLE or record.get('quantitativeZeroPreserved') is True) and all((output/part['url']).is_file() and hashlib.file_digest((output/part['url']).open('rb'),'sha256').hexdigest()==part['sha256'] for part in record['table']['parts'].values())
+                cache_valid = (record['table']['name']==VOTE_TABLE or record.get('quantitativeZeroPreserved') is True and record.get('referenceMemberSelection',{}).get('version')==1) and all((output/part['url']).is_file() and hashlib.file_digest((output/part['url']).open('rb'),'sha256').hexdigest()==part['sha256'] for part in record['table']['parts'].values())
                 affected_local=record['table']['name']==VOTE_TABLE and any(c['office']=='25' for c in record['counts'])
                 if cache_valid and record.get('candidateIndexSha256')==candidate_hash and record.get('geographyIndexSha256')==geography_hash and not affected_local:
                     return {'url':resource['url'],'status':'ready','rows':record['rows'],'cached':True}

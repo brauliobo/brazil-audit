@@ -36,6 +36,8 @@ def build(raw_root,packed_root,catalog_path,registry_path,overlap_proof=None):
         if not original or original[0].get('status')!='ready':
             inventory.append({'url':url,'status':'error' if url in errors else 'pending','error':errors[url][0] if url in errors else None});continue
         record,input_sha=original
+        if record['table']['name']=='election_section_units' and record.get('referenceMemberSelection',{}).get('version')!=1:
+            inventory.append({'url':url,'status':'packing','reason':'Reference representations have not passed content reconciliation','rows':record['rows']});continue
         if url in duplicate_sources:
             duplicate=duplicate_sources[url]
             if record['source']['source_sha256']!=duplicate['source_sha256']:
