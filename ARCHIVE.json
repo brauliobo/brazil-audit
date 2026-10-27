@@ -1,0 +1,58 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-10-27T15:08:09.571741+00:00",
+  "status": "published",
+  "dataset": {
+    "id": "historical-sections-2018",
+    "title": "Seções eleitorais 2018 — fatos consultáveis",
+    "branch": "archive/historical-sections-2018",
+    "tag": "data-historical-sections-2018",
+    "source": "https://dadosabertos.tse.jus.br",
+    "license": "Licença declarada em cada fonte oficial"
+  },
+  "resources": [
+    {
+      "status": "prepared",
+      "year": 2018,
+      "sourceUrls": [
+        "https://cdn.tse.jus.br/estatistica/sead/odsele/detalhe_votacao_secao/detalhe_votacao_secao_2018.zip",
+        "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2018_AC.zip",
+        "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2018_AL.zip",
+        "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2018_AM.zip",
+        "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2018_AP.zip",
+        "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2018_BA.zip",
+        "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2018_BR.zip",
+        "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2018_CE.zip",
+        "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2018_DF.zip",
+        "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2018_ES.zip",
+        "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2018_GO.zip",
+        "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2018_MA.zip",
+        "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2018_MG.zip",
+        "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2018_MS.zip",
+        "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2018_MT.zip",
+        "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2018_PA.zip",
+        "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2018_PB.zip",
+        "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2018_PE.zip",
+        "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2018_PI.zip",
+        "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2018_PR.zip",
+        "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2018_RJ.zip",
+        "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2018_RN.zip",
+        "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2018_RO.zip",
+        "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2018_RR.zip",
+        "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2018_RS.zip",
+        "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2018_SC.zip",
+        "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2018_SE.zip",
+        "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2018_SP.zip",
+        "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2018_TO.zip"
+      ],
+      "browserCommit": "a1fd1eb9dd13b98fba4472b17c3a4c26ae574d99",
+      "assets": [
+        {
+          "name": "sections-0000.zip",
+          "bytes": 1411107853,
+          "sha256": "4aed8cbf8462bdf48cdd84aa5b61f5cc36583333cf6f024e6c5e68395f7f3dd9"
+        }
+      ]
+    }
+  ]
+}
