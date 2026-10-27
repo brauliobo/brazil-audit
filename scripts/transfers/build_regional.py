@@ -11,14 +11,15 @@ def build_2026_regions():
     units,official_sources=governors_2026()
     output=[]
     for state in sorted(set(k[1] for k in units)):
+        state_sources=[s for s in official_sources if f'/dados/{state}/' in s['url']]
         grouped={};original={};unmapped=[]
         for turn in [1,2]:
             original[turn]={(k[1],k[2]):u for k,u in units.items() if k[0]==turn and k[1]==state and k[2] and not k[3]}
             grouped[turn],missing=group_regions(original[turn],crosswalk);unmapped+=missing
         if unmapped:
-            output.append(unavailable_region(f'2026-6259-6260-3-{state}-ibge-immediate',2026,state,original[1],original[2],unmapped,official_sources+sources,'Eleição governador2026'))
+            output.append(unavailable_region(f'2026-6259-6260-3-{state}-ibge-immediate',2026,state,original[1],original[2],unmapped,state_sources+sources,'Eleição governador2026'))
             continue
-        output.append(emit_contest(f'2026-6259-6260-3-{state}-ibge-immediate',2026,3,state,'',grouped[1],grouped[2],official_sources+sources,'Eleição governador2026','ibge-immediate-2026'))
+        output.append(emit_contest(f'2026-6259-6260-3-{state}-ibge-immediate',2026,3,state,'',grouped[1],grouped[2],state_sources+sources,'Eleição governador2026','ibge-immediate-2026'))
     return output
 
 

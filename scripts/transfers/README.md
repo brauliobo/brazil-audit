@@ -1,55 +1,52 @@
-# Reproduce ecological transition scenarios
+# Observed comparisons in browser SQL
 
-Read [METHOD.md](METHOD.md) before interpreting any estimate. The published
-aggregate input matrices are sufficient to rerun a fit; the source links and
-hashes permit checking the original electoral margins independently.
+The default path ingests official observations and computes comparisons with
+PGlite in the browser. It does not precompute inferred voter transitions.
+[STATE_FACTS.md](STATE_FACTS.md) describes the schema, population accounting,
+source identities and inspectable example queries.
 
-Create an isolated Python environment and install `requirements.txt`. Run build
-and compilation commands with `nice` and at most four workers. Sampling should
-also be bounded; each fit supports one or two independent worker processes.
+Rebuild the two factual tables from the downloaded official source archives:
 
-To rebuild observed inputs from the downloaded official source archives:
+```sh
+nice python scripts/transfers/state_facts.py --archive-root "$TRANSFERS_ARCHIVE_ROOT"
+python scripts/transfers/verify.py
+```
+
+The archive catalog documents original TSE URLs. The state tables preserve
+historical codes, calendar election dates, distinct municipal contests and
+unknown fields. Office-specific official JSONs supply 2026 state totals; no
+presidential electorate is substituted for a governor electorate. Missing counts
+are not a residual category or an inferred zero.
+
+The expensive ecological model remains an explicitly optional research tool.
+Its measured runtime was about 23 minutes per complete contest with two CPUs;
+both published diagnostics are inconclusive. They are not the default matrix.
+Read [METHOD.md](METHOD.md) for its exact likelihood, fixed protocol, population
+scenarios and strict convergence/adequacy/prior-sensitivity gates.
+
+To reproduce that optional model, create an isolated Python environment with
+`requirements.txt`. Its preparatory scripts and fit CLI remain separate:
 
 ```sh
 nice python scripts/transfers/build.py --archive-root "$TRANSFERS_ARCHIVE_ROOT"
 nice python scripts/transfers/build_regional.py --archive-root "$TRANSFERS_ARCHIVE_ROOT"
 python scripts/transfers/package_inputs.py
-```
-
-The historical archive catalog documents the original TSE download URLs. The
-2026 presidential inputs use official first- and second-round JSONs, not missing
-RDV counts. Regional grouping uses the official TSE `cd`/`cdi` crosswalk and
-IBGE immediate-region membership, with the snapshot explicitly labeled2026.
-Municipal source matrices remain separate. A source published only at state
-level cannot be reconstructed into municipalities or regions.
-
-Fit a prepared contest:
-
-```sh
 nice env OPENBLAS_NUM_THREADS=1 NUMBA_NUM_THREADS=1 python scripts/transfers/fit.py CONTEST_ID --cores 2
 ```
 
-The fixed adaptive protocol evaluates60k,150k,600k and1million sweeps per chain.
-Every500 saved draws form a reproducible seeded segment. Checkpoints preserve
-latent aggregate tables, hyperparameters and previous samples, so later stages
-extend the same chains. Numerical gates are never relaxed to create estimates.
-Both the primary Gamma(4,0.5) prior and Gamma(2,0.25) sensitivity prior must pass.
-A maximum difference above10percentage points by origin is classified as prior
-sensitive and leaves the default point matrix disabled. This is a declared
-interpretation policy, not a test that an individual transition is true.
+Those commands explicitly create the optional precomputed research artifacts;
+they are not run by the browser's factual comparison flow. The earlier regional
+batch was stopped when the requested default changed to state observations.
+Its checkpoints remain local and no sampling resumes automatically.
 
-`not_applicable`, missing source grain, insufficient identifying areas,
-inconsistent source margins, an uncomputed fit and a failed fit have separate
-states. A pending calculation is not an inconclusive statistical finding.
-
-Verification:
+Run focused checks with:
 
 ```sh
 nice env OPENBLAS_NUM_THREADS=1 NUMBA_NUM_THREADS=1 python -m unittest discover -s test/transfers
-python scripts/transfers/verify.py
 ```
 
-The exact small-table tests compare stationary laws to exhaustive enumeration,
-check interval calibration under the stated prior-generating model, preserve
-margins/bounds, and verify checkpoint continuation. Those tests do not establish
-that real electoral behavior follows the hierarchical assumptions.
+Build and compilation tasks use `nice` and at most four workers. Independent
+sampling can also be bounded explicitly. Exact small-table tests compare
+stationary laws to exhaustive enumeration, test prior-generated calibration,
+preserve margins/bounds and verify reproducible checkpoint continuation. They
+do not establish that real electoral behavior follows the model assumptions.

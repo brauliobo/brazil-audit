@@ -1,0 +1,30 @@
+{
+  "version": 2,
+  "defaultAnalysis": "browser-sql",
+  "models": [
+    {
+      "id": "2026-6257-6258-1-br",
+      "contest_id": "1:br:a22e12361be4a5f6",
+      "year": 2026,
+      "office": 1,
+      "state": "br",
+      "status": "inconclusive",
+      "reason": "nonconvergence",
+      "url": "transfers/models/2026-6257-6258-1-br.json",
+      "sha256": "b4747940c43067beb6b2a60b3057d7fe2bb1caec9611878a78b5ce1cbb583e08",
+      "bytes": 38119
+    },
+    {
+      "id": "2018-297-298-3-ro",
+      "contest_id": "3:ro:fc290216caf87475",
+      "year": 2018,
+      "office": 3,
+      "state": "ro",
+      "status": "inconclusive",
+      "reason": "nonconvergence",
+      "url": "transfers/models/2018-297-298-3-ro.json",
+      "sha256": "38efcb8ae6c814be84ee54ca35e5ead2772ecf0886045a71e0dea8736967e709",
+      "bytes": 19302
+    }
+  ]
+}

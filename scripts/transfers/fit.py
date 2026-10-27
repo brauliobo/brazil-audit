@@ -57,10 +57,10 @@ def fit(ident,cores=2,inputs_root='data/transfers/inputs'):
             cell=output['cells'][i*len(output['to'])+j]
             cell.update(estimate=float(estimates[i,j]) if good else None,rowShare=float(shares[i,j]) if good else None,
                         low=float(lower[i,j]) if good else None,high=float(upper[i,j]) if good else None)
-    target.write_text(json.dumps(output,ensure_ascii=False,separators=(',',':'),allow_nan=False)+'\n')
     indexpath=Path('data/transfers/index.json')
     with Path('.cache/transfers-index.lock').open('w') as lock:
         fcntl.flock(lock,fcntl.LOCK_EX)
+        target.write_text(json.dumps(output,ensure_ascii=False,separators=(',',':'),allow_nan=False)+'\n')
         index=json.loads(indexpath.read_text())
         for contest in index['contests']:
             if contest['id']==ident:contest.update(status=output['status'],reason=output['reason'],sha256=hashlib.sha256(target.read_bytes()).hexdigest(),bytes=target.stat().st_size)

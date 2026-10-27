@@ -29,7 +29,8 @@ def load_history(year, archive_root):
     for url,r in resources.items():
         path=Path(archive_root)/hashlib.sha256(url.encode()).hexdigest()/url.split('/')[-1]
         if not path.exists():continue
-        sources.append({'url':url,'sha256':hashlib.sha256(path.read_bytes()).hexdigest()})
+        source_digest=hashlib.sha256(path.read_bytes()).hexdigest()
+        sources.append({'url':url,'sha256':source_digest})
         with zipfile.ZipFile(path) as z:
             names=[n for n in z.namelist() if n.lower().endswith(('.csv','.txt')) and '_BRASIL.' not in n.upper()]
             if not names:names=[n for n in z.namelist() if n.lower().endswith('.csv')]
@@ -45,7 +46,7 @@ def load_history(year, archive_root):
                             u=units.get(key)
                             if u is None:continue
                             candidate=row[8];u['votes'][candidate]+=int(row[25])
-                            u['candidates'][candidate]={'id':candidate,'label':row[11] if not row[11].startswith('#') else row[10],'sourceCandidateId':None}
+                            u['candidates'][candidate]={'id':candidate,'label':row[11] if not row[11].startswith('#') else row[10],'sourceCandidateId':None,'fullName':row[10],'sourceUrl':url,'sourceSha256':source_digest}
                         continue
                     reader=csv.DictReader(io.TextIOWrapper(f,encoding='latin1'),delimiter=';')
                     if 'CD_CARGO' not in (reader.fieldnames or []):raise ValueError('unexpected candidate schema')
@@ -71,7 +72,7 @@ def load_history(year, archive_root):
                             value=row.get('QT_VOTOS_NOMINAIS')
                         candidate=row['NR_CANDIDATO']
                         u['votes'][candidate]+=int(value)
-                        u['candidates'][candidate]={'id':candidate,'label':row.get('NM_URNA_CANDIDATO') or row['NM_CANDIDATO'],'sourceCandidateId':row.get('SQ_CANDIDATO')}
+                        u['candidates'][candidate]={'id':candidate,'label':row.get('NM_URNA_CANDIDATO') or row['NM_CANDIDATO'],'sourceCandidateId':row.get('SQ_CANDIDATO'),'fullName':row['NM_CANDIDATO'],'sourceUrl':url,'sourceSha256':source_digest}
     return elections,units,sources
 
 

@@ -1,6 +1,6 @@
 """Build source-traceable observed margins, feasible bounds and fit inputs."""
 import argparse,gzip,hashlib,json,pickle,re
-from datetime import datetime
+from contests import election_pairs
 from collections import defaultdict
 from pathlib import Path
 import numpy as np
@@ -21,7 +21,9 @@ def emit_contest(ident,year,office,state,city,first,second,sources,description,g
     status='inconclusive';reason='insufficient_units'
     if len(x)==0:status='unavailable';reason='no_matched_units'
     elif x.shape[1]==0 or y.shape[1]==0:reason='missing_candidate_data'
-    elif len(x)>x.shape[1] and np.linalg.matrix_rank(x)==x.shape[1]:status='pending';reason='model_pending'
+    elif len(x)>x.shape[1]:
+        if np.linalg.matrix_rank(x)<x.shape[1]:reason='rank_deficient'
+        else:status='pending';reason='model_pending'
     lower,upper=feasible_bounds(x,y) if len(x) else (np.empty((0,0)),np.empty((0,0)))
     cells=[{'from':a['id'],'to':b['id'],'estimate':None,'rowShare':None,'low':None,'high':None,
             'boundLow':int(lower[i,j]),'boundHigh':int(upper[i,j])}
@@ -79,19 +81,7 @@ def history_data(year,archive_root):
 
 def build_history(year,archive_root,regional=False):
     elections,units,sources=history_data(year,archive_root)
-    # Round words are explicitly part of some legacy descriptions. They are
-    # removed only to match the same named contest, never candidate identities.
-    def base(e):
-        text=re.sub(r"(?:primeiro|segundo|1[.º°o]?|2[.º°o]?)\s*turno",'',e['description'],flags=re.I)
-        return re.sub(r"[\s-]+",' ',text).strip().casefold(),tuple(e.get('electionTypes',[]))
-    groups={}
-    for second in elections.values():
-        if second['turn']!=2:continue
-        candidates=[e for e in elections.values() if e['turn']==1 and base(e)==base(second)]
-        if second.get('dates'):
-            end=datetime.strptime(second['dates'][0],'%d/%m/%Y')
-            candidates=[e for e in candidates if len(e.get('dates',[]))==1 and 0<(end-datetime.strptime(e['dates'][0],'%d/%m/%Y')).days<=45]
-        if len(candidates)==1:groups[second['id']]={1:candidates[0]['id'],2:second['id']}
+    groups={second:{1:first,2:second} for first,second in election_pairs(elections)}
     outputs=[]
     for pairkey,pair in groups.items():
         if set(pair)!={1,2}:continue
@@ -146,7 +136,7 @@ def build_2026():
             for turn in [1,2]:
                 converted[turn]={(k[1],k[2],k[3]):u for k,u in units.items() if k[0]==turn and k[1]==state and k[2] and bool(k[3])==(grain=='zone')}
             suffix='-zone' if grain=='zone' else ''
-            output.append(emit_contest(f'2026-6259-6260-3-{state}{suffix}',2026,3,state,'',converted[1],converted[2],governor_sources,'Eleição governador2026',grain))
+            output.append(emit_contest(f'2026-6259-6260-3-{state}{suffix}',2026,3,state,'',converted[1],converted[2],[s for s in governor_sources if f'/dados/{state}/' in s['url']],'Eleição governador2026',grain))
     return output
 
 

@@ -39,19 +39,89 @@ intervals are equal-tailed posterior 95% intervals conditional on this model,
 prior, territorial partition and population scenario. They do not account for
 unobserved changes in electoral registration or establish individual behavior.
 
-## Publication checks
+## Population and territorial scenarios
 
-Two independently seeded chains must have rank-normalized Rhat <= 1.01 and
-bulk/tail effective sample sizes >= 400 for every mathematically variable flow
-and hyperparameter. A free cell constant across samples is a convergence failure,
-not a deterministic cell. Bounds that collapse identify a deterministic table
-without requiring MCMC. Posterior predictive checks use new local probabilities
-from the inferred hierarchy, not fitted local probabilities. Alternative prior
-sensitivity is reported separately and must be evaluated before publication.
-A failed chain never produces displayed point estimates.
+The modeled categories include each valid first-round candidate, blank votes,
+null votes (native plus technical nulls), abstention and any separately reported
+annulled/sub judice vote categories. Annulled categories are not assigned to a
+candidate or converted into null votes. Office-specific electorates are used:
+presidential eligibility cannot replace governor eligibility for voters in transit.
+Uninstalled-section electors remain a separate administrative category.
+
+When a territorial electorate changes between rounds, the minimum-registration
+scenario uses N_u=max(TE_u1,TE_u2) and adds the observed positive difference to a
+separate administrative-balance category in the smaller margin. This is a
+minimum-turnover assumption. It is not a measured origin/destination for mobile
+voters. Summing N_u may count a geographically reassigned voter twice, so that
+augmented scenario total is NEVER labeled the Brazilian electorate. Observed TE
+for each round is reported separately. Even identical totals do not prove an
+unchanged set of people. A strict compatible-total scenario and exploratory
+0.1%/1% gross-turnover bound scenarios are also published; the latter are
+assumptions, not observed voter counts or confidence intervals.
+
+Presidential fits use UF units. Governor regional fits aggregate every mapped
+municipality into official IBGE immediate regions in the snapshot consulted in
+2026. The exact TSE municipality code -> IBGE municipality code crosswalk is
+validated against the official registries. Applying this current partition to
+historical municipality identifiers does not reconstruct historical boundaries.
+Municipal inputs remain separately available. A historical source published only
+at UF level cannot be reconstructed into municipalities or regions. Mayoral
+contests use municipality-zone intersections within that single contest, never
+pooled candidates from different municipalities.
+
+Before fitting, the design must contain more territorial units than active
+origin categories and have full column rank. This is a conservative eligibility
+policy for ecological estimation, not proof that individual transitions are
+identified. Insufficient variation, missing source grain, invalid margins and an
+uncomputed fit have different statuses. Overlapping national/UF/city/zone rollups
+are validated and selected as one territorial antichain; they are never summed
+as separate electors.
+
+## Publication checks and fixed adaptive protocol
+
+Each prior uses two independently seeded chains. Rank-normalized Rhat must be
+<=1.01 and bulk AND tail effective sample sizes must be >=400 for every
+mathematically variable flow and hyperparameter. Free cells constant across
+samples fail convergence. Bounds that collapse identify a deterministic table
+without requiring MCMC or otherwise unidentifiable hyperparameters.
+
+The predeclared stages use60,000,150,000,600,000 and1,000,000 total sweeps per
+chain. There are20,000 initial warmup sweeps and thinning20. Saved-draw counts
+are2,000/6,500/29,000/49,000. The corresponding additional discarded prefixes
+are0/1,500/9,000/9,000 saved draws, giving total warmup20k/50k/200k/200k.
+Every500 saved draws form a seeded reproducible segment. A later stage extends
+the same checkpointed latent tables and hyperparameters. Each prior stops only
+when all gates pass or after the final stage. The final stage may produce an
+inconclusive result; no seed, cutoff or posterior is selected to manufacture a fit.
+
+The posterior predictive discrepancy is a stabilized Pearson-type statistic:
+
+    D(y,alpha) = sum(u,j) (y[u,j] - expected[u,j])**2 / max(expected[u,j],1)
+    expected[u,j] = sum(i) r[u,i] * alpha[i,j] / sum(k) alpha[i,k].
+
+For each retained hyperparameter draw, NEW local probabilities are sampled from
+Dirichlet(alpha), then row multinomial counts are simulated and aggregated by
+destination. This tests the inferred hierarchy's territorial dispersion, rather
+than merely replicating fitted local probabilities. The predictive value is the
+fraction with D(y_rep,alpha)>=D(y_observed,alpha). The predeclared bilateral
+acceptance gate is0.025<=PPC<=0.975. A good chain does not override a failed
+predictive check. This is a posterior predictive diagnostic, not a frequentist
+p-value with a claimed nominal false-positive rate.
+
+Both Gamma(shape=4,rate=0.5) and the sensitivity Gamma(shape=2,rate=0.25) must
+pass convergence and predictive gates. They have the same mean8 and the latter
+has twice the variance. Conditional posterior means and intervals are kept
+separate. A maximum difference above10percentage points in an origin row is
+classified prior-sensitive/inconclusive for the default point matrix. This is a
+predeclared interpretation policy, not a test of individual voter truth. If either
+chain fails, prior sensitivity is not evaluable; unconverged mean differences
+are not reported as a sensitivity conclusion. Intervals are not merged into a
+misleading95% interval. A failed fit never produces a displayed point estimate.
 
 Territorial bounds are sums of max(0,r_ui+c_uj-N_u) and min(r_ui,c_uj), rather
-than the weaker bounds computed from national margins alone.
+than the weaker bounds computed from national margins alone. They remain
+consultable independently of whether the statistical model has been computed
+or has passed its checks.
 
 ## References and limitations
 
