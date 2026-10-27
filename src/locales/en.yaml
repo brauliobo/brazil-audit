@@ -1358,7 +1358,6 @@ history:
   allYears: All years
   family: Data family
   allFamilies: All families
-  normalized: Data normalized and integrated into the analyses.
   notNormalized: Source not yet normalized for analysis in the interface.
   source: TSE dataset
   release: Archived release

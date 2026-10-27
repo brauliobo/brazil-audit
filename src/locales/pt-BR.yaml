@@ -1359,7 +1359,6 @@ history:
   allYears: Todos os anos
   family: Família de dados
   allFamilies: Todas as famílias
-  normalized: Dados normalizados e integrados às análises.
   notNormalized: Fonte ainda não normalizada para as análises da interface.
   source: Conjunto no TSE
   release: Release arquivado
