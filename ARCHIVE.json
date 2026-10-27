@@ -1,0 +1,1296 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-10-27T14:43:09.888102+00:00",
+  "status": "published",
+  "dataset": {
+    "id": "historical-nominations",
+    "title": "Legendas e vagas declaradas — fontes históricas e atuais",
+    "branch": "archive/historical-nominations",
+    "tag": "data-historical-nominations",
+    "source": "https://dadosabertos.tse.jus.br",
+    "license": "Licença declarada em cada fonte oficial"
+  },
+  "resources": [
+    {
+      "status": "prepared",
+      "sources": [
+        {
+          "source_url": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_coligacao/consulta_coligacao_1998.zip",
+          "source_sha256": "4a924fdd418865648def311ebfb7e0f5adf205e36025a6557c02e2dfa86515ba",
+          "table": "election_lists",
+          "selectedMembers": [
+            "consulta_coligacao_1998_BRASIL.csv"
+          ],
+          "rows": 2660
+        },
+        {
+          "source_url": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_coligacao/consulta_coligacao_2000.zip",
+          "source_sha256": "8e4f673584ade981dc2c32e567940b1caa91e9c89b28ceab35f23466c63081cf",
+          "table": "election_lists",
+          "selectedMembers": [
+            "consulta_coligacao_2000_BRASIL.csv"
+          ],
+          "rows": 90448
+        },
+        {
+          "source_url": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_coligacao/consulta_coligacao_2002.zip",
+          "source_sha256": "a337f7e838b77f8a80c7f6341f1de108135aa70e1b9bf16e409aabcabbb86729",
+          "table": "election_lists",
+          "selectedMembers": [
+            "consulta_coligacao_2002_BRASIL.csv"
+          ],
+          "rows": 4886
+        },
+        {
+          "source_url": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_coligacao/consulta_coligacao_2004.zip",
+          "source_sha256": "49e1d37d7ee5e07affa6b5c6e20c8d2d5603505969a0a4a5dc1d699a0acf1b58",
+          "table": "election_lists",
+          "selectedMembers": [
+            "consulta_coligacao_2004_BRASIL.csv"
+          ],
+          "rows": 175300
+        },
+        {
+          "source_url": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_coligacao/consulta_coligacao_2006.zip",
+          "source_sha256": "88693bff6c39a7e125bbe07b7a0721b6470610620de25d45ac887caf61761b17",
+          "table": "election_lists",
+          "selectedMembers": [
+            "consulta_coligacao_2006_BRASIL.csv"
+          ],
+          "rows": 4846
+        },
+        {
+          "source_url": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_coligacao/consulta_coligacao_2008.zip",
+          "source_sha256": "f08e42f521ce34612bdfd77b2faebe38e35ce3c6309a5319074118faf499e166",
+          "table": "election_lists",
+          "selectedMembers": [
+            "consulta_coligacao_2008_BRASIL.csv"
+          ],
+          "rows": 196960
+        },
+        {
+          "source_url": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_coligacao/consulta_coligacao_2010.zip",
+          "source_sha256": "e845d544735356da840014e4ffb28d8126e5af12daefbb8ec82ee2c9a98ae5e0",
+          "table": "election_lists",
+          "selectedMembers": [
+            "consulta_coligacao_2010_BRASIL.csv"
+          ],
+          "rows": 6543
+        },
+        {
+          "source_url": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_coligacao/consulta_coligacao_2012.zip",
+          "source_sha256": "0e8236386365cd4c2916fe15e58dabb12b568dfa654aca5a4d4380c0a334f208",
+          "table": "election_lists",
+          "selectedMembers": [
+            "consulta_coligacao_2012_BRASIL.csv"
+          ],
+          "rows": 231949
+        },
+        {
+          "source_url": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_coligacao/consulta_coligacao_2014.zip",
+          "source_sha256": "25db428d0d955987310721a21a5d25dd4a8464c58c72b3978597956ac0358bac",
+          "table": "election_lists",
+          "selectedMembers": [
+            "consulta_coligacao_2014_BRASIL.csv"
+          ],
+          "rows": 5888
+        },
+        {
+          "source_url": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_coligacao/consulta_coligacao_2016.zip",
+          "source_sha256": "69c32b2d8de7e38dec5ecf6be99faeed8ee5a34594662600c53ceb8f6f1bd53d",
+          "table": "election_lists",
+          "selectedMembers": [
+            "consulta_coligacao_2016_BRASIL.csv"
+          ],
+          "rows": 251943
+        },
+        {
+          "source_url": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_coligacao/consulta_coligacao_2018.zip",
+          "source_sha256": "711074c0596f8f403e6942e085d98f8f9514486a874549da20595f95cf2393b7",
+          "table": "election_lists",
+          "selectedMembers": [
+            "consulta_coligacao_2018_BRASIL.csv"
+          ],
+          "rows": 6345
+        },
+        {
+          "source_url": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_coligacao/consulta_coligacao_2020.zip",
+          "source_sha256": "e4ee01ccee82eab237a4ee18d3a35da7d395219a4591ee66ee7b9dcaeaf80a60",
+          "table": "election_lists",
+          "selectedMembers": [
+            "consulta_coligacao_2020_BRASIL.csv"
+          ],
+          "rows": 139935
+        },
+        {
+          "source_url": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_coligacao/consulta_coligacao_2022.zip",
+          "source_sha256": "9e619e1a8d88a6f52136332c7ecb47923cc700e913842f58bdc4c36a79463efc",
+          "table": "election_lists",
+          "selectedMembers": [
+            "consulta_coligacao_2022_BRASIL.csv"
+          ],
+          "rows": 4736
+        },
+        {
+          "source_url": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_coligacao/consulta_coligacao_2024.zip",
+          "source_sha256": "bfaa70443225eac9c492b877bd41b5994c745df4d92f44e10072d3f580111431",
+          "table": "election_lists",
+          "selectedMembers": [
+            "consulta_coligacao_2024_BRASIL.csv"
+          ],
+          "rows": 157814
+        },
+        {
+          "source_url": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_coligacao/consulta_coligacao_2026.zip",
+          "source_sha256": "fc41fc199c4115f80294d2ff33cde73520cc7d6562219057ea657a5228656d3d",
+          "table": "election_lists",
+          "selectedMembers": [
+            "consulta_coligacao_2026_BRASIL.csv"
+          ],
+          "rows": 4266
+        },
+        {
+          "source_url": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_legendas/candidato_legenda_1933_br.zip",
+          "source_sha256": "d6a9c6e6025276a73e219e16ccc30c8664caca75b54361b3491cc5755ebcb901",
+          "table": "candidate_list_links",
+          "selectedMembers": [
+            "CANDIDATO_LEGENDA_1933_BR.txt"
+          ],
+          "rows": 1200
+        },
+        {
+          "source_url": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_legendas/candidato_legenda_1934_br.zip",
+          "source_sha256": "52c6bb0338537235980e6311796e26eff7a62ee24e39d2f514adcc208c0d2492",
+          "table": "candidate_list_links",
+          "selectedMembers": [
+            "CANDIDATO_LEGENDA_1934_BR.txt"
+          ],
+          "rows": 3371
+        },
+        {
+          "source_url": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_legendas/consulta_legendas_1933_br.zip",
+          "source_sha256": "fb0eafb0d8229749d53d326a620c387dccf279ede76a9e320b64239a665e71b7",
+          "table": "election_lists",
+          "selectedMembers": [
+            "CONSULTA_LEGENDAS_1933_BR.txt"
+          ],
+          "rows": 106
+        },
+        {
+          "source_url": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_legendas/consulta_legendas_1934_br.zip",
+          "source_sha256": "8b4b63b1552b533d62e13c302a7df06fe66a7f2a01c02f3bec1e8cc19c861e8a",
+          "table": "election_lists",
+          "selectedMembers": [
+            "CONSULTA_LEGENDAS_1934_BR.txt"
+          ],
+          "rows": 224
+        },
+        {
+          "source_url": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_legendas/consulta_legendas_1945.zip",
+          "source_sha256": "f56bc9690414b399c0ded079e99d37cec78d620677ca84446cb9972aacb2fed5",
+          "table": "election_lists",
+          "selectedMembers": [
+            "CONSULTA_LEGENDAS_1945/CONSULTA_LEGENDAS_1945.txt",
+            "CONSULTA_LEGENDAS_1945/CONSULTA_LEGENDAS_1945_AC.txt",
+            "CONSULTA_LEGENDAS_1945/CONSULTA_LEGENDAS_1945_AL.txt",
+            "CONSULTA_LEGENDAS_1945/CONSULTA_LEGENDAS_1945_AM.txt",
+            "CONSULTA_LEGENDAS_1945/CONSULTA_LEGENDAS_1945_BA.txt",
+            "CONSULTA_LEGENDAS_1945/CONSULTA_LEGENDAS_1945_CE.txt",
+            "CONSULTA_LEGENDAS_1945/CONSULTA_LEGENDAS_1945_DF.txt",
+            "CONSULTA_LEGENDAS_1945/CONSULTA_LEGENDAS_1945_ES.txt",
+            "CONSULTA_LEGENDAS_1945/CONSULTA_LEGENDAS_1945_GO.txt",
+            "CONSULTA_LEGENDAS_1945/CONSULTA_LEGENDAS_1945_MA.txt",
+            "CONSULTA_LEGENDAS_1945/CONSULTA_LEGENDAS_1945_MG.txt",
+            "CONSULTA_LEGENDAS_1945/CONSULTA_LEGENDAS_1945_MT.txt",
+            "CONSULTA_LEGENDAS_1945/CONSULTA_LEGENDAS_1945_PA.txt",
+            "CONSULTA_LEGENDAS_1945/CONSULTA_LEGENDAS_1945_PB.txt",
+            "CONSULTA_LEGENDAS_1945/CONSULTA_LEGENDAS_1945_PE.txt",
+            "CONSULTA_LEGENDAS_1945/CONSULTA_LEGENDAS_1945_PI.txt",
+            "CONSULTA_LEGENDAS_1945/CONSULTA_LEGENDAS_1945_PR.txt",
+            "CONSULTA_LEGENDAS_1945/CONSULTA_LEGENDAS_1945_RJ.txt",
+            "CONSULTA_LEGENDAS_1945/CONSULTA_LEGENDAS_1945_RN.txt",
+            "CONSULTA_LEGENDAS_1945/CONSULTA_LEGENDAS_1945_RS.txt",
+            "CONSULTA_LEGENDAS_1945/CONSULTA_LEGENDAS_1945_SC.txt",
+            "CONSULTA_LEGENDAS_1945/CONSULTA_LEGENDAS_1945_SE.txt",
+            "CONSULTA_LEGENDAS_1945/CONSULTA_LEGENDAS_1945_SP.txt"
+          ],
+          "rows": 213
+        },
+        {
+          "source_url": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_legendas/consulta_legendas_1947.zip",
+          "source_sha256": "eab388f0cd73968383f6a9d224b3a1417a246347c61e989bf372c0581f6c4d69",
+          "table": "election_lists",
+          "selectedMembers": [
+            "CONSULTA_LEGENDAS_1947/CONSULTA_LEGENDAS_1947_AL.txt",
+            "CONSULTA_LEGENDAS_1947/CONSULTA_LEGENDAS_1947_AM.txt",
+            "CONSULTA_LEGENDAS_1947/CONSULTA_LEGENDAS_1947_AP.txt",
+            "CONSULTA_LEGENDAS_1947/CONSULTA_LEGENDAS_1947_BA.txt",
+            "CONSULTA_LEGENDAS_1947/CONSULTA_LEGENDAS_1947_CE.txt",
+            "CONSULTA_LEGENDAS_1947/CONSULTA_LEGENDAS_1947_DF.txt",
+            "CONSULTA_LEGENDAS_1947/CONSULTA_LEGENDAS_1947_ES.txt",
+            "CONSULTA_LEGENDAS_1947/CONSULTA_LEGENDAS_1947_GO.txt",
+            "CONSULTA_LEGENDAS_1947/CONSULTA_LEGENDAS_1947_GP.txt",
+            "CONSULTA_LEGENDAS_1947/CONSULTA_LEGENDAS_1947_MA.txt",
+            "CONSULTA_LEGENDAS_1947/CONSULTA_LEGENDAS_1947_MG.txt",
+            "CONSULTA_LEGENDAS_1947/CONSULTA_LEGENDAS_1947_MT.txt",
+            "CONSULTA_LEGENDAS_1947/CONSULTA_LEGENDAS_1947_PA.txt",
+            "CONSULTA_LEGENDAS_1947/CONSULTA_LEGENDAS_1947_PB.txt",
+            "CONSULTA_LEGENDAS_1947/CONSULTA_LEGENDAS_1947_PE.txt",
+            "CONSULTA_LEGENDAS_1947/CONSULTA_LEGENDAS_1947_PI.txt",
+            "CONSULTA_LEGENDAS_1947/CONSULTA_LEGENDAS_1947_PR.txt",
+            "CONSULTA_LEGENDAS_1947/CONSULTA_LEGENDAS_1947_RB.txt",
+            "CONSULTA_LEGENDAS_1947/CONSULTA_LEGENDAS_1947_RJ.txt",
+            "CONSULTA_LEGENDAS_1947/CONSULTA_LEGENDAS_1947_RN.txt",
+            "CONSULTA_LEGENDAS_1947/CONSULTA_LEGENDAS_1947_RS.txt",
+            "CONSULTA_LEGENDAS_1947/CONSULTA_LEGENDAS_1947_SC.txt",
+            "CONSULTA_LEGENDAS_1947/CONSULTA_LEGENDAS_1947_SE.txt",
+            "CONSULTA_LEGENDAS_1947/CONSULTA_LEGENDAS_1947_SP.txt"
+          ],
+          "rows": 434
+        },
+        {
+          "source_url": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_legendas/consulta_legendas_1950.zip",
+          "source_sha256": "0d755b5564bfde2059dde25d454953faf1021693809d4857927e50533284a5d1",
+          "table": "election_lists",
+          "selectedMembers": [
+            "CONSULTA_LEGENDA_1950/CONSULTA_LEGENDA_1950.txt",
+            "CONSULTA_LEGENDA_1950/CONSULTA_LEGENDA_1950_AC.txt",
+            "CONSULTA_LEGENDA_1950/CONSULTA_LEGENDA_1950_AL.txt",
+            "CONSULTA_LEGENDA_1950/CONSULTA_LEGENDA_1950_AM.txt",
+            "CONSULTA_LEGENDA_1950/CONSULTA_LEGENDA_1950_AP.txt",
+            "CONSULTA_LEGENDA_1950/CONSULTA_LEGENDA_1950_BA.txt",
+            "CONSULTA_LEGENDA_1950/CONSULTA_LEGENDA_1950_CE.txt",
+            "CONSULTA_LEGENDA_1950/CONSULTA_LEGENDA_1950_DF.txt",
+            "CONSULTA_LEGENDA_1950/CONSULTA_LEGENDA_1950_ES.txt",
+            "CONSULTA_LEGENDA_1950/CONSULTA_LEGENDA_1950_GO.txt",
+            "CONSULTA_LEGENDA_1950/CONSULTA_LEGENDA_1950_GP.txt",
+            "CONSULTA_LEGENDA_1950/CONSULTA_LEGENDA_1950_MA.txt",
+            "CONSULTA_LEGENDA_1950/CONSULTA_LEGENDA_1950_MG.txt",
+            "CONSULTA_LEGENDA_1950/CONSULTA_LEGENDA_1950_MT.txt",
+            "CONSULTA_LEGENDA_1950/CONSULTA_LEGENDA_1950_PA.txt",
+            "CONSULTA_LEGENDA_1950/CONSULTA_LEGENDA_1950_PB.txt",
+            "CONSULTA_LEGENDA_1950/CONSULTA_LEGENDA_1950_PE.txt",
+            "CONSULTA_LEGENDA_1950/CONSULTA_LEGENDA_1950_PI.txt",
+            "CONSULTA_LEGENDA_1950/CONSULTA_LEGENDA_1950_PR.txt",
+            "CONSULTA_LEGENDA_1950/CONSULTA_LEGENDA_1950_RB.txt",
+            "CONSULTA_LEGENDA_1950/CONSULTA_LEGENDA_1950_RJ.txt",
+            "CONSULTA_LEGENDA_1950/CONSULTA_LEGENDA_1950_RN.txt",
+            "CONSULTA_LEGENDA_1950/CONSULTA_LEGENDA_1950_RS.txt",
+            "CONSULTA_LEGENDA_1950/CONSULTA_LEGENDA_1950_SC.txt",
+            "CONSULTA_LEGENDA_1950/CONSULTA_LEGENDA_1950_SE.txt",
+            "CONSULTA_LEGENDA_1950/CONSULTA_LEGENDA_1950_SP.txt"
+          ],
+          "rows": 656
+        },
+        {
+          "source_url": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_legendas/consulta_legendas_1954.zip",
+          "source_sha256": "7b5e5fc8353f8d6917a012dd4a72ddd8c9321a129c8044eeae7715990e107468",
+          "table": "election_lists",
+          "selectedMembers": [
+            "CONSULTA_LEGENDAS_1954/CONSULTA_LEGENDAS_1954_AC.txt",
+            "CONSULTA_LEGENDAS_1954/CONSULTA_LEGENDAS_1954_AL.txt",
+            "CONSULTA_LEGENDAS_1954/CONSULTA_LEGENDAS_1954_AM.txt",
+            "CONSULTA_LEGENDAS_1954/CONSULTA_LEGENDAS_1954_AP.txt",
+            "CONSULTA_LEGENDAS_1954/CONSULTA_LEGENDAS_1954_BA.txt",
+            "CONSULTA_LEGENDAS_1954/CONSULTA_LEGENDAS_1954_CE.txt",
+            "CONSULTA_LEGENDAS_1954/CONSULTA_LEGENDAS_1954_DF.txt",
+            "CONSULTA_LEGENDAS_1954/CONSULTA_LEGENDAS_1954_ES.txt",
+            "CONSULTA_LEGENDAS_1954/CONSULTA_LEGENDAS_1954_GO.txt",
+            "CONSULTA_LEGENDAS_1954/CONSULTA_LEGENDAS_1954_GP.txt",
+            "CONSULTA_LEGENDAS_1954/CONSULTA_LEGENDAS_1954_MA.txt",
+            "CONSULTA_LEGENDAS_1954/CONSULTA_LEGENDAS_1954_MG.txt",
+            "CONSULTA_LEGENDAS_1954/CONSULTA_LEGENDAS_1954_MT.txt",
+            "CONSULTA_LEGENDAS_1954/CONSULTA_LEGENDAS_1954_PA.txt",
+            "CONSULTA_LEGENDAS_1954/CONSULTA_LEGENDAS_1954_PB.txt",
+            "CONSULTA_LEGENDAS_1954/CONSULTA_LEGENDAS_1954_PE.txt",
+            "CONSULTA_LEGENDAS_1954/CONSULTA_LEGENDAS_1954_PI.txt",
+            "CONSULTA_LEGENDAS_1954/CONSULTA_LEGENDAS_1954_PR.txt",
+            "CONSULTA_LEGENDAS_1954/CONSULTA_LEGENDAS_1954_RB.txt",
+            "CONSULTA_LEGENDAS_1954/CONSULTA_LEGENDAS_1954_RJ.txt",
+            "CONSULTA_LEGENDAS_1954/CONSULTA_LEGENDAS_1954_RN.txt",
+            "CONSULTA_LEGENDAS_1954/CONSULTA_LEGENDAS_1954_RS.txt",
+            "CONSULTA_LEGENDAS_1954/CONSULTA_LEGENDAS_1954_SC.txt",
+            "CONSULTA_LEGENDAS_1954/CONSULTA_LEGENDAS_1954_SE.txt",
+            "CONSULTA_LEGENDAS_1954/CONSULTA_LEGENDAS_1954_SP.txt"
+          ],
+          "rows": 666
+        },
+        {
+          "source_url": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_legendas/consulta_legendas_1955.zip",
+          "source_sha256": "3233382b5cb8469230dd85e85919c787a2687f8ea9f31ee19096764542e735f3",
+          "table": "election_lists",
+          "selectedMembers": [
+            "CONSULTA_LEGENDAS_1955/CONSULTA_LEGENDAS_1955.txt"
+          ],
+          "rows": 85
+        },
+        {
+          "source_url": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_legendas/consulta_legendas_1958.zip",
+          "source_sha256": "6d52ef8364ebbade9ce685dea9b6fa7d32e75fd1b4f240a20f94e6fb38e175b5",
+          "table": "election_lists",
+          "selectedMembers": [
+            "CONSULTA_LEGENDAS_1958/CONSULTA_LEGENDAS_1958_AC.txt",
+            "CONSULTA_LEGENDAS_1958/CONSULTA_LEGENDAS_1958_AL.txt",
+            "CONSULTA_LEGENDAS_1958/CONSULTA_LEGENDAS_1958_AM.txt",
+            "CONSULTA_LEGENDAS_1958/CONSULTA_LEGENDAS_1958_AP.txt",
+            "CONSULTA_LEGENDAS_1958/CONSULTA_LEGENDAS_1958_BA.txt",
+            "CONSULTA_LEGENDAS_1958/CONSULTA_LEGENDAS_1958_CE.txt",
+            "CONSULTA_LEGENDAS_1958/CONSULTA_LEGENDAS_1958_DF.txt",
+            "CONSULTA_LEGENDAS_1958/CONSULTA_LEGENDAS_1958_ES.txt",
+            "CONSULTA_LEGENDAS_1958/CONSULTA_LEGENDAS_1958_GO.txt",
+            "CONSULTA_LEGENDAS_1958/CONSULTA_LEGENDAS_1958_MA.txt",
+            "CONSULTA_LEGENDAS_1958/CONSULTA_LEGENDAS_1958_MG.txt",
+            "CONSULTA_LEGENDAS_1958/CONSULTA_LEGENDAS_1958_MT.txt",
+            "CONSULTA_LEGENDAS_1958/CONSULTA_LEGENDAS_1958_PA.txt",
+            "CONSULTA_LEGENDAS_1958/CONSULTA_LEGENDAS_1958_PB.txt",
+            "CONSULTA_LEGENDAS_1958/CONSULTA_LEGENDAS_1958_PE.txt",
+            "CONSULTA_LEGENDAS_1958/CONSULTA_LEGENDAS_1958_PI.txt",
+            "CONSULTA_LEGENDAS_1958/CONSULTA_LEGENDAS_1958_PR.txt",
+            "CONSULTA_LEGENDAS_1958/CONSULTA_LEGENDAS_1958_RB.txt",
+            "CONSULTA_LEGENDAS_1958/CONSULTA_LEGENDAS_1958_RJ.txt",
+            "CONSULTA_LEGENDAS_1958/CONSULTA_LEGENDAS_1958_RN.txt",
+            "CONSULTA_LEGENDAS_1958/CONSULTA_LEGENDAS_1958_RO.txt",
+            "CONSULTA_LEGENDAS_1958/CONSULTA_LEGENDAS_1958_RS.txt",
+            "CONSULTA_LEGENDAS_1958/CONSULTA_LEGENDAS_1958_SC.txt",
+            "CONSULTA_LEGENDAS_1958/CONSULTA_LEGENDAS_1958_SE.txt",
+            "CONSULTA_LEGENDAS_1958/CONSULTA_LEGENDAS_1958_SP.txt"
+          ],
+          "rows": 618
+        },
+        {
+          "source_url": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_legendas/consulta_legendas_1960.zip",
+          "source_sha256": "ff2298d5100b721450e52cca6d508e5716cf033853a22bdf14d99df12936629e",
+          "table": "election_lists",
+          "selectedMembers": [
+            "CONSULTA_LEGENDAS_1960/CONSULTA_LEGENDA_1960.txt"
+          ],
+          "rows": 76
+        },
+        {
+          "source_url": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_legendas/consulta_legendas_1962.zip",
+          "source_sha256": "2beb091ab04471935327d8f396b1d60ba1387f2ef0208443a32ffae43b2eefac",
+          "table": "election_lists",
+          "selectedMembers": [
+            "CONSULTA_LEGENDA_1962/CONSULTA_LEGENDA_1962_AC.txt",
+            "CONSULTA_LEGENDA_1962/CONSULTA_LEGENDA_1962_AL.txt",
+            "CONSULTA_LEGENDA_1962/CONSULTA_LEGENDA_1962_AM.txt",
+            "CONSULTA_LEGENDA_1962/CONSULTA_LEGENDA_1962_AP.txt",
+            "CONSULTA_LEGENDA_1962/CONSULTA_LEGENDA_1962_BA.txt",
+            "CONSULTA_LEGENDA_1962/CONSULTA_LEGENDA_1962_CE.txt",
+            "CONSULTA_LEGENDA_1962/CONSULTA_LEGENDA_1962_ES.txt",
+            "CONSULTA_LEGENDA_1962/CONSULTA_LEGENDA_1962_GB.txt",
+            "CONSULTA_LEGENDA_1962/CONSULTA_LEGENDA_1962_GO.txt",
+            "CONSULTA_LEGENDA_1962/CONSULTA_LEGENDA_1962_MA.txt",
+            "CONSULTA_LEGENDA_1962/CONSULTA_LEGENDA_1962_MG.txt",
+            "CONSULTA_LEGENDA_1962/CONSULTA_LEGENDA_1962_MT.txt",
+            "CONSULTA_LEGENDA_1962/CONSULTA_LEGENDA_1962_PA.txt",
+            "CONSULTA_LEGENDA_1962/CONSULTA_LEGENDA_1962_PB.txt",
+            "CONSULTA_LEGENDA_1962/CONSULTA_LEGENDA_1962_PE.txt",
+            "CONSULTA_LEGENDA_1962/CONSULTA_LEGENDA_1962_PI.txt",
+            "CONSULTA_LEGENDA_1962/CONSULTA_LEGENDA_1962_PR.txt",
+            "CONSULTA_LEGENDA_1962/CONSULTA_LEGENDA_1962_RB.txt",
+            "CONSULTA_LEGENDA_1962/CONSULTA_LEGENDA_1962_RJ.txt",
+            "CONSULTA_LEGENDA_1962/CONSULTA_LEGENDA_1962_RN.txt",
+            "CONSULTA_LEGENDA_1962/CONSULTA_LEGENDA_1962_RO.txt",
+            "CONSULTA_LEGENDA_1962/CONSULTA_LEGENDA_1962_RS.txt",
+            "CONSULTA_LEGENDA_1962/CONSULTA_LEGENDA_1962_SC.txt",
+            "CONSULTA_LEGENDA_1962/CONSULTA_LEGENDA_1962_SE.txt",
+            "CONSULTA_LEGENDA_1962/CONSULTA_LEGENDA_1962_SP.txt"
+          ],
+          "rows": 602
+        },
+        {
+          "source_url": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_legendas/consulta_legendas_1965.zip",
+          "source_sha256": "306fda120290a7e7703bfcec8118c577ed3bdd35f4a314507cdb6b21c93f59ab",
+          "table": "election_lists",
+          "selectedMembers": [
+            "CONSULTA_LEGENDAS_1965/CONSULTA_LEGENDAS_1965.txt"
+          ],
+          "rows": 49
+        },
+        {
+          "source_url": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_legendas/consulta_legendas_1966.zip",
+          "source_sha256": "82296fb03f8b41abab4e7b5aaf4d4f5328c3b17a1a60e1629dd92bba6457e477",
+          "table": "election_lists",
+          "selectedMembers": [
+            "CONSULTA_LEGENDAS_1966/CONSULTA_LEGENDAS_1966_AC.txt",
+            "CONSULTA_LEGENDAS_1966/CONSULTA_LEGENDAS_1966_AL.txt",
+            "CONSULTA_LEGENDAS_1966/CONSULTA_LEGENDAS_1966_AM.txt",
+            "CONSULTA_LEGENDAS_1966/CONSULTA_LEGENDAS_1966_AP.txt",
+            "CONSULTA_LEGENDAS_1966/CONSULTA_LEGENDAS_1966_BA.txt",
+            "CONSULTA_LEGENDAS_1966/CONSULTA_LEGENDAS_1966_CE.txt",
+            "CONSULTA_LEGENDAS_1966/CONSULTA_LEGENDAS_1966_ES.txt",
+            "CONSULTA_LEGENDAS_1966/CONSULTA_LEGENDAS_1966_GB.txt",
+            "CONSULTA_LEGENDAS_1966/CONSULTA_LEGENDAS_1966_GO.txt",
+            "CONSULTA_LEGENDAS_1966/CONSULTA_LEGENDAS_1966_MA.txt",
+            "CONSULTA_LEGENDAS_1966/CONSULTA_LEGENDAS_1966_MG.txt",
+            "CONSULTA_LEGENDAS_1966/CONSULTA_LEGENDAS_1966_MT.txt",
+            "CONSULTA_LEGENDAS_1966/CONSULTA_LEGENDAS_1966_PA.txt",
+            "CONSULTA_LEGENDAS_1966/CONSULTA_LEGENDAS_1966_PB.txt",
+            "CONSULTA_LEGENDAS_1966/CONSULTA_LEGENDAS_1966_PE.txt",
+            "CONSULTA_LEGENDAS_1966/CONSULTA_LEGENDAS_1966_PI.txt",
+            "CONSULTA_LEGENDAS_1966/CONSULTA_LEGENDAS_1966_PR.txt",
+            "CONSULTA_LEGENDAS_1966/CONSULTA_LEGENDAS_1966_RJ.txt",
+            "CONSULTA_LEGENDAS_1966/CONSULTA_LEGENDAS_1966_RN.txt",
+            "CONSULTA_LEGENDAS_1966/CONSULTA_LEGENDAS_1966_RO.txt",
+            "CONSULTA_LEGENDAS_1966/CONSULTA_LEGENDAS_1966_RR.txt",
+            "CONSULTA_LEGENDAS_1966/CONSULTA_LEGENDAS_1966_RS.txt",
+            "CONSULTA_LEGENDAS_1966/CONSULTA_LEGENDAS_1966_SC.txt",
+            "CONSULTA_LEGENDAS_1966/CONSULTA_LEGENDAS_1966_SE.txt",
+            "CONSULTA_LEGENDAS_1966/CONSULTA_LEGENDAS_1966_SP.txt"
+          ],
+          "rows": 137
+        },
+        {
+          "source_url": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_legendas/consulta_legendas_1970.zip",
+          "source_sha256": "6e6763c4cf20b89b73d2c991714ebfaaf6b4fed9d3f01f51a5d351b96135d5c0",
+          "table": "election_lists",
+          "selectedMembers": [
+            "CONSULTA_LEGENDAS_1970/CONSULTA_LEGENDAS_1970_AC.txt",
+            "CONSULTA_LEGENDAS_1970/CONSULTA_LEGENDAS_1970_AL.txt",
+            "CONSULTA_LEGENDAS_1970/CONSULTA_LEGENDAS_1970_AM.txt",
+            "CONSULTA_LEGENDAS_1970/CONSULTA_LEGENDAS_1970_AP.txt",
+            "CONSULTA_LEGENDAS_1970/CONSULTA_LEGENDAS_1970_BA.txt",
+            "CONSULTA_LEGENDAS_1970/CONSULTA_LEGENDAS_1970_CE.txt",
+            "CONSULTA_LEGENDAS_1970/CONSULTA_LEGENDAS_1970_ES.txt",
+            "CONSULTA_LEGENDAS_1970/CONSULTA_LEGENDAS_1970_GB.txt",
+            "CONSULTA_LEGENDAS_1970/CONSULTA_LEGENDAS_1970_GO.txt",
+            "CONSULTA_LEGENDAS_1970/CONSULTA_LEGENDAS_1970_MA.txt",
+            "CONSULTA_LEGENDAS_1970/CONSULTA_LEGENDAS_1970_MG.txt",
+            "CONSULTA_LEGENDAS_1970/CONSULTA_LEGENDAS_1970_MT.txt",
+            "CONSULTA_LEGENDAS_1970/CONSULTA_LEGENDAS_1970_PA.txt",
+            "CONSULTA_LEGENDAS_1970/CONSULTA_LEGENDAS_1970_PB.txt",
+            "CONSULTA_LEGENDAS_1970/CONSULTA_LEGENDAS_1970_PE.txt",
+            "CONSULTA_LEGENDAS_1970/CONSULTA_LEGENDAS_1970_PI.txt",
+            "CONSULTA_LEGENDAS_1970/CONSULTA_LEGENDAS_1970_PR.txt",
+            "CONSULTA_LEGENDAS_1970/CONSULTA_LEGENDAS_1970_RJ.txt",
+            "CONSULTA_LEGENDAS_1970/CONSULTA_LEGENDAS_1970_RN.txt",
+            "CONSULTA_LEGENDAS_1970/CONSULTA_LEGENDAS_1970_RO.txt",
+            "CONSULTA_LEGENDAS_1970/CONSULTA_LEGENDAS_1970_RR.txt",
+            "CONSULTA_LEGENDAS_1970/CONSULTA_LEGENDAS_1970_RS.txt",
+            "CONSULTA_LEGENDAS_1970/CONSULTA_LEGENDAS_1970_SC.txt",
+            "CONSULTA_LEGENDAS_1970/CONSULTA_LEGENDAS_1970_SE.txt",
+            "CONSULTA_LEGENDAS_1970/CONSULTA_LEGENDAS_1970_SP.txt"
+          ],
+          "rows": 137
+        },
+        {
+          "source_url": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_legendas/consulta_legendas_1974.zip",
+          "source_sha256": "30cdf7adb64c98142f23fd6296368b29b6a8474e9379569f9c531ce89f3dc3c4",
+          "table": "election_lists",
+          "selectedMembers": [
+            "CONSULTA_LEGENDAS_1974/CONSULTA_LEGENDA_1974_AC.txt",
+            "CONSULTA_LEGENDAS_1974/CONSULTA_LEGENDA_1974_AL.txt",
+            "CONSULTA_LEGENDAS_1974/CONSULTA_LEGENDA_1974_AM.txt",
+            "CONSULTA_LEGENDAS_1974/CONSULTA_LEGENDA_1974_AP.txt",
+            "CONSULTA_LEGENDAS_1974/CONSULTA_LEGENDA_1974_BA.txt",
+            "CONSULTA_LEGENDAS_1974/CONSULTA_LEGENDA_1974_CE.txt",
+            "CONSULTA_LEGENDAS_1974/CONSULTA_LEGENDA_1974_ES.txt",
+            "CONSULTA_LEGENDAS_1974/CONSULTA_LEGENDA_1974_GB.txt",
+            "CONSULTA_LEGENDAS_1974/CONSULTA_LEGENDA_1974_GO.txt",
+            "CONSULTA_LEGENDAS_1974/CONSULTA_LEGENDA_1974_MA.txt",
+            "CONSULTA_LEGENDAS_1974/CONSULTA_LEGENDA_1974_MG.txt",
+            "CONSULTA_LEGENDAS_1974/CONSULTA_LEGENDA_1974_MT.txt",
+            "CONSULTA_LEGENDAS_1974/CONSULTA_LEGENDA_1974_PA.txt",
+            "CONSULTA_LEGENDAS_1974/CONSULTA_LEGENDA_1974_PB.txt",
+            "CONSULTA_LEGENDAS_1974/CONSULTA_LEGENDA_1974_PE.txt",
+            "CONSULTA_LEGENDAS_1974/CONSULTA_LEGENDA_1974_PI.txt",
+            "CONSULTA_LEGENDAS_1974/CONSULTA_LEGENDA_1974_PR.txt",
+            "CONSULTA_LEGENDAS_1974/CONSULTA_LEGENDA_1974_RJ.txt",
+            "CONSULTA_LEGENDAS_1974/CONSULTA_LEGENDA_1974_RN.txt",
+            "CONSULTA_LEGENDAS_1974/CONSULTA_LEGENDA_1974_RO.txt",
+            "CONSULTA_LEGENDAS_1974/CONSULTA_LEGENDA_1974_RR.txt",
+            "CONSULTA_LEGENDAS_1974/CONSULTA_LEGENDA_1974_RS.txt",
+            "CONSULTA_LEGENDAS_1974/CONSULTA_LEGENDA_1974_SC.txt",
+            "CONSULTA_LEGENDAS_1974/CONSULTA_LEGENDA_1974_SE.txt",
+            "CONSULTA_LEGENDAS_1974/CONSULTA_LEGENDA_1974_SP.txt"
+          ],
+          "rows": 136
+        },
+        {
+          "source_url": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_legendas/consulta_legendas_1978.zip",
+          "source_sha256": "c2bf7eae31a33eaad64ada563930df29918e1bc227d450923443a16ce5b08d75",
+          "table": "election_lists",
+          "selectedMembers": [
+            "CONSULTA_LEGENDAS_1978/CONSULTA_LEGENDAS_1978_AC.txt",
+            "CONSULTA_LEGENDAS_1978/CONSULTA_LEGENDAS_1978_AL.txt",
+            "CONSULTA_LEGENDAS_1978/CONSULTA_LEGENDAS_1978_AM.txt",
+            "CONSULTA_LEGENDAS_1978/CONSULTA_LEGENDAS_1978_AP.txt",
+            "CONSULTA_LEGENDAS_1978/CONSULTA_LEGENDAS_1978_BA.txt",
+            "CONSULTA_LEGENDAS_1978/CONSULTA_LEGENDAS_1978_CE.txt",
+            "CONSULTA_LEGENDAS_1978/CONSULTA_LEGENDAS_1978_ES.txt",
+            "CONSULTA_LEGENDAS_1978/CONSULTA_LEGENDAS_1978_GO.txt",
+            "CONSULTA_LEGENDAS_1978/CONSULTA_LEGENDAS_1978_MA.txt",
+            "CONSULTA_LEGENDAS_1978/CONSULTA_LEGENDAS_1978_MG.txt",
+            "CONSULTA_LEGENDAS_1978/CONSULTA_LEGENDAS_1978_MS.txt",
+            "CONSULTA_LEGENDAS_1978/CONSULTA_LEGENDAS_1978_MT.txt",
+            "CONSULTA_LEGENDAS_1978/CONSULTA_LEGENDAS_1978_PA.txt",
+            "CONSULTA_LEGENDAS_1978/CONSULTA_LEGENDAS_1978_PB.txt",
+            "CONSULTA_LEGENDAS_1978/CONSULTA_LEGENDAS_1978_PE.txt",
+            "CONSULTA_LEGENDAS_1978/CONSULTA_LEGENDAS_1978_PI.txt",
+            "CONSULTA_LEGENDAS_1978/CONSULTA_LEGENDAS_1978_PR.txt",
+            "CONSULTA_LEGENDAS_1978/CONSULTA_LEGENDAS_1978_RJ.txt",
+            "CONSULTA_LEGENDAS_1978/CONSULTA_LEGENDAS_1978_RN.txt",
+            "CONSULTA_LEGENDAS_1978/CONSULTA_LEGENDAS_1978_RO.txt",
+            "CONSULTA_LEGENDAS_1978/CONSULTA_LEGENDAS_1978_RR.txt",
+            "CONSULTA_LEGENDAS_1978/CONSULTA_LEGENDAS_1978_RS.txt",
+            "CONSULTA_LEGENDAS_1978/CONSULTA_LEGENDAS_1978_SC.txt",
+            "CONSULTA_LEGENDAS_1978/CONSULTA_LEGENDAS_1978_SE.txt",
+            "CONSULTA_LEGENDAS_1978/CONSULTA_LEGENDAS_1978_SP.txt"
+          ],
+          "rows": 137
+        },
+        {
+          "source_url": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_legendas/consulta_legendas_1982.zip",
+          "source_sha256": "6cc984312dc567dc6994fe37c5c128c03a0b8b6bd23c44f7c6ef95bceb48af33",
+          "table": "election_lists",
+          "selectedMembers": [
+            "CONSULTA_LEGENDAS_1982/CONSULTA_LEGENDAS_1982_AC.txt",
+            "CONSULTA_LEGENDAS_1982/CONSULTA_LEGENDAS_1982_AL.txt",
+            "CONSULTA_LEGENDAS_1982/CONSULTA_LEGENDAS_1982_AM.txt",
+            "CONSULTA_LEGENDAS_1982/CONSULTA_LEGENDAS_1982_AP.txt",
+            "CONSULTA_LEGENDAS_1982/CONSULTA_LEGENDAS_1982_BA.txt",
+            "CONSULTA_LEGENDAS_1982/CONSULTA_LEGENDAS_1982_CE.txt",
+            "CONSULTA_LEGENDAS_1982/CONSULTA_LEGENDAS_1982_ES.txt",
+            "CONSULTA_LEGENDAS_1982/CONSULTA_LEGENDAS_1982_GO.txt",
+            "CONSULTA_LEGENDAS_1982/CONSULTA_LEGENDAS_1982_MA.txt",
+            "CONSULTA_LEGENDAS_1982/CONSULTA_LEGENDAS_1982_MG.txt",
+            "CONSULTA_LEGENDAS_1982/CONSULTA_LEGENDAS_1982_MS.txt",
+            "CONSULTA_LEGENDAS_1982/CONSULTA_LEGENDAS_1982_MT.txt",
+            "CONSULTA_LEGENDAS_1982/CONSULTA_LEGENDAS_1982_PA.txt",
+            "CONSULTA_LEGENDAS_1982/CONSULTA_LEGENDAS_1982_PB.txt",
+            "CONSULTA_LEGENDAS_1982/CONSULTA_LEGENDAS_1982_PE.txt",
+            "CONSULTA_LEGENDAS_1982/CONSULTA_LEGENDAS_1982_PI.txt",
+            "CONSULTA_LEGENDAS_1982/CONSULTA_LEGENDAS_1982_PR.txt",
+            "CONSULTA_LEGENDAS_1982/CONSULTA_LEGENDAS_1982_RJ.txt",
+            "CONSULTA_LEGENDAS_1982/CONSULTA_LEGENDAS_1982_RN.txt",
+            "CONSULTA_LEGENDAS_1982/CONSULTA_LEGENDAS_1982_RO.txt",
+            "CONSULTA_LEGENDAS_1982/CONSULTA_LEGENDAS_1982_RR.txt",
+            "CONSULTA_LEGENDAS_1982/CONSULTA_LEGENDAS_1982_RS.txt",
+            "CONSULTA_LEGENDAS_1982/CONSULTA_LEGENDAS_1982_SC.txt",
+            "CONSULTA_LEGENDAS_1982/CONSULTA_LEGENDAS_1982_SE.txt",
+            "CONSULTA_LEGENDAS_1982/CONSULTA_LEGENDAS_1982_SP.txt"
+          ],
+          "rows": 363
+        },
+        {
+          "source_url": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_legendas/consulta_legendas_1986.zip",
+          "source_sha256": "74064fbef27a52196b51f2d7248073c5c696abf1973fcbf27ec4b9af5922d9a5",
+          "table": "election_lists",
+          "selectedMembers": [
+            "CONSULTA_LEGENDAS_1986/CONSULTA_LEGENDAS_1986_AC.txt",
+            "CONSULTA_LEGENDAS_1986/CONSULTA_LEGENDAS_1986_AL.txt",
+            "CONSULTA_LEGENDAS_1986/CONSULTA_LEGENDAS_1986_AM.txt",
+            "CONSULTA_LEGENDAS_1986/CONSULTA_LEGENDAS_1986_AP.txt",
+            "CONSULTA_LEGENDAS_1986/CONSULTA_LEGENDAS_1986_BA.txt",
+            "CONSULTA_LEGENDAS_1986/CONSULTA_LEGENDAS_1986_CE.txt",
+            "CONSULTA_LEGENDAS_1986/CONSULTA_LEGENDAS_1986_DF.txt",
+            "CONSULTA_LEGENDAS_1986/CONSULTA_LEGENDAS_1986_ES.txt",
+            "CONSULTA_LEGENDAS_1986/CONSULTA_LEGENDAS_1986_GO.txt",
+            "CONSULTA_LEGENDAS_1986/CONSULTA_LEGENDAS_1986_MA.txt",
+            "CONSULTA_LEGENDAS_1986/CONSULTA_LEGENDAS_1986_MG.txt",
+            "CONSULTA_LEGENDAS_1986/CONSULTA_LEGENDAS_1986_MS.txt",
+            "CONSULTA_LEGENDAS_1986/CONSULTA_LEGENDAS_1986_MT.txt",
+            "CONSULTA_LEGENDAS_1986/CONSULTA_LEGENDAS_1986_PA.txt",
+            "CONSULTA_LEGENDAS_1986/CONSULTA_LEGENDAS_1986_PB.txt",
+            "CONSULTA_LEGENDAS_1986/CONSULTA_LEGENDAS_1986_PE.txt",
+            "CONSULTA_LEGENDAS_1986/CONSULTA_LEGENDAS_1986_PI.txt",
+            "CONSULTA_LEGENDAS_1986/CONSULTA_LEGENDAS_1986_PR.txt",
+            "CONSULTA_LEGENDAS_1986/CONSULTA_LEGENDAS_1986_RJ.txt",
+            "CONSULTA_LEGENDAS_1986/CONSULTA_LEGENDAS_1986_RN.txt",
+            "CONSULTA_LEGENDAS_1986/CONSULTA_LEGENDAS_1986_RO.txt",
+            "CONSULTA_LEGENDAS_1986/CONSULTA_LEGENDAS_1986_RR.txt",
+            "CONSULTA_LEGENDAS_1986/CONSULTA_LEGENDAS_1986_RS.txt",
+            "CONSULTA_LEGENDAS_1986/CONSULTA_LEGENDAS_1986_SC.txt",
+            "CONSULTA_LEGENDAS_1986/CONSULTA_LEGENDAS_1986_SE.txt",
+            "CONSULTA_LEGENDAS_1986/CONSULTA_LEGENDAS_1986_SP.txt"
+          ],
+          "rows": 1098
+        },
+        {
+          "source_url": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_legendas/consulta_legendas_1989.zip",
+          "source_sha256": "447cd5c33f27fa78015593746eb2eb67264c85e427f97fbdf3004f1c2a5c25a7",
+          "table": "election_lists",
+          "selectedMembers": [
+            "CONSULTA_LEGENDA_1989/CONSULTA_LEGENDA_1989.txt"
+          ],
+          "rows": 29
+        },
+        {
+          "source_url": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_legendas/consulta_legendas_1990.zip",
+          "source_sha256": "9120f2da3abeb921eb12bb5b47ea918cbd0ec4926089e3bbdef1e80fb2720c70",
+          "table": "election_lists",
+          "selectedMembers": [
+            "CONSULTA_LEGENDA_1990/CONSULTA_LEGENDA_1990_AC.txt",
+            "CONSULTA_LEGENDA_1990/CONSULTA_LEGENDA_1990_AL.txt",
+            "CONSULTA_LEGENDA_1990/CONSULTA_LEGENDA_1990_AM.txt",
+            "CONSULTA_LEGENDA_1990/CONSULTA_LEGENDA_1990_AP.txt",
+            "CONSULTA_LEGENDA_1990/CONSULTA_LEGENDA_1990_BA.txt",
+            "CONSULTA_LEGENDA_1990/CONSULTA_LEGENDA_1990_CE.txt",
+            "CONSULTA_LEGENDA_1990/CONSULTA_LEGENDA_1990_DF.txt",
+            "CONSULTA_LEGENDA_1990/CONSULTA_LEGENDA_1990_ES.txt",
+            "CONSULTA_LEGENDA_1990/CONSULTA_LEGENDA_1990_GO.txt",
+            "CONSULTA_LEGENDA_1990/CONSULTA_LEGENDA_1990_MA.txt",
+            "CONSULTA_LEGENDA_1990/CONSULTA_LEGENDA_1990_MG.txt",
+            "CONSULTA_LEGENDA_1990/CONSULTA_LEGENDA_1990_MS.txt",
+            "CONSULTA_LEGENDA_1990/CONSULTA_LEGENDA_1990_MT.txt",
+            "CONSULTA_LEGENDA_1990/CONSULTA_LEGENDA_1990_PA.txt",
+            "CONSULTA_LEGENDA_1990/CONSULTA_LEGENDA_1990_PB.txt",
+            "CONSULTA_LEGENDA_1990/CONSULTA_LEGENDA_1990_PE.txt",
+            "CONSULTA_LEGENDA_1990/CONSULTA_LEGENDA_1990_PI.txt",
+            "CONSULTA_LEGENDA_1990/CONSULTA_LEGENDA_1990_PR.txt",
+            "CONSULTA_LEGENDA_1990/CONSULTA_LEGENDA_1990_RJ.txt",
+            "CONSULTA_LEGENDA_1990/CONSULTA_LEGENDA_1990_RN.txt",
+            "CONSULTA_LEGENDA_1990/CONSULTA_LEGENDA_1990_RO.txt",
+            "CONSULTA_LEGENDA_1990/CONSULTA_LEGENDA_1990_RR.txt",
+            "CONSULTA_LEGENDA_1990/CONSULTA_LEGENDA_1990_RS.txt",
+            "CONSULTA_LEGENDA_1990/CONSULTA_LEGENDA_1990_SC.txt",
+            "CONSULTA_LEGENDA_1990/CONSULTA_LEGENDA_1990_SE.txt",
+            "CONSULTA_LEGENDA_1990/CONSULTA_LEGENDA_1990_SP.txt",
+            "CONSULTA_LEGENDA_1990/CONSULTA_LEGENDA_1990_TO.txt"
+          ],
+          "rows": 1856
+        },
+        {
+          "source_url": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_vagas/consulta_vagas_1933_br.zip",
+          "source_sha256": "7010ba8b20918e59fb1918250eb64de25f1abc590316cc526858852ec61f6c79",
+          "table": "election_declared_seats",
+          "selectedMembers": [
+            "CONSULTA_VAGAS_1933_BR.txt"
+          ],
+          "rows": 22
+        },
+        {
+          "source_url": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_vagas/consulta_vagas_1934_br.zip",
+          "source_sha256": "5241a36ec33c1749fd26af7bcb72bda65e31c6ba92738c511e1aa14e441f009c",
+          "table": "election_declared_seats",
+          "selectedMembers": [
+            "CONSULTA_VAGAS_1934_BR.txt"
+          ],
+          "rows": 43
+        },
+        {
+          "source_url": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_vagas/consulta_vagas_1945.zip",
+          "source_sha256": "85496bb2ecd3ddd63d2ea9e7dfaebb874daa54fd4394d700e03d1320598ee5c1",
+          "table": "election_declared_seats",
+          "selectedMembers": [
+            "CONSULTA_VAGAS_1945/CONSULTA_VAGAS_1945.txt",
+            "CONSULTA_VAGAS_1945/CONSULTA_VAGAS_1945_AC.txt",
+            "CONSULTA_VAGAS_1945/CONSULTA_VAGAS_1945_AL.txt",
+            "CONSULTA_VAGAS_1945/CONSULTA_VAGAS_1945_AM.txt",
+            "CONSULTA_VAGAS_1945/CONSULTA_VAGAS_1945_BA.txt",
+            "CONSULTA_VAGAS_1945/CONSULTA_VAGAS_1945_CE.txt",
+            "CONSULTA_VAGAS_1945/CONSULTA_VAGAS_1945_DF.txt",
+            "CONSULTA_VAGAS_1945/CONSULTA_VAGAS_1945_ES.txt",
+            "CONSULTA_VAGAS_1945/CONSULTA_VAGAS_1945_GO.txt",
+            "CONSULTA_VAGAS_1945/CONSULTA_VAGAS_1945_MA.txt",
+            "CONSULTA_VAGAS_1945/CONSULTA_VAGAS_1945_MG.txt",
+            "CONSULTA_VAGAS_1945/CONSULTA_VAGAS_1945_MT.txt",
+            "CONSULTA_VAGAS_1945/CONSULTA_VAGAS_1945_PA.txt",
+            "CONSULTA_VAGAS_1945/CONSULTA_VAGAS_1945_PB.txt",
+            "CONSULTA_VAGAS_1945/CONSULTA_VAGAS_1945_PE.txt",
+            "CONSULTA_VAGAS_1945/CONSULTA_VAGAS_1945_PI.txt",
+            "CONSULTA_VAGAS_1945/CONSULTA_VAGAS_1945_PR.txt",
+            "CONSULTA_VAGAS_1945/CONSULTA_VAGAS_1945_RJ.txt",
+            "CONSULTA_VAGAS_1945/CONSULTA_VAGAS_1945_RN.txt",
+            "CONSULTA_VAGAS_1945/CONSULTA_VAGAS_1945_RS.txt",
+            "CONSULTA_VAGAS_1945/CONSULTA_VAGAS_1945_SC.txt",
+            "CONSULTA_VAGAS_1945/CONSULTA_VAGAS_1945_SE.txt",
+            "CONSULTA_VAGAS_1945/CONSULTA_VAGAS_1945_SP.txt"
+          ],
+          "rows": 44
+        },
+        {
+          "source_url": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_vagas/consulta_vagas_1947.zip",
+          "source_sha256": "dd69ae29b79274d61869c6bf1e692628ec33621b9daa07ede8b59f4549fed148",
+          "table": "election_declared_seats",
+          "selectedMembers": [
+            "CONSULTA_VAGAS_1947/CONSULTA_VAGAS_1947_AL.txt",
+            "CONSULTA_VAGAS_1947/CONSULTA_VAGAS_1947_AM.txt",
+            "CONSULTA_VAGAS_1947/CONSULTA_VAGAS_1947_AP.txt",
+            "CONSULTA_VAGAS_1947/CONSULTA_VAGAS_1947_BA.txt",
+            "CONSULTA_VAGAS_1947/CONSULTA_VAGAS_1947_CE.txt",
+            "CONSULTA_VAGAS_1947/CONSULTA_VAGAS_1947_DF.txt",
+            "CONSULTA_VAGAS_1947/CONSULTA_VAGAS_1947_ES.txt",
+            "CONSULTA_VAGAS_1947/CONSULTA_VAGAS_1947_GO.txt",
+            "CONSULTA_VAGAS_1947/CONSULTA_VAGAS_1947_GP.txt",
+            "CONSULTA_VAGAS_1947/CONSULTA_VAGAS_1947_MA.txt",
+            "CONSULTA_VAGAS_1947/CONSULTA_VAGAS_1947_MG.txt",
+            "CONSULTA_VAGAS_1947/CONSULTA_VAGAS_1947_MT.txt",
+            "CONSULTA_VAGAS_1947/CONSULTA_VAGAS_1947_PA.txt",
+            "CONSULTA_VAGAS_1947/CONSULTA_VAGAS_1947_PB.txt",
+            "CONSULTA_VAGAS_1947/CONSULTA_VAGAS_1947_PE.txt",
+            "CONSULTA_VAGAS_1947/CONSULTA_VAGAS_1947_PI.txt",
+            "CONSULTA_VAGAS_1947/CONSULTA_VAGAS_1947_PR.txt",
+            "CONSULTA_VAGAS_1947/CONSULTA_VAGAS_1947_RB.txt",
+            "CONSULTA_VAGAS_1947/CONSULTA_VAGAS_1947_RJ.txt",
+            "CONSULTA_VAGAS_1947/CONSULTA_VAGAS_1947_RN.txt",
+            "CONSULTA_VAGAS_1947/CONSULTA_VAGAS_1947_RS.txt",
+            "CONSULTA_VAGAS_1947/CONSULTA_VAGAS_1947_SC.txt",
+            "CONSULTA_VAGAS_1947/CONSULTA_VAGAS_1947_SE.txt",
+            "CONSULTA_VAGAS_1947/CONSULTA_VAGAS_1947_SP.txt"
+          ],
+          "rows": 115
+        },
+        {
+          "source_url": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_vagas/consulta_vagas_1950.zip",
+          "source_sha256": "406c984d0922dca0da4580d07a39a58c5aebcd716e7681d2820ff085be84f0a8",
+          "table": "election_declared_seats",
+          "selectedMembers": [
+            "CONSULTA_VAGAS_1950/CONSULTA_VAGAS_1950_AC.txt",
+            "CONSULTA_VAGAS_1950/CONSULTA_VAGAS_1950_AL.txt",
+            "CONSULTA_VAGAS_1950/CONSULTA_VAGAS_1950_AM.txt",
+            "CONSULTA_VAGAS_1950/CONSULTA_VAGAS_1950_AP.txt",
+            "CONSULTA_VAGAS_1950/CONSULTA_VAGAS_1950_BA.txt",
+            "CONSULTA_VAGAS_1950/CONSULTA_VAGAS_1950_CE.txt",
+            "CONSULTA_VAGAS_1950/CONSULTA_VAGAS_1950_DF.txt",
+            "CONSULTA_VAGAS_1950/CONSULTA_VAGAS_1950_ES.txt",
+            "CONSULTA_VAGAS_1950/CONSULTA_VAGAS_1950_GO.txt",
+            "CONSULTA_VAGAS_1950/CONSULTA_VAGAS_1950_GP.txt",
+            "CONSULTA_VAGAS_1950/CONSULTA_VAGAS_1950_MA.txt",
+            "CONSULTA_VAGAS_1950/CONSULTA_VAGAS_1950_MG.txt",
+            "CONSULTA_VAGAS_1950/CONSULTA_VAGAS_1950_MT.txt",
+            "CONSULTA_VAGAS_1950/CONSULTA_VAGAS_1950_PA.txt",
+            "CONSULTA_VAGAS_1950/CONSULTA_VAGAS_1950_PB.txt",
+            "CONSULTA_VAGAS_1950/CONSULTA_VAGAS_1950_PE.txt",
+            "CONSULTA_VAGAS_1950/CONSULTA_VAGAS_1950_PI.txt",
+            "CONSULTA_VAGAS_1950/CONSULTA_VAGAS_1950_PR.txt",
+            "CONSULTA_VAGAS_1950/CONSULTA_VAGAS_1950_RB.txt",
+            "CONSULTA_VAGAS_1950/CONSULTA_VAGAS_1950_RJ.txt",
+            "CONSULTA_VAGAS_1950/CONSULTA_VAGAS_1950_RN.txt",
+            "CONSULTA_VAGAS_1950/CONSULTA_VAGAS_1950_RS.txt",
+            "CONSULTA_VAGAS_1950/CONSULTA_VAGAS_1950_SC.txt",
+            "CONSULTA_VAGAS_1950/CONSULTA_VAGAS_1950_SE.txt",
+            "CONSULTA_VAGAS_1950/CONSULTA_VAGAS_1950_SP.txt"
+          ],
+          "rows": 120
+        },
+        {
+          "source_url": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_vagas/consulta_vagas_1954.zip",
+          "source_sha256": "fad142ebd361b31ba3ade04bcd3a3bfea7cecd14449500dc613c843a82c61293",
+          "table": "election_declared_seats",
+          "selectedMembers": [
+            "CONSULTA_VAGAS_1954/CONSULTA_VAGAS_1954_AC.txt",
+            "CONSULTA_VAGAS_1954/CONSULTA_VAGAS_1954_AL.txt",
+            "CONSULTA_VAGAS_1954/CONSULTA_VAGAS_1954_AM.txt",
+            "CONSULTA_VAGAS_1954/CONSULTA_VAGAS_1954_AP.txt",
+            "CONSULTA_VAGAS_1954/CONSULTA_VAGAS_1954_BA.txt",
+            "CONSULTA_VAGAS_1954/CONSULTA_VAGAS_1954_CE.txt",
+            "CONSULTA_VAGAS_1954/CONSULTA_VAGAS_1954_DF.txt",
+            "CONSULTA_VAGAS_1954/CONSULTA_VAGAS_1954_ES.txt",
+            "CONSULTA_VAGAS_1954/CONSULTA_VAGAS_1954_GO.txt",
+            "CONSULTA_VAGAS_1954/CONSULTA_VAGAS_1954_GP.txt",
+            "CONSULTA_VAGAS_1954/CONSULTA_VAGAS_1954_MA.txt",
+            "CONSULTA_VAGAS_1954/CONSULTA_VAGAS_1954_MG.txt",
+            "CONSULTA_VAGAS_1954/CONSULTA_VAGAS_1954_MT.txt",
+            "CONSULTA_VAGAS_1954/CONSULTA_VAGAS_1954_PA.txt",
+            "CONSULTA_VAGAS_1954/CONSULTA_VAGAS_1954_PB.txt",
+            "CONSULTA_VAGAS_1954/CONSULTA_VAGAS_1954_PE.txt",
+            "CONSULTA_VAGAS_1954/CONSULTA_VAGAS_1954_PI.txt",
+            "CONSULTA_VAGAS_1954/CONSULTA_VAGAS_1954_PR.txt",
+            "CONSULTA_VAGAS_1954/CONSULTA_VAGAS_1954_RB.txt",
+            "CONSULTA_VAGAS_1954/CONSULTA_VAGAS_1954_RJ.txt",
+            "CONSULTA_VAGAS_1954/CONSULTA_VAGAS_1954_RN.txt",
+            "CONSULTA_VAGAS_1954/CONSULTA_VAGAS_1954_RS.txt",
+            "CONSULTA_VAGAS_1954/CONSULTA_VAGAS_1954_SC.txt",
+            "CONSULTA_VAGAS_1954/CONSULTA_VAGAS_1954_SE.txt",
+            "CONSULTA_VAGAS_1954/CONSULTA_VAGAS_1954_SP.txt"
+          ],
+          "rows": 105
+        },
+        {
+          "source_url": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_vagas/consulta_vagas_1955.zip",
+          "source_sha256": "3a90db09199ccf8c63e6345d009f2cf84065f17ae7e170d7325c90adb7419d89",
+          "table": "election_declared_seats",
+          "selectedMembers": [
+            "CONSULTA_VAGAS_1955/CONSULTA_VAGAS_1955.txt"
+          ],
+          "rows": 18
+        },
+        {
+          "source_url": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_vagas/consulta_vagas_1958.zip",
+          "source_sha256": "3ee7cafc739fdc5e06348ecfe56fd18a5d146530a5da12409cb0a9f35a9a4eb3",
+          "table": "election_declared_seats",
+          "selectedMembers": [
+            "CONSULTA_VAGAS_1958/CONSULTA_VAGAS_1958_AC.txt",
+            "CONSULTA_VAGAS_1958/CONSULTA_VAGAS_1958_AL.txt",
+            "CONSULTA_VAGAS_1958/CONSULTA_VAGAS_1958_AM.txt",
+            "CONSULTA_VAGAS_1958/CONSULTA_VAGAS_1958_AP.txt",
+            "CONSULTA_VAGAS_1958/CONSULTA_VAGAS_1958_BA.txt",
+            "CONSULTA_VAGAS_1958/CONSULTA_VAGAS_1958_CE.txt",
+            "CONSULTA_VAGAS_1958/CONSULTA_VAGAS_1958_DF.txt",
+            "CONSULTA_VAGAS_1958/CONSULTA_VAGAS_1958_ES.txt",
+            "CONSULTA_VAGAS_1958/CONSULTA_VAGAS_1958_GO.txt",
+            "CONSULTA_VAGAS_1958/CONSULTA_VAGAS_1958_MA.txt",
+            "CONSULTA_VAGAS_1958/CONSULTA_VAGAS_1958_MG.txt",
+            "CONSULTA_VAGAS_1958/CONSULTA_VAGAS_1958_MT.txt",
+            "CONSULTA_VAGAS_1958/CONSULTA_VAGAS_1958_PA.txt",
+            "CONSULTA_VAGAS_1958/CONSULTA_VAGAS_1958_PB.txt",
+            "CONSULTA_VAGAS_1958/CONSULTA_VAGAS_1958_PE.txt",
+            "CONSULTA_VAGAS_1958/CONSULTA_VAGAS_1958_PI.txt",
+            "CONSULTA_VAGAS_1958/CONSULTA_VAGAS_1958_PR.txt",
+            "CONSULTA_VAGAS_1958/CONSULTA_VAGAS_1958_RB.txt",
+            "CONSULTA_VAGAS_1958/CONSULTA_VAGAS_1958_RJ.txt",
+            "CONSULTA_VAGAS_1958/CONSULTA_VAGAS_1958_RN.txt",
+            "CONSULTA_VAGAS_1958/CONSULTA_VAGAS_1958_RO.txt",
+            "CONSULTA_VAGAS_1958/CONSULTA_VAGAS_1958_RS.txt",
+            "CONSULTA_VAGAS_1958/CONSULTA_VAGAS_1958_SC.txt",
+            "CONSULTA_VAGAS_1958/CONSULTA_VAGAS_1958_SE.txt",
+            "CONSULTA_VAGAS_1958/CONSULTA_VAGAS_1958_SP.txt"
+          ],
+          "rows": 107
+        },
+        {
+          "source_url": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_vagas/consulta_vagas_1960.zip",
+          "source_sha256": "aa5ff6b807b47f7b4b417ea3423426485814eafa8cd00104979b341c53863d09",
+          "table": "election_declared_seats",
+          "selectedMembers": [
+            "CONSULTA_VAGAS_1960/CONSULTA_VAGAS_1960.txt"
+          ],
+          "rows": 24
+        },
+        {
+          "source_url": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_vagas/consulta_vagas_1962.zip",
+          "source_sha256": "1fed2217c75bd8aabfd5886c12fc516cfb6afc358bb29501089ce77dc0cb7153",
+          "table": "election_declared_seats",
+          "selectedMembers": [
+            "CONSULTA_VAGAS_1962/CONSULTA_VAGAS_1962_AC.txt",
+            "CONSULTA_VAGAS_1962/CONSULTA_VAGAS_1962_AL.txt",
+            "CONSULTA_VAGAS_1962/CONSULTA_VAGAS_1962_AM.txt",
+            "CONSULTA_VAGAS_1962/CONSULTA_VAGAS_1962_AP.txt",
+            "CONSULTA_VAGAS_1962/CONSULTA_VAGAS_1962_BA.txt",
+            "CONSULTA_VAGAS_1962/CONSULTA_VAGAS_1962_CE.txt",
+            "CONSULTA_VAGAS_1962/CONSULTA_VAGAS_1962_ES.txt",
+            "CONSULTA_VAGAS_1962/CONSULTA_VAGAS_1962_GB.txt",
+            "CONSULTA_VAGAS_1962/CONSULTA_VAGAS_1962_GO.txt",
+            "CONSULTA_VAGAS_1962/CONSULTA_VAGAS_1962_MA.txt",
+            "CONSULTA_VAGAS_1962/CONSULTA_VAGAS_1962_MG.txt",
+            "CONSULTA_VAGAS_1962/CONSULTA_VAGAS_1962_MT.txt",
+            "CONSULTA_VAGAS_1962/CONSULTA_VAGAS_1962_PA.txt",
+            "CONSULTA_VAGAS_1962/CONSULTA_VAGAS_1962_PB.txt",
+            "CONSULTA_VAGAS_1962/CONSULTA_VAGAS_1962_PE.txt",
+            "CONSULTA_VAGAS_1962/CONSULTA_VAGAS_1962_PI.txt",
+            "CONSULTA_VAGAS_1962/CONSULTA_VAGAS_1962_PR.txt",
+            "CONSULTA_VAGAS_1962/CONSULTA_VAGAS_1962_RB.txt",
+            "CONSULTA_VAGAS_1962/CONSULTA_VAGAS_1962_RJ.txt",
+            "CONSULTA_VAGAS_1962/CONSULTA_VAGAS_1962_RN.txt",
+            "CONSULTA_VAGAS_1962/CONSULTA_VAGAS_1962_RO.txt",
+            "CONSULTA_VAGAS_1962/CONSULTA_VAGAS_1962_RS.txt",
+            "CONSULTA_VAGAS_1962/CONSULTA_VAGAS_1962_SC.txt",
+            "CONSULTA_VAGAS_1962/CONSULTA_VAGAS_1962_SE.txt",
+            "CONSULTA_VAGAS_1962/CONSULTA_VAGAS_1962_SP.txt"
+          ],
+          "rows": 89
+        },
+        {
+          "source_url": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_vagas/consulta_vagas_1965.zip",
+          "source_sha256": "9c9efb3a5bf79a24079545010e13004e39f64cfe847b972a3442e83f6cd3a761",
+          "table": "election_declared_seats",
+          "selectedMembers": [
+            "CONSULTA_VAGAS_1965/CONSULTA_VAGAS_1965.txt"
+          ],
+          "rows": 11
+        },
+        {
+          "source_url": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_vagas/consulta_vagas_1966.zip",
+          "source_sha256": "62b5283d549f3774449221d2da7b9e7ce0f350cab579a633599ce79792c70c62",
+          "table": "election_declared_seats",
+          "selectedMembers": [
+            "CONSULTA_VAGAS_1966/CONSULTA_VAGAS_1966_AC.txt",
+            "CONSULTA_VAGAS_1966/CONSULTA_VAGAS_1966_AL.txt",
+            "CONSULTA_VAGAS_1966/CONSULTA_VAGAS_1966_AM.txt",
+            "CONSULTA_VAGAS_1966/CONSULTA_VAGAS_1966_AP.txt",
+            "CONSULTA_VAGAS_1966/CONSULTA_VAGAS_1966_BA.txt",
+            "CONSULTA_VAGAS_1966/CONSULTA_VAGAS_1966_CE.txt",
+            "CONSULTA_VAGAS_1966/CONSULTA_VAGAS_1966_ES.txt",
+            "CONSULTA_VAGAS_1966/CONSULTA_VAGAS_1966_GB.txt",
+            "CONSULTA_VAGAS_1966/CONSULTA_VAGAS_1966_GO.txt",
+            "CONSULTA_VAGAS_1966/CONSULTA_VAGAS_1966_MA.txt",
+            "CONSULTA_VAGAS_1966/CONSULTA_VAGAS_1966_MG.txt",
+            "CONSULTA_VAGAS_1966/CONSULTA_VAGAS_1966_MT.txt",
+            "CONSULTA_VAGAS_1966/CONSULTA_VAGAS_1966_PA.txt",
+            "CONSULTA_VAGAS_1966/CONSULTA_VAGAS_1966_PB.txt",
+            "CONSULTA_VAGAS_1966/CONSULTA_VAGAS_1966_PE.txt",
+            "CONSULTA_VAGAS_1966/CONSULTA_VAGAS_1966_PI.txt",
+            "CONSULTA_VAGAS_1966/CONSULTA_VAGAS_1966_PR.txt",
+            "CONSULTA_VAGAS_1966/CONSULTA_VAGAS_1966_RJ.txt",
+            "CONSULTA_VAGAS_1966/CONSULTA_VAGAS_1966_RN.txt",
+            "CONSULTA_VAGAS_1966/CONSULTA_VAGAS_1966_RO.txt",
+            "CONSULTA_VAGAS_1966/CONSULTA_VAGAS_1966_RR.txt",
+            "CONSULTA_VAGAS_1966/CONSULTA_VAGAS_1966_RS.txt",
+            "CONSULTA_VAGAS_1966/CONSULTA_VAGAS_1966_SC.txt",
+            "CONSULTA_VAGAS_1966/CONSULTA_VAGAS_1966_SE.txt",
+            "CONSULTA_VAGAS_1966/CONSULTA_VAGAS_1966_SP.txt"
+          ],
+          "rows": 70
+        },
+        {
+          "source_url": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_vagas/consulta_vagas_1970.zip",
+          "source_sha256": "182f8d6879248ed8989702371de134da0b45aa9c266e0392c75fe9e59bf4bc90",
+          "table": "election_declared_seats",
+          "selectedMembers": [
+            "CONSULTA_VAGAS_1970/CONSULTA_VAGAS_1970_AC.txt",
+            "CONSULTA_VAGAS_1970/CONSULTA_VAGAS_1970_AL.txt",
+            "CONSULTA_VAGAS_1970/CONSULTA_VAGAS_1970_AM.txt",
+            "CONSULTA_VAGAS_1970/CONSULTA_VAGAS_1970_AP.txt",
+            "CONSULTA_VAGAS_1970/CONSULTA_VAGAS_1970_BA.txt",
+            "CONSULTA_VAGAS_1970/CONSULTA_VAGAS_1970_CE.txt",
+            "CONSULTA_VAGAS_1970/CONSULTA_VAGAS_1970_ES.txt",
+            "CONSULTA_VAGAS_1970/CONSULTA_VAGAS_1970_GB.txt",
+            "CONSULTA_VAGAS_1970/CONSULTA_VAGAS_1970_GO.txt",
+            "CONSULTA_VAGAS_1970/CONSULTA_VAGAS_1970_MA.txt",
+            "CONSULTA_VAGAS_1970/CONSULTA_VAGAS_1970_MG.txt",
+            "CONSULTA_VAGAS_1970/CONSULTA_VAGAS_1970_MT.txt",
+            "CONSULTA_VAGAS_1970/CONSULTA_VAGAS_1970_PA.txt",
+            "CONSULTA_VAGAS_1970/CONSULTA_VAGAS_1970_PB.txt",
+            "CONSULTA_VAGAS_1970/CONSULTA_VAGAS_1970_PE.txt",
+            "CONSULTA_VAGAS_1970/CONSULTA_VAGAS_1970_PI.txt",
+            "CONSULTA_VAGAS_1970/CONSULTA_VAGAS_1970_PR.txt",
+            "CONSULTA_VAGAS_1970/CONSULTA_VAGAS_1970_RJ.txt",
+            "CONSULTA_VAGAS_1970/CONSULTA_VAGAS_1970_RN.txt",
+            "CONSULTA_VAGAS_1970/CONSULTA_VAGAS_1970_RO.txt",
+            "CONSULTA_VAGAS_1970/CONSULTA_VAGAS_1970_RR.txt",
+            "CONSULTA_VAGAS_1970/CONSULTA_VAGAS_1970_RS.txt",
+            "CONSULTA_VAGAS_1970/CONSULTA_VAGAS_1970_SC.txt",
+            "CONSULTA_VAGAS_1970/CONSULTA_VAGAS_1970_SE.txt",
+            "CONSULTA_VAGAS_1970/CONSULTA_VAGAS_1970_SP.txt"
+          ],
+          "rows": 69
+        },
+        {
+          "source_url": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_vagas/consulta_vagas_1974.zip",
+          "source_sha256": "384fd776f5fd39e8d88853d1ea65d259de510deb0743317bbcf28e87a3f66408",
+          "table": "election_declared_seats",
+          "selectedMembers": [
+            "CONSULTA_VAGAS_1974/CONSULTA_VAGAS_1974_AC.txt",
+            "CONSULTA_VAGAS_1974/CONSULTA_VAGAS_1974_AL.txt",
+            "CONSULTA_VAGAS_1974/CONSULTA_VAGAS_1974_AM.txt",
+            "CONSULTA_VAGAS_1974/CONSULTA_VAGAS_1974_AP.txt",
+            "CONSULTA_VAGAS_1974/CONSULTA_VAGAS_1974_BA.txt",
+            "CONSULTA_VAGAS_1974/CONSULTA_VAGAS_1974_CE.txt",
+            "CONSULTA_VAGAS_1974/CONSULTA_VAGAS_1974_ES.txt",
+            "CONSULTA_VAGAS_1974/CONSULTA_VAGAS_1974_GB.txt",
+            "CONSULTA_VAGAS_1974/CONSULTA_VAGAS_1974_GO.txt",
+            "CONSULTA_VAGAS_1974/CONSULTA_VAGAS_1974_MA.txt",
+            "CONSULTA_VAGAS_1974/CONSULTA_VAGAS_1974_MG.txt",
+            "CONSULTA_VAGAS_1974/CONSULTA_VAGAS_1974_MT.txt",
+            "CONSULTA_VAGAS_1974/CONSULTA_VAGAS_1974_PA.txt",
+            "CONSULTA_VAGAS_1974/CONSULTA_VAGAS_1974_PB.txt",
+            "CONSULTA_VAGAS_1974/CONSULTA_VAGAS_1974_PE.txt",
+            "CONSULTA_VAGAS_1974/CONSULTA_VAGAS_1974_PI.txt",
+            "CONSULTA_VAGAS_1974/CONSULTA_VAGAS_1974_PR.txt",
+            "CONSULTA_VAGAS_1974/CONSULTA_VAGAS_1974_RJ.txt",
+            "CONSULTA_VAGAS_1974/CONSULTA_VAGAS_1974_RN.txt",
+            "CONSULTA_VAGAS_1974/CONSULTA_VAGAS_1974_RO.txt",
+            "CONSULTA_VAGAS_1974/CONSULTA_VAGAS_1974_RR.txt",
+            "CONSULTA_VAGAS_1974/CONSULTA_VAGAS_1974_RS.txt",
+            "CONSULTA_VAGAS_1974/CONSULTA_VAGAS_1974_SC.txt",
+            "CONSULTA_VAGAS_1974/CONSULTA_VAGAS_1974_SE.txt",
+            "CONSULTA_VAGAS_1974/CONSULTA_VAGAS_1974_SP.txt"
+          ],
+          "rows": 69
+        },
+        {
+          "source_url": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_vagas/consulta_vagas_1978.zip",
+          "source_sha256": "876c05351660588ecc9f6f3931f364e3017e5b4e384966aa555e9e71a3e36d1d",
+          "table": "election_declared_seats",
+          "selectedMembers": [
+            "CONSULTA_VAGAS_1978/CONSULTA_VAGAS_1978_AC.txt",
+            "CONSULTA_VAGAS_1978/CONSULTA_VAGAS_1978_AL.txt",
+            "CONSULTA_VAGAS_1978/CONSULTA_VAGAS_1978_AM.txt",
+            "CONSULTA_VAGAS_1978/CONSULTA_VAGAS_1978_AP.txt",
+            "CONSULTA_VAGAS_1978/CONSULTA_VAGAS_1978_BA.txt",
+            "CONSULTA_VAGAS_1978/CONSULTA_VAGAS_1978_CE.txt",
+            "CONSULTA_VAGAS_1978/CONSULTA_VAGAS_1978_ES.txt",
+            "CONSULTA_VAGAS_1978/CONSULTA_VAGAS_1978_GO.txt",
+            "CONSULTA_VAGAS_1978/CONSULTA_VAGAS_1978_MA.txt",
+            "CONSULTA_VAGAS_1978/CONSULTA_VAGAS_1978_MG.txt",
+            "CONSULTA_VAGAS_1978/CONSULTA_VAGAS_1978_MS.txt",
+            "CONSULTA_VAGAS_1978/CONSULTA_VAGAS_1978_MT.txt",
+            "CONSULTA_VAGAS_1978/CONSULTA_VAGAS_1978_PA.txt",
+            "CONSULTA_VAGAS_1978/CONSULTA_VAGAS_1978_PB.txt",
+            "CONSULTA_VAGAS_1978/CONSULTA_VAGAS_1978_PE.txt",
+            "CONSULTA_VAGAS_1978/CONSULTA_VAGAS_1978_PI.txt",
+            "CONSULTA_VAGAS_1978/CONSULTA_VAGAS_1978_PR.txt",
+            "CONSULTA_VAGAS_1978/CONSULTA_VAGAS_1978_RJ.txt",
+            "CONSULTA_VAGAS_1978/CONSULTA_VAGAS_1978_RN.txt",
+            "CONSULTA_VAGAS_1978/CONSULTA_VAGAS_1978_RO.txt",
+            "CONSULTA_VAGAS_1978/CONSULTA_VAGAS_1978_RR.txt",
+            "CONSULTA_VAGAS_1978/CONSULTA_VAGAS_1978_RS.txt",
+            "CONSULTA_VAGAS_1978/CONSULTA_VAGAS_1978_SC.txt",
+            "CONSULTA_VAGAS_1978/CONSULTA_VAGAS_1978_SE.txt",
+            "CONSULTA_VAGAS_1978/CONSULTA_VAGAS_1978_SP.txt"
+          ],
+          "rows": 70
+        },
+        {
+          "source_url": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_vagas/consulta_vagas_1982.zip",
+          "source_sha256": "906c6bef8ff95c6b2dded361d8687cad6ea23586901d59ab9d47412e2591dbb8",
+          "table": "election_declared_seats",
+          "selectedMembers": [
+            "CONSULTA_VAGAS_1982/CONSULTA_VAGAS_1982_AC.txt",
+            "CONSULTA_VAGAS_1982/CONSULTA_VAGAS_1982_AL.txt",
+            "CONSULTA_VAGAS_1982/CONSULTA_VAGAS_1982_AM.txt",
+            "CONSULTA_VAGAS_1982/CONSULTA_VAGAS_1982_AP.txt",
+            "CONSULTA_VAGAS_1982/CONSULTA_VAGAS_1982_BA.txt",
+            "CONSULTA_VAGAS_1982/CONSULTA_VAGAS_1982_CE.txt",
+            "CONSULTA_VAGAS_1982/CONSULTA_VAGAS_1982_ES.txt",
+            "CONSULTA_VAGAS_1982/CONSULTA_VAGAS_1982_GO.txt",
+            "CONSULTA_VAGAS_1982/CONSULTA_VAGAS_1982_MA.txt",
+            "CONSULTA_VAGAS_1982/CONSULTA_VAGAS_1982_MG.txt",
+            "CONSULTA_VAGAS_1982/CONSULTA_VAGAS_1982_MS.txt",
+            "CONSULTA_VAGAS_1982/CONSULTA_VAGAS_1982_MT.txt",
+            "CONSULTA_VAGAS_1982/CONSULTA_VAGAS_1982_PA.txt",
+            "CONSULTA_VAGAS_1982/CONSULTA_VAGAS_1982_PB.txt",
+            "CONSULTA_VAGAS_1982/CONSULTA_VAGAS_1982_PE.txt",
+            "CONSULTA_VAGAS_1982/CONSULTA_VAGAS_1982_PI.txt",
+            "CONSULTA_VAGAS_1982/CONSULTA_VAGAS_1982_PR.txt",
+            "CONSULTA_VAGAS_1982/CONSULTA_VAGAS_1982_RJ.txt",
+            "CONSULTA_VAGAS_1982/CONSULTA_VAGAS_1982_RN.txt",
+            "CONSULTA_VAGAS_1982/CONSULTA_VAGAS_1982_RO.txt",
+            "CONSULTA_VAGAS_1982/CONSULTA_VAGAS_1982_RR.txt",
+            "CONSULTA_VAGAS_1982/CONSULTA_VAGAS_1982_RS.txt",
+            "CONSULTA_VAGAS_1982/CONSULTA_VAGAS_1982_SC.txt",
+            "CONSULTA_VAGAS_1982/CONSULTA_VAGAS_1982_SE.txt",
+            "CONSULTA_VAGAS_1982/CONSULTA_VAGAS_1982_SP.txt"
+          ],
+          "rows": 93
+        },
+        {
+          "source_url": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_vagas/consulta_vagas_1986.zip",
+          "source_sha256": "0dce705ab841a6489145b0e5575f115a8f152fe4e98fdf45e717dc99abb6678d",
+          "table": "election_declared_seats",
+          "selectedMembers": [
+            "CONSULTA_VAGAS_1986/CONSULTA_VAGAS_1986_AC.txt",
+            "CONSULTA_VAGAS_1986/CONSULTA_VAGAS_1986_AL.txt",
+            "CONSULTA_VAGAS_1986/CONSULTA_VAGAS_1986_AM.txt",
+            "CONSULTA_VAGAS_1986/CONSULTA_VAGAS_1986_AP.txt",
+            "CONSULTA_VAGAS_1986/CONSULTA_VAGAS_1986_BA.txt",
+            "CONSULTA_VAGAS_1986/CONSULTA_VAGAS_1986_CE.txt",
+            "CONSULTA_VAGAS_1986/CONSULTA_VAGAS_1986_DF.txt",
+            "CONSULTA_VAGAS_1986/CONSULTA_VAGAS_1986_ES.txt",
+            "CONSULTA_VAGAS_1986/CONSULTA_VAGAS_1986_GO.txt",
+            "CONSULTA_VAGAS_1986/CONSULTA_VAGAS_1986_MA.txt",
+            "CONSULTA_VAGAS_1986/CONSULTA_VAGAS_1986_MG.txt",
+            "CONSULTA_VAGAS_1986/CONSULTA_VAGAS_1986_MS.txt",
+            "CONSULTA_VAGAS_1986/CONSULTA_VAGAS_1986_MT.txt",
+            "CONSULTA_VAGAS_1986/CONSULTA_VAGAS_1986_PA.txt",
+            "CONSULTA_VAGAS_1986/CONSULTA_VAGAS_1986_PB.txt",
+            "CONSULTA_VAGAS_1986/CONSULTA_VAGAS_1986_PE.txt",
+            "CONSULTA_VAGAS_1986/CONSULTA_VAGAS_1986_PI.txt",
+            "CONSULTA_VAGAS_1986/CONSULTA_VAGAS_1986_PR.txt",
+            "CONSULTA_VAGAS_1986/CONSULTA_VAGAS_1986_RJ.txt",
+            "CONSULTA_VAGAS_1986/CONSULTA_VAGAS_1986_RN.txt",
+            "CONSULTA_VAGAS_1986/CONSULTA_VAGAS_1986_RO.txt",
+            "CONSULTA_VAGAS_1986/CONSULTA_VAGAS_1986_RR.txt",
+            "CONSULTA_VAGAS_1986/CONSULTA_VAGAS_1986_RS.txt",
+            "CONSULTA_VAGAS_1986/CONSULTA_VAGAS_1986_SC.txt",
+            "CONSULTA_VAGAS_1986/CONSULTA_VAGAS_1986_SE.txt",
+            "CONSULTA_VAGAS_1986/CONSULTA_VAGAS_1986_SP.txt"
+          ],
+          "rows": 96
+        },
+        {
+          "source_url": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_vagas/consulta_vagas_1990.zip",
+          "source_sha256": "a33fb423146d1e71a11bcee07ea1940a22113cc735a10a9b64439ad7959d69c6",
+          "table": "election_declared_seats",
+          "selectedMembers": [
+            "CONSULTA_VAGAS_1990/CONSULTA_VAGAS_1990_AC.txt",
+            "CONSULTA_VAGAS_1990/CONSULTA_VAGAS_1990_AL.txt",
+            "CONSULTA_VAGAS_1990/CONSULTA_VAGAS_1990_AM.txt",
+            "CONSULTA_VAGAS_1990/CONSULTA_VAGAS_1990_AP.txt",
+            "CONSULTA_VAGAS_1990/CONSULTA_VAGAS_1990_BA.txt",
+            "CONSULTA_VAGAS_1990/CONSULTA_VAGAS_1990_CE.txt",
+            "CONSULTA_VAGAS_1990/CONSULTA_VAGAS_1990_DF.txt",
+            "CONSULTA_VAGAS_1990/CONSULTA_VAGAS_1990_ES.txt",
+            "CONSULTA_VAGAS_1990/CONSULTA_VAGAS_1990_GO.txt",
+            "CONSULTA_VAGAS_1990/CONSULTA_VAGAS_1990_MA.txt",
+            "CONSULTA_VAGAS_1990/CONSULTA_VAGAS_1990_MG.txt",
+            "CONSULTA_VAGAS_1990/CONSULTA_VAGAS_1990_MS.txt",
+            "CONSULTA_VAGAS_1990/CONSULTA_VAGAS_1990_MT.txt",
+            "CONSULTA_VAGAS_1990/CONSULTA_VAGAS_1990_PA.txt",
+            "CONSULTA_VAGAS_1990/CONSULTA_VAGAS_1990_PB.txt",
+            "CONSULTA_VAGAS_1990/CONSULTA_VAGAS_1990_PE.txt",
+            "CONSULTA_VAGAS_1990/CONSULTA_VAGAS_1990_PI.txt",
+            "CONSULTA_VAGAS_1990/CONSULTA_VAGAS_1990_PR.txt",
+            "CONSULTA_VAGAS_1990/CONSULTA_VAGAS_1990_RJ.txt",
+            "CONSULTA_VAGAS_1990/CONSULTA_VAGAS_1990_RN.txt",
+            "CONSULTA_VAGAS_1990/CONSULTA_VAGAS_1990_RO.txt",
+            "CONSULTA_VAGAS_1990/CONSULTA_VAGAS_1990_RR.txt",
+            "CONSULTA_VAGAS_1990/CONSULTA_VAGAS_1990_RS.txt",
+            "CONSULTA_VAGAS_1990/CONSULTA_VAGAS_1990_SC.txt",
+            "CONSULTA_VAGAS_1990/CONSULTA_VAGAS_1990_SE.txt",
+            "CONSULTA_VAGAS_1990/CONSULTA_VAGAS_1990_SP.txt",
+            "CONSULTA_VAGAS_1990/CONSULTA_VAGAS_1990_TO.txt"
+          ],
+          "rows": 108
+        },
+        {
+          "source_url": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_vagas/consulta_vagas_1994.zip",
+          "source_sha256": "c5ee63907e472b34c47c22d697655771ae3a0254a96004c48adcf8c809bcb496",
+          "table": "election_declared_seats",
+          "selectedMembers": [
+            "consulta_vagas_1994_BRASIL.csv"
+          ],
+          "rows": 137
+        },
+        {
+          "source_url": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_vagas/consulta_vagas_1996.zip",
+          "source_sha256": "0fe58932519d5f0480baa85ab23f82345f14f8f31a8d10a4b2c26662e3f147fe",
+          "table": "election_declared_seats",
+          "selectedMembers": [
+            "consulta_vagas_1996_BRASIL.csv"
+          ],
+          "rows": 16223
+        },
+        {
+          "source_url": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_vagas/consulta_vagas_1998.zip",
+          "source_sha256": "121e222d7951fa84d5fb12703817e825aebe05cdb9641cc98c723c8efc1d59be",
+          "table": "election_declared_seats",
+          "selectedMembers": [
+            "consulta_vagas_1998_BRASIL.csv"
+          ],
+          "rows": 217
+        },
+        {
+          "source_url": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_vagas/consulta_vagas_2000.zip",
+          "source_sha256": "57a60c1ab51fa2ffae4d4351706d6a2a782a73c28991912f0f51491944fa9dde",
+          "table": "election_declared_seats",
+          "selectedMembers": [
+            "consulta_vagas_2000_BRASIL.csv"
+          ],
+          "rows": 16677
+        },
+        {
+          "source_url": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_vagas/consulta_vagas_2002.zip",
+          "source_sha256": "2dd933fe45ac084b0e355a554c4f9bd500141412e1ab5f16098aa673f8f6ddef",
+          "table": "election_declared_seats",
+          "selectedMembers": [
+            "consulta_vagas_2002_BRASIL.csv"
+          ],
+          "rows": 191
+        },
+        {
+          "source_url": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_vagas/consulta_vagas_2004.zip",
+          "source_sha256": "be1561a03ed44b98dcd25233531988c20096fd2f326aa692360d0b24be26673c",
+          "table": "election_declared_seats",
+          "selectedMembers": [
+            "consulta_vagas_2004_BRASIL.csv"
+          ],
+          "rows": 16819
+        },
+        {
+          "source_url": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_vagas/consulta_vagas_2006.zip",
+          "source_sha256": "c27bbbfe2a650a1a26dc8fc23db0cc5489633a9b08ea6e80f7505defc4bbd617",
+          "table": "election_declared_seats",
+          "selectedMembers": [
+            "consulta_vagas_2006_BRASIL.csv"
+          ],
+          "rows": 191
+        },
+        {
+          "source_url": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_vagas/consulta_vagas_2008.zip",
+          "source_sha256": "4e5f07e7c51b97a9a8b7ea8ad69d346b1ca72a5581d9dba0d5afa2c3c4b1c2ae",
+          "table": "election_declared_seats",
+          "selectedMembers": [
+            "consulta_vagas_2008_BRASIL.csv"
+          ],
+          "rows": 17033
+        },
+        {
+          "source_url": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_vagas/consulta_vagas_2010.zip",
+          "source_sha256": "5a848da659bc8994a18baf23cf5bc22d08077249e1d95c678f4f922030553728",
+          "table": "election_declared_seats",
+          "selectedMembers": [
+            "consulta_vagas_2010_BRASIL.csv"
+          ],
+          "rows": 191
+        },
+        {
+          "source_url": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_vagas/consulta_vagas_2012.zip",
+          "source_sha256": "7c15f825eb2c22925d2dd517078a37f2b0396bbb1f29207f7a1033a61958d25a",
+          "table": "election_declared_seats",
+          "selectedMembers": [
+            "consulta_vagas_2012_BRASIL.csv"
+          ],
+          "rows": 16926
+        },
+        {
+          "source_url": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_vagas/consulta_vagas_2014.zip",
+          "source_sha256": "8e85d4c434a5bf91cb709eebd8d289aa148d9f3c892823c3cc5fd82e5ce297fc",
+          "table": "election_declared_seats",
+          "selectedMembers": [
+            "consulta_vagas_2014_BRASIL.csv"
+          ],
+          "rows": 195
+        },
+        {
+          "source_url": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_vagas/consulta_vagas_2016.zip",
+          "source_sha256": "3a1e87f6cf9555f5fa839dc5ced51d6bc1e9d506143f7716bffbb4860427f4a8",
+          "table": "election_declared_seats",
+          "selectedMembers": [
+            "consulta_vagas_2016_BRASIL.csv"
+          ],
+          "rows": 17082
+        },
+        {
+          "source_url": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_vagas/consulta_vagas_2018.zip",
+          "source_sha256": "7be54859d792416bd4a40947299fccc1897ad25c7488e39739bf2d01774becd0",
+          "table": "election_declared_seats",
+          "selectedMembers": [
+            "consulta_vagas_2018_BRASIL.csv"
+          ],
+          "rows": 197
+        },
+        {
+          "source_url": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_vagas/consulta_vagas_2020.zip",
+          "source_sha256": "f8bc94df86c8d40a16ac79b016ba6b132c2ca3fa144f379f9212e89047b4882b",
+          "table": "election_declared_seats",
+          "selectedMembers": [
+            "consulta_vagas_2020_BRASIL.csv"
+          ],
+          "rows": 16955
+        },
+        {
+          "source_url": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_vagas/consulta_vagas_2022.zip",
+          "source_sha256": "fb8ee3186f28abbc6512d676d21e1cba0df853461558efa289d274886e8eceeb",
+          "table": "election_declared_seats",
+          "selectedMembers": [
+            "consulta_vagas_2022_BRASIL.csv"
+          ],
+          "rows": 193
+        },
+        {
+          "source_url": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_vagas/consulta_vagas_2024.zip",
+          "source_sha256": "bf285cb85fe18754d4f420eac6bd280f0afa52867c04c9ba249e1885ec2fa925",
+          "table": "election_declared_seats",
+          "selectedMembers": [
+            "consulta_vagas_2024_BRASIL.csv"
+          ],
+          "rows": 16803
+        },
+        {
+          "source_url": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_vagas/consulta_vagas_2026.zip",
+          "source_sha256": "9d41be346c219855ad82765019bd4801cc1d30fc259a96afc6942e92941875d6",
+          "table": "election_declared_seats",
+          "selectedMembers": [
+            "consulta_vagas_2026_BRASIL.csv"
+          ],
+          "rows": 191
+        }
+      ],
+      "assets": [
+        {
+          "name": "nominations-0000.zip",
+          "bytes": 150108921,
+          "sha256": "6b271f88855944e3e3da710e12c82a18bd85f46dd36d2635c13b538fcf2818bd"
+        },
+        {
+          "name": "index.json",
+          "bytes": 2331046,
+          "sha256": "1f6bcd55a5c89d3cfc589659a5ec384192f293b8fce8e46d95ec7d9db3e58c35"
+        }
+      ]
+    }
+  ]
+}
