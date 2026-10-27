@@ -1414,3 +1414,61 @@ electionAnalysis:
   second: Segundo dígito
   firstTwo: Dois primeiros dígitos
   noSimulation: Comparação descritiva com a distribuição teórica. Não há simulação eleitoral para este recorte; desvios não demonstram fraude.
+
+profiles:
+  title: Perfil do eleitorado e da participação
+  snapshot: 'Estas são células demográficas agregadas da fonte selecionada. O perfil do eleitorado é uma fotografia cadastral; não identifica votos individuais nem vincula automaticamente eleições suplementares.'
+  differentYear: 'A fonte exibida é de {year}; o contexto selecionado é de {context}.'
+  source: Coleção oficial
+  year: Ano informado pela fonte
+  turn: Turno da fonte
+  snapshotTurn: Fotografia cadastral, sem turno
+  axis: Agrupar por
+  metric: Indicador
+  category: Categoria
+  knownValue: Soma das células conhecidas
+  knownCells: Células com valor
+  cells: Total de células
+  unknown: Não informado pela fonte
+  loadDetail: Carregar municípios e zonas desta UF
+  allCities: Todos os municípios desta UF
+  allZones: Todas as zonas do recorte
+  filters: Filtros demográficos
+  choose: Selecione uma categoria
+  addFilter: Aplicar filtro
+  breakdown: Distribuição observada
+  partial: Há valores ausentes neste recorte. A soma parcial é apresentada separadamente e não substitui o total desconhecido.
+  grain: 'Nível carregado: {level}. Resumos estaduais e detalhes não são somados entre si.'
+  original: Fonte oficial original
+  axes:
+    gender: Gênero
+    marital_status: Estado civil
+    age: Faixa etária
+    education: Escolaridade
+    race: Cor ou raça
+    gender_identity: Identidade de gênero
+    quilombola: Quilombola
+    libras: Intérprete de Libras
+    indigenous_language: Idioma indígena
+    indigenous_group: Grupo indígena
+    quilombola_language: Idioma quilombola
+    biometric_status: Situação biométrica
+  metrics:
+    eligible: Eleitorado
+    present: Comparecimento
+    absent: Abstenção
+    biometric: Eleitorado com biometria
+    disability: Eleitorado com deficiência
+    social_name: Eleitorado com nome social
+    present_disability: Comparecimento de pessoas com deficiência
+    absent_disability: Abstenção de pessoas com deficiência
+    present_transfer: Comparecimento em transferência temporária
+    absent_transfer: Abstenção em transferência temporária
+    present_optional: Comparecimento com voto facultativo
+    absent_optional: Abstenção com voto facultativo
+    present_mandatory: Comparecimento com voto obrigatório
+    absent_mandatory: Abstenção com voto obrigatório
+    present_disability_optional: Comparecimento com deficiência e voto facultativo
+    absent_disability_optional: Abstenção com deficiência e voto facultativo
+    present_disability_mandatory: Comparecimento com deficiência e voto obrigatório
+    absent_disability_mandatory: Abstenção com deficiência e voto obrigatório

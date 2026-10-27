@@ -1413,3 +1413,61 @@ electionAnalysis:
   second: Second digit
   firstTwo: First two digits
   noSimulation: Descriptive comparison with the theoretical distribution. No electoral simulation is available for this selection; deviations do not demonstrate fraud.
+
+profiles:
+  title: Electorate and participation profiles
+  snapshot: 'These are aggregate demographic cells from the selected source. Electorate profiles are registration snapshots; they do not identify individual votes or automatically describe supplementary elections.'
+  differentYear: 'The displayed source reports {year}; the selected election context is {context}.'
+  source: Official collection
+  year: Source year
+  turn: Source round
+  snapshotTurn: Registration snapshot, no round
+  axis: Group by
+  metric: Indicator
+  category: Category
+  knownValue: Sum of known cells
+  knownCells: Cells with values
+  cells: Total cells
+  unknown: Not reported by the source
+  loadDetail: Load municipalities and zones for this state
+  allCities: All municipalities in this state
+  allZones: All zones in this selection
+  filters: Demographic filters
+  choose: Select a category
+  addFilter: Apply filter
+  breakdown: Observed distribution
+  partial: Some values are missing. Partial sums are shown separately and do not replace unknown totals.
+  grain: 'Loaded level: {level}. State summaries and detailed cells are never added together.'
+  original: Original official source
+  axes:
+    gender: Gender
+    marital_status: Marital status
+    age: Age group
+    education: Education
+    race: Race or color
+    gender_identity: Gender identity
+    quilombola: Quilombola status
+    libras: Brazilian Sign Language interpreter
+    indigenous_language: Indigenous language
+    indigenous_group: Indigenous group
+    quilombola_language: Quilombola language
+    biometric_status: Biometric registration
+  metrics:
+    eligible: Electorate
+    present: Attendance
+    absent: Abstention
+    biometric: Biometric registrations
+    disability: Voters with disabilities
+    social_name: Voters with a social name
+    present_disability: Attendance of voters with disabilities
+    absent_disability: Abstention of voters with disabilities
+    present_transfer: Attendance under temporary transfer
+    absent_transfer: Abstention under temporary transfer
+    present_optional: Attendance with optional voting
+    absent_optional: Abstention with optional voting
+    present_mandatory: Attendance with mandatory voting
+    absent_mandatory: Abstention with mandatory voting
+    present_disability_optional: Attendance with disability and optional voting
+    absent_disability_optional: Abstention with disability and optional voting
+    present_disability_mandatory: Attendance with disability and mandatory voting
+    absent_disability_mandatory: Abstention with disability and mandatory voting
