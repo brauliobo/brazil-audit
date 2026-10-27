@@ -18,17 +18,18 @@ from candidate_facts import VOTE_FIELDS, VOTE_TYPES, first
 from build_election_registry import UNIT_FIELDS, table_definition, unit_row
 from normalize_history import normalize, number, office_key
 
-NORMALIZATION_VERSION = 1
+NORMALIZATION_VERSION = 2
 # Verified producer of this same data format; retain its original provenance hash.
-CACHE_FORMATS = {'1196b63dd606696d3398f9d494519ba84a03ecde6250ea867c42c46341853cfd': NORMALIZATION_VERSION}
+CACHE_FORMATS = {'1196b63dd606696d3398f9d494519ba84a03ecde6250ea867c42c46341853cfd': 1, '71ce00b4d4c4709a9248d8cb7b5397c0e9e6ab01d8f6c11a048ca71fc3d6e11d': 1}
 VOTE_TABLE = 'election_section_votes'
 UNIT_TABLE = 'election_section_units'
 SECTION_UNIT_FIELDS = [*UNIT_FIELDS, 'nominal_reported', 'legend_reported', 'source_member']
 SECTION_VOTE_FIELDS = [*VOTE_FIELDS, 'reported_state', 'reported_constituency', 'identity_resolution', 'candidate_resolution', 'source_member', 'source_candidate_id']
 LEGACY_VOTE_FIELDS = ['DATA_GERACAO', 'HORA_GERACAO', 'ANO_ELEICAO', 'NUM_TURNO', 'DESCRICAO_ELEICAO', 'SIGLA_UF', 'SIGLA_UE', 'CODIGO_MUNICIPIO', 'NOME_MUNICIPIO', 'NUM_ZONA', 'NUM_SECAO', 'CODIGO_CARGO', 'DESCRICAO_CARGO', 'NUM_VOTAVEL', 'QTDE_VOTOS']
 MAX_RAW_BYTES = 16 * 1024 * 1024  # gzip's worst-case overhead remains below the 20 MB asset limit.
-LOCAL_OFFICES = {'11', '12', '13'}
+LOCAL_OFFICES = {'11', '12', '13', '25'}
 LIST_OFFICES = {'6', '7', '8', '13'}
+PARSER_SHA = hashlib.sha256(pathlib.Path(__file__).read_bytes()).hexdigest()
 
 
 def source_resources(catalog):
@@ -295,11 +296,11 @@ def load_candidates(data, source_year, state=None, president_only=False):
                     yield candidate
 
 
-def process_resource(resource, root, data, output, state=None):
+def process_resource(resource, root, data, output, state=None, candidate_data=None, lookup=None, source_digest=None):
     url = resource['url']
     source_year = int(re.search(r'_(\d{4})(?:_[A-Za-z]{2})?\.zip$', url)[1])
     path = source_path(root, url)
-    digest = hashlib.file_digest(path.open('rb'), 'sha256').hexdigest()
+    digest = source_digest or hashlib.file_digest(path.open('rb'), 'sha256').hexdigest()
     source = dict(source_url=url, source_sha256=digest, source_year=source_year)
     is_votes = '/votacao_secao/' in url
     source_state = re.search(r'_([A-Za-z]{2})\.zip$', url)
@@ -307,7 +308,7 @@ def process_resource(resource, root, data, output, state=None):
     registry = json.loads((data / 'elections.json').read_text())
     sessions = {event: session for session in registry['sessions'] for event in session['eventIds']}
     president_only = bool(source_state and source_state[1].lower() == 'br')
-    lookup = CandidateLookup(load_candidates(data, source_year, None if president_only else selected_state, president_only=president_only)) if is_votes else None
+    lookup = lookup or (CandidateLookup(load_candidates(candidate_data or data, source_year, None if president_only else selected_state, president_only=president_only)) if is_votes else None)
     writer = PartitionWriter(output, SECTION_VOTE_FIELDS if is_votes else SECTION_UNIT_FIELDS, VOTE_TABLE if is_votes else UNIT_TABLE, source)
     methods = Counter(); rows = 0
     for raw in source_rows(path, state,LegacyContext(data,source_year) if is_votes else None):
@@ -336,24 +337,66 @@ def process_resource(resource, root, data, output, state=None):
     return result
 
 
-def process_job(resource, root, data, output, state, resume):
+def cached_identities_match(record, output, lookup, data):
+    if record['table']['name']!=VOTE_TABLE:
+        return True
+    fields=record['table']['columns'].split(',')
+    legacy=None
+    for part in record['table']['parts'].values():
+        with gzip.open(output/part['url'],'rt',encoding='utf8',newline='') as stream:
+            for values in csv.reader(stream):
+                row=dict(zip(fields,values));row['state']=row['state'] or None
+                ue=constituency(row['office'],row['state'],row['city_code'])
+                if ue!=row['constituency']:
+                    return False
+                if row['kind'] in ['candidate','party_list']:
+                    match,_=lookup.resolve({'NR_VOTAVEL':row['number'],'SQ_CANDIDATO':row.get('source_candidate_id')},row,row['kind'])
+                    identity_value=match['candidate_id'] if match else 'unresolved:'+hashlib.sha256(json.dumps([row['election_id'],row['office_key'],ue,row['kind'],row['number']],separators=(',',':')).encode()).hexdigest()[:24]
+                    if identity_value!=row['candidate_id']:
+                        return False
+                if (row.get('reported_state') or '').lower()=='br' and row.get('identity_resolution','').startswith('unique-election-source-bridge'):
+                    legacy=legacy or LegacyContext(data,record['source']['source_year'])
+                    event=legacy.event_by_id.get(row['election_id'])
+                    if event is None:
+                        return False
+                    values=['','',str(event['year']),str(event['turn']),'','BR',row.get('reported_constituency') or '',row['city_code'],'',row['zone'],row['section'],row['office'],'',row['number'],row['votes']]
+                    resolved=legacy.resolve(values)
+                    if (resolved['SG_UF'].lower() or None)!=row['state']:
+                        return False
+    return True
+
+
+def process_job(resource, root, data, output, state, resume, candidate_data):
     key = hashlib.sha256(resource['url'].encode()).hexdigest()
     previous = output/'sources'/f'{key}.json'
     year = int(re.search(r'_(\d{4})(?:_[A-Za-z]{2})?\.zip$',resource['url'])[1])
-    code_hash = hashlib.sha256(pathlib.Path(__file__).read_bytes()).hexdigest()
-    candidate_index = data/'history/facts'/str(year)/'index.json'
+    code_hash = PARSER_SHA
+    candidate_index = candidate_data/'history/facts'/str(year)/'index.json'
     candidate_hash = hashlib.sha256(candidate_index.read_bytes()).hexdigest() if '/votacao_secao/' in resource['url'] else None
     try:
+        source_digest=hashlib.file_digest(source_path(root,resource['url']).open('rb'),'sha256').hexdigest()
+        lookup=None
+        geography_hash=hashlib.sha256((data/'history/indicators.json').read_bytes()).hexdigest() if re.search(r'_BR\.zip$',resource['url'],re.I) else None
         if resume and previous.exists():
             record = json.loads(previous.read_text())
             format_version = record.get('normalizationVersion',CACHE_FORMATS.get(record.get('parserSha256')))
-            if format_version==NORMALIZATION_VERSION and record.get('candidateIndexSha256')==candidate_hash and record.get('scopeState')==state:
+            if format_version in [1,NORMALIZATION_VERSION] and record['source']['source_sha256']==source_digest and record.get('scopeState')==state:
                 for part in record['table']['parts'].values():
                     if hashlib.file_digest((output/part['url']).open('rb'),'sha256').hexdigest()!=part['sha256']:
                         raise ValueError('Cached section part hash mismatch')
-                return {'url':resource['url'],'status':'ready','rows':record['rows'],'cached':True}
-        record = process_resource(resource,root,data,output,state)
-        record.update(normalizationVersion=NORMALIZATION_VERSION,parserSha256=code_hash,candidateIndexSha256=candidate_hash,scopeState=state,status='ready')
+                affected_local=record['table']['name']==VOTE_TABLE and any(c['office']=='25' for c in record['counts'])
+                if record.get('candidateIndexSha256')==candidate_hash and record.get('geographyIndexSha256')==geography_hash and not affected_local:
+                    return {'url':resource['url'],'status':'ready','rows':record['rows'],'cached':True}
+                if '/votacao_secao/' in resource['url']:
+                    country=bool(re.search(r'_BR\.zip$',resource['url'],re.I));match=re.search(r'_([A-Za-z]{2})\.zip$',resource['url'])
+                    selected=state or (match[1].lower() if match and not country else None)
+                    lookup=CandidateLookup(load_candidates(candidate_data,year,None if country else selected,president_only=country))
+                if cached_identities_match(record,output,lookup,data):
+                    return {'url':resource['url'],'status':'ready','rows':record['rows'],'cached':True,'identitiesRevalidated':True}
+        if previous.exists():
+            audit=output/'previous'/previous.name;audit.parent.mkdir(parents=True,exist_ok=True);previous.replace(audit)
+        record = process_resource(resource,root,data,output,state,candidate_data,lookup,source_digest)
+        record.update(normalizationVersion=NORMALIZATION_VERSION,parserSha256=code_hash,candidateIndexSha256=candidate_hash,geographyIndexSha256=geography_hash,scopeState=state,status='ready')
         previous.write_text(json.dumps(record,ensure_ascii=False,indent=1)+'\n')
         return {'url':resource['url'],'status':'ready','rows':record['rows'],'identityMethods':record['identityMethods'],'parts':len(record['table']['parts'])}
     except Exception as error:
@@ -368,6 +411,7 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--root', type=pathlib.Path, required=True)
     parser.add_argument('--data', type=pathlib.Path, default=pathlib.Path('data'))
+    parser.add_argument('--candidate-data', type=pathlib.Path)
     parser.add_argument('--output', type=pathlib.Path, required=True)
     parser.add_argument('--year', type=int)
     parser.add_argument('--state')
@@ -379,7 +423,7 @@ def main():
     if args.state:
         resources = [r for r in resources if re.search(r'_(?:'+args.state+r'|BR)\.zip$',r['url'],re.I) or '/detalhe_votacao_secao/' in r['url']]
     with concurrent.futures.ProcessPoolExecutor(max_workers=args.workers) as pool:
-        futures = [pool.submit(process_job,resource,args.root,args.data,args.output,args.state,args.resume) for resource in resources]
+        futures = [pool.submit(process_job,resource,args.root,args.data,args.output,args.state,args.resume,args.candidate_data or args.data) for resource in resources]
         for future in concurrent.futures.as_completed(futures):
             print(json.dumps(future.result()),flush=True)
 
