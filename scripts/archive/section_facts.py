@@ -18,6 +18,9 @@ from candidate_facts import VOTE_FIELDS, VOTE_TYPES, first
 from build_election_registry import UNIT_FIELDS, table_definition, unit_row
 from normalize_history import normalize, number, office_key
 
+NORMALIZATION_VERSION = 1
+# Verified producer of this same data format; retain its original provenance hash.
+CACHE_FORMATS = {'1196b63dd606696d3398f9d494519ba84a03ecde6250ea867c42c46341853cfd': NORMALIZATION_VERSION}
 VOTE_TABLE = 'election_section_votes'
 UNIT_TABLE = 'election_section_units'
 SECTION_UNIT_FIELDS = [*UNIT_FIELDS, 'nominal_reported', 'legend_reported', 'source_member']
@@ -118,6 +121,7 @@ class CandidateLookup:
         self.numbers = defaultdict(dict)
         self.sequences = defaultdict(dict)
         for candidate in records:
+            candidate = {k:candidate.get(k) for k in ['election_id','office','constituency','number','candidate_id','source_candidate_id']}
             key = (candidate['election_id'], candidate['office'], candidate['constituency'], candidate['number'])
             self.numbers[key][candidate['candidate_id']] = candidate
             if candidate.get('source_candidate_id'):
@@ -342,13 +346,14 @@ def process_job(resource, root, data, output, state, resume):
     try:
         if resume and previous.exists():
             record = json.loads(previous.read_text())
-            if record.get('parserSha256')==code_hash and record.get('candidateIndexSha256')==candidate_hash and record.get('scopeState')==state:
+            format_version = record.get('normalizationVersion',CACHE_FORMATS.get(record.get('parserSha256')))
+            if format_version==NORMALIZATION_VERSION and record.get('candidateIndexSha256')==candidate_hash and record.get('scopeState')==state:
                 for part in record['table']['parts'].values():
                     if hashlib.file_digest((output/part['url']).open('rb'),'sha256').hexdigest()!=part['sha256']:
                         raise ValueError('Cached section part hash mismatch')
                 return {'url':resource['url'],'status':'ready','rows':record['rows'],'cached':True}
         record = process_resource(resource,root,data,output,state)
-        record.update(parserSha256=code_hash,candidateIndexSha256=candidate_hash,scopeState=state,status='ready')
+        record.update(normalizationVersion=NORMALIZATION_VERSION,parserSha256=code_hash,candidateIndexSha256=candidate_hash,scopeState=state,status='ready')
         previous.write_text(json.dumps(record,ensure_ascii=False,indent=1)+'\n')
         return {'url':resource['url'],'status':'ready','rows':record['rows'],'identityMethods':record['identityMethods'],'parts':len(record['table']['parts'])}
     except Exception as error:
