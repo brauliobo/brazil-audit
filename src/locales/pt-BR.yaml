@@ -1532,7 +1532,7 @@ canonicalComparison:
   progress: "Consultando {n} de {total} pleitos…"
   unavailableSelection: Seleção informada indisponível nesta fonte e recorte
   sourceQuantity: Quantidade oficial informada na fonte
-  sourceUnits: Unidades observadas na fonte
+  sourceUnits: Registros utilizados
   intro: Indicadores oficiais de todos os pleitos disponíveis, consultados diretamente no navegador. Fontes sem a medida permanecem sem valor.
   date: Data informada
   cityCode: Código TSE do município na fonte

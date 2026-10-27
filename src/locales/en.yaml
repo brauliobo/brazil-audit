@@ -1531,7 +1531,7 @@ canonicalComparison:
   progress: "Querying {n} of {total} elections…"
   unavailableSelection: Requested selection unavailable in this source and scope
   sourceQuantity: Official quantity reported by the source
-  sourceUnits: Observed source units
+  sourceUnits: Records used
   intro: Official indicators for all available elections, queried directly in the browser. Missing source quantities remain unknown.
   date: Reported date
   cityCode: Source TSE municipality code
