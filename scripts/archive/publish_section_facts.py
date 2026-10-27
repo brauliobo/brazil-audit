@@ -61,8 +61,8 @@ def snapshot_parts(packed_root,document):
     return records
 
 
-def push_batches(root,records,branch=BRANCH,prune=False):
-    state_dir=root/'browser-publications'/'sections';state_dir.mkdir(parents=True,exist_ok=True)
+def push_batches(root,records,branch=BRANCH,prune=False,journal_name='sections'):
+    state_dir=root/'browser-publications'/journal_name;state_dir.mkdir(parents=True,exist_ok=True)
     receipt_path=state_dir/'STATE.json';receipt=read_json(receipt_path) if receipt_path.exists() else dict(branch=branch,files={},commits=[])
     if receipt['branch']!=branch:raise ValueError('section publication journal belongs to a different branch')
     current=command('git','ls-remote','--heads',GIT,f'refs/heads/{branch}')
@@ -120,14 +120,14 @@ def push_batches(root,records,branch=BRANCH,prune=False):
     return head,receipt
 
 
-def export_archives(packed_root,records,directory,limit=CHUNK):
+def export_archives(packed_root,records,directory,limit=CHUNK,prefix='sections'):
     """Bundle already compressed, verified packs without changing their bytes."""
     directory.mkdir(parents=True,exist_ok=True);outputs=[]
     # Reserve bounded central-directory/header space rather than crossing the
     # release asset limit with many small metadata members.
     batches=bounded_batches([dict(r,bytes=r['bytes']+len(r['path'].encode())*2+256) for r in records],limit-65536)
     for number,batch in enumerate(batches):
-        target=directory/f'sections-{number:04d}.zip';temporary=target.with_suffix('.zip.part')
+        target=directory/f'{prefix}-{number:04d}.zip';temporary=target.with_suffix('.zip.part')
         with zipfile.ZipFile(temporary,'w',compression=zipfile.ZIP_STORED,allowZip64=True) as archive:
             for record in batch:
                 path=packed_root/record['path'];body=path.read_bytes()
