@@ -1286,12 +1286,12 @@ compare:
     signals: "Sinais são critérios estatísticos sobre as seções com insumos disponíveis; não são prova de irregularidade."
     seats: "As regras, alianças e federações mudam entre eleições. Cadeiras representam o resultado oficial de cada período, não uma simulação com a mesma regra."
   metrics:
-    candidate_total_votes: Total das contagens de candidatos na fonte
     null_total_votes: "Total de votos nulos informado"
     technical_null_votes: "Nulos técnicos"
     annulled_votes: "Anulados por situação jurídica"
     subjudice_votes: "Anulados sub judice"
     separate_votes: "Apurados em separado"
+    candidate_total_votes: Total das contagens de candidatos na fonte
     historical_valid: Votos válidos oficiais
     historical_sections: Seções na fonte histórica
     abstention_rate: Abstenção (%)
@@ -1420,8 +1420,13 @@ electionData:
     ballots: "Total de votos informado"
 
 electionAnalysis:
+  sectionCoverage: "{n} seções com contagens de candidatos observadas neste recorte; a referência oficial informa {reference} seções. A disponibilidade do arquivo não implica cobertura de todas as seções."
+  sectionReferenceUnknown: "{n} seções com contagens observadas. O número de seções na referência oficial é desconhecido neste recorte."
+  aggregateN: "{n} UFs com contagens publicadas; os totais não identificam eleitores ou votos individuais."
+  aggregateScatter: Eleitorado informado × contagens publicadas por UF
+  sourceCounts: Contagens publicadas na fonte
   aggregateUnits: Totais observados por UF
-  aggregateUnitsNote: Esta fonte só oferece agregados estaduais. A distribuição usa os totais de cada UF; candidatos de disputas diferentes não são comparados entre si.
+  aggregateUnitsNote: Nesta visualização por UF, a distribuição usa os totais publicados de cada território. Candidatos de disputas diferentes não são comparados entre si.
   nominalValid: A contagem representa votos nominais válidos da fonte oficial agregada.
   recorded: A contagem representa votos registrados na fonte por seção; não equivale automaticamente a votos válidos.
   reported: A contagem representa votos nominais reportados na fonte histórica, sem reinterpretar sua destinação.
@@ -1505,7 +1510,6 @@ profiles:
     present_disability_mandatory: Comparecimento com deficiência e voto obrigatório
     absent_disability_mandatory: Abstenção com deficiência e voto obrigatório
 
-
 candidateRoster:
   title: Candidaturas e resultados oficiais
   observedNote: Situações e atributos publicados pelo TSE. A composição observada não recalcula regras de distribuição de cadeiras.
@@ -1524,8 +1528,12 @@ candidateRoster:
   unknownNote: Ausência de situação de totalização não significa não eleito. Registros agregados sem circunscrição conhecida não identificam necessariamente pessoas distintas.
   nativeComposition: Composição e visualização das fontes de cadeiras existentes
 
-
 canonicalComparison:
+  pending: Aguardando consulta
+  progress: "Consultando {n} de {total} pleitos…"
+  unavailableSelection: Seleção informada indisponível nesta fonte e recorte
+  sourceQuantity: Quantidade oficial informada na fonte
+  sourceUnits: Unidades observadas na fonte
   intro: Indicadores oficiais de todos os pleitos disponíveis, consultados diretamente no navegador. Fontes sem a medida permanecem sem valor.
   date: Data informada
   cityCode: Código TSE do município na fonte

@@ -138,6 +138,27 @@ const observedOptions = (selected) => {
 
 export function candidatesSql(key, officeKey, scope = {}, paging = {}) {
   const b = base(key, officeKey, scope)
+  const definition=keyOf(key,officeKey)
+  if(b.modern&&definition.definition?.capabilities?.candidateAttributes) {
+    const registration=rosterSql(key,officeKey,scope),params=[...b.params,...registration.params]
+    const roster=registration.sql.replace(/\$(\d+)/g,(_,n)=>`$${Number(n)+b.params.length}`)
+    return {sql:`with counted as (select case when u.office=1 then u.cand else concat_ws('/',u.state,case when u.office in (11,12,13,25) then u.city end,u.cand) end cand,case when max(u.office)=1 then 'br' else max(u.state) end state,max(u.cand) number,max(c.name) name,max(c.short_name) short_name,max(c.party) party,null::text party_name,max(c.party) party_label,count(*) over () total_rows,
+    'observed_cast'::text count_meaning,sum(u.votes) votes,sum(sum(u.votes)) over () candidate_total from ${b.res} u left join cands c on c.election=u.election and c.turn=u.turn
+    and c.office=u.office and c.n=u.cand and c.uf=case when u.office=1 then 'br' else u.state end
+    where ${b.filter} group by 1 order by votes desc nulls last,cand), registrations as (${roster}), nominees as (
+      select candidate_id,number,${definition.jurisdiction==='national'?"'br'::text":'state'} state,
+        string_agg(distinct name,' / ') name,string_agg(distinct short_name,' / ') short_name,
+        case when count(distinct party)=1 then min(party) end party,case when count(distinct party_name)=1 then min(party_name) end party_name,
+        case when count(distinct status)=1 then min(status) end status,array_agg(distinct source_url) source_urls
+      from registrations group by candidate_id,number${definition.jurisdiction==='national'?'':',state'})
+      select coalesce(c.cand,r.candidate_id) cand,coalesce(c.state,r.state) state,coalesce(c.number,r.number) number,
+        coalesce(r.name,c.name) name,coalesce(r.short_name,r.name,c.short_name,c.name) short_name,
+        coalesce(r.party,c.party) party,r.party_name,coalesce(r.party,r.party_name,c.party_label) party_label,r.status,r.source_urls,
+        c.votes,c.candidate_total,c.count_meaning,r.candidate_id source_record_candidate_id,count(*) over() total_rows
+      from counted c full join nominees r on c.number=r.number${definition.jurisdiction==='national'?'':' and c.state=r.state'}
+      order by votes desc nulls last,cand${paging.limit==null?'':` limit $${params.length+1} offset $${params.length+2}`}`,
+      params:paging.limit==null?params:[...params,paging.limit,paging.offset??0]}
+  }
   if (b.modern) return { sql: `select case when u.office=1 then u.cand else concat_ws('/',u.state,case when u.office in (11,12,13,25) then u.city end,u.cand) end cand,case when max(u.office)=1 then 'br' else max(u.state) end state,max(u.cand) number,max(c.name) name,max(c.short_name) short_name,max(c.party) party,null::text party_name,max(c.party) party_label,count(*) over () total_rows,
     'observed_cast'::text count_meaning,sum(u.votes) votes,sum(sum(u.votes)) over () candidate_total from ${b.res} u left join cands c on c.election=u.election and c.turn=u.turn
     and c.office=u.office and c.n=u.cand and c.uf=case when u.office=1 then 'br' else u.state end

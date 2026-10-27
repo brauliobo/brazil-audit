@@ -37,9 +37,9 @@ def publish(root,public_output,repository,branch,release=None):
         tree=subprocess.check_output(git+['write-tree'],env=env,text=True).strip()
         refs=subprocess.check_output(['git','ls-remote',remote,'refs/heads/'+branch],text=True).strip()
         parent=refs.split()[0] if refs else None
-        if parent:subprocess.run(['git','fetch',remote,branch],check=True)
+        if parent:subprocess.run(['git','-c','maintenance.auto=false','-c','gc.auto=0','fetch','--no-auto-maintenance',remote,branch],check=True)
         commit=subprocess.check_output(['git','commit-tree',tree]+(['-p',parent] if parent else []),input='results: publish official historical electoral facts\n',text=True).strip()
-        subprocess.run(['git','-c','pack.threads=4','push',remote,commit+':refs/heads/'+branch],check=True)
+        subprocess.run(['git','-c','maintenance.auto=false','-c','gc.auto=0','-c','pack.threads=4','push',remote,commit+':refs/heads/'+branch],check=True)
         actual=subprocess.check_output(['git','ls-remote',remote,'refs/heads/'+branch],text=True).split()[0]
         if actual!=commit:raise ValueError('Published data branch does not match the staged commit')
     raw=f'https://raw.githubusercontent.com/{repository}/{commit}/'

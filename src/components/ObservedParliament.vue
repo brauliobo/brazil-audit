@@ -1,6 +1,6 @@
 <script setup vapor>
 import { computed } from 'vue'
-import { route,setParam } from '../router'
+import { route,setParam,go,href } from '../router'
 import { ELECTIONS,selectedOffice } from '../model'
 import { stateTitle } from '../labels'
 import { t } from '../i18n'
@@ -16,7 +16,7 @@ const key=computed(()=>route.value.election)
 const cfg=computed(()=>ELECTIONS[key.value])
 const office=computed(()=>selectedOffice(key.value,route.value.params.get('office')))
 const state=computed(()=>route.value.params.get('state')??office.value.capabilities.states[0]??'')
-const city=computed(()=>route.value.params.get('city_code')??'')
+const city=computed(()=>route.value.params.get('city_code')??route.value.params.get('city')??'')
 const scope=computed(()=>({state:state.value,city_code:city.value}))
 const request=computed(()=>rosterSql(key.value,office.value.key,scope.value))
 const data=useAsync(()=>[key.value,office.value.key,state.value,city.value],async([k,o],q)=>{
@@ -34,7 +34,7 @@ const columns=computed(()=>[
  {key:'status',label:t('candidateRoster.outcome')},{key:'candidacy_status',label:t('candidateRoster.registrationStatus')},
  ...['gender','race','education','occupation','age_band'].map(key=>({key,label:t(`candidateRoster.${key}`)})),
 ])
-const pick=(name,event)=>{setParam(name,event.target.value);if(name==='state'||name==='office')setParam('city_code',null)}
+const pick=(name,event)=>{const current=route.value,next=Object.fromEntries(current.params);if(name==='state'||name==='office'){delete next.city_code;delete next.city}if(event.target.value)next[name]=event.target.value;else delete next[name];go(href(current.election,current.view,current.args,next),{replace:true})}
 </script>
 <template lang="pug">
 h1 {{ t('candidateRoster.title') }}

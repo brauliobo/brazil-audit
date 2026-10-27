@@ -10,6 +10,7 @@ cfg.modern={year:2026,turn:2,legacyKey:'modern',sourceSession:{key:'modern',even
 cfg.nativeRoster={...cfg.future,legacyKey:'modern'}
 cfg.sectionOnly={sourceSession:{key:'sectionOnly',eventIds:['fn'],sourceYears:[2022]},offices:[25],officeDefinitions:[{id:'25',key:'historical:25:CONSELHEIRO DISTRITAL',constituencyGrain:'municipality',capabilities:{unitStates:[],sources:{sectionReference:{table:'election_section_units'},observedSections:{tables:['election_section_votes']}}}}]}
 cfg.bound={sourceSession:{key:'bound',eventIds:['source','target'],sourceYears:[2008]},offices:[11],officeDefinitions:[{id:'11',key:'mayor',constituencyGrain:'municipality',electionStage:'observedData',capabilities:{candidateAttributes:true}}]}
+cfg.modernCanonical={...cfg.modern,officeDefinitions:[{id:'3',key:'governor',constituencyGrain:'state',electionStage:'observedData',capabilities:{candidateAttributes:true}}]}
 const adapter=await import(`data:text/javascript;base64,${Buffer.from(`const ELECTIONS=${JSON.stringify(cfg)};const NATIVE_ELECTIONS={modern:{offices:[3]}};const SOURCE_BINDINGS=[{sourceEventId:'source',targetEventId:'target',candidateIdentityLinks:[{sourceCandidateId:'source-id',targetCandidateId:'target-id'}]}];const FACT_REGISTRY={};const rollup=()=>({res:'res',tot:'tot'});\n${source}`).toString('base64')}`)
 
 test('official totals retain coverage, candidate grain may be finer, unknown is not zero',async()=>{
@@ -62,6 +63,12 @@ test('official totals retain coverage, candidate grain may be finer, unknown is 
  assert.equal(candidates.length,2);assert.deepEqual(candidates.map(r=>r.cand),['am/13','ac/13']);assert.deepEqual(candidates.map(r=>Number(r.votes)),[40,30])
  q=adapter.unitsSql('modern','governor','state');const units=(await db.query(q.sql,q.params)).rows
  assert.equal(units.length,2);assert.equal(units.find(r=>r.state==='ac').cand,'ac/13');assert.equal(Number(units.find(r=>r.state==='ac').votes),30);assert.equal(Number(units.find(r=>r.state==='ac').blank),2);assert.equal(Number(units.find(r=>r.state==='am').present),50);assert.equal(Number(units.find(r=>r.state==='am').ballots),50)
+ const m=JSON.parse(await readFile(new URL('../data/manifest.json',import.meta.url),'utf8'))
+ for(const table of ['candidate_attributes','candidate_identity','election_places'])await db.exec(m.tables[table].ddl)
+ await db.exec("insert into candidate_attributes(election_id,office_key,state,constituency,candidate_id,number,name,party_name,status) values('gov','governor','ac','ac','source-ac-13','13','Official Alice','FULL PARTY','ELEITO'),('gov','governor','am','am','source-am-15','15','Registered only','OTHER PARTY',null)")
+ q=adapter.candidatesSql('modernCanonical','governor');const canonical=(await db.query(q.sql,q.params)).rows
+ assert.equal(canonical.length,3);assert.equal(canonical.find(r=>r.cand==='ac/13').name,'Official Alice');assert.equal(canonical.find(r=>r.cand==='ac/13').party_label,'FULL PARTY');assert.equal(canonical.find(r=>r.cand==='source-am-15').votes,null,'a known nomination without native vote records remains unknown, including inside a legacy session')
+
  }finally{await db.close()}
  })
 

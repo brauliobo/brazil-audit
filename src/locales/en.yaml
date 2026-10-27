@@ -1285,12 +1285,12 @@ compare:
     signals: "Signals are statistical criteria over sections with available inputs; they are not proof of irregularity."
     seats: "Rules, alliances and federations change across elections. Seats represent each period's official result, not a simulation under the same rule."
   metrics:
-    candidate_total_votes: Source candidate counts total
     null_total_votes: "Reported total null votes"
     technical_null_votes: "Technical null votes"
     annulled_votes: "Votes annulled by legal status"
     subjudice_votes: "Annulled votes under judicial review"
     separate_votes: "Votes counted separately"
+    candidate_total_votes: Source candidate counts total
     historical_valid: Official valid votes
     historical_sections: Sections in historical source
     abstention_rate: Abstention (%)
@@ -1419,8 +1419,13 @@ electionData:
     ballots: "Reported ballot total"
 
 electionAnalysis:
+  sectionCoverage: "{n} sections with observed candidate counts in this scope; the official reference reports {reference} sections. File availability does not imply complete section coverage."
+  sectionReferenceUnknown: "{n} sections with observed counts. The official reference section count is unknown in this scope."
+  aggregateN: "{n} states with published counts; totals do not identify voters or individual ballots."
+  aggregateScatter: Reported electorate × published state counts
+  sourceCounts: Published source counts
   aggregateUnits: Observed totals by state
-  aggregateUnitsNote: This source only publishes state aggregates. The distribution uses totals for each state; candidates from separate contests are not compared against one another.
+  aggregateUnitsNote: This state-level view uses published totals for each territory. Candidates from separate contests are not compared against one another.
   nominalValid: Counts represent official aggregate valid candidate votes.
   recorded: Counts represent recorded section votes; they do not automatically equal valid votes.
   reported: Counts represent candidate votes reported by the historical source without reinterpreting their legal destination.
@@ -1504,7 +1509,6 @@ profiles:
     present_disability_mandatory: Attendance with disability and mandatory voting
     absent_disability_mandatory: Abstention with disability and mandatory voting
 
-
 candidateRoster:
   title: Official nominations and outcomes
   observedNote: Outcomes and attributes published by TSE. Observed composition does not recalculate seat-allocation rules.
@@ -1523,8 +1527,12 @@ candidateRoster:
   unknownNote: An unknown outcome does not mean unelected. Aggregated records without a known jurisdiction do not necessarily identify distinct people.
   nativeComposition: Composition and visualizations from existing seat sources
 
-
 canonicalComparison:
+  pending: Awaiting query
+  progress: "Querying {n} of {total} elections…"
+  unavailableSelection: Requested selection unavailable in this source and scope
+  sourceQuantity: Official quantity reported by the source
+  sourceUnits: Observed source units
   intro: Official indicators for all available elections, queried directly in the browser. Missing source quantities remain unknown.
   date: Reported date
   cityCode: Source TSE municipality code
