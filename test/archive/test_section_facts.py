@@ -7,7 +7,7 @@ import sys
 import tempfile
 import unittest
 sys.path.insert(0,str(pathlib.Path(__file__).resolve().parents[2]/'scripts/archive'))
-from section_facts import CandidateLookup, PartitionWriter, vote_record, section_unit, VOTE_TABLE, VOTE_FIELDS, LegacyContext
+from section_facts import CandidateLookup, PartitionWriter, vote_record, section_unit, VOTE_TABLE, VOTE_FIELDS, LegacyContext, cached_identities_match, SourceDescriptors
 
 
 def raw(**changes):
@@ -20,6 +20,24 @@ class SectionFactsTest(unittest.TestCase):
         self.source=dict(source_url='https://cdn.tse.jus.br/fixture.zip',source_sha256='abc',source_year=1998)
         self.candidate=dict(election_id='1998:1998001:1:1998-10-04',office='3',constituency='ac',number='25',candidate_id='candidate:canonical',name='ALERCIO DIAS')
         self.lookup=CandidateLookup([self.candidate])
+
+    def test_explicit_new_election_and_ballot_names_do_not_require_a_registry_alias(self):
+        source={**self.source,'source_year':2022,'source_id':'detail'}
+        original=raw(ANO_ELEICAO='2022',CD_ELEICAO='548',DT_ELEICAO='02/10/2022',
+            DS_ELEICAO='Eleição Conselho Distrital 2022',SG_UF='PE',CD_MUNICIPIO='30015',
+            NM_MUNICIPIO='FERNANDO DE NORONHA',CD_CARGO='25',DS_CARGO='Conselheiro Distrital')
+        row=section_unit(original,{'key':None},source)
+        self.assertIsNone(row['session_key'])
+        self.assertEqual(row['election_id'],'2022:548:1:2022-10-02')
+        descriptors=SourceDescriptors(source);descriptors.add(original,row)
+        vote,method=vote_record(original,CandidateLookup([]),source)
+        descriptors.add(original,vote,method)
+        descriptors.add({**original,'NM_VOTAVEL':'VARIANTE DA FONTE'},vote,method)
+        result=descriptors.export()
+        self.assertEqual(result['events'][0]['offices'][0]['key'],'historical:25:CONSELHEIRO DISTRITAL')
+        self.assertEqual(result['places'][0]['city_name'],'FERNANDO DE NORONHA')
+        self.assertEqual(result['observedBallotOptions'][0]['names'],['ALERCIO DIAS','VARIANTE DA FONTE'])
+        self.assertEqual(vote['constituency'],'30015')
 
     def test_ballot_number_joins_the_office_constituency_not_the_section_ue(self):
         row,method=vote_record(raw(),self.lookup,self.source)
@@ -67,6 +85,13 @@ class SectionFactsTest(unittest.TestCase):
         self.assertIsNone(row['valid'])
 
 
+    def test_measured_zero_is_not_a_missing_section_quantity(self):
+        row=section_unit(raw(QT_VOTOS_NOMINAIS='0',QT_VOTOS_BRANCOS='0',QT_VOTOS_NULOS='0',QT_VOTOS_LEGENDA='0'),{'key':'1998'},{**self.source,'source_id':'official'})
+        self.assertEqual(row['blank'],0)
+        self.assertEqual(row['null_votes'],0)
+        self.assertEqual(row['nominal_reported'],0)
+        self.assertIsNone(row['eligible'])
+
     def test_headerless_bridge_uses_the_same_election_geography_and_keeps_reported_br(self):
         with tempfile.TemporaryDirectory() as directory:
             data=pathlib.Path(directory);(data/'history').mkdir()
@@ -93,6 +118,18 @@ class SectionFactsTest(unittest.TestCase):
             (data/'history/indicators.json').write_text(json.dumps({'elections':[event,{**event,'id':'another'}]}))
             with self.assertRaisesRegex(ValueError,'ambiguous election'):
                 LegacyContext(data,1998).resolve(values)
+
+    def test_cache_reuse_checks_the_observed_candidate_identity_and_keeps_provenance(self):
+        row,_=vote_record(raw(),self.lookup,self.source)
+        with tempfile.TemporaryDirectory() as directory:
+            root=pathlib.Path(directory)
+            writer=PartitionWriter(root,VOTE_FIELDS,VOTE_TABLE,self.source)
+            writer.write(row)
+            record={'source':self.source,'parserSha256':'original-producer','table':{'name':VOTE_TABLE,'columns':','.join(writer.fields),'parts':writer.finish()}}
+            self.assertTrue(cached_identities_match(record,root,self.lookup,root))
+            changed=CandidateLookup([{**self.candidate,'candidate_id':'candidate:different'}])
+            self.assertFalse(cached_identities_match(record,root,changed,root))
+            self.assertEqual(record['parserSha256'],'original-producer')
 
     def test_interleaved_cities_do_not_finalize_chunks_when_handles_are_evicted(self):
         row,_=vote_record(raw(),self.lookup,self.source)

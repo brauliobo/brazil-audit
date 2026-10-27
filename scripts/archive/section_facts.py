@@ -15,7 +15,7 @@ from functools import lru_cache
 from collections import Counter, OrderedDict, defaultdict
 
 from candidate_facts import VOTE_FIELDS, VOTE_TYPES, first
-from build_election_registry import UNIT_FIELDS, table_definition, unit_row
+from build_election_registry import UNIT_FIELDS, NUMERIC, table_definition, unit_row
 from normalize_history import normalize, number, office_key
 
 NORMALIZATION_VERSION = 3
@@ -68,6 +68,42 @@ def section_identity(raw, metrics=False):
     if not row['city_code'] or not row['zone'] or section is None:
         raise ValueError('Section source is missing its municipality, zone or section identity')
     return row, str(section).zfill(4)
+
+
+class SourceDescriptors:
+    """Source election IDs and names remain facts even before the UI registry knows them."""
+    def __init__(self, source):
+        self.source, self.events, self.places, self.options = source, {}, {}, {}
+
+    def add(self, raw, row, method=None):
+        event_id = row['election_id']
+        event = self.events.setdefault(event_id, dict(id=event_id, year=int(raw['ANO_ELEICAO']),
+            turn=int(raw['NR_TURNO']) if raw.get('NR_TURNO') else None,
+            description=raw.get('DS_ELEICAO'), dates=set(), electionTypes=set(),
+            sourceElectionIds=set(), sourceDatasetYears={self.source['source_year']},
+            sources=[self.source['source_url']], offices={}))
+        for field, source_field in [('dates','DT_ELEICAO'),('electionTypes','NM_TIPO_ELEICAO'),('sourceElectionIds','CD_ELEICAO')]:
+            if raw.get(source_field): event[field].add(raw[source_field])
+        event['offices'][row['office_key']] = dict(id=row['office'], key=row['office_key'], name=raw.get('DS_CARGO'))
+        name = raw.get('NM_MUNICIPIO')
+        if name:
+            key = (event_id, row['state'], row['city_code'], name)
+            self.places[key] = dict(election_id=event_id, state=row['state'], city_code=row['city_code'], city_name=name, **self.source)
+        # These are reported ballot labels, never inferred person identities or legal statuses.
+        name = first(raw, 'NM_VOTAVEL')
+        if name and row.get('kind') not in ['blank','null_native','annulled_separate'] and method not in [None,'official-sequence','unambiguous-ballot-number']:
+            key = (event_id,row['office_key'],row['constituency'],row['number'])
+            option = self.options.setdefault(key, dict(election_id=event_id, office_key=row['office_key'],
+                constituency=row['constituency'], number=row['number'], candidate_id=row['candidate_id'],
+                countMeaning='observed_cast', names=set(), **self.source))
+            option['names'].add(name)
+
+    def export(self):
+        events = []
+        for event in self.events.values():
+            events.append({k:list(v.values()) if k=='offices' else sorted(v) if isinstance(v,set) else v for k,v in event.items()})
+        return dict(events=events, places=list(self.places.values()),
+            observedBallotOptions=[{**v,'names':sorted(v['names'])} for v in self.options.values()])
 
 
 class LegacyContext:
@@ -181,6 +217,9 @@ def section_unit(raw, session, source):
     normalized, section = section_identity(raw,metrics=True)
     normalized.update(scope='section', source_url=source['source_url'], source_sha256=source['source_sha256'], source_id=source['source_id'])
     result = unit_row(normalized, session)
+    # Native zero is a measured quantity, independently of missing source values.
+    result.update({k:0 for k in NUMERIC if normalized.get(k)==0})
+    result['null_votes'] = normalized.get('null')
     result.update(section=section, sections=1, source_year=source['source_year'],
                   nominal_reported=number(raw.get('QT_VOTOS_NOMINAIS')), legend_reported=number(raw.get('QT_VOTOS_LEGENDA')),
                   source_member=raw.get('_source_member'))
@@ -310,15 +349,17 @@ def process_resource(resource, root, data, output, state=None, candidate_data=No
     lookup = lookup or (CandidateLookup(load_candidates(candidate_data or data, source_year, None if president_only else selected_state, president_only=president_only)) if is_votes else None)
     writer = PartitionWriter(output, SECTION_VOTE_FIELDS if is_votes else SECTION_UNIT_FIELDS, VOTE_TABLE if is_votes else UNIT_TABLE, source)
     methods = Counter(); rows = 0
+    descriptors = SourceDescriptors(source)
     for raw in source_rows(path, state,LegacyContext(data,source_year) if is_votes else None):
         if is_votes:
             row, method = vote_record(raw, lookup, source)
             methods[method] += 1
         else:
             event, _ = section_identity(raw)
-            if event['election_id'] not in sessions:
-                raise ValueError(f'Unregistered section election: {event["election_id"]}')
-            row = section_unit(raw, sessions[event['election_id']], {**source, 'source_id': resource['id']})
+            # Aliases belong to the registry; an explicit new source election is not an error.
+            row = section_unit(raw, sessions.get(event['election_id'], {'key':None}), {**source, 'source_id': resource['id']})
+            method = None
+        descriptors.add(raw, row, method)
         writer.write(row); rows += 1
     parts = writer.finish()
     fields = writer.fields
@@ -328,7 +369,7 @@ def process_resource(resource, root, data, output, state=None, candidate_data=No
         ddl = table_definition({})['ddl']
         types = [piece.rsplit(' ', 1)[1] for piece in ddl[ddl.index('(')+1:-1].split(', ')] + ['bigint', 'bigint', 'text', 'text']
     table = VOTE_TABLE if is_votes else UNIT_TABLE
-    result = dict(source=source, rows=rows, identityMethods=dict(methods), counts=[dict(election_id=k[0],state=k[1],office=k[2],kind=k[3],count=v) for k,v in writer.counts.items()],
+    result = dict(source=source, rows=rows, **descriptors.export(), identityMethods=dict(methods), counts=[dict(election_id=k[0],state=k[1],office=k[2],kind=k[3],count=v) for k,v in writer.counts.items()],
                   table=dict(name=table, columns=','.join(fields), ddl=f'create table {table} ('+', '.join(f'{k} {t}' for k,t in zip(fields,types))+')', parts=parts))
     target = output / 'sources' / f'{hashlib.sha256(url.encode()).hexdigest()}.json'
     target.parent.mkdir(parents=True, exist_ok=True)
@@ -365,7 +406,7 @@ def cached_identities_match(record, output, lookup, data):
     return True
 
 
-def process_job(resource, root, data, output, state, resume, candidate_data):
+def process_job(resource, root, data, output, state, resume, candidate_data, describe_only=False):
     key = hashlib.sha256(resource['url'].encode()).hexdigest()
     previous = output/'sources'/f'{key}.json'
     year = int(re.search(r'_(\d{4})(?:_[A-Za-z]{2})?\.zip$',resource['url'])[1])
@@ -376,26 +417,38 @@ def process_job(resource, root, data, output, state, resume, candidate_data):
         source_digest=hashlib.file_digest(source_path(root,resource['url']).open('rb'),'sha256').hexdigest()
         lookup=None
         geography_hash=hashlib.sha256((data/'history/indicators.json').read_bytes()).hexdigest() if re.search(r'_BR\.zip$',resource['url'],re.I) else None
+        if describe_only:
+            record=json.loads(previous.read_text())
+            if record['source']['source_sha256']!=source_digest:
+                raise ValueError('Metadata refresh source differs from the normalized source')
+            country=bool(re.search(r'_BR\.zip$',resource['url'],re.I));match=re.search(r'_([A-Za-z]{2})\.zip$',resource['url'])
+            selected=state or (match[1].lower() if match and not country else None)
+            lookup=CandidateLookup(load_candidates(candidate_data,year,None if country else selected,president_only=country))
+            descriptors=SourceDescriptors(record['source'])
+            for original in source_rows(source_path(root,resource['url']),state,LegacyContext(data,year)):
+                row,method=vote_record(original,lookup,record['source'])
+                descriptors.add(original,row,method)
+            record.update(**descriptors.export(),descriptorParserSha256=code_hash)
+            temporary=previous.with_suffix('.tmp');temporary.write_text(json.dumps(record,ensure_ascii=False,indent=1)+'\n');temporary.replace(previous)
+            return {'url':resource['url'],'status':'ready','metadataRefreshed':True,'events':len(record['events']),'reportedBallotOptions':len(record['observedBallotOptions'])}
         if resume and previous.exists():
             record = json.loads(previous.read_text())
             format_version = record.get('normalizationVersion',CACHE_FORMATS.get(record.get('parserSha256')))
             if format_version in [1,2,NORMALIZATION_VERSION] and record['source']['source_sha256']==source_digest and record.get('scopeState')==state:
-                for part in record['table']['parts'].values():
-                    if hashlib.file_digest((output/part['url']).open('rb'),'sha256').hexdigest()!=part['sha256']:
-                        raise ValueError('Cached section part hash mismatch')
+                cache_valid = (record['table']['name']==VOTE_TABLE or record.get('quantitativeZeroPreserved') is True) and all((output/part['url']).is_file() and hashlib.file_digest((output/part['url']).open('rb'),'sha256').hexdigest()==part['sha256'] for part in record['table']['parts'].values())
                 affected_local=record['table']['name']==VOTE_TABLE and any(c['office']=='25' for c in record['counts'])
-                if record.get('candidateIndexSha256')==candidate_hash and record.get('geographyIndexSha256')==geography_hash and not affected_local:
+                if cache_valid and record.get('candidateIndexSha256')==candidate_hash and record.get('geographyIndexSha256')==geography_hash and not affected_local:
                     return {'url':resource['url'],'status':'ready','rows':record['rows'],'cached':True}
                 if '/votacao_secao/' in resource['url']:
                     country=bool(re.search(r'_BR\.zip$',resource['url'],re.I));match=re.search(r'_([A-Za-z]{2})\.zip$',resource['url'])
                     selected=state or (match[1].lower() if match and not country else None)
                     lookup=CandidateLookup(load_candidates(candidate_data,year,None if country else selected,president_only=country))
-                if cached_identities_match(record,output,lookup,data):
+                if cache_valid and cached_identities_match(record,output,lookup,data):
                     return {'url':resource['url'],'status':'ready','rows':record['rows'],'cached':True,'identitiesRevalidated':True}
         if previous.exists():
             audit=output/'previous'/previous.name;audit.parent.mkdir(parents=True,exist_ok=True);previous.replace(audit)
         record = process_resource(resource,root,data,output,state,candidate_data,lookup,source_digest)
-        record.update(normalizationVersion=NORMALIZATION_VERSION,parserSha256=code_hash,candidateIndexSha256=candidate_hash,geographyIndexSha256=geography_hash,scopeState=state,status='ready')
+        record.update(quantitativeZeroPreserved=True,normalizationVersion=NORMALIZATION_VERSION,parserSha256=code_hash,candidateIndexSha256=candidate_hash,geographyIndexSha256=geography_hash,scopeState=state,status='ready')
         previous.write_text(json.dumps(record,ensure_ascii=False,indent=1)+'\n')
         return {'url':resource['url'],'status':'ready','rows':record['rows'],'identityMethods':record['identityMethods'],'parts':len(record['table']['parts'])}
     except Exception as error:
@@ -416,13 +469,21 @@ def main():
     parser.add_argument('--state')
     parser.add_argument('--workers', type=int, choices=range(1,5), default=2)
     parser.add_argument('--resume', action='store_true')
+    parser.add_argument('--kind',choices=['votes','units'])
+    parser.add_argument('--source-url')
+    parser.add_argument('--describe-only',action='store_true')
     args = parser.parse_args()
     catalog = json.loads((args.root/'catalog/catalog.json').read_text())
     resources = [r for r in source_resources(catalog) if args.year is None or re.search(fr'_{args.year}(?:_[A-Za-z]{{2}})?\.zip$',r['url'])]
+    if args.source_url:
+        resources=[r for r in resources if r['url']==args.source_url]
+        if len(resources)!=1:raise ValueError('Source URL is not unique in the section inventory')
+    if args.kind:
+        resources=[r for r in resources if ('/votacao_secao/' in r['url'])==(args.kind=='votes')]
     if args.state:
         resources = [r for r in resources if re.search(r'_(?:'+args.state+r'|BR)\.zip$',r['url'],re.I) or '/detalhe_votacao_secao/' in r['url']]
     with concurrent.futures.ProcessPoolExecutor(max_workers=args.workers) as pool:
-        futures = [pool.submit(process_job,resource,args.root,args.data,args.output,args.state,args.resume,args.candidate_data or args.data) for resource in resources]
+        futures = [pool.submit(process_job,resource,args.root,args.data,args.output,args.state,args.resume,args.candidate_data or args.data,args.describe_only) for resource in resources]
         for future in concurrent.futures.as_completed(futures):
             print(json.dumps(future.result()),flush=True)
 
