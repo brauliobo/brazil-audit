@@ -1542,3 +1542,48 @@ canonicalComparison:
   jurisdiction: Selecione a UF da disputa. Para cargos municipais, informe também o código do município; candidatos de disputas distintas não compõem uma competição única.
   definition: Mudanças usam a primeira observação com a mesma definição de contagem. Municípios, territórios, regras, candidaturas e universos eleitorais podem mudar entre pleitos; números de urna não identificam a mesma pessoa em anos diferentes.
   leading: Mais votado na disputa · escolha independente por pleito
+
+sourceNominations:
+  contextBinding: Ano da coleção · sem vínculo exato com o pleito
+  exactBinding: Pleito exato identificado na fonte
+  title: "Legendas e vagas da fonte"
+  context: "As coleções identificadas apenas pelo ano de origem são contextos da fonte: não comprovam vínculo exato com este pleito, turno ou eleição suplementar. Data, cargo e território abaixo são os informados em cada registro."
+  noInference: "Vagas declaradas não são eleitos observados nem um recálculo das regras de cadeiras. Vínculos de candidatura e legenda são apresentados como publicados; nomes iguais não são usados para identificar pessoas."
+  noRecords: "Nenhum registro desta coleção corresponde ao filtro; isso não representa quantidade zero de vagas ou candidaturas."
+  tables:
+    lists: "Legendas, coligações e federações"
+    seats: "Vagas informadas"
+    links: "Vínculos de candidaturas e legendas"
+  fields:
+    source_year: "Ano da coleção"
+    turn: "Turno informado"
+    election_date: "Data informada"
+    description: "Descrição da fonte"
+    office_name: "Cargo da fonte"
+    office_constituency_grain: "Âmbito do cargo"
+    state: "UF da fonte"
+    constituency: "Código da circunscrição"
+    constituency_name: "Circunscrição da fonte"
+    constituency_grain: "Âmbito territorial informado"
+    list_id: "Identificador da legenda"
+    list_kind: "Tipo de legenda"
+    party_number: "Número do partido"
+    party: "Sigla partidária"
+    party_name: "Nome do partido"
+    coalition_acronym: "Sigla da coligação"
+    coalition_name: "Nome da coligação"
+    composition: "Composição informada"
+    federation_number: "Número da federação"
+    federation_name: "Nome da federação"
+    federation_acronym: "Sigla da federação"
+    federation_composition: "Composição da federação"
+    list_status: "Situação da legenda"
+    destination: "Destinação informada"
+    seats: "Vagas declaradas"
+    source_candidate_id: "Sequência da candidatura na fonte"
+    candidate_number: "Número informado"
+    name: "Nome informado"
+    short_name: "Nome de urna informado"
+    candidate_status: "Situação informada"
+    candidate_id: "Identidade vinculada por evidência"
+    binding_kind: "Tipo de vínculo com o pleito"

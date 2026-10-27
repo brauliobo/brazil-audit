@@ -9,6 +9,7 @@ import { objects } from '../db'
 import { int, pct } from '../format'
 import { t } from '../i18n'
 import { grainLabel } from '../labels'
+import SourceNominations from './SourceNominations.vue'
 import ElectionContext from './ElectionContext.vue'
 import OfficialTurnout from './OfficialTurnout.vue'
 import Panel from './Panel.vue'
@@ -88,6 +89,7 @@ Panel(:title="office.name" :state="data" :election="key" wide)
         code(v-if="source.source_sha256") {{ source.source_sha256 }}
   Notice(v-else) {{ t('electionData.noUnits') }}
 OfficialTurnout(:year="key" :scope="scope" :office-key="office.key" summary)
+SourceNominations(:election="key" :office="office.key" :scope="scope")
 </template>
 <style scoped>
 .election-totals { display: flex; flex-wrap: wrap; gap: var(--space-4); }

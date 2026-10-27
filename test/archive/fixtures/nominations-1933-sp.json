@@ -1,0 +1,23 @@
+{
+ "election_lists": {
+  "ddl": "create table election_lists (source_context_id text, election_id text, source_year bigint, turn bigint, description text, election_code text, election_date text, election_type text, inauguration_date text, office text, office_key text, office_name text, state text, constituency text, constituency_name text, constituency_grain text, office_constituency_grain text, binding_kind text, session_keys jsonb, generated_date text, generated_time text, source_url text, source_sha256 text, source_member text, source_record_id text, provenance jsonb, list_id text, list_kind text, party_number text, party text, party_name text, coalition_acronym text, coalition_name text, composition text, source_coalition_id text, federation_number text, federation_name text, federation_acronym text, federation_composition text, list_status text, list_status_code text, destination text)",
+  "columns": "source_context_id,election_id,source_year,turn,description,election_code,election_date,election_type,inauguration_date,office,office_key,office_name,state,constituency,constituency_name,constituency_grain,office_constituency_grain,binding_kind,session_keys,generated_date,generated_time,source_url,source_sha256,source_member,source_record_id,provenance,list_id,list_kind,party_number,party,party_name,coalition_acronym,coalition_name,composition,source_coalition_id,federation_number,federation_name,federation_acronym,federation_composition,list_status,list_status_code,destination",
+  "file": "nominations-1933-sp-election_lists.csv.gz",
+  "sha256": "70fc74ad6f986c7586af582cee55e88e7fd490213094219f673a45efe02edd4d",
+  "rows": 7
+ },
+ "election_declared_seats": {
+  "ddl": "create table election_declared_seats (source_context_id text, election_id text, source_year bigint, turn bigint, description text, election_code text, election_date text, election_type text, inauguration_date text, office text, office_key text, office_name text, state text, constituency text, constituency_name text, constituency_grain text, office_constituency_grain text, binding_kind text, session_keys jsonb, generated_date text, generated_time text, source_url text, source_sha256 text, source_member text, source_record_id text, provenance jsonb, seats bigint, metric_sentinels jsonb)",
+  "columns": "source_context_id,election_id,source_year,turn,description,election_code,election_date,election_type,inauguration_date,office,office_key,office_name,state,constituency,constituency_name,constituency_grain,office_constituency_grain,binding_kind,session_keys,generated_date,generated_time,source_url,source_sha256,source_member,source_record_id,provenance,seats,metric_sentinels",
+  "file": "nominations-1933-sp-election_declared_seats.csv.gz",
+  "sha256": "1ced1492401f7e89197a591167e0b65d80788da214d4e45042cc388de535dd56",
+  "rows": 1
+ },
+ "candidate_list_links": {
+  "ddl": "create table candidate_list_links (source_context_id text, election_id text, source_year bigint, turn bigint, description text, election_code text, election_date text, election_type text, inauguration_date text, office text, office_key text, office_name text, state text, constituency text, constituency_name text, constituency_grain text, office_constituency_grain text, binding_kind text, session_keys jsonb, generated_date text, generated_time text, source_url text, source_sha256 text, source_member text, source_record_id text, provenance jsonb, candidate_id text, source_candidate_id text, candidate_number text, name text, short_name text, party_number text, party text, party_name text, composition text, list_kind text, candidate_status text, candidate_status_code text)",
+  "columns": "source_context_id,election_id,source_year,turn,description,election_code,election_date,election_type,inauguration_date,office,office_key,office_name,state,constituency,constituency_name,constituency_grain,office_constituency_grain,binding_kind,session_keys,generated_date,generated_time,source_url,source_sha256,source_member,source_record_id,provenance,candidate_id,source_candidate_id,candidate_number,name,short_name,party_number,party,party_name,composition,list_kind,candidate_status,candidate_status_code",
+  "file": "nominations-1933-sp-candidate_list_links.csv.gz",
+  "sha256": "1c4672b293d2e4f1964d3741e46892f350b6f9038824edff57fc6cfd5aa56c86",
+  "rows": 152
+ }
+}

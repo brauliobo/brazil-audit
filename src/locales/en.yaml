@@ -1541,3 +1541,48 @@ canonicalComparison:
   jurisdiction: Select the contest state. Municipal offices also require a municipality code; candidates from separate contests do not form a single competition.
   definition: Changes use the first observation with the same count definition. Municipalities, territories, rules, nominations and electorates can change between elections; ballot numbers do not identify the same person across years.
   leading: Leading candidate in each contest · separate selection per election
+
+sourceNominations:
+  contextBinding: Collection year · no exact election link
+  exactBinding: Exact source election identified
+  title: "Source lists and declared seats"
+  context: "Collections identified only by source year are source contexts: they do not establish an exact link to this election, round or supplementary election. Each row retains its reported date, office and territory."
+  noInference: "Declared seats are neither observed winners nor recalculated seat allocations. Candidate-list links are shown as published; matching names are not used to identify people."
+  noRecords: "No records in this collection match the filter; this does not mean zero seats or nominations."
+  tables:
+    lists: "Lists, coalitions and federations"
+    seats: "Reported seats"
+    links: "Nomination-list links"
+  fields:
+    source_year: "Collection year"
+    turn: "Reported round"
+    election_date: "Reported date"
+    description: "Source description"
+    office_name: "Source office"
+    office_constituency_grain: "Office jurisdiction"
+    state: "Source state"
+    constituency: "Constituency code"
+    constituency_name: "Source constituency"
+    constituency_grain: "Reported territorial grain"
+    list_id: "Source list identifier"
+    list_kind: "List type"
+    party_number: "Party number"
+    party: "Party acronym"
+    party_name: "Party name"
+    coalition_acronym: "Coalition acronym"
+    coalition_name: "Coalition name"
+    composition: "Reported composition"
+    federation_number: "Federation number"
+    federation_name: "Federation name"
+    federation_acronym: "Federation acronym"
+    federation_composition: "Federation composition"
+    list_status: "List status"
+    destination: "Reported destination"
+    seats: "Declared seats"
+    source_candidate_id: "Source nomination sequence"
+    candidate_number: "Reported number"
+    name: "Reported name"
+    short_name: "Reported ballot name"
+    candidate_status: "Reported status"
+    candidate_id: "Identity linked by evidence"
+    binding_kind: "Election binding type"

@@ -8,6 +8,7 @@ import { int } from '../format'
 import { ensureRoster,rosterSql,placesSql } from '../election-results'
 import { useAsync } from '../use'
 import { objects } from '../db'
+import SourceNominations from './SourceNominations.vue'
 import Panel from './Panel.vue'
 import Field from './Field.vue'
 import DataTable from './DataTable.vue'
@@ -58,4 +59,5 @@ Notice(v-if="office.constituencyGrain==='municipality'&&!city") {{ t('candidateR
   Panel(:title="t('candidateRoster.registrations')" :state="data" :election="key" wide)
     DataTable(:rows="(data.data?.rows??[]).slice(page*100,(page+1)*100)" :columns="columns" :page="page" :size="100" :total="data.data?.rows.length??0" @page="setParam('roster_page',String($event))")
     p.muted {{ t('candidateRoster.unknownNote') }}
+SourceNominations(:election="key" :office="office.key" :scope="scope")
 </template>
