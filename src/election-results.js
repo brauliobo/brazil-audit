@@ -3,7 +3,7 @@ import { ELECTIONS } from './model'
 import { ensure, ensureSmall, ensureState, parts, tables } from './data'
 import { rollup } from './results'
 import { ELECTIONS as NATIVE_ELECTIONS } from './elections'
-import FACT_REGISTRY from '../data/elections.json'
+import { electionRegistry as FACT_REGISTRY } from './election-registry'
 import SOURCE_BINDINGS from '../data/election-source-bindings.json'
 
 const keyOf = (key, requested) => {
@@ -93,14 +93,14 @@ function base(key, officeKey, scope = {}, source = 'votes', grain = null) {
   }
   // Official national/state/municipality rollups are not additive to their descendants.
   const reference=selected.definition?.capabilities?.sources?.sectionReference
-  const unitColumns=['election_id','office_key','state','city_code','zone','section','grain','transit','nominal','legend','sections','valid','blank','null_votes','ballots','eligible','installed','present','absent','not_installed','null_total','null_technical','annulled','annulled_subjudice','annulled_separate','source_url','source_sha256']
+  const unitColumns=['election_id','office_key','state','city_code','zone','section','grain','transit','nominal','legend','sections','valid','blank','null_votes','ballots','ballots_reported','eligible','installed','present','absent','not_installed','null_total','null_technical','annulled','annulled_subjudice','annulled_separate','source_url','source_sha256']
   const summaryFilter=filter.replaceAll('u.','summary.')
   const finer=grain==='all'||grain==='state'||grain==='uf' ? '' : grain==='municipality'||grain==='mun' ? ' and summary.city_code is not null' : grain==='zone' ? ' and summary.zone is not null' : ' and summary.section is not null'
   const referenceColumns=unitColumns.join(',')
-  const unitTable=reference ? `(select ${referenceColumns} from election_units union all select ${referenceColumns} from election_section_units reference where not exists (
+  const unitTable=reference ? `(select ${referenceColumns},null::bigint nominal_reported,null::bigint legend_reported from election_units union all select ${referenceColumns},nominal_reported,legend_reported from election_section_units reference where not exists (
     select 1 from election_units summary where ${summaryFilter}${finer} and coalesce(summary.transit,'N')<>'S' and summary.state=reference.state and (summary.grain='state' or
       (summary.city_code=reference.city_code and (summary.grain='municipality' or
-        (summary.zone=reference.zone and (summary.grain='zone' or summary.section=reference.section)))))))` : 'election_units'
+        (summary.zone=reference.zone and (summary.grain='zone' or summary.section=reference.section)))))))` : `(select summary.*,null::bigint nominal_reported,null::bigint legend_reported from election_units summary)`
   const units = `select * from (select u.*,
       bool_or(grain='national') over (partition by election_id,office_key) _has_national,
       bool_or(grain='state') over (partition by election_id,office_key,state) _has_state,
@@ -120,8 +120,8 @@ export function totalsSql(key, officeKey, scope = {}) {
   const b = base(key, officeKey, scope, 'units', 'all')
   return { sql: `with ${b.cte} select ${completeSum('sections')} sections,
     'official_nominal_valid'::text nominal_kind,${completeSum('nominal')} nominal,${completeSum('valid')} valid,
-    ${completeSum('legend')} legend,${completeSum('blank')} blank,${completeSum('null_votes')} nul,
-    ${['ballots','eligible','installed','present','absent','not_installed','null_total','null_technical','annulled','annulled_subjudice','annulled_separate'].map((f) => `${completeSum(f)} ${f}`).join(',')},
+    ${completeSum('legend')} legend,${completeSum('nominal_reported')} nominal_reported,${completeSum('legend_reported')} legend_reported,${completeSum('blank')} blank,${completeSum('null_votes')} nul,
+    ${['ballots','ballots_reported','eligible','installed','present','absent','not_installed','null_total','null_technical','annulled','annulled_subjudice','annulled_separate'].map((f) => `${completeSum(f)} ${f}`).join(',')},
     count(*) units,string_agg(distinct grain,',') grain from u`, params: b.params }
 }
 
@@ -224,12 +224,12 @@ export function unitsSql(key, officeKey, grain = 'state', scope = {}) {
   return { sql: `with u as (${unitSource}), v as (${vote}),
     a as (select ${fields.join(',')},cand,max(city_name) city_name,max(number) number,max(cname) cname,
       case when count(distinct party)=1 then min(party) end party,case when count(distinct party_name)=1 then min(party_name) end party_name,case when count(distinct party_label)=1 then min(party_label) end party_label,string_agg(distinct count_meaning,',') count_meaning,sum(votes) votes from v where ${fields.map((f) => `${f} is not null`).join(' and ')} group by ${fields.join(',')},cand),
-    t as (select ${fields.join(',')},string_agg(distinct grain,',') source_grains,count(*) source_units,${['nominal','valid','blank','null_votes','ballots','eligible','installed','present','absent','sections'].map((f) => `${completeSum(f)} ${f}`).join(',')}
+    t as (select ${fields.join(',')},string_agg(distinct grain,',') source_grains,count(*) source_units,${['nominal','nominal_reported','legend_reported','valid','blank','null_votes','ballots','ballots_reported','eligible','installed','present','absent','sections'].map((f) => `${completeSum(f)} ${f}`).join(',')}
       from u group by ${fields.join(',')})
     select a.*,'${g}'::text grain,concat_ws('/',${fields.map((f) => `a.${f}`).join(',')}) id,${g === 'state' ? 'a.state' : 'coalesce(a.city_name,a.city_code)'} name,
       sum(votes) over (partition by ${fields.map((f) => `a.${f}`).join(',')}) candidate_total,
       row_number() over (partition by ${fields.map((f) => `a.${f}`).join(',')} order by votes desc,cand) rn,
-      t.source_grains,t.source_units,t.nominal nominal_valid,case when a.count_meaning='observed_cast' then sum(votes) over (partition by ${fields.map((f) => `a.${f}`).join(',')}) end nominal_registered,t.valid,t.blank,t.null_votes nul,t.ballots,t.eligible,t.installed,t.present,t.absent,t.sections
+      t.source_grains,t.source_units,t.nominal nominal_valid,case when a.count_meaning='observed_cast' then sum(votes) over (partition by ${fields.map((f) => `a.${f}`).join(',')}) end nominal_registered,t.nominal_reported,t.legend_reported,t.ballots_reported,t.valid,t.blank,t.null_votes nul,t.ballots,t.eligible,t.installed,t.present,t.absent,t.sections
     from a left join t using (${fields.join(',')}) order by id,rn`, params: [...b.params, ...observed.params] }
 }
 
@@ -254,7 +254,8 @@ export function voteGrainsSql(key, officeKey, scope = {}) {
 export function availableVoteGrains(key, officeKey) {
   const { cfg, officeKey: canonical } = keyOf(key, officeKey)
   const definition = cfg.officeDefinitions?.find((o) => o.key === canonical)
-  return definition?.capabilities?.voteGrains ?? definition?.capabilities?.grains ?? []
+  const cap=definition?.capabilities
+  return [...new Set([...(cap?.voteGrains ?? cap?.grains ?? []),...(cap?.sources?.observedSections?.grains??[])])]
 }
 
 export function analysisPartBytes(key,officeKey,scope={}) {
@@ -317,9 +318,9 @@ export function unitMetricsSql(key, officeKey, grain='state', scope={}) {
   const voteSource=votes.modern ? `select u.state,u.city city_code,u.office,u.votes,'observed_cast'::text count_meaning from ${votes.res} u where ${votes.filter}`
     : `select v.*,case when grain='section' then 'observed_cast' when destination='valid' then 'official_nominal_valid' else 'reported_nominal' end count_meaning from ${votes.voteTable} v where ${where(votes.cfg,votes.office,keyOf(key,officeKey).officeKey,scope,'v',[])} and coalesce(transit,'N')<>'S' and kind='candidate'`
   return {sql:`with source_units as (${source}),source_votes as (${voteSource}),
-    t as (select ${fields.join(',')},${['nominal','valid','blank','null_votes','ballots','eligible','installed','present','absent','sections'].map(f=>`${completeSum(f)} ${f}`).join(',')} from source_units group by ${fields.join(',')}),
+    t as (select ${fields.join(',')},${['nominal','nominal_reported','legend_reported','valid','blank','null_votes','ballots','ballots_reported','eligible','installed','present','absent','sections'].map(f=>`${completeSum(f)} ${f}`).join(',')} from source_units group by ${fields.join(',')}),
     v as (select ${fields.join(',')},sum(votes) candidate_total,string_agg(distinct count_meaning,',') count_meaning from source_votes group by ${fields.join(',')})
     select ${fields.map(f=>`coalesce(t.${f},v.${f}) ${f}`).join(',')},concat_ws('/',${fields.map(f=>`coalesce(t.${f},v.${f})`).join(',')}) id,
-      t.nominal nominal_valid,t.valid,t.blank,t.null_votes nul,t.ballots,t.eligible,t.installed,t.present,t.absent,t.sections,v.candidate_total,v.count_meaning
+      t.nominal nominal_valid,t.nominal_reported,t.legend_reported,t.ballots_reported,t.valid,t.blank,t.null_votes nul,t.ballots,t.eligible,t.installed,t.present,t.absent,t.sections,v.candidate_total,v.count_meaning
     from t full join v using (${fields.join(',')}) order by id`,params}
 }

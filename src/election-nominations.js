@@ -1,14 +1,22 @@
 // These are source declarations and source-context links, not recalculated election results.
+import { electionRegistry as REGISTRY } from './election-registry'
 import { ELECTIONS,selectedOffice } from './model'
 import { tables,ensure } from './data'
 import { NOMINATION_TABLES } from './nomination-contract'
 export { NOMINATION_TABLES,NOMINATION_COLUMNS,NOMINATION_NAMES,NOMINATION_FIELDS } from './nomination-contract'
 
-function nominationFilter(table,{sourceYears,eventIds,officeKey,key,turn=null,state='',city=''}) {
+function nominationFilter(table,{sourceYears,eventIds,officeKey,key,officeBindings=[],turn=null,state='',city=''}) {
   if(!NOMINATION_TABLES.includes(table))throw new Error('Unknown nomination source table') // i18n-ignore
-  const params=[sourceYears,eventIds,officeKey,turn,key],filters=[
-    `(election_id=any($2::text[]) or (election_id is null and source_year=any($1::int[]) and session_keys ? $5::text and ($4::int is null or turn is null or turn=$4)))`,
-    `(office_key=$3 or office_key is null)`,
+  const params=[sourceYears,eventIds,officeKey,turn,key],add=value=>`$${params.push(value)}`
+  const aliases=officeBindings.filter(b=>b.tables.includes(table)).map(b=>{
+    const year=add(b.sourceYear),office=add(b.office),raw=add(b.rawOfficeKey)
+    const contexts=b.events.filter(e=>e.sessionKey===key).map(e=>`(election_code=${add(e.code)} and election_date=${add(e.date)})`)
+    return contexts.length?`(source_year=${year} and office=${office} and office_key=${raw} and (${contexts.join(' or ')}))`:null
+  }).filter(Boolean)
+  const alias=aliases.length?` or ${aliases.join(' or ')}`:''
+  const filters=[
+    `(election_id=any($2::text[]) or (election_id is null and source_year=any($1::int[]) and (session_keys ? $5::text${alias}) and ($4::int is null or turn is null or turn=$4)))`,
+    `(office_key=$3 or office_key is null${alias})`,
   ]
   if(state)filters.push(`(state=$${params.push(state)} or state is null or constituency_grain='national')`)
   if(city)filters.push(`(constituency=$${params.push(city)} or constituency_grain in ('national','state') or constituency is null)`)
@@ -28,14 +36,14 @@ export function nominationProvenanceQuery(table,selection) {
 
 export function nominationSelection(key,officeKey,scope={}) {
   const cfg=ELECTIONS[key]
-  return {key:cfg.sourceSession.key,sourceYears:cfg.sourceSession.sourceYears,eventIds:cfg.sourceSession.eventIds,officeKey:selectedOffice(key,officeKey).key,
+  return {officeBindings:(REGISTRY.nominations?.officeBindings??[]).filter(b=>b.officeKey===selectedOffice(key,officeKey).key&&cfg.sourceSession.sourceYears.includes(b.sourceYear)&&b.events.some(e=>e.sessionKey===cfg.sourceSession.key)),key:cfg.sourceSession.key,sourceYears:cfg.sourceSession.sourceYears,eventIds:cfg.sourceSession.eventIds,officeKey:selectedOffice(key,officeKey).key,
     turn:cfg.turn,state:scope.state??'',city:scope.city_code??''}
 }
 
 export function nominationPartIds(table,selection) {
   return Object.entries(tables()[table].parts).filter(([,p])=>p.sourceYears.some(y=>selection.sourceYears.includes(y))
     && (!p.sessionKeys.length||p.sessionKeys.includes(selection.key))
-    && (!p.officeKeys.length||p.officeKeys.includes(selection.officeKey))
+    && (!(p.canonicalOfficeKeys??p.officeKeys).length||(p.canonicalOfficeKeys??p.officeKeys).includes(selection.officeKey))
     && (!selection.state||!p.states.length||p.states.includes(selection.state)||p.states.includes('br'))).map(([id])=>id)
 }
 

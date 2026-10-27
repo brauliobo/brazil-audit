@@ -4,7 +4,7 @@ import {readFile} from 'node:fs/promises'
 import {PGlite} from '@electric-sql/pglite'
 
 const source=(await readFile(new URL('../src/election-results.js',import.meta.url),'utf8')).replace(/^import .*\n/gm,'')
-const cfg={historic:{sourceSession:{key:'historic',eventIds:['e'],sourceYears:[1933]},officeDefinitions:[{id:'6',key:'historical:6:DEPUTADO',constituencyGrain:'state'}],offices:[6]}}
+const cfg={historic:{sourceSession:{key:'historic',eventIds:['e'],sourceYears:[1933]},officeDefinitions:[{id:'6',key:'historical:6:DEPUTADO',constituencyGrain:'state',capabilities:{voteGrains:['zone'],sources:{votes:{tables:['election_votes']},observedSections:{grains:['section']}}}}],offices:[6]}}
 cfg.future={sourceSession:{key:'future',eventIds:['2024:6295:1:2026-12-06'],sourceYears:[2024]},offices:[11,12],officeDefinitions:[{id:'11',key:'mayor',constituencyGrain:'municipality',electionStage:'registrationOnly',capabilities:{candidateAttributes:true}},{id:'12',key:'historical:12:VICE-PREFEITO',constituencyGrain:'municipality',electionStage:'registrationOnly',capabilities:{candidateAttributes:true}}]}
 cfg.modern={year:2026,turn:2,legacyKey:'modern',sourceSession:{key:'modern',eventIds:['gov'],sourceYears:[2026]},offices:[3],officeDefinitions:[{id:'3',key:'governor',constituencyGrain:'state'}]}
 cfg.nativeRoster={...cfg.future,legacyKey:'modern'}
@@ -31,9 +31,10 @@ test('official totals retain coverage, candidate grain may be finer, unknown is 
    ('other','6','historical:6:DEPUTADO','ac','00100','0001',null,'zone','N','a','10','candidate',9999,'valid','ac');
    create table election_votes as select * from election_vote_rollups;
    insert into election_candidates values ('e','a','ac','Alice','Alice',null,'historical:6:DEPUTADO','10','ac',null,'source','PARTIDO SOCIAL DEMOCRÁTICO');`)
-  await db.exec('alter table election_units add column null_total bigint,add column null_technical bigint,add column annulled bigint,add column annulled_subjudice bigint,add column annulled_separate bigint')
+  await db.exec('alter table election_units add column null_total bigint,add column null_technical bigint,add column annulled bigint,add column annulled_subjudice bigint,add column annulled_separate bigint,add column ballots_reported bigint')
   const query=async fn=>{const {sql,params}=fn;return(await db.query(sql,params)).rows}
   let [r]=await query(adapter.totalsSql('historic',6,{state:'ac'}))
+  assert.deepEqual(adapter.availableVoteGrains('historic',6),['zone','section'],'ready native sections remain selectable alongside aggregate observations')
   assert.equal(Number(r.valid),180,'state totals win over partial zone rollup')
   assert.equal(Number(r.present),100);assert.equal(Number(r.ballots),200,'Senate-like ballot counts need not equal attendance')
   const [candidate]=await query(adapter.candidatesSql('historic',6,{state:'ac'}))
@@ -59,6 +60,7 @@ test('official totals retain coverage, candidate grain may be finer, unknown is 
  create table cands(election int,turn int,office int,n text,uf text,name text,short_name text,party text);
  insert into res values(2026,2,'ac','a',3,'13',10),(2026,2,'ac','b',3,'13',20),(2026,2,'am','c',3,'13',40);
  insert into cands values(2026,2,3,'13','ac','A','A','P'),(2026,2,3,'13','am','B','B','P');`)
+ await db.exec('alter table election_units add column ballots_reported bigint')
  let q=adapter.candidatesSql('modern','governor');const candidates=(await db.query(q.sql,q.params)).rows
  assert.equal(candidates.length,2);assert.deepEqual(candidates.map(r=>r.cand),['am/13','ac/13']);assert.deepEqual(candidates.map(r=>Number(r.votes)),[40,30])
  q=adapter.unitsSql('modern','governor','state');const units=(await db.query(q.sql,q.params)).rows
@@ -97,11 +99,15 @@ test('official totals retain coverage, candidate grain may be finer, unknown is 
  try{
   const manifest=JSON.parse(await readFile(new URL('../data/manifest.json',import.meta.url),'utf8'))
   for(const table of ['election_units','election_vote_rollups','election_candidates','candidate_attributes','candidate_identity','election_places'])await db.exec(manifest.tables[table].ddl)
-  await db.exec('create table election_section_units as select * from election_units;create table election_section_votes as select * from election_vote_rollups')
+  await db.exec('create table election_section_units as select * from election_units;create table election_section_votes as select * from election_vote_rollups;alter table election_section_units add column nominal_reported bigint,add column legend_reported bigint')
   await db.exec("insert into election_section_units(election_id,office_key,state,city_code,zone,section,grain,eligible,installed,present,absent,nominal,valid,blank,null_votes,ballots,sections) values('fn','historical:25:CONSELHEIRO DISTRITAL','pe','30015','0001','0001','section',100,100,80,20,75,75,2,3,80,1)")
   await db.exec("insert into election_section_votes(election_id,office_key,state,city_code,zone,section,grain,constituency,candidate_id,number,kind,destination,votes) values('fn','historical:25:CONSELHEIRO DISTRITAL','pe','30015','0001','0001','section','30015','option-a','78','candidate','reported',75)")
   let q=adapter.totalsSql('sectionOnly',25,{state:'pe'});let [row]=(await db.query(q.sql,q.params)).rows
   assert.equal(Number(row.eligible),100);assert.equal(Number(row.absent),20);assert.equal(Number(row.nominal),75)
+  await db.exec('update election_section_units set nominal=null,valid=null,ballots=null,nominal_reported=75,legend_reported=0')
+  ;[row]=(await db.query(q.sql,q.params)).rows
+  assert.equal(row.nominal,null);assert.equal(row.valid,null);assert.equal(Number(row.nominal_reported),75);assert.equal(Number(row.legend_reported),0);assert.equal(row.ballots,null,'reported nominal counts do not fill a missing valid-vote denominator')
+
   q=adapter.candidatesSql('sectionOnly',25,{state:'pe'});[row]=(await db.query(q.sql,q.params)).rows
   assert.equal(row.cand,'option-a');assert.equal(Number(row.votes),75);assert.equal(row.identity_status,'observed_ballot_option');assert.equal(row.name,null)
   await db.exec("insert into election_units(election_id,office_key,state,city_code,grain,eligible,installed,present,absent,nominal,valid,blank,null_votes,ballots,sections) values('fn','historical:25:CONSELHEIRO DISTRITAL','pe','99999','municipality',50,50,40,10,35,35,2,3,40,1)")

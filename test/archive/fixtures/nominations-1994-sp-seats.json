@@ -1,0 +1,6 @@
+{
+ "ddl": "create table election_declared_seats (source_context_id text, election_id text, source_year bigint, turn bigint, description text, election_code text, election_date text, election_type text, inauguration_date text, office text, office_key text, office_name text, state text, constituency text, constituency_name text, constituency_grain text, office_constituency_grain text, binding_kind text, session_keys jsonb, generated_date text, generated_time text, source_url text, source_sha256 text, source_member text, source_record_id text, provenance jsonb, seats bigint, metric_sentinels jsonb)",
+ "columns": "source_context_id,election_id,source_year,turn,description,election_code,election_date,election_type,inauguration_date,office,office_key,office_name,state,constituency,constituency_name,constituency_grain,office_constituency_grain,binding_kind,session_keys,generated_date,generated_time,source_url,source_sha256,source_member,source_record_id,provenance,seats,metric_sentinels",
+ "file": "nominations-1994-sp-seats.csv.gz",
+ "sha256": "43fcf644a302e005db8a3083bccfe1180935d1e6d7c63af55d691df2352a663a"
+}

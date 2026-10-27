@@ -36,3 +36,20 @@ test('real 1933 source declarations and nomination-list records remain available
   assert.equal((await db.query(q.sql,q.params)).rows.length,0,'an explicitly different election is not linked by source year')
  }finally{await db.close()}
 })
+
+test('an explicit modern office-code bridge keeps the raw label and requires the source event code and date',async()=>{
+ const db=new PGlite()
+ try{
+  const meta=JSON.parse(await readFile(new URL('./archive/fixtures/nominations-1994-sp-seats.json',import.meta.url),'utf8'))
+  await db.exec(meta.ddl)
+  const body=await readFile(new URL('./archive/fixtures/'+meta.file,import.meta.url));assert.equal(createHash('sha256').update(body).digest('hex'),meta.sha256)
+  await db.exec(`copy election_declared_seats (${meta.columns}) from '/dev/blob' csv`,{blob:new Blob([gunzipSync(body)])})
+  const selection={key:'1994',sourceYears:[1994],eventIds:['1994:1994001:1:1994-10-03'],officeKey:'historical:9:1º SUPLENTE SENADOR',turn:1,state:'sp',
+    officeBindings:[{sourceYear:1994,office:'9',rawOfficeKey:'historical:9:1. SUPLENTE SENADOR',officeKey:'historical:9:1º SUPLENTE SENADOR',tables:['election_declared_seats'],events:[{code:'1994001',date:'1994-10-03',sessionKey:'1994'}]}]}
+  const query=api.nominationFactsQuery('election_declared_seats',selection)
+  const rows=(await db.query(query.sql,query.params)).rows
+  assert.equal(rows.length,1);assert.equal(Number(rows[0].seats),2);assert.equal(rows[0].office_key,'historical:9:1. SUPLENTE SENADOR');assert.equal(rows[0].binding_kind,'source-context')
+  await db.exec("update election_declared_seats set election_date='1994-10-04' where office='9'")
+  assert.equal((await db.query(query.sql,query.params)).rows.length,0,'a different event date does not inherit the bridge')
+ }finally{await db.close()}
+})
