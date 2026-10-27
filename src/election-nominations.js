@@ -4,7 +4,7 @@ import { tables,ensure } from './data'
 import { NOMINATION_TABLES } from './nomination-contract'
 export { NOMINATION_TABLES,NOMINATION_COLUMNS,NOMINATION_NAMES,NOMINATION_FIELDS } from './nomination-contract'
 
-export function nominationFactsQuery(table,{sourceYears,eventIds,officeKey,key,turn=null,state='',city=''}) {
+function nominationFilter(table,{sourceYears,eventIds,officeKey,key,turn=null,state='',city=''}) {
   if(!NOMINATION_TABLES.includes(table))throw new Error('Unknown nomination source table') // i18n-ignore
   const params=[sourceYears,eventIds,officeKey,turn,key],filters=[
     `(election_id=any($2::text[]) or (election_id is null and source_year=any($1::int[]) and session_keys ? $5::text and ($4::int is null or turn is null or turn=$4)))`,
@@ -12,7 +12,18 @@ export function nominationFactsQuery(table,{sourceYears,eventIds,officeKey,key,t
   ]
   if(state)filters.push(`(state=$${params.push(state)} or state is null or constituency_grain='national')`)
   if(city)filters.push(`(constituency=$${params.push(city)} or constituency_grain in ('national','state') or constituency is null)`)
-  return {sql:`select * from ${table} where ${filters.join(' and ')} order by source_year,state,constituency,office_key,source_record_id`,params}
+  return {where:filters.join(' and '),params}
+}
+
+export function nominationFactsQuery(table,selection,{limit=100,offset=0}={}) {
+  const {where,params}=nominationFilter(table,selection)
+  return {sql:`select *,count(*) over() total_rows from ${table} where ${where} order by source_year,state,constituency,office_key,source_record_id${limit==null?'':` limit $${params.length+1} offset $${params.length+2}`}`,
+    params:limit==null?params:[...params,limit,offset]}
+}
+
+export function nominationProvenanceQuery(table,selection) {
+  const {where,params}=nominationFilter(table,selection)
+  return {sql:`select distinct source_url,source_sha256 from ${table} where ${where} order by source_url,source_sha256`,params}
 }
 
 export function nominationSelection(key,officeKey,scope={}) {
@@ -31,4 +42,3 @@ export function nominationPartIds(table,selection) {
 export async function ensureNominations(table,selection) {
   await ensure(table,nominationPartIds(table,selection))
 }
-

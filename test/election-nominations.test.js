@@ -18,12 +18,18 @@ test('real 1933 source declarations and nomination-list records remain available
    const body=await readFile(new URL('./archive/fixtures/'+definition.file,import.meta.url))
    assert.equal(createHash('sha256').update(body).digest('hex'),definition.sha256)
    await db.exec(`copy ${name} (${definition.columns}) from '/dev/blob' csv`,{blob:new Blob([gunzipSync(body)])})
-   const q=api.nominationFactsQuery(name,scope),rows=(await db.query(q.sql,q.params)).rows
+   const q=api.nominationFactsQuery(name,scope,{limit:null}),rows=(await db.query(q.sql,q.params)).rows
    assert.equal(rows.length,definition.rows)
    assert.ok(rows.every(r=>r.election_id===null&&r.binding_kind==='source-context'&&r.office_key==='historical:6:DEPUTADO'))
    if(name==='election_lists')assert.ok(rows.some(r=>[r.party_name,r.coalition_name,r.composition].filter(Boolean).join(' ').toUpperCase().includes('CHAPA')))
    if(name==='candidate_list_links')assert.ok(rows.every(r=>r.candidate_id===null),'unproven person links are not made from names')
   }
+  let page=api.nominationFactsQuery('candidate_list_links',scope),first=(await db.query(page.sql,page.params)).rows
+  assert.equal(first.length,100);assert.equal(Number(first[0].total_rows),152)
+  page=api.nominationFactsQuery('candidate_list_links',scope,{offset:100});const second=(await db.query(page.sql,page.params)).rows
+  assert.equal(second.length,52);assert.equal(new Set([...first,...second].map(r=>r.source_record_id)).size,152)
+  const provenance=api.nominationProvenanceQuery('candidate_list_links',scope);assert.ok((await db.query(provenance.sql,provenance.params)).rows.length>0)
+  const wrong=api.nominationFactsQuery('candidate_list_links',{...scope,key:'unrelated-same-year'});assert.equal((await db.query(wrong.sql,wrong.params)).rows.length,0)
   await db.exec("update election_declared_seats set seats=0")
   const q=api.nominationFactsQuery('election_declared_seats',scope);assert.equal(Number((await db.query(q.sql,q.params)).rows[0].seats),0,'explicit zero seats stays zero')
   await db.exec("update election_declared_seats set election_id='other-exact-election'")
