@@ -48,6 +48,40 @@ def collapse(rows):
     return result
 
 
+def merge_descriptors(data_dir,registry,manifest,descriptors):
+    """Integrate newly observed source-event names without rereading older sources."""
+    if not descriptors:return
+    events={e['id']:e for e in registry['events']};grouped=defaultdict(list)
+    for row in descriptors:
+        event=events[row['election_id']]
+        name=row['city_name']
+        if not name or name in ['#NE','#NE#','#NULO','#NULO#']:continue
+        grouped[(event['session_key'],row['state'])].append(row)
+    table=manifest['tables']['election_places']
+    for (session,state),additions in grouped.items():
+        key=f'{session}/{state}';previous=table['parts'].get(key);observed=defaultdict(list)
+        if previous:
+            with gzip.open(data_dir/previous['url'],'rt',newline='') as stream:
+                for row in csv.DictReader(stream,fieldnames=FIELDS):
+                    for source in json.loads(row['provenance']):
+                        for name in json.loads(row['name_variants']):
+                            observed[(session,state,row['city_code'])].append(dict(city_name=name,election_id=source['election_id'],
+                                source_url=source['url'],source_sha256=source['sha256'],source_year=source['year']))
+        for row in additions:
+            observed[(session,state,row['city_code'])].append(row)
+        items=sorted(collapse(observed).values(),key=lambda r:r['city_code'])
+        buffer=io.StringIO(newline='');csv.DictWriter(buffer,FIELDS,lineterminator='\n').writerows(items)
+        raw=buffer.getvalue().encode();body=gzip.compress(raw,mtime=0);relative=f'places/{session}/{state}.csv.gz'
+        path=data_dir/relative;path.parent.mkdir(parents=True,exist_ok=True);path.write_bytes(body)
+        escaped_session=session.replace("'","''");escaped_state=state.replace("'","''")
+        table['parts'][key]=dict(url=relative,rows=len(items),bytes=len(body),rawBytes=len(raw),sha256=hashlib.sha256(body).hexdigest(),
+            where=f"session_key = '{escaped_session}' and state = '{escaped_state}'",
+            sessionKeys=[session],states=[state],electionIds=sorted({eid for row in items for eid in json.loads(row['source_election_ids'])}),grains=['municipality'])
+    index_path=data_dir/'places/index.json';index=read_json(index_path)
+    index.update(rows=sum(p['rows'] for p in table['parts'].values()),parts=len(table['parts']))
+    write_json(index_path,index)
+
+
 def build(root,data_dir):
     registry=read_json(data_dir/'elections.json');events={e['id']:e for e in registry['events']}
     observed=defaultdict(list);missing=[];source_count=0

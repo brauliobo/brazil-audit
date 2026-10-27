@@ -21,6 +21,16 @@ def observed(eid='votes',office='president'):
 
 
 class FactualRegistryIntegrationTest(unittest.TestCase):
+    def test_2008_registration_context_has_sixty_bijective_candidate_links(self):
+        import json
+        proof=json.loads((Path(__file__).parents[2]/'data/election-source-bindings.json').read_text())[0]
+        links=proof['candidateIdentityLinks']
+        self.assertEqual(len(links),60)
+        self.assertEqual(len({r['sourceCandidateId'] for r in links}),60)
+        self.assertEqual(len({r['targetCandidateId'] for r in links}),60)
+        self.assertEqual(proof['sourceElectedRows'],30)
+        self.assertTrue(all(r['officeKey']=='mayor' for r in links))
+
     def test_source_reported_date_context_is_bound_only_with_complete_identity_proof(self):
         r=registry()
         r['sourceContextBindings']=[dict(sourceEventId='votes',targetEventId='units',matched=60,sourceRows=60,unmatchedOrAmbiguous=[])]
@@ -31,6 +41,11 @@ class FactualRegistryIntegrationTest(unittest.TestCase):
         self.assertEqual(r['events'][-1]['dates'],['01/10/2002'])
         self.assertTrue(r['events'][-1]['sourceContextOnly'])
         self.assertEqual(r['events'][-1]['canonicalEventId'],'units')
+        one=observed('units');one.update(statusKnownCount=60,electedCount=30)
+        two=observed('votes');two.update(statusKnownCount=60,electedCount=30)
+        merge_offices(r,dict(events=[],eventOffices=[one,two]))
+        cap=r['sessions'][0]['offices'][0]['capabilities']
+        self.assertEqual(cap['statusKnownCount'],60);self.assertEqual(cap['electedCount'],30)
         r['sourceContextBindings'][0]['matched']=59
         with self.assertRaisesRegex(ValueError,'complete unambiguous'):
             merge_offices(r,dict(events=[],eventOffices=[]))

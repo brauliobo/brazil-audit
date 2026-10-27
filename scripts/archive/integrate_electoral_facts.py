@@ -107,6 +107,7 @@ def merge_offices(registry, fragment):
             event['canonicalEventId'] = context['targetEventId']
             event['contextBindingEvidence'] = context
         registry['events'].append(event);events[event['id']]=event
+    outcome_groups = {}
     for observed in fragment.get('eventOffices', []):
         eid = observed['election_id']; office_key = observed['office_key']
         if eid not in events:
@@ -143,9 +144,13 @@ def merge_offices(registry, fragment):
             cap['voteStates'] = sorted(set(cap.get('voteStates',[])) | set(observed['states']))
             roles['votes'] = dict(tables=sorted(vote_tables),grains=observed['grains'],states=observed['states'])
         if section_tables:
-            cap['sectionResults']=True
-            roles['observedSections']=dict(tables=sorted(section_tables),grains=observed['grains'],states=observed['states'],
-                countMeaning='nominal_cast',coverage=observed.get('observedCoverage'))
+            if 'election_section_votes' in section_tables:
+                cap['sectionResults']=True
+                roles['observedSections']=dict(tables=['election_section_votes'],grains=observed['grains'],states=observed['states'],
+                    countMeaning=observed['countMeaning'],coverageByState=observed.get('coverageByState',[]))
+            if 'election_section_units' in section_tables:
+                roles['sectionReference']=dict(table='election_section_units',grains=observed['grains'],states=observed['states'],
+                    metrics=observed.get('metrics',{}),rows=observed.get('rows'),coverageByState=observed.get('coverageByState',[]))
         if 'candidate_attributes' in observed['tables']:
             cap['candidateAttributes']=True
             roles['candidateAttributes']=dict(table='candidate_attributes',states=observed['states'],
@@ -154,9 +159,8 @@ def merge_offices(registry, fragment):
             cap['elected']=True
         if 'candidate_attributes' in observed['tables'] and observed.get('registeredCount') is not None:
             cap['registeredCount']=cap.get('registeredCount',0)+observed['registeredCount']
-        for count in ['statusKnownCount','electedCount']:
-            if observed.get(count) is not None:
-                cap[count]=None if observed.get('contextUnresolved') else cap.get(count,0)+observed[count]
+        identity_event=context_bindings.get(eid,{}).get('targetEventId',eid)
+        outcome_groups.setdefault((session['key'],office_key,identity_event),[]).append(observed)
         for count in ['unresolvedIdentityRecords','statusKnownRecordCount','electedRecordCount']:
             if count in observed:
                 cap[count]=cap.get(count,0)+observed[count]
@@ -168,6 +172,17 @@ def merge_offices(registry, fragment):
             bindings[(eid,office_key)] = binding; registry['bindings'].append(binding)
         for name in observed['tables']:
             binding['sources'][name] = dict(table=name,election_id=eid)
+    totals={}
+    for (session_key,office_key,event_id),providers in outcome_groups.items():
+        target=totals.setdefault((session_key,office_key),dict(statusKnownCount=[],electedCount=[]))
+        for count in target:
+            known={p[count] for p in providers if p.get(count) is not None and not p.get('contextUnresolved')}
+            if len(known)>1:
+                raise ValueError(f'linked source contexts report inconsistent {count}: {event_id}')
+            if known:target[count].append(known.pop())
+    for (session_key,office_key),counts in totals.items():
+        cap=next(o['capabilities'] for o in sessions[session_key]['offices'] if o['key']==office_key)
+        for count,values in counts.items():cap[count]=sum(values) if values else None
     return registry
 
 
@@ -204,7 +219,7 @@ def integrate(data_dir, fragment_paths):
                         'elected','registeredCount','statusKnownCount','electedCount','sourceProfileConstituencyGrains','constituencyContextResolved',
                         'unresolvedIdentityRecords','statusKnownRecordCount','electedRecordCount','identityContextUnresolved','voteRows','outcomeKnown']:
                 office['capabilities'].pop(key,None)
-    combined=dict(events=[],eventOffices=[],sources=[])
+    combined=dict(events=[],eventOffices=[],sources=[],places=[],observedBallotOptions=[])
     for path in fragment_paths:
         fragment=read_json(path)
         for name, table in fragment['tables'].items():
@@ -214,6 +229,11 @@ def integrate(data_dir, fragment_paths):
         for name in combined:combined[name].extend(fragment.get(name,[]))
     combined['events']=canonical_events(combined['events'],combined['eventOffices'],combined['sources'])
     merge_offices(registry,combined)
+    if combined['places']:
+        from election_places import merge_descriptors
+        merge_descriptors(data_dir,registry,manifest,combined['places'])
+    if combined['observedBallotOptions']:
+        registry['observedBallotOptions']=combined['observedBallotOptions']
     election_stages(registry)
     registry['counts'].update(sessions=len(registry['sessions']),events=len(registry['events']))
     manifest['elections']=dict(index='elections.json',**registry['counts'])

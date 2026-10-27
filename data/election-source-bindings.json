@@ -19,6 +19,491 @@
         "8e54af745a95f18f66158f711232bf9668e2df57694137db28fbab567216763f"
       ]
     ],
-    "sourceIdsPreserved": true
+    "sourceIdsPreserved": true,
+    "candidateIdentityLinks": [
+      {
+        "sourceCandidateId": "candidate:a094cb46ef1fbb620afd90bd",
+        "targetCandidateId": "candidate:62e113594562d9204cc6a6de",
+        "sourceCandidateSequence": "10687",
+        "officeKey": "mayor",
+        "state": "rj",
+        "constituency": "58777"
+      },
+      {
+        "sourceCandidateId": "candidate:d3d2ef7b3ec74da7eccbdb29",
+        "targetCandidateId": "candidate:74c0a1d4f964a4cbc92c68f5",
+        "sourceCandidateSequence": "1197",
+        "officeKey": "mayor",
+        "state": "sp",
+        "constituency": "71072"
+      },
+      {
+        "sourceCandidateId": "candidate:4fdaf624972044653f80df13",
+        "targetCandidateId": "candidate:c42d0dd805efd5bba513d854",
+        "sourceCandidateSequence": "12236",
+        "officeKey": "mayor",
+        "state": "rs",
+        "constituency": "87912"
+      },
+      {
+        "sourceCandidateId": "candidate:02ac5da63f5b08daf59516da",
+        "targetCandidateId": "candidate:3659bfac3e8ec781bebc17bb",
+        "sourceCandidateSequence": "12381",
+        "officeKey": "mayor",
+        "state": "pa",
+        "constituency": "04278"
+      },
+      {
+        "sourceCandidateId": "candidate:740420c537f21e4646c2fc95",
+        "targetCandidateId": "candidate:f0f304a3e3ece9b121f3ac73",
+        "sourceCandidateSequence": "12876",
+        "officeKey": "mayor",
+        "state": "ma",
+        "constituency": "09210"
+      },
+      {
+        "sourceCandidateId": "candidate:08f4a8bbdea4d1886d9b713a",
+        "targetCandidateId": "candidate:13ced379a83f39d44928267b",
+        "sourceCandidateSequence": "13065",
+        "officeKey": "mayor",
+        "state": "sc",
+        "constituency": "81051"
+      },
+      {
+        "sourceCandidateId": "candidate:268796abad3976e624158abe",
+        "targetCandidateId": "candidate:5c80ef32bb63506d53ee24f6",
+        "sourceCandidateSequence": "13227",
+        "officeKey": "mayor",
+        "state": "sp",
+        "constituency": "66893"
+      },
+      {
+        "sourceCandidateId": "candidate:513127c1489d7403c1f0fe38",
+        "targetCandidateId": "candidate:244a487e68189217983e2f3a",
+        "sourceCandidateSequence": "13924",
+        "officeKey": "mayor",
+        "state": "sp",
+        "constituency": "66893"
+      },
+      {
+        "sourceCandidateId": "candidate:b97e613e92a810409c775cf1",
+        "targetCandidateId": "candidate:23caa8a0cb70acbcf8b13c56",
+        "sourceCandidateSequence": "1393",
+        "officeKey": "mayor",
+        "state": "rj",
+        "constituency": "60011"
+      },
+      {
+        "sourceCandidateId": "candidate:39f81b47ad5e5d3629b46c35",
+        "targetCandidateId": "candidate:9721dcc85475cef953523683",
+        "sourceCandidateSequence": "13964",
+        "officeKey": "mayor",
+        "state": "sc",
+        "constituency": "81051"
+      },
+      {
+        "sourceCandidateId": "candidate:18cd29c479d00dbc66eaf243",
+        "targetCandidateId": "candidate:72f033bb4eb4e9566a0aaa66",
+        "sourceCandidateSequence": "1434",
+        "officeKey": "mayor",
+        "state": "pb",
+        "constituency": "19810"
+      },
+      {
+        "sourceCandidateId": "candidate:a82d48a48cf7b17aef9733b3",
+        "targetCandidateId": "candidate:a6e73bfe5fdccb78543c2f54",
+        "sourceCandidateSequence": "14435",
+        "officeKey": "mayor",
+        "state": "mg",
+        "constituency": "41238"
+      },
+      {
+        "sourceCandidateId": "candidate:5217d6a61614f16f5f9db548",
+        "targetCandidateId": "candidate:a241526514e4c65dace8159b",
+        "sourceCandidateSequence": "14666",
+        "officeKey": "mayor",
+        "state": "mg",
+        "constituency": "47333"
+      },
+      {
+        "sourceCandidateId": "candidate:c3c549582ff6f81dfed1bb16",
+        "targetCandidateId": "candidate:e703bb538cbf1639800ec6b4",
+        "sourceCandidateSequence": "15097",
+        "officeKey": "mayor",
+        "state": "pa",
+        "constituency": "04278"
+      },
+      {
+        "sourceCandidateId": "candidate:c94ccd6f296904cad63f8990",
+        "targetCandidateId": "candidate:8dfb38f145c44c52a2a21076",
+        "sourceCandidateSequence": "15367",
+        "officeKey": "mayor",
+        "state": "sc",
+        "constituency": "81795"
+      },
+      {
+        "sourceCandidateId": "candidate:51de5f23c338861962b019db",
+        "targetCandidateId": "candidate:a5156f3bc507618142b47a32",
+        "sourceCandidateSequence": "15485",
+        "officeKey": "mayor",
+        "state": "sc",
+        "constituency": "81795"
+      },
+      {
+        "sourceCandidateId": "candidate:7c73c0b6a4c39cb3c87e036e",
+        "targetCandidateId": "candidate:783bd86d52316ba6221861c0",
+        "sourceCandidateSequence": "1568",
+        "officeKey": "mayor",
+        "state": "rs",
+        "constituency": "88013"
+      },
+      {
+        "sourceCandidateId": "candidate:025b673559099c519bc28762",
+        "targetCandidateId": "candidate:232d95a2680c27b06fab96d3",
+        "sourceCandidateSequence": "16741",
+        "officeKey": "mayor",
+        "state": "rs",
+        "constituency": "88013"
+      },
+      {
+        "sourceCandidateId": "candidate:be606d051689f7ec22e2ed25",
+        "targetCandidateId": "candidate:07d59c9cc6ac1344ce8bea14",
+        "sourceCandidateSequence": "18667",
+        "officeKey": "mayor",
+        "state": "sp",
+        "constituency": "70572"
+      },
+      {
+        "sourceCandidateId": "candidate:e2e5e3ccf201f39026fe19b5",
+        "targetCandidateId": "candidate:691c67c5b45a4821673e9762",
+        "sourceCandidateSequence": "187",
+        "officeKey": "mayor",
+        "state": "ap",
+        "constituency": "06050"
+      },
+      {
+        "sourceCandidateId": "candidate:ec6e065017f818b58a305520",
+        "targetCandidateId": "candidate:e10f2f0d5f89505bec1a6990",
+        "sourceCandidateSequence": "1963",
+        "officeKey": "mayor",
+        "state": "sp",
+        "constituency": "62197"
+      },
+      {
+        "sourceCandidateId": "candidate:5768303d1489519029148f07",
+        "targetCandidateId": "candidate:ec3349cb5f82e8badd068f5e",
+        "sourceCandidateSequence": "19970",
+        "officeKey": "mayor",
+        "state": "pr",
+        "constituency": "77771"
+      },
+      {
+        "sourceCandidateId": "candidate:540b6807d487d3bd72f271c9",
+        "targetCandidateId": "candidate:9427616917683beaf395b570",
+        "sourceCandidateSequence": "1998",
+        "officeKey": "mayor",
+        "state": "ba",
+        "constituency": "38490"
+      },
+      {
+        "sourceCandidateId": "candidate:1f2c100a3ae1b6b00914663c",
+        "targetCandidateId": "candidate:9891646a0f97cfe8a2878c75",
+        "sourceCandidateSequence": "203",
+        "officeKey": "mayor",
+        "state": "mt",
+        "constituency": "90670"
+      },
+      {
+        "sourceCandidateId": "candidate:bff6b9e58c01894b2f17a5eb",
+        "targetCandidateId": "candidate:438247be60e3a2a95358169f",
+        "sourceCandidateSequence": "2120",
+        "officeKey": "mayor",
+        "state": "pb",
+        "constituency": "19810"
+      },
+      {
+        "sourceCandidateId": "candidate:fe06ab9efe866bc54df30947",
+        "targetCandidateId": "candidate:3466672803a80b6568f68271",
+        "sourceCandidateSequence": "21771",
+        "officeKey": "mayor",
+        "state": "rs",
+        "constituency": "87912"
+      },
+      {
+        "sourceCandidateId": "candidate:289aee5553f95877dda6eaad",
+        "targetCandidateId": "candidate:7eb1b67ac1f2246165e76a70",
+        "sourceCandidateSequence": "2321",
+        "officeKey": "mayor",
+        "state": "pr",
+        "constituency": "76678"
+      },
+      {
+        "sourceCandidateId": "candidate:4d195e7b202a7a103e4758b9",
+        "targetCandidateId": "candidate:97b1596ebdc0aff17962e9c3",
+        "sourceCandidateSequence": "2620",
+        "officeKey": "mayor",
+        "state": "go",
+        "constituency": "92215"
+      },
+      {
+        "sourceCandidateId": "candidate:d5becd6fbca58da054c50676",
+        "targetCandidateId": "candidate:a9bd1dc38869de49b32d424c",
+        "sourceCandidateSequence": "2731",
+        "officeKey": "mayor",
+        "state": "sp",
+        "constituency": "62197"
+      },
+      {
+        "sourceCandidateId": "candidate:6bf467f575bae182ccd6e327",
+        "targetCandidateId": "candidate:b5b189ca62ffcd3abd591883",
+        "sourceCandidateSequence": "29865",
+        "officeKey": "mayor",
+        "state": "sp",
+        "constituency": "64777"
+      },
+      {
+        "sourceCandidateId": "candidate:1c3661323511ae57b0279c6d",
+        "targetCandidateId": "candidate:52927f7e1affd30875a6487c",
+        "sourceCandidateSequence": "3057",
+        "officeKey": "mayor",
+        "state": "rj",
+        "constituency": "58190"
+      },
+      {
+        "sourceCandidateId": "candidate:e068d01202cd15ad5e78a15c",
+        "targetCandidateId": "candidate:fc332a17caf9c695f09cf1b1",
+        "sourceCandidateSequence": "30578",
+        "officeKey": "mayor",
+        "state": "pr",
+        "constituency": "77771"
+      },
+      {
+        "sourceCandidateId": "candidate:4b1d16ad0dd39b6f7e28e8bd",
+        "targetCandidateId": "candidate:f0378a46b3347545bbd2043a",
+        "sourceCandidateSequence": "30916",
+        "officeKey": "mayor",
+        "state": "mg",
+        "constituency": "41238"
+      },
+      {
+        "sourceCandidateId": "candidate:4039b7a695b08916529eab8f",
+        "targetCandidateId": "candidate:83731507de279e4817bf481f",
+        "sourceCandidateSequence": "32346",
+        "officeKey": "mayor",
+        "state": "sp",
+        "constituency": "64777"
+      },
+      {
+        "sourceCandidateId": "candidate:91ffa7f65a675ac716f5f8c6",
+        "targetCandidateId": "candidate:7cd9ab54c373d50b25d184ee",
+        "sourceCandidateSequence": "3297",
+        "officeKey": "mayor",
+        "state": "am",
+        "constituency": "02550"
+      },
+      {
+        "sourceCandidateId": "candidate:c96a45e805a0cb98f84ab026",
+        "targetCandidateId": "candidate:58d3be02e4685a2bca6e0985",
+        "sourceCandidateSequence": "33306",
+        "officeKey": "mayor",
+        "state": "ba",
+        "constituency": "38490"
+      },
+      {
+        "sourceCandidateId": "candidate:d56d3adc2b4141f75e82cfd4",
+        "targetCandidateId": "candidate:bf8d3cb06470680974522652",
+        "sourceCandidateSequence": "33618",
+        "officeKey": "mayor",
+        "state": "pr",
+        "constituency": "76678"
+      },
+      {
+        "sourceCandidateId": "candidate:548a87394e3af1bd263953a6",
+        "targetCandidateId": "candidate:21eff8a39a5ab1eaaf399079",
+        "sourceCandidateSequence": "395",
+        "officeKey": "mayor",
+        "state": "rj",
+        "constituency": "60011"
+      },
+      {
+        "sourceCandidateId": "candidate:13749f8701941b1f69935236",
+        "targetCandidateId": "candidate:58812a40f7003132b95bc4b1",
+        "sourceCandidateSequence": "441",
+        "officeKey": "mayor",
+        "state": "ap",
+        "constituency": "06050"
+      },
+      {
+        "sourceCandidateId": "candidate:4663665e376ffdd8adf994b5",
+        "targetCandidateId": "candidate:8c26fc0ffeb641b0452563cc",
+        "sourceCandidateSequence": "4417",
+        "officeKey": "mayor",
+        "state": "es",
+        "constituency": "57037"
+      },
+      {
+        "sourceCandidateId": "candidate:9829ddbf9c4ac351080e9b9d",
+        "targetCandidateId": "candidate:f35f0c878d321fd75cf46e3f",
+        "sourceCandidateSequence": "4461",
+        "officeKey": "mayor",
+        "state": "es",
+        "constituency": "57037"
+      },
+      {
+        "sourceCandidateId": "candidate:71ea7d1a755d5aa07e75ced6",
+        "targetCandidateId": "candidate:4901ce46f2b75b35f652ccac",
+        "sourceCandidateSequence": "4660",
+        "officeKey": "mayor",
+        "state": "rs",
+        "constituency": "85898"
+      },
+      {
+        "sourceCandidateId": "candidate:dd917ec13464521b4a4f6efc",
+        "targetCandidateId": "candidate:dfddbbaf88e58439e8193410",
+        "sourceCandidateSequence": "46884",
+        "officeKey": "mayor",
+        "state": "sp",
+        "constituency": "70750"
+      },
+      {
+        "sourceCandidateId": "candidate:f4286d7c5285bb0abb80c197",
+        "targetCandidateId": "candidate:89f740de031bbac62b721d14",
+        "sourceCandidateSequence": "46921",
+        "officeKey": "mayor",
+        "state": "mg",
+        "constituency": "43710"
+      },
+      {
+        "sourceCandidateId": "candidate:ddc2b07bfa1b1ede822a182f",
+        "targetCandidateId": "candidate:502e62e74e86ded2ed595188",
+        "sourceCandidateSequence": "48139",
+        "officeKey": "mayor",
+        "state": "mg",
+        "constituency": "48658"
+      },
+      {
+        "sourceCandidateId": "candidate:c6f86123f858ec9a68a76b42",
+        "targetCandidateId": "candidate:7179e1d470aaf7912ca0f489",
+        "sourceCandidateSequence": "5089",
+        "officeKey": "mayor",
+        "state": "rj",
+        "constituency": "58190"
+      },
+      {
+        "sourceCandidateId": "candidate:aeb0ed718463d8750c91c179",
+        "targetCandidateId": "candidate:ce6e3459af83e08a5b7c215b",
+        "sourceCandidateSequence": "54667",
+        "officeKey": "mayor",
+        "state": "mg",
+        "constituency": "43710"
+      },
+      {
+        "sourceCandidateId": "candidate:e69cc9cba48c72bf1c5ba3c7",
+        "targetCandidateId": "candidate:7ee965327564b1be34e48d2e",
+        "sourceCandidateSequence": "56367",
+        "officeKey": "mayor",
+        "state": "sp",
+        "constituency": "70750"
+      },
+      {
+        "sourceCandidateId": "candidate:26489cacef6eff92fdda1327",
+        "targetCandidateId": "candidate:a269bbbf1faefca2534b781b",
+        "sourceCandidateSequence": "587",
+        "officeKey": "mayor",
+        "state": "go",
+        "constituency": "92215"
+      },
+      {
+        "sourceCandidateId": "candidate:1b753fd8870135dc3cc2191b",
+        "targetCandidateId": "candidate:d8dfc6ff71385a2dc931ca8b",
+        "sourceCandidateSequence": "608",
+        "officeKey": "mayor",
+        "state": "sp",
+        "constituency": "71072"
+      },
+      {
+        "sourceCandidateId": "candidate:2411e957069a5cc5adfefdbe",
+        "targetCandidateId": "candidate:1f7439f5ba54520a93c5fe35",
+        "sourceCandidateSequence": "6125",
+        "officeKey": "mayor",
+        "state": "mg",
+        "constituency": "48658"
+      },
+      {
+        "sourceCandidateId": "candidate:1170f0db6e8f109d19e03ebe",
+        "targetCandidateId": "candidate:d0e3a01a91ccdaa18572c0cc",
+        "sourceCandidateSequence": "6843",
+        "officeKey": "mayor",
+        "state": "rj",
+        "constituency": "58777"
+      },
+      {
+        "sourceCandidateId": "candidate:d9a699b41897bd1e1e4424a0",
+        "targetCandidateId": "candidate:d00bf708323328fbb1356f4b",
+        "sourceCandidateSequence": "7016",
+        "officeKey": "mayor",
+        "state": "ma",
+        "constituency": "09210"
+      },
+      {
+        "sourceCandidateId": "candidate:ad92eca4389e30c6f683c5bd",
+        "targetCandidateId": "candidate:059d6109cd088a2af2e858ee",
+        "sourceCandidateSequence": "7023",
+        "officeKey": "mayor",
+        "state": "rs",
+        "constituency": "85898"
+      },
+      {
+        "sourceCandidateId": "candidate:ee495271a319506dc817e77b",
+        "targetCandidateId": "candidate:56c9a7f45f82d54d416edb31",
+        "sourceCandidateSequence": "7106",
+        "officeKey": "mayor",
+        "state": "sp",
+        "constituency": "70971"
+      },
+      {
+        "sourceCandidateId": "candidate:88c2a394f69fb5019b3024b4",
+        "targetCandidateId": "candidate:12b2f941fda2d5e6f151f8d8",
+        "sourceCandidateSequence": "756",
+        "officeKey": "mayor",
+        "state": "am",
+        "constituency": "02550"
+      },
+      {
+        "sourceCandidateId": "candidate:b2abf4cc1200810fcaa99840",
+        "targetCandidateId": "candidate:4e13cf9e39f0fd9c7529ad60",
+        "sourceCandidateSequence": "7680",
+        "officeKey": "mayor",
+        "state": "mg",
+        "constituency": "47333"
+      },
+      {
+        "sourceCandidateId": "candidate:e9ab49254a80740cf05b46ea",
+        "targetCandidateId": "candidate:57cbac691d6bcb93e4b9c714",
+        "sourceCandidateSequence": "841",
+        "officeKey": "mayor",
+        "state": "sp",
+        "constituency": "70572"
+      },
+      {
+        "sourceCandidateId": "candidate:7a309e47d2fe851e0178c4f8",
+        "targetCandidateId": "candidate:82b7c2d01d5fefd1232b0a5a",
+        "sourceCandidateSequence": "8914",
+        "officeKey": "mayor",
+        "state": "sp",
+        "constituency": "70971"
+      },
+      {
+        "sourceCandidateId": "candidate:345e2312de6931285e5af7c7",
+        "targetCandidateId": "candidate:d9ad8e60907338280deac753",
+        "sourceCandidateSequence": "8936",
+        "officeKey": "mayor",
+        "state": "mt",
+        "constituency": "90670"
+      }
+    ],
+    "matchedOfficeKey": "mayor",
+    "sourceOutcomeKnownRows": 60,
+    "sourceElectedRows": 30
   }
 ]
