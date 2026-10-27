@@ -1378093,7 +1378093,7 @@
   "election_votes": "Original municipality/zone aggregate records; not individual votes or polling sections.",
   "candidate_attributes": "Public nomination attributes; direct personal identifiers and exact birth dates are excluded."
  },
- "sourceCommit": "bb499c3070e20cd72128ecfda2d469afcf2d7b3c",
+ "sourceCommit": "d6521964d0cc5f8eb4978de87497e7f394e2112e",
  "candidateLookupSha256": "56e53f386c2aa0b5f501202c52b9f09959ca536b9250c4bb801530f88c308a44",
  "missingValueCodec": {
   "aliases": [
