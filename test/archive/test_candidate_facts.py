@@ -72,3 +72,18 @@ class CanonicalSourceRegressionTest(unittest.TestCase):
         self.assertNotEqual(a['candidate_id'],b['candidate_id']);self.assertIsNone(a['constituency']);self.assertEqual(c['identity_status'],'context_unresolved')
         from candidate_facts import office_jurisdiction
         self.assertEqual(office_jurisdiction('councillor'),'municipality');self.assertEqual(office_jurisdiction('district_deputy'),'state')
+
+class SourceRepresentationTest(unittest.TestCase):
+    def test_whole_country_source_includes_presidency_without_repeating_uf_extracts(self):
+        from source_members import source_members
+        self.assertEqual(source_members(['UF_AC.csv','BRASIL.csv']),['BRASIL.csv'])
+        self.assertEqual(source_members(['UF_AC.TXT','UF_BR.TXT']),['UF_AC.TXT','UF_BR.TXT'])
+    def test_exact_missing_alias_does_not_discard_text_or_change_nomination_identity(self):
+        from candidate_facts import clean,candidate_record
+        self.assertIsNone(clean('#NULO'))
+        self.assertIsNone(clean('#NULO#'))
+        self.assertEqual(clean('#NULO posterior'),'#NULO posterior')
+        r=CandidateFactsTest().row();r['DS_SIT_TOT_TURNO']='#NULO'
+        before=candidate_record(r,{})[1]['candidate_id']
+        r['DS_SIT_TOT_TURNO']='ELEITO'
+        self.assertEqual(candidate_record(r,{})[1]['candidate_id'],before)

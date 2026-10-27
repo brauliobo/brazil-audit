@@ -1,8 +1,10 @@
 """Join official candidate margins to normalized turnout at their published grain."""
-import csv,gzip,hashlib,io,json,zipfile
+import csv,gzip,hashlib,io,json,zipfile,sys
 from collections import defaultdict
 from pathlib import Path
 from canonical import canonical_records
+sys.path.insert(0,str(Path(__file__).resolve().parents[1]/'archive'))
+from source_members import source_members
 
 
 def load_history(year, archive_root):
@@ -32,8 +34,7 @@ def load_history(year, archive_root):
         source_digest=hashlib.sha256(path.read_bytes()).hexdigest()
         sources.append({'url':url,'sha256':source_digest})
         with zipfile.ZipFile(path) as z:
-            names=[n for n in z.namelist() if n.lower().endswith(('.csv','.txt')) and '_BRASIL.' not in n.upper()]
-            if not names:names=[n for n in z.namelist() if n.lower().endswith('.csv')]
+            names=source_members(z.namelist())
             for name in names:
                 with z.open(name) as f:
                     if year<1994:
@@ -54,7 +55,7 @@ def load_history(year, archive_root):
                         office=row['CD_CARGO']
                         if office not in ['1','3','11']:continue
                         # BR is the presidential extract; UF extracts carry state/local offices.
-                        br=name.upper().endswith('_BR.CSV')
+                        br=Path(name).stem.upper().endswith('_BR')
                         if '_BRASIL.' not in name.upper() and (office=='1')!=br:continue
                         election=identities.get((row['ANO_ELEICAO'],row['CD_ELEICAO'],row['NR_TURNO'],row['DT_ELEICAO']))
                         if election is None:continue

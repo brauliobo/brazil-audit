@@ -21,7 +21,7 @@ def attribute_record(raw,lookup,source):
     result.update(gender=first(raw,'DS_GENERO'),race=first(raw,'DS_COR_RACA'),education=first(raw,'DS_GRAU_INSTRUCAO'),occupation=first(raw,'DS_OCUPACAO'),age_band=band,status=first(raw,'DS_SIT_TOT_TURNO'),status_code=first(raw,'CD_SIT_TOT_TURNO'),candidacy_status=first(raw,'DS_SITUACAO_CANDIDATURA'),**source)
     return result
 
-def build(root,output):
+def build(root,output,data_root=pathlib.Path('.cache/canonical-source-data')):
     cat=json.load(open('data/history/catalog.json'));ind=json.load(open('data/history/indicators.json'));lookup=defaultdict(list)
     for e in ind['elections']:lookup[(str(e['year']),e['description'])].append(e)
     output.mkdir(parents=True,exist_ok=True);rows={};parts={};sources=[];events={}
@@ -49,9 +49,9 @@ def build(root,output):
             path=output/f'candidate_attributes-{year}-{state}.csv.gz'
             with gzip_text(path) as f:
                 w=csv.writer(f,lineterminator='\n');w.writerows([[r.get(k) for k in FIELDS] for r in records])
-            data=path.read_bytes();parts[f'{year}/{state}']={'url':str(path.relative_to('data')),'rows':len(records),'bytes':len(data),'rawBytes':len(gzip.decompress(data)),'sha256':hashlib.sha256(data).hexdigest(),'where':f"source_year = {year} and state = '{state}'"}
+            data=path.read_bytes();parts[f'{year}/{state}']={'url':str(path.relative_to(data_root)),'rows':len(records),'bytes':len(data),'rawBytes':len(gzip.decompress(data)),'sha256':hashlib.sha256(data).hexdigest(),'where':f"source_year = {year} and state = '{state}'"}
         print(json.dumps({'sourceYear':year,'attributes':len(observations)}),flush=True)
     table={'name':'candidate_attributes','columns':','.join(FIELDS),'ddl':'create table candidate_attributes ('+', '.join(k+(' int' if k=='source_year' else ' text') for k in FIELDS)+')','parts':parts}
     result={'tables':{'candidate_attributes':table},'sources':sources,'events':list(events.values())};(output/'index.json').write_text(json.dumps(result,ensure_ascii=False,indent=1)+'\n');return result
 if __name__=='__main__':
-    p=argparse.ArgumentParser();p.add_argument('--root',type=pathlib.Path,required=True);p.add_argument('--output',type=pathlib.Path,default=pathlib.Path('data/history/attributes'));a=p.parse_args();build(a.root,a.output)
+    p=argparse.ArgumentParser();p.add_argument('--root',type=pathlib.Path,required=True);p.add_argument('--staging-root',type=pathlib.Path,default=pathlib.Path('.cache/canonical-source-data'));p.add_argument('--output',type=pathlib.Path);a=p.parse_args();build(a.root,a.output or a.staging_root/'history/attributes',a.staging_root)

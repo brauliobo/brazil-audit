@@ -35,7 +35,7 @@ class Packs:
         for key in list(self.handles):self.close(key)
         return {**self.table,'columns':self.table['columns']+',source_part','ddl':self.table['ddl'][:-1]+', source_part text)','parts':self.parts}
 
-def build(facts,attributes,output,baseline=None,years=None):
+def build(facts,attributes,output,baseline=None,years=None,data_root=pathlib.Path('.cache/canonical-source-data')):
     raw_index=json.loads((facts/'index.json').read_text());attr_index=json.loads((attributes/'index.json').read_text())
     if years:
         for index in [raw_index,attr_index]:
@@ -53,7 +53,7 @@ def build(facts,attributes,output,baseline=None,years=None):
         for table in index['tables'].values():
             writer=Packs(output,table);fields=table['columns'].split(',');rows=0
             for p in table['parts'].values():
-                path=pathlib.Path('data')/p['url']
+                path=data_root/p['url']
                 if hashlib.file_digest(path.open('rb'),'sha256').hexdigest()!=p['sha256']:raise ValueError('Source-fact input SHA mismatch')
                 with gzip.open(path,'rt') as stream:
                     for values in csv.reader(stream):
@@ -77,7 +77,7 @@ def build(facts,attributes,output,baseline=None,years=None):
     identity_fields=['election_id','candidate_id','state','office','office_key','source_record_id','identity_status','reported_constituency','source_url','source_sha256','source_member','source_row','source_year']
     identity_table={'name':'candidate_identity','columns':','.join(identity_fields),'ddl':'create table candidate_identity ('+', '.join(k+(' int' if k in ['source_row','source_year'] else ' text') for k in identity_fields)+')'}
     identity_writer=Packs(output,identity_table)
-    for path in pathlib.Path('data/history/facts').glob('[12][0-9][0-9][0-9]/index.json'):
+    for path in (data_root/'history/facts').glob('[12][0-9][0-9][0-9]/index.json'):
         if years and int(path.parent.name) not in years:continue
         for record in json.loads(path.read_text()).get('identityRecords',{}).values():identity_writer.write(record)
     tables['candidate_identity']=identity_writer.finish()
@@ -109,9 +109,9 @@ def build(facts,attributes,output,baseline=None,years=None):
             a=actual.get(pair);b=secondary.get(pair)
             if a!=b:audits.append({'coverageKey':pair,'canonical':a,'territorialExport':b})
         if missing:raise ValueError(f'Canonical exports lose known office/UF/round coverage: {missing}')
-    member_audits=[a for p in pathlib.Path('data/history/facts').glob('[12][0-9][0-9][0-9]/index.json') for a in json.loads(p.read_text()).get('memberAudits',[])]
+    member_audits=[a for p in (data_root/'history/facts').glob('[12][0-9][0-9][0-9]/index.json') for a in json.loads(p.read_text()).get('memberAudits',[])]
     result={'version':1,'tables':tables,'eventOffices':event_offices,'events':canonical_events,'memberAudits':member_audits,'coverageDifferences':audits,
       'countMeaning':{'election_vote_rollups':'Reported aggregate candidate/list votes, with official valid destinations preserved where explicitly reported.','election_votes':'Original municipality/zone aggregate records; not individual votes or polling sections.','candidate_attributes':'Public nomination attributes; direct personal identifiers and exact birth dates are excluded.'}}
     output.mkdir(parents=True,exist_ok=True);(output/('index-'+'-'.join(str(y) for y in sorted(years))+'.json' if years else 'index.json')).write_text(json.dumps(result,ensure_ascii=False,indent=1)+'\n');return result
 if __name__=='__main__':
-    p=argparse.ArgumentParser();p.add_argument('--facts',type=pathlib.Path,default=pathlib.Path('data/history/result-facts'));p.add_argument('--attributes',type=pathlib.Path,default=pathlib.Path('data/history/attributes'));p.add_argument('--output',type=pathlib.Path,required=True);p.add_argument('--baseline',type=pathlib.Path);p.add_argument('--years',type=int,nargs='+');a=p.parse_args();build(a.facts,a.attributes,a.output,a.baseline,set(a.years) if a.years else None)
+    p=argparse.ArgumentParser();p.add_argument('--staging-root',type=pathlib.Path,default=pathlib.Path('.cache/canonical-source-data'));p.add_argument('--facts',type=pathlib.Path);p.add_argument('--attributes',type=pathlib.Path);p.add_argument('--output',type=pathlib.Path);p.add_argument('--baseline',type=pathlib.Path);p.add_argument('--years',type=int,nargs='+');a=p.parse_args();build(a.facts or a.staging_root/'history/result-facts',a.attributes or a.staging_root/'history/attributes',a.output or a.staging_root/'runtime-results',a.baseline,set(a.years) if a.years else None,a.staging_root)

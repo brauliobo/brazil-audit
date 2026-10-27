@@ -5,16 +5,16 @@ from collections import defaultdict
 from candidate_facts import VOTE_FIELDS,VOTE_TYPES,CAND_FIELDS,CAND_TYPES
 NAMES={'president':'Presidente','governor':'Governador','senator':'Senador','federal_deputy':'Deputado Federal','state_deputy':'Deputado Estadual','district_deputy':'Deputado Distrital','mayor':'Prefeito','councillor':'Vereador'}
 
-def describe(path,fields,count,where,offices):
+def describe(path,fields,count,where,offices,data_root):
     data=path.read_bytes()
-    return {'url':str(path.relative_to('data')),'rows':count,'bytes':len(data),'rawBytes':len(gzip.decompress(data)),'sha256':hashlib.sha256(data).hexdigest(),'where':where,'offices':offices}
+    return {'url':str(path.relative_to(data_root)),'rows':count,'bytes':len(data),'rawBytes':len(gzip.decompress(data)),'sha256':hashlib.sha256(data).hexdigest(),'where':where,'offices':offices}
 
-def process_year(index_path,output):
+def process_year(index_path,output,data_root=pathlib.Path('.cache/canonical-source-data')):
     index=json.loads(index_path.read_text());year=index_path.parent.name
     target=output/year;target.mkdir(parents=True,exist_ok=True)
     parts={};detail={};events={}
     for part_id,p in index['tables']['election_votes']['parts'].items():
-        source=pathlib.Path('data')/p['url'];grouped=defaultdict(int);detail_handles={};detail_writers={};detail_counts=defaultdict(int)
+        source=data_root/p['url'];grouped=defaultdict(int);detail_handles={};detail_writers={};detail_counts=defaultdict(int)
         with gzip.open(source,'rt') as f:
             for row in csv.reader(f):
                 r=dict(zip(VOTE_FIELDS,row));office=r['office'];ok=r['office_key'];e=events.setdefault((r['election_id'],ok),{'election_id':r['election_id'],'office':office,'office_key':ok,'office_name':NAMES.get(ok,ok.split(':',2)[-1]),'states':set(),'grains':set(),'rows':0,'tables':['election_vote_rollups','election_votes','election_candidates'],'candidates':set(),'partyMetadata':False})
@@ -30,7 +30,7 @@ def process_year(index_path,output):
         state=part_id.split('/')[1]
         for office,count in detail_counts.items():
             path=target/f'election_votes-{year}-{state}.{office}.csv.gz'
-            detail[f'{year}/{state}.{office}']=describe(path,VOTE_FIELDS,count,f"source_year = {year} and state = '{state}' and office = '{office}'",[int(office)] if office.isdigit() else [])
+            detail[f'{year}/{state}.{office}']=describe(path,VOTE_FIELDS,count,f"source_year = {year} and state = '{state}' and office = '{office}'",[int(office)] if office.isdigit() else [],data_root)
         handles={};writers={};counts=defaultdict(int)
         for key,count in grouped.items():
             r=dict(zip([k for k in VOTE_FIELDS if k!='votes'],key));r['votes']=count;office=r['office']
@@ -40,9 +40,9 @@ def process_year(index_path,output):
         for h in handles.values():h.close()
         for office,count in counts.items():
             path=target/f'election_vote_rollups-{year}-{state}.{office}.csv.gz'
-            parts[f'{year}/{state}.{office}']=describe(path,VOTE_FIELDS,count,f"source_year = {year} and state = '{state}' and office = '{office}'",[int(office)] if office.isdigit() else [])
+            parts[f'{year}/{state}.{office}']=describe(path,VOTE_FIELDS,count,f"source_year = {year} and state = '{state}' and office = '{office}'",[int(office)] if office.isdigit() else [],data_root)
     for p in index['tables']['election_candidates']['parts'].values():
-        with gzip.open(pathlib.Path('data')/p['url'],'rt') as f:
+        with gzip.open(data_root/p['url'],'rt') as f:
             for values in csv.reader(f):
                 c=dict(zip(CAND_FIELDS,values));e=events.get((c['election_id'],c['office_key']))
                 if e:
@@ -54,11 +54,11 @@ def process_year(index_path,output):
     print(json.dumps({'year':year,'rollupRows':sum(p['rows'] for p in parts.values()),'detailRows':sum(p['rows'] for p in detail.values())}),flush=True)
     return parts,detail,list(events.values())
 
-def build(source,output,workers=4):
+def build(source,output,workers=4,data_root=pathlib.Path('.cache/canonical-source-data')):
     indices=sorted(source.glob('[12][0-9][0-9][0-9]/index.json'));tables={};events=[]
     with concurrent.futures.ProcessPoolExecutor(max_workers=workers) as pool:
         # gzip/CSV streaming is bounded by a year; no full archive dataframe is materialized.
-        jobs=[pool.submit(process_year,p,output) for p in indices]
+        jobs=[pool.submit(process_year,p,output,data_root) for p in indices]
         results=[job.result() for job in jobs]
     rollups={};details={};candidates={};sources=[]
     for path,(r,d,e) in zip(indices,results):
@@ -68,4 +68,4 @@ def build(source,output,workers=4):
     result={'tables':tables,'eventOffices':events,'sources':sources,'normalization':'Rollups sum source candidate/list observations by UF, or by municipality for local contests; original finer observations remain separately loadable.'}
     output.mkdir(parents=True,exist_ok=True);(output/'index.json').write_text(json.dumps(result,ensure_ascii=False,indent=1)+'\n');return result
 if __name__=='__main__':
-    p=argparse.ArgumentParser();p.add_argument('--source',type=pathlib.Path,default=pathlib.Path('data/history/facts'));p.add_argument('--output',type=pathlib.Path,default=pathlib.Path('data/history/result-facts'));p.add_argument('--workers',type=int,default=4);a=p.parse_args();build(a.source,a.output,a.workers)
+    p=argparse.ArgumentParser();p.add_argument('--staging-root',type=pathlib.Path,default=pathlib.Path('.cache/canonical-source-data'));p.add_argument('--source',type=pathlib.Path);p.add_argument('--output',type=pathlib.Path);p.add_argument('--workers',type=int,default=4);a=p.parse_args();build(a.source or a.staging_root/'history/facts',a.output or a.staging_root/'history/result-facts',a.workers,a.staging_root)

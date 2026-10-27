@@ -23,7 +23,7 @@ def gzip_text(path, level=6):
 
 
 def clean(value):
-    return None if value in [None,'','-1','-3','#NE','#NE#','#NULO#'] else value
+    return None if value in [None,'','-1','-3','#NE','#NE#','#NULO#','#NULO'] else value
 
 
 def first(row,*names):
@@ -48,11 +48,7 @@ def election_identity(row,lookup):
 def candidate_hash(key):
     return hashlib.sha256(json.dumps(key,ensure_ascii=False,separators=(',',':')).encode()).hexdigest()[:24]
 
-def source_members(names):
-    data=[n for n in names if n.lower().endswith(('.csv','.txt'))]
-    national=[n for n in data if '_BRASIL.' in n.upper()]
-    if len(national)>1:raise ValueError('Multiple national data representations require an explicit source profile')
-    return national if national else data
+from source_members import source_members
 
 def office_jurisdiction(key):
     if key=='president' or key.endswith(':VICE-PRESIDENTE'):return 'national'
@@ -137,7 +133,7 @@ def resources(catalog):
             seen.add(u);yield r,('candidate' if 'votacao_candidato_' in u else 'party_list')
 
 
-def build(root,output,years=None):
+def build(root,output,years=None,data_root=pathlib.Path('.cache/canonical-source-data')):
     cat=json.loads(pathlib.Path('data/history/catalog.json').read_text());index=json.loads(pathlib.Path('data/history/indicators.json').read_text())
     lookup=defaultdict(list)
     for e in index['elections']:
@@ -191,12 +187,12 @@ def build(root,output,years=None):
         for (t,y,s),n in sorted(counts.items()):
             if t!=table:continue
             p=output/f'{t}-{y}-{s}.csv.gz';data=p.read_bytes()
-            parts[f'{y}/{s}']={'url':str(p.relative_to('data')),'rows':n,'bytes':len(data),'rawBytes':len(gzip.decompress(data)),'sha256':hashlib.sha256(data).hexdigest(),'where':f"source_year = {y} and state = '{s}'"}
+            parts[f'{y}/{s}']={'url':str(p.relative_to(data_root)),'rows':n,'bytes':len(data),'rawBytes':len(gzip.decompress(data)),'sha256':hashlib.sha256(data).hexdigest(),'where':f"source_year = {y} and state = '{s}'"}
         tables[table]={'name':table,'columns':','.join(fields),'ddl':f'create table {table} ('+', '.join(f'{k} {t}' for k,t in zip(fields,types))+')','parts':parts}
     result={'tables':tables,'sources':sources,'rows':rows,'candidates':len(candidates),'events':list(events.values()),'memberAudits':member_audits,'identityRecords':identity_records,'identity':'Pleito, office, constituency and official candidate sequence; explicit public composite hash when sequence is absent.'}
     (output/'index.json').write_text(json.dumps(result,ensure_ascii=False,indent=1)+'\n')
     return result
 
 if __name__=='__main__':
-    p=argparse.ArgumentParser();p.add_argument('--root',type=pathlib.Path,required=True);p.add_argument('--output',type=pathlib.Path,default=pathlib.Path('data/history/facts'));p.add_argument('--years',nargs='+',type=int)
-    args=p.parse_args();build(args.root,args.output,args.years)
+    p=argparse.ArgumentParser();p.add_argument('--root',type=pathlib.Path,required=True);p.add_argument('--staging-root',type=pathlib.Path,default=pathlib.Path('.cache/canonical-source-data'));p.add_argument('--output',type=pathlib.Path);p.add_argument('--years',nargs='+',type=int)
+    args=p.parse_args();build(args.root,args.output or args.staging_root/'history/facts',args.years,args.staging_root)
