@@ -1,0 +1,134 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-10-27T00:40:23.991865+00:00",
+  "status": "published",
+  "dataset": {
+    "id": "rdv-resultados-eleicoes-suplementares-2024",
+    "title": "RDV · Resultados - Eleições suplementares 2024",
+    "groups": [
+      "resultados"
+    ],
+    "family": "rdv",
+    "years": [
+      2024
+    ],
+    "license": "",
+    "source": "https://dadosabertos.tse.jus.br/dataset/resultados-eleicoes-suplementares-2024",
+    "branch": "archive/rdv-resultados-eleicoes-suplementares-2024",
+    "tag": "data-rdv-resultados-eleicoes-suplementares-2024",
+    "releaseUrl": "https://github.com/brauliobo/brazil-audit/releases/tag/data-rdv-resultados-eleicoes-suplementares-2024",
+    "normalized": false,
+    "status": "downloading",
+    "inScope": true
+  },
+  "resources": [
+    {
+      "id": "72ab89e8-4296-448a-8725-41890556823c",
+      "name": "Arquivos  transmitidos para totalização",
+      "url": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2024/arqurnatot/bu_imgbu_logjez_rdv_vscmr_ele_suplementares_2024.zip",
+      "originalUrl": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2024/arqurnatot/bu_imgbu_logjez_rdv_vscmr_ele_suplementares_2024.zip",
+      "format": "CSV",
+      "status": "prepared",
+      "bytes": 90709988,
+      "lastModified": "Mon, 22 Jun 2026 14:40:28 GMT",
+      "etag": "\"5681fe4-654d89fa5acd6\"",
+      "inScope": true,
+      "sourceBytes": 90709988,
+      "retrievedAt": "2026-10-27T00:12:32.681843+00:00",
+      "availability": "available",
+      "selectionVersion": 2,
+      "inventoryVerified": true,
+      "sourceMemberCount": 3365,
+      "otherMemberNames": [],
+      "membersAvailable": 929,
+      "membersExtracted": 929,
+      "membersReused": 0,
+      "networkBytes": 4588972,
+      "requests": 1031,
+      "elapsedSeconds": 7.28,
+      "assets": [
+        {
+          "name": "72ab89e8-rdv-00.zip",
+          "bytes": 26317,
+          "sha256": "838aa0a137d8957e41429112cd382bad7901827e97732ae2ecd0dc207e8a871e"
+        },
+        {
+          "name": "72ab89e8-rdv-01.zip",
+          "bytes": 25855,
+          "sha256": "9b97d6d7b57ac939141f6d8b4fd34b86ee1e89390678484e03f34ef93bef94cb"
+        },
+        {
+          "name": "72ab89e8-rdv-02.zip",
+          "bytes": 25900,
+          "sha256": "97ace5301aec09f7b1ad378582d6bad2612a9634e2c35c9d60e47eee0eb370c5"
+        },
+        {
+          "name": "72ab89e8-rdv-03.zip",
+          "bytes": 25637,
+          "sha256": "67f167ddd66a868658510337fd8877d28da0a0de45226fd305e4458cb442e994"
+        },
+        {
+          "name": "72ab89e8-rdv-04.zip",
+          "bytes": 25828,
+          "sha256": "e6a8fc9ee1f403a074d1aa119252d8ecd280e1e0d559dce580a0c4f7bce68133"
+        },
+        {
+          "name": "72ab89e8-rdv-05.zip",
+          "bytes": 25823,
+          "sha256": "235e0ac2650426252d3e17b0c4f2f3c9e82f57afdf9a510014fb69bb6399b637"
+        },
+        {
+          "name": "72ab89e8-rdv-06.zip",
+          "bytes": 25800,
+          "sha256": "43842e56697858cead6fa1a66514acd81ebe67ef1eacaeaae1dfbd177279fa68"
+        },
+        {
+          "name": "72ab89e8-rdv-07.zip",
+          "bytes": 25847,
+          "sha256": "053b856e18d7ca9d0314cf66406c8a0315f2644094c8fd085febd47ac5dc8355"
+        },
+        {
+          "name": "72ab89e8-rdv-08.zip",
+          "bytes": 25865,
+          "sha256": "d102db597a1709eab089cf64ef5c39b6154de2e31753f0f11c2de96a7a8cf598"
+        },
+        {
+          "name": "72ab89e8-rdv-09.zip",
+          "bytes": 25880,
+          "sha256": "32778c9ba1a3b28e3851aaf27857b3509a4be931ba376a3f1e0fd6da0f484add"
+        },
+        {
+          "name": "72ab89e8-rdv-10.zip",
+          "bytes": 25790,
+          "sha256": "614369f40598ce13238ceb4cf0b005c593dbb57adc4c252b6a4696d1ce989950"
+        },
+        {
+          "name": "72ab89e8-rdv-11.zip",
+          "bytes": 25882,
+          "sha256": "51f622c6d1b348773028dd1e3fa173f1d4d2f0f022d5b0122215609346afe31b"
+        },
+        {
+          "name": "72ab89e8-rdv-12.zip",
+          "bytes": 25991,
+          "sha256": "a9fd9e91b40bb815d9e607110b3aa72d1bbc6dc9ead71b84de280c12c2b80311"
+        },
+        {
+          "name": "72ab89e8-rdv-13.zip",
+          "bytes": 25943,
+          "sha256": "e8a5e2038cc0f68c80fac10c43da2734db5edda49a94f9077e73cefe812fa492"
+        },
+        {
+          "name": "72ab89e8-rdv-14.zip",
+          "bytes": 25889,
+          "sha256": "a82f2b5784d880efadfb50a0a143e7d236cc51e4e9671cbf291be57747ba7490"
+        },
+        {
+          "name": "72ab89e8-rdv-15.zip",
+          "bytes": 25904,
+          "sha256": "d549792d3ec0ee4c82929056724bfb66661e3a311ad038c540b615058d17bbc0"
+        }
+      ],
+      "sourceInventorySha256": "c690d90902a2b8f655843a895bc52ca86f64aefa9a23038827e171c2dbbc4000"
+    }
+  ]
+}
