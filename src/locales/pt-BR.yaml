@@ -18,8 +18,8 @@ nav:
   drill: Detalhar
   analysis: Análise
   benford: Benford
-  shift: Mudança
-  spectrum: Espectro
+  shift: Entre os turnos
+  spectrum: Espectro político
   biometrics: Biometria
   signals: Sinais
   time: Horários
@@ -1601,37 +1601,49 @@ sourceNominations:
     binding_kind: "Tipo de vínculo com o pleito"
 
 shift:
-  title: "Para onde foram os votos do 1º para o 2º turno · {place} · {election}"
-  caution: "O voto é secreto: o que segue é uma estimativa feita a partir das diferenças entre lugares, não o voto de ninguém, e uma diferença entre os turnos não prova nada."
-  breadcrumb: Lugar
-  loading: Carregando os dois turnos…
-  tabs: Recortes
+  title: "Do 1º ao 2º turno · {office} · {election}"
+  lead: "Quanto cada finalista ganhou entre os turnos e de onde podem ter vindo os votos. O voto é secreto: o que é estimativa está marcado como tal."
+  loading: "Carregando os dois turnos… ({done} de {all} arquivos)"
+  noGrain: Esta eleição não tem votos por zona ou município nos dois turnos.
+  missing: Não há dois turnos comparáveis neste lugar.
+  office:
+    president: Presidente
+    governor: Governador
+    mayor: Prefeito
+  index:
+    governor: Disputas de governador com 2º turno
+    mayor: Disputas de prefeito com 2º turno
+    note: Cada linha é uma disputa com 2º turno e os finalistas dela. Abra uma para ver a mudança.
+  tabs: Visões
   tab:
-    votes: Para onde foram
-    places: Lugares
-    cases: Casos
-  cases: Caso
+    votes: Para onde foram os votos
+    places: Por lugar
+    cases: Destaques
+  cases: Destaque
   case:
-    turned: Virou
-    big: Mudou muito
-    small: Aumento pequeno
+    turned: Mudaram de lado
+    big: Maior mudança de margem
+    small: Ganho quase nulo
+  summary: Resumo
+  answer: "Dos {eliminated} votos dos candidatos eliminados, a estimativa indica que cerca de {pa} foram para {a}, {pb} para {b} e {rest} ficaram em branco, nulos ou na abstenção."
+  stat:
+    gain: "{name}: {from} → {to} votos"
+    others: Votos dos outros candidatos no 1º turno
   group:
     rest: Demais candidatos
     blank: Brancos e nulos
     abstention: Abstenção
-  unit:
-    city: municípios
-    section: seções
   flow:
-    title: "Quem recebeu os votos do 1º turno · {a} e {b}"
+    title: Quem recebeu os votos do 1º turno (estimativa)
     note: "Cada linha é um grupo de eleitores do 1º turno e a barra mostra, em média, como esse grupo votou no 2º turno, estimado pela forma como os lugares diferem entre si. Passe o mouse sobre um trecho para ver a faixa de incerteza. Brancos, nulos e abstenção variam juntos entre os lugares e são os números menos confiáveis. O apoio declarado não entra na estimativa."
-    origin: Origem no 1º turno
+    origin: Votou no 1º turno em
     votes: Votos
     support: Apoio declarado
-    where: Votos no 2º turno
-  fit: "Estimado com {places} {unit}; o modelo reduz o erro em {fit} frente a supor que todos votaram igual."
+    where: Votou no 2º turno em
+  fit: "Estimado com {places} lugares; o modelo reduz o erro em {fit} frente a supor que todos votaram igual."
   thin: "Há poucos lugares para estimar com segurança: leia como indício, não como número."
-  noEstimate: Não há lugares com os dois turnos para estimar.
+  partial: "Este pleito não tem eleitorado e comparecimento por lugar, então a conta exata de onde vieram os votos não fecha. Os votos dos candidatos continuam valendo."
+  noEstimate: "Poucos lugares para estimar para onde foram os votos de cada candidato; vale a conta exata abaixo."
   support:
     title: O apoio declarado foi seguido?
     note: "Soma dos votos do 1º turno dos candidatos que declararam apoio a cada finalista, comparada com o quanto o finalista cresceu e com quantos desses votos a estimativa mostra que foram para ele."
@@ -1640,27 +1652,31 @@ shift:
     declared: Votos de quem declarou apoio
     followed: Seguiram (estimado)
     rate: Taxa
-  identity:
-    title: A conta fechada
-    note: "Δ{a} + Δ{b} = outros no 1º turno − Δnulos − Δbrancos − Δabstenção + Δaptos. Nulos, brancos e abstenção entram com o sinal trocado."
+  account:
+    title: A conta exata
+    note: "Ganho de {a} + ganho de {b} = votos dos outros candidatos no 1º turno + queda de nulos, brancos e abstenção + aumento do eleitorado. A tabela mostra cada parcela: sem modelo, só aritmética."
+  limits:
+    title: Como ler e limites
+    secret: "O voto é secreto: nenhum número aqui diz em quem uma pessoa votou. A conta exata mostra de quais grupos os votos novos podem ter vindo; a estimativa mostra o comportamento médio de cada grupo nos lugares, e uma diferença entre os turnos não prova nada."
+    model: "A estimativa compara lugares e pode confundir o comportamento de um grupo com o de uma região. As faixas de incerteza mostram o quanto o resultado muda com a forma de ajustar o modelo, mas não cobrem todos os erros possíveis."
   gap: "A soma dos lugares não fecha a conta em {total} votos: os arquivos de eleitorado e de votos têm pequenas diferenças de fonte."
   largest: Maiores ganhos
   largestNote: Lugares em que a soma dos ganhos dos dois candidatos mais cresceu.
+  noChildren: Esta eleição só tem totais até este nível.
   children:
     country: Estados
     state: Municípios
     city: Zonas
-    zone: Seções
+    zone: Zona
   zone: "Zona {zone}"
-  section: "Seção {section}"
   col:
-    state: Estado
+    state: UF
     city: Município
     zone: Zona
-    section: Seção
+    finalists: Finalistas
     first: "{name} 1º"
     second: "{name} 2º"
-    delta: "Δ {name}"
+    delta: "Ganho de {name}"
     others: Outros no 1º turno
     result: Ganho dos dois
     governor: Governador mais votado no 1º turno
@@ -1673,23 +1689,20 @@ shift:
     votes: Votos
     share: Parte do ganho
     others: Outros candidatos do 1º turno
-    nu: Variação dos nulos (sinal trocado)
-    bl: Variação dos brancos (sinal trocado)
-    abs: Variação da abstenção (sinal trocado)
-    ap: Variação dos aptos
+    nu: Queda dos nulos
+    bl: Queda dos brancos
+    abs: Queda da abstenção
+    ap: Aumento do eleitorado
   neither: Nenhum dos dois
-  turnedTitle: Municípios em que o vencedor mudou
-  turnedSummary: "{total} municípios deram mais votos a um dos dois no 1º turno e ao outro no 2º: {toA} passaram a {a} e {toB} a {b}."
-  turnedGovernors: "Nesses municípios o governador mais votado no 1º turno é de um partido do campo de {a} em {withA}, do campo de {b} em {withB} e de nenhum dos dois (centro, sem classificação ou outro campo) em {others}."
+  turnedSummary: "{total} lugares deram mais votos a um dos dois no 1º turno e ao outro no 2º: {toA} passaram a {a} e {toB} a {b}."
+  turnedGovernors: "Nesses lugares o governador mais votado no 1º turno é de um partido do campo de {a} em {withA}, do campo de {b} em {withB} e de nenhum dos dois (centro, sem classificação ou outro campo) em {others}."
   turnedNote: "O campo vem da classificação por partido e período (scripts/spectrum/parties.csv), uma escolha editorial revisável. Votar em campos diferentes para cargos diferentes é comum; a tabela só mostra onde isso ocorreu."
   bigTitle: "As {top} maiores mudanças de margem"
   bigNote: "Municípios com ao menos {votes} votos para os dois candidatos no 2º turno, ordenados pela mudança da margem entre eles (diferença dividida pelos votos dos dois), em pontos percentuais."
   smallTitle: "Aumento de até {max} votos"
-  smallNote: "Zonas ou seções em que o candidato escolhido ganhou de 0 a {max} votos entre os turnos. Em lugares pequenos isso é esperado: veja a distribuição antes de ler qualquer padrão nos números."
+  smallNote: "Zonas (ou municípios, quando a fonte não tem zonas) em que o candidato escolhido ganhou de 0 a {max} votos entre os turnos. Em lugares pequenos isso é esperado: veja a distribuição antes de ler qualquer padrão nos números."
   smallTotal: "{n} lugares em que {name} ganhou até {max} votos."
   who: Candidato
-  grain: Nível
-  pickState: Escolha um estado para listar as zonas ou seções.
 spectrum:
   title: "Espectro político · {election}"
   caution: "Esquerda, centro-esquerda, centro, centro-direita e direita são uma escolha editorial por partido e período (scripts/spectrum/parties.csv), com um grau de confiança, e não uma medida. Partidos mudam de posição com o tempo e candidatos podem destoar do partido."

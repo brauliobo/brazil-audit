@@ -17,8 +17,8 @@ nav:
   drill: Drill down
   analysis: Analysis
   benford: Benford
-  shift: Round shift
-  spectrum: Spectrum
+  shift: Between rounds
+  spectrum: Political spectrum
   biometrics: Biometrics
   signals: Signals
   time: Voting time
@@ -1600,37 +1600,49 @@ sourceNominations:
     binding_kind: "Election binding type"
 
 shift:
-  title: "Where the votes went from round 1 to round 2 · {place} · {election}"
-  caution: "The ballot is secret: what follows is an estimate from how places differ, not anyone's vote, and a difference between rounds proves nothing."
-  breadcrumb: Place
-  loading: Loading both rounds…
+  title: "From round 1 to round 2 · {office} · {election}"
+  lead: "How much each finalist gained between the rounds and where the votes may have come from. The ballot is secret: what is an estimate is marked as one."
+  loading: "Loading both rounds… ({done} of {all} files)"
+  noGrain: This election has no votes by zone or municipality in both rounds.
+  missing: There are no comparable two rounds in this place.
+  office:
+    president: President
+    governor: Governor
+    mayor: Mayor
+  index:
+    governor: Governor races with a runoff
+    mayor: Mayor races with a runoff
+    note: Each row is a race with a runoff and its finalists. Open one to see the shift.
   tabs: Views
   tab:
-    votes: Where they went
-    places: Places
-    cases: Cases
-  cases: Case
+    votes: Where the votes went
+    places: By place
+    cases: Highlights
+  cases: Highlight
   case:
-    turned: Turned
-    big: Big shift
-    small: Small gain
+    turned: Changed sides
+    big: Largest margin change
+    small: Almost no gain
+  summary: Summary
+  answer: "Of the {eliminated} votes of the eliminated candidates, the estimate says about {pa} went to {a}, {pb} to {b} and {rest} stayed blank, null or abstaining."
+  stat:
+    gain: "{name}: {from} → {to} votes"
+    others: Round-1 votes of the other candidates
   group:
     rest: Other candidates
     blank: Blank and null
     abstention: Abstention
-  unit:
-    city: municipalities
-    section: sections
   flow:
-    title: "Who received the round-1 votes · {a} and {b}"
+    title: Who received the round-1 votes (estimate)
     note: "Each row is a group of round-1 voters and the bar shows, on average, how that group voted in round 2, estimated from how the places differ. Hover a part to see its uncertainty range. Blank, null and abstention vary together between places and are the least reliable numbers. The declared support is not used in the estimate."
-    origin: Round-1 origin
+    origin: Voted in round 1 for
     votes: Votes
     support: Declared support
-    where: Round-2 votes
-  fit: "Estimated from {places} {unit}; the model removes {fit} of the error against assuming everyone voted alike."
+    where: Voted in round 2 for
+  fit: "Estimated from {places} places; the model removes {fit} of the error against assuming everyone voted alike."
   thin: "There are few places to estimate from safely: read it as a hint, not as a number."
-  noEstimate: There are no places with both rounds to estimate from.
+  partial: "This election has no electorate and turnout by place, so the exact account of where the votes came from does not close. The candidates' votes still hold."
+  noEstimate: "Too few places to estimate where each candidate's votes went; the exact account below still holds."
   support:
     title: Was the declared support followed?
     note: "The round-1 votes of the candidates who declared support for each finalist, against how much the finalist grew and how many of those votes the estimate says went to the finalist."
@@ -1639,27 +1651,31 @@ shift:
     declared: Votes of those who declared support
     followed: Followed (estimated)
     rate: Rate
-  identity:
-    title: The closed account
-    note: "Δ{a} + Δ{b} = round-1 others − Δnull − Δblank − Δabstention + Δelectorate. Null, blank and abstention enter with the sign flipped."
+  account:
+    title: The exact account
+    note: "Gain of {a} + gain of {b} = round-1 votes of the other candidates + drop in null, blank and abstention + growth of the electorate. The table shows each term: no model, just arithmetic."
+  limits:
+    title: How to read this and its limits
+    secret: "The ballot is secret: no number here says how a person voted. The exact account shows which groups the new votes may have come from; the estimate shows the average behaviour of each group across places, and a difference between rounds proves nothing."
+    model: "The estimate compares places and can mistake a group's behaviour for a region's. The uncertainty ranges show how much the result moves with the way the model is fitted, but they do not cover every possible error."
   gap: "The places do not add up to the account by {total} votes: the electorate and vote files have small source differences."
   largest: Largest gains
   largestNote: Places where the sum of the gains of the two candidates grew most.
+  noChildren: This election only has totals down to this level.
   children:
     country: States
     state: Municipalities
     city: Zones
-    zone: Sections
+    zone: Zone
   zone: "Zone {zone}"
-  section: "Section {section}"
   col:
     state: State
     city: Municipality
     zone: Zone
-    section: Section
+    finalists: Finalists
     first: "{name} R1"
     second: "{name} R2"
-    delta: "Δ {name}"
+    delta: "Gain of {name}"
     others: Others in round 1
     result: Gain of the two
     governor: Governor with most votes in round 1
@@ -1672,23 +1688,20 @@ shift:
     votes: Votes
     share: Share of the gain
     others: Other round-1 candidates
-    nu: Change in null votes (sign flipped)
-    bl: Change in blank votes (sign flipped)
-    abs: Change in abstention (sign flipped)
-    ap: Change in the electorate
+    nu: Drop in null votes
+    bl: Drop in blank votes
+    abs: Drop in abstention
+    ap: Growth of the electorate
   neither: Neither
-  turnedTitle: Municipalities where the winner changed
-  turnedSummary: "{total} municipalities gave more votes to one of the two in round 1 and to the other in round 2: {toA} moved to {a} and {toB} to {b}."
-  turnedGovernors: "In those municipalities the governor with most votes in round 1 is from a party of the camp of {a} in {withA}, of the camp of {b} in {withB} and of neither (center, unclassified or another camp) in {others}."
+  turnedSummary: "{total} places gave more votes to one of the two in round 1 and to the other in round 2: {toA} moved to {a} and {toB} to {b}."
+  turnedGovernors: "In those places the governor with most votes in round 1 is from a party of the camp of {a} in {withA}, of the camp of {b} in {withB} and of neither (center, unclassified or another camp) in {others}."
   turnedNote: "The camp comes from the classification by party and period (scripts/spectrum/parties.csv), a reviewable editorial choice. Voting for different camps for different offices is common; the table only shows where it happened."
   bigTitle: "The {top} largest margin changes"
   bigNote: "Municipalities with at least {votes} votes for the two candidates in round 2, ordered by the change in the margin between them (difference divided by the votes of both), in percentage points."
   smallTitle: "Gain of up to {max} votes"
-  smallNote: "Zones or sections where the chosen candidate gained 0 to {max} votes between rounds. In small places this is expected: look at the distribution before reading any pattern into the numbers."
+  smallNote: "Zones (or municipalities, when the source has no zones) where the chosen candidate gained 0 to {max} votes between rounds. In small places this is expected: look at the distribution before reading any pattern into the numbers."
   smallTotal: "{n} places where {name} gained up to {max} votes."
   who: Candidate
-  grain: Level
-  pickState: Pick a state to list its zones or sections.
 spectrum:
   title: "Political spectrum · {election}"
   caution: "Left, center-left, center, center-right and right are an editorial choice per party and period (scripts/spectrum/parties.csv), with a confidence level, not a measurement. Parties move over time and candidates may differ from their party."
