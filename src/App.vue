@@ -31,9 +31,12 @@ import Design from './views/Design.vue'
 import NotFound from './views/NotFound.vue'
 import Compare from './views/Compare.vue'
 import History from './views/History.vue'
+import Shift from './views/Shift.vue'
+import Spectrum from './views/Spectrum.vue'
+import Biometrics from './views/Biometrics.vue'
 
 const REPO = 'https://github.com/brauliobo/brazil-audit'
-const views = { overview: Overview, maps: Maps, parliament: Parliament, seats: Seats, drill: Drill, analysis: Analysis, benford: Benford, signals: Signals, time: Time, logs: Logs, sql: Sql, design: Design, compare: Compare, history: History }
+const views = { overview: Overview, maps: Maps, parliament: Parliament, seats: Seats, drill: Drill, analysis: Analysis, benford: Benford, signals: Signals, time: Time, logs: Logs, sql: Sql, design: Design, compare: Compare, shift: Shift, spectrum: Spectrum, biometrics: Biometrics, history: History }
 const current = computed(() => (route.value.notFound ? NotFound : views[route.value.view]))
 const election = computed(() => route.value.election)
 const context = computed(() => contextParams(election.value,{

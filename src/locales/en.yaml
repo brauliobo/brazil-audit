@@ -17,6 +17,9 @@ nav:
   drill: Drill down
   analysis: Analysis
   benford: Benford
+  shift: Round shift
+  spectrum: Spectrum
+  biometrics: Biometrics
   signals: Signals
   time: Voting time
   logs: Ballot-box logs
@@ -681,6 +684,10 @@ sql:
     parts: Parts loaded in the browser
     catalog: "Catalog: tables, columns and elections"
   tables:
+    spectrum: "editorial left-right classification of the parties by period (E, CE, C, CD, D or N)"
+    coalition: "coalitions, federations and isolated parties of the 1994-2026 general elections (source: TSE)"
+    endorsement: "first-round candidate and the finalist they declared for in the runoff"
+    cand_bloc: "candidates with the political bloc of their party in the year of the election"
     election_units: "official units by election identity, office and source grain"
     election_votes: "candidate votes by source territorial unit"
     election_candidates: "official candidate identities and attributes by election"
@@ -1591,3 +1598,162 @@ sourceNominations:
     candidate_status: "Reported status"
     candidate_id: "Identity linked by evidence"
     binding_kind: "Election binding type"
+
+shift:
+  title: "Shift from round 1 to round 2 · {place} · {election}"
+  caution: "The ballot is secret. The arithmetic below says which groups the new votes may have come from (votes for other candidates, null, blank, abstention, new voters), not who voted for whom. A difference between the rounds proves nothing by itself: small sections, rural zones and moved polling places explain a lot."
+  breadcrumb: Place
+  loading: Loading both rounds…
+  tabs: Views
+  tab:
+    places: Places
+    turned: Turned
+    small: Small gain
+    big: Moved a lot
+    sources: Simulation
+  summary: "{a} and {b}: what changed between the rounds"
+  identity: "Δ{a} + Δ{b} = others in round 1 − Δnull − Δblank − Δabstention + Δelectorate"
+  deltaNote: "Δ = round 2 − round 1. Null, blank and abstention enter with the sign reversed: if they fell, votes were left over for the two candidates. The other round-1 candidates enter with the sign of their vote."
+  gap: "The places do not add up to the identity by {total} votes: the electorate and vote files differ slightly in source."
+  largest: Largest gains
+  largestNote: Places where the sum of the gains of the two candidates grew most.
+  others: Votes of the other candidates in round 1
+  othersNote: "Each bar is a candidate that did not reach the runoff; the arrow shows who they declared for, when that is recorded. Votes do not transfer automatically: {a} and {b} may or may not have received them."
+  children:
+    country: States
+    state: Municipalities
+    city: Zones
+    zone: Sections
+  zone: "Zone {zone}"
+  section: "Section {section}"
+  col:
+    state: State
+    city: Municipality
+    zone: Zone
+    section: Section
+    first: "{name} R1"
+    second: "{name} R2"
+    delta: "Δ {name}"
+    nulls: Δ null
+    blanks: Δ blank
+    abstention: Δ abstention
+    electorate: Δ electorate
+    others: Others in round 1
+    result: Gain of both
+    governor: Top governor candidate in round 1
+    linked: Linked to
+    margin1: Round 1 margin (points)
+    margin2: Round 2 margin (points)
+    swing: Margin change (points)
+  pool:
+    source: Source
+    votes: Votes
+    share: Share of the gain
+    others: Other round-1 candidates
+    nu: Change in null votes (sign flipped)
+    bl: Change in blank votes (sign flipped)
+    abs: Change in abstention (sign flipped)
+    ap: Change in the electorate
+  neither: Neither
+  turnedTitle: Municipalities where the winner changed
+  turnedSummary: "{total} municipalities gave more votes to one of the two in round 1 and to the other in round 2: {toA} switched to {a} and {toB} to {b}."
+  turnedGovernors: "In these municipalities the top governor candidate of round 1 is from a party of the camp of {a} in {withA}, of the camp of {b} in {withB} and of neither (center, unclassified or another camp) in {others}."
+  turnedNote: "The camp comes from the classification by party and period (scripts/spectrum/parties.csv), an editorial and revisable choice. Voting for different camps for different offices is common; the table only shows where it happened."
+  bigTitle: "The {top} largest margin changes"
+  bigNote: "Municipalities with at least {votes} votes for the two candidates in round 2, ordered by the change of the margin between them (difference divided by their votes), in percentage points."
+  smallTitle: "Gain of up to {max} votes"
+  smallNote: "Zones or sections where the chosen candidate gained 0 to {max} votes between the rounds. In small places this is expected: look at the distribution before reading any pattern into the numbers."
+  smallTotal: "{n} places where {name} gained up to {max} votes."
+  who: Candidate
+  grain: Level
+  pickState: Pick a state to list its zones or sections.
+  simTitle: Simulation of where the votes came from
+  simNote: "Enter the share (%) of each group that would go to each candidate. The base for null, blank and abstention is the change between the rounds (positive when it fell); for the other candidates it is their round-1 votes. This is your own simulation, not a result."
+  simTotals: "Simulated: {a} {simA} and {b} {simB}. Actual gain: {a} {goalA} and {b} {goalB}."
+
+spectrum:
+  title: "Political spectrum · {election}"
+  caution: "Left, center-left, center, center-right and right are an editorial choice per party and period (scripts/spectrum/parties.csv), with a confidence level, not a measurement. Parties move over time and candidates may differ from their party."
+  tabs: Spectrum views
+  tab:
+    blocs: Blocs
+    coalitions: Coalitions
+    paradox: Paradoxical votes
+  bloc:
+    E: Left
+    CE: Center-left
+    C: Center
+    CD: Center-right
+    D: Right
+    N: Unclassified
+  side:
+    left: Left
+    center: Center
+    right: Right
+    none: Unclassified
+  kind:
+    coalition: Coalition
+    party: Isolated party
+    federation: Federation
+  noVotes: No votes by candidate for this office in this election.
+  blocsTitle: "Votes by bloc · {office}"
+  blocsNote: "Sum of the votes of the candidates of each bloc, by the bloc of the party in the year of the election. Parties without a classification are under Unclassified."
+  blocsLine: "candidates: {candidates}"
+  candidatesTitle: Most voted candidates
+  coalitionsTitle: "Coalitions · {office}"
+  coalitionsNote: "A coalition stands at the average of its parties that have a classification, from -2 (left) to +2 (right). The bloc of each party is in parentheses."
+  noCoalitions: "No coalitions registered for this office (TSE coalitions exist from 1994 to 2026 and federations from 2022)."
+  paradoxTitle: Paradoxical votes
+  paradoxNote: "Municipalities where the most voted candidate for president and for governor, in the same round, stand on opposite sides (left against right). Voting for different camps for different offices is common; the table only shows where it happened."
+  paradoxSummary: "{n} of {total} municipalities voted for one side for president and for the opposite side for governor."
+  paradoxCross: President (rows) and governor (columns), in municipalities
+  paradoxUnavailable: This view needs the municipality results for president and governor, available from 2018 on.
+  col:
+    candidate: Candidate
+    party: Party
+    bloc: Bloc
+    votes: Votes
+    share: Share
+    uf: State
+    coalition: Coalition
+    kind: Type
+    parties: Parties
+    members: Members
+    score: Position
+    city: Municipality
+    president: President
+    governor: Governor
+    president_votes: President votes
+    governor_votes: Governor votes
+
+biometrics:
+  title: "Voter identification · {place} · {election}"
+  caution: "Not using the fingerprint is not a sign of fraud: fingerprints fail with dry skin, age and manual work, and many voters never registered one. The table only shows where identification without a fingerprint was most common and should be read next to the neighboring sections."
+  breadcrumb: Place
+  tabs: Biometrics views
+  tab:
+    places: Places
+    sections: Sections
+  summary: How the voters were identified
+  meaning: "By fingerprint (biometrics), released by hand by the poll worker after the fingerprint failed or was not tried, or identified by the voter title number. The data come from the urn logs; elections without logs have no such view."
+  worst: "Largest share without a fingerprint (at least {min} identifications)"
+  sectionsTitle: "Sections with the least fingerprint use (at least {min} identifications)"
+  sectionsNote: "The sections of the state where most voters were identified without a fingerprint, among those with at least {min} identifications."
+  pickState: Pick a state in the list of places to see its sections.
+  zone: "Zone {zone}"
+  section: "Section {section}"
+  children:
+    country: States
+    state: Municipalities
+    city: Zones
+    zone: Sections
+  col:
+    state: State
+    city: Municipality
+    zone: Zone
+    section: Section
+    total: Identifications
+    bio: Fingerprint
+    man: Manual
+    nor: Title
+    noFp: Without fingerprint

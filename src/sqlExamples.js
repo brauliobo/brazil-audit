@@ -42,4 +42,4 @@ export function initialSql(key, q, office) {
 }
 
 /** Tables and views of the shared schema, listed under the editor (descriptions: sql.tables.<name>). */
-export const TABLES = ['election_units','election_votes','election_candidates','state_rounds','state_round_counts','rdv', 'sec', 'cs', 'tot', 'res', 'resx', 'totx', 'vt', 'vtc', 'sg', 'sgf', 'sgz', 'turnout', 'cov', 'miss', 'residual', 'elected', 'seats', 'lineup', 'annulled', 'cands', 'mun_map']
+export const TABLES = ['election_units','election_votes','election_candidates','state_rounds','state_round_counts','rdv', 'sec', 'cs', 'tot', 'res', 'resx', 'totx', 'vt', 'vtc', 'sg', 'sgf', 'sgz', 'spectrum', 'coalition', 'endorsement', 'cand_bloc', 'turnout', 'cov', 'miss', 'residual', 'elected', 'seats', 'lineup', 'annulled', 'cands', 'mun_map']

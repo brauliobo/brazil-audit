@@ -18,6 +18,9 @@ nav:
   drill: Detalhar
   analysis: Análise
   benford: Benford
+  shift: Mudança
+  spectrum: Espectro
+  biometrics: Biometria
   signals: Sinais
   time: Horários
   logs: Logs da urna
@@ -682,6 +685,10 @@ sql:
     parts: Partes carregadas no navegador
     catalog: "Catálogo: tabelas, colunas e eleições"
   tables:
+    spectrum: "classificação ideológica editorial dos partidos por período (E, CE, C, CD, D ou N)"
+    coalition: "coligações, federações e partidos isolados das eleições gerais de 1994 a 2026 (fonte: TSE)"
+    endorsement: "candidato do 1º turno e o finalista a quem declarou apoio no 2º turno"
+    cand_bloc: "candidatos com o campo político do partido no ano da eleição"
     election_units: "unidades oficiais por identidade de pleito, cargo e granularidade real"
     election_votes: "votos por candidato e unidade territorial da fonte"
     election_candidates: "identidades e atributos oficiais dos candidatos por pleito"
@@ -1592,3 +1599,162 @@ sourceNominations:
     candidate_status: "Situação informada"
     candidate_id: "Identidade vinculada por evidência"
     binding_kind: "Tipo de vínculo com o pleito"
+
+shift:
+  title: "Mudança do 1º para o 2º turno · {place} · {election}"
+  caution: "O voto é secreto. A conta abaixo diz de quais grupos podem ter vindo os votos novos (votos em outros candidatos, nulos, brancos, abstenção, eleitores novos), não quem votou em quem. Uma diferença entre os turnos não é prova de nada: seções pequenas, zonas rurais e mudanças de local explicam muito."
+  breadcrumb: Lugar
+  loading: Carregando os dois turnos…
+  tabs: Recortes
+  tab:
+    places: Lugares
+    turned: Virou
+    small: Aumento pequeno
+    big: Mudou muito
+    sources: Simulação
+  summary: "{a} e {b}: o que mudou entre os turnos"
+  identity: "Δ{a} + Δ{b} = outros no 1º turno − Δnulos − Δbrancos − Δabstenção + Δaptos"
+  deltaNote: "Δ = 2º turno − 1º turno. Nulos, brancos e abstenção entram com o sinal trocado: se caíram, sobraram votos para os dois candidatos. Os outros candidatos do 1º turno entram com o sinal da votação que tiveram."
+  gap: "A soma dos lugares não fecha a conta em {total} votos: os arquivos de eleitorado e de votos têm pequenas diferenças de fonte."
+  largest: Maiores ganhos
+  largestNote: Lugares em que a soma dos ganhos dos dois candidatos mais cresceu.
+  others: Votos dos outros candidatos no 1º turno
+  othersNote: "Cada barra é um candidato que não foi ao 2º turno; a seta indica a quem declarou apoio, quando isso está registrado. Os votos não se transferem automaticamente: {a} e {b} podem ou não tê-los recebido."
+  children:
+    country: Estados
+    state: Municípios
+    city: Zonas
+    zone: Seções
+  zone: "Zona {zone}"
+  section: "Seção {section}"
+  col:
+    state: Estado
+    city: Município
+    zone: Zona
+    section: Seção
+    first: "{name} 1º"
+    second: "{name} 2º"
+    delta: "Δ {name}"
+    nulls: Δ nulos
+    blanks: Δ brancos
+    abstention: Δ abstenção
+    electorate: Δ aptos
+    others: Outros no 1º turno
+    result: Ganho dos dois
+    governor: Governador mais votado no 1º turno
+    linked: Ligado a
+    margin1: Margem no 1º turno (pontos)
+    margin2: Margem no 2º turno (pontos)
+    swing: Mudança da margem (pontos)
+  pool:
+    source: Origem
+    votes: Votos
+    share: Parte do ganho
+    others: Outros candidatos do 1º turno
+    nu: Variação dos nulos (sinal trocado)
+    bl: Variação dos brancos (sinal trocado)
+    abs: Variação da abstenção (sinal trocado)
+    ap: Variação dos aptos
+  neither: Nenhum dos dois
+  turnedTitle: Municípios em que o vencedor mudou
+  turnedSummary: "{total} municípios deram mais votos a um dos dois no 1º turno e ao outro no 2º: {toA} passaram a {a} e {toB} a {b}."
+  turnedGovernors: "Nesses municípios o governador mais votado no 1º turno é de um partido do campo de {a} em {withA}, do campo de {b} em {withB} e de nenhum dos dois (centro, sem classificação ou outro campo) em {others}."
+  turnedNote: "O campo vem da classificação por partido e período (scripts/spectrum/parties.csv), uma escolha editorial revisável. Votar em campos diferentes para cargos diferentes é comum; a tabela só mostra onde isso ocorreu."
+  bigTitle: "As {top} maiores mudanças de margem"
+  bigNote: "Municípios com ao menos {votes} votos para os dois candidatos no 2º turno, ordenados pela mudança da margem entre eles (diferença dividida pelos votos dos dois), em pontos percentuais."
+  smallTitle: "Aumento de até {max} votos"
+  smallNote: "Zonas ou seções em que o candidato escolhido ganhou de 0 a {max} votos entre os turnos. Em lugares pequenos isso é esperado: veja a distribuição antes de ler qualquer padrão nos números."
+  smallTotal: "{n} lugares em que {name} ganhou até {max} votos."
+  who: Candidato
+  grain: Nível
+  pickState: Escolha um estado para listar as zonas ou seções.
+  simTitle: Simulação da origem dos votos
+  simNote: "Informe a parte (%) de cada grupo que iria para cada candidato. A base de nulos, brancos e abstenção é a variação entre os turnos (positiva quando caiu); a dos outros candidatos são os votos do 1º turno. É uma simulação sua, não um resultado."
+  simTotals: "Simulado: {a} {simA} e {b} {simB}. Ganho real: {a} {goalA} e {b} {goalB}."
+
+spectrum:
+  title: "Espectro político · {election}"
+  caution: "Esquerda, centro-esquerda, centro, centro-direita e direita são uma escolha editorial por partido e período (scripts/spectrum/parties.csv), com um grau de confiança, e não uma medida. Partidos mudam de posição com o tempo e candidatos podem destoar do partido."
+  tabs: Visões do espectro
+  tab:
+    blocs: Blocos
+    coalitions: Coligações
+    paradox: Votos paradoxais
+  bloc:
+    E: Esquerda
+    CE: Centro-esquerda
+    C: Centro
+    CD: Centro-direita
+    D: Direita
+    N: Sem classificação
+  side:
+    left: Esquerda
+    center: Centro
+    right: Direita
+    none: Sem classificação
+  kind:
+    coalition: Coligação
+    party: Partido isolado
+    federation: Federação
+  noVotes: Sem votos por candidato para este cargo nesta eleição.
+  blocsTitle: "Votos por bloco · {office}"
+  blocsNote: "Soma dos votos dos candidatos de cada bloco, pelo bloco do partido no ano da eleição. Partidos sem classificação ficam em Sem classificação."
+  blocsLine: "candidatos: {candidates}"
+  candidatesTitle: Candidatos mais votados
+  coalitionsTitle: "Coligações · {office}"
+  coalitionsNote: "A posição de uma coligação é a média das posições dos seus partidos que têm classificação, de -2 (esquerda) a +2 (direita). Entre parênteses, o bloco de cada partido."
+  noCoalitions: "Sem coligações registradas para este cargo (as coligações do TSE existem de 1994 a 2026 e as federações a partir de 2022)."
+  paradoxTitle: Votos paradoxais
+  paradoxNote: "Municípios em que o candidato mais votado a presidente e o mais votado a governador, no mesmo turno, são de lados opostos (esquerda contra direita). Votar em campos diferentes para cargos diferentes é comum; a tabela só mostra onde isso ocorreu."
+  paradoxSummary: "{n} de {total} municípios votaram em um lado para presidente e no lado oposto para governador."
+  paradoxCross: Presidente (linhas) e governador (colunas), em municípios
+  paradoxUnavailable: Esta visão precisa dos resultados por município de presidente e governador, disponíveis de 2018 em diante.
+  col:
+    candidate: Candidato
+    party: Partido
+    bloc: Bloco
+    votes: Votos
+    share: Parte
+    uf: UF
+    coalition: Coligação
+    kind: Tipo
+    parties: Partidos
+    members: Composição
+    score: Posição
+    city: Município
+    president: Presidente
+    governor: Governador
+    president_votes: Votos do presidente
+    governor_votes: Votos do governador
+
+biometrics:
+  title: "Identificação dos eleitores · {place} · {election}"
+  caution: "Sem biometria não é sinal de fraude: a digital falha por pele seca, idade e trabalho manual, e muitos eleitores nunca cadastraram a biometria. A tabela só mostra onde a identificação sem digital foi mais comum e deve ser lida junto com as seções vizinhas."
+  breadcrumb: Lugar
+  tabs: Visões da biometria
+  tab:
+    places: Lugares
+    sections: Seções
+  summary: Como os eleitores foram identificados
+  meaning: "Pela digital (biometria), liberados manualmente pelo mesário depois que a digital falhou ou não foi tentada, ou identificados pelo número do título. Os dados vêm dos logs das urnas; eleições sem logs não têm esta visão."
+  worst: "Maior parte sem digital (ao menos {min} identificações)"
+  sectionsTitle: "Seções com menos digital (ao menos {min} identificações)"
+  sectionsNote: "As seções do estado em que mais eleitores foram identificados sem a digital, entre as que tiveram ao menos {min} identificações."
+  pickState: Escolha um estado na lista de lugares para ver as suas seções.
+  zone: "Zona {zone}"
+  section: "Seção {section}"
+  children:
+    country: Estados
+    state: Municípios
+    city: Zonas
+    zone: Seções
+  col:
+    state: Estado
+    city: Município
+    zone: Zona
+    section: Seção
+    total: Identificações
+    bio: Digital
+    man: Manual
+    nor: Título
+    noFp: Sem digital

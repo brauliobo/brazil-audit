@@ -20,7 +20,7 @@ export const inElection = (key, alias = '') => {
 }
 
 /** Views of the main navigation (their labels are nav.<id> in the locale files). */
-export const VIEWS_NAV = ['overview', 'maps', 'parliament', 'seats', 'drill', 'analysis', 'benford', 'signals', 'time', 'logs', 'sql', 'compare', 'history']
+export const VIEWS_NAV = ['overview', 'maps', 'parliament', 'seats', 'drill', 'analysis', 'shift', 'spectrum', 'biometrics', 'benford', 'signals', 'time', 'logs', 'sql', 'compare', 'history']
 
 /** Routes outside the main navigation (linked from the footer). */
 export const HIDDEN_VIEWS = ['design']
@@ -43,6 +43,9 @@ export const INDEXES = [
 ]
 
 export const VIEWS = [
+  // a candidate with the left-right bloc of the party in the year of the election (spectrum: scripts/spectrum/parties.csv)
+  `create or replace view cand_bloc as select c.election, c.turn, c.uf, c.office, c.n, c.name, c.short_name, c.party, c.official_votes, coalesce(s.bloc, 'N') bloc
+    from cands c left join spectrum s on s.party = regexp_replace(upper(c.party), '[^A-Z0-9ÃÕÇ]', '', 'g') and c.election between s.from_year and s.to_year`,
   'create or replace view sec as select election, turn, state, city, zone, section, model, office, nominal, blank, nul from rdv',
   `create or replace view cs as select r.election, r.turn, r.state, r.city, r.zone, r.section, r.model, r.office, e.key cand, e.value::int votes, r.nominal
     from rdv r, jsonb_each_text(r.votes) e`,
