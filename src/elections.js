@@ -59,7 +59,7 @@ const elections = [
   },
   {
     key: '2026-2', year: 2026, turn: 2, date: '2026-10-25', offices: RUNOFF,
-    hasBlank: true, hasTimes: true, hasResidual: true, hasSeats: false, hasCoverage: true, hasSignals: false, hasTurnout: true,
+    hasBlank: true, hasTimes: true, hasResidual: true, hasSeats: false, hasCoverage: true, hasSignals: true, hasTurnout: true,
     sources: { logs: true, rdv: true, open: false, official: ['residual', 'check', 'turnout'], pending: [], differences: {} },
     raw: {
       tag: 'data-2026-2', indexDir: 'meta-2026-2', pleito: '003221', logpack: true, branch: '2026', code: ['lib/rdv.rb', 'lib/voting_log.rb'], coverage: ['coverage/missing-2026-2.tsv', 'coverage/summary-2026-2.tsv'],

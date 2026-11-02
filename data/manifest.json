@@ -8337,8 +8337,8 @@
   },
   "sg": {
    "name": "sg",
-   "columns": "election,turn,state,city,zone,section,school,aptos,comp,zabs,v,bio,man,nor,run,hv,hm,hn,lt,zman,znf,dlate,dnf,fl",
-   "ddl": "create table sg (election int, turn int, state text, city text, zone text, section text, school int, aptos int, comp int, zabs real, v int, bio int, man int, nor int, run int, hv smallint[], hm smallint[], hn smallint[], lt int, zman real, znf real, dlate int, dnf real, fl int)",
+   "columns": "election,turn,state,city,zone,section,school,aptos,comp,zabs,v,bio,man,nor,run,hv,hm,hn,lt,zman,znf,dlate,dnf,fl,med,gap",
+   "ddl": "create table sg (election int, turn int, state text, city text, zone text, section text, school int, aptos int, comp int, zabs real, v int, bio int, man int, nor int, run int, hv smallint[], hm smallint[], hn smallint[], lt int, zman real, znf real, dlate int, dnf real, fl int, med int, gap int)",
    "parts": {
     "2018/ac": {
      "url": "sg/2018-ac.csv.gz",
@@ -9319,13 +9319,209 @@
      "rows": 1064,
      "rawBytes": 199428,
      "where": "election = 2022 and turn = 2 and state = 'zz'"
+    },
+    "2026-2/ac": {
+     "url": "sg/2026-2-ac.csv.gz",
+     "bytes": 115308,
+     "rows": 2270,
+     "rawBytes": 466653,
+     "where": "election = 2026 and turn = 2 and state = 'ac'"
+    },
+    "2026-2/al": {
+     "url": "sg/2026-2-al.csv.gz",
+     "bytes": 389584,
+     "rows": 7101,
+     "rawBytes": 1465759,
+     "where": "election = 2026 and turn = 2 and state = 'al'"
+    },
+    "2026-2/am": {
+     "url": "sg/2026-2-am.csv.gz",
+     "bytes": 437684,
+     "rows": 8157,
+     "rawBytes": 1655358,
+     "where": "election = 2026 and turn = 2 and state = 'am'"
+    },
+    "2026-2/ap": {
+     "url": "sg/2026-2-ap.csv.gz",
+     "bytes": 97218,
+     "rows": 1914,
+     "rawBytes": 388301,
+     "where": "election = 2026 and turn = 2 and state = 'ap'"
+    },
+    "2026-2/ba": {
+     "url": "sg/2026-2-ba.csv.gz",
+     "bytes": 2023873,
+     "rows": 35476,
+     "rawBytes": 7302372,
+     "where": "election = 2026 and turn = 2 and state = 'ba'"
+    },
+    "2026-2/ce": {
+     "url": "sg/2026-2-ce.csv.gz",
+     "bytes": 1301098,
+     "rows": 23765,
+     "rawBytes": 4843241,
+     "where": "election = 2026 and turn = 2 and state = 'ce'"
+    },
+    "2026-2/df": {
+     "url": "sg/2026-2-df.csv.gz",
+     "bytes": 351692,
+     "rows": 6969,
+     "rawBytes": 1419980,
+     "where": "election = 2026 and turn = 2 and state = 'df'"
+    },
+    "2026-2/es": {
+     "url": "sg/2026-2-es.csv.gz",
+     "bytes": 548734,
+     "rows": 9844,
+     "rawBytes": 2045040,
+     "where": "election = 2026 and turn = 2 and state = 'es'"
+    },
+    "2026-2/go": {
+     "url": "sg/2026-2-go.csv.gz",
+     "bytes": 858985,
+     "rows": 15686,
+     "rawBytes": 3241292,
+     "where": "election = 2026 and turn = 2 and state = 'go'"
+    },
+    "2026-2/ma": {
+     "url": "sg/2026-2-ma.csv.gz",
+     "bytes": 992800,
+     "rows": 18093,
+     "rawBytes": 3729130,
+     "where": "election = 2026 and turn = 2 and state = 'ma'"
+    },
+    "2026-2/mg": {
+     "url": "sg/2026-2-mg.csv.gz",
+     "bytes": 3093247,
+     "rows": 52062,
+     "rawBytes": 10771658,
+     "where": "election = 2026 and turn = 2 and state = 'mg'"
+    },
+    "2026-2/ms": {
+     "url": "sg/2026-2-ms.csv.gz",
+     "bytes": 375383,
+     "rows": 7106,
+     "rawBytes": 1462458,
+     "where": "election = 2026 and turn = 2 and state = 'ms'"
+    },
+    "2026-2/mt": {
+     "url": "sg/2026-2-mt.csv.gz",
+     "bytes": 452673,
+     "rows": 8287,
+     "rawBytes": 1710483,
+     "where": "election = 2026 and turn = 2 and state = 'mt'"
+    },
+    "2026-2/pa": {
+     "url": "sg/2026-2-pa.csv.gz",
+     "bytes": 1119619,
+     "rows": 20827,
+     "rawBytes": 4254476,
+     "where": "election = 2026 and turn = 2 and state = 'pa'"
+    },
+    "2026-2/pb": {
+     "url": "sg/2026-2-pb.csv.gz",
+     "bytes": 580601,
+     "rows": 10712,
+     "rawBytes": 2203764,
+     "where": "election = 2026 and turn = 2 and state = 'pb'"
+    },
+    "2026-2/pe": {
+     "url": "sg/2026-2-pe.csv.gz",
+     "bytes": 1203496,
+     "rows": 21418,
+     "rawBytes": 4420714,
+     "where": "election = 2026 and turn = 2 and state = 'pe'"
+    },
+    "2026-2/pi": {
+     "url": "sg/2026-2-pi.csv.gz",
+     "bytes": 544698,
+     "rows": 10225,
+     "rawBytes": 2107695,
+     "where": "election = 2026 and turn = 2 and state = 'pi'"
+    },
+    "2026-2/pr": {
+     "url": "sg/2026-2-pr.csv.gz",
+     "bytes": 1418406,
+     "rows": 27142,
+     "rawBytes": 5569992,
+     "where": "election = 2026 and turn = 2 and state = 'pr'"
+    },
+    "2026-2/rj": {
+     "url": "sg/2026-2-rj.csv.gz",
+     "bytes": 2095526,
+     "rows": 37675,
+     "rawBytes": 7841623,
+     "where": "election = 2026 and turn = 2 and state = 'rj'"
+    },
+    "2026-2/rn": {
+     "url": "sg/2026-2-rn.csv.gz",
+     "bytes": 441917,
+     "rows": 8115,
+     "rawBytes": 1666172,
+     "where": "election = 2026 and turn = 2 and state = 'rn'"
+    },
+    "2026-2/ro": {
+     "url": "sg/2026-2-ro.csv.gz",
+     "bytes": 237177,
+     "rows": 4698,
+     "rawBytes": 969040,
+     "where": "election = 2026 and turn = 2 and state = 'ro'"
+    },
+    "2026-2/rr": {
+     "url": "sg/2026-2-rr.csv.gz",
+     "bytes": 74839,
+     "rows": 1519,
+     "rawBytes": 308740,
+     "where": "election = 2026 and turn = 2 and state = 'rr'"
+    },
+    "2026-2/rs": {
+     "url": "sg/2026-2-rs.csv.gz",
+     "bytes": 1558479,
+     "rows": 27547,
+     "rawBytes": 5670223,
+     "where": "election = 2026 and turn = 2 and state = 'rs'"
+    },
+    "2026-2/sc": {
+     "url": "sg/2026-2-sc.csv.gz",
+     "bytes": 975318,
+     "rows": 17326,
+     "rawBytes": 3556225,
+     "where": "election = 2026 and turn = 2 and state = 'sc'"
+    },
+    "2026-2/se": {
+     "url": "sg/2026-2-se.csv.gz",
+     "bytes": 313841,
+     "rows": 5923,
+     "rawBytes": 1224519,
+     "where": "election = 2026 and turn = 2 and state = 'se'"
+    },
+    "2026-2/sp": {
+     "url": "sg/2026-2-sp.csv.gz",
+     "bytes": 5716608,
+     "rows": 103656,
+     "rawBytes": 21312118,
+     "where": "election = 2026 and turn = 2 and state = 'sp'"
+    },
+    "2026-2/to": {
+     "url": "sg/2026-2-to.csv.gz",
+     "bytes": 227146,
+     "rows": 4384,
+     "rawBytes": 905346,
+     "where": "election = 2026 and turn = 2 and state = 'to'"
+    },
+    "2026-2/zz": {
+     "url": "sg/2026-2-zz.csv.gz",
+     "bytes": 52082,
+     "rows": 1351,
+     "rawBytes": 257634,
+     "where": "election = 2026 and turn = 2 and state = 'zz'"
     }
    }
   },
   "sgf": {
    "name": "sgf",
-   "columns": "election,turn,state,city,zone,section,school,aptos,comp,zabs,v,bio,man,nor,run,hv,hm,hn,lt,zman,znf,dlate,dnf,fl",
-   "ddl": "create table sgf (election int, turn int, state text, city text, zone text, section text, school int, aptos int, comp int, zabs real, v int, bio int, man int, nor int, run int, hv smallint[], hm smallint[], hn smallint[], lt int, zman real, znf real, dlate int, dnf real, fl int)",
+   "columns": "election,turn,state,city,zone,section,school,aptos,comp,zabs,v,bio,man,nor,run,hv,hm,hn,lt,zman,znf,dlate,dnf,fl,med,gap",
+   "ddl": "create table sgf (election int, turn int, state text, city text, zone text, section text, school int, aptos int, comp int, zabs real, v int, bio int, man int, nor int, run int, hv smallint[], hm smallint[], hn smallint[], lt int, zman real, znf real, dlate int, dnf real, fl int, med int, gap int)",
    "parts": {
     "2018/all": {
      "url": "sgf/2018.csv.gz",
@@ -9361,6 +9557,13 @@
      "rows": 8104,
      "rawBytes": 1683910,
      "where": "election = 2022 and turn = 2"
+    },
+    "2026-2/all": {
+     "url": "sgf/2026-2.csv.gz",
+     "bytes": 452183,
+     "rows": 7189,
+     "rawBytes": 1482946,
+     "where": "election = 2026 and turn = 2"
     }
    }
   },
@@ -9403,6 +9606,13 @@
      "rows": 6283,
      "rawBytes": 1351423,
      "where": "election = 2022 and turn = 2"
+    },
+    "2026-2/all": {
+     "url": "sgz/2026-2.csv.gz",
+     "bytes": 474527,
+     "rows": 6292,
+     "rawBytes": 1326855,
+     "where": "election = 2026 and turn = 2"
     }
    }
   },
@@ -2655582,7 +2655792,7 @@
    "note": "Reference outlines were fetched without a historical period. Matching a UF or municipality code does not establish equivalent historical boundaries."
   }
  },
- "version": "2026-10-26T21:46:35.598Z+facts-4ecc969e7d6da8197726",
+ "version": "2026-11-01T03:31:43.662Z",
  "raw": {
   "2026": {
    "url": "raw/2026.json",
