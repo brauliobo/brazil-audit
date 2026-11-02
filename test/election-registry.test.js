@@ -83,3 +83,18 @@ test('source declarations remain accessible without invented elected outcomes or
   assert.equal(supportsView('1965','parliament'),true)
   assert.equal(supportsView('1965','seats'),false)
 })
+
+test('every runoff of president, governor or mayor offers the comparison with its first round, which opens the same one', async () => {
+  const { runoffOf, firstRoundOf: first, shiftOffices } = await import('../src/election-registry.js')
+  assert.equal(runoffOf('2014'), '2014-2')
+  assert.equal(runoffOf('2014-2'), '2014-2')
+  assert.equal(runoffOf('e-2020-426-1-2020-11-15'), 'e-2020-427-2-2020-11-29')
+  assert.equal(first('2008-2', 'mayor'), '2008')
+  assert.deepEqual(shiftOffices('2018-2'), ['president', 'governor'])
+  for (const key of ['1989', '1990', '1994', '1998', '2002', '2006', '2010', '2014', '2018', '2022', '2026', '1996', '2000', '2004', '2008', '2012', '2016', '2024']) {
+    assert.equal(supportsView(key, 'shift'), true, key)
+    assert.equal(supportsView(`${key}-2`, 'shift'), true, `${key}-2`)
+  }
+  assert.equal(supportsView('2020', 'shift'), false)
+  assert.equal(supportsView('1960', 'shift'), false)
+})

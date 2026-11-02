@@ -5,7 +5,7 @@
 //   resx / totx  res / tot plus the official totals of sections without published files (residual)
 import { ELECTIONS, ELECTION_LIST } from './election-registry.js'
 
-export { DEFAULT_ELECTION, ELECTIONS, ELECTION_LIST, selectedOffice, supportsView } from './election-registry.js'
+export { DEFAULT_ELECTION, ELECTIONS, ELECTION_LIST, SHIFT_OFFICES, firstRoundOf, runoffOf, selectedOffice, shiftOffices, supportsView } from './election-registry.js'
 
 /** The election whose parliament the Parlamento tab opens when the current one has no seats data. */
 export const SEATS_ELECTION = ELECTION_LIST.findLast((e) => e.hasSeats).key

@@ -75,11 +75,32 @@ export function currentStateGeometry(key, states, geometryCodes) {
   return { temporalCompatible, mappedCodes, unmappedCodes, available: mappedCodes.length > 0 }
 }
 
+/** The offices whose runoff can be compared with the first round: president, governor and mayor, in the order the shift view offers them. */
+export const SHIFT_OFFICES = ['president', 'governor', 'mayor']
+
+/** The first round of a runoff: the same year (or, for the 2020 municipal events, the previous event number), when it holds the office too. */
+export function firstRoundOf(key, officeKey) {
+  const e = ELECTIONS[key]
+  if (e?.turn !== 2 || !/^(\d{4}-2|e-2020-(427|446)-2-.*)$/.test(key)) return null
+  const has = (o) => !officeKey || o.officeDefinitions?.some((d) => d.key === officeKey)
+  const number = key.match(/^e-(\d{4})-(\d+)-2-/)
+  const match = (o) => (number ? o.key.startsWith(`e-${number[1]}-${+number[2] - 1}-1-`) : o.year === e.year)
+  const ordinary = ELECTIONS[String(e.year)]
+  if (!number && ordinary?.turn === 1 && has(ordinary)) return ordinary.key
+  return ELECTION_LIST.find((o) => o.turn === 1 && match(o) && has(o))?.key ?? null
+}
+
+/** The runoff to compare a round with: the election itself when it is a runoff, else the runoff whose first round it is. */
+export const runoffOf = (key) => (ELECTIONS[key]?.turn === 2 ? key : ELECTION_LIST.find((o) => o.turn === 2 && SHIFT_OFFICES.some((office) => firstRoundOf(o.key, office) === key))?.key ?? null)
+
+/** The offices of SHIFT_OFFICES that both rounds of the runoff hold. */
+export const shiftOffices = (key) => SHIFT_OFFICES.filter((o) => ELECTIONS[key]?.officeDefinitions?.some((d) => d.key === o) && firstRoundOf(key, o))
+
 export function supportsView(key, view) {
   const e = ELECTIONS[key]
   if (['time', 'logs'].includes(view)) return e.hasTimes
   if (view === 'seats') return e.hasSeats
-  if (view === 'shift') return e.turn === 2 && !!e.hasSignals && e.offices.includes(1) && ELECTION_LIST.some((o) => o.year === e.year && o.turn === 1 && o.hasSignals && o.offices.includes(1))
+  if (view === 'shift') return shiftOffices(runoffOf(key) ?? key).length > 0
   if (view === 'biometrics') return !!e.hasSignals && !!e.sources?.logs
   if (view === 'parliament') return e.hasSeats || e.officeDefinitions?.some((o) => ['elected','declaredSeats','listMetadata','candidateListLinks'].some((capability) => o.capabilities?.[capability]))
   return true
