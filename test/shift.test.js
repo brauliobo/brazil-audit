@@ -2,103 +2,168 @@ import test from 'node:test'
 import assert from 'node:assert/strict'
 import { readFileSync } from 'node:fs'
 import { PGlite } from '@electric-sql/pglite'
-import { VIEWS } from '../src/model.js'
-import { childrenSql, citiesSql, estimateUnitsSql, finalistsSql, rosterSql, unitsOf, shiftOf, totalOf, pools, firstRoundOf, hasShift, transfersOf } from '../src/shift.js'
+import { unitsSql, votesSql, candidatesSql, grainOf, roundsOf, DEPTH } from '../src/contest.js'
+import { childrenOf, citiesOf, contestsOf, finalistsOf, governorsOf, linkedTo, placesOf, pools, rosterOf, shiftOf, totalOf, transfersOf, unitsOf } from '../src/shift.js'
+import { ELECTIONS, installElectionRegistry, firstRoundOf, shiftOffices, supportsView } from '../src/election-registry.js'
 
 const manifest = JSON.parse(readFileSync('data/manifest.json', 'utf8'))
+installElectionRegistry(JSON.parse(readFileSync('data/elections.json', 'utf8')))
 const insert = (db, table, rows) => Promise.all(rows.map((r) => db.query(`insert into ${table} (${Object.keys(r).join(',')}) values (${Object.keys(r).map((_, i) => `$${i + 1}`).join(',')})`, Object.values(r))))
 
-// Two municipalities of one state, two rounds: the identity of the shift must hold at every level, from the sections up to the country.
+// One presidential contest in two states: round 1 (event r1) and the runoff (event r2), at the zone grain, like the canonical tables.
+const rounds = { firstIds: ['r1'], secondIds: ['r2'], first: '2000', second: '2000-2' }
 async function fixture() {
   const db = new PGlite()
-  for (const t of ['rdv', 'res', 'tot', 'residual', 'sg', 'sgz', 'cands', 'endorsement', 'spectrum']) await db.exec(manifest.tables[t].ddl)
-  for (const v of VIEWS) await db.exec(v)
-  const sec = (turn, zone, section, votes, blank, nul, aptos, comp) => ({ election: 2026, turn, state: 'aa', city: 'X', zone, section, model: 'UE', office: 1, nominal: Object.values(votes).reduce((a, b) => a + b, 0), blank, nul, votes: JSON.stringify(votes), aptos, comp })
-  const sections = [
-    sec(1, '0001', '0001', { 13: 40, 22: 30, 70: 10, 14: 5 }, 3, 2, 120, 90), sec(1, '0001', '0002', { 13: 20, 22: 50, 70: 5 }, 2, 3, 100, 80), sec(1, '0002', '0001', { 13: 30, 22: 30, 14: 10 }, 5, 5, 100, 80),
-    sec(2, '0001', '0001', { 13: 70, 22: 40 }, 5, 3, 121, 118), sec(2, '0001', '0002', { 13: 30, 22: 60 }, 1, 2, 100, 93), sec(2, '0002', '0001', { 13: 55, 22: 35 }, 4, 2, 101, 96),
-  ]
-  await insert(db, 'rdv', sections.map(({ aptos, comp, ...r }) => r))
-  await insert(db, 'sg', sections.map((s) => ({ election: s.election, turn: s.turn, state: s.state, city: s.city, zone: s.zone, section: s.section, aptos: s.aptos, comp: s.comp })))
-  const res = (turn, city, votes) => Object.entries(votes).map(([cand, v]) => ({ election: 2026, turn, state: 'aa', city, office: 1, cand, votes: v }))
-  await insert(db, 'res', [...res(1, 'X', { 13: 90, 22: 110, 70: 15, 14: 15 }), ...res(2, 'X', { 13: 155, 22: 135 }), ...res(1, 'Y', { 13: 10, 22: 20 }), ...res(2, 'Y', { 13: 15, 22: 25 })])
-  await insert(db, 'tot', [[1, 'X', 230, 10, 10], [2, 'X', 290, 10, 7], [1, 'Y', 30, 0, 0], [2, 'Y', 40, 0, 0]].map(([turn, city, nominal, blank, nul]) => ({ election: 2026, turn, state: 'aa', city, office: 1, sections: 3, nominal, blank, nul })))
-  await insert(db, 'sgz', [[1, 'X', '0001', 220, 170], [1, 'X', '0002', 100, 80], [2, 'X', '0001', 221, 211], [2, 'X', '0002', 101, 96], [1, 'Y', '0001', 40, 30], [2, 'Y', '0001', 45, 40]]
-    .map(([turn, city, zone, aptos, comp]) => ({ election: 2026, turn, state: 'aa', city, zone, sections: 1, aptos, comp })))
-  await insert(db, 'cands', [[2, '13', 'LULA', 'PT', 155], [2, '22', 'FLAVIO', 'PL', 135], [1, '70', 'CURY', 'AVANTE', 15], [1, '14', 'RENAN', 'MISSAO', 15]]
-    .map(([turn, n, name, party, official_votes]) => ({ election: 2026, turn, uf: 'br', office: 1, n, name, short_name: name, party, official_votes })))
-  await insert(db, 'endorsement', [{ election: 2026, turn: 2, n: '70', to_n: '22', source: 'test' }])
+  for (const t of ['election_units', 'election_votes', 'election_candidates', 'endorsement', 'spectrum']) await db.exec(manifest.tables[t].ddl)
+  const unit = (id, state, city, zone, eligible, present, blank, nul, nominal) => ({ election_id: id, grain: 'zone', state, city_code: city, zone, office_key: 'president', eligible, present, blank, null_votes: nul, nominal, transit: 'N' })
+  await insert(db, 'election_units', [
+    unit('r1', 'aa', '001', '0001', 1000, 800, 20, 30, 750), unit('r1', 'aa', '001', '0002', 500, 400, 10, 10, 380), unit('r1', 'bb', '002', '0001', 600, 500, 5, 15, 480),
+    unit('r2', 'aa', '001', '0001', 1010, 900, 10, 20, 870), unit('r2', 'aa', '001', '0002', 500, 450, 5, 5, 440), unit('r2', 'bb', '002', '0001', 600, 540, 10, 10, 520),
+    { ...unit('r1', 'aa', '001', '0003', 99, 99, 0, 0, 99), transit: 'S' },
+  ])
+  const vote = (id, state, city, zone, number, votes) => ({ election_id: id, grain: 'zone', state, city_code: city, zone, office_key: 'president', candidate_id: `c${number}`, kind: 'candidate', number, votes, transit: 'N' })
+  await insert(db, 'election_votes', [
+    vote('r1', 'aa', '001', '0001', '13', 300), vote('r1', 'aa', '001', '0001', '22', 250), vote('r1', 'aa', '001', '0001', '70', 120), vote('r1', 'aa', '001', '0001', '14', 80),
+    vote('r1', 'aa', '001', '0002', '13', 100), vote('r1', 'aa', '001', '0002', '22', 200), vote('r1', 'aa', '001', '0002', '70', 50), vote('r1', 'aa', '001', '0002', '14', 30),
+    vote('r1', 'bb', '002', '0001', '13', 250), vote('r1', 'bb', '002', '0001', '22', 150), vote('r1', 'bb', '002', '0001', '70', 40), vote('r1', 'bb', '002', '0001', '14', 40),
+    vote('r2', 'aa', '001', '0001', '13', 470), vote('r2', 'aa', '001', '0001', '22', 400), vote('r2', 'aa', '001', '0002', '13', 160), vote('r2', 'aa', '001', '0002', '22', 280),
+    vote('r2', 'bb', '002', '0001', '13', 340), vote('r2', 'bb', '002', '0001', '22', 180), { ...vote('r1', 'aa', '001', '0003', '13', 99), transit: 'S' },
+  ])
+  await insert(db, 'election_candidates', [['13', 'LULA', 'PT'], ['22', 'JAIR', 'PL'], ['70', 'CURY', 'AVANTE'], ['14', 'RENAN', 'MISSAO']].map(([number, name, party]) => ({ election_id: 'r1', office_key: 'president', candidate_id: `c${number}`, number, name, short_name: name, party, state: 'aa' })))
+  await insert(db, 'endorsement', [{ election: 2000, turn: 2, n: '70', to_n: '22', source: 'test' }])
+  await insert(db, 'spectrum', [['PT', 1994, 2026, 'E'], ['PL', 1994, 2026, 'D'], ['AVANTE', 1994, 2026, 'C']].map(([party, from_year, to_year, bloc]) => ({ party, from_year, to_year, bloc })))
   return db
 }
+const load = async (db, q) => (await db.query(q.sql, q.params)).rows
 
-const rows = async (db, { sql, params }) => (await db.query(sql, params)).rows.map((r) => shiftOf(Object.fromEntries(Object.entries(r).map(([k, v]) => [k, typeof v === 'string' && /^\d+$/.test(v) && k !== 'k' ? Number(v) : v]))))
+async function data(db, state = null) {
+  const [rows, votes] = [await load(db, unitsSql(rounds, 'president', 'zone', state)), await load(db, votesSql(rounds, 'president', 'zone', state))]
+  const [a, b] = finalistsOf(votes)
+  return { rows, votes, a, b, places: placesOf(rows, votes, a, b) }
+}
 
-test('the finalists are the two runoff candidates, the winner first', async () => {
+test('the units and votes of both rounds come from the canonical tables, leave out the zones in transit and give the finalists', async () => {
   const db = await fixture()
-  const { rows: f } = await db.query(...Object.values(finalistsSql(2026)))
-  assert.deepEqual(f.map((r) => r.n), ['13', '22'])
+  const { rows, votes, a, b, places } = await data(db)
+  assert.equal(rows.length, 6)
+  assert.deepEqual([a, b], ['13', '22'])
+  assert.equal(places.length, 3)
+  assert.equal(votes.filter((v) => v.number === '13' && v.turn === 1).length, 3)
+  assert.equal((await data(db, 'bb')).places.length, 1)
+  const cands = await load(db, candidatesSql(rounds, 'president', null))
+  assert.deepEqual(cands.map((c) => c.number), ['13', '14', '22', '70'])
+  assert.deepEqual((await load(db, candidatesSql(rounds, 'governor', null))).length, 0)
 })
 
-test('the identity holds for the sections of a zone, the zones of a city, the cities of a state and the country', async () => {
+test('the identity holds for the zones of a municipality, the municipalities of a state and the states of the country', async () => {
   const db = await fixture()
-  for (const args of [[], ['aa'], ['aa', 'X'], ['aa', 'X', '0001']]) {
-    const found = await rows(db, childrenSql(args, 2026, '13', '22'))
-    assert.ok(found.length > 0, `children of ${args.join('/') || 'Brazil'}`)
+  const { places } = await data(db)
+  for (const args of [[], ['aa'], ['aa', '001'], ['aa', '001', '0001']]) {
+    const found = childrenOf(places, args)
+    assert.ok(found.length > 0, `children of ${args.join('/') || 'country'}`)
     for (const r of found) assert.equal(r.gap, 0, `${args.join('/')} ${r.k}`)
   }
-  const [section] = (await rows(db, childrenSql(['aa', 'X', '0001'], 2026, '13', '22'))).filter((r) => r.k === '0001')
-  assert.deepEqual([section.d.a, section.d.b, section.others1, section.d.nu, section.d.bl, section.d.abs, section.d.ap, section.result], [30, 10, 15, 1, 2, -27, 1, 40])
+  assert.deepEqual(childrenOf(places, []).map((r) => r.k).sort(), ['aa', 'bb'])
+  assert.deepEqual(childrenOf(places, ['aa']).map((r) => r.k), ['001'])
+  assert.deepEqual(childrenOf(places, ['aa', '001']).map((r) => r.k).sort(), ['0001', '0002'])
+  const [zone] = childrenOf(places, ['aa', '001']).filter((r) => r.k === '0001')
+  assert.deepEqual([zone.d.a, zone.d.b, zone.others1, zone.d.nu, zone.d.bl, zone.d.abs, zone.d.ap, zone.result], [170, 150, 200, -10, -10, -90, 10, 320])
+  const country = totalOf(childrenOf(places, []))
+  assert.equal(country.a2, 470 + 160 + 340)
+  assert.deepEqual(pools(country).map((p) => p.id), ['others', 'nu', 'bl', 'abs', 'ap'])
 })
 
-test('the total of the municipalities is the total of the country and a place turns when the finalists swap', async () => {
+test('a place turns when the finalists swap and a municipality adds its zones', async () => {
   const db = await fixture()
-  const cities = await rows(db, citiesSql(2026, '13', '22'))
-  const total = totalOf(cities)
-  assert.equal(total.gap, 0)
-  assert.equal(total.d.a + total.d.b, 100)
-  assert.deepEqual(cities.map((r) => [r.city, r.turned]).sort(), [['X', true], ['Y', false]])
-  assert.deepEqual(pools(total).map((p) => p.id), ['others', 'nu', 'bl', 'abs', 'ap'])
+  const { places } = await data(db)
+  const cities = citiesOf(places)
+  assert.deepEqual(cities.map((r) => [r.city, r.turned]).sort(), [['001', false], ['002', false]])
+  assert.equal(cities.find((r) => r.city === '001').a2, 630)
+  assert.equal(shiftOf({ a1: 10, b1: 20, a2: 30, b2: 20, nom1: 30, nom2: 50, bl1: 0, bl2: 0, nu1: 0, nu2: 0, ap1: 50, ap2: 50, co1: 30, co2: 50 }).turned, true)
 })
 
-test('the places to estimate from come from the rollups and from the sections, with the declared support in the roster', async () => {
+test('the contests are the country for a president, a state for a governor and a municipality for a mayor', async () => {
   const db = await fixture()
-  const roster = (await db.query(...Object.values(rosterSql(2026)))).rows
-  assert.deepEqual(roster.map((r) => [r.n, r.declared]).sort(), [['14', null], ['70', '22']])
-  const load = async ({ places, votes }) => ({ places: (await db.query(places.sql, places.params)).rows, votes: (await db.query(votes.sql, votes.params)).rows })
-  const country = unitsOf(await load(estimateUnitsSql([], 2026, '13', '22')), roster, '13', '22')
-  assert.deepEqual(country.units.map((u) => u.k).sort(), ['aa/X', 'aa/Y'])
-  assert.equal(country.units.find((u) => u.k === 'aa/X').y[0], 155)
-  const zone = unitsOf(await load(estimateUnitsSql(['aa', 'X', '0001'], 2026, '13', '22')), roster, '13', '22')
-  assert.deepEqual(zone.units.map((u) => u.k).sort(), ['0001/0001', '0001/0002'])
-  assert.deepEqual(country.groups.map((g) => g.id), ['a', 'b', 'c', 'c', 'rest', 'blank', 'abstention'])
+  const { rows, votes } = await data(db)
+  assert.deepEqual(contestsOf(rows, votes, DEPTH.president).map((c) => [c.key, c.a, c.b]), [['', '13', '22']])
+  assert.deepEqual(contestsOf(rows, votes, DEPTH.governor).map((c) => c.key).sort(), ['aa', 'bb'])
+  assert.deepEqual(contestsOf(rows, votes, DEPTH.mayor).map((c) => c.key).sort(), ['aa|001', 'bb|002'])
 })
 
-test('only the runoffs with the first round of the same year offer the shift', () => {
-  assert.equal(firstRoundOf('2022-2'), '2022')
-  assert.equal(firstRoundOf('2022'), '2022')
-  assert.equal(hasShift('2022'), false)
-  assert.equal(hasShift('2022-2'), true)
+test('the roster has the declared support and the bloc of each party, and too few places give no estimate', async () => {
+  const db = await fixture()
+  const { places, a, b } = await data(db)
+  const spectrum = await load(db, { sql: 'select * from spectrum', params: [] })
+  const candidates = await load(db, candidatesSql(rounds, 'president', null))
+  const endorsements = await load(db, { sql: 'select n, to_n from endorsement where election = 2000 and turn = 2', params: [] })
+  const roster = rosterOf(places, candidates, endorsements, spectrum, 2000)
+  assert.deepEqual(roster.map((c) => [c.number, c.bloc, c.declared]), [['13', 'E', null], ['22', 'D', null], ['70', 'C', '22'], ['14', 'N', null]])
+  const { units, groups } = unitsOf(places, roster, a, b, (p) => p.state)
+  assert.deepEqual(groups.map((g) => g.id), ['a', 'b', 'c', 'c', 'rest', 'blank', 'abstention'])
+  assert.equal(units.length, 3)
+  assert.equal(transfersOf(places, roster, a, b, (p) => p.state), null, 'three places cannot tell seven groups apart')
 })
 
 test('the estimate gives every first-round group a distribution and compares the declared support with what followed', () => {
-  const roster = [{ n: '3', name: 'C', party: 'P', declared: '2', votes: 600 }, { n: '4', name: 'D', party: 'Q', declared: '1', votes: 300 }]
-  const places = [], votes = []
+  const roster = [{ number: '3', name: 'C', party: 'P', declared: '2', votes: 600 }, { number: '4', name: 'D', party: 'Q', declared: '1', votes: 300 }]
+  const places = []
   for (let k = 0; k < 120; k++) {
     const [a1, b1, c, d] = [200 + ((k * 37) % 150), 150 + ((k * 53) % 200), 20 + ((k * 11) % 60), 10 + ((k * 7) % 30)]
     const [bl1, ab1] = [15 + (k % 9), 100 + ((k * 13) % 80)]
     const nom = a1 + b1 + c + d
     const [a2, b2] = [Math.round(a1 + 0.3 * c + 0.4 * d), Math.round(b1 + 0.6 * c + 0.2 * d)]
-    places.push({ k: `p${k}`, turn: 1, a: a1, b: b1, nom, bl: bl1, nu: 0, ap: nom + bl1 + ab1, co: nom + bl1 })
-    places.push({ k: `p${k}`, turn: 2, a: a2, b: b2, nom: a2 + b2, bl: bl1, nu: 0, ap: nom + bl1 + ab1, co: a2 + b2 + bl1 })
-    votes.push({ k: `p${k}`, cand: '3', votes: c }, { k: `p${k}`, cand: '4', votes: d })
+    places.push({ state: 's', city: String(k % 7), zone: String(k), cast: { 3: c, 4: d },
+      1: { a: a1, b: b1, nom, bl: bl1, nu: 0, ap: nom + bl1 + ab1, co: nom + bl1 }, 2: { a: a2, b: b2, nom: a2 + b2, bl: bl1, nu: 0, ap: nom + bl1 + ab1, co: a2 + b2 + bl1 } })
   }
-  const r = transfersOf({ places, votes }, roster, '1', '2')
+  const r = transfersOf(places, roster, '1', '2', (p) => p.city)
   assert.deepEqual(r.rows.map((g) => g.id), ['a', 'b', 'c', 'c', 'rest', 'blank', 'abstention'])
   for (const g of r.rows) assert.ok(Math.abs(g.share.reduce((n, v) => n + v, 0) - 1) < 1e-6)
-  const [c, d] = [r.rows[2], r.rows[3]]
+  const c = r.rows[2]
   assert.ok(c.share[1] > c.share[0], 'candidate C went mostly to the second finalist')
   const [forA, forB] = r.declared
   assert.equal(forB.declared, c.votes)
   assert.ok(forB.followed > 0 && forB.followed < forB.declared)
-  assert.equal(forA.declared, d.votes)
+  assert.equal(forA.declared, r.rows[3].votes)
+})
+
+test('the governor winner of a municipality takes the bloc of his party and links to the finalist on his side', () => {
+  const votes = [{ state: 'aa', city: '001', number: '45', votes: 10 }, { state: 'aa', city: '001', number: '13', votes: 4 }, { state: 'aa', city: '002', number: '13', votes: 9 }]
+  const candidates = [{ state: 'aa', number: '45', name: 'DORIA', party: 'PSDB' }, { state: 'aa', number: '13', name: 'FULANO', party: 'PT' }]
+  const spectrum = [{ party: 'PT', from_year: 1994, to_year: 2026, bloc: 'E' }, { party: 'PSDB', from_year: 1994, to_year: 2026, bloc: 'CD' }]
+  const governors = governorsOf(votes, candidates, spectrum, 2000)
+  assert.deepEqual([governors.get('aa|001').bloc, governors.get('aa|002').bloc], ['CD', 'E'])
+  const [a, b] = [{ bloc: 'E' }, { bloc: 'D' }]
+  assert.deepEqual([linkedTo('CE', a, b), linkedTo('CD', a, b), linkedTo('C', a, b), linkedTo('N', a, b)], ['a', 'b', null, null])
+})
+
+test('every runoff of president, governor or mayor pairs with a first round and the finest common grain is chosen', () => {
+  assert.equal(firstRoundOf('2022-2', 'president'), '2022')
+  assert.equal(firstRoundOf('2022', 'president'), null)
+  assert.deepEqual(shiftOffices('2014-2'), ['president', 'governor'])
+  assert.deepEqual(shiftOffices('2016-2'), ['mayor'])
+  assert.deepEqual(shiftOffices('1989-2'), ['president'])
+  assert.equal(firstRoundOf('e-2020-427-2-2020-11-29', 'mayor'), 'e-2020-426-1-2020-11-15')
+  assert.equal(supportsView('2022', 'shift'), true)
+  assert.equal(supportsView('1994-2', 'shift'), true)
+  const rs = (key) => ({ first: firstRoundOf(key, 'president'), second: key })
+  assert.equal(grainOf(rs('2014-2'), 'president'), 'zone')
+  assert.equal(grainOf({ first: '1994', second: '1994-2' }, 'governor'), 'municipality')
+  assert.equal(grainOf(rs('1989-2'), 'president'), 'state')
+  assert.ok(ELECTIONS['2014-2'])
+})
+
+test('the 2026 runoff, without canonical votes, reads the collector tables at the municipality grain', async () => {
+  const native = roundsOf('2026-2', 'president')
+  assert.equal(grainOf(native, 'president'), 'native')
+  const db = new PGlite()
+  for (const t of ['res', 'tot', 'sgz', 'cands', 'residual']) await db.exec(manifest.tables[t].ddl)
+  await db.exec(`create view resx as select election, turn, state, city, office, cand, votes from res; create view totx as select election, turn, state, city, office, sections, nominal, blank, nul from tot`)
+  await insert(db, 'res', [[1, '13', 600], [1, '22', 300], [2, '13', 650], [2, '22', 330]].map(([turn, cand, votes]) => ({ election: 2026, turn, state: 'aa', city: 'Alfa', office: 1, cand, votes })))
+  await insert(db, 'tot', [[1, 20, 30, 950], [2, 10, 10, 980]].map(([turn, blank, nul, nominal]) => ({ election: 2026, turn, state: 'aa', city: 'Alfa', office: 1, sections: 3, nominal, blank, nul })))
+  await insert(db, 'sgz', [1, 2].map((turn) => ({ election: 2026, turn, state: 'aa', city: 'Alfa', zone: '1', aptos: 1200, comp: 1000 })))
+  await insert(db, 'cands', [['13', 'LULA', 'PT'], ['22', 'JAIR', 'PL']].map(([n, name, party]) => ({ election: 2026, turn: 1, uf: 'br', office: 1, n, name, short_name: name, party })))
+  const units = await load(db, unitsSql(native, 'president', 'native'))
+  assert.deepEqual(units.map((u) => [u.turn, +u.eligible, +u.present, +u.nominal]).sort(), [[1, 1200, 1000, 950], [2, 1200, 1000, 980]])
+  assert.equal((await load(db, votesSql(native, 'president', 'native'))).length, 4)
+  assert.deepEqual((await load(db, candidatesSql(native, 'president', null, 'native'))).map((c) => [c.state, c.number, c.name]), [[null, '13', 'LULA'], [null, '22', 'JAIR']])
 })

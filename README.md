@@ -257,17 +257,22 @@ npm run logscan -- 04/10/2026 <out dir> <logs zip>…   # one TSV per archive (2
 IDENT_DIR=<dir with one folder per election key> nice -n 10 node scripts/build-data.mjs --election=2026 --only=signals
 ```
 
-### Round shift, spectrum and biometrics (`/<election>/shift`, `/spectrum`, `/biometrics`)
-- **Shift** (runoffs with section signals): for the two finalists, `Δa + Δb = others₁ − Δnull − Δblank − Δabstention + Δelectorate`, from the country down to the section
-  (`src/shift.js`; rollups `res`, `tot`, `sgz` down to the city, sections `rdv`, `sg` below). The ballot is secret: it bounds from which pools the new votes can have come,
-  it never says who voted for whom. Tabs: places, municipalities that turned, small gains (zones or sections where a finalist gained 0-20 votes), larger shifts of margin and a simulation
-  where the reader splits each pool. A difference between rounds is a reason to look, not proof of anything.
-- **Spectrum** (every election with candidate totals; parties classified and coalitions from 1994 on, earlier parties stay unclassified): the parties folded to `E` (left), `CE`, `C`, `CD`, `D` (right) or `N` (unclassified).
+### Between the rounds, spectrum and biometrics (`/<election>/shift`, `/spectrum`, `/biometrics`)
+- **Between the rounds** (`/shift`, every runoff for president, governor and mayor with a first round in the canonical tables: 1989-2026; a first-round election opens the
+  comparison with its runoff): for the two finalists, `gain a + gain b = round-1 others + drop in null, blank and abstention + growth of the electorate`
+  (`src/shift.js`). The places are the zones of `election_units` and `election_votes` (municipalities in 1994, states in 1989 and 1990, where the source has no finer grain),
+  loaded by `src/contest-load.js` and queried by `src/contest.js` (the 2026 runoff, whose canonical votes are not published yet, reads the municipality rollups of the collector tables instead); every level above is their sum. A president is one contest for the country, a governor one per state and a mayor one per
+  municipality (those have an index of races). The exact account is arithmetic; the estimate of where the voters of each first-round candidate went (`src/estimate.js`) is a constrained
+  regression over the places (each group is a distribution over: finalist a, finalist b, blank and null, abstention), held close to what the eliminated candidates did together and to the
+  least movement the totals allow, with bounds that also include the estimate that only compares places of the same state or municipality. It is ecological inference: it says how groups
+  behaved on average across places, never how a person voted, and the declared support is never used to estimate (it is compared with the result). With too few places it gives no estimate.
+- **Spectrum** (every election with candidate totals; parties classified and coalitions from 1989 and 1994 on): the parties folded to `E` (left), `CE`, `C`, `CD`, `D` (right) or `N` (unclassified).
   The classification is editorial, per party and period, with a confidence column (`scripts/spectrum/parties.csv`; there is no single academic source, so each line is a reviewable
-  choice, e.g. PSDB is `CE` in 1994-2002, `C` in 2003-2014 and `CD` after, PL is `CD` until 2018 and `D` after). A coalition stands at the average of its classified parties.
-  Tables: `spectrum`, `coalition` (every coalition, federation and isolated party of the TSE `consulta_coligacao` files), `endorsement` (the finalist each first-round candidate declared for;
-  `scripts/spectrum/endorsements.csv`, from public statements to be checked against the primary source) and the view `cand_bloc`. "Paradoxical votes" are the municipalities whose winners for
-  president and governor, in the same round, stand on opposite sides.
+  choice, e.g. PSDB is `CE` in 1989-2002, `C` in 2003-2014 and `CD` after, PL is `CD` until 2018 and `D` after). A coalition stands at the average of its classified parties.
+  Tables: `spectrum`, `coalition` (every coalition, federation and isolated party of the TSE `consulta_coligacao` files, 1994-2026), `endorsement` (the finalist each first-round presidential
+  candidate declared for in the runoff, or none when the party or the candidate declared neutral; `scripts/spectrum/endorsements.csv` with the date and source link of each row: 1989-2022 were
+  researched in news and party statements, 2026 comes from a video transcript to be checked; governors and mayors have none) and the view `cand_bloc`. "Paradoxical votes" are the
+  municipalities whose winners for president and governor, in the same round, stand on opposite sides (every general election from 1998).
 - **Biometrics** (elections with urn logs): per section, how the voters were identified: fingerprint (`sg.bio`), released by hand (`sg.man`) or by the title number (`sg.nor`), with the zone sums in `sgz`.
   2018 has no logs, so no section has these counts.
 - `nice -n 10 node scripts/build-blocs.mjs` rebuilds `spectrum`, `endorsement` and `coalition` (downloads the TSE zips into `.cache/`).
