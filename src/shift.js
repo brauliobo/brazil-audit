@@ -5,6 +5,7 @@
 // Children of a place come from the municipality rollups (res, tot, sgz) down to the city and from the sections (rdv, sg) below it.
 import { ELECTIONS, ELECTION_LIST, supportsView } from './model.js'
 import { sideOf } from './spectrum.js'
+import { estimate } from './estimate.js'
 
 export const firstRoundOf = (key) => ELECTION_LIST.find((e) => e.year === ELECTIONS[key].year && e.turn === 1 && e.offices.includes(1))?.key
 export const hasShift = (key) => supportsView(key, 'shift')
@@ -77,21 +78,6 @@ export const linkedTo = (governorBloc, a, b) => {
   return sa === side && sb !== side ? 'a' : sb === side && sa !== side ? 'b' : null
 }
 
-/** The first-round votes of the candidates that did not reach the runoff in the place, with the finalist each declared for (if known). */
-export function othersSql(args, year, a, b) {
-  const [state, city, zone] = args
-  const who = `left join cands c on c.election = $1 and c.turn = 1 and c.office = 1 and c.n = o.cand left join endorsement d on d.election = $1 and d.turn = 2 and d.n = o.cand`
-  const head = `select o.cand n, coalesce(c.short_name, c.name) name, c.party, d.to_n declared, sum(o.votes)::bigint votes`
-  const tail = `group by o.cand, c.short_name, c.name, c.party, d.to_n order by votes desc`
-  if (!city) {
-    return { sql: `${head} from resx o ${who} where o.election = $1 and o.turn = 1 and o.office = 1 and o.cand not in ($2, $3) and ($4::text is null or o.state = $4) ${tail}`, params: [year, a, b, state ?? null] }
-  }
-  return {
-    sql: `${head} from (select k.key cand, k.value::int votes from rdv r, jsonb_each_text(r.votes) k where r.election = $1 and r.turn = 1 and r.office = 1 and r.state = $4 and r.city = $5 ${zone ? 'and r.zone = $6' : ''}) o ${who} where o.cand not in ($2, $3) ${tail}`,
-    params: [year, a, b, state, city, ...(zone ? [zone] : [])],
-  }
-}
-
 const winner = (a, b) => (a === b ? null : a > b ? 'a' : 'b')
 
 /** A row of `childrenSql` with the changes and the reconciliation of the identity (`gap` is 0 when the sources agree). */
@@ -118,3 +104,105 @@ export const pools = (s) => [
 
 /** Share of the gain of the finalists a pool accounts for, nothing when the net gain is zero. */
 export const poolShare = (value, s) => (s.d.a + s.d.b === 0 ? null : value / (s.d.a + s.d.b))
+
+// ---- who received the votes: the first-round groups against the runoff outcomes, place by place (src/estimate.js) -------------------------------------------
+
+/** The first-round candidates with their party, bloc and the finalist they declared for in the runoff. */
+export const rosterSql = (year) => ({
+  sql: `select c.n, coalesce(c.short_name, c.name) name, c.party, c.bloc, e.to_n declared, c.official_votes votes from cand_bloc c
+    left join endorsement e on e.election = $1 and e.turn = 2 and e.n = c.n where c.election = $1 and c.turn = 1 and c.office = 1 order by c.official_votes desc nulls last, c.n`,
+  params: [year],
+})
+
+/** The places to estimate from, for the place in `args`: the municipalities of the country or the state, the sections of a city or a zone. `places` has one row per place and round, `votes` the first-round votes by candidate. */
+export function estimateUnitsSql(args, year, a, b) {
+  const [state, city, zone] = args
+  if (!city) {
+    return {
+      places: { sql: `${CITIES} select turn, state || '/' || city k, a, b, nom, bl, nu, ap, co from c`, params: [year, a, b, state ?? null] },
+      votes: { sql: `select state || '/' || city k, cand, sum(votes)::bigint votes from resx where election = $1 and turn = 1 and office = 1 and ($2::text is null or state = $2) group by 1, 2`, params: [year, state ?? null] },
+    }
+  }
+  const at = ' and ($4::text is null or zone = $4)'
+  return {
+    places: {
+      sql: `with r as (select turn, zone, section, sum(${NUMBER('$5')}) a, sum(${NUMBER('$6')}) b, sum(nominal) nom, sum(blank) bl, sum(nul) nu from rdv where election = $1 and office = 1 and state = $2 and city = $3${at} group by turn, zone, section),
+        g as (select turn, zone, section, sum(aptos) ap, sum(comp) co from sg where election = $1 and state = $2 and city = $3${at} group by turn, zone, section)
+        select turn, zone || '/' || section k, a, b, nom, bl, nu, ap, co from r full join g using (turn, zone, section)`,
+      params: [year, state, city, zone ?? null, a, b],
+    },
+    votes: { sql: `select zone || '/' || section k, cand, votes from cs where election = $1 and turn = 1 and office = 1 and state = $2 and city = $3${at}`, params: [year, state, city, zone ?? null] },
+  }
+}
+
+const ZERO = (v) => Number(v ?? 0)
+
+/**
+ * The first-round groups against the runoff outcomes for every place that voted in both rounds. Groups: the finalists `a` and `b`, each candidate with at
+ * least `MIN_SHARE` of the votes or a declared support, the others together, blank and null, abstention. Outcomes: a, b, blank and null, abstention. The first round is scaled to the
+ * electorate of the runoff, so that a place that grew or shrank is compared with itself.
+ */
+export function unitsOf({ places, votes }, roster, a, b) {
+  const byPlace = new Map()
+  for (const r of places) byPlace.set(r.k, { ...byPlace.get(r.k), [r.turn]: { a: ZERO(r.a), b: ZERO(r.b), nom: ZERO(r.nom), bl: ZERO(r.bl), nu: ZERO(r.nu), ap: ZERO(r.ap), co: ZERO(r.co) } })
+  const cast = new Map()
+  for (const v of votes) cast.set(v.k, { ...cast.get(v.k), [v.cand]: ZERO(v.votes) })
+  const total = [...byPlace.values()].reduce((n, p) => n + (p[1]?.nom ?? 0), 0)
+  const listed = roster.filter((c) => c.n !== a && c.n !== b && (c.declared || ZERO(c.votes) >= MIN_SHARE * total))
+  const groups = [{ id: 'a', n: a }, { id: 'b', n: b }, ...listed.map((c) => ({ id: 'c', n: c.n })), { id: 'rest' }, { id: 'blank' }, { id: 'abstention' }]
+  const units = []
+  for (const [k, p] of byPlace) {
+    if (!p[1] || !p[2] || !p[1].ap || !p[2].ap) continue
+    const [r1, r2, c] = [p[1], p[2], cast.get(k) ?? {}]
+    const scale = r2.ap / r1.ap
+    const named = listed.map((o) => ZERO(c[o.n]))
+    const x = [r1.a, r1.b, ...named, Math.max(r1.nom - r1.a - r1.b - named.reduce((s, v) => s + v, 0), 0), r1.bl + r1.nu, r1.ap - r1.co].map((v) => v * scale)
+    units.push({ k, group: k.split('/')[0], x, y: [r2.a, r2.b, r2.bl + r2.nu, r2.ap - r2.co] })
+  }
+  return { units, groups }
+}
+
+export const MIN_SHARE = 0.005 // a first-round candidate with less than this share of the votes and no declared support goes into the remaining candidates
+
+export const OUTCOMES = ['a', 'b', 'blank', 'abstention']
+
+const mergeRest = (u, rest) => ({ x: [u.x[0], u.x[1], rest.reduce((n, i) => n + u.x[i], 0), ...u.x.slice(-2)], y: u.y })
+const sumBy = (units, f) => units.reduce((n, u) => n + f(u), 0)
+
+/** `row` with `keep` of the voters staying in `column` and the rest spread as `row` spreads them over the other columns. */
+const staying = (row, column, keep) => {
+  const others = row.reduce((n, v, j) => n + (j === column ? 0 : v), 0)
+  return row.map((v, j) => (j === column ? keep : (v * (1 - keep)) / others))
+}
+
+/**
+ * The estimate with, for each group, its votes, where they went (shares and bounds) and the declared support. It is made in two steps: the eliminated
+ * candidates together (a group large enough to be told apart from the finalists, blank and abstention) and then each of them, held close to what the
+ * eliminated did together, so a candidate moves away from the group only where the places show it. Blank and null and abstention are held close to the
+ * least movement the totals allow (only the drop of the group has to leave it). The declared support is never used to estimate.
+ */
+export function transfersOf(data, roster, a, b) {
+  const { units, groups } = unitsOf(data, roster, a, b)
+  if (!units.length) return null
+  const [blank, abstention] = [groups.length - 2, groups.length - 1]
+  const rest = groups.flatMap((g, i) => (g.id === 'c' || g.id === 'rest' ? [i] : []))
+  const together = estimate(units.map((u) => mergeRest(u, rest)), { boot: 0, ridge: 1e-3 }).T
+  const keep = (i, outcome) => Math.min(1, sumBy(units, (u) => u.y[outcome]) / sumBy(units, (u) => u.x[i]))
+  const prior = groups.map((_, i) => (i === blank ? staying(together[2], 2, keep(i, 2)) : i === abstention ? staying(together[2], 3, keep(i, 3)) : together[rest.includes(i) ? 2 : i]))
+  const est = estimate(units, { ridge: 1e-2, sensitivity: [1e-3, 1e-1], boot: 20, prior })
+  const names = new Map(roster.map((c) => [c.n, c]))
+  const rows = groups.map((g, i) => {
+    const votes = sumBy(units, (u) => u.x[i])
+    return { ...g, ...(names.get(g.n) ?? {}), votes, share: est.T[i], low: est.low[i], high: est.high[i], to: est.T[i].map((s) => s * votes) }
+  })
+  return { rows, places: units.length, fit: est.fit, thin: units.length < 4 * groups.length, declared: declaredOf(rows, a, b) }
+}
+
+/** What the declared support would give if every voter followed it, against what each finalist gained and what the estimate says followed. */
+export function declaredOf(rows, a, b) {
+  const side = (n) => rows.filter((r) => r.id === 'c' && r.declared === n)
+  return [a, b].map((n, k) => {
+    const [own, followers] = [rows[k], side(n)]
+    return { n, base: own.votes, declared: followers.reduce((s, r) => s + r.votes, 0), followed: followers.reduce((s, r) => s + r.to[k], 0), kept: own.to[k], final: rows.reduce((s, r) => s + r.to[k], 0) }
+  })
+}
