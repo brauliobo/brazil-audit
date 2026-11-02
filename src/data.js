@@ -118,6 +118,9 @@ export function ensureDefault(table, election) {
 export const ensureScope = (table, election, state, office = 1) =>
   state ? ensure(table, parts(table, election).filter((id) => stateOf(id) === state && hasOffice(table, id, office))) : ensureDefault(table, election)
 
+/** The parts of an election holding `office`, for every state (the municipality rollups of one office). */
+export const ensureOffice = (table, election, office) => ensure(table, parts(table, election).filter((id) => hasOffice(table, id, office)))
+
 /** Every part of a state (all offices), e.g. for one section's full ballot. */
 export const ensureState = (table, election, state) => ensure(table, parts(table, election).filter((id) => stateOf(id) === state))
 
