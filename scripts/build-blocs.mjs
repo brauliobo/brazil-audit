@@ -7,6 +7,7 @@ import { execFileSync } from 'node:child_process'
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs'
 import { gzipSync } from 'node:zlib'
 import { parseCsvLine } from './csv.mjs'
+import { partyKey } from '../src/spectrum.js'
 
 const OUT = 'data'
 const CACHE = '.cache'
@@ -18,8 +19,6 @@ const BLOCS = ['E', 'CE', 'C', 'CD', 'D', 'N']
 
 const log = (...a) => console.log(new Date().toISOString().slice(11, 19), ...a)
 const csvOf = (rows) => rows.map((r) => r.map((v) => (/[,"\n]/.test(v) ? `"${v.replaceAll('"', '""')}"` : v)).join(',')).join('\n') + '\n'
-/** The party as written in the TSE files and in `cands` folded to one key: `PC do B` and `PCDOB` are the same party. */
-export const partyKey = (p) => p.toUpperCase().replace(/[^A-Z0-9ÃÕÇ]/g, '')
 
 const manifest = JSON.parse(readFileSync(`${OUT}/manifest.json`, 'utf8'))
 

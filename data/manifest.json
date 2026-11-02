@@ -2655633,9 +2655633,9 @@
    "parts": {
     "all": {
      "url": "spectrum.csv.gz",
-     "bytes": 1348,
-     "rows": 68,
-     "rawBytes": 3407
+     "bytes": 1402,
+     "rows": 70,
+     "rawBytes": 3565
     }
    }
   },
@@ -2655659,9 +2655659,9 @@
    "parts": {
     "all": {
      "url": "endorsement.csv.gz",
-     "bytes": 181,
-     "rows": 8,
-     "rawBytes": 266
+     "bytes": 1914,
+     "rows": 41,
+     "rawBytes": 5145
     }
    }
   }
@@ -2655831,7 +2655831,7 @@
    "note": "Reference outlines were fetched without a historical period. Matching a UF or municipality code does not establish equivalent historical boundaries."
   }
  },
- "version": "2026-11-01T03:31:43.662Z",
+ "version": "2026-11-02T16:22:38.368Z",
  "raw": {
   "2026": {
    "url": "raw/2026.json",
