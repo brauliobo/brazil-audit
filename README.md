@@ -36,7 +36,7 @@ npm run preview
 
 Real paths with the History API under the base: `/<election>/<view>/<args…>?<state>`, e.g. `/brazil-audit/2026/maps?scope=state&uf=sp`,
 `/2026/drill/sp/SAO%20PAULO/0372`, `/2026/sql?q=…`. The first segment is the election (omitted = the latest), the view is
-`overview | maps | parliament | seats | drill | analysis | benford | signals | time | logs | sql`; the rest of the state (office, metric, candidate, scope, sort,
+`overview | maps | parliament | seats | drill | analysis | shift | spectrum | biometrics | benford | signals | time | logs | sql`; the rest of the state (office, metric, candidate, scope, sort,
 page, query) is in the query string. `src/router.js` is the whole router: `href()` builds the paths (base included) so every
 link is a plain `<a href>`, one delegated click handler navigates in place (modified clicks, `target`, `download`, other
 origins and in-page `#anchors` keep their native behaviour), back/forward restore the scroll position, the document title
@@ -256,6 +256,21 @@ Screening of sections by how far they stand from their neighbours, after the vid
 npm run logscan -- 04/10/2026 <out dir> <logs zip>…   # one TSV per archive (2026 .jez and 2022 .logjez); LOGSCAN_THREADS=4
 IDENT_DIR=<dir with one folder per election key> nice -n 10 node scripts/build-data.mjs --election=2026 --only=signals
 ```
+
+### Round shift, spectrum and biometrics (`/<election>/shift`, `/spectrum`, `/biometrics`)
+- **Shift** (runoffs with section signals): for the two finalists, `Δa + Δb = others₁ − Δnull − Δblank − Δabstention + Δelectorate`, from the country down to the section
+  (`src/shift.js`; rollups `res`, `tot`, `sgz` down to the city, sections `rdv`, `sg` below). The ballot is secret: it bounds from which pools the new votes can have come,
+  it never says who voted for whom. Tabs: places, municipalities that turned, small gains (zones or sections where a finalist gained 0-20 votes), larger shifts of margin and a simulation
+  where the reader splits each pool. A difference between rounds is a reason to look, not proof of anything.
+- **Spectrum** (every election with candidate totals; parties classified and coalitions from 1994 on, earlier parties stay unclassified): the parties folded to `E` (left), `CE`, `C`, `CD`, `D` (right) or `N` (unclassified).
+  The classification is editorial, per party and period, with a confidence column (`scripts/spectrum/parties.csv`; there is no single academic source, so each line is a reviewable
+  choice, e.g. PSDB is `CE` in 1994-2002, `C` in 2003-2014 and `CD` after, PL is `CD` until 2018 and `D` after). A coalition stands at the average of its classified parties.
+  Tables: `spectrum`, `coalition` (every coalition, federation and isolated party of the TSE `consulta_coligacao` files), `endorsement` (the finalist each first-round candidate declared for;
+  `scripts/spectrum/endorsements.csv`, from public statements to be checked against the primary source) and the view `cand_bloc`. "Paradoxical votes" are the municipalities whose winners for
+  president and governor, in the same round, stand on opposite sides.
+- **Biometrics** (elections with urn logs): per section, how the voters were identified: fingerprint (`sg.bio`), released by hand (`sg.man`) or by the title number (`sg.nor`), with the zone sums in `sgz`.
+  2018 has no logs, so no section has these counts.
+- `nice -n 10 node scripts/build-blocs.mjs` rebuilds `spectrum`, `endorsement` and `coalition` (downloads the TSE zips into `.cache/`).
 
 ### Voting-time encoding (full 2026: 499,149 sections, 24 MB gz)
 
