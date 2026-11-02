@@ -2655625,6 +2655625,45 @@
     }
    },
    "semantics": "Reported list/vacancy context. NULL election_id is not an inferred election; session_keys are explicitly labelled source-year references. Declared vacancies are not observed elected outcomes."
+  },
+  "spectrum": {
+   "name": "spectrum",
+   "columns": "party,from_year,to_year,bloc,confidence,lineage",
+   "ddl": "create table spectrum (party text, from_year int, to_year int, bloc text, confidence text, lineage text)",
+   "parts": {
+    "all": {
+     "url": "spectrum.csv.gz",
+     "bytes": 1348,
+     "rows": 68,
+     "rawBytes": 3407
+    }
+   }
+  },
+  "coalition": {
+   "name": "coalition",
+   "columns": "election,turn,uf,office,seq,kind,name,party,federation,status",
+   "ddl": "create table coalition (election int, turn int, uf text, office int, seq text, kind text, name text, party text, federation text, status text)",
+   "parts": {
+    "all": {
+     "url": "coalition.csv.gz",
+     "bytes": 131090,
+     "rows": 25668,
+     "rawBytes": 1665757
+    }
+   }
+  },
+  "endorsement": {
+   "name": "endorsement",
+   "columns": "election,turn,n,to_n,source",
+   "ddl": "create table endorsement (election int, turn int, n text, to_n text, source text)",
+   "parts": {
+    "all": {
+     "url": "endorsement.csv.gz",
+     "bytes": 181,
+     "rows": 8,
+     "rawBytes": 266
+    }
+   }
   }
  },
  "geo": {

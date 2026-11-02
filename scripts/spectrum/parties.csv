@@ -1,0 +1,69 @@
+party,from,to,bloc,confidence,lineage
+PT,1994,2026,E,alta,
+PCDOB,1994,2026,E,alta,PC do B
+PSOL,2006,2026,E,alta,
+PSTU,1994,2026,E,alta,
+PCO,1994,2026,E,alta,
+PCB,1994,2026,E,alta,
+UP,2022,2026,E,alta,Unidade Popular
+PPL,2014,2018,E,média,Partido Pátria Livre
+PGT,1998,2002,CE,baixa,Partido Geral dos Trabalhadores
+PDT,1994,2026,CE,alta,
+PSB,1994,2026,CE,alta,
+PV,1994,2026,CE,média,
+REDE,2014,2026,CE,média,Rede Sustentabilidade
+PPS,1994,2005,CE,média,Partido Popular Socialista (antigo PCB)
+PPS,2006,2018,C,baixa,Deslocou-se para o centro a partir dos anos 2000; vira Cidadania em 2019
+CIDADANIA,2018,2026,C,baixa,Ex-PPS (os arquivos do TSE já usam o nome atual em 2018)
+PSDB,1994,2002,CE,média,Social-democrata no governo Fernando Henrique Cardoso
+PSDB,2003,2014,C,média,Oposição ao PT; posição de centro
+PSDB,2015,2026,CD,média,Giro para a centro-direita depois de 2015
+PMDB,1994,2017,C,alta,Vira MDB em 2017
+MDB,2018,2026,C,alta,
+SOLIDARIEDADE,2014,2026,C,média,Também sigla SD em 2014
+SD,2014,2014,C,média,Solidariedade
+PSD,1994,2002,CD,baixa,PSD histórico (incorporado ao PTB em 2003)
+PSD,2011,2026,CD,média,PSD refundado em 2011
+PTB,1994,2017,CD,média,
+PTB,2018,2022,D,média,Giro à direita sob Roberto Jefferson; incorporado ao PRD em 2023
+PFL,1994,2006,D,média,Vira DEM em 2007
+DEM,2007,2018,D,média,Ex-PFL; funde-se ao PSL formando o União Brasil
+UNIÃO,2022,2026,CD,média,União Brasil (DEM + PSL)
+PP,1994,2026,D,média,Também PPR e PPB; hoje Progressistas
+PPR,1994,1994,D,média,Partido Progressista Reformador
+PPB,1998,2002,D,média,Partido Progressista Brasileiro
+PL,1994,2018,CD,baixa,PL histórico; vira PR em 2006 e volta a PL em 2019 (o TSE usa PL em parte de 2018)
+PR,2007,2018,CD,média,Partido da República
+PL,2019,2026,D,alta,PL refundado com o bolsonarismo
+PRB,2006,2018,CD,baixa,Partido Republicano Brasileiro
+REPUBLICANOS,2018,2018,CD,baixa,Nome adotado em 2019 (ex-PRB)
+REPUBLICANOS,2019,2026,D,média,Ex-PRB
+PSC,1994,2022,D,média,Incorporado ao Podemos em 2023
+PSL,1998,2017,CD,baixa,
+PSL,2018,2022,D,alta,Partido de Bolsonaro em 2018; funde-se ao DEM
+NOVO,2018,2026,D,alta,
+PRONA,1994,2006,D,média,Partido de Reedificação da Ordem Nacional
+PRN,1994,1998,CD,baixa,Partido da Reconstrução Nacional (Collor); vira PTC
+PTC,2002,2018,CD,baixa,Partido Trabalhista Cristão; vira Agir em 2019
+AGIR,2019,2026,CD,baixa,Ex-PTC
+PRP,1994,2018,CD,baixa,Incorporado ao Patriota
+PATRIOTA,2014,2022,D,média,Ex-PEN; incorporado ao PRD em 2023
+PRD,2023,2026,D,média,Partido Renovação Democrática (PTB + Patriota)
+PRTB,1998,2026,D,média,
+PSDC,1998,2014,CD,baixa,Vira DC
+DC,2018,2026,D,média,Democracia Cristã
+PTN,1998,2014,C,baixa,Partido Trabalhista Nacional; vira Podemos
+PODE,2014,2026,CD,média,Podemos
+PHS,2002,2018,C,baixa,Incorporado ao Podemos
+PMN,1994,2022,C,baixa,Vira Mobiliza
+MOBILIZA,2023,2026,C,baixa,Ex-PMN
+PMB,2014,2022,C,baixa,Partido da Mulher Brasileira
+PROS,2014,2022,C,baixa,Incorporado ao Solidariedade
+AVANTE,2014,2026,C,baixa,Ex-PT do B
+PTDOB,1994,2014,C,baixa,Partido Trabalhista do Brasil; vira Avante
+PAN,1998,2006,C,baixa,Partido dos Aposentados da Nação
+PST,1998,2002,CD,baixa,Partido Social Trabalhista
+PSN,1998,1998,CD,baixa,Partido da Solidariedade Nacional
+PTRB,1994,1994,CD,baixa,Partido Trabalhista Renovador Brasileiro
+MISSÃO,2026,2026,D,média,Partido ligado ao MBL
+DEMOCRATA,2026,2026,N,baixa,Partido novo em 2026 sem posição estabelecida na literatura
