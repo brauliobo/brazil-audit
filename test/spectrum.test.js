@@ -3,7 +3,7 @@ import assert from 'node:assert/strict'
 import { readFileSync } from 'node:fs'
 import { PGlite } from '@electric-sql/pglite'
 import { VIEWS } from '../src/model.js'
-import { blocOfScore, blocsSql, coalitionsSql, crossTab, paradoxSql, paradoxes, topSql } from '../src/spectrum.js'
+import { blocOfScore, blocsSql, coalitionsSql, crossTab, paradoxOf, paradoxes, topSql, winnersOf } from '../src/spectrum.js'
 
 const manifest = JSON.parse(readFileSync('data/manifest.json', 'utf8'))
 const insert = (db, table, rows) => Promise.all(rows.map((r) => db.query(`insert into ${table} (${Object.keys(r).join(',')}) values (${Object.keys(r).map((_, i) => `$${i + 1}`).join(',')})`, Object.values(r))))
@@ -43,8 +43,12 @@ test('a coalition stands at the average of its classified parties and refused re
 
 test('the municipalities where president and governor stand on opposite sides', async () => {
   const db = await fixture()
-  const { rows } = await db.query(...Object.values(paradoxSql(2022, 1)))
-  const found = rows.map((r) => ({ ...r, pvotes: Number(r.pvotes), gvotes: Number(r.gvotes) }))
+  const spectrum = (await db.query('select * from spectrum')).rows
+  const president = winnersOf([{ state: 'aa', city: 'X', number: '13', votes: 60 }, { state: 'aa', city: 'X', number: '22', votes: 40 }, { state: 'aa', city: 'Y', number: '13', votes: 80 }, { state: 'aa', city: 'Y', number: '22', votes: 20 }],
+    [{ state: null, number: '13', name: 'LULA', party: 'PT' }, { state: null, number: '22', name: 'JAIR', party: 'PL' }], spectrum, 2022)
+  const governor = winnersOf([{ state: 'aa', city: 'X', number: '22', votes: 70 }, { state: 'aa', city: 'X', number: '45', votes: 30 }, { state: 'aa', city: 'Y', number: '13', votes: 55 }, { state: 'aa', city: 'Y', number: '45', votes: 45 }],
+    [{ state: 'aa', number: '22', name: 'GOV', party: 'PL' }, { state: 'aa', number: '45', name: 'DORIA', party: 'PSDB' }, { state: 'aa', number: '13', name: 'GOVPT', party: 'PT' }], spectrum, 2022)
+  const found = paradoxOf(president, governor)
   assert.deepEqual(paradoxes(found).map((r) => [r.city, r.pbloc, r.gbloc]), [['X', 'E', 'D']])
   const cross = crossTab(found)
   assert.equal(cross.flatMap((r) => r.cells).reduce((n, c) => n + c.n, 0), 2)

@@ -1,15 +1,17 @@
 <script setup vapor>
-import { computed } from 'vue'
+import { computed, markRaw } from 'vue'
 import { route, href } from '../router'
 import { ELECTIONS, selectedOffice } from '../model'
 import { electionLabel, stateTitle } from '../labels'
 import { t } from '../i18n'
-import { ensure, ensureOffice } from '../data'
+import { ensure } from '../data'
 import { candidatesSql, ensureElection } from '../election-results'
 import { useAsync } from '../use'
 import { objects } from '../db'
 import { int, num, pct, signed } from '../format'
-import { BLOCS, blocOfScore, blocsSql, coalitionsSql, crossTab, paradoxSql, paradoxes, topSql } from '../spectrum'
+import { BLOCS, blocOfScore, blocsSql, coalitionsSql, crossTab, paradoxOf, paradoxes, topSql, winnersOf } from '../spectrum'
+import { roundCandidatesSql, roundGrainOf, roundVotesSql } from '../contest'
+import { ensureRound } from '../contest-load'
 import Panel from '../components/Panel.vue'
 import Notice from '../components/Notice.vue'
 import Tabs from '../components/Tabs.vue'
@@ -67,17 +69,25 @@ const coalitionCols = computed(() => [
 ])
 
 // ---- Votos paradoxais: the winners for president and governor of each municipality, on opposite sides ------------------------------------
-const available = computed(() => !!cfg.value.legacyKey && [1, 3].every((o) => cfg.value.offices.includes(o)))
+const available = computed(() => ['president', 'governor'].every((o) => roundGrainOf(key.value, o)))
 const paradox = useAsync(() => [key.value, tab.value], async ([k, tb], q) => {
   if (tb !== 'paradox' || !available.value) return null
-  await Promise.all([ensure('cands'), ensure('spectrum'), ...[1, 3].map((o) => ensureOffice('res', cfg.value.legacyKey, o))])
-  const rows = objects(await q(...Object.values(paradoxSql(cfg.value.year, cfg.value.turn)))).map((r) => ({ ...r, pvotes: Number(r.pvotes), gvotes: Number(r.gvotes) }))
-  return { total: rows.length, split: paradoxes(rows), cross: crossTab(rows) }
+  const run = async ({ sql, params }) => objects(await q(sql, params))
+  await ensure('spectrum')
+  const spectrum = objects(await q('select * from spectrum'))
+  const [president, governor] = await Promise.all(['president', 'governor'].map(async (o) => {
+    await ensureRound(k, o)
+    const [votes, candidates] = await Promise.all([run(roundVotesSql(k, o, roundGrainOf(k, o))), run(roundCandidatesSql(k, o))])
+    return winnersOf(votes, candidates, spectrum, cfg.value.year)
+  }))
+  const rows = paradoxOf(president, governor)
+  const names = new Map(objects(await q('select state, city_code city, city_name name from election_places where session_key = $1', [ELECTIONS[k].sourceSession.key])).map((c) => [`${c.state}|${c.city}`, c.name]))
+  return markRaw({ total: rows.length, split: paradoxes(rows), cross: crossTab(rows), names })
 })
 const crossCols = computed(() => [{ key: 'side', label: t('spectrum.col.president'), fmt: (v) => t(`spectrum.side.${v}`) }, ...['left', 'center', 'right', 'none'].map((s, i) => ({ key: `c${i}`, label: t(`spectrum.side.${s}`), num: true }))])
 const crossRows = computed(() => (paradox.data?.cross ?? []).map((r) => ({ side: r.side, ...Object.fromEntries(r.cells.map((c, i) => [`c${i}`, int(c.n)])) })))
 const paradoxCols = computed(() => [
-  { key: 'city', label: t('spectrum.col.city'), fmt: (v, r) => `${v} · ${stateTitle(r.state)}` },
+  { key: 'city', label: t('spectrum.col.city'), fmt: (v, r) => `${paradox.data.names.get(`${r.state}|${v}`) ?? v} · ${stateTitle(r.state)}` },
   { key: 'pname', label: t('spectrum.col.president'), fmt: (v, r) => `${v} · ${bloc(r.pbloc)}` }, { key: 'pvotes', label: t('spectrum.col.president_votes'), num: true, fmt: int },
   { key: 'gname', label: t('spectrum.col.governor'), fmt: (v, r) => `${v} · ${bloc(r.gbloc)}` }, { key: 'gvotes', label: t('spectrum.col.governor_votes'), num: true, fmt: int },
 ])

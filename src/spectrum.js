@@ -5,6 +5,14 @@ export const SIDES = { E: 'left', CE: 'left', C: 'center', CD: 'right', D: 'righ
 export const sideOf = (bloc) => SIDES[bloc] ?? 'none'
 export const blocOfScore = (score) => (score == null ? 'N' : ['E', 'CE', 'C', 'CD', 'D'][Math.round(Math.min(Math.max(score, -2), 2)) + 2])
 
+/** The party as written in the TSE files and in `cands` folded to one key: `PC do B` and `PCDOB` are the same party. */
+export const partyKey = (p) => String(p ?? '').toUpperCase().replace(/[^A-Z0-9ÃÕÇ]/g, '')
+
+/** The bloc of a party in a year from the rows of the `spectrum` table (`N` when it has none). */
+const N = (v) => Number(v ?? 0)
+
+export const blocOf = (party, year, rows) => rows.find((r) => r.party === partyKey(party) && year >= r.from_year && year <= r.to_year)?.bloc ?? 'N'
+
 const PARTY = (col) => `regexp_replace(upper(${col}), '[^A-Z0-9ÃÕÇ]', '', 'g')` // i18n-ignore
 const SCORE = `case s.bloc when 'E' then -2 when 'CE' then -1 when 'C' then 0 when 'CD' then 1 when 'D' then 2 end`
 
@@ -37,15 +45,28 @@ export const coalitionsSql = (year, turn, office, uf) => ({
   params: [year, turn, office, uf],
 })
 
-/** The most voted candidate for president and for governor in each municipality of a round, with their blocs: one electorate choosing two sides. */
-export const paradoxSql = (year, turn) => ({
-  sql: `with w as (select distinct on (office, state, city) office, state, city, cand, votes from resx where election = $1 and turn = $2 and office in (1, 3) order by office, state, city, votes desc),
-    p as (select w.*, coalesce(b.bloc, 'N') bloc, coalesce(b.short_name, b.name) name from w left join cand_bloc b on b.election = $1 and b.turn = $2 and b.office = w.office
-      and b.uf = case w.office when 1 then 'br' else w.state end and b.n = w.cand)
-    select pr.state, pr.city, pr.name pname, pr.bloc pbloc, pr.votes::bigint pvotes, g.name gname, g.bloc gbloc, g.votes::bigint gvotes
-    from p pr join p g on g.office = 3 and g.state = pr.state and g.city = pr.city where pr.office = 1`,
-  params: [year, turn],
-})
+/** The most voted candidate of each municipality with the bloc of the party: `votes` are rows (state, city, number, votes) and `candidates` the roster (state, number, name, party). */
+export function winnersOf(votes, candidates, spectrum, year) {
+  const best = new Map()
+  const total = new Map()
+  for (const v of votes) total.set(`${v.state}|${v.city}|${v.number}`, (total.get(`${v.state}|${v.city}|${v.number}`) ?? 0) + N(v.votes))
+  for (const [k, n] of total) {
+    const [state, city, number] = k.split('|')
+    if (n > (best.get(`${state}|${city}`)?.votes ?? -1)) best.set(`${state}|${city}`, { state, number, votes: n })
+  }
+  return new Map([...best].map(([k, g]) => {
+    const who = candidates.find((c) => c.state === g.state && c.number === g.number) ?? candidates.find((c) => c.number === g.number)
+    return [k, { ...g, name: who?.name ?? g.number, party: who?.party ?? '', bloc: blocOf(who?.party, year, spectrum) }]
+  }))
+}
+
+/** The municipalities where president and governor were both voted, with the winner of each and its bloc: one electorate choosing two offices. */
+export function paradoxOf(president, governor) {
+  return [...president].filter(([k]) => governor.has(k)).map(([k, p]) => {
+    const g = governor.get(k)
+    return { state: p.state, city: k.split('|')[1], pname: p.name, pbloc: p.bloc, pvotes: p.votes, gname: g.name, gbloc: g.bloc, gvotes: g.votes }
+  })
+}
 
 /** The municipalities whose winners for president and governor stand on opposite sides (left against right), the largest first. */
 export const paradoxes = (rows) => rows.filter((r) => ['left,right', 'right,left'].includes(`${sideOf(r.pbloc)},${sideOf(r.gbloc)}`)).sort((a, b) => b.pvotes - a.pvotes)
