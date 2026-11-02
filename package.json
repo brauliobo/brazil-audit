@@ -17,7 +17,7 @@
     "test:charts": "node --test test/chart-scale.test.js test/comparison.test.js",
     "test:transfers": "node --test test/transfer-sql.test.js",
     "test:signals": "node --test test/signals.test.js",
-    "test:blocs": "node --test test/shift.test.js test/spectrum.test.js test/biometrics.test.js",
+    "test:blocs": "node --test test/shift.test.js test/estimate.test.js test/spectrum.test.js test/biometrics.test.js",
     "test:logpack": "node --test test/logpack.test.js test/lookup.test.js test/logpack-index.test.js",
     "test:logscan": "cargo test --release --manifest-path tools/logscan/Cargo.toml",
     "logscan": "cargo run --release --quiet --manifest-path tools/logscan/Cargo.toml --",

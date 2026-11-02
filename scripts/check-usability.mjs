@@ -36,7 +36,7 @@ const TASKS = [
   { id: 'signals', goal: 'see which sections stand out in Acre', start: '2026/overview', steps: 3, budget: 30000, run: async (u) => { await u.click(NAV('time')); await u.click(NAV('signals')); await u.choose('main select', 'ac') },
     done: `location.pathname.endsWith('/signals/ac') && document.querySelectorAll('main .panel svg, main .panel canvas').length > 0 && document.querySelectorAll('main .table tbody tr').length > 0` },
   { id: 'shift', goal: 'see how the two finalists gained votes between the rounds of 2026', start: '2026-2/overview', steps: 2, budget: 40000, run: async (u) => { await u.click(NAV('compare')); await u.click(NAV('shift')) },
-    done: `location.pathname.endsWith('/2026-2/shift') && document.querySelectorAll('main .bars__row').length >= 2 && document.querySelectorAll('main .table tbody tr').length > 0` },
+    done: `location.pathname.endsWith('/2026-2/shift') && document.querySelectorAll('main .flow__part').length >= 8 && document.querySelectorAll('main .table tbody tr').length > 0` },
   { id: 'spectrum', goal: 'see the votes of the presidential candidates of 2022 by left-right bloc', start: '2022/overview', steps: 2, budget: 40000, run: async (u) => { await u.click(NAV('compare')); await u.click(NAV('spectrum')) },
     done: `location.pathname.endsWith('/2022/spectrum') && document.querySelectorAll('main .bars__row').length >= 5 && document.querySelectorAll('main .table tbody tr').length > 0` },
   { id: 'biometrics', goal: 'see how the voters of the 2022 runoff were identified in each state', start: '2022-2/overview', steps: 2, budget: 40000, run: async (u) => { await u.click(NAV('compare')); await u.click(NAV('biometrics')) },
