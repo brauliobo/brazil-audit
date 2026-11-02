@@ -94,7 +94,7 @@ const FAMILIES = {
   'drill.levels.': ['state', 'city', 'zone', 'section'],
   'time.rank.': ['fast', 'regular', 'gap', 'diff'],
   'signals.tab.': TABS,
-  'shift.tab.': ['places', 'turned', 'small', 'big', 'sources'],
+  'shift.tab.': ['votes', 'places', 'cases'], 'shift.case.': ['turned', 'big', 'small'], 'shift.group.': ['rest', 'blank', 'abstention'], 'shift.unit.': ['city', 'section'],
   'shift.children.': ['country', 'state', 'city', 'zone'],
   'shift.col.': ['state', 'city', 'zone', 'section'],
   'shift.pool.': ['others', 'nu', 'bl', 'abs', 'ap'],

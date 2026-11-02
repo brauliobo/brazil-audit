@@ -1601,25 +1601,51 @@ sourceNominations:
     binding_kind: "Tipo de vínculo com o pleito"
 
 shift:
-  title: "Mudança do 1º para o 2º turno · {place} · {election}"
-  caution: "O voto é secreto. A conta abaixo diz de quais grupos podem ter vindo os votos novos (votos em outros candidatos, nulos, brancos, abstenção, eleitores novos), não quem votou em quem. Uma diferença entre os turnos não é prova de nada: seções pequenas, zonas rurais e mudanças de local explicam muito."
+  title: "Para onde foram os votos do 1º para o 2º turno · {place} · {election}"
+  caution: "O voto é secreto: o que segue é uma estimativa feita a partir das diferenças entre lugares, não o voto de ninguém, e uma diferença entre os turnos não prova nada."
   breadcrumb: Lugar
   loading: Carregando os dois turnos…
   tabs: Recortes
   tab:
+    votes: Para onde foram
     places: Lugares
+    cases: Casos
+  cases: Caso
+  case:
     turned: Virou
-    small: Aumento pequeno
     big: Mudou muito
-    sources: Simulação
-  summary: "{a} e {b}: o que mudou entre os turnos"
-  identity: "Δ{a} + Δ{b} = outros no 1º turno − Δnulos − Δbrancos − Δabstenção + Δaptos"
-  deltaNote: "Δ = 2º turno − 1º turno. Nulos, brancos e abstenção entram com o sinal trocado: se caíram, sobraram votos para os dois candidatos. Os outros candidatos do 1º turno entram com o sinal da votação que tiveram."
+    small: Aumento pequeno
+  group:
+    rest: Demais candidatos
+    blank: Brancos e nulos
+    abstention: Abstenção
+  unit:
+    city: municípios
+    section: seções
+  flow:
+    title: "Quem recebeu os votos do 1º turno · {a} e {b}"
+    note: "Cada linha é um grupo de eleitores do 1º turno e a barra mostra, em média, como esse grupo votou no 2º turno, estimado pela forma como os lugares diferem entre si. Passe o mouse sobre um trecho para ver a faixa de incerteza. Brancos, nulos e abstenção variam juntos entre os lugares e são os números menos confiáveis. O apoio declarado não entra na estimativa."
+    origin: Origem no 1º turno
+    votes: Votos
+    support: Apoio declarado
+    where: Votos no 2º turno
+  fit: "Estimado com {places} {unit}; o modelo reduz o erro em {fit} frente a supor que todos votaram igual."
+  thin: "Há poucos lugares para estimar com segurança: leia como indício, não como número."
+  noEstimate: Não há lugares com os dois turnos para estimar.
+  support:
+    title: O apoio declarado foi seguido?
+    note: "Soma dos votos do 1º turno dos candidatos que declararam apoio a cada finalista, comparada com o quanto o finalista cresceu e com quantos desses votos a estimativa mostra que foram para ele."
+    finalist: Finalista
+    gain: Cresceu entre os turnos
+    declared: Votos de quem declarou apoio
+    followed: Seguiram (estimado)
+    rate: Taxa
+  identity:
+    title: A conta fechada
+    note: "Δ{a} + Δ{b} = outros no 1º turno − Δnulos − Δbrancos − Δabstenção + Δaptos. Nulos, brancos e abstenção entram com o sinal trocado."
   gap: "A soma dos lugares não fecha a conta em {total} votos: os arquivos de eleitorado e de votos têm pequenas diferenças de fonte."
   largest: Maiores ganhos
   largestNote: Lugares em que a soma dos ganhos dos dois candidatos mais cresceu.
-  others: Votos dos outros candidatos no 1º turno
-  othersNote: "Cada barra é um candidato que não foi ao 2º turno; a seta indica a quem declarou apoio, quando isso está registrado. Os votos não se transferem automaticamente: {a} e {b} podem ou não tê-los recebido."
   children:
     country: Estados
     state: Municípios
@@ -1635,10 +1661,6 @@ shift:
     first: "{name} 1º"
     second: "{name} 2º"
     delta: "Δ {name}"
-    nulls: Δ nulos
-    blanks: Δ brancos
-    abstention: Δ abstenção
-    electorate: Δ aptos
     others: Outros no 1º turno
     result: Ganho dos dois
     governor: Governador mais votado no 1º turno
@@ -1668,10 +1690,6 @@ shift:
   who: Candidato
   grain: Nível
   pickState: Escolha um estado para listar as zonas ou seções.
-  simTitle: Simulação da origem dos votos
-  simNote: "Informe a parte (%) de cada grupo que iria para cada candidato. A base de nulos, brancos e abstenção é a variação entre os turnos (positiva quando caiu); a dos outros candidatos são os votos do 1º turno. É uma simulação sua, não um resultado."
-  simTotals: "Simulado: {a} {simA} e {b} {simB}. Ganho real: {a} {goalA} e {b} {goalB}."
-
 spectrum:
   title: "Espectro político · {election}"
   caution: "Esquerda, centro-esquerda, centro, centro-direita e direita são uma escolha editorial por partido e período (scripts/spectrum/parties.csv), com um grau de confiança, e não uma medida. Partidos mudam de posição com o tempo e candidatos podem destoar do partido."
